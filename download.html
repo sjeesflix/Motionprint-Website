@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Motionprint Ergo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #ea523b;
+      --red-dark: #c93f28;
+      --red-light: #f06449;
+      --dark: #0d0f12;
+      --dark-2: #161a20;
+      --dark-3: #1e2530;
+      --text: #111827;
+      --muted: #6b7280;
+      --muted-2: #9ca3af;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f9fafb;
+      --bg-2: #f3f4f6;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--dark); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+    a, button { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+    .eyebrow-light { color: rgba(255,255,255,.45); }
+    .eyebrow-light::before { background: var(--red); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      border-radius: 8px; padding: 12px 22px; cursor: pointer;
+      text-decoration: none; transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, opacity .2s ease;
+      border: none; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(234,82,59,.35); }
+    .btn-primary:hover { background: var(--red-light); box-shadow: 0 6px 28px rgba(234,82,59,.45); }
+    .btn-secondary { background: var(--white); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-secondary:hover { border-color: #c9d0da; background: var(--bg); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+    .btn-lg { font-size: 16px; padding: 15px 32px; }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { text-decoration: none; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-signin { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.5); text-decoration: none; }
+    .nav-signin:hover { color: #fff; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; outline: none; -webkit-tap-highlight-color: transparent; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-download:active, .nav-download:focus { background: rgba(255,255,255,.08); outline: none; }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-demo:active, .nav-demo:focus { background: var(--red); outline: none; }
+    .nav-hamburger { display: none; background: none; border: none; padding: 4px; color: rgba(255,255,255,.7); flex-shrink: 0; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; flex-direction: column; gap: 4px; position: fixed; top: 60px; left: 0; right: 0; z-index: 99; background: var(--dark); padding: 16px 28px 24px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .mobile-nav a:hover { color: #fff; }
+    .mobile-nav .btn { margin-top: 24px; text-align: center; justify-content: center; }
+
+    /* ── HERO ── */
+    .dl-hero {
+      background: var(--dark); padding: 80px 0 72px;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .dl-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(234,82,59,.09) 0%, transparent 70%);
+    }
+    .dl-hero-inner { max-width: 620px; margin: 0 auto; position: relative; }
+    .dl-hero h1 {
+      font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px);
+      color: #fff; line-height: 1.08; letter-spacing: -.025em; margin-top: 16px;
+    }
+    .dl-hero h1 em { font-style: italic; color: var(--red); }
+    .dl-hero-sub { font-size: 16px; color: rgba(255,255,255,.45); line-height: 1.65; margin-top: 16px; }
+    .dl-platforms { display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
+    .dl-platform-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px; padding: 16px 28px; text-decoration: none;
+      transition: all .2s; min-width: 220px;
+    }
+    .dl-platform-btn:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); transform: translateY(-2px); }
+    .dl-platform-btn.disabled { opacity: .35; pointer-events: none; }
+    .dl-platform-icon { width: 32px; height: 32px; flex-shrink: 0; }
+    .dl-platform-text { text-align: left; }
+    .dl-platform-label { font-size: 11px; color: rgba(255,255,255,.4); font-weight: 500; }
+    .dl-platform-name { font-size: 15px; font-weight: 700; color: #fff; }
+    .dl-platform-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 1px; }
+    .dl-version { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 20px; }
+    .dl-version a { color: rgba(255,255,255,.35); text-decoration: underline; }
+    .dl-key-note {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 28px; font-size: 13px; color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: 10px 16px;
+    }
+    .dl-key-note svg { width: 14px; height: 14px; flex-shrink: 0; stroke: rgba(255,255,255,.3); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .dl-key-note a { color: var(--red); text-decoration: none; font-weight: 600; }
+    .dl-key-note a:hover { text-decoration: underline; }
+
+    /* ── STEPS ── */
+    .dl-steps { padding: 80px 0; background: var(--white); }
+    .dl-steps-header { text-align: center; margin-bottom: 56px; }
+    .dl-steps-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); color: var(--text); margin-top: 12px; letter-spacing: -.02em; }
+    .how-steps-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .how-step { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--red); border-radius: 14px; padding: 28px 22px 24px; position: relative; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: box-shadow .25s ease; }
+    .how-step:hover { box-shadow: 0 12px 32px rgba(0,0,0,.1); }
+    .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-right: 44px; }
+    .step-icon { width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+    .step-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .step-num { position: absolute; top: 10px; right: 16px; font-family: var(--font-display); font-size: 48px; line-height: 1; color: rgba(0,0,0,.06); pointer-events: none; user-select: none; }
+    .step-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.25; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .step-desc a { color: var(--red); text-decoration: none; font-weight: 600; }
+    .step-desc a:hover { text-decoration: underline; }
+    .step-connector { position: absolute; right: -20px; top: 50%; transform: translateY(-50%); z-index: 2; width: 36px; height: 36px; border-radius: 50%; background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+    .step-connector svg { width: 13px; height: 13px; stroke: var(--muted-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .how-step:last-child .step-connector { display: none; }
+
+    /* ── REQUIREMENTS ── */
+    .dl-reqs { padding: 72px 0; background: var(--bg); }
+    .dl-reqs-inner { max-width: 560px; margin: 0 auto; }
+    .dl-req-block h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .dl-req-block h3 svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .dl-req-list { display: flex; flex-direction: column; gap: 10px; }
+    .dl-req-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .dl-req-row:last-child { border-bottom: none; }
+    .dl-req-label { color: var(--muted); }
+    .dl-req-val { font-weight: 600; color: var(--text); }
+    .dl-req-badge { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+    .dl-req-badge.green { background: rgba(34,197,94,.1); color: #16a34a; }
+    .dl-req-badge.amber { background: rgba(245,158,11,.1); color: #d97706; }
+
+    /* ── NO LICENSE CTA ── */
+    .dl-cta { padding: 80px 0; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
+    .dl-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(234,82,59,.08) 0%, transparent 70%);
+    }
+    .dl-cta-inner { max-width: 520px; margin: 0 auto; position: relative; }
+    .dl-cta h2 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); color: #fff; margin-top: 14px; letter-spacing: -.02em; }
+    .dl-cta h2 em { font-style: italic; color: var(--red); }
+    .dl-cta p { font-size: 15px; color: rgba(255,255,255,.4); margin-top: 12px; margin-bottom: 32px; line-height: 1.65; }
+    .dl-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 56px 0 0; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-logo { text-decoration: none; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.6; max-width: 240px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── TRIAL MODAL ── */
+    .trial-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .trial-modal-overlay.open { display: flex; }
+    .trial-modal {
+      background: var(--white); border-radius: var(--radius);
+      padding: 36px; max-width: 440px; width: 100%; position: relative;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35); max-height: 90vh; overflow-y: auto;
+    }
+    .trial-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none; font-size: 22px; line-height: 1;
+      color: var(--muted); cursor: pointer; padding: 4px 8px; border-radius: 4px;
+      transition: color .15s;
+    }
+    .trial-modal-close:hover { color: var(--text); }
+    .trial-modal-header h3 { font-family: var(--font-display); font-size: 22px; color: var(--text); letter-spacing: -.02em; }
+    .trial-modal-header p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 8px; margin-bottom: 24px; }
+    .trial-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .trial-field label { font-size: 12px; font-weight: 600; color: var(--text); }
+    .trial-field input {
+      font-family: var(--font-body); font-size: 14px; color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 14px;
+      outline: none; transition: border-color .15s; background: var(--white); width: 100%;
+    }
+    .trial-field input:focus { border-color: var(--red); }
+    .trial-field input::placeholder { color: var(--muted-2); }
+    .trial-submit { width: 100%; justify-content: center; margin-top: 8px; }
+    .trial-submit:disabled { opacity: .6; cursor: not-allowed; }
+    .trial-privacy { font-size: 11px; color: var(--muted-2); margin-top: 10px; text-align: center; line-height: 1.5; }
+    .trial-privacy a { color: var(--muted); text-decoration: underline; }
+    .trial-success { display: none; text-align: center; padding: 16px 0; }
+    .trial-success.show { display: block; }
+    .trial-success-icon {
+      width: 52px; height: 52px; background: rgba(34,197,94,.1); border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 24px; color: #16a34a; margin-bottom: 16px;
+    }
+    .trial-success h3 { font-family: var(--font-display); font-size: 22px; color: var(--text); margin-bottom: 8px; }
+    .trial-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .how-steps-4 { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .step-connector { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .how-steps-4 { grid-template-columns: 1fr; }
+      .dl-reqs-inner { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: block; margin-left: auto; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="index.html#custom">Custom Solutions</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <!-- <a href="#" class="nav-signin">Sign in</a> -->
+      <a href="download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="index.html#ergo">Motionprint Ergo</a>
+  <a href="index.html#custom">Custom Solutions</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="resources.html">Resources</a>
+  <a href="about.html">About</a>
+  <a href="download.html">Download</a>
+  <a href="index.html#contact" class="btn btn-primary">Request demo</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="dl-hero">
+  <div class="container">
+    <div class="dl-hero-inner">
+      <span class="eyebrow eyebrow-light">Free download</span>
+      <h1>Download <em>Motionprint Ergo</em></h1>
+      <p class="dl-hero-sub">The installer is free — get up and running in minutes. A valid licence key is required to activate the application.</p>
+
+      <div class="dl-platforms">
+        <!-- Windows -->
+        <a href="#" class="dl-platform-btn" id="btn-windows">
+          <svg class="dl-platform-icon" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="4" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
+            <rect x="17" y="4" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
+            <rect x="2" y="19" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
+            <rect x="17" y="19" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
+          </svg>
+          <div class="dl-platform-text">
+            <div class="dl-platform-label">Download for</div>
+            <div class="dl-platform-name">Windows</div>
+            <div class="dl-platform-sub">Windows 10 / 11 &nbsp;·&nbsp; 64-bit</div>
+          </div>
+        </a>
+        <!-- macOS — coming soon -->
+        <div class="dl-platform-btn disabled">
+          <svg class="dl-platform-icon" viewBox="0 0 32 32" fill="none">
+            <path d="M21.5 6C20.3 6 19 6.8 18.2 7.9 17.5 8.9 17 10.2 17.1 11.4c1.3.1 2.6-.7 3.4-1.8C21.3 8.6 21.8 7.3 21.5 6z" fill="rgba(255,255,255,.7)"/>
+            <path d="M24.9 18.7c-.1-3.2 2.6-4.7 2.7-4.8-1.5-2.2-3.8-2.5-4.6-2.5-2-.2-3.8 1.2-4.8 1.2-1 0-2.6-1.1-4.3-1.1-2.2 0-4.2 1.3-5.4 3.3-2.3 4-.6 10 1.6 13.3 1.1 1.6 2.4 3.4 4.1 3.3 1.6-.1 2.2-1 4.2-1s2.5 1 4.2.9c1.8 0 2.9-1.6 4-3.2 1.3-1.8 1.8-3.5 1.8-3.6-.1 0-3.4-1.3-3.5-4.8z" fill="rgba(255,255,255,.7)"/>
+          </svg>
+          <div class="dl-platform-text">
+            <div class="dl-platform-label">Coming soon</div>
+            <div class="dl-platform-name">macOS</div>
+            <div class="dl-platform-sub">macOS 12 Monterey or later</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-version">Version 1.0.0 &nbsp;·&nbsp; <a href="#">Release notes</a></div>
+
+      <div class="dl-key-note">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        A licence key is required to activate. No key yet? <a href="index.html#pricing">View pricing</a> or <a href="#" onclick="openTrialModal();return false;">request a free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STEPS ── -->
+<section class="dl-steps">
+  <div class="container">
+    <div class="dl-steps-header">
+      <span class="eyebrow">Getting started</span>
+      <h2 class="dl-steps-title">Up and running in four steps</h2>
+    </div>
+    <div class="how-steps-4">
+      <div class="how-step">
+        <span class="step-num">1</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><path d="M19 15v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3"/><polyline points="7 10 11 14 15 10"/><line x1="11" y1="14" x2="11" y2="3"/></svg>
+          </div>
+          <h3 class="step-title">Download the installer</h3>
+        </div>
+        <p class="step-desc">Click the Windows button above to download the latest installer (.exe). The file is around 80 MB.</p>
+        <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">2</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><rect x="3" y="3" width="16" height="16" rx="2"/><path d="M7 11l3 3 5-6"/></svg>
+          </div>
+          <h3 class="step-title">Run and install</h3>
+        </div>
+        <p class="step-desc">Open the downloaded file and follow the setup wizard. No admin rights required for a per-user install.</p>
+        <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">3</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><circle cx="8" cy="14" r="4"/><path d="M11 11l7-7"/><path d="M15 7l2 2"/></svg>
+          </div>
+          <h3 class="step-title">Enter your licence key</h3>
+        </div>
+        <p class="step-desc">On first launch you'll see the activation screen. Enter your licence key (format: MP-XXXX-XXXX-XXXX-XXXX). No key yet? <a href="index.html#pricing">View pricing</a> or <a href="#" onclick="openTrialModal();return false;">request a free trial</a>.</p>
+        <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">04</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><path d="M3 17V5h16v12H3z" stroke-linejoin="round"/><polyline points="7 13 9.5 10 12 13 16 8"/></svg>
+          </div>
+          <h3 class="step-title">Start your first assessment</h3>
+        </div>
+        <p class="step-desc">Upload an MVNX file from your Xsens session and run your first ergonomic assessment. Check the <a href="resources.html">documentation</a> if you need a hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SYSTEM REQUIREMENTS ── -->
+<section class="dl-reqs">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="eyebrow">System requirements</span>
+      <h2 style="font-family:var(--font-display);font-size:clamp(22px,2.8vw,34px);color:var(--text);margin-top:12px;letter-spacing:-.02em;">What you need to run Motionprint Ergo</h2>
+    </div>
+    <div class="dl-reqs-inner">
+      <div class="dl-req-block">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Windows
+        </h3>
+        <div class="dl-req-list">
+          <div class="dl-req-row"><span class="dl-req-label">Operating system</span><span class="dl-req-val">Windows 10 / 11 (64-bit)</span></div>
+          <div class="dl-req-row"><span class="dl-req-label">RAM</span><span class="dl-req-val">4 GB minimum, 8 GB recommended</span></div>
+          <div class="dl-req-row"><span class="dl-req-label">Storage</span><span class="dl-req-val">500 MB free disk space</span></div>
+          <div class="dl-req-row"><span class="dl-req-label">Internet</span><span class="dl-req-val">Required for activation &amp; licence validation</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="dl-cta">
+  <div class="container">
+    <div class="dl-cta-inner">
+      <span class="eyebrow eyebrow-light">No licence yet?</span>
+      <h2>Get a licence and <em>start today</em></h2>
+      <p>Choose the plan that fits your workflow — individual, team or enterprise. All tiers include every current assessment method and export format.</p>
+      <div class="dl-cta-btns">
+        <a href="index.html#pricing" class="btn btn-primary btn-lg">View pricing</a>
+        <a href="#" onclick="openTrialModal();return false;" class="btn btn-ghost btn-lg">Request a free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;margin-bottom:10px;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="index.html#methods">Supported methods</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#custom">Custom Solutions</a></li>
+          <li><a href="index.html#contact">Request demo</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="resources.html#tutorials">Tutorials</a></li>
+          <li><a href="resources.html#cases">Customer cases</a></li>
+          <li><a href="resources.html#validation">Validation studies</a></li>
+          <li><a href="resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint B.V. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── TRIAL LICENCE MODAL ── -->
+<div class="trial-modal-overlay" id="trialModal">
+  <div class="trial-modal">
+    <button class="trial-modal-close" onclick="closeTrialModal()" aria-label="Close">&times;</button>
+    <div class="trial-modal-header">
+      <h3>Request a trial licence</h3>
+      <p>Get 14 days of full access — no payment or commitment required. We'll send your key to you within one business day.</p>
+    </div>
+    <form id="trialForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+      <input type="hidden" name="subject" value="Trial licence request — Motionprint Ergo">
+      <input type="hidden" name="from_name" value="Motionprint Ergo Website">
+      <input type="hidden" name="redirect" value="false">
+      <div class="trial-field">
+        <label for="trial-name">Full name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="trial-name" name="name" required placeholder="Jan de Vries" autocomplete="name">
+      </div>
+      <div class="trial-field">
+        <label for="trial-company">Company <span style="color:var(--red)">*</span></label>
+        <input type="text" id="trial-company" name="company" required placeholder="Acme B.V." autocomplete="organization">
+      </div>
+      <div class="trial-field">
+        <label for="trial-email">Work email <span style="color:var(--red)">*</span></label>
+        <input type="email" id="trial-email" name="email" required placeholder="jan@acme.com" autocomplete="email">
+      </div>
+      <div class="trial-field">
+        <label for="trial-phone">Phone <span style="color:var(--muted-2);font-weight:400;">(optional)</span></label>
+        <input type="tel" id="trial-phone" name="phone" placeholder="+31 6 00 00 00 00" autocomplete="tel">
+      </div>
+      <button type="submit" class="btn btn-primary trial-submit">Request trial licence</button>
+      <p class="trial-privacy">By submitting you agree to our <a href="#">privacy policy</a>. We'll only use your details to send the trial key and follow up if needed.</p>
+    </form>
+    <div class="trial-success" id="trialSuccess">
+      <div class="trial-success-icon">✓</div>
+      <h3>Request received!</h3>
+      <p>We'll send your trial licence key to <strong id="trialSuccessEmail"></strong> within one business day.</p>
+      <button onclick="closeTrialModal()" class="btn btn-secondary" style="margin-top:20px;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mobile nav toggle
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mnav');
+    const btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // Trial modal
+  function openTrialModal() {
+    document.getElementById('trialModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTrialModal() {
+    document.getElementById('trialModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on overlay click
+  document.getElementById('trialModal').addEventListener('click', function(e) {
+    if (e.target === this) closeTrialModal();
+  });
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeTrialModal();
+  });
+
+  // Form submission via Formspree (AJAX — no page redirect)
+  document.getElementById('trialForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const btn = form.querySelector('.trial-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (response.ok) {
+        document.getElementById('trialSuccessEmail').textContent = email;
+        form.style.display = 'none';
+        document.getElementById('trialSuccess').classList.add('show');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Request trial licence';
+        alert('Something went wrong. Please email us directly at info@motion-print.com');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Request trial licence';
+      alert('Something went wrong. Please email us directly at info@motion-print.com');
+    }
+  });
+</script>
+
+</body>
+</html>

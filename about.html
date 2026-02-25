@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Motionprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #ea523b;
+      --red-dark: #c93f28;
+      --red-light: #f06449;
+      --dark: #0d0f12;
+      --dark-2: #161a20;
+      --dark-3: #1e2530;
+      --text: #111827;
+      --muted: #6b7280;
+      --muted-2: #9ca3af;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f9fafb;
+      --bg-2: #f3f4f6;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+      --shadow-lg: 0 32px 80px rgba(13,15,18,.20);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--dark); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+    a, button { cursor: pointer; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+    .eyebrow-light { color: rgba(255,255,255,.45); }
+    .eyebrow-light::before { background: var(--red); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      border-radius: 8px; padding: 12px 22px; cursor: pointer;
+      text-decoration: none; transition: all .2s ease; border: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(234,82,59,.35); }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(234,82,59,.45); }
+    .btn-secondary { background: var(--white); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-secondary:hover { border-color: #c9d0da; background: var(--bg); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { text-decoration: none; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; outline: none; -webkit-tap-highlight-color: transparent; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-download:active, .nav-download:focus { background: rgba(255,255,255,.08); outline: none; }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-demo:active, .nav-demo:focus { background: var(--red); outline: none; }
+    .nav-signin { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.5); text-decoration: none; }
+    .nav-signin:hover { color: #fff; }
+    .nav-hamburger {
+      display: none; background: none; border: none; padding: 4px;
+      color: rgba(255,255,255,.7); flex-shrink: 0;
+    }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav {
+      display: none; flex-direction: column; gap: 4px;
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      background: var(--dark); padding: 16px 28px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 15px; font-weight: 500; color: rgba(255,255,255,.6); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .mobile-nav a:hover { color: #fff; }
+    .mobile-nav .btn { margin-top: 24px; text-align: center; justify-content: center; }
+
+    /* ── ABOUT HERO ── */
+    .about-hero {
+      background: var(--dark);
+      padding: 100px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(234,82,59,.07) 0%, transparent 70%);
+    }
+    .about-hero-inner { max-width: 720px; }
+    .about-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.08; letter-spacing: -.025em;
+      color: #fff; margin-top: 16px;
+    }
+    .about-hero h1 em { font-style: italic; color: var(--red); }
+    .about-hero-sub {
+      font-size: 17px; color: rgba(255,255,255,.5); line-height: 1.65;
+      margin-top: 20px; max-width: 560px;
+    }
+
+    /* ── STORY ── */
+    .about-story { padding: 88px 0; background: var(--white); }
+    .about-story-inner {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start;
+    }
+    .about-story-left { position: sticky; top: 88px; }
+    .about-story-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .about-story-label::before { content: ''; width: 20px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+    .about-story-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.8vw, 36px);
+      line-height: 1.15; letter-spacing: -.02em; color: var(--text);
+    }
+    .about-story-h2 em { font-style: italic; color: var(--red); }
+    .about-story-body { display: flex; flex-direction: column; gap: 24px; }
+    .about-story-body p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+    .about-story-body p strong { color: var(--text); font-weight: 600; }
+
+    /* ── FOUNDER ── */
+    .about-founder { padding: 80px 0; background: var(--bg); }
+    .about-founder-inner {
+      display: grid; grid-template-columns: 180px 1fr; gap: 48px; align-items: start;
+    }
+    .founder-photo {
+      width: 100%; aspect-ratio: 3/4; border-radius: 16px;
+      background: var(--dark-3); display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
+      padding-bottom: 20px; position: relative; overflow: hidden;
+    }
+    .founder-photo::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(13,15,18,.7) 100%);
+    }
+    .founder-photo-initials {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+      font-family: var(--font-display); font-size: 64px; color: rgba(255,255,255,.12);
+      letter-spacing: -.03em; user-select: none;
+    }
+    .founder-photo-note {
+      position: relative; z-index: 1;
+      font-size: 11px; color: rgba(255,255,255,.3); text-align: center; line-height: 1.5;
+    }
+    .founder-info { padding-top: 8px; }
+    .founder-name {
+      font-family: var(--font-display); font-size: 32px; letter-spacing: -.02em;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .founder-title { font-size: 14px; color: var(--red); font-weight: 600; margin-bottom: 24px; }
+    .founder-bio { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+    .founder-bio p + p { margin-top: 16px; }
+    .founder-tags { display: flex; flex-wrap: nowrap; gap: 6px; }
+    .founder-tag {
+      font-size: 11px; font-weight: 600; color: var(--text);
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 20px; padding: 3px 10px; white-space: nowrap;
+    }
+
+    /* ── MISSION ── */
+    .about-mission {
+      padding: 96px 0; background: var(--dark);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .about-mission::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(234,82,59,.08) 0%, transparent 70%);
+    }
+    .about-mission-inner { max-width: 680px; margin: 0 auto; position: relative; }
+    .about-mission-quote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 34px);
+      color: #fff; line-height: 1.25; letter-spacing: -.02em;
+      font-style: italic; margin: 20px 0 32px;
+    }
+    .about-mission-quote strong { font-style: normal; color: var(--red); }
+    .about-mission-sub {
+      font-size: 15px; color: rgba(255,255,255,.4); line-height: 1.65;
+    }
+
+    /* ── CTA ── */
+    .about-cta { padding: 88px 0; background: var(--white); text-align: center; }
+    .about-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: -.02em; color: var(--text); margin-top: 14px; margin-bottom: 12px;
+    }
+    .about-cta h2 em { font-style: italic; color: var(--red); }
+    .about-cta p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+    .about-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 56px 0 0; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-logo { text-decoration: none; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.6; max-width: 240px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-story-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-story-left { position: static; }
+      .about-founder-inner { grid-template-columns: 200px 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .about-founder-inner { grid-template-columns: 1fr; }
+      .founder-photo { max-width: 260px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: block; margin-left: auto; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="index.html#custom">Custom Solutions</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <!-- <a href="#" class="nav-signin">Sign in</a> -->
+      <a href="download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="index.html#ergo">Motionprint Ergo</a>
+  <a href="index.html#custom">Custom Solutions</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="resources.html">Resources</a>
+  <a href="about.html">About</a>
+  <a href="download.html">Download</a>
+  <a href="index.html#contact" class="btn btn-primary">Request demo</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="about-hero">
+  <div class="container">
+    <div class="about-hero-inner">
+      <span class="eyebrow eyebrow-light">About Motionprint</span>
+      <h1>Built from <em>deep inside the industry</em></h1>
+      <p class="about-hero-sub">Motionprint B.V. was founded in 2026 in Hengelo (GLD), The Netherlands — with one goal: to make ergonomic risk assessment genuinely useful, not just technically possible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STORY ── -->
+<section class="about-story">
+  <div class="container">
+    <div class="about-story-inner">
+      <div class="about-story-left">
+        <div class="about-story-label">The story</div>
+        <h2 class="about-story-h2">From the inside out — <em>why this needed to exist</em></h2>
+      </div>
+      <div class="about-story-body">
+        <p>The technology to capture and analyse human movement has existed for years. So has the ergonomics profession. Yet the software connecting the two has largely been an afterthought — technically functional, but designed without the people using it in mind.</p>
+        <p>Working at Xsens as a Product Manager, <strong>Felix Wolbert</strong> spent years speaking directly with H&amp;S managers, ergonomics consultants and occupational health professionals. The pattern was consistent: motion capture could produce valuable data, but the workflow around it was fragmented. Outputs stopped at a spreadsheet. Assessments were inconsistent. And nobody was building a product that treated the ergonomist's daily work as the thing worth solving for.</p>
+        <p><strong>The gap wasn't in the hardware — it was in everything after capture.</strong> No complete workflow. No platform built around how assessments are actually conducted, reviewed and acted upon. Just a collection of partial tools that left significant manual effort on the table.</p>
+        <p>With a background in movement science, product management, and close experience with the H&amp;S and occupational health sectors, Felix founded Motionprint to close that gap. Motionprint Ergo is the result: a platform built from the ground up around the real workflow of ergonomics professionals — not just a tool that processes a file and calls it done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOUNDER ── -->
+<section class="about-founder">
+  <div class="container">
+    <div class="about-founder-inner">
+      <div>
+        <div class="founder-photo">
+          <img src="felix.jpg" alt="Felix Wolbert" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:16px;">
+        </div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Felix Wolbert</div>
+        <div class="founder-title">Founder &amp; CEO — Motionprint B.V.</div>
+        <div class="founder-bio">
+          <p>Movement scientist by training, product manager by profession. Felix spent several years at Xsens working closely with customers across the ergonomics, H&amp;S and occupational health sectors — and came away with a clear picture of what the market was missing.</p>
+        </div>
+        <div class="founder-tags">
+          <span class="founder-tag">Movement Science</span>
+          <span class="founder-tag">Product Management</span>
+          <span class="founder-tag">Ergonomics</span>
+          <span class="founder-tag">Health &amp; Safety</span>
+          <span class="founder-tag">Occupational Health</span>
+          <span class="founder-tag">Motion Capture</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section class="about-mission">
+  <div class="container">
+    <div class="about-mission-inner">
+      <span class="eyebrow eyebrow-light">Our mission</span>
+      <p class="about-mission-quote">"Ergonomic assessments should drive real outcomes — not <strong>just generate reports</strong> that end up in a folder."</p>
+      <p class="about-mission-sub">We're a young team with large ambitions. Every feature, every workflow decision and every pricing choice is made with one question in mind: does this make it easier for ergonomics professionals to do their best work — and ultimately reduce the number of people who get hurt at work?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="about-cta">
+  <div class="container">
+    <span class="eyebrow">Get in touch</span>
+    <h2>Want to talk? <em>We'd love to hear from you.</em></h2>
+    <p>Whether you're curious about the product, exploring a partnership, or just want to share feedback — reach out directly.</p>
+    <div class="about-cta-btns">
+      <a href="index.html#contact" class="btn btn-primary">Request a demo</a>
+      <a href="mailto:info@motion-print.com" class="btn btn-secondary">info@motion-print.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;margin-bottom:10px;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="index.html#methods">Supported methods</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#custom">Custom Solutions</a></li>
+          <li><a href="index.html#contact">Request demo</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="resources.html#tutorials">Tutorials</a></li>
+          <li><a href="resources.html#cases">Customer cases</a></li>
+          <li><a href="resources.html#validation">Validation studies</a></li>
+          <li><a href="resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint B.V. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mnav');
+    const btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
