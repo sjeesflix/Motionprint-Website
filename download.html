@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Download Motionprint Ergo</title>
+  <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,13 +25,13 @@
       --white: #ffffff;
       --bg: #f9fafb;
       --bg-2: #f3f4f6;
-      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-display: 'DM Sans', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --radius: 16px;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text); background: var(--dark); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 64px; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--dark); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
     a, button { cursor: pointer; }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
@@ -92,7 +93,7 @@
 
     /* ── HERO ── */
     .dl-hero {
-      background: var(--dark); padding: 80px 0 72px;
+      background: var(--dark); padding: 120px 0 72px;
       position: relative; overflow: hidden; text-align: center;
     }
     .dl-hero::before {
@@ -101,8 +102,8 @@
     }
     .dl-hero-inner { max-width: 620px; margin: 0 auto; position: relative; }
     .dl-hero h1 {
-      font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px);
-      color: #fff; line-height: 1.08; letter-spacing: -.025em; margin-top: 16px;
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 5vw, 56px);
+      color: #fff; line-height: 1.08; letter-spacing: -.03em; margin-top: 16px;
     }
     .dl-hero h1 em { font-style: italic; color: var(--red); }
     .dl-hero-sub { font-size: 16px; color: rgba(255,255,255,.45); line-height: 1.65; margin-top: 16px; }
@@ -135,7 +136,7 @@
     /* ── STEPS ── */
     .dl-steps { padding: 80px 0; background: var(--white); }
     .dl-steps-header { text-align: center; margin-bottom: 56px; }
-    .dl-steps-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); color: var(--text); margin-top: 12px; letter-spacing: -.02em; }
+    .dl-steps-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 3vw, 36px); color: var(--text); margin-top: 12px; letter-spacing: -.03em; }
     .how-steps-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .how-step { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--red); border-radius: 14px; padding: 28px 22px 24px; position: relative; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: box-shadow .25s ease; }
     .how-step:hover { box-shadow: 0 12px 32px rgba(0,0,0,.1); }
@@ -172,7 +173,7 @@
       background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(234,82,59,.08) 0%, transparent 70%);
     }
     .dl-cta-inner { max-width: 520px; margin: 0 auto; position: relative; }
-    .dl-cta h2 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); color: #fff; margin-top: 14px; letter-spacing: -.02em; }
+    .dl-cta h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 3vw, 36px); color: #fff; margin-top: 14px; letter-spacing: -.03em; }
     .dl-cta h2 em { font-style: italic; color: var(--red); }
     .dl-cta p { font-size: 15px; color: rgba(255,255,255,.4); margin-top: 12px; margin-bottom: 32px; line-height: 1.65; }
     .dl-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
@@ -211,7 +212,7 @@
       transition: color .15s;
     }
     .trial-modal-close:hover { color: var(--text); }
-    .trial-modal-header h3 { font-family: var(--font-display); font-size: 22px; color: var(--text); letter-spacing: -.02em; }
+    .trial-modal-header h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--text); letter-spacing: -.02em; }
     .trial-modal-header p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 8px; margin-bottom: 24px; }
     .trial-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
     .trial-field label { font-size: 12px; font-weight: 600; color: var(--text); }
@@ -464,14 +465,14 @@
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
           <li><a href="resources.html#tutorials">Tutorials</a></li>
-          <li><a href="resources.html#cases">Customer cases</a></li>
-          <li><a href="resources.html#validation">Validation studies</a></li>
+          <li><a href="resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="resources.html#validation">Research &amp; documentation</a></li>
           <li><a href="resources.html#support">Support</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Motionprint B.V. All rights reserved.</span>
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
       <div class="footer-legal">
         <a href="#">Privacy policy</a>
         <a href="#">Terms of service</a>

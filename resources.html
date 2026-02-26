@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resources — Motionprint</title>
+  <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,7 +23,7 @@
       --white: #ffffff;
       --bg: #f9fafb;
       --bg-2: #f3f4f6;
-      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-display: 'DM Sans', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --radius: 16px;
       --shadow: 0 20px 60px rgba(13,15,18,.10);
@@ -30,7 +31,8 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"], label[for], select { cursor: pointer; }
 
     .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
@@ -112,20 +114,19 @@
     }
     .page-hero-inner { position: relative; z-index: 1; max-width: 680px; }
     .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1.07; letter-spacing: -.025em; color: #fff; margin-top: 16px; margin-bottom: 18px;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(28px, 3.8vw, 46px);
+      line-height: 1.07; letter-spacing: -.03em; color: #fff; margin-top: 16px; margin-bottom: 18px;
     }
     .page-hero h1 em { font-style: italic; color: var(--red); }
     .page-hero p { font-size: 16px; color: rgba(255,255,255,.5); line-height: 1.65; max-width: 520px; }
 
     /* ── SECTION COMMON ── */
-    .resources-section { padding: 80px 0; }
-    .resources-section:nth-child(even) { background: var(--bg); }
+    .resources-section { padding: 80px 0; scroll-margin-top: 80px; }
     .section-header { margin-bottom: 40px; }
     .section-title {
-      font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.12; letter-spacing: -.02em; color: var(--text); margin-top: 12px;
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 3vw, 36px);
+      line-height: 1.12; letter-spacing: -.03em; color: var(--text); margin-top: 12px;
     }
     .section-sub { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: 10px; max-width: 520px; }
 
@@ -218,21 +219,28 @@
     .case-stat-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
     /* ── VALIDATION ── */
-    .validation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .val-card {
-      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 28px 24px; box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s;
+    .ref-list { margin-top: 8px; }
+    .ref-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
     }
-    .val-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .val-method {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 12px;
+    .ref-row:first-child { border-top: 1px solid var(--border); }
+    .ref-tag {
+      flex-shrink: 0; font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; padding: 3px 8px; border-radius: 99px;
+      background: rgba(220,38,38,.08); color: var(--red);
     }
-    .val-method::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
-    .val-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.35; }
-    .val-authors { font-size: 12px; color: var(--muted-2); font-style: italic; margin-bottom: 10px; }
-    .val-abstract { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .ref-tag.ref-tag-tech { background: rgba(59,130,246,.08); color: #3b82f6; }
+    .ref-body { flex: 1; min-width: 0; }
+    .ref-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .ref-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .ref-link {
+      flex-shrink: 0; font-size: 11px; font-weight: 700; text-decoration: none;
+      color: var(--red); display: inline-flex; align-items: center; gap: 4px;
+    }
+    .ref-link.ref-link-tech { color: #3b82f6; }
+    .ref-link:hover { opacity: .75; }
+    .ref-link svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── SUPPORT ── */
     .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
@@ -273,7 +281,7 @@
       pointer-events: none;
     }
     .cta-inner { text-align: center; position: relative; z-index: 1; }
-    .cta-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); color: #fff; line-height: 1.08; letter-spacing: -.02em; margin: 12px 0 14px; }
+    .cta-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); color: #fff; line-height: 1.08; letter-spacing: -.03em; margin: 12px 0 14px; }
     .cta-title em { font-style: italic; color: var(--red); }
     .cta-sub { font-size: 15px; color: rgba(255,255,255,.42); margin-bottom: 32px; }
     .cta-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
@@ -292,6 +300,64 @@
     .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
     .footer-legal a:hover { color: rgba(255,255,255,.5); }
 
+    /* ── VIDEO CATEGORY NAVIGATION ── */
+    .video-cat-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .video-cat-card {
+      background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 20px; text-decoration: none; color: var(--text);
+      display: flex; flex-direction: row; align-items: center; gap: 14px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    a.video-cat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--red); }
+    .video-cat-card.video-cat-coming { opacity: .55; }
+    .video-cat-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .video-cat-icon.icon-active { background: var(--bg); border: 1px solid var(--border); color: var(--red); }
+    .video-cat-icon.icon-muted { background: var(--bg); border: 1px solid var(--border); color: var(--muted-2); }
+    .video-cat-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .video-cat-body { flex: 1; min-width: 0; }
+    .video-cat-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+    .video-cat-count { font-size: 12px; color: var(--muted); }
+    .video-cat-badge {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted-2); background: var(--bg-2); border-radius: 4px; padding: 2px 7px;
+    }
+    .video-cat-arrow {
+      width: 14px; height: 14px; flex-shrink: 0;
+      stroke: var(--muted-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .15s, transform .15s;
+    }
+    a.video-cat-card:hover .video-cat-arrow { stroke: var(--red); transform: translateX(3px); }
+    a.video-cat-card.is-active { border-color: var(--red); background: rgba(234,82,59,.03); }
+    a.video-cat-card.is-active .video-cat-icon.icon-active { background: rgba(234,82,59,.08); border-color: rgba(234,82,59,.3); }
+    a.video-cat-card.is-active .video-cat-arrow { stroke: var(--red); transform: rotate(90deg); }
+
+    /* Video subsections — hidden until a category card is selected */
+    .video-subsection { display: none; background: var(--bg) !important; }
+    .video-subsection.is-active { display: block; animation: sectionFadeIn .3s ease both; padding-top: 32px; }
+
+    /* Knowledge Base subsections — hidden until a category card is selected */
+    .kb-subsection { display: none; background: var(--bg) !important; }
+    .kb-subsection.is-active { display: block; animation: sectionFadeIn .3s ease both; padding-top: 32px; }
+    @keyframes sectionFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Back link shown above each video subsection header */
+    .video-back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--muted);
+      text-decoration: none; margin-bottom: 20px; transition: color .15s;
+    }
+    .video-back-link:hover { color: var(--red); }
+    .video-back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* 2-column grid variant (used when a section has only 2 videos) */
+    .cards-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .support-grid { grid-template-columns: 1fr; }
@@ -301,12 +367,15 @@
       .nav-links, .nav-signin { display: none; }
       .nav-hamburger { display: block; }
       .cards-grid { grid-template-columns: 1fr; }
-      .validation-grid { grid-template-columns: 1fr; }
+      .cards-grid-2 { grid-template-columns: 1fr; }
+      .video-cat-nav { grid-template-columns: 1fr 1fr; }
+      .ref-row { flex-wrap: wrap; gap: 10px; }
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) {
       .case-stats { flex-direction: column; gap: 12px; }
+      .video-cat-nav { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -360,21 +429,162 @@
   </div>
 </section>
 
-<!-- ── GETTING STARTED ── -->
+<!-- ── TUTORIAL VIDEOS — CATEGORY NAVIGATION ── -->
 <section class="resources-section" id="tutorials">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Getting started</span>
-      <h2 class="section-title">Tutorial videos</h2>
-      <p class="section-sub">Step-by-step video guides to get you up and running with Motionprint Ergo as quickly as possible.</p>
+      <span class="eyebrow">Tutorial videos</span>
+      <h2 class="section-title">Learn Motionprint Ergo</h2>
+      <p class="section-sub">Video guides organised by topic. Browse a category below — the videos for that section appear right underneath.</p>
+    </div>
+
+    <!-- Category navigation — 4 topics; click an active card to jump to its video section -->
+    <div class="video-cat-nav">
+
+      <!-- 1 · Product Overview (2 videos at launch) -->
+      <a href="#videos-overview" class="video-cat-card" data-target="videos-overview" data-group="videos">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Product Overview</div>
+          <div class="video-cat-count">2 videos</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- 2 · Getting Started (1 video at launch, more to follow) -->
+      <a href="#videos-getting-started" class="video-cat-card" data-target="videos-getting-started" data-group="videos">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Getting Started</div>
+          <div class="video-cat-count">1 video</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- 3 · Working with Reports — no content yet -->
+      <!-- TODO: When content is ready, change this <div> to <a href="#videos-reports">
+           and uncomment/add the section#videos-reports further below.
+           Planned videos:
+             NIOSH — report walkthrough (Score overview, In-depth, Findings tabs),
+                     understanding your Lifting Index, NIOSH settings deep-dive,
+                     Multi-NIOSH & the Composite Lifting Index
+             KIM   — KIM-LHC report walkthrough, understanding risk scores,
+                     KIM settings and configuration -->
+      <div class="video-cat-card video-cat-coming">
+        <div class="video-cat-icon icon-muted">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Working with Reports</div>
+          <span class="video-cat-badge">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- 4 · Platform Features — no content yet -->
+      <!-- TODO: When content is ready, change this <div> to <a href="#videos-platform">
+           and uncomment/add the section#videos-platform further below.
+           Planned videos:
+             Exporting reports to PDF, exporting to Excel & working with the output,
+             3D view controls & playback, customisation & branding (logos, colours),
+             user settings & preferences, (future) team management & sharing -->
+      <div class="video-cat-card video-cat-coming">
+        <div class="video-cat-icon icon-muted">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Platform Features</div>
+          <span class="video-cat-badge">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO SUBSECTION 1: PRODUCT OVERVIEW ── -->
+<section class="resources-section video-subsection" id="videos-overview">
+  <div class="container">
+    <a href="#tutorials" class="video-back-link back-link-videos">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Tutorial Videos
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Product Overview</span>
+      <h2 class="section-title">Product explainers</h2>
+      <p class="section-sub">Short videos introducing each assessment method and what to expect from the reports it generates.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+
+      <!-- NIOSH Explainer — swap the video-coming block for an iframe embed once the video is published -->
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="video-coming">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Coming soon
+          </div>
+        </div>
+        <div class="video-info">
+          <span class="video-tag tag-niosh">NIOSH</span>
+          <div class="video-title">NIOSH Lifting Equation — Product Overview</div>
+          <div class="video-meta">Coming soon · ~6 min</div>
+        </div>
+      </div>
+
+      <!-- KIM Explainer — swap the video-coming block for an iframe embed once the video is published -->
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="video-coming">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Coming soon
+          </div>
+        </div>
+        <div class="video-info">
+          <span class="video-tag tag-kim">KIM</span>
+          <div class="video-title">KIM-LHC Assessment — Product Overview</div>
+          <div class="video-meta">Coming soon · ~6 min</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO SUBSECTION 2: GETTING STARTED ── -->
+<section class="resources-section video-subsection" id="videos-getting-started">
+  <div class="container">
+    <a href="#tutorials" class="video-back-link back-link-videos">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Tutorial Videos
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Getting Started</span>
+      <h2 class="section-title">Getting started with Motionprint Ergo</h2>
+      <p class="section-sub">Everything you need to go from first install to your first completed assessment report — with more guides to follow.</p>
     </div>
     <div class="cards-grid">
-      <!-- Coming soon cards — replace with real videos when available -->
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Getting started with Motionprint Ergo</div>
-        <p class="coming-desc">Installation, first upload and generating your first NIOSH report from start to finish.</p>
+
+      <!-- Getting Started Tutorial — swap the video-coming block for an iframe embed once the video is published -->
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="video-coming">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Coming soon
+          </div>
+        </div>
+        <div class="video-info">
+          <span class="video-tag tag-ergo">Tutorial</span>
+          <div class="video-title">Getting started with Motionprint Ergo</div>
+          <div class="video-meta">Coming soon · ~12 min</div>
+        </div>
       </div>
+
+      <!-- Placeholder coming-soon cards — replace with real video cards as each video is made -->
+      <!-- TODO: Planned Getting Started videos: uploading & processing Xsens data,
+                 navigating the interface, setting up your first project/session -->
       <div class="coming-card">
         <div class="coming-label">Coming soon</div>
         <div class="coming-title">Uploading and processing Xsens data</div>
@@ -382,134 +592,459 @@
       </div>
       <div class="coming-card">
         <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Understanding the NIOSH report output</div>
-        <p class="coming-desc">A walkthrough of the Score overview, In-depth analysis and Findings tabs in a NIOSH report.</p>
+        <div class="coming-title">Navigating the Motionprint Ergo interface</div>
+        <p class="coming-desc">A walkthrough of the main dashboard, session library and report viewer.</p>
       </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Multi-NIOSH: analysing multi-task sessions</div>
-        <p class="coming-desc">How Motionprint Ergo detects multiple task types and calculates the Composite Lifting Index.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">KIM-LHC assessment walkthrough</div>
-        <p class="coming-desc">Setting up and interpreting a KIM Lifting, Holding and Carrying assessment.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Exporting reports to PDF and Excel</div>
-        <p class="coming-desc">Export options, file structure and how to use the Excel output for further analysis.</p>
-      </div>
+
     </div>
   </div>
 </section>
 
+<!--
+  ════════════════════════════════════════════════════════════════
+  VIDEO SUBSECTIONS 3 & 4 — ADD WHEN CONTENT IS READY
+  ════════════════════════════════════════════════════════════════
+
+  SECTION 3: Working with Reports  (id="videos-reports")
+  ────────────────────────────────────────────────────────────────
+  Step 1: Uncomment / paste the section block below.
+  Step 2: In the category nav above, change card 3 from <div> to
+          <a href="#videos-reports"> and remove the video-cat-coming class.
+
+  Planned content — consider splitting into NIOSH and KIM sub-groups
+  once there are many videos:
+
+    NIOSH Reports:
+      · NIOSH report walkthrough (Score overview, In-depth analysis, Findings tabs)
+      · Understanding your Lifting Index and what the numbers mean
+      · NIOSH settings: adjusting calculation parameters
+      · Multi-NIOSH: analysing multi-task sessions & the Composite Lifting Index
+
+    KIM Reports:
+      · KIM-LHC report walkthrough
+      · Understanding KIM risk scores and recommended actions
+      · KIM settings and configuration
+
+  Template:
+
+  <section class="resources-section" id="videos-reports">
+    <div class="container">
+      <a href="#tutorials" class="video-back-link back-link-videos">
+        <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+        Tutorial Videos
+      </a>
+      <div class="section-header">
+        <span class="eyebrow">Working with Reports</span>
+        <h2 class="section-title">Understanding your reports</h2>
+        <p class="section-sub">Detailed walkthroughs of every report type — what each number means and how to act on it.</p>
+      </div>
+      <div class="cards-grid">
+        ... video cards here ...
+      </div>
+    </div>
+  </section>
+
+  ────────────────────────────────────────────────────────────────
+
+  SECTION 4: Platform Features  (id="videos-platform")
+  ────────────────────────────────────────────────────────────────
+  Step 1: Uncomment / paste the section block below.
+  Step 2: In the category nav above, change card 4 from <div> to
+          <a href="#videos-platform"> and remove the video-cat-coming class.
+
+  Planned videos:
+    · Exporting reports to PDF
+    · Exporting to Excel and working with the output file
+    · 3D view controls and playback options
+    · Customisation and branding (logos, colours)
+    · User settings and preferences
+    · (Future) Team management and sharing
+
+  Template: same structure as section 3 above.
+
+  ════════════════════════════════════════════════════════════════
+-->
+
 <!-- ── KNOWLEDGE BASE ── -->
-<section class="resources-section" id="knowledge">
+<section class="resources-section" id="knowledge" style="background:var(--bg)">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Knowledge base</span>
       <h2 class="section-title">Articles &amp; documentation</h2>
-      <p class="section-sub">In-depth articles about ergonomic assessment methods, app functionality and best practices.</p>
+      <p class="section-sub">In-depth articles about ergonomic assessment methods, app functionality and best practices. Browse a category below.</p>
     </div>
-    <div class="cards-grid">
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">What is the NIOSH Lifting Equation and how does Motionprint calculate it?</div>
-        <p class="coming-desc">Background on the NIOSH methodology and how sensor data maps to each calculation factor.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">KIM-LHC explained: factors, scoring and interpretation</div>
-        <p class="coming-desc">A practical guide to reading and acting on KIM-LHC results in Motionprint Ergo.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Sensor placement for optimal data quality</div>
-        <p class="coming-desc">Best practices for Xsens suit placement to ensure accurate ergonomic risk calculation.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Interpreting the Movement Timeline</div>
-        <p class="coming-desc">How to read the timeline visualisation and use it to identify high-risk moments in a recording.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Integrating Motionprint Ergo into your H&amp;S programme</div>
-        <p class="coming-desc">A workflow guide for H&amp;S managers looking to structure regular assessments and track improvement.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Coming soon</div>
-        <div class="coming-title">Frequently asked questions</div>
-        <p class="coming-desc">Answers to common questions about compatibility, report formats and licensing.</p>
-      </div>
+
+    <!-- Category navigation — 7 topics; click a card to reveal its articles below -->
+    <div class="video-cat-nav">
+
+      <!-- A · Product Overview -->
+      <a href="#kb-overview" class="video-cat-card" data-target="kb-overview" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Product Overview</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- B · Assessment Methods -->
+      <a href="#kb-insights" class="video-cat-card" data-target="kb-insights" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Methodology</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- C · Getting Started -->
+      <a href="#kb-getting-started" class="video-cat-card" data-target="kb-getting-started" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Getting Started</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- D · Using Reports -->
+      <a href="#kb-reports" class="video-cat-card" data-target="kb-reports" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Using Reports</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- E · Platform Features -->
+      <a href="#kb-features" class="video-cat-card" data-target="kb-features" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Platform Features</div>
+          <div class="video-cat-count">3 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- F · Licensing & Administration -->
+      <a href="#kb-licensing" class="video-cat-card" data-target="kb-licensing" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Licensing &amp; Admin</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- G · Support -->
+      <a href="#kb-support" class="video-cat-card" data-target="kb-support" data-group="kb">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Support</div>
+          <div class="video-cat-count">2 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- ── CUSTOMER CASES ── -->
-<section class="resources-section" id="cases">
+<!-- ── KB SUBSECTION A: PRODUCT OVERVIEW ── -->
+<section class="resources-section kb-subsection" id="kb-overview">
   <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
     <div class="section-header">
-      <span class="eyebrow">Customer cases</span>
-      <h2 class="section-title">How organisations use <em>Motionprint</em></h2>
-      <p class="section-sub">Real-world examples of how H&amp;S teams and consultants are integrating motion capture data into their ergonomic workflows.</p>
+      <span class="eyebrow">Product Overview</span>
+      <h2 class="section-title">Platform fundamentals</h2>
+      <p class="section-sub">Understand what Motionprint Ergo is, how it processes motion data, and what makes it different.</p>
     </div>
-    <div class="cards-grid">
+    <div class="cards-grid cards-grid-2">
       <div class="coming-card">
-        <div class="coming-label">Case study coming soon</div>
-        <div class="coming-title">Automotive assembly — reducing musculoskeletal risk at scale</div>
-        <p class="coming-desc">How a European automotive manufacturer used Motionprint Ergo to assess and improve ergonomics across 12 assembly stations.</p>
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">How Motionprint Ergo Works</div>
+        <p class="coming-desc">Overview of the platform's motion-capture-to-report workflow, from Xsens recording to ergonomic risk score.</p>
       </div>
       <div class="coming-card">
-        <div class="coming-label">Case study coming soon</div>
-        <div class="coming-title">Ergonomics consultancy — faster delivery, higher credibility</div>
-        <p class="coming-desc">How an independent ergonomics consultancy cut assessment time by 60% and improved report consistency for their clients.</p>
-      </div>
-      <div class="coming-card">
-        <div class="coming-label">Case study coming soon</div>
-        <div class="coming-title">Logistics — warehouse lifting programme</div>
-        <p class="coming-desc">Deploying NIOSH assessments across a distribution centre's picking and packing operations using Xsens suits.</p>
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Motion Data Processing Explained</div>
+        <p class="coming-desc">How Motionprint Ergo converts raw inertial sensor data into joint angles, posture classifications and assessment inputs.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── VALIDATION STUDIES ── -->
+<!-- ── KB SUBSECTION B: METHODOLOGY ── -->
+<section class="resources-section kb-subsection" id="kb-insights">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Methodology</span>
+      <h2 class="section-title">The science behind the scores</h2>
+      <p class="section-sub">Deep dives into the NIOSH and KIM-LHC methodologies — what they measure, how the scores are calculated, and how to interpret your results.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Understanding the NIOSH Assessment</div>
+        <p class="coming-desc">A guide to the NIOSH Lifting Equation: the seven multipliers, the Recommended Weight Limit, and what your Lifting Index score means.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Understanding the KIM-LHC Assessment</div>
+        <p class="coming-desc">How the Key Indicator Method scores physical workload and what action levels indicate about musculoskeletal risk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION C: GETTING STARTED ── -->
+<section class="resources-section kb-subsection" id="kb-getting-started">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Getting Started</span>
+      <h2 class="section-title">Up and running quickly</h2>
+      <p class="section-sub">Everything you need to install, activate and complete your first assessment from scratch.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Getting Started with Motionprint Ergo</div>
+        <p class="coming-desc">Step-by-step guide from download and licence activation to completing your first ergonomic assessment.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Uploading &amp; Processing Xsens Data</div>
+        <p class="coming-desc">How to export an .mvnx file from MVN Studio and import it into Motionprint Ergo for processing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION D: USING REPORTS ── -->
+<section class="resources-section kb-subsection" id="kb-reports">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Using Reports</span>
+      <h2 class="section-title">Reading and acting on your reports</h2>
+      <p class="section-sub">Guided walkthroughs of every report type — what each section shows and how to use the data.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">NIOSH Report Walkthrough</div>
+        <p class="coming-desc">A guided tour of every tab in the NIOSH report: Score Overview, In-Depth Analysis, and Findings.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">KIM-LHC Report Walkthrough</div>
+        <p class="coming-desc">Navigating the KIM-LHC report: risk score summary, body region breakdown and recommended actions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION E: PLATFORM FEATURES ── -->
+<section class="resources-section kb-subsection" id="kb-features">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Platform Features</span>
+      <h2 class="section-title">Platform features &amp; tools</h2>
+      <p class="section-sub">Detailed guides for the platform's export, visualisation and customisation capabilities.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Exporting Reports (PDF &amp; Excel)</div>
+        <p class="coming-desc">How to export a completed report to PDF for sharing, and to Excel for custom analysis and archiving.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">3D View &amp; Interface Controls</div>
+        <p class="coming-desc">Controls for the 3D skeleton viewer: playback, camera position, timeline navigation and annotation markers.</p>
+      </div>
+      <a href="articles/customization-branding.html" class="article-card" style="text-decoration:none;color:inherit;">
+        <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
+        <div class="article-title">Customization &amp; Branding</div>
+        <p class="article-desc">Add your company logo, set custom report colors, configure layout options, and understand settings that affect how results are displayed.</p>
+        <div class="article-footer">
+          <span>5 min read</span>
+          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION F: LICENSING & ADMIN ── -->
+<section class="resources-section kb-subsection" id="kb-licensing">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Licensing &amp; Administration</span>
+      <h2 class="section-title">Licence management</h2>
+      <p class="section-sub">Everything you need to know about activating, managing and renewing your Motionprint Ergo subscription.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">License &amp; Activation Guide</div>
+        <p class="coming-desc">How to activate your Motionprint Ergo licence, manage seat assignments and transfer to a new machine.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">What's Included in Your License</div>
+        <p class="coming-desc">What's covered by your subscription, fair use terms, how to add seats, and how renewal and upgrades work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION G: SUPPORT ── -->
+<section class="resources-section kb-subsection" id="kb-support">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Support</span>
+      <h2 class="section-title">Troubleshooting &amp; data handling</h2>
+      <p class="section-sub">Step-by-step help for common issues and a transparent overview of how your motion data is stored and protected.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Troubleshooting Common Issues</div>
+        <p class="coming-desc">Solutions to the most frequently reported problems: processing errors, licence activation issues, report generation failures and display glitches.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Data Privacy &amp; Storage</div>
+        <p class="coming-desc">How Motionprint Ergo handles motion data, where session files are stored locally, and what is never transmitted to external servers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  CUSTOMER CASES — hidden until content is ready
+  ════════════════════════════════════════════════════════════════
+  To re-enable: remove these comment tags and update the footer links.
+
+  <section class="resources-section" id="cases">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Customer cases</span>
+        <h2 class="section-title">How organisations use <em>Motionprint</em></h2>
+        <p class="section-sub">Real-world examples of how H&amp;S teams and consultants are integrating motion capture data into their ergonomic workflows.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="coming-card">
+          <div class="coming-label">Case study coming soon</div>
+          <div class="coming-title">Automotive assembly — reducing musculoskeletal risk at scale</div>
+          <p class="coming-desc">How a European automotive manufacturer used Motionprint Ergo to assess and improve ergonomics across 12 assembly stations.</p>
+        </div>
+        <div class="coming-card">
+          <div class="coming-label">Case study coming soon</div>
+          <div class="coming-title">Ergonomics consultancy — faster delivery, higher credibility</div>
+          <p class="coming-desc">How an independent ergonomics consultancy cut assessment time by 60% and improved report consistency for their clients.</p>
+        </div>
+        <div class="coming-card">
+          <div class="coming-label">Case study coming soon</div>
+          <div class="coming-title">Logistics — warehouse lifting programme</div>
+          <p class="coming-desc">Deploying NIOSH assessments across a distribution centre's picking and packing operations using Xsens suits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  ════════════════════════════════════════════════════════════════
+-->
+
+<!-- ── RESEARCH & DOCUMENTATION ── -->
 <section class="resources-section" id="validation">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Validation studies</span>
-      <h2 class="section-title">Built on <em>peer-reviewed science</em></h2>
-      <p class="section-sub">Motionprint Ergo's assessment methods are grounded in validated, internationally recognised ergonomic research.</p>
+      <span class="eyebrow">Research &amp; documentation</span>
+      <h2 class="section-title">Assessment standards &amp; technical specifications</h2>
+      <p class="section-sub">The published methodology standards, government guidelines and hardware documentation that underpin every ergonomic assessment in Motionprint Ergo.</p>
     </div>
-    <div class="validation-grid">
-      <div class="coming-card">
-        <div class="coming-label">Reference study — NIOSH</div>
-        <div class="coming-title">Waters, T.R. et al. (1993) — Revised NIOSH Equation for the Design and Evaluation of Manual Lifting Tasks</div>
-        <p class="coming-desc">The foundational study behind the NIOSH Lifting Equation used in Motionprint Ergo. Establishes the Recommended Weight Limit and Lifting Index calculation methodology.</p>
+    <div class="ref-list">
+      <div class="ref-row">
+        <span class="ref-tag">Assessment standard</span>
+        <div class="ref-body">
+          <div class="ref-title">Applications Manual for the Revised NIOSH Lifting Equation</div>
+          <div class="ref-meta">Waters, T.R., Putz-Anderson, V., Garg, A. — NIOSH/CDC, 1994 rev. 2021</div>
+        </div>
+        <a href="Documentation Motionprint/Revised_NIOSH_equation.pdf" class="ref-link" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-      <div class="coming-card">
-        <div class="coming-label">Reference study — KIM</div>
-        <div class="coming-title">BAuA — Key Indicator Method for Lifting, Holding and Carrying (KIM-LHC)</div>
-        <p class="coming-desc">The German Federal Institute for Occupational Safety and Health's standardised method for assessing musculoskeletal loads in manual handling tasks.</p>
+      <div class="ref-row">
+        <span class="ref-tag">Assessment standard</span>
+        <div class="ref-body">
+          <div class="ref-title">Key Indicator Method for Lifting, Holding and Carrying (KIM-LHC)</div>
+          <div class="ref-meta">BAuA — Federal Institute for Occupational Safety and Health, Germany, 2019</div>
+        </div>
+        <a href="Documentation Motionprint/KIM-LHC-Lifting-Holding-Carrying.pdf" class="ref-link" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-      <div class="coming-card">
-        <div class="coming-label">Validation — coming soon</div>
-        <div class="coming-title">Motionprint Ergo NIOSH validation study</div>
-        <p class="coming-desc">Comparison of Motionprint Ergo NIOSH outputs against expert manual assessments across a range of industrial lifting tasks. Publication pending.</p>
+      <div class="ref-row">
+        <span class="ref-tag ref-tag-tech">Software whitepaper</span>
+        <div class="ref-body">
+          <div class="ref-title">Xsens MVN: Consistent Tracking of Human Motion Using Inertial Sensing</div>
+          <div class="ref-meta">Schepers, M., Giuberti, M., Bellusci, G. — Xsens Technologies B.V., 2018</div>
+        </div>
+        <a href="Documentation Motionprint/MVN_Whitepaper.pdf" class="ref-link ref-link-tech" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
-      <div class="coming-card">
-        <div class="coming-label">Validation — coming soon</div>
-        <div class="coming-title">Sensor-based vs observer-based ergonomic assessment accuracy</div>
-        <p class="coming-desc">A systematic review of inertial measurement unit-based ergonomic assessments versus traditional observational methods in occupational settings.</p>
+      <div class="ref-row">
+        <span class="ref-tag ref-tag-tech">Hardware whitepaper</span>
+        <div class="ref-body">
+          <div class="ref-title">Xsens MTw Awinda: Miniature Wireless Inertial-Magnetic Motion Tracker</div>
+          <div class="ref-meta">Paulich, M., Schepers, M., Rudigkeit, N., Bellusci, G. — Xsens Technologies B.V., 2018</div>
+        </div>
+        <a href="Documentation Motionprint/MTwAwinda_WhitePaper.pdf" class="ref-link ref-link-tech" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── SUPPORT ── -->
-<section class="resources-section" id="support">
+<section class="resources-section" id="support" style="background:var(--bg)">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Support</span>
@@ -523,38 +1058,45 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary class="faq-q">
-              Which Xsens suits and software are supported?
-              <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
-            </summary>
-            <p class="faq-a">Motionprint Ergo currently supports .mvnx files exported from MVN Studio (any version). This covers all Xsens Awinda and Link suit configurations. Support for the Xsens SDK and direct streaming is on the roadmap.</p>
-          </details>
-          <details class="faq-item">
-            <summary class="faq-q">
               What operating systems does Motionprint Ergo run on?
               <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
             </summary>
-            <p class="faq-a">Motionprint Ergo is currently a Windows desktop application. A macOS and cloud version are planned for a future release.</p>
+            <p class="faq-a">Motionprint Ergo is currently a Windows desktop application. A macOS version is in development. For a full overview of system requirements, see the <a href="download.html">download page</a>.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-q">
-              How many users are included in the subscription?
+              How many seats are included in a licence?
               <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
             </summary>
-            <p class="faq-a">The €2,500/year subscription is an organisation licence — it covers your team. Contact us if you need a multi-site arrangement or have questions about specific use cases.</p>
+            <p class="faq-a">One licence key covers 2 simultaneous device activations — for example a laptop and a desktop. Team licences are priced per user seat. Contact us if you need a multi-site arrangement or have questions about your specific setup.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-q">
               Are new assessment methods included in my subscription?
               <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
             </summary>
-            <p class="faq-a">Yes. When new methods (RULA, REBA, OCRA, etc.) are added to Motionprint Ergo, they are automatically available to all active subscribers at no extra cost.</p>
+            <p class="faq-a">All assessment methods and exports currently in Motionprint Ergo are included with your active licence. New features are added regularly — most are rolled out across all plans. As the platform grows, some advanced modules may be introduced as part of separate subscription tiers.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-q">
-              Can I request a specific assessment method or feature?
+              Do I need an Xsens suit to use Motionprint Ergo?
               <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
             </summary>
-            <p class="faq-a">Absolutely. Use the contact form to submit feature requests or method suggestions — we actively use customer feedback to prioritise the roadmap.</p>
+            <p class="faq-a">Yes. Motionprint Ergo is purpose-built for Xsens motion capture data. It processes .mvnx files exported from Xsens MVN and supports MVN Awinda and MVN Link suit configurations.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">
+              How does licence activation work?
+              <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+            </summary>
+            <p class="faq-a">Each licence key is bound to your machine's hardware fingerprint. If you need to move to a new machine, you can deactivate an existing activation from within the app. Licence validation requires an occasional internet connection — there is a 30-day offline grace period, after which the app switches to read-only mode until it reconnects.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-q">
+              Is Motionprint Ergo GDPR compliant?
+              <svg viewBox="0 0 16 16"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+            </summary>
+            <p class="faq-a">Yes. All data — motion recordings, analysis results and reports — is processed and stored locally on your machine and never transmitted externally. The licence validation server is GDPR compliant.</p>
           </details>
         </div>
       </div>
@@ -607,8 +1149,8 @@
   <div class="container">
     <div class="footer-top">
       <div>
-        <a href="index.html" style="display:block;margin-bottom:10px;">
-          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;display:block;">
+        <a href="index.html" class="footer-logo">
+          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;margin-bottom:10px;">
         </a>
         <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
       </div>
@@ -619,6 +1161,7 @@
           <li><a href="index.html#how">How it works</a></li>
           <li><a href="index.html#methods">Supported methods</a></li>
           <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="download.html">Download</a></li>
         </ul>
       </div>
       <div>
@@ -633,8 +1176,8 @@
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
           <li><a href="resources.html#tutorials">Tutorials</a></li>
-          <li><a href="resources.html#cases">Customer cases</a></li>
-          <li><a href="resources.html#validation">Validation studies</a></li>
+          <li><a href="resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="resources.html#validation">Research &amp; documentation</a></li>
           <li><a href="resources.html#support">Support</a></li>
         </ul>
       </div>
@@ -650,6 +1193,52 @@
 </footer>
 
 <script>
+  // ── Generic category-group tab handler ──
+  function setupCategoryGroup(opts) {
+    var cards = document.querySelectorAll('a.video-cat-card[data-group="' + opts.group + '"][data-target]');
+    var parentEl = opts.parentId ? document.getElementById(opts.parentId) : null;
+
+    cards.forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('data-target');
+        var isActive = this.classList.contains('is-active');
+
+        // Deactivate all cards and subsections in this group
+        cards.forEach(function(c) { c.classList.remove('is-active'); });
+        document.querySelectorAll('.' + opts.subsectionClass).forEach(function(s) { s.classList.remove('is-active'); });
+        if (parentEl) { parentEl.style.paddingBottom = ''; }
+
+        // Toggle: if card wasn't already active, open it
+        if (!isActive) {
+          this.classList.add('is-active');
+          var section = document.getElementById(targetId);
+          if (section) {
+            section.classList.add('is-active');
+            if (parentEl) { parentEl.style.paddingBottom = '24px'; }
+            requestAnimationFrame(function() {
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+          }
+        }
+      });
+    });
+
+    // Back links — close the active subsection and return to the category nav
+    document.querySelectorAll('.' + opts.backLinkClass).forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        cards.forEach(function(c) { c.classList.remove('is-active'); });
+        document.querySelectorAll('.' + opts.subsectionClass).forEach(function(s) { s.classList.remove('is-active'); });
+        if (parentEl) { parentEl.style.paddingBottom = ''; }
+        if (parentEl) { parentEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  }
+
+  setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' });
+  setupCategoryGroup({ group: 'kb',     parentId: 'knowledge',  subsectionClass: 'kb-subsection',    backLinkClass: 'back-link-kb'     });
+
   document.addEventListener('click', function(e) {
     const nav = document.getElementById('mnav');
     const btn = document.querySelector('.nav-hamburger');

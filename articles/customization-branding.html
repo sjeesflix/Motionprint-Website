@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customization &amp; Branding — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="Learn how to add your company logo, apply custom report colors, configure layout options, and understand settings that affect how ergonomic results are displayed in Motionprint Ergo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #ea523b; --red-light: #f06449;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: var(--dark); padding: 104px 0 52px;
+      position: relative; overflow: hidden;
+    }
+    .article-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red);
+    }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
+    .article-hero h1 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px;
+    }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a {
+      display: block; font-size: 13px; color: var(--muted); text-decoration: none;
+      padding: 6px 12px; transition: color .15s, border-color .15s, background .15s;
+    }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.15; letter-spacing: -.025em; color: var(--text);
+      margin-top: 60px; margin-bottom: 18px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border);
+      scroll-margin-top: 88px;
+    }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+
+    /* Intro lead paragraph */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Step indicator inside heading */
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(234,82,59,.1); color: var(--red);
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      margin-right: 10px; vertical-align: middle; flex-shrink: 0;
+    }
+
+    /* Media placeholders */
+    .media-placeholder {
+      border: 2px dashed #d1d9e0; border-radius: 12px;
+      background: #f8fafc; padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 6px;
+      margin: 24px 0;
+    }
+    .media-type {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+
+    /* Callouts */
+    .callout {
+      display: flex; gap: 14px; align-items: flex-start;
+      border-left: 3px solid var(--red); background: rgba(234,82,59,.04);
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0;
+    }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout-text { }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Article footer area */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .helpful-row { display: flex; align-items: center; gap: 14px; }
+    .helpful-label { font-size: 14px; font-weight: 600; color: var(--text); }
+    .helpful-btn {
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      padding: 7px 18px; border-radius: 8px; cursor: pointer;
+      border: 1.5px solid var(--border); background: var(--white); color: var(--muted);
+      transition: border-color .15s, color .15s;
+    }
+    .helpful-btn:hover { border-color: var(--red); color: var(--red); }
+
+    /* Related articles */
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+      text-decoration: none; display: flex; flex-direction: column; gap: 4px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+  <a href="../download.html">Download</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Platform Features</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">Customization &amp; Branding</span>
+      </nav>
+      <span class="article-eyebrow">Platform Features</span>
+      <h1>Customization &amp; Branding</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated February 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Platform Features
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- TOC sidebar -->
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-branding"><a href="#branding-options">1. Branding Options</a></li>
+          <li id="toc-colors"><a href="#color-settings">2. Color Settings</a></li>
+          <li id="toc-reports"><a href="#report-customization">3. Report Customization</a></li>
+          <li id="toc-calc"><a href="#calculation-settings">4. Calculation Settings</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <!-- Article content -->
+      <article class="article-body">
+
+        <p class="article-lead">Motionprint Ergo lets you tailor the look and feel of your reports so they carry your organisation's identity when shared with clients or management. This article walks through every customization option — from logo and color settings to report layout and the settings that influence how results are displayed.</p>
+
+        <!-- ── SECTION 1 ── -->
+        <h2 id="branding-options"><span class="step-num">1</span> Branding Options</h2>
+        <p>All branding and customization settings are found under <strong>Settings → Branding &amp; Reports</strong> in the top menu bar. Changes apply immediately to all future exports and are saved per installation.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Settings → Branding &amp; Reports panel</div>
+          <div class="media-placeholder-desc">Full-width screenshot of the Branding &amp; Reports settings screen, showing all four sub-sections: Company Logo, Company Name, Accent Color, and Report Layout. Highlight the navigation path (Settings menu → Branding &amp; Reports) with an arrow or label.</div>
+        </div>
+
+        <h3>Company Logo</h3>
+        <p>Upload your organisation's logo and it will appear in the header of every exported report — both PDF and Excel. Click <strong>Upload Logo</strong> and select your file.</p>
+        <ul>
+          <li><strong>Supported formats:</strong> PNG, JPG, SVG</li>
+          <li><strong>Recommended size:</strong> 300 × 100 px, transparent background (PNG or SVG preferred)</li>
+          <li><strong>Max file size:</strong> 2 MB</li>
+        </ul>
+        <p>A live preview shows exactly how the logo will appear in the report header. To remove a logo, click the trash icon next to the current upload.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Logo upload area with live preview</div>
+          <div class="media-placeholder-desc">Two-part screenshot: left side shows the upload area with an uploaded logo thumbnail and the remove/replace controls; right side (or inset) shows the resulting report header with the logo in the top-left corner. A simple arrow or bracket connecting the two halves makes this clear.</div>
+        </div>
+
+        <h3>Company Name</h3>
+        <p>Enter your organisation's name in the <strong>Company Name</strong> field. This text is used in:</p>
+        <ul>
+          <li>The report header, displayed below the logo</li>
+          <li>The PDF footer alongside the export date and page number</li>
+          <li>The "Prepared by" line on the optional report cover page</li>
+        </ul>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="color-settings"><span class="step-num">2</span> Color Settings</h2>
+        <p>The color settings control the accent color used throughout your exported reports — chart fills, section dividers, data labels, and neutral UI elements inside the PDF.</p>
+
+        <h3>Primary Accent Color</h3>
+        <p>Click the color swatch next to <strong>Accent Color</strong> to open the color picker. You can enter a hex value directly (<code>#EA523B</code>) or use the picker to choose visually. The report preview on the right-hand side updates in real time.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div class="callout-text">
+            <div class="callout-label">Note</div>
+            <p>Risk-level colors (green, amber, red) are standardised by the NIOSH and KIM-LHC methodologies and cannot be changed. Your brand accent color applies only to neutral and informational elements.</p>
+          </div>
+        </div>
+
+        <div class="media-placeholder">
+          <span class="media-type is-gif">
+            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            GIF / Screen recording
+          </span>
+          <div class="media-placeholder-title">Color picker in action — live report preview updating</div>
+          <div class="media-placeholder-desc">A short looping screen recording (5–8 seconds): user opens the color picker, drags the selector from one color to another (e.g., the default red to a blue-grey), and the report preview panel on the right updates in real time showing the chart bar colors and section header rule color changing. End on a non-default brand color so the "before and after" is obvious.</div>
+        </div>
+
+        <h3>Report Color Scheme</h3>
+        <p>Choose the overall background style for PDF exports:</p>
+        <ul>
+          <li><strong>Light</strong> (default) — white background, dark text, colored accents. Best for print and most digital sharing scenarios.</li>
+          <li><strong>Dark</strong> — dark-grey background, light text, colored accents. Works well for on-screen presentations.</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Light vs Dark report color scheme — side-by-side</div>
+          <div class="media-placeholder-desc">Side-by-side screenshot of the same NIOSH report page (e.g., the Score Overview tab) rendered in Light mode (left) and Dark mode (right). Both should show the same data so the visual difference is clear. Label each panel "Light" and "Dark".</div>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="report-customization"><span class="step-num">3</span> Report Customization</h2>
+        <p>These settings control which sections appear in exported reports and how the overall layout is structured. They apply to both PDF exports and the on-screen report viewer.</p>
+
+        <h3>Cover Page</h3>
+        <p>Toggle <strong>Include Cover Page</strong> to add a title page to every PDF export. When enabled, you can configure:</p>
+        <ul>
+          <li><strong>Report Title</strong> — default: "Ergonomic Assessment Report"; customizable per export or as a global default</li>
+          <li><strong>Project / Client Reference</strong> — optional free-text field that appears below the title</li>
+          <li><strong>Assessor Name</strong> — the name shown in the "Prepared by" line</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Cover page configuration and preview</div>
+          <div class="media-placeholder-desc">Split view: left side shows the cover page settings panel with the toggle enabled and all fields filled in; right side shows the resulting PDF cover page with logo, report title, client reference, date, and "Prepared by" line visible.</div>
+        </div>
+
+        <h3>Included Sections</h3>
+        <p>Use the <strong>Report Sections</strong> checklist to choose which content blocks are included in PDF exports. This lets you tailor reports for different audiences — for example, a summary-only version for management versus a full data export for an ergonomics specialist.</p>
+        <ul>
+          <li>Score Summary <em>(always included, cannot be disabled)</em></li>
+          <li>In-Depth Analysis tab</li>
+          <li>Findings &amp; Recommendations</li>
+          <li>3D Visualization screenshots</li>
+          <li>Raw data appendix</li>
+        </ul>
+
+        <h3>Header &amp; Footer</h3>
+        <p>Customize what appears in the running header and footer of each report page:</p>
+        <ul>
+          <li><strong>Header:</strong> logo (left), report title (center), export date (right) — each element can be toggled on or off individually</li>
+          <li><strong>Footer:</strong> page number, company name, optional confidentiality statement (free-text, max 80 characters)</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Header &amp; footer controls with an annotated report page</div>
+          <div class="media-placeholder-desc">Screenshot of a single report page showing a customized header and footer. Use numbered callouts (1, 2, 3…) to label each element: ① logo in header, ② report title, ③ date, ④ footer page number, ⑤ confidentiality text. The settings panel can appear in a sidebar or inset.</div>
+        </div>
+
+        <!-- ── SECTION 4 ── -->
+        <h2 id="calculation-settings"><span class="step-num">4</span> Settings That Influence Calculations</h2>
+        <p>Motionprint Ergo's NIOSH and KIM-LHC calculations follow the published, standardised methodologies — the core algorithm is fixed. However, a handful of application-level settings affect how results are classified and displayed.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="callout-text">
+            <div class="callout-label">Important</div>
+            <p>None of these settings change the underlying ergonomic calculation. They only affect how thresholds are visualised and labeled in your reports.</p>
+          </div>
+        </div>
+
+        <h3>NIOSH — Organisation Alert Threshold</h3>
+        <p>The standard NIOSH guidelines define a Lifting Index (LI) of 1.0 as the point at which risk becomes present. In <strong>Settings → Assessment → NIOSH</strong>, you can optionally set a custom <strong>Organisation Alert</strong> level — for example, LI ≥ 0.85 — which triggers an early advisory badge in the report before the formal LI 1.0 threshold is reached.</p>
+        <p>This is useful if your organisation's H&amp;S policy requires intervention before the standard threshold. The LI value itself is unchanged; only the advisory color and label in the report are affected.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">NIOSH threshold settings panel</div>
+          <div class="media-placeholder-desc">Screenshot of Settings → Assessment → NIOSH showing the default threshold markers (LI 1.0 and LI 3.0) and the optional "Organisation Alert" input field set to a custom value (e.g., 0.85). A small inset or annotation should show how the custom threshold appears as a yellow advisory band in the Score Summary chart.</div>
+        </div>
+
+        <h3>KIM-LHC — Risk Score Display</h3>
+        <p>KIM-LHC risk scores range from 1 to 4 with fixed action-level definitions. You cannot adjust the thresholds, but in <strong>Settings → Assessment → KIM</strong> you can configure whether the report shows:</p>
+        <ul>
+          <li>The numeric risk score only</li>
+          <li>The action-level text description only</li>
+          <li>Both (default)</li>
+        </ul>
+
+        <h3>Units &amp; Locale</h3>
+        <p>Found under <strong>Settings → General</strong>:</p>
+        <ul>
+          <li><strong>Weight unit:</strong> kilograms (kg, default) or pounds (lb). Applies to all weight inputs and report outputs.</li>
+          <li><strong>Date format:</strong> DD/MM/YYYY or MM/DD/YYYY</li>
+          <li><strong>Language:</strong> English (default). Additional report languages may be added in future releases.</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Settings → General: Units &amp; Locale panel</div>
+          <div class="media-placeholder-desc">Clean screenshot of the Units &amp; Locale settings panel showing all three dropdowns (weight unit, date format, language) in their default state.</div>
+        </div>
+
+        <!-- ── ARTICLE FOOTER ── -->
+        <div class="article-end">
+          <div>
+            <div class="helpful-label">Was this article helpful?</div>
+            <div style="display:flex;gap:8px;margin-top:10px;">
+              <button class="helpful-btn" onclick="this.textContent='Thanks!';this.disabled=true;">👍  Yes</button>
+              <button class="helpful-btn" onclick="this.textContent='Thanks!';this.disabled=true;">👎  No</button>
+            </div>
+          </div>
+          <div>
+            <div class="related-label">Related articles</div>
+            <div class="related-grid">
+              <a href="#" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
+              </a>
+              <a href="#" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">3D View &amp; Interface Controls</span>
+              </a>
+              <a href="#" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">NIOSH Report Walkthrough</span>
+              </a>
+              <a href="#" class="related-card">
+                <span class="related-card-cat">Licensing &amp; Admin</span>
+                <span class="related-card-title">License &amp; Activation Guide</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" style="display:block;margin-bottom:10px;">
+          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#how">How it works</a></li>
+          <li><a href="../index.html#methods">Supported methods</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../index.html#contact">Request demo</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html#tutorials">Tutorials</a></li>
+          <li><a href="../resources.html#knowledge">Knowledge Base</a></li>
+          <li><a href="../resources.html#validation">Validation studies</a></li>
+          <li><a href="../resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // TOC scroll-spy
+  var sections = ['branding-options','color-settings','report-customization','calculation-settings'];
+  var tocIds   = ['toc-branding','toc-colors','toc-reports','toc-calc'];
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile nav close on outside click
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
