@@ -358,6 +358,40 @@
     /* 2-column grid variant (used when a section has only 2 videos) */
     .cards-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
+    /* ── CONTACT FORM ── */
+    .contact-card { background: #fff; border-radius: 14px; padding: 40px 36px 36px; max-width: 620px; margin: 0 auto; text-align: left; box-shadow: 0 24px 64px rgba(0,0,0,.25); display: none; opacity: 0; transform: translateY(18px); }
+    .contact-card.open { display: block; animation: formReveal .4s ease forwards; }
+    @keyframes formReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .form-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .form-header .form-sub { margin-bottom: 0; }
+    .contact-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--text); margin: 0 0 4px; }
+    .contact-card .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+    .form-close { background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--muted); transition: all .15s; flex-shrink: 0; }
+    .form-close:hover { background: var(--border); color: var(--text); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--text); }
+    .form-label .req { color: var(--red); margin-left: 2px; }
+    .form-input-cf { font-family: var(--font-body); font-size: 13px; color: var(--text); padding: 10px 13px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--bg); transition: border-color .2s, box-shadow .2s; outline: none; width: 100%; box-sizing: border-box; }
+    .form-input-cf::placeholder { color: var(--muted-2); }
+    .form-input-cf:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(234,82,59,.1); }
+    .form-input-cf.invalid { border-color: #ef4444; }
+    textarea.form-input-cf { resize: vertical; min-height: 80px; }
+    select.form-input-cf { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
+    .cf-submit { margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .cf-submit .btn { min-width: 160px; justify-content: center; }
+    .cf-submit .btn:disabled { opacity: .65; cursor: not-allowed; transform: none !important; }
+    .cf-note { font-size: 11px; color: var(--muted-2); }
+    .cf-status { margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; display: none; }
+    .cf-status.success { display: block; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+    .cf-status.error { display: block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: cfSpin .6s linear infinite; display: none; }
+    .btn.loading .spinner { display: inline-block; }
+    .btn.loading .btn-text { display: none; }
+    @keyframes cfSpin { to { transform: rotate(360deg); } }
+    @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } .contact-card { padding: 28px 20px 24px; } }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .support-grid { grid-template-columns: 1fr; }
@@ -400,7 +434,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download
       </a>
-      <a href="index.html#contact" class="nav-demo">Request demo</a>
+      <a href="#contact" class="nav-demo">Request demo</a>
     </div>
     <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
       <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -415,7 +449,7 @@
   <a href="resources.html">Resources</a>
   <a href="about.html">About</a>
   <a href="download.html">Download</a>
-  <a href="index.html#contact" class="btn btn-primary">Request demo</a>
+  <a href="#contact" class="btn btn-primary">Request demo</a>
 </div>
 
 <!-- ── PAGE HERO ── -->
@@ -1103,26 +1137,31 @@
       <!-- Contact form -->
       <div>
         <h3 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:20px;">Contact support</h3>
-        <form class="contact-form" onsubmit="event.preventDefault();this.innerHTML='<p style=\'color:var(--red);font-weight:600;padding:16px 0\'>Thanks! We\'ll get back to you shortly.</p>'">
+        <form class="contact-form" id="supportForm" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="name">Name</label>
-              <input class="form-input" type="text" id="name" placeholder="Your name" required>
+              <label class="form-label" for="sup-name">Name <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="text" id="sup-name" name="name" placeholder="Your name" required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="email">Email</label>
-              <input class="form-input" type="email" id="email" placeholder="you@company.com" required>
+              <label class="form-label" for="sup-email">Email <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="email" id="sup-email" name="email" placeholder="you@company.com" required>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="subject">Subject</label>
-            <input class="form-input" type="text" id="subject" placeholder="What can we help you with?">
+            <label class="form-label" for="sup-company">Company <span style="color:var(--red)">*</span></label>
+            <input class="form-input" type="text" id="sup-company" name="company" placeholder="Company name" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-textarea" id="message" placeholder="Describe your question or issue in as much detail as possible…" required></textarea>
+            <label class="form-label" for="sup-subject">Subject</label>
+            <input class="form-input" type="text" id="sup-subject" name="subject" placeholder="What can we help you with?">
           </div>
-          <button type="submit" class="form-submit">Send message</button>
+          <div class="form-group">
+            <label class="form-label" for="sup-message">Message</label>
+            <textarea class="form-textarea" id="sup-message" name="message" placeholder="Describe your question or issue in as much detail as possible…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="supSubmitBtn">Send message</button>
+          <div id="supStatus" style="margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:500;display:none;"></div>
         </form>
       </div>
     </div>
@@ -1130,15 +1169,34 @@
 </section>
 
 <!-- ── CTA ── -->
-<section class="cta-section">
+<section class="cta-section" id="contact">
   <div class="container">
     <div class="cta-inner">
       <span class="eyebrow" style="color:rgba(255,255,255,.45)">Get started</span>
       <h2 class="cta-title">Ready to automate your<br><em>ergonomic workflow?</em></h2>
       <p class="cta-sub">Book a demo and see Motionprint Ergo in action with your own Xsens data.</p>
-      <div class="cta-actions">
-        <a href="index.html#contact" class="btn btn-primary">Request a demo</a>
-        <a href="mailto:hello@motionprint.io" class="btn btn-ghost">Contact us</a>
+      <div class="cta-actions" id="ctaButtons">
+        <a href="#contact" class="btn btn-primary">Request a demo</a>
+        <a href="#contact" class="btn btn-ghost">Contact us</a>
+      </div>
+      <div class="contact-card" id="contactCard">
+        <div class="form-header">
+          <div><h3 id="formTitle">Request a demo</h3><p class="form-sub">Fill in your details and we'll get back to you within one business day.</p></div>
+          <button type="button" class="form-close" onclick="closeContactForm()" aria-label="Close"><svg viewBox="0 0 16 16" width="18" height="18"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
+        </div>
+        <form id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label">Topic</label><select name="topic" class="form-input-cf" id="formTopic"><option value="Demo request">Demo request</option><option value="Trial licence request">Trial licence request</option><option value="General inquiry">General inquiry</option><option value="Pricing">Pricing</option><option value="Method suggestion">Method suggestion</option><option value="Partnership">Partnership</option><option value="Other">Other</option></select></div>
+            <div class="form-group"><label class="form-label">Name <span class="req">*</span></label><input type="text" name="name" class="form-input-cf" placeholder="Your name" required></div>
+            <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="email" class="form-input-cf" placeholder="you@company.com" required></div>
+            <div class="form-group"><label class="form-label">Company <span class="req">*</span></label><input type="text" name="company" class="form-input-cf" placeholder="Company name" required></div>
+            <div class="form-group"><label class="form-label">Role</label><input type="text" name="role" class="form-input-cf" placeholder="e.g. Ergonomist, H&S Manager"></div>
+            <div class="form-group"><label class="form-label">Phone</label><input type="tel" name="phone" class="form-input-cf" placeholder="+31 6 1234 5678"></div>
+            <div class="form-group full"><label class="form-label">Message</label><textarea name="message" class="form-input-cf" placeholder="Tell us about your use case or any questions you have..." rows="3"></textarea></div>
+          </div>
+          <div class="cf-submit"><button type="submit" class="btn btn-primary" id="submitBtn"><span class="btn-text">Send request</span><span class="spinner"></span></button><span class="cf-note">We'll never share your data with third parties.</span></div>
+          <div class="cf-status" id="formStatus"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -1168,8 +1226,8 @@
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
           <li><a href="index.html#custom">Custom Solutions</a></li>
-          <li><a href="index.html#contact">Request demo</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="#contact">Request demo</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -1246,6 +1304,98 @@
       nav.classList.remove('open');
     }
   });
+
+  // ── Contact form ──
+  function openContactForm(e) {
+    if (e) e.preventDefault();
+    var card = document.getElementById('contactCard');
+    var btns = document.getElementById('ctaButtons');
+    var title = document.getElementById('formTitle');
+    var topicSelect = document.getElementById('formTopic');
+    var el = (e && e.currentTarget) ? e.currentTarget : null;
+    var btnText = el ? el.textContent.trim().toLowerCase() : '';
+    if (btnText.indexOf('contact') !== -1) { title.textContent = 'Contact us'; topicSelect.value = 'General inquiry'; }
+    else { title.textContent = 'Request a demo'; topicSelect.value = 'Demo request'; }
+    if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
+    setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
+    setTimeout(function() { card.querySelector('input.form-input-cf').focus(); }, 450);
+  }
+  function closeContactForm() {
+    var card = document.getElementById('contactCard');
+    var btns = document.getElementById('ctaButtons');
+    card.classList.remove('open'); btns.style.display = '';
+    document.getElementById('contactForm').reset();
+    var s = document.getElementById('formStatus'); s.className = 'cf-status'; s.textContent = '';
+    document.querySelectorAll('.form-input-cf.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+  }
+  document.querySelectorAll('a[href="#contact"]').forEach(function(link) { link.addEventListener('click', openContactForm); });
+
+  (function() {
+    var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
+    var form = document.getElementById('contactForm');
+    var btn = document.getElementById('submitBtn');
+    var status = document.getElementById('formStatus');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      status.className = 'cf-status'; status.textContent = '';
+      form.querySelectorAll('.form-input-cf.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+      var name = form.querySelector('[name="name"]'), email = form.querySelector('[name="email"]'), company = form.querySelector('[name="company"]');
+      var valid = true;
+      [name, email, company].forEach(function(f) { if (!f.value.trim()) { f.classList.add('invalid'); valid = false; } });
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('invalid'); valid = false; }
+      if (!valid) { status.className = 'cf-status error'; status.textContent = 'Please fill in all required fields.'; return; }
+      btn.classList.add('loading'); btn.disabled = true;
+      var data = { topic: form.querySelector('[name="topic"]').value, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
+      try {
+        var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        if (res.ok) { status.className = 'cf-status success'; status.textContent = "Thank you! We'll be in touch shortly."; form.reset(); }
+        else { throw new Error(); }
+      } catch(err) { status.className = 'cf-status error'; status.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.'; }
+      finally { btn.classList.remove('loading'); btn.disabled = false; }
+    });
+  })();
+
+  // ── Support form ──
+  (function() {
+    var supForm = document.getElementById('supportForm');
+    if (!supForm) return;
+    var supBtn = document.getElementById('supSubmitBtn');
+    var supStatus = document.getElementById('supStatus');
+    supForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      supStatus.style.display = 'none'; supStatus.textContent = '';
+      var nameF = supForm.querySelector('[name="name"]');
+      var emailF = supForm.querySelector('[name="email"]');
+      var companyF = supForm.querySelector('[name="company"]');
+      var valid = true;
+      [nameF, emailF, companyF].forEach(function(f) {
+        f.style.borderColor = f.value.trim() ? '' : '#ef4444';
+        if (!f.value.trim()) valid = false;
+      });
+      if (emailF.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value)) { emailF.style.borderColor = '#ef4444'; valid = false; }
+      if (!valid) { supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca'; supStatus.textContent = 'Please fill in all required fields.'; return; }
+      supBtn.disabled = true; supBtn.textContent = 'Sending…';
+      var subject = (supForm.querySelector('[name="subject"]').value || '').trim();
+      var data = {
+        topic: 'Support request',
+        name: nameF.value.trim(),
+        email: emailF.value.trim(),
+        company: companyF.value.trim(),
+        message: (subject ? 'Subject: ' + subject + '\n\n' : '') + (supForm.querySelector('[name="message"]').value || '').trim()
+      };
+      try {
+        var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        if (res.ok) {
+          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
+          supStatus.textContent = "Thanks! We'll get back to you shortly.";
+          supForm.reset();
+        } else { throw new Error(); }
+      } catch(err) {
+        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
+        supStatus.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
+      } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
+    });
+  })();
 </script>
 </body>
 </html>
