@@ -1049,12 +1049,12 @@
                 <!-- Ground plane with perspective grid mesh -->
                 <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
                 <!-- Avatar -->
-                <img src="printscreens/avatar-removebg-preview.png" alt="3D motion avatar" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;filter:saturate(1.4) contrast(1.12) brightness(1.04);">
+                <video src="avatarmp4.mp4" autoplay loop muted playsinline oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
                 <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
               </div>
               <!-- Graph card -->
               <div class="acard" style="padding:10px 12px 8px;display:flex;flex-direction:column;">
-                <div class="acard-lbl" style="margin-bottom:6px;">Lifting Index over time</div>
+                <div class="acard-lbl" style="margin-bottom:6px;">Asymmetry over time</div>
                 <svg viewBox="0 0 240 80" preserveAspectRatio="none" style="flex:1;width:100%;border-radius:5px;overflow:hidden;display:block;">
                   <rect y="0" width="240" height="27" fill="#fecaca" opacity=".55"/>
                   <rect y="27" width="240" height="26" fill="#fde68a" opacity=".45"/>
@@ -1062,12 +1062,8 @@
                   <line x1="0" y1="27" x2="240" y2="27" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <line x1="0" y1="53" x2="240" y2="53" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <path id="liCurve" d="M0,66 C18,66 36,65 54,65 S72,66 90,65 S108,65 126,64 S138,62 148,58 S158,52 168,48 S182,44 196,45 S214,47 228,48 L240,48" fill="none" stroke="#64748b" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-                  <!-- Animated marker — line + dot scan start-to-end, then restart -->
-                  <g>
-                    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0.02;0.98" keyTimes="0;1" calcMode="linear"><mpath href="#liCurve"/></animateMotion>
-                    <line x1="0" y1="-66" x2="0" y2="36" stroke="#ef4444" stroke-width="1.8" opacity=".65"/>
-                    <circle cx="0" cy="0" r="3.5" fill="#fff" stroke="#ef4444" stroke-width="1.4"/>
-                  </g>
+                  <!-- Animated marker — driven by video.currentTime for perfect sync -->
+                  <line id="graphDot" x1="0" x2="0" y1="0" y2="80" stroke="#ea523b" stroke-width="1.5" opacity=".8"/>
                 </svg>
                 <div style="display:flex;gap:7px;margin-top:6px;">
                   <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#fca5a5;display:inline-block"></span>High</span>
@@ -1082,6 +1078,26 @@
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var video = document.querySelector('#ergo video');
+  var path  = document.getElementById('liCurve');
+  var dot   = document.getElementById('graphDot');
+  if(!video||!path||!dot) return;
+  var len = path.getTotalLength();
+  function sync(){
+    if(video.duration){
+      var p  = video.currentTime / video.duration;
+      var t  = 0.02 + p * 0.96;
+      var pt = path.getPointAtLength(t * len);
+      dot.setAttribute('x1', pt.x);
+      dot.setAttribute('x2', pt.x);
+    }
+    requestAnimationFrame(sync);
+  }
+  sync();
+})();
+</script>
 
 <!-- ── HOW IT WORKS ── -->
 <section class="how" id="how">

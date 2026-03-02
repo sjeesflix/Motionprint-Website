@@ -280,7 +280,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          6 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -304,10 +304,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-workflow"><a href="#workflow">1. The Workflow</a></li>
-          <li id="toc-arch"><a href="#architecture">2. Under the Hood</a></li>
-          <li id="toc-outputs"><a href="#outputs">3. What the App Produces</a></li>
-          <li id="toc-types"><a href="#report-types">4. Supported Report Types</a></li>
+          <li id="toc-input"><a href="#input">1. Motion Capture Input</a></li>
+          <li id="toc-processing"><a href="#processing">2. Data Processing</a></li>
+          <li id="toc-outputs"><a href="#outputs">3. Report Generation</a></li>
+          <li id="toc-automation"><a href="#automation">4. Workflow Automation</a></li>
+          <li id="toc-formats"><a href="#formats">5. Output Formats</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -320,11 +321,11 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo is a Windows desktop application that converts Xsens MVNX motion capture recordings into standardised ergonomic risk assessment reports. No manual video coding, no spreadsheet calculations, no cloud uploads — the entire process runs locally on your machine from raw motion data to finished PDF.</p>
+        <p class="article-lead">Motionprint Ergo is a comprehensive platform that transforms motion capture data into actionable ergonomic insights. The workflow spans from recording movement with an Xsens suit to generating fully branded reports with validated risk scores — through a pipeline that handles preprocessing, biomechanical analysis, and export entirely on your local machine.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="workflow"><span class="step-num">1</span> The Workflow</h2>
-        <p>The process follows a fixed pipeline: capture motion data with an Xsens suit, export it from Xsens MVN, and import it into Motionprint Ergo for analysis and reporting. Each stage is described below.</p>
+        <h2 id="input"><span class="step-num">1</span> Motion Capture Input</h2>
+        <p>The starting point for every assessment is a motion capture recording made with an Xsens MVN system. Motionprint Ergo is built around the MVNX file format — an XML-based container that holds the complete body motion time-series exported directly from Xsens MVN Analyze or Animate.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-diagram">
@@ -332,137 +333,118 @@
             Custom diagram
           </span>
           <div class="media-placeholder-title">End-to-end workflow diagram</div>
-          <div class="media-placeholder-desc">Horizontal flow diagram with four steps and icons: (1) Xsens suit icon → "Record with Xsens MVN", (2) file icon → "Export .mvnx file", (3) app window icon → "Analyse in Motionprint Ergo", (4) document icon → "Export PDF / Excel report". Clean, minimal, landscape orientation. Custom graphic.</div>
+          <div class="media-placeholder-desc">Horizontal flow: Xsens suit → Export .mvnx → Import &amp; preprocess → Analyse → Export PDF / Excel. Clean, minimal, four steps with icons.</div>
         </div>
 
-        <ol class="workflow-steps">
-          <li class="workflow-step">
-            <div class="workflow-step-num">1</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Record the task with an Xsens suit</div>
-              <p class="workflow-step-desc">The worker wears an Xsens MVN inertial motion capture suit — either MVN Awinda (wireless IMU sensors) or MVN Link (body suit with embedded sensors). The assessor records the lifting or handling task in Xsens MVN Analyze or Animate.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">2</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Export the recording as an .mvnx file</div>
-              <p class="workflow-step-desc">From Xsens MVN, export the session in MVNX format. This is an XML-based file containing the full body motion data — segment positions, orientations, joint angles, and foot contacts — sampled at up to 60 Hz.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">3</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Open Motionprint Ergo and select a report type</div>
-              <p class="workflow-step-desc">Launch Motionprint Ergo and create a new assessment. Choose the assessment method — <strong>NIOSH Lifting Equation</strong> or <strong>KIM-LHC</strong> — based on the type of task and the standard your organisation follows.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">4</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Import the .mvnx file</div>
-              <p class="workflow-step-desc">Upload the .mvnx file into the app. Motionprint Ergo validates the file, checks that all required segments and joint data are present, and loads the full motion time-series into memory.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">5</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Define the task parameters</div>
-              <p class="workflow-step-desc">Trim the recording to the relevant task window, mark one or more lifting moments (individual lift cycles), and enter the remaining task parameters: load weight, lift frequency, daily work duration, and coupling quality. The biomechanical variables (hand distances, posture angles, vertical travel) are derived automatically from the motion data.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">6</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Run the analysis</div>
-              <p class="workflow-step-desc">Trigger the analysis. The backend processes every frame in the recording and streams real-time progress back to the UI. Depending on recording length, this typically takes a few seconds to under a minute.</p>
-            </div>
-          </li>
-          <li class="workflow-step">
-            <div class="workflow-step-num">7</div>
-            <div class="workflow-step-body">
-              <div class="workflow-step-title">Review results and export</div>
-              <p class="workflow-step-desc">Results are presented across three tabs: <strong>Overview</strong> (risk score summary), <strong>Analysis</strong> (frame-by-frame graphs and posture breakdown), and <strong>Findings</strong> (actionable recommendations). Export a branded PDF report and/or an Excel spreadsheet for sharing and record-keeping.</p>
-            </div>
-          </li>
-        </ol>
+        <h3>Recording with Xsens</h3>
+        <p>Motion data is captured using either the MVN Awinda (wireless IMU sensors) or MVN Link (body suit with embedded sensors) system. The assessor records the task — a lifting cycle, carrying task, or handling sequence — in Xsens MVN, then exports the session as an MVNX file. This file contains full-body segment positions, orientations, joint angles, and foot contacts sampled at up to 60 Hz.</p>
+
+        <h3>Preprocessing</h3>
+        <p>Before analysis begins, Motionprint Ergo runs a two-step preprocessing stage to ensure the data is clean and correctly structured.</p>
+        <ul>
+          <li><strong>Trimming</strong> — Removes frames outside the relevant task window, focusing the analysis on the actual lifting or handling movement rather than idle time before or after the recording.</li>
+          <li><strong>Validation</strong> — Checks data integrity: verifies frame rate consistency, confirms all required body segments are present, and validates coordinate mapping. Clear error messages are shown if the file fails any validation check, so you always know exactly what needs to be corrected.</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Supported formats</div>
+            <p>Motionprint Ergo primarily supports the MVNX format. Preprocessing scripts are also available for trimming recordings and regenerating derived variables when raw exports require adjustment before import.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="processing"><span class="step-num">2</span> Data Processing</h2>
+        <p>Once the MVNX file is loaded and validated, the analysis backend processes every frame in the recording through a structured pipeline. This runs locally on your machine — no data is sent to any external server.</p>
+
+        <h3>Peak detection</h3>
+        <p>The pipeline begins by identifying critical moments in the motion data — the frames where biomechanical load is highest. These peaks are the primary reference points for ergonomic risk scoring and are also surfaced as marked moments in the results view, so assessors can immediately navigate to the highest-risk postures in the recording.</p>
+
+        <h3>Asymmetry analysis</h3>
+        <p>Asymmetry between the left and right sides of the body is computed across every frame. Trunk rotation, lateral bending, and limb asymmetry are quantified and tracked over the duration of the task. This produces the asymmetry time-series visible in the Analysis tab — a frame-by-frame view of how symmetrically the worker performed the task and at which points asymmetric loading peaked.</p>
+
+        <h3>Ergonomic risk scoring</h3>
+        <p>With peaks and asymmetry scores established, the pipeline applies the selected assessment method — <strong>NIOSH Lifting Equation</strong> or <strong>KIM-LHC</strong> — to calculate the final risk scores. Biomechanical variables (hand distances, vertical travel, trunk and limb posture angles) are derived directly from the motion data; only load weight, task frequency, and work duration require manual input.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Main application window — results view</div>
-          <div class="media-placeholder-desc">Full-width screenshot of the Motionprint Ergo application window showing the three-tab results layout (Overview, Analysis, Findings) with the Overview tab active. The sidebar navigation should be visible on the left. Provided by client.</div>
+          <div class="media-placeholder-title">Analysis tab — frame-by-frame graphs</div>
+          <div class="media-placeholder-desc">Screenshot of the Analysis tab showing the asymmetry time-series graph with peak markers highlighted, alongside the body posture classification diagram. Provided by client.</div>
         </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="outputs"><span class="step-num">3</span> Report Generation</h2>
+        <p>After analysis completes, results are presented across three tabs in the application and can be exported in multiple formats.</p>
+
+        <h3>Risk scores</h3>
+        <p>The headline output is a validated risk score tied to the selected method — a <strong>Lifting Index (LI)</strong> for NIOSH assessments, or a <strong>total risk score</strong> mapped to four levels (green / yellow / orange / red) for KIM-LHC. Both are accompanied by clearly defined risk bands and recommended actions based on the score.</p>
+
+        <h3>Key metrics</h3>
+        <p>Beyond the headline score, every assessment produces a structured set of metrics that give full visibility into the risk factors driving the result:</p>
+        <ul>
+          <li><strong>Critical moments</strong> — frames automatically flagged as highest-risk, with optional manual markers you can add at any point in the recording</li>
+          <li><strong>Asymmetry scores</strong> — frame-level asymmetry values showing how evenly load was distributed across the body throughout the task</li>
+          <li><strong>Task-specific risk factors</strong> — the individual multipliers and sub-scores that make up the final risk score, broken down per body region and task parameter</li>
+        </ul>
+
+        <h3>Customisation</h3>
+        <p>Reports can be branded with your organisation's logo, custom accent colour, and company name. A cover page can be added for client-facing deliverables. See <a href="customization-branding.html">Customization &amp; Branding</a> for the full configuration options.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-gif">
             <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
             GIF / Screen recording
           </span>
-          <div class="media-placeholder-title">Analysis progress streaming — results appearing</div>
-          <div class="media-placeholder-desc">Short looping screen recording (5–10 seconds): shows the analysis progress bar filling, then transitions to the results tabs appearing with the risk score visible. Demonstrates the real-time streaming feedback. Provided by client.</div>
+          <div class="media-placeholder-title">Results overview — risk score and findings</div>
+          <div class="media-placeholder-desc">Short looping screen recording showing the results Overview tab with the headline risk score, then switching to the Findings tab displaying recommendations. Provided by client.</div>
         </div>
 
-        <!-- ── SECTION 2 ── -->
-        <h2 id="architecture"><span class="step-num">2</span> Under the Hood</h2>
-        <p>Motionprint Ergo runs as a single desktop window, but internally it consists of two components that work together on your local machine.</p>
+        <!-- ── SECTION 4 ── -->
+        <h2 id="automation"><span class="step-num">4</span> Workflow Automation</h2>
+        <p>For organisations running Motionprint Ergo at scale — or integrating it into larger data pipelines — the platform supports several modes of automated operation beyond the standard GUI workflow.</p>
 
-        <h3>Flutter desktop UI</h3>
-        <p>The visible application — the window you interact with — is built with Flutter. It handles the user interface, file import, parameter inputs, results display, and report export. This is the only thing you see or need to interact with.</p>
+        <h3>Batch processing</h3>
+        <p>Multiple MVNX files can be processed simultaneously without manual intervention between each file. Batch mode applies the same assessment configuration across all files in the queue and outputs a report for each, making it practical to process a full day's recordings in a single session.</p>
 
-        <h3>Python analysis backend</h3>
-        <p>Running silently in the background is a Python-based computation engine that listens on <code>localhost:8000</code>. When you trigger an analysis, the Flutter UI sends the motion data and task parameters to this local server, which processes every frame and streams the results back in real time.</p>
+        <h3>Silent mode</h3>
+        <p>Silent mode enables fully automated, non-interactive workflows. When invoked, the application processes the input file and generates the output report without displaying any user interface or prompting for input. This is designed for scheduled tasks, scripted pipelines, or server-side automation scenarios.</p>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div class="callout-text">
-            <div class="callout-label">Privacy note</div>
-            <p>No motion data, assessment results, or personal information is ever sent to an external server. All processing happens locally on the user's machine. The only outbound network connection is to the Motionprint licence server for licence validation — no assessment data is transmitted in that process.</p>
+        <h3>CLI tools</h3>
+        <p>Advanced users can interact with Motionprint Ergo directly through the command line. The CLI exposes the same analysis pipeline as the GUI — accepting an MVNX file, assessment method, and task parameters as arguments and outputting a report to a specified path. This makes it straightforward to integrate Motionprint Ergo into shell scripts or data processing workflows.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <div>
+            <div class="callout-label">CLI &amp; automation</div>
+            <p>CLI access and silent mode are available for users on the Professional plan. Contact us if you need to integrate Motionprint Ergo into an existing data pipeline or automation workflow.</p>
           </div>
         </div>
 
-        <!-- ── SECTION 3 ── -->
-        <h2 id="outputs"><span class="step-num">3</span> What the App Produces</h2>
-        <p>A completed assessment in Motionprint Ergo produces several layers of output, from a single headline risk score down to frame-level biomechanical detail.</p>
+        <!-- ── SECTION 5 ── -->
+        <h2 id="formats"><span class="step-num">5</span> Output Formats</h2>
+        <p>Every completed assessment can be exported in two structured formats, each suited to a different use case.</p>
 
-        <h3>Risk score</h3>
-        <p>The headline output is a risk score tied to the selected standardised method — a Lifting Index (LI) for NIOSH, or a total risk score for KIM-LHC. Both are mapped to clearly defined risk bands (low, moderate, high, very high) with corresponding action recommendations.</p>
+        <h3>PDF reports</h3>
+        <p>The PDF export produces a fully formatted assessment document including the headline risk score, a breakdown of the contributing risk factors, critical moment snapshots, and a findings section with recommended interventions. The report is ready to share with clients, H&amp;S managers, or regulatory bodies without further editing. Branding (logo, colours, company name) is applied automatically based on your account settings.</p>
 
-        <h3>Frame-by-frame time series</h3>
-        <p>Every metric — posture angles, hand distances, derived multipliers, and the rolling risk score — is computed for every frame in the recording. This produces an interactive graph in the Analysis tab, allowing you to scrub through the recording and identify the exact moment a high-risk posture occurred.</p>
+        <h3>Excel reports</h3>
+        <p>The Excel export provides structured data with colour-coded highlights for each risk level, making it straightforward to compare results across assessments, build trend charts, or feed the data into your existing H&amp;S management system. The spreadsheet includes the raw calculated values alongside the derived scores for full traceability.</p>
 
-        <h3>Body posture classification</h3>
-        <p>For each frame, the body is classified across multiple regions (trunk, neck, shoulders, arms, legs). These classifications are visualised using anatomical SVG diagrams that show the dominant posture category for each region throughout the assessed lifting moment.</p>
+        <h3>Visualisation</h3>
+        <p>Within the application, results are accompanied by interactive charts and 3D model visualisations for enhanced interpretation. The 3D view lets assessors inspect body posture at any frame in the recording, cross-referenced with the risk score at that moment — making it easy to explain a finding to a worker or a client in concrete, visual terms.</p>
 
-        <h3>Critical moments</h3>
-        <p>The app automatically identifies frames with the highest risk contribution and marks them as critical moments. You can also add manual critical moment markers at specific points in the recording to call out specific postures or events for the report reader.</p>
-
-        <h3>PDF and Excel reports</h3>
-        <p>Export a fully formatted PDF report — optionally with a cover page, your company logo, and custom accent color — or an Excel spreadsheet containing the raw calculated values and time-series data for further analysis. See <a href="customization-branding.html">Customization &amp; Branding</a> for how to configure report appearance.</p>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="report-types"><span class="step-num">4</span> Supported Report Types</h2>
-        <p>Motionprint Ergo currently supports two internationally recognised ergonomic assessment methods for manual material handling tasks.</p>
-
-        <h3>NIOSH Lifting Equation (Revised 1991)</h3>
-        <p>Developed by the US National Institute for Occupational Safety and Health, the NIOSH Lifting Equation calculates a <strong>Recommended Weight Limit (RWL)</strong> and a <strong>Lifting Index (LI)</strong> for a defined lifting task. It is standardised under ISO 11228-1 and EN 1005-2 and is widely used across North America, Europe, and internationally.</p>
-        <ul>
-          <li>Produces an LI score with low / moderate / high risk classification</li>
-          <li>Supports multiple lifting moments and Composite Lifting Index (CLI) for multi-task assessments</li>
-          <li>Includes optional correction factors: two-person lift, one-hand lift, extended duration (ISO 11228-1)</li>
-        </ul>
-        <p>For a detailed explanation of the method, see <a href="understanding-niosh-assessment.html">Understanding the NIOSH Lifting Assessment</a>.</p>
-
-        <h3>KIM-LHC (Key Indicator Method – Lifting, Holding, Carrying)</h3>
-        <p>Developed by the German Federal Institute for Occupational Safety and Health (BAuA), the KIM-LHC is a widely used European method for evaluating physical workload in manual material handling tasks. It produces a total risk score based on load weight, working duration, body posture across 10 body regions, and unfavorable working conditions.</p>
-        <ul>
-          <li>Produces a total score mapped to four risk levels (green / yellow / orange / red)</li>
-          <li>Scores posture automatically across all 10 body regions from motion data</li>
-          <li>Supports separate or averaged multi-moment assessments</li>
-        </ul>
-        <p>For a detailed explanation of the method, see <a href="understanding-kimlhc-assessment.html">Understanding the KIM-LHC Assessment</a>.</p>
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">PDF report export — sample output</div>
+          <div class="media-placeholder-desc">Full-page screenshot of a generated PDF report showing the cover page with company branding, followed by the risk score summary page and findings. Provided by client.</div>
+        </div>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -479,14 +461,6 @@
               <a href="motion-data-processing-explained.html" class="related-card">
                 <span class="related-card-cat">Methodology</span>
                 <span class="related-card-title">Motion Data Processing Explained</span>
-              </a>
-              <a href="understanding-niosh-assessment.html" class="related-card">
-                <span class="related-card-cat">Methodology</span>
-                <span class="related-card-title">Understanding the NIOSH Lifting Assessment</span>
-              </a>
-              <a href="understanding-kimlhc-assessment.html" class="related-card">
-                <span class="related-card-cat">Methodology</span>
-                <span class="related-card-title">Understanding the KIM-LHC Assessment</span>
               </a>
               <a href="customization-branding.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
@@ -550,8 +524,8 @@
 </footer>
 
 <script>
-  var sections = ['workflow','architecture','outputs','report-types'];
-  var tocIds   = ['toc-workflow','toc-arch','toc-outputs','toc-types'];
+  var sections = ['input','processing','outputs','automation','formats'];
+  var tocIds   = ['toc-input','toc-processing','toc-outputs','toc-automation','toc-formats'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Motion Data Processing Explained — Motionprint Ergo Help</title>
+  <title>Understanding the NIOSH Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="How Motionprint Ergo converts raw Xsens inertial sensor data into joint angles, posture classifications and ergonomic assessment inputs." />
+  <meta name="description" content="A guide to the NIOSH Lifting Equation: the seven multipliers, the Recommended Weight Limit, and what your Lifting Index score means." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -119,13 +119,6 @@
     .callout.callout-info .callout-label { color: #3b82f6; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Segment grid */
-    .segment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 20px; }
-    .segment-group { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
-    .segment-group-title { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 8px; }
-    .segment-group ul { list-style: none; padding: 0; margin: 0; }
-    .segment-group li { font-size: 13px; color: var(--text); line-height: 1.6; margin-bottom: 2px; }
-
     /* Formula block */
     .formula-block { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 14px; color: var(--text); text-align: center; }
     .formula-block .formula-label { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 8px; display: block; text-align: left; }
@@ -136,6 +129,28 @@
     .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
     .threshold-table tr:last-child td { border-bottom: none; }
     .threshold-table code { font-size: 12px; }
+
+    /* Risk badge */
+    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
+    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
+    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-high   { background: rgba(234,82,59,.12);  color: #ea523b; }
+    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+
+    /* Workflow steps */
+    .workflow-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .workflow-step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* Multiplier grid */
+    .multiplier-grid { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
+    .multiplier-row { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .multiplier-abbr { font-family: 'Courier New', monospace; font-size: 15px; font-weight: 700; color: var(--red); margin-top: 2px; }
+    .multiplier-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .multiplier-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+    .multiplier-formula { font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted-2); margin-top: 4px; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -168,14 +183,12 @@
       .article-layout { grid-template-columns: 1fr; }
       .article-toc { display: none; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .segment-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-hamburger { display: block; }
       .related-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
-      .segment-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -225,20 +238,20 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="../resources.html#knowledge">Methodology</a>
+        <a href="../resources.html#kb-insights">Methodology</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Motion Data Processing Explained</span>
+        <span style="color:rgba(255,255,255,.6)">Understanding the NIOSH Assessment</span>
       </nav>
       <span class="article-eyebrow">Methodology</span>
-      <h1>Motion Data Processing Explained</h1>
+      <h1>Understanding the NIOSH Assessment</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          7 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated February 2026
+          Last updated March 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -258,11 +271,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-input"><a href="#raw-input">1. Raw Data Input</a></li>
-          <li id="toc-conversion"><a href="#data-conversion">2. Data Conversion</a></li>
-          <li id="toc-posture"><a href="#posture-classification">3. Posture Classification</a></li>
-          <li id="toc-assessment"><a href="#assessment-inputs">4. Assessment Inputs</a></li>
-          <li id="toc-errors"><a href="#error-handling">5. Error Handling</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-multipliers"><a href="#seven-multipliers">2. The Seven Multipliers</a></li>
+          <li id="toc-rwl"><a href="#rwl">3. Recommended Weight Limit</a></li>
+          <li id="toc-li"><a href="#lifting-index">4. Lifting Index</a></li>
+          <li id="toc-implementation"><a href="#implementation">5. Implementation</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -275,199 +288,246 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo processes raw inertial sensor data from Xsens motion capture systems to generate actionable ergonomic insights. This article explains what happens between importing an MVNX file and seeing a risk score — how sensor data is structured, how it is converted into joint angles, how postures are classified, and how the metrics fed into NIOSH and KIM-LHC assessments are derived.</p>
+        <p class="article-lead">The NIOSH Lifting Equation is the most widely adopted ergonomic tool for evaluating manual lifting risks. Motionprint Ergo implements it in full — automatically extracting the biomechanical variables from your motion capture data and computing the Recommended Weight Limit and Lifting Index for every lift in your recording. This article explains how the equation works, what each multiplier represents, and how to interpret your results.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="raw-input"><span class="step-num">1</span> Raw Data Input</h2>
-        <p>The input to every Motionprint Ergo assessment is an MVNX file — an XML-format file exported by Xsens MVN Analyze or Animate at the end of a motion capture session. This file contains everything the Xsens MVN Engine computed from the raw IMU sensor signals during the recording.</p>
-
-        <h3>What the sensors capture</h3>
-        <p>Each Xsens sensor unit contains an accelerometer and a gyroscope. The MVN Engine fuses the raw signals from all sensors worn on the body to compute a consistent, drift-corrected representation of the full body pose at every frame. The data written to the MVNX file is the output of this fusion process — not the raw IMU signals themselves.</p>
-
-        <h3>Data channels in the MVNX file</h3>
-        <p>Motionprint Ergo reads the following data channels from each MVNX file:</p>
+        <h2 id="overview"><span class="step-num">1</span> Overview</h2>
+        <p>The NIOSH Lifting Equation calculates two key outputs for every assessed lifting task:</p>
         <ul>
-          <li><strong>3D segment positions</strong> — world-space coordinates (x, y, z) for the centre of mass of each body segment, at every frame</li>
-          <li><strong>Segment orientations</strong> — quaternion (q<sub>w</sub>, q<sub>x</sub>, q<sub>y</sub>, q<sub>z</sub>) representing the rotation of each segment in 3D space</li>
-          <li><strong>Joint angles</strong> — three-axis angles (flexion/extension, axial rotation, lateral bending) for each of the 22 joints</li>
-          <li><strong>Centre of mass</strong> — the calculated whole-body centre of mass trajectory over time</li>
-          <li><strong>Foot contacts</strong> — left and right foot contact flags indicating ground contact at each frame</li>
+          <li><strong>Recommended Weight Limit (RWL)</strong> — the maximum load weight considered acceptable under the given task conditions, accounting for the worker's posture, the object's position, and the task frequency.</li>
+          <li><strong>Lifting Index (LI)</strong> — the ratio of the actual load weight to the RWL. A value above 1.0 indicates that the task exceeds the recommended limit and poses an elevated risk of musculoskeletal injury.</li>
         </ul>
+        <p>The equation was developed by NIOSH (the National Institute for Occupational Safety and Health) and is described in full in the Applications Manual for the Revised NIOSH Lifting Equation (Waters et al., 1994, revised 2021). Motionprint Ergo uses this standard as its calculation basis.</p>
 
-        <h3>Body model</h3>
-        <p>Motionprint Ergo uses the standard Xsens 23-segment body model. Each segment has its own position and orientation tracked independently at every frame.</p>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Automated measurement</div>
+            <p>Motionprint Ergo derives the horizontal distance (H), vertical hand height (V), vertical travel distance (D), and asymmetry angle (A) automatically from your MVNX motion capture file — no tape measure required during the recording.</p>
+          </div>
+        </div>
 
-        <div class="segment-grid">
-          <div class="segment-group">
-            <div class="segment-group-title">Spine &amp; Head</div>
-            <ul>
-              <li>Pelvis</li>
-              <li>L5</li>
-              <li>L3</li>
-              <li>T12</li>
-              <li>T8</li>
-              <li>Neck</li>
-              <li>Head</li>
-            </ul>
+        <!-- ── SECTION 2 ── -->
+        <h2 id="seven-multipliers"><span class="step-num">2</span> The Seven Multipliers</h2>
+        <p>The RWL is calculated by starting from a fixed Load Constant (LC = 23 kg) and applying six task-specific multipliers. Each multiplier has a value between 0 and 1 — the worse the condition, the lower the multiplier and the lower the resulting RWL.</p>
+
+        <div class="multiplier-grid">
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">LC</div>
+            <div>
+              <div class="multiplier-name">Load Constant</div>
+              <p class="multiplier-desc">A fixed reference weight of 23 kg representing the maximum acceptable load under ideal conditions.</p>
+            </div>
           </div>
-          <div class="segment-group">
-            <div class="segment-group-title">Upper Limbs (×2)</div>
-            <ul>
-              <li>Shoulder (R &amp; L)</li>
-              <li>Upper Arm (R &amp; L)</li>
-              <li>Forearm (R &amp; L)</li>
-              <li>Hand (R &amp; L)</li>
-            </ul>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">HM</div>
+            <div>
+              <div class="multiplier-name">Horizontal Multiplier</div>
+              <p class="multiplier-desc">Adjusts for the horizontal distance from the worker's ankles to the hands at the lift origin. Greater reach reduces the multiplier.</p>
+              <div class="multiplier-formula">HM = 25 / H &nbsp;(if H &gt; 63 cm, HM = 0)</div>
+            </div>
           </div>
-          <div class="segment-group">
-            <div class="segment-group-title">Lower Limbs (×2)</div>
-            <ul>
-              <li>Upper Leg (R &amp; L)</li>
-              <li>Lower Leg (R &amp; L)</li>
-              <li>Foot (R &amp; L)</li>
-              <li>Toe (R &amp; L)</li>
-            </ul>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">VM</div>
+            <div>
+              <div class="multiplier-name">Vertical Multiplier</div>
+              <p class="multiplier-desc">Adjusts for the vertical height of the hands above the floor at the lift origin. The optimal hand height is 75 cm; deviations above or below reduce the multiplier.</p>
+              <div class="multiplier-formula">VM = 1 − 0.003 × |V − 75|</div>
+            </div>
+          </div>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">DM</div>
+            <div>
+              <div class="multiplier-name">Distance Multiplier</div>
+              <p class="multiplier-desc">Adjusts for the vertical travel distance of the load between lift origin and destination. Longer lifts reduce the multiplier.</p>
+              <div class="multiplier-formula">DM = 0.82 + (4.5 / D)</div>
+            </div>
+          </div>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">AM</div>
+            <div>
+              <div class="multiplier-name">Asymmetry Multiplier</div>
+              <p class="multiplier-desc">Adjusts for the angular displacement of the load from the worker's midline — i.e. how much the trunk is twisted during the lift. Derived automatically from the motion capture data.</p>
+              <div class="multiplier-formula">AM = 1 − (0.0032 × A)</div>
+            </div>
+          </div>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">FM</div>
+            <div>
+              <div class="multiplier-name">Frequency Multiplier</div>
+              <p class="multiplier-desc">Adjusts for how often lifting tasks are performed and for how long. Values are looked up from the NIOSH frequency table based on lifts per minute and shift duration.</p>
+            </div>
+          </div>
+          <div class="multiplier-row">
+            <div class="multiplier-abbr">CM</div>
+            <div>
+              <div class="multiplier-name">Coupling Multiplier</div>
+              <p class="multiplier-desc">Adjusts for the quality of the grip between the worker's hands and the load. Values are Good (1.0), Fair (0.95), or Poor (0.90), depending on coupling quality and vertical hand height.</p>
+            </div>
           </div>
         </div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Supported formats</div>
-            <p>Motionprint Ergo primarily supports the MVNX format. For specific assessments, CSV input may also be supported. Preprocessing scripts are available for trimming recordings and regenerating derived variables when raw exports require adjustment before import.</p>
+            <div class="callout-label">Note on FM and CM</div>
+            <p>The Frequency Multiplier (FM) and Coupling Multiplier (CM) require inputs that cannot be derived directly from motion capture data. FM depends on the number of lifts per minute and shift duration; CM depends on grip quality. These are entered manually when setting up the assessment in Motionprint Ergo.</p>
           </div>
         </div>
 
-        <!-- ── SECTION 2 ── -->
-        <h2 id="data-conversion"><span class="step-num">2</span> Data Conversion</h2>
-        <p>Before ergonomic metrics can be computed, the raw orientation and position data from the MVNX file must be converted into the angle and distance representations that assessment methods work with.</p>
+        <!-- ── SECTION 3 ── -->
+        <h2 id="rwl"><span class="step-num">3</span> Recommended Weight Limit (RWL)</h2>
+        <p>The RWL brings all seven factors together into a single figure representing the maximum load considered safe for the assessed task conditions:</p>
 
-        <h3>Quaternion to joint angles</h3>
-        <p>Segment orientations in the MVNX file are stored as quaternions — a compact, gimbal-lock-free representation of 3D rotation. To compute joint angles, Motionprint Ergo converts relative quaternions between adjacent body segments into Euler angle representations using specific axis permutations that match the anatomical joint convention for each joint.</p>
-        <p>This produces the three-axis joint angles (flexion/extension, axial rotation, lateral bending or abduction/adduction) used in posture classification and biomechanical calculations. The Xsens MVN Engine applies filtering during the capture session itself to produce clean orientation data; Motionprint Ergo performs additional post-processing to ensure data quality and consistency across the full recording before passing it to the assessment pipeline.</p>
+        <div class="formula-block">
+          <span class="formula-label">Recommended Weight Limit</span>
+          RWL = LC × HM × VM × DM × AM × FM × CM
+        </div>
 
-        <h3>Frame-by-frame processing</h3>
-        <p>Every derived metric — posture angles, hand distances, joint loads, asymmetry values, and rolling risk scores — is computed independently for every frame in the recording. A 60-second recording at 60 Hz produces 3,600 data points per metric. This frame-level computation creates the full time-series dataset rendered as interactive graphs in the Analysis tab, allowing you to identify the exact moment in the recording where a high-risk posture occurred.</p>
+        <p>A low RWL does not necessarily mean the workplace is dangerous — it reflects the task conditions. If the actual load weight is at or below the RWL, the LI will be 1.0 or less, and the risk is considered acceptable.</p>
+
+        <h3>Additional modifiers in Motionprint Ergo</h3>
+        <p>For tasks with non-standard conditions, Motionprint Ergo applies additional multipliers on top of the core NIOSH equation:</p>
+
+        <table class="threshold-table">
+          <thead>
+            <tr>
+              <th>Modifier</th>
+              <th>Factor</th>
+              <th>When applied</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Pf</strong> — Two-person lift</td>
+              <td><code>0.85</code></td>
+              <td>Load is carried by two workers simultaneously</td>
+            </tr>
+            <tr>
+              <td><strong>Tf</strong> — Additional tasks</td>
+              <td><code>0.80</code></td>
+              <td>Worker performs other physically demanding tasks beyond lifting</td>
+            </tr>
+            <tr>
+              <td><strong>Of</strong> — One-hand lift</td>
+              <td><code>0.60</code></td>
+              <td>Load is lifted with a single hand</td>
+            </tr>
+            <tr>
+              <td><strong>eM</strong> — Extended duration</td>
+              <td>Variable</td>
+              <td>Work shift exceeds 8 hours; factor scales with shift length</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Analysis tab — frame-by-frame time-series graph</div>
-          <div class="media-placeholder-desc">Screenshot of the Analysis tab in Motionprint Ergo showing the time-series line chart of a key metric (e.g. trunk angle or asymmetry score) across the full recording, with peak markers highlighted. Provided by client.</div>
+          <div class="media-placeholder-title">NIOSH multiplier breakdown in Motionprint Ergo</div>
+          <div class="media-placeholder-desc">Screenshot of the In-Depth Analysis tab showing the individual multiplier values (HM, VM, DM, AM, FM, CM) used in the RWL calculation for a single assessed lift. Provided by client.</div>
         </div>
 
-        <!-- ── SECTION 3 ── -->
-        <h2 id="posture-classification"><span class="step-num">3</span> Posture Classification</h2>
-        <p>Alongside angle computation, Motionprint Ergo classifies the worker's body posture for every frame. This classification is used in the KIM-LHC assessment — which scores posture across 10 body regions — and populates the posture breakdown view in the results screen.</p>
+        <!-- ── SECTION 4 ── -->
+        <h2 id="lifting-index"><span class="step-num">4</span> Lifting Index (LI)</h2>
+        <p>The Lifting Index expresses how the actual load compares to the Recommended Weight Limit:</p>
 
-        <h3>Classification logic</h3>
-        <p>Postures such as upright standing, trunk bending, lateral inclination, and trunk rotation are identified frame-by-frame using proprietary classification algorithms applied to the computed joint angles. Each body region is assigned to a posture category based on the angle ranges it falls within at that frame.</p>
+        <div class="formula-block">
+          <span class="formula-label">Lifting Index</span>
+          LI = Load Weight / RWL
+        </div>
+
+        <p>The LI is the primary risk indicator reported by Motionprint Ergo. The four risk levels are:</p>
 
         <table class="threshold-table">
           <thead>
             <tr>
-              <th>Posture type</th>
-              <th>Classification threshold</th>
-              <th>Body region</th>
+              <th>LI range</th>
+              <th>Risk level</th>
+              <th>Interpretation</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Trunk rotation</td>
-              <td>Axial rotation <code>&gt; 10°</code></td>
-              <td>L5 / T12 joint</td>
+              <td><code>LI ≤ 1.0</code></td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+              <td>Acceptable for most workers. Task conditions are within the recommended limits.</td>
             </tr>
             <tr>
-              <td>Lateral trunk inclination</td>
-              <td>Lateral bending <code>&gt; 10°</code></td>
-              <td>L5 / T12 joint</td>
+              <td><code>1.0 &lt; LI ≤ 2.0</code></td>
+              <td><span class="risk-badge risk-medium">Moderate</span></td>
+              <td>Elevated risk for some workers. Consider task redesign or worker rotation.</td>
             </tr>
             <tr>
-              <td>Trunk flexion</td>
-              <td>Flexion/extension angle ranges</td>
-              <td>L5 / T12 joint</td>
+              <td><code>2.0 &lt; LI ≤ 3.0</code></td>
+              <td><span class="risk-badge risk-high">High</span></td>
+              <td>Significant risk for most workers. Job redesign is recommended.</td>
+            </tr>
+            <tr>
+              <td><code>LI &gt; 3.0</code></td>
+              <td><span class="risk-badge risk-vhigh">Very High</span></td>
+              <td>Unacceptable risk. Immediate intervention required before work continues.</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>Transitions and boundary values</h3>
-        <p>The classification engine is designed to handle transitions smoothly — posture categories are not assigned per-frame in isolation but take the movement trajectory into account to avoid spurious rapid switching between categories at boundary values. This ensures that brief postural fluctuations at a threshold boundary do not inflate the classified time in a higher-risk posture category.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type is-diagram">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Custom diagram
-          </span>
-          <div class="media-placeholder-title">Body posture classification diagram</div>
-          <div class="media-placeholder-desc">Anatomical silhouette showing the 10 KIM-LHC body regions with colour-coded posture categories. Each region should display the active posture class for a sample frame. Custom graphic.</div>
-        </div>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="assessment-inputs"><span class="step-num">4</span> Assessment Inputs</h2>
-        <p>Once joint angles and posture classifications are established, Motionprint Ergo extracts the specific metrics required by the selected assessment method. These are passed to the NIOSH or KIM-LHC scoring modules to produce the final risk score.</p>
-
-        <h3>Metrics extracted</h3>
-        <ul>
-          <li><strong>Joint loads</strong> — estimated mechanical load at key joints (spine, shoulders, hips) based on segment positions and movement dynamics</li>
-          <li><strong>Asymmetry angles</strong> — the angle of trunk asymmetry relative to the hands, computed at every frame of the lifting moment</li>
-          <li><strong>Ergonomic risk scores</strong> — the intermediate sub-scores for each assessment factor, aggregated into the final risk score</li>
-        </ul>
-
-        <h3>Key derived variables</h3>
-        <p>Several biomechanical variables required by the NIOSH Lifting Equation are derived automatically from the motion data, eliminating the need for manual measurement during or after the recording.</p>
-        <ul>
-          <li><strong>H — Horizontal distance</strong>: horizontal distance between the worker's ankle mid-point and the mid-point of the hands at lift origin, from 3D segment positions</li>
-          <li><strong>V — Vertical hand height</strong>: height of the hands above the floor at lift origin, from the Y-axis position of the hand segments relative to the calibrated floor plane</li>
-          <li><strong>D — Vertical travel distance</strong>: absolute vertical distance the hands travel between lift origin and destination</li>
-          <li><strong>A — Asymmetry angle</strong>: angular deviation of the pelvis mid-sagittal plane from the hands mid-sagittal plane</li>
-        </ul>
-
-        <h3>Asymmetry multiplier (AM)</h3>
-        <p>The asymmetry angle A is used to compute the <strong>Asymmetry Multiplier (AM)</strong>, one of the six multipliers in the NIOSH Lifting Equation. A higher asymmetry angle results in a lower AM, which increases the overall Lifting Index.</p>
-
-        <div class="formula-block">
-          <span class="formula-label">NIOSH Asymmetry Multiplier</span>
-          AM = 1 − (0.0032 × A)
-        </div>
-
-        <p>Where <strong>A</strong> is the asymmetry angle in degrees. An asymmetry angle of 0° gives AM = 1.0 (no penalty); at A = 135° the AM reaches its minimum value of 0.57. Values of A beyond 135° are capped at 135° per the NIOSH standard.</p>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Note</div>
-            <p>H, V, D, and A are each computed for every frame of the lifting moment. The NIOSH calculation uses the values at the lift origin (start of the moment) for H, V, and A, and the full vertical travel range for D. Peak and mean values for each variable are available in the detailed output.</p>
+            <div class="callout-label">Risk level interpretation</div>
+            <p>The LI risk levels are based on population-level data. An LI of 1.0 does not guarantee that the task is safe for every individual worker — it means that under NIOSH methodology the task is acceptable for the general working population. Workers with pre-existing conditions may require more conservative limits.</p>
           </div>
         </div>
 
         <!-- ── SECTION 5 ── -->
-        <h2 id="error-handling"><span class="step-num">5</span> Error Handling</h2>
-        <p>Motionprint Ergo validates the MVNX file and the motion data at multiple points in the processing pipeline. When issues are detected, the platform provides clear feedback rather than silently producing unreliable results.</p>
+        <h2 id="implementation"><span class="step-num">5</span> Implementation in Motionprint Ergo</h2>
+        <p>Motionprint Ergo implements the full NIOSH Lifting Equation in a modular Python-based processing pipeline. The core calculation logic is split across dedicated modules to support both single-task and multi-task (Composite Lifting Index) assessments.</p>
 
-        <h3>File validation</h3>
-        <p>Before any processing begins, the imported file is checked for:</p>
-        <ul>
-          <li>Presence of all 23 required body segments</li>
-          <li>Valid joint angle data for the joints used in the selected assessment method</li>
-          <li>Consistent frame rate throughout the recording</li>
-          <li>Correct coordinate mapping and segment orientation format</li>
-          <li>Minimum frame count (recordings too short cannot produce a meaningful assessment)</li>
-          <li>No corrupted or truncated frame data</li>
-        </ul>
-        <p>If validation fails, Motionprint Ergo displays a specific error message indicating which check failed and what needs to be corrected before re-importing.</p>
-
-        <h3>Missing and noisy data</h3>
-        <p>For cases where data is partially missing or contains sensor artefacts, the platform uses fallback mechanisms to handle edge cases gracefully. Where a reliable result cannot be produced, the platform defaults to a degraded output mode — for example, flagging affected metrics in the report rather than silently computing from incomplete data. User alerts are shown in the results view whenever a fallback has been applied, so you always know the confidence level of each output value.</p>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div>
-            <div class="callout-label">Best practice</div>
-            <p>To minimise validation errors, always export MVNX files with the default Xsens MVN settings and ensure all 17 sensors are connected and calibrated before recording. Incomplete sensor sets will result in missing segment data.</p>
+        <h3>Calculation workflow</h3>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="workflow-step-num">1</div>
+            <div>
+              <div class="workflow-step-title">Input data</div>
+              <p class="workflow-step-desc">Biomechanical variables (H, V, D, A) are extracted automatically from the MVNX file. User-provided inputs — load weight, coupling quality, lift frequency, and shift duration — are entered in the assessment setup panel.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">2</div>
+            <div>
+              <div class="workflow-step-title">Multiplier computation</div>
+              <p class="workflow-step-desc">Each of the seven multipliers is computed in <code>niosh_multipliers.py</code>. HM, VM, DM, and AM are derived from motion data; FM and CM use the user-provided values. Any additional modifiers (Pf, Tf, Of, eM) are applied if enabled.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">3</div>
+            <div>
+              <div class="workflow-step-title">RWL and LI calculation</div>
+              <p class="workflow-step-desc"><code>niosh_rwl_calculator.py</code> combines the multipliers into the final RWL and divides the entered load weight by the RWL to produce the Lifting Index. For multi-task sessions, <code>niosh_cli.py</code> handles the Composite Lifting Index (CLI) calculation across all sub-tasks.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">4</div>
+            <div>
+              <div class="workflow-step-title">Report output</div>
+              <p class="workflow-step-desc">Results are presented across three report tabs: Score Overview (RWL, LI, risk level), In-Depth Analysis (individual multiplier breakdown, time-series graphs), and Findings (prioritised recommendations based on which multipliers have the greatest reduction effect).</p>
+            </div>
           </div>
         </div>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">NIOSH Score Overview tab</div>
+          <div class="media-placeholder-desc">Screenshot of the Score Overview tab in a completed NIOSH assessment, showing the RWL value, Lifting Index, colour-coded risk level badge, and the contributing multiplier summary. Provided by client.</div>
+        </div>
+
+        <h3>Composite Lifting Index (CLI)</h3>
+        <p>When a worker performs multiple distinct lifting sub-tasks during a shift, the NIOSH methodology provides the Composite Lifting Index (CLI) to aggregate the overall risk. Motionprint Ergo computes the CLI across all configured sub-tasks, weighting each by its frequency to produce a combined risk score that accounts for the cumulative physical demand of the full work session.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -481,13 +541,13 @@
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
+              <a href="motion-data-processing-explained.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Motion Data Processing Explained</span>
+              </a>
               <a href="how-motionprint-ergo-works.html" class="related-card">
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">How Motionprint Ergo Works</span>
-              </a>
-              <a href="customization-branding.html" class="related-card">
-                <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">Customization &amp; Branding</span>
               </a>
             </div>
           </div>
@@ -547,8 +607,8 @@
 </footer>
 
 <script>
-  var sections = ['raw-input','data-conversion','posture-classification','assessment-inputs','error-handling'];
-  var tocIds   = ['toc-input','toc-conversion','toc-posture','toc-assessment','toc-errors'];
+  var sections = ['overview','seven-multipliers','rwl','lifting-index','implementation'];
+  var tocIds   = ['toc-overview','toc-multipliers','toc-rwl','toc-li','toc-implementation'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
