@@ -1096,6 +1096,13 @@
     requestAnimationFrame(sync);
   }
   sync();
+  /* Play when scrolled into view — fixes mobile autoplay */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ e.isIntersecting ? video.play() : video.pause(); });
+    },{threshold:0.1});
+    obs.observe(video);
+  }
 })();
 </script>
 
