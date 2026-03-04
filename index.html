@@ -715,6 +715,9 @@
       .nav-hamburger { display: block; }
       .hero-actions { display: none; }
       .ergo-buttons { display: none; }
+      .app-tabs-bar { display: none; }
+      .acard-risk { display: none; }
+      .app-body { grid-template-columns: 1fr; }
       .hero { padding: 108px 0 64px; }
       .problem-stats { grid-template-columns: 1fr; }
       .ps-item { border-right: none; border-bottom: 1px solid var(--border); }
@@ -733,7 +736,6 @@
     @media (max-width: 520px) {
       .methods-grid { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
-      .app-body { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1040,7 +1042,7 @@
                 <div class="arow"><span class="arow-k">Tasks</span><span class="arow-v">3 detected</span></div>
                 <div class="arow"><span class="arow-k">CLI</span><span class="arow-v red">3.1 ⚠</span></div>
               </div>
-              <div class="acard">
+              <div class="acard acard-risk">
                 <div class="acard-lbl">Risk per task</div>
                 <div class="rrow" style="margin-bottom:8px"><span class="rname">Task A – Assembly</span><span class="rdot" style="background:#ef4444"></span><span class="rlbl" style="color:#ef4444">STLI 2.8</span></div>
                 <div class="rrow" style="margin-bottom:8px"><span class="rname">Task B – Transport</span><span class="rdot" style="background:#f59e0b"></span><span class="rlbl" style="color:#f59e0b">STLI 1.4</span></div>
