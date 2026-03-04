@@ -718,7 +718,10 @@
       .app-tabs-bar { display: none; }
       .acard-risk { display: none; }
       .app-body { grid-template-columns: 1fr; }
-      .hero { padding: 108px 0 64px; }
+      .hero { padding: 100px 0 48px; }
+      .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .pricing-section, .cta-section { padding: 64px 0; }
+      .section-header { margin-bottom: 36px; }
+      .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
       .problem-stats { grid-template-columns: 1fr; }
       .ps-item { border-right: none; border-bottom: 1px solid var(--border); }
       .ps-item:last-child { border-bottom: none; }
@@ -1499,6 +1502,8 @@
     var topic;
     if (dataTopic === 'method') {
       topic = 'method';
+    } else if (dataTopic === 'Trial licence request') {
+      topic = 'trial';
     } else if (dataPlan) {
       topic = 'pricing';
     } else if (btnText.indexOf('demo') !== -1) {
@@ -1512,7 +1517,11 @@
     }
 
     // Set title, topic dropdown, and optional message pre-fill
-    if (topic === 'method') {
+    if (topic === 'trial') {
+      title.textContent = 'Request a trial licence';
+      topicSelect.value = 'Trial licence request';
+      msgField.placeholder = 'Tell us about your use case — we\'ll set up a trial licence for you.';
+    } else if (topic === 'method') {
       title.textContent = 'Suggest a method';
       topicSelect.value = 'Method suggestion';
       msgField.placeholder = 'Which assessment method would you like to see supported?';
