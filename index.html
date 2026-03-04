@@ -401,6 +401,7 @@
     .ergo-section { padding: 96px 0; background: var(--white); }
     .ergo-inner { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; }
     .ergo-features { list-style: none; display: flex; flex-direction: column; margin: 28px 0 36px; }
+    .ergo-buttons { display: flex; }
     .ergo-feat {
       display: flex; align-items: flex-start; gap: 14px;
       padding: 18px 0; border-bottom: 1px solid var(--border);
@@ -705,12 +706,15 @@
       .hero-right { order: -1; }
       .pricing-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .ergo-inner > div { min-width: 0; }
+      .app-shell { margin: 0 auto; }
     }
     @media (max-width: 768px) {
       .nav-links, .nav-signin { display: none; }
       .nav-download { display: none; }
       .nav-hamburger { display: block; }
       .hero-actions { display: none; }
+      .ergo-buttons { display: none; }
       .hero { padding: 108px 0 64px; }
       .problem-stats { grid-template-columns: 1fr; }
       .ps-item { border-right: none; border-bottom: 1px solid var(--border); }
@@ -1004,7 +1008,7 @@
             </div>
           </li>
         </ul>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="ergo-buttons" style="gap:12px;flex-wrap:wrap;">
           <a href="#contact" class="btn btn-primary">Request a demo</a>
           <a href="#how" class="btn btn-secondary">How it works</a>
         </div>
