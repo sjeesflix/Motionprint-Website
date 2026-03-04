@@ -72,60 +72,6 @@
     .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
     .btn-ghost:hover { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.3); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,15,18,.94);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      height: 64px;
-      transform: translateZ(0); will-change: transform;
-    }
-    .nav-inner {
-      max-width: 1160px; margin: 0 auto; padding: 0 28px;
-      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 22px; color: #fff;
-      text-decoration: none; letter-spacing: -.01em; flex-shrink: 0;
-    }
-    .nav-links {
-      display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center;
-    }
-    .nav-links a {
-      font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55);
-      text-decoration: none; padding: 6px 12px; border-radius: 6px;
-      transition: color .15s, background .15s;
-    }
-    .nav-links a:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
-    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .nav-signin {
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.45);
-      text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: color .15s;
-    }
-    .nav-signin:hover { color: rgba(255,255,255,.8); }
-    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; outline: none; -webkit-tap-highlight-color: transparent; }
-    .nav-download:hover { background: rgba(255,255,255,.14); }
-    .nav-download:active, .nav-download:focus { background: rgba(255,255,255,.08); outline: none; }
-    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent; transition: background-color .15s; }
-    .nav-demo:hover { background: var(--red-light); }
-    .nav-demo:active, .nav-demo:focus { background: var(--red); outline: none; }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
-    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
-
-    /* Mobile drawer */
-    .mobile-nav {
-      display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-      background: var(--dark); z-index: 99; padding: 20px 28px;
-      flex-direction: column;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65);
-      text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s;
-    }
-    .mobile-nav a:hover { color: #fff; }
-    .mobile-nav .btn { margin-top: 24px; text-align: center; justify-content: center; }
 
     /* ── HERO ── */
     .hero {
@@ -710,15 +656,13 @@
       .app-shell { margin: 0 auto; }
     }
     @media (max-width: 768px) {
-      .nav-links, .nav-signin { display: none; }
-      .nav-download { display: none; }
-      .nav-hamburger { display: block; }
       .hero-actions { display: none; }
       .ergo-buttons { display: none; }
       .app-tabs-bar { display: none; }
       .acard-risk { display: none; }
       .app-body { grid-template-columns: 1fr; }
       .hero { padding: 100px 0 48px; }
+      .hero-sub { font-size: 15px; }
       .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .pricing-section, .cta-section { padding: 64px 0; }
       .section-header { margin-bottom: 36px; }
       .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
@@ -734,6 +678,7 @@
       .custom-card { padding: 24px 20px; }
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card { padding: 28px 24px; }
+      .multiyear-note { display: none; }
       .forwho-inner { gap: 32px; }
       .cta-actions .btn { width: 100%; justify-content: center; }
       .cta-title br { display: none; }
@@ -747,44 +692,11 @@
       .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#ergo">Motionprint Ergo</a></li>
-      <li><a href="#custom">Custom Solutions</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <div class="nav-cta">
-      <!-- <a href="#" class="nav-signin">Sign in</a> -->
-      <a href="download.html" class="nav-download">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
-      </a>
-      <a href="#contact" class="nav-demo">Request demo</a>
-    </div>
-    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
-      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-</nav>
-
-<div class="mobile-nav" id="mnav">
-  <a href="#ergo"    onclick="document.getElementById('mnav').classList.remove('open')">Motionprint Ergo</a>
-  <a href="#custom"  onclick="document.getElementById('mnav').classList.remove('open')">Custom Solutions</a>
-  <a href="#pricing" onclick="document.getElementById('mnav').classList.remove('open')">Pricing</a>
-  <a href="resources.html">Resources</a>
-  <a href="about.html">About</a>
-  <a href="#contact" class="btn btn-primary" onclick="document.getElementById('mnav').classList.remove('open')">Request demo</a>
-</div>
+<script src="nav.js"></script>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -905,7 +817,7 @@
     <div class="section-header">
       <span class="eyebrow">The challenge</span>
       <h2 class="section-title">The problem with <em>manual assessments</em></h2>
-      <p class="section-sub">Traditional ergonomic analysis is slow, subjective and hard to scale — especially in industrial environments with repetitive, variable tasks.</p>
+      <p class="section-sub">Traditional ergonomic analysis is slow, subjective and hard to scale — especially across repetitive industrial tasks.</p>
     </div>
     <div class="problem-stats">
       <div class="ps-item">
@@ -918,7 +830,7 @@
       </div>
       <div class="ps-item">
         <span class="ps-num">€400<sup>+</sup></span>
-        <span class="ps-label">per assessment by a certified ergonomist</span>
+        <span class="ps-label">per assessment by an ergonomist</span>
       </div>
     </div>
     <div class="problem-grid">
@@ -1347,7 +1259,7 @@
         <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Enterprise / Academic – 20+ seats">Contact us</a>
       </div>
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
+    <p class="multiyear-note" style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
     <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;">Not sure yet? <a href="#contact" onclick="openContactForm(event)" data-topic="Trial licence request" style="color:var(--red);text-decoration:none;font-weight:600;">Ask about a trial licence →</a></p>
   </div>
 </section>
@@ -1475,14 +1387,6 @@
 
 <script>
   // Close mobile nav when clicking outside
-  document.addEventListener('click', function(e) {
-    const nav = document.getElementById('mnav');
-    const btn = document.querySelector('.nav-hamburger');
-    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-
   // Open contact form
   function openContactForm(e) {
     if (e) e.preventDefault();

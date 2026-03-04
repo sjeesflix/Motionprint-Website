@@ -54,49 +54,6 @@
     .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
     .btn-ghost:hover { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.3); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
-    transform: translateZ(0); will-change: transform;
-    }
-    .nav-inner {
-      max-width: 1160px; margin: 0 auto; padding: 0 28px;
-      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .nav-logo { flex-shrink: 0; }
-    .nav-links {
-      display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center;
-    }
-    .nav-links a {
-      font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55);
-      text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
-    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; outline: none; -webkit-tap-highlight-color: transparent; }
-    .nav-download:hover { background: rgba(255,255,255,.14); }
-    .nav-download:active, .nav-download:focus { background: rgba(255,255,255,.08); outline: none; }
-    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent; transition: background-color .15s; }
-    .nav-demo:hover { background: var(--red-light); }
-    .nav-demo:active, .nav-demo:focus { background: var(--red); outline: none; }
-    .nav-signin { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.45); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: color .15s; }
-    .nav-signin:hover { color: rgba(255,255,255,.8); }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
-    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
-
-    .mobile-nav {
-      display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-      background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a {
-      font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65);
-      text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s;
-    }
-    .mobile-nav a:hover { color: #fff; }
-    .mobile-nav .btn { margin-top: 24px; justify-content: center; }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -399,59 +356,33 @@
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
-      .nav-links, .nav-signin { display: none; }
-      .nav-download { display: none; }
-      .nav-hamburger { display: block; }
       .cards-grid { grid-template-columns: 1fr; }
       .cards-grid-2 { grid-template-columns: 1fr; }
       .video-cat-nav { grid-template-columns: 1fr 1fr; }
       .ref-row { flex-wrap: wrap; gap: 10px; }
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; }
       .form-row { grid-template-columns: 1fr; }
+      #validation { display: none; }
+      .page-hero { padding: 100px 0 40px; }
+      .resources-section { padding: 48px 0; }
+      #support { padding-top: 12px; }
+      .cta-section { padding: 64px 0; }
+      .section-header { margin-bottom: 28px; }
+      .video-cat-nav { margin-top: 0; }
+      .cta-title { font-size: 26px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
     }
     @media (max-width: 520px) {
       .case-stats { flex-direction: column; gap: 12px; }
       .video-cat-nav { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <img src="Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;display:block;">
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html#ergo">Motionprint Ergo</a></li>
-      <li><a href="index.html#custom">Custom Solutions</a></li>
-      <li><a href="index.html#pricing">Pricing</a></li>
-      <li><a href="resources.html" class="active">Resources</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <div class="nav-cta">
-      <!-- <a href="#" class="nav-signin">Sign in</a> -->
-      <a href="download.html" class="nav-download">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download
-      </a>
-      <a href="#contact" class="nav-demo">Request demo</a>
-    </div>
-    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
-      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-  </div>
-</nav>
-
-<div class="mobile-nav" id="mnav">
-  <a href="index.html#ergo">Motionprint Ergo</a>
-  <a href="index.html#custom">Custom Solutions</a>
-  <a href="index.html#pricing">Pricing</a>
-  <a href="resources.html">Resources</a>
-  <a href="about.html">About</a>
-  <a href="#contact" class="btn btn-primary">Request demo</a>
-</div>
+<script src="nav.js"></script>
 
 <!-- ── PAGE HERO ── -->
 <section class="page-hero">
@@ -1169,7 +1100,16 @@
       </div>
       <!-- Contact form -->
       <div>
-        <h3 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:20px;">Contact support</h3>
+        <div id="supportFormIntro">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;">Contact support</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:20px;">Didn't find your answer in the FAQ? Send us a message and we'll get back to you as soon as possible.</p>
+          <button type="button" class="btn btn-primary" id="showSupportForm" style="width:100%;justify-content:center;">Send a message</button>
+        </div>
+        <div id="supportFormWrapper" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <h3 style="font-size:18px;font-weight:700;color:var(--text);margin:0;">Contact support</h3>
+          <button type="button" id="hideSupportForm" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--muted);line-height:1;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        </div>
         <form class="contact-form" id="supportForm" novalidate>
           <div class="form-row">
             <div class="form-group">
@@ -1196,6 +1136,7 @@
           <button type="submit" class="form-submit" id="supSubmitBtn">Send message</button>
           <div id="supStatus" style="margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:500;display:none;"></div>
         </form>
+        </div><!-- /supportFormWrapper -->
       </div>
     </div>
   </div>
@@ -1209,8 +1150,7 @@
       <h2 class="cta-title">Ready to automate your<br><em>ergonomic workflow?</em></h2>
       <p class="cta-sub">Book a demo and see Motionprint Ergo in action with your own Xsens data.</p>
       <div class="cta-actions" id="ctaButtons">
-        <a href="#contact" class="btn btn-primary">Request a demo</a>
-        <a href="#contact" class="btn btn-ghost">Contact us</a>
+        <a href="#contact" class="btn btn-ghost">Book a demo</a>
       </div>
       <div class="contact-card" id="contactCard">
         <div class="form-header">
@@ -1330,14 +1270,6 @@
   setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' });
   setupCategoryGroup({ group: 'kb',     parentId: 'knowledge',  subsectionClass: 'kb-subsection',    backLinkClass: 'back-link-kb'     });
 
-  document.addEventListener('click', function(e) {
-    const nav = document.getElementById('mnav');
-    const btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-
   // ── Contact form ──
   function openContactForm(e) {
     if (e) e.preventDefault();
@@ -1348,7 +1280,7 @@
     var el = (e && e.currentTarget) ? e.currentTarget : null;
     var btnText = el ? el.textContent.trim().toLowerCase() : '';
     if (btnText.indexOf('contact') !== -1) { title.textContent = 'Contact us'; topicSelect.value = 'General inquiry'; }
-    else { title.textContent = 'Request a demo'; topicSelect.value = 'Demo request'; }
+    else { title.textContent = 'Book a demo'; topicSelect.value = 'Demo request'; }
     if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
     setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
     setTimeout(function() { card.querySelector('input.form-input-cf').focus(); }, 450);
@@ -1387,6 +1319,16 @@
       finally { btn.classList.remove('loading'); btn.disabled = false; }
     });
   })();
+
+  // ── Show support form on button click ──
+  document.getElementById('showSupportForm').addEventListener('click', function() {
+    document.getElementById('supportFormIntro').style.display = 'none';
+    document.getElementById('supportFormWrapper').style.display = 'block';
+  });
+  document.getElementById('hideSupportForm').addEventListener('click', function() {
+    document.getElementById('supportFormWrapper').style.display = 'none';
+    document.getElementById('supportFormIntro').style.display = 'block';
+  });
 
   // ── Support form ──
   (function() {
