@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — Motionprint Ergo</title>
+  <meta name="description" content="A full history of every Motionprint Ergo release — what was added, improved and fixed in each version." />
+  <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #ea523b;
+      --red-dark: #c93f28;
+      --red-light: #f06449;
+      --dark: #0d0f12;
+      --dark-2: #161a20;
+      --dark-3: #1e2530;
+      --text: #111827;
+      --muted: #6b7280;
+      --muted-2: #9ca3af;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f9fafb;
+      --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+    .eyebrow-light { color: rgba(255,255,255,.45); }
+    .eyebrow-light::before { background: var(--red); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { text-decoration: none; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; outline: none; -webkit-tap-highlight-color: transparent; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-download:active, .nav-download:focus { background: rgba(255,255,255,.08); outline: none; }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; white-space: nowrap; outline: none; -webkit-tap-highlight-color: transparent; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-demo:active, .nav-demo:focus { background: var(--red); outline: none; }
+    .nav-hamburger { display: none; background: none; border: none; padding: 4px; color: rgba(255,255,255,.7); flex-shrink: 0; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; flex-direction: column; gap: 4px; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 99; background: var(--dark); padding: 20px 28px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+    .mobile-nav .btn-primary { margin-top: 24px; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600; background: var(--red); color: #fff; border-radius: 8px; padding: 13px 24px; text-decoration: none; border: none; }
+
+    /* ── HERO ── */
+    .cl-hero {
+      background: var(--dark); padding: 112px 0 64px;
+      position: relative; overflow: hidden;
+    }
+    .cl-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(234,82,59,.08) 0%, transparent 70%);
+    }
+    .cl-hero-inner { max-width: 680px; position: relative; }
+    .cl-hero h1 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(32px, 4.5vw, 52px); color: #fff;
+      line-height: 1.08; letter-spacing: -.03em; margin-top: 16px;
+    }
+    .cl-hero-sub { font-size: 16px; color: rgba(255,255,255,.42); line-height: 1.65; margin-top: 14px; max-width: 480px; }
+
+    /* ── LAYOUT ── */
+    .cl-body { padding: 64px 0 96px; background: var(--white); }
+    .cl-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .cl-sidebar { position: sticky; top: 88px; }
+    .cl-sidebar-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: 12px;
+    }
+    .cl-version-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .cl-version-link {
+      display: block; font-size: 13px; font-weight: 600; color: var(--muted);
+      text-decoration: none; padding: 6px 10px; border-radius: 6px;
+      transition: color .15s, background .15s;
+    }
+    .cl-version-link:hover { color: var(--text); background: var(--bg); }
+    .cl-version-link.current { color: var(--red); background: rgba(234,82,59,.07); }
+
+    /* ── CHANGELOG ENTRY ── */
+    .cl-entry {
+      border: 1px solid var(--border); border-top: 3px solid var(--red);
+      border-radius: 14px; padding: 32px 36px 36px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+      scroll-margin-top: 88px;
+    }
+    .cl-entry:last-child { margin-bottom: 0; }
+
+    .cl-entry-header {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px; margin-bottom: 28px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .cl-entry-meta { display: flex; align-items: center; gap: 12px; }
+    .cl-version-num {
+      font-family: var(--font-display); font-size: 22px; font-weight: 800;
+      color: var(--text); letter-spacing: -.02em;
+    }
+    .cl-entry-date { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    /* ── RELEASE TYPE BADGES ── */
+    .cl-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+    }
+    .cl-badge-initial { background: rgba(234,82,59,.1); color: var(--red); }
+    /* For future use: */
+    /* .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; } */
+    /* .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; } */
+    /* .cl-badge-major  { background: rgba(139,92,246,.1); color: #7c3aed; } */
+
+    /* ── CHANGE TYPE TAGS ── (for future versions) */
+    /* Usage: add a .cl-tag to each list item to indicate New / Improved / Fixed */
+    /* .cl-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 4px; margin-right: 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .04em; } */
+    /* .cl-tag-new      { background: rgba(34,197,94,.12);  color: #16a34a; } */
+    /* .cl-tag-improved { background: rgba(59,130,246,.12); color: #2563eb; } */
+    /* .cl-tag-fixed    { background: rgba(245,158,11,.12); color: #b45309; } */
+    /* .cl-tag-removed  { background: rgba(239,68,68,.10);  color: #dc2626; } */
+
+    /* ── CONTENT SECTIONS ── */
+    .cl-section { margin-bottom: 24px; }
+    .cl-section:last-child { margin-bottom: 0; }
+    .cl-section-title {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted-2); margin-bottom: 12px;
+    }
+    .cl-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cl-list li {
+      position: relative; padding-left: 14px;
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+    }
+    .cl-list li::before {
+      content: ''; position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--red);
+    }
+    .cl-list li strong { font-weight: 700; color: var(--text); }
+
+    /* Limitations section */
+    .cl-list.cl-list-muted li::before { background: var(--muted-2); }
+
+    /* ── FUTURE STRUCTURE NOTE ── */
+    .cl-future-note {
+      margin-top: 48px; padding: 20px 24px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .cl-future-note p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .cl-future-note strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 56px 0 0; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-logo { text-decoration: none; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.3); line-height: 1.6; max-width: 240px; }
+    .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,.2); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cl-layout { grid-template-columns: 1fr; gap: 0; }
+      .cl-sidebar { position: static; display: flex; align-items: center; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+      .cl-sidebar-label { margin-bottom: 0; }
+      .cl-version-list { flex-direction: row; flex-wrap: wrap; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .cl-hero { padding: 100px 0 40px; }
+      .cl-body { padding: 48px 0 64px; }
+      .cl-entry { padding: 24px 20px 28px; }
+      footer { padding-top: 0; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 20px; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="index.html#custom">Custom Solutions</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="index.html#ergo">Motionprint Ergo</a>
+  <a href="index.html#custom">Custom Solutions</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="resources.html">Resources</a>
+  <a href="about.html">About</a>
+  <a href="index.html#contact" class="btn-primary">Request demo</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="cl-hero">
+  <div class="container">
+    <div class="cl-hero-inner">
+      <span class="eyebrow eyebrow-light">Release notes</span>
+      <h1>Changelog</h1>
+      <p class="cl-hero-sub">A full history of every Motionprint Ergo release — what was added, improved and fixed in each version.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHANGELOG BODY ── -->
+<section class="cl-body">
+  <div class="container">
+    <div class="cl-layout">
+
+      <!-- Sidebar: version index -->
+      <aside class="cl-sidebar" aria-label="Version index">
+        <div class="cl-sidebar-label">Versions</div>
+        <ul class="cl-version-list">
+          <!--
+            Add a new <li> here for each release, newest first.
+            Example:
+            <li><a href="#v1-1-0" class="cl-version-link">v1.1.0</a></li>
+          -->
+          <li><a href="#v1-0-0" class="cl-version-link current">v1.0.0</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main changelog content -->
+      <main>
+
+        <!--
+        ════════════════════════════════════════════════════════════
+        HOW TO ADD A NEW VERSION ENTRY
+        ════════════════════════════════════════════════════════════
+
+        1. Copy the <article> block below as a template.
+        2. Set id="vX-Y-Z" matching the version number (e.g. id="v1-1-0").
+        3. Update the version number, date, and badge type:
+              .cl-badge-minor  → minor update  (new features, no breaking changes)
+              .cl-badge-patch  → patch release  (bug fixes and small improvements)
+              .cl-badge-major  → major release  (breaking changes or full revamp)
+        4. Use the section headings: "New", "Improved", "Fixed" — omit any
+           sections that have no items for that release.
+        5. Add a <li> for this version at the TOP of .cl-version-list in the sidebar.
+        6. Update the download.html "Previous versions" table with the old current
+           version (the one being replaced) and link its installer file.
+
+        Template for a standard release:
+
+        <article class="cl-entry" id="vX-Y-Z">
+          <div class="cl-entry-header">
+            <div class="cl-entry-meta">
+              <span class="cl-version-num">vX.Y.Z</span>
+              <span class="cl-entry-date">Month Year</span>
+            </div>
+            <span class="cl-badge cl-badge-minor">Minor update</span>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">New</h3>
+            <ul class="cl-list">
+              <li><strong>Feature name</strong> — Short description of what it does and why it matters.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Improved</h3>
+            <ul class="cl-list">
+              <li><strong>Thing that changed</strong> — What was improved and what the effect is.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Fixed</h3>
+            <ul class="cl-list">
+              <li><strong>Bug or issue</strong> — What was broken and how it was resolved.</li>
+            </ul>
+          </div>
+        </article>
+
+        ════════════════════════════════════════════════════════════
+        -->
+
+        <!-- ── v1.0.0 — INITIAL RELEASE ── -->
+        <article class="cl-entry" id="v1-0-0">
+          <div class="cl-entry-header">
+            <div class="cl-entry-meta">
+              <span class="cl-version-num">v1.0.0</span>
+              <span class="cl-entry-date">March 2026</span>
+            </div>
+            <span class="cl-badge cl-badge-initial">Initial release</span>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Data input</h3>
+            <ul class="cl-list">
+              <li><strong>MVNX file import</strong> — Direct import of .mvnx files exported from Xsens MVN. Compatible with MVN Awinda and MVN Link suit configurations. No conversion or pre-processing required.</li>
+              <li><strong>Task event definition</strong> — Define one or more task events within a recording to segment and assess individual lifting cycles or handling operations.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Assessment methods</h3>
+            <ul class="cl-list">
+              <li><strong>NIOSH Lifting Equation</strong> — Calculates the Recommended Weight Limit (RWL) and Lifting Index (LI) for single-task lifting. Multi-task sessions produce a Composite Lifting Index (CLI) across all defined task events.</li>
+              <li><strong>KIM-LHC</strong> — Key Indicator Method for Lifting, Holding and Carrying (BAuA standard). Evaluates physical overload risk based on load weight, duration, posture and working conditions, and outputs a risk score with action level classification.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">In-depth analysis</h3>
+            <ul class="cl-list">
+              <li><strong>3D motion playback</strong> — A full-body avatar replays the captured motion data. Supports 1, 2, or 4 viewports in horizontal, vertical, or quad layouts, each with an independent camera angle and free orbit, pan, and zoom.</li>
+              <li><strong>Body risk indicators</strong> — Color-coded markers on key joints update every frame to reflect current biomechanical risk: green (low), orange (medium), or red (high).</li>
+              <li><strong>Score-per-frame graph</strong> — Time-series chart of the selected variable with a three-zone color-coded background. Click or drag to scrub to any frame; the avatar and all panels update in sync.</li>
+              <li><strong>Variable selector</strong> — Switch the plotted variable to drill into individual ergonomic factors. NIOSH: LI / STLI, horizontal distance, vertical distance, asymmetry angle. KIM-LHC: total score, load handling conditions, trunk twist, load distance, hand height, hand/arm position.</li>
+              <li><strong>Frame insights panel</strong> — Shows the numeric value of the selected variable at the current frame, a risk bar indicating where it falls across the three zones, and a zone-distribution pie chart showing the percentage of time spent in each risk zone across the full task.</li>
+              <li><strong>Playback controls</strong> — Play/pause at 0.5×, 1×, and 2× speed, with frame range trimming for isolating specific parts of a recording.</li>
+              <li><strong>Critical moments</strong> — Auto-detected (peak-score frame, sustained high-risk windows) and user-created (mark the current frame or select a range directly on the graph). Each moment is editable with start/end frames and a description, and appears as a shaded overlay on the graph.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Assessment configuration</h3>
+            <ul class="cl-list">
+              <li><strong>NIOSH settings</strong> — Reference mass (LC) selectable from four standard options (EN 1005-2, NIOSH RNLE / ISO 11228-1:2021, 15 kg, 10 kg); analysis mode switchable between Peak Moment (worst-case across all frames) and Origin/Destination (traditional pickup and placement only); ISO 11228-1:2021 Annex E multipliers individually togglable for two-person lifting, additional physical tasks, one-hand lifting, and extended shift duration.</li>
+              <li><strong>KIM-LHC settings</strong> — Fully editable load weight scoring table with separate thresholds for men and women; optional averaged overview across all tasks in the session for consistent load profiles.</li>
+              <li><strong>Auto-generated critical moments</strong> — Toggleable for both methods. When enabled, automatically detects the peak-score frame and sustained high-risk windows in the recording.</li>
+              <li><strong>Custom findings sections</strong> — Add, remove, rename, and reorder the sections in the report findings page, for both methods independently.</li>
+              <li><strong>Filename templates</strong> — Configurable PDF and Excel filename patterns using variables such as {workstation}, {record_date}, and {operator}.</li>
+              <li><strong>Privacy toggles</strong> — Optionally hide gender, operator name, or evaluator name from the interface, reports, and exports.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Reports &amp; export</h3>
+            <ul class="cl-list">
+              <li><strong>PDF export</strong> — Fully structured ergonomic report with custom branding — add your own logo and organisation name for client delivery and H&amp;S documentation.</li>
+              <li><strong>Excel export</strong> — Underlying assessment data exported to Excel for further analysis, archiving, or integration with your own reporting workflows.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Platform &amp; installation</h3>
+            <ul class="cl-list">
+              <li><strong>Windows 10 / 11 support</strong> — 64-bit installer for Windows 10 and Windows 11. Approximately 80 MB download. Per-user installation — no administrator rights required.</li>
+              <li><strong>Licence activation</strong> — Activate with a Motionprint licence key (format: MP-XXXX-XXXX-XXXX-XXXX). Requires an internet connection for initial activation and periodic licence validation.</li>
+            </ul>
+          </div>
+        </article>
+        <!-- ── END v1.0.0 ── -->
+
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;margin-bottom:10px;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="index.html#methods">Supported methods</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#custom">Custom Solutions</a></li>
+          <li><a href="index.html#contact">Request demo</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="resources.html#tutorials">Tutorials</a></li>
+          <li><a href="resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>

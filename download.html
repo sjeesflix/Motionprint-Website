@@ -167,6 +167,29 @@
     .dl-req-badge.green { background: rgba(34,197,94,.1); color: #16a34a; }
     .dl-req-badge.amber { background: rgba(245,158,11,.1); color: #d97706; }
 
+    /* ── PREVIOUS VERSIONS ── */
+    .dl-prev { padding: 0 0 64px; background: var(--bg); }
+    .dl-prev-toggle {
+      display: flex; align-items: center; gap: 10px; width: 100%;
+      background: none; border: none; border-top: 1px solid var(--border);
+      padding: 20px 0; font-family: var(--font-body); cursor: pointer;
+      color: var(--muted); font-size: 13px; font-weight: 500;
+      transition: color .15s;
+    }
+    .dl-prev-toggle:hover { color: var(--text); }
+    .dl-prev-toggle svg { width: 14px; height: 14px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+    .dl-prev-toggle.open svg { transform: rotate(180deg); }
+    .dl-prev-panel { display: none; }
+    .dl-prev-panel.open { display: block; }
+    .dl-prev-empty { font-size: 13px; color: var(--muted-2); padding: 8px 0 4px; }
+    .dl-prev-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .dl-prev-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); padding: 0 12px 10px 0; border-bottom: 1px solid var(--border); }
+    .dl-prev-table td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: middle; }
+    .dl-prev-table td:first-child { color: var(--text); font-weight: 600; }
+    .dl-prev-table tr:last-child td { border-bottom: none; }
+    .dl-prev-table a { color: var(--red); text-decoration: none; font-weight: 600; font-size: 12px; }
+    .dl-prev-table a:hover { text-decoration: underline; }
+
     /* ── NO LICENSE CTA ── */
     .dl-cta { padding: 80px 0; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
     .dl-cta::before {
@@ -324,7 +347,7 @@
         </div>
       </div>
 
-      <div class="dl-version">Version 1.0.0 &nbsp;·&nbsp; <a href="#">Release notes</a></div>
+      <div class="dl-version">Version 1.0.0 &nbsp;·&nbsp; <a href="changelog.html#v1-0-0">Release notes</a></div>
 
       <div class="dl-key-note">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -408,6 +431,61 @@
           <div class="dl-req-row"><span class="dl-req-label">Storage</span><span class="dl-req-val">500 MB free disk space</span></div>
           <div class="dl-req-row"><span class="dl-req-label">Internet</span><span class="dl-req-val">Required for activation &amp; licence validation</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PREVIOUS VERSIONS ── -->
+<section class="dl-prev">
+  <div class="container">
+    <div class="dl-reqs-inner">
+      <button class="dl-prev-toggle" id="prevToggle" aria-expanded="false" onclick="togglePrev()">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        Previous versions
+      </button>
+      <div class="dl-prev-panel" id="prevPanel">
+        <!--
+          HOW TO ADD A LEGACY VERSION ROW
+          ════════════════════════════════════════════════════════════
+          When you release a new version, move the current version here.
+          Replace the placeholder href values with:
+            - dl-href: the actual .exe download URL for that version
+            - notes-href: changelog.html#vX-Y-Z for that version's anchor
+
+          Example row to copy:
+          <tr>
+            <td>v1.0.0</td>
+            <td>March 2026</td>
+            <td>Windows 10 / 11 · 64-bit</td>
+            <td><a href="path/to/MotionprintErgo_1.0.0_Setup.exe">Download (.exe)</a></td>
+            <td><a href="changelog.html#v1-0-0">Release notes</a></td>
+          </tr>
+          ════════════════════════════════════════════════════════════
+        -->
+        <p class="dl-prev-empty">No previous versions available — v1.0.0 is the initial release.</p>
+        <!-- Uncomment and populate the table below when legacy versions exist:
+        <table class="dl-prev-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Released</th>
+              <th>Platform</th>
+              <th>Installer</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>v1.0.0</td>
+              <td>March 2026</td>
+              <td>Windows 10 / 11 · 64-bit</td>
+              <td><a href="#">Download (.exe)</a></td>
+              <td><a href="changelog.html#v1-0-0">Release notes</a></td>
+            </tr>
+          </tbody>
+        </table>
+        -->
       </div>
     </div>
   </div>
@@ -507,6 +585,14 @@
 </footer>
 
 <script>
+  function togglePrev() {
+    var toggle = document.getElementById('prevToggle');
+    var panel  = document.getElementById('prevPanel');
+    var open   = panel.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  }
+
   // Mobile nav toggle
   document.addEventListener('click', function(e) {
     const nav = document.getElementById('mnav');
