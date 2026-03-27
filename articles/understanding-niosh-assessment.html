@@ -130,7 +130,7 @@
     .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
     .threshold-table tr:last-child td { border-bottom: none; }
-    .threshold-table code { font-size: 12px; }
+    .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); }
 
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
@@ -152,9 +152,9 @@
     .multiplier-abbr { font-family: var(--font-body); font-size: 15px; font-weight: 800; color: var(--red); margin-top: 2px; letter-spacing: .01em; }
     .multiplier-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .multiplier-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
-    .multiplier-formula { font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted-2); margin-top: 4px; }
-    .multiplier-source { font-size: 11px; font-weight: 600; color: var(--muted-2); margin-top: 6px; display: flex; align-items: center; gap: 5px; }
-    .multiplier-source::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--muted-2); flex-shrink: 0; }
+    .multiplier-formula { font-family: var(--font-body); font-size: 12px; font-style: italic; color: var(--muted-2); margin-top: 5px; line-height: 1.5; }
+    .multiplier-source { font-size: 11px; font-weight: 600; color: var(--muted-2); margin-top: 6px; display: flex; align-items: flex-start; gap: 6px; }
+    .multiplier-source::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--muted-2); flex-shrink: 0; margin-top: 3px; }
     .factor-badge { display: inline-block; font-family: var(--font-body); font-size: 12px; font-weight: 700; background: var(--bg-2); border: 1px solid var(--border); border-radius: 5px; padding: 1px 7px; color: var(--text); margin: 2px 2px 0 0; }
     .factor-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 
@@ -529,14 +529,14 @@
 
         <div class="multiplier-grid">
           <div class="multiplier-row">
-            <div class="multiplier-abbr" style="font-size:12px;">O/D</div>
+            <div class="multiplier-abbr">O/D</div>
             <div>
               <div class="multiplier-name">Origin / Destination <span style="font-size:12px;font-weight:400;color:var(--muted)">(Traditional)</span></div>
               <p class="multiplier-desc">Analyzes only the pickup (origin) and placement (destination) positions, and uses the lower of the two resulting RWLs. This matches the standard NIOSH methodology as it would be performed manually.</p>
             </div>
           </div>
           <div class="multiplier-row">
-            <div class="multiplier-abbr" style="font-size:12px;">Peak</div>
+            <div class="multiplier-abbr">Peak</div>
             <div>
               <div class="multiplier-name">Peak Moment <span class="risk-badge risk-low" style="font-size:10px;margin-left:4px;vertical-align:middle;">Default</span></div>
               <p class="multiplier-desc">Because motion capture records the entire lifting movement continuously, Motionprint Ergo measures and calculates all position variables throughout the whole recording. This mode finds the frame with the highest (worst-case) Lifting Index across the entire lift — capturing problematic mid-lift postures that a manual assessment, limited to two static snapshots, would miss entirely.</p>
@@ -567,17 +567,17 @@
           <tbody>
             <tr>
               <td><strong>Pf</strong> — Two-person lift</td>
-              <td><code>0.85</code></td>
+              <td><span class="factor-badge">0.85</span></td>
               <td>Load is carried by two workers simultaneously</td>
             </tr>
             <tr>
               <td><strong>Tf</strong> — Additional tasks</td>
-              <td><code>0.80</code></td>
+              <td><span class="factor-badge">0.80</span></td>
               <td>Worker performs other physically demanding tasks beyond lifting</td>
             </tr>
             <tr>
               <td><strong>Of</strong> — One-hand lift</td>
-              <td><code>0.60</code></td>
+              <td><span class="factor-badge">0.60</span></td>
               <td>Load is lifted with a single hand</td>
             </tr>
             <tr>
@@ -635,7 +635,7 @@
             <div class="workflow-step-num">4</div>
             <div>
               <div class="workflow-step-title">Report output</div>
-              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score Overview</strong> gives you everything a standard manual NIOSH assessment would produce: RWL, Lifting Index, risk level, and a full multiplier summary — ready to share or archive. <strong>Analysis</strong> is for deep-diving into how the key variables (V, H, A, LI) behave over time, so you can pinpoint exactly which frames and postures are driving the risk score. <strong>Findings</strong> lets you define and document your own observations to round out the report.</p>
+              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score Overview</strong> gives you everything a standard manual NIOSH assessment would produce: RWL, Lifting Index, risk level, and a full multiplier summary — ready to share or archive. <strong>Analysis</strong> is for deep-diving into how the key variables (V, H, A, LI) behave over time, so you can pinpoint exactly which frames and postures are driving the risk score. You can also toggle on body risk indicators to instantly see colour-coded risk levels mapped onto the 3D model at each body segment. <strong>Findings</strong> lets you define and document your own observations to round out the report.</p>
             </div>
           </div>
         </div>
