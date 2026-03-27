@@ -121,8 +121,9 @@
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
     /* Formula block */
-    .formula-block { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 14px; color: var(--text); text-align: center; }
-    .formula-block .formula-label { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 8px; display: block; text-align: left; }
+    .formula-block { display: flex; align-items: center; gap: 0; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0; margin: 16px 0; overflow: hidden; }
+    .formula-block .formula-label { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); flex-shrink: 0; width: 140px; padding: 18px 16px; border-right: 1px solid var(--border); line-height: 1.4; }
+    .formula-block .formula-text { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--text); flex: 1; text-align: center; padding: 18px 20px; letter-spacing: .01em; }
 
     /* Threshold table */
     .threshold-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
@@ -148,10 +149,14 @@
     /* Multiplier grid */
     .multiplier-grid { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
     .multiplier-row { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-    .multiplier-abbr { font-family: 'Courier New', monospace; font-size: 15px; font-weight: 700; color: var(--red); margin-top: 2px; }
+    .multiplier-abbr { font-family: var(--font-body); font-size: 15px; font-weight: 800; color: var(--red); margin-top: 2px; letter-spacing: .01em; }
     .multiplier-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .multiplier-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
     .multiplier-formula { font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted-2); margin-top: 4px; }
+    .multiplier-source { font-size: 11px; font-weight: 600; color: var(--muted-2); margin-top: 6px; display: flex; align-items: center; gap: 5px; }
+    .multiplier-source::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--muted-2); flex-shrink: 0; }
+    .factor-badge { display: inline-block; font-family: var(--font-body); font-size: 12px; font-weight: 700; background: var(--bg-2); border: 1px solid var(--border); border-radius: 5px; padding: 1px 7px; color: var(--text); margin: 2px 2px 0 0; }
+    .factor-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -322,62 +327,61 @@
             <div class="multiplier-abbr">LC</div>
             <div>
               <div class="multiplier-name">Load Constant</div>
-              <p class="multiplier-desc">A fixed reference weight of 23 kg representing the maximum acceptable load under ideal conditions.</p>
+              <p class="multiplier-desc">A fixed reference weight representing the maximum acceptable load under ideal conditions. Configurable in NIOSH settings (default 23 kg).</p>
+              <div class="multiplier-source">Fixed value — set in NIOSH report settings</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">HM</div>
             <div>
               <div class="multiplier-name">Horizontal Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the horizontal distance from the worker's ankles to the hands at the lift origin. Greater reach reduces the multiplier.</p>
+              <p class="multiplier-desc">Adjusts for the horizontal distance (H) from the midpoint between the worker's ankles to the midpoint between the hands. Greater reach increases H, reducing HM and the RWL. Computed continuously per frame.</p>
               <div class="multiplier-formula">HM = 25 / H &nbsp;(if H &lt; 25 cm, H is set to 25 cm; if H &gt; 63 cm, HM = 0)</div>
+              <div class="multiplier-source">Derived from motion capture data</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">VM</div>
             <div>
               <div class="multiplier-name">Vertical Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the vertical height of the hands above the floor at the lift origin. The optimal hand height is 75 cm; deviations above or below reduce the multiplier.</p>
+              <p class="multiplier-desc">Adjusts for the vertical height (V) of the hand midpoint above the floor. The optimal height is 75 cm; deviations above or below reduce the multiplier. Computed continuously per frame.</p>
               <div class="multiplier-formula">VM = 1 − 0.003 × |V − 75|</div>
+              <div class="multiplier-source">Derived from motion capture data</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">DM</div>
             <div>
               <div class="multiplier-name">Distance Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the vertical travel distance of the load between lift origin and destination. Longer lifts reduce the multiplier.</p>
+              <p class="multiplier-desc">Adjusts for the vertical travel distance (D) of the hands between the start and end of the lift. D is derived from the V measurements at origin and destination: D = |V_origin − V_destination|. Longer vertical travel reduces the multiplier.</p>
               <div class="multiplier-formula">DM = 0.82 + (4.5 / D)</div>
+              <div class="multiplier-source">Derived from motion capture data (V at origin and destination)</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">AM</div>
             <div>
               <div class="multiplier-name">Asymmetry Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the angular displacement of the load from the worker's midline — i.e. how much the trunk is twisted during the lift. Derived automatically from the motion capture data.</p>
+              <p class="multiplier-desc">Adjusts for the asymmetry angle (A) between the horizontal projection of the load direction and the worker's stance direction — a measure of trunk twist. Computed continuously per frame.</p>
               <div class="multiplier-formula">AM = 1 − (0.0032 × A)</div>
+              <div class="multiplier-source">Derived from motion capture data</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">FM</div>
             <div>
               <div class="multiplier-name">Frequency Multiplier</div>
-              <p class="multiplier-desc">Adjusts for how often lifting tasks are performed and for how long. Values are looked up from the NIOSH frequency table based on lifts per minute and shift duration.</p>
+              <p class="multiplier-desc">Adjusts for lifting frequency and shift duration. In Motionprint Ergo, frequency is calculated automatically: the cycle time you configure in the app is divided by the number of lifting tasks within that cycle. The resulting lifts-per-minute value is used to look up FM from the standard NIOSH frequency table.</p>
+              <div class="multiplier-source">Derived from cycle time setting and number of lifting tasks</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">CM</div>
             <div>
               <div class="multiplier-name">Coupling Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the quality of the grip between the worker's hands and the load. Values are Good (1.0), Fair (0.95), or Poor (0.90), depending on coupling quality and vertical hand height.</p>
+              <p class="multiplier-desc">Adjusts for the quality of the grip between the worker's hands and the load. Values are Good (1.0), Fair (0.95), or Poor (0.90), depending on the coupling quality selected and the vertical hand height (V).</p>
+              <div class="multiplier-source">Entered manually per lifting task</div>
             </div>
-          </div>
-        </div>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Note on FM and CM</div>
-            <p>The Frequency Multiplier (FM) and Coupling Multiplier (CM) require inputs that cannot be derived directly from motion capture data. FM depends on the number of lifts per minute and shift duration; CM depends on grip quality. These are entered manually when setting up the assessment in Motionprint Ergo.</p>
           </div>
         </div>
 
@@ -387,7 +391,7 @@
 
         <div class="formula-block">
           <span class="formula-label">Recommended Weight Limit</span>
-          RWL = LC × HM × VM × DM × AM × FM × CM
+          <span class="formula-text">RWL = LC × HM × VM × DM × AM × FM × CM</span>
         </div>
 
         <p>A low RWL does not necessarily mean the workplace is dangerous — it reflects the task conditions. If the actual load weight is at or below the RWL, the LI will be 1.0 or less, and the risk is considered acceptable.</p>
@@ -398,7 +402,7 @@
 
         <div class="formula-block">
           <span class="formula-label">Lifting Index</span>
-          LI = Load Weight / RWL
+          <span class="formula-text">LI = Load Weight / RWL</span>
         </div>
 
         <p>The LI is the primary risk indicator reported by Motionprint Ergo. The four risk levels are:</p>
@@ -459,14 +463,14 @@
 
         <div class="formula-block">
           <span class="formula-label">Composite Lifting Index</span>
-          CLI = STLI₁ + Σ ΔLIᵢ &nbsp;&nbsp;(i = 2 to n)
+          <span class="formula-text">CLI = STLI₁ + Σ ΔLIᵢ &nbsp;&nbsp;(i = 2 to n)</span>
         </div>
 
         <p>Where each additional task contributes an incremental lifting index:</p>
 
         <div class="formula-block">
           <span class="formula-label">Incremental Lifting Index</span>
-          ΔLIᵢ = FILIᵢ × (1 / FM₁,₂,...,ᵢ − 1 / FM₁,₂,...,ᵢ₋₁)
+          <span class="formula-text">ΔLIᵢ = FILIᵢ × (1 / FM₁,₂,...,ᵢ − 1 / FM₁,₂,...,ᵢ₋₁)</span>
         </div>
 
         <p>The cumulative frequency used to look up each FM value is the sum of frequencies from tasks 1 through i.</p>
@@ -525,14 +529,14 @@
 
         <div class="multiplier-grid">
           <div class="multiplier-row">
-            <div class="multiplier-abbr" style="font-size:11px;">O/D</div>
+            <div class="multiplier-abbr" style="font-size:12px;">O/D</div>
             <div>
               <div class="multiplier-name">Origin / Destination <span style="font-size:12px;font-weight:400;color:var(--muted)">(Traditional)</span></div>
               <p class="multiplier-desc">Analyzes only the pickup (origin) and placement (destination) positions, and uses the lower of the two resulting RWLs. This matches the standard NIOSH methodology as it would be performed manually.</p>
             </div>
           </div>
           <div class="multiplier-row">
-            <div class="multiplier-abbr" style="font-size:11px;">Peak</div>
+            <div class="multiplier-abbr" style="font-size:12px;">Peak</div>
             <div>
               <div class="multiplier-name">Peak Moment <span class="risk-badge risk-low" style="font-size:10px;margin-left:4px;vertical-align:middle;">Default</span></div>
               <p class="multiplier-desc">Because motion capture records the entire lifting movement continuously, Motionprint Ergo measures and calculates all position variables throughout the whole recording. This mode finds the frame with the highest (worst-case) Lifting Index across the entire lift — capturing problematic mid-lift postures that a manual assessment, limited to two static snapshots, would miss entirely.</p>
@@ -578,7 +582,14 @@
             </tr>
             <tr>
               <td><strong>eM</strong> — Extended duration</td>
-              <td><code>0.97 (&gt;8–9 h), 0.93 (&gt;9–10 h), 0.89 (&gt;10–11 h), 0.85 (&gt;11–12 h)</code></td>
+              <td>
+                <div class="factor-list">
+                  <span class="factor-badge">0.97 &gt;8–9 h</span>
+                  <span class="factor-badge">0.93 &gt;9–10 h</span>
+                  <span class="factor-badge">0.89 &gt;10–11 h</span>
+                  <span class="factor-badge">0.85 &gt;11–12 h</span>
+                </div>
+              </td>
               <td>Work shift exceeds 8 hours; factor scales with shift length per ISO 11228-1. Only applied when frequency exceeds 0.2 lifts/min.</td>
             </tr>
           </tbody>
@@ -624,7 +635,7 @@
             <div class="workflow-step-num">4</div>
             <div>
               <div class="workflow-step-title">Report output</div>
-              <p class="workflow-step-desc">Results are presented across three report tabs: Score Overview (RWL, LI, risk level), Analysis (individual multiplier breakdown, time-series graphs), and Findings (prioritised recommendations based on which multipliers have the greatest reduction effect).</p>
+              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score Overview</strong> gives you everything a standard manual NIOSH assessment would produce: RWL, Lifting Index, risk level, and a full multiplier summary — ready to share or archive. <strong>Analysis</strong> is for deep-diving into how the key variables (V, H, A, LI) behave over time, so you can pinpoint exactly which frames and postures are driving the risk score. <strong>Findings</strong> lets you define and document your own observations to round out the report.</p>
             </div>
           </div>
         </div>
