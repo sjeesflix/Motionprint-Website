@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIOSH Report Walkthrough — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="A guided tour of every tab in a completed NIOSH report in Motionprint Ergo: Score Overview, Analysis, and Findings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #ea523b; --red-light: #f06449;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"] { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
+    .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+
+    /* Lead */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Step number */
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+
+    /* Tab badge */
+    .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
+    .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Callouts */
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Info table */
+    .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+
+    /* Risk badge */
+    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
+    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
+    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-high   { background: rgba(234,82,59,.12);  color: #ea523b; }
+    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+
+    /* Zone table */
+    .zone-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+    .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
+    .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .zone-table tr:last-child td { border-bottom: none; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-green  { background: #10b981; }
+    .zone-yellow { background: #f59e0b; }
+    .zone-red    { background: #ef4444; }
+    .zone-orange { background: #f97316; }
+
+    /* Article footer */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#kb-reports">Using Reports</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">NIOSH Report Walkthrough</span>
+      </nav>
+      <span class="article-eyebrow">Using Reports</span>
+      <h1>NIOSH Report Walkthrough</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated March 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Using Reports
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- TOC sidebar -->
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-overview"><a href="#overview">Overview</a></li>
+          <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
+          <li id="toc-analysis"><a href="#analysis">2. Analysis</a></li>
+          <li id="toc-findings"><a href="#findings">3. Findings</a></li>
+          <li id="toc-export"><a href="#export">Export</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <!-- Article content -->
+      <article class="article-body">
+
+        <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through each tab — what it shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
+
+        <!-- ── OVERVIEW ── -->
+        <h2 id="overview">Report structure</h2>
+
+        <p>The report opens with a tab bar at the top. Depending on your NIOSH report settings, you will see two or three tabs:</p>
+
+        <ul>
+          <li><strong>Score Overview</strong> — the complete assessment result: scores, multiplier breakdowns, and the position data at the key frame.</li>
+          <li><strong>Analysis</strong> — an interactive deep dive into how each variable behaves frame by frame across the entire lift.</li>
+          <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the NIOSH report settings.</li>
+        </ul>
+
+        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to update general information such as workplace, evaluator, and comments) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Multi-task assessments</div>
+            <p>If your assessment contains two or more lifting tasks, a <strong>task selector</strong> appears at the top of the Score Overview and Analysis tabs. Use it to switch between individual tasks or (on Score Overview) the CLI Overview, which shows the aggregated Composite Lifting Index across all tasks. See the <a href="understanding-niosh-assessment.html#cli">Understanding the NIOSH Assessment</a> article for details on how the CLI is calculated.</p>
+          </div>
+        </div>
+
+        <figure style="margin:24px 0;">
+          <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score Overview tab — showing the complete single-task NIOSH result</figcaption>
+        </figure>
+
+        <!-- ── SECTION 1 ── -->
+        <h2 id="score-overview"><span class="step-num">1</span> Score Overview</h2>
+
+        <p>The Score Overview tab gives you everything a standard manual NIOSH assessment would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
+
+        <h3>General information card</h3>
+        <p>The top-left card displays metadata about the assessment session. All fields can be edited inline by clicking the Edit button at the top of the report.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Working time</td><td>Total time spent at the workstation (e.g. "2 h 15 min").</td></tr>
+            <tr><td>Date</td><td>The evaluation date.</td></tr>
+            <tr><td>Cycle duration</td><td>Duration of one repetitive lifting cycle, used to derive lift frequency.</td></tr>
+            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
+            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if the privacy setting "Hide evaluator name" is enabled.</td></tr>
+            <tr><td>Operator</td><td>The worker being assessed. Hidden if "Hide operator name" is enabled.</td></tr>
+            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Risk assessment card</h3>
+        <p>The top-right card shows the primary risk result. Its content adapts depending on whether the report is single-task or multi-task.</p>
+
+        <h4>Single-task view</h4>
+        <ul>
+          <li>A label identifying the assessed frame (e.g. "Single Lift at Frame 120").</li>
+          <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), orange (1.0–3.0), red (&gt; 3.0).</li>
+          <li>The actual load weight and the Recommended Weight Limit (RWL) side by side.</li>
+          <li>A short sentence interpreting the risk level in plain language.</li>
+          <li>A warning if the Frequency Multiplier equals zero, meaning the lift frequency exceeds NIOSH limits.</li>
+        </ul>
+
+        <h4>Multi-task — individual task view</h4>
+        <ul>
+          <li>Two colour-coded badges: <strong>STLI</strong> (Single-Task Lifting Index) and <strong>FILI</strong> (Frequency-Independent Lifting Index).</li>
+          <li>Three weight figures: actual load weight, STRWL (single-task RWL), and FIRWL (frequency-independent RWL).</li>
+        </ul>
+
+        <h4>Multi-task — CLI Overview</h4>
+        <ul>
+          <li>The total number of lifting tasks and a colour-coded <strong>CLI badge</strong>.</li>
+          <li>Identifies the highest-risk task (Task 1 by STLI rank) and its load weight.</li>
+        </ul>
+
+        <h3>Peak moment screenshot and position data</h3>
+        <p>Below the two cards, the main area shows a screenshot of the 3D avatar at the key frame of the lift — the peak moment frame (or origin/destination frame, depending on the analysis mode set in NIOSH report settings). Alongside the screenshot, a data panel shows:</p>
+        <ul>
+          <li>The absolute frame number and its timestamp within the recording.</li>
+          <li>The relative position within the lifting task (e.g. "45/120 in lifting task").</li>
+          <li>The four biomechanical variables at that frame: <strong>H</strong> (cm), <strong>V</strong> (cm), <strong>D</strong> (cm), <strong>A</strong> (°).</li>
+        </ul>
+
+        <h3>Frequency and coupling tables</h3>
+        <p>Below the screenshot, the layout splits into two columns.</p>
+        <p>The left column shows the <strong>Frequency Multiplier (FM) lookup table</strong> for the applicable shift duration. The row matching the task's calculated frequency is highlighted with a colour-coded badge, making it easy to see exactly which FM value was applied.</p>
+        <p>The right column shows the <strong>Coupling Multiplier (CM) table</strong> with rows for Good, Fair, and Poor coupling quality, each split by vertical hand height (V &lt; 75 cm or V ≥ 75 cm). The cell matching the task's coupling selection and V value is highlighted.</p>
+
+        <h3>Calculations breakdown</h3>
+        <p>Still in the right column, below the CM table, is a full step-by-step derivation of the result, organised into four expandable sections:</p>
+        <ol>
+          <li><strong>Multiplier derivations</strong> — each of the four motion-derived multipliers (HM, VM, DM, AM) with its formula, the substituted values at the key frame, and a colour-coded risk dot indicating input quality.</li>
+          <li><strong>RWL calculation</strong> — the complete formula with all seven multipliers and any additional modifiers (Pf, Tf, Of, eM) substituted in, followed by the numerical result. In multi-task mode, an additional row shows the FIRWL calculated with FM = 1.0.</li>
+          <li><strong>LI calculation</strong> — LI = Load Weight / RWL with the colour-coded result. In multi-task mode, additional rows show the STLI and FILI.</li>
+          <li><strong>Error state</strong> — if lift frequency exceeds NIOSH limits (FM = 0), all calculation sections switch to red borders and display "N/A".</li>
+        </ol>
+
+        <h3>CLI Overview (multi-task only)</h3>
+        <p>When "CLI Overview" is selected from the task selector, the main area is replaced by a dedicated CLI breakdown:</p>
+        <ul>
+          <li><strong>Frequency Multipliers section</strong> — shows how individual task frequencies are summed cumulatively and the corresponding FM value for each cumulative level.</li>
+          <li><strong>ΣΔLIᵢ section</strong> — shows the incremental ΔLI contribution of each task from Task 2 onward.</li>
+          <li><strong>CLI result</strong> — the final CLI value with a colour-coded badge and the summary formula CLI = STLI₁ + ΣΔLIᵢ.</li>
+          <li><strong>Task breakdown table</strong> — all tasks ranked by STLI, showing STRWL, FIRWL, STLI, FILI, and ΔLI for each. A summary row at the bottom shows the STLI₁ and the ΣΔLIᵢ total.</li>
+        </ul>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="analysis"><span class="step-num">2</span> Analysis</h2>
+
+        <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph.</p>
+
+        <figure style="margin:24px 0;">
+          <img src="../printscreens/analysis.png" alt="Analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights panel" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Analysis tab — 3D viewer, score-per-frame graph, and frame insights panel</figcaption>
+        </figure>
+
+        <h3>Variable selector</h3>
+        <p>At the top of the tab, a <strong>Select variable</strong> dropdown lets you choose which value to inspect across the recording. Changing the variable updates the graph, the frame insights panel, and the zone distribution chart simultaneously. Options:</p>
+        <ul>
+          <li><strong>LI</strong> (single-task) or <strong>STLI</strong> (multi-task) — the Lifting Index per frame.</li>
+          <li><strong>H (horizontal)</strong> — horizontal hand distance from the midpoint between the ankles (cm).</li>
+          <li><strong>V (vertical)</strong> — vertical hand height above the floor (cm).</li>
+          <li><strong>A (asymmetry)</strong> — trunk twist angle from the worker's midline (°).</li>
+        </ul>
+
+        <h3>3D viewport</h3>
+        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. Four camera presets — Perspective, Front, Side, and Top — are accessible via an overlay in the top-left corner of the viewport.</p>
+        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the graph. When enabled, colour-coded spheres appear on the avatar at the shoulders, wrists, and back, showing the real-time risk level for the selected variable at the current frame: green (low), orange (medium), red (high).</p>
+
+        <h3>Score-per-frame graph</h3>
+        <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
+
+        <table class="zone-table">
+          <thead><tr><th>Variable</th><th>Risk zones</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>LI / STLI</strong></td>
+              <td>
+                <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
+                <span class="zone-dot zone-red"></span>Red 2.0–3.0+
+              </td>
+            </tr>
+            <tr>
+              <td><strong>H</strong></td>
+              <td>
+                <span class="zone-dot zone-green"></span>Green 0–36 cm &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
+                <span class="zone-dot zone-red"></span>Red 52–63+ cm
+              </td>
+            </tr>
+            <tr>
+              <td><strong>V</strong></td>
+              <td>
+                <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 20–50 cm &nbsp;
+                <span class="zone-dot zone-green"></span>Green 50–100 cm &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 100–130 cm &nbsp;
+                <span class="zone-dot zone-red"></span>Red &gt;130 cm
+              </td>
+            </tr>
+            <tr>
+              <td><strong>A</strong></td>
+              <td>
+                <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
+                <span class="zone-dot zone-red"></span>Red 90–135°
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. You can also drag to select a frame range, which lets you define a custom critical moment for that selection.</p>
+
+        <p>Playback controls sit in a vertical stack to the left of the graph: a play/pause button and a speed selector (0.5×, 1×, 1.5×, 2×).</p>
+
+        <h3>Frame insights panel</h3>
+        <p>A fixed panel to the right of the viewport shows three sections that update as you scrub through frames:</p>
+
+        <h4>Current frame data</h4>
+        <p>Shows the numerical value of the selected variable at the current frame (with its unit), the corresponding NIOSH multiplier value (e.g. "HM: 0.893"), and a visual bar divided into the same risk zones as the graph — with a dot indicating where the current value falls. If the value has been clamped per NIOSH rules (e.g. H capped at its 25 cm minimum), both the original and clamped values are shown.</p>
+
+        <h4>Zone distribution</h4>
+        <p>A pie chart showing what percentage of the lifting task's frames fall into each risk zone for the selected variable. This is an aggregate across the entire task and does not change as you scrub — it gives you an at-a-glance sense of how much of the lift was spent in each risk category.</p>
+
+        <h4>Critical moments</h4>
+        <p>Critical moments are significant instants or periods in the lift that are worth highlighting. They appear as markers on the graph and are listed in this panel. There are three types:</p>
+        <ul>
+          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest LI/STLI in the task.</li>
+          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range where the score consistently exceeds a risk threshold.</li>
+          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the Add (+) button.</li>
+        </ul>
+        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Critical moments are included in the exported report.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Tip: identify the pain points</div>
+            <p>Switch between variables (H, V, A, LI) to understand which factor is driving the risk score at each point in the lift. A frame that scores poorly on LI might be caused by a high H, a low V, or a large A — the zone distribution and graph together make this immediately visible.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="findings"><span class="step-num">3</span> Findings</h2>
+
+        <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the NIOSH report settings.</p>
+
+        <h3>Default structure</h3>
+        <p>The tab displays a vertical stack of section blocks, each with a title and a multi-line text area. If you have not customised the sections, the five defaults are:</p>
+        <ol>
+          <li>Current Situation</li>
+          <li>Observations</li>
+          <li>Risk Assessment</li>
+          <li>Recommendations</li>
+          <li>Conclusion</li>
+        </ol>
+
+        <h3>Customisation</h3>
+        <p>The entire Findings structure is configurable from the NIOSH report settings page:</p>
+        <ul>
+          <li>Enable or disable the Findings tab entirely.</li>
+          <li>Rename the tab (default: "Findings", max 50 characters).</li>
+          <li>Add, rename, reorder, or delete individual sections using a drag-and-drop list.</li>
+          <li>Reset to the five defaults at any time.</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Session data only</div>
+            <p>Content entered in the Findings tab is kept in memory for the current session. It is included when you export the report to PDF or Excel, but it is not saved to disk automatically between sessions. Make sure to export before closing the report if you want to preserve your findings.</p>
+          </div>
+        </div>
+
+        <!-- ── EXPORT ── -->
+        <h2 id="export">Export</h2>
+
+        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes all three tabs:</p>
+        <ul>
+          <li>All Score Overview data — general information, scores, multiplier breakdowns, and the CLI overview if the assessment is multi-task.</li>
+          <li>The Analysis data — frame-by-frame values, the score graph, zone distributions, critical moments, and the peak frame screenshot.</li>
+          <li>The Findings content with its full section structure (if the Findings tab is enabled).</li>
+        </ul>
+
+        <!-- ── ARTICLE FOOTER ── -->
+        <div class="article-end">
+          <div>
+            <div class="related-label">Related articles</div>
+            <div class="related-grid">
+              <a href="understanding-niosh-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the NIOSH Assessment</span>
+              </a>
+              <a href="how-motionprint-ergo-works.html" class="related-card">
+                <span class="related-card-cat">Getting Started</span>
+                <span class="related-card-title">How Motionprint Ergo Works</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" style="display:block;margin-bottom:10px;">
+          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#how">How it works</a></li>
+          <li><a href="../index.html#methods">Supported methods</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../index.html#contact">Request demo</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html#tutorials">Tutorials</a></li>
+          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="../resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var sections = ['overview','score-overview','analysis','findings','export'];
+  var tocIds   = ['toc-overview','toc-score','toc-analysis','toc-findings','toc-export'];
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
