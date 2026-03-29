@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIOSH Report Settings — Motionprint Ergo Help</title>
+  <title>Exporting Reports (PDF & Excel) — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Configure default behavior for all NIOSH assessments in Motionprint Ergo: input fields, analysis modes, viewport layout, and export templates." />
+  <meta name="description" content="Export completed NIOSH and KIM-LHC reports to PDF for sharing or Excel for further analysis. Configure filename templates, choose export format, and manage report deliverables." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -224,16 +224,16 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="../resources.html#kb-reports">Using Reports</a>
+        <a href="../resources.html#kb-features">Platform Features</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">NIOSH Report Settings</span>
+        <span style="color:rgba(255,255,255,.6)">Exporting Reports (PDF &amp; Excel)</span>
       </nav>
-      <span class="article-eyebrow">Using Reports</span>
-      <h1>NIOSH Report Settings</h1>
+      <span class="article-eyebrow">Platform Features</span>
+      <h1>Exporting Reports (PDF &amp; Excel)</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          8 min read
+          7 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -241,7 +241,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Using Reports
+          Platform Features
         </div>
       </div>
     </div>
@@ -258,10 +258,10 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-input"><a href="#input-data">Input &amp; Data</a></li>
-          <li id="toc-analysis"><a href="#analysis-scoring">Analysis &amp; Scoring</a></li>
-          <li id="toc-viewport"><a href="#viewport">Viewport</a></li>
-          <li id="toc-export"><a href="#export">Export</a></li>
+          <li id="toc-trigger"><a href="#trigger">Triggering an export</a></li>
+          <li id="toc-formats"><a href="#formats">PDF vs Excel</a></li>
+          <li id="toc-templates"><a href="#templates">Filename templates</a></li>
+          <li id="toc-tips"><a href="#tips">Tips</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -274,230 +274,132 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">The NIOSH Report Settings page is your central configuration hub for all NIOSH assessments in Motionprint Ergo. Settings you choose here become persistent defaults applied to every new assessment — whether you need to adjust reference standards, toggle optional modifiers, customize your report layout, or control export filenames. Changes take effect the next time you open or run an assessment.</p>
+        <p class="article-lead">Motionprint Ergo can export any completed report — NIOSH or KIM-LHC — to PDF or Excel. Use PDF to share a formatted, print-ready report with a client or archive it alongside a project. Use Excel when you need raw assessment data for further analysis, custom processing, or integration into your own reporting workflow.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Overview</h2>
 
-        <p>The settings page is accessed from the NIOSH assessment interface and displays all configuration options as a stacked set of modular cards. At the top of the page, an action bar provides two buttons:</p>
+        <p>Every completed assessment in Motionprint Ergo yields a report that you can save and share. The application supports two export formats, each serving a different purpose in your workflow. The choice between them depends on whether you need a polished, presentation-ready deliverable or structured data for further processing.</p>
+
+        <!-- ── TRIGGERING AN EXPORT ── -->
+        <h2 id="trigger">Triggering an export</h2>
+
+        <p>The Export button sits in the tab bar at the top of every completed report, next to the Edit button. Clicking it opens an export dialog where you choose the format. The file is generated immediately and saved to your device's default downloads folder.</p>
+
+        <p>For multi-task NIOSH assessments, the export always includes all tasks and the CLI overview — you cannot export individual tasks separately.</p>
+
+        <!-- ── PDF VS EXCEL ── -->
+        <h2 id="formats">PDF vs Excel — what each format contains</h2>
+
+        <h3>PDF export</h3>
+
+        <p>The PDF is a formatted, read-only document designed for sharing. It includes:</p>
 
         <ul>
-          <li><strong>Save</strong> — commits all changes and closes the settings page, making them active for future assessments.</li>
-          <li><strong>Discard changes</strong> — reverts all unsaved edits and exits the settings page without applying any changes.</li>
+          <li>The Score Overview tab in full: general information card, risk assessment card, multiplier breakdown table, and the position data card at the peak/limiting frame.</li>
+          <li>For multi-task assessments: the CLI overview page in addition to each individual task result.</li>
+          <li>The Analysis tab data: the score-per-frame graph, zone distribution, critical moments list, and a screenshot of the 3D viewer at the peak frame.</li>
+          <li>The Findings tab content (if enabled): the tab title and all sections with their text.</li>
         </ul>
 
-        <p>The settings are organized into four functional modules, each addressing a specific aspect of how NIOSH assessments are performed, displayed, and exported. Each module contains toggles, dropdown selectors, text inputs, or custom lists depending on the type of setting.</p>
+        <p>The PDF layout mirrors the on-screen report layout and is optimised for A4/Letter printing.</p>
+
+        <h3>Excel export</h3>
+
+        <p>The Excel file contains the raw data behind the report, structured for further analysis:</p>
+
+        <ul>
+          <li>A summary sheet with general information and the final scores (LI, RWL, all multipliers).</li>
+          <li>For multi-task assessments: a CLI sheet with the composite index and per-task STLI/FILI values.</li>
+          <li>An analysis data sheet with the frame-by-frame values for H, V, D, A, F, C and the resulting LI/RWL per frame.</li>
+          <li>A findings sheet (if the Findings tab is enabled) with all section titles and text content.</li>
+        </ul>
+
+        <p>Use the Excel export when you need to compare results across multiple sessions, build custom dashboards, or process the data outside Motionprint Ergo.</p>
+
+        <!-- ── FILENAME TEMPLATES ── -->
+        <h2 id="templates">Filename templates</h2>
+
+        <p>Each report type has its own configurable filename template, set in that report type's settings page (e.g. NIOSH Report Settings). The template uses placeholder variables that are replaced with actual assessment data at the moment of export.</p>
+
+        <p><strong>Default template:</strong> <code>{workstation}_{record_date}_NIOSH</code></p>
+
+        <p>The file extension (.pdf or .xlsx) is appended automatically — do not include it in the template.</p>
+
+        <h3>Available variables</h3>
+
+        <table class="info-table">
+          <thead><tr><th>Variable</th><th>Replaced with</th><th>Example value</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>{operator}</td>
+              <td>Name of the worker being assessed</td>
+              <td>John Smith</td>
+            </tr>
+            <tr>
+              <td>{evaluator}</td>
+              <td>Name of the assessor</td>
+              <td>Jane Doe</td>
+            </tr>
+            <tr>
+              <td>{workstation}</td>
+              <td>Name or description of the workstation</td>
+              <td>Assembly Station 3</td>
+            </tr>
+            <tr>
+              <td>{record_date}</td>
+              <td>Date of the motion capture recording (YYYY-MM-DD)</td>
+              <td>2026-03-15</td>
+            </tr>
+            <tr>
+              <td>{current_date}</td>
+              <td>Today's date at the moment of export (YYYY-MM-DD)</td>
+              <td>2026-03-29</td>
+            </tr>
+            <tr>
+              <td>{current_time}</td>
+              <td>Current time at the moment of export (HH:MM:SS)</td>
+              <td>14:32:45</td>
+            </tr>
+            <tr>
+              <td>{report_type}</td>
+              <td>Report type identifier</td>
+              <td>NIOSH</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example templates</h3>
+
+        <ul>
+          <li><strong>{operator}_{workstation}_{record_date}</strong> — groups files by worker, task, and date.</li>
+          <li><strong>{evaluator}_{current_date}_{workstation}</strong> — organises by assessor and workstation.</li>
+          <li><strong>{workstation}_{record_date}_{current_time}</strong> — adds a timestamp to prevent overwrites.</li>
+        </ul>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Settings are global defaults</div>
-            <p>All settings apply to every NIOSH assessment created after you save them. They are stored locally on your system and persist across sessions. If you need different settings for a specific assessment, you can adjust them within that assessment before running the analysis — the global defaults do not lock you in.</p>
+            <div class="callout-label">Filename templates are per report type</div>
+            <p>Go to <a href="niosh-report-settings.html">NIOSH Report Settings</a> to set the template for NIOSH exports.</p>
           </div>
         </div>
 
-        <!-- ── MODULE 1 ── -->
-        <h2 id="input-data">Input &amp; Data</h2>
+        <!-- ── TIPS ── -->
+        <h2 id="tips">Tips</h2>
 
-        <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
-
-        <table class="info-table">
-          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Gender not required</td>
-              <td>Off</td>
-              <td>Toggle to hide the gender field from the input page and report. Useful if gender is not a relevant factor in your assessment protocol.</td>
-            </tr>
-            <tr>
-              <td>Hide operator name</td>
-              <td>Off</td>
-              <td>Toggle to conceal the worker's name. Helpful for privacy-focused assessments or when anonymity is desired in exported reports.</td>
-            </tr>
-            <tr>
-              <td>Hide evaluator name</td>
-              <td>Off</td>
-              <td>Toggle to conceal the assessor's name from the report. Useful in certain documentation or compliance workflows.</td>
-            </tr>
-            <tr>
-              <td>Reference mass / Load Constant</td>
-              <td>23 kg (NIOSH 1994)</td>
-              <td>Selector. Choose the reference standard that governs the Load Constant (LC) used in RWL calculations. Impacts the Recommended Weight Limit directly and all derived results.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Load Constant values and standards</h3>
-
-        <p>The Reference mass selector determines which Load Constant is used throughout the assessment. The available options and their corresponding LC values are:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Standard</th><th>Load Constant</th><th>Notes</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>NIOSH 1994</td>
-              <td>23 kg</td>
-              <td>Original U.S. NIOSH guideline. Widely used in North America.</td>
-            </tr>
-            <tr>
-              <td>ISO 11228-1:2021 / EU</td>
-              <td>25 kg</td>
-              <td>Current European standard for manual handling. Higher LC than NIOSH 1994.</td>
-            </tr>
-            <tr>
-              <td>ISO reduced</td>
-              <td>15 kg</td>
-              <td>Conservative variant for special populations or high-risk scenarios.</td>
-            </tr>
-            <tr>
-              <td>ISO further reduced</td>
-              <td>10 kg</td>
-              <td>Most restrictive standard, suitable for vulnerable workers or highly demanding tasks.</td>
-            </tr>
-          </tbody>
-        </table>
+        <ul>
+          <li>Keep templates short and meaningful — long filenames can be truncated on some systems.</li>
+          <li>Use {record_date} rather than {current_date} if you want the filename to reflect when the assessment took place, not when you exported it.</li>
+          <li>If you export the same report multiple times, add {current_time} to avoid overwriting previous exports.</li>
+          <li>The PDF and Excel templates are independent — you can use different patterns for each format.</li>
+        </ul>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Choose your standard carefully</div>
-            <p>The Load Constant you select influences the RWL and Lifting Index directly. Ensure it aligns with your regulatory jurisdiction, client requirements, or organizational policy. Switching standards mid-assessment can significantly alter results.</p>
-          </div>
-        </div>
-
-        <!-- ── MODULE 2 ── -->
-        <h2 id="analysis-scoring">Analysis &amp; Scoring</h2>
-
-        <p>The Analysis &amp; Scoring module determines how assessments are calculated and which result modifiers and optional tabs are available.</p>
-
-        <table class="info-table">
-          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Analysis mode</td>
-              <td>Peak moment</td>
-              <td>Selector. Choose between Peak moment (analyses all frames; auto-detects highest LI) or Origin/Destination (reports only start and end frame positions).</td>
-            </tr>
-            <tr>
-              <td>Two-person lift</td>
-              <td>Off</td>
-              <td>Toggle to enable the Pf = 0.85 modifier per ISO 11228-1 Annex E, reflecting reduced load per lifter when two workers share the task.</td>
-            </tr>
-            <tr>
-              <td>Additional physical tasks</td>
-              <td>Off</td>
-              <td>Toggle to enable the Tf = 0.80 modifier for workstations where lifting is one of multiple concurrent physical tasks.</td>
-            </tr>
-            <tr>
-              <td>One-hand lifting</td>
-              <td>Off</td>
-              <td>Toggle to enable the Of = 0.60 modifier when the lift is performed with only one hand.</td>
-            </tr>
-            <tr>
-              <td>Extended duration</td>
-              <td>Off</td>
-              <td>Toggle to enable the eM (extended multiplier) for shifts lasting longer than 8 hours, per ISO 11228-1.</td>
-            </tr>
-            <tr>
-              <td>Auto-detect critical moments</td>
-              <td>On</td>
-              <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Analysis mode explained</h3>
-
-        <p><strong>Peak moment</strong> is the recommended default for most assessments. It analyses every frame of the lifting motion, automatically identifies the single frame with the highest Lifting Index, and reports the biomechanical values at that critical moment. This approach captures the true peak risk.</p>
-
-        <p><strong>Origin/Destination</strong> mode only examines the start and end frames of the lift. Use this mode if your assessment protocol focuses on the initial pickup and final placement rather than the entire motion trajectory.</p>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div>
-            <div class="callout-label">Peak moment is recommended</div>
-            <p>Peak moment analysis ensures you capture the most critical instant of risk. Origin/Destination is rarely necessary and is primarily offered for special regulatory or methodological requirements.</p>
-          </div>
-        </div>
-
-        <h3>Findings tab configuration</h3>
-
-        <p>The Findings tab in the report (if enabled) is a free-form documentation area. You can customize it from this module:</p>
-
-        <ul>
-          <li><strong>Enable/Disable</strong> — toggle whether the Findings tab appears in the report at all.</li>
-          <li><strong>Tab title</strong> — text input (max 50 characters) to rename the tab. Default is "Findings".</li>
-          <li><strong>Sections list</strong> — add, rename, reorder (drag-and-drop), or delete individual section blocks within the Findings tab. Each section has a title and a multi-line text area for notes.</li>
-          <li><strong>Reset to defaults</strong> — button to restore the standard section structure: General Observations, Risk Factors Identified, and Recommendations.</li>
-        </ul>
-
-        <!-- ── MODULE 3 ── -->
-        <h2 id="viewport">Viewport</h2>
-
-        <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab, ensuring consistent visualization across your assessments.</p>
-
-        <h3>Input page viewport</h3>
-
-        <p>Configuration for the 3D viewer on the input page before the assessment is run:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Layout</td>
-              <td>Single view / Split view</td>
-              <td>Single view shows the 3D avatar alone. Split view shows the 3D model alongside video or reference imagery.</td>
-            </tr>
-            <tr>
-              <td>Camera view</td>
-              <td>Perspective, Front, Side, Top</td>
-              <td>Perspective is a realistic angled view. Front, Side, and Top are orthogonal views useful for checking alignments.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Analysis page viewport</h3>
-
-        <p>Configuration for the 3D viewer and graph on the Analysis tab, where frame-by-frame risk is explored:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Layout</td>
-              <td>Single view / Split view</td>
-              <td>Single view displays the 3D viewer full-width. Split view places the graph alongside the viewport.</td>
-            </tr>
-            <tr>
-              <td>Camera view</td>
-              <td>Perspective, Front, Side, Top</td>
-              <td>Choose the default camera angle for the Analysis 3D viewer.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Defaults can be overridden</div>
-            <p>The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always manually change the camera view using the preset buttons or orbit freely with your mouse. The global settings do not lock the interface.</p>
-          </div>
-        </div>
-
-        <!-- ── MODULE 4 ── -->
-        <h2 id="export">Export</h2>
-
-        <p>The Export module lets you configure the filename template used when a completed NIOSH report is exported to PDF or Excel. The default template is:</p>
-
-        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
-
-        <p>You can customise this independently for PDF and Excel using placeholder variables such as <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{operator}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{evaluator}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{workstation}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{record_date}</code>, and more. The file extension is appended automatically.</p>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Full export documentation</div>
-            <p>For a complete guide to exporting — including what each format contains, the full list of template variables, and filename tips — see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
+            <div class="callout-label">Names and hidden fields</div>
+            <p>If {operator} or {evaluator} are hidden in the report settings, those variables will produce an empty string in the filename. Prefer {workstation} or {record_date} for reliable filenames when name fields may be hidden.</p>
           </div>
         </div>
 
@@ -506,9 +408,9 @@
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
-              <a href="niosh-assessment-setup.html" class="related-card">
+              <a href="niosh-report-settings.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Running a NIOSH Assessment</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
               <a href="niosh-report-walkthrough.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
@@ -572,8 +474,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','input-data','analysis-scoring','viewport','export'];
-  var tocIds   = ['toc-overview','toc-input','toc-analysis','toc-viewport','toc-export'];
+  var sections = ['overview','trigger','formats','templates','tips'];
+  var tocIds   = ['toc-overview','toc-trigger','toc-formats','toc-templates','toc-tips'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
