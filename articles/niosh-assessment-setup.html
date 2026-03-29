@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIOSH Report Walkthrough — Motionprint Ergo Help</title>
+  <title>Setting Up a NIOSH Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="A guided tour of every tab in a completed NIOSH report in Motionprint Ergo: Score Overview, Analysis, and Findings." />
+  <meta name="description" content="Step-by-step guide to the NIOSH assessment input page: uploading motion capture data, configuring parameters, trimming recordings, and defining lifting tasks." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -226,14 +226,14 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">NIOSH Report Walkthrough</span>
+        <span style="color:rgba(255,255,255,.6)">Setting Up a NIOSH Assessment</span>
       </nav>
       <span class="article-eyebrow">Using Reports</span>
-      <h1>NIOSH Report Walkthrough</h1>
+      <h1>Setting Up a NIOSH Assessment</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          12 min read
+          10 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -258,10 +258,11 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">2. Analysis</a></li>
-          <li id="toc-findings"><a href="#findings">3. Findings</a></li>
-          <li id="toc-export"><a href="#export">Export</a></li>
+          <li id="toc-upload"><a href="#upload-recording">Upload Recording</a></li>
+          <li id="toc-general"><a href="#general-information">General Information</a></li>
+          <li id="toc-modifiers"><a href="#additional-modifiers">Additional Modifiers</a></li>
+          <li id="toc-trim"><a href="#trim-lifting-tasks">Trim &amp; Lifting Tasks</a></li>
+          <li id="toc-run"><a href="#running-assessment">Running Assessment</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -274,262 +275,240 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through each tab — what it shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
+        <p class="article-lead">Before Motionprint Ergo can calculate a NIOSH assessment result, you must configure the input parameters. This article walks through the assessment setup page — every field, every step, and every control — so you can prepare a recording for analysis with confidence.</p>
 
         <!-- ── OVERVIEW ── -->
-        <h2 id="overview">Report structure</h2>
+        <h2 id="overview">Overview</h2>
 
-        <p>The report opens with a tab bar at the top. Depending on your NIOSH report settings, you will see two or three tabs:</p>
+        <p>The NIOSH assessment input page is a single, scrollable screen with two main regions: a left panel containing a step-by-step form and a right panel displaying an interactive 3D viewport with playback and timeline controls.</p>
 
-        <ul>
-          <li><strong>Score Overview</strong> — the complete assessment result: scores, multiplier breakdowns, and the position data at the key frame.</li>
-          <li><strong>Analysis</strong> — an interactive deep dive into how each variable behaves frame by frame across the entire lift.</li>
-          <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the NIOSH report settings.</li>
-        </ul>
+        <p>The form is divided into four sequential steps that must be completed in order:</p>
+        <ol>
+          <li><strong>Upload Recording</strong> — Load an MVNX motion capture file.</li>
+          <li><strong>General Information</strong> — Enter workplace, operator, evaluator, and other metadata.</li>
+          <li><strong>Additional Modifiers</strong> — Apply conditional multipliers (appears only if enabled).</li>
+          <li><strong>Trim &amp; Define Lifting Tasks</strong> — Set the observation window and mark individual lifting actions.</li>
+        </ol>
 
-        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to update general information such as workplace, evaluator, and comments) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
+        <p>Each step must be completed before moving to the next. The <strong>Run Assessment</strong> button at the bottom remains disabled until all required fields are filled and the assessment is ready to execute.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Multi-task assessments</div>
-            <p>If your assessment contains two or more lifting tasks, a <strong>task selector</strong> appears at the top of the Score Overview and Analysis tabs. Use it to switch between individual tasks or (on Score Overview) the CLI Overview, which shows the aggregated Composite Lifting Index across all tasks. See the <a href="understanding-niosh-assessment.html#cli">Understanding the NIOSH Assessment</a> article for details on how the CLI is calculated.</p>
+            <div class="callout-label">Real-time validation</div>
+            <p>Motionprint validates all entries as you type. If a required field is missing or invalid, a clear error message appears and the Run button stays disabled. This prevents incomplete assessments from being submitted.</p>
           </div>
         </div>
 
-        <figure style="margin:24px 0;">
-          <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score Overview tab — showing the complete single-task NIOSH result</figcaption>
-        </figure>
+        <!-- ── STEP 1 ── -->
+        <h2 id="upload-recording"><span class="step-num">1</span> Upload Recording</h2>
 
-        <!-- ── SECTION 1 ── -->
-        <h2 id="score-overview"><span class="step-num">1</span> Score Overview</h2>
+        <p>Motion capture data must be provided as an MVNX file — the Xsens motion capture format. This is the only supported input format for NIOSH assessments in Motionprint Ergo.</p>
 
-        <p>The Score Overview tab gives you everything a standard manual NIOSH assessment would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
+        <p>Click the file upload control to browse your system and select an MVNX file. Once a valid file is loaded, the 3D viewport on the right instantly renders the recorded movement and the timeline populates with the full duration of the recording.</p>
 
-        <h3>General information card</h3>
-        <p>The top-left card displays metadata about the assessment session. All fields can be edited inline by clicking the Edit button at the top of the report.</p>
-
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td>Working time</td><td>Total time spent at the workstation (e.g. "2 h 15 min").</td></tr>
-            <tr><td>Date</td><td>The evaluation date.</td></tr>
-            <tr><td>Cycle duration</td><td>Duration of one repetitive lifting cycle, used to derive lift frequency.</td></tr>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if the privacy setting "Hide evaluator name" is enabled.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if "Hide operator name" is enabled.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Risk assessment card</h3>
-        <p>The top-right card shows the primary risk result. Its content adapts depending on whether the report is single-task or multi-task.</p>
-
-        <h4>Single-task view</h4>
-        <ul>
-          <li>A label identifying the assessed frame (e.g. "Single Lift at Frame 120").</li>
-          <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), orange (1.0–3.0), red (&gt; 3.0).</li>
-          <li>The actual load weight and the Recommended Weight Limit (RWL) side by side.</li>
-          <li>A short sentence interpreting the risk level in plain language.</li>
-          <li>A warning if the Frequency Multiplier equals zero, meaning the lift frequency exceeds NIOSH limits.</li>
-        </ul>
-
-        <h4>Multi-task — individual task view</h4>
-        <ul>
-          <li>Two colour-coded badges: <strong>STLI</strong> (Single-Task Lifting Index) and <strong>FILI</strong> (Frequency-Independent Lifting Index).</li>
-          <li>Three weight figures: actual load weight, STRWL (single-task RWL), and FIRWL (frequency-independent RWL).</li>
-        </ul>
-
-        <h4>Multi-task — CLI Overview</h4>
-        <ul>
-          <li>The total number of lifting tasks and a colour-coded <strong>CLI badge</strong>.</li>
-          <li>Identifies the highest-risk task (Task 1 by STLI rank) and its load weight.</li>
-        </ul>
-
-        <h3>Peak moment screenshot and position data</h3>
-        <p>Below the two cards, the main area shows a screenshot of the 3D avatar at the key frame of the lift — the peak moment frame (or origin/destination frame, depending on the analysis mode set in NIOSH report settings). Alongside the screenshot, a data panel shows:</p>
-        <ul>
-          <li>The absolute frame number and its timestamp within the recording.</li>
-          <li>The relative position within the lifting task (e.g. "45/120 in lifting task").</li>
-          <li>The four biomechanical variables at that frame: <strong>H</strong> (cm), <strong>V</strong> (cm), <strong>D</strong> (cm), <strong>A</strong> (°).</li>
-        </ul>
-
-        <h3>Frequency and coupling tables</h3>
-        <p>Below the screenshot, the layout splits into two columns.</p>
-        <p>The left column shows the <strong>Frequency Multiplier (FM) lookup table</strong> for the applicable shift duration. The row matching the task's calculated frequency is highlighted with a colour-coded badge, making it easy to see exactly which FM value was applied.</p>
-        <p>The right column shows the <strong>Coupling Multiplier (CM) table</strong> with rows for Good, Fair, and Poor coupling quality, each split by vertical hand height (V &lt; 75 cm or V ≥ 75 cm). The cell matching the task's coupling selection and V value is highlighted.</p>
-
-        <h3>Calculations breakdown</h3>
-        <p>Still in the right column, below the CM table, is a full step-by-step derivation of the result, organised into four expandable sections:</p>
-        <ol>
-          <li><strong>Multiplier derivations</strong> — each of the four motion-derived multipliers (HM, VM, DM, AM) with its formula, the substituted values at the key frame, and a colour-coded risk dot indicating input quality.</li>
-          <li><strong>RWL calculation</strong> — the complete formula with all seven multipliers and any additional modifiers (Pf, Tf, Of, eM) substituted in, followed by the numerical result. In multi-task mode, an additional row shows the FIRWL calculated with FM = 1.0.</li>
-          <li><strong>LI calculation</strong> — LI = Load Weight / RWL with the colour-coded result. In multi-task mode, additional rows show the STLI and FILI.</li>
-          <li><strong>Error state</strong> — if lift frequency exceeds NIOSH limits (FM = 0), all calculation sections switch to red borders and display "N/A".</li>
-        </ol>
-
-        <h3>CLI Overview (multi-task only)</h3>
-        <p>When "CLI Overview" is selected from the task selector, the main area is replaced by a dedicated CLI breakdown:</p>
-        <ul>
-          <li><strong>Frequency Multipliers section</strong> — shows how individual task frequencies are summed cumulatively and the corresponding FM value for each cumulative level.</li>
-          <li><strong>ΣΔLIᵢ section</strong> — shows the incremental ΔLI contribution of each task from Task 2 onward.</li>
-          <li><strong>CLI result</strong> — the final CLI value with a colour-coded badge and the summary formula CLI = STLI₁ + ΣΔLIᵢ.</li>
-          <li><strong>Task breakdown table</strong> — all tasks ranked by STLI, showing STRWL, FIRWL, STLI, FILI, and ΔLI for each. A summary row at the bottom shows the STLI₁ and the ΣΔLIᵢ total.</li>
-        </ul>
-
-        <!-- ── SECTION 2 ── -->
-        <h2 id="analysis"><span class="step-num">2</span> Analysis</h2>
-
-        <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph.</p>
-
-        <figure style="margin:24px 0;">
-          <div style="background:var(--bg-subtle,#f5f5f7);border-radius:12px;border:1px solid var(--border);padding:20px 20px 28px;">
-            <img src="../printscreens/analysis.png" alt="Analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights panel" style="width:100%;border-radius:8px;display:block;" />
-          </div>
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Analysis tab — 3D viewer, score-per-frame graph, and frame insights panel</figcaption>
-        </figure>
-
-        <h3>Variable selector</h3>
-        <p>At the top of the tab, a <strong>Select variable</strong> dropdown lets you choose which value to inspect across the recording. Changing the variable updates the graph, the frame insights panel, and the zone distribution chart simultaneously. Options:</p>
-        <ul>
-          <li><strong>LI</strong> (single-task) or <strong>STLI</strong> (multi-task) — the Lifting Index per frame.</li>
-          <li><strong>H (horizontal)</strong> — horizontal hand distance from the midpoint between the ankles (cm).</li>
-          <li><strong>V (vertical)</strong> — vertical hand height above the floor (cm).</li>
-          <li><strong>A (asymmetry)</strong> — trunk twist angle from the worker's midline (°).</li>
-        </ul>
-
-        <h3>3D viewport</h3>
-        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. Four camera presets — Perspective, Front, Side, and Top — are accessible via an overlay in the top-left corner of the viewport.</p>
-        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the graph. When enabled, colour-coded spheres appear on the avatar at the shoulders, wrists, and back, showing the real-time risk level for the selected variable at the current frame: green (low), orange (medium), red (high).</p>
-
-        <h3>Score-per-frame graph</h3>
-        <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
-
-        <table class="zone-table">
-          <thead><tr><th>Variable</th><th>Risk zones</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong>LI / STLI</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
-                <span class="zone-dot zone-red"></span>Red 2.0–3.0+
-              </td>
-            </tr>
-            <tr>
-              <td><strong>H</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–36 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red 52–63+ cm
-              </td>
-            </tr>
-            <tr>
-              <td><strong>V</strong></td>
-              <td>
-                <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 20–50 cm &nbsp;
-                <span class="zone-dot zone-green"></span>Green 50–100 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 100–130 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red &gt;130 cm
-              </td>
-            </tr>
-            <tr>
-              <td><strong>A</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
-                <span class="zone-dot zone-red"></span>Red 90–135°
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. You can also drag to select a frame range, which lets you define a custom critical moment for that selection.</p>
-
-        <p>Playback controls sit in a vertical stack to the left of the graph: a play/pause button and a speed selector (0.5×, 1×, 1.5×, 2×).</p>
-
-        <h3>Frame insights panel</h3>
-        <p>A fixed panel to the right of the viewport shows three sections that update as you scrub through frames:</p>
-
-        <h4>Current frame data</h4>
-        <p>Shows the numerical value of the selected variable at the current frame (with its unit), the corresponding NIOSH multiplier value (e.g. "HM: 0.893"), and a visual bar divided into the same risk zones as the graph — with a dot indicating where the current value falls. If the value has been clamped per NIOSH rules (e.g. H capped at its 25 cm minimum), both the original and clamped values are shown.</p>
-
-        <h4>Zone distribution</h4>
-        <p>A pie chart showing what percentage of the lifting task's frames fall into each risk zone for the selected variable. This is an aggregate across the entire task and does not change as you scrub — it gives you an at-a-glance sense of how much of the lift was spent in each risk category.</p>
-
-        <h4>Critical moments</h4>
-        <p>Critical moments are significant instants or periods in the lift that are worth highlighting. They appear as markers on the graph and are listed in this panel. There are three types:</p>
-        <ul>
-          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest LI/STLI in the task.</li>
-          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range where the score consistently exceeds a risk threshold.</li>
-          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the Add (+) button.</li>
-        </ul>
-        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Critical moments are included in the exported report.</p>
+        <p>No other steps in the form become accessible until a valid recording file is loaded. If you attempt to load an invalid or corrupted file, Motionprint displays an error message and prompts you to try again.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Tip: identify the pain points</div>
-            <p>Switch between variables (H, V, A, LI) to understand which factor is driving the risk score at each point in the lift. A frame that scores poorly on LI might be caused by a high H, a low V, or a large A — the zone distribution and graph together make this immediately visible.</p>
+            <div class="callout-label">MVNX format requirement</div>
+            <p>If you are recording with Xsens MotionCapture, export the recorded session as an MVNX file before importing into Motionprint. The MVNX format preserves all motion data and skeletal information needed for biomechanical analysis.</p>
           </div>
         </div>
 
-        <!-- ── SECTION 3 ── -->
-        <h2 id="findings"><span class="step-num">3</span> Findings</h2>
+        <!-- ── STEP 2 ── -->
+        <h2 id="general-information"><span class="step-num">2</span> General Information</h2>
 
-        <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the NIOSH report settings.</p>
+        <p>This step collects metadata and contextual details about the assessment session. Some fields are always required; others appear or disappear based on your NIOSH report settings.</p>
 
-        <h3>Default structure</h3>
-        <p>The tab displays a vertical stack of section blocks, each with a title and a multi-line text area. If you have not customised the sections, the five defaults are:</p>
-        <ol>
-          <li>Current Situation</li>
-          <li>Observations</li>
-          <li>Risk Assessment</li>
-          <li>Recommendations</li>
-          <li>Conclusion</li>
-        </ol>
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Workplace</td>
+              <td>Yes</td>
+              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3" or "Warehouse Packing Area"). Required text field.</td>
+            </tr>
+            <tr>
+              <td>Operator</td>
+              <td>Conditional</td>
+              <td>Name or ID of the worker being assessed. Hidden if "Hide operator name" is enabled in NIOSH report settings to protect privacy.</td>
+            </tr>
+            <tr>
+              <td>Evaluator</td>
+              <td>Conditional</td>
+              <td>Name or ID of the ergonomist or assessor conducting the evaluation. Hidden if "Hide evaluator name" is enabled in settings.</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>Conditional</td>
+              <td>Worker gender (radio buttons: Male / Female). Conditional based on "Gender not required" setting. Used to refine certain biomechanical calculations.</td>
+            </tr>
+            <tr>
+              <td>Working time</td>
+              <td>Yes</td>
+              <td>Total hours and minutes spent at the workstation per shift. Required field with separate inputs for hours and minutes. Used to determine the Frequency Multiplier duration category (see below).</td>
+            </tr>
+            <tr>
+              <td>Comments</td>
+              <td>No</td>
+              <td>Optional multi-line text field for notes, observations, or contextual information about the assessment.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h3>Customisation</h3>
-        <p>The entire Findings structure is configurable from the NIOSH report settings page:</p>
+        <h3>Working time and duration category</h3>
+
+        <p>The <strong>Working time</strong> value you enter directly determines which Frequency Multiplier (FM) lookup table is used during assessment. Motionprint automatically categorizes the shift duration as follows:</p>
+
         <ul>
-          <li>Enable or disable the Findings tab entirely.</li>
-          <li>Rename the tab (default: "Findings", max 50 characters).</li>
-          <li>Add, rename, reorder, or delete individual sections using a drag-and-drop list.</li>
-          <li>Reset to the five defaults at any time.</li>
+          <li><strong>Short duration</strong> — ≤ 1 hour at the workstation.</li>
+          <li><strong>Moderate duration</strong> — Greater than 1 hour, up to 2 hours.</li>
+          <li><strong>Long duration</strong> — Greater than 2 hours (shifts of 2+ hours).</li>
         </ul>
+
+        <p>Each category has its own FM lookup table; the appropriate table is selected automatically once you confirm the working time.</p>
+
+        <!-- ── STEP 3 ── -->
+        <h2 id="additional-modifiers"><span class="step-num">3</span> Additional Modifiers</h2>
+
+        <p>Additional Modifiers is a conditional step that only appears if modifiers are enabled in your NIOSH report settings. If your settings do not include any modifiers, this step is skipped entirely and you proceed directly to the trim and lifting tasks step.</p>
+
+        <p>When enabled, this step allows you to apply multiplicative adjustment factors that account for special lifting conditions not captured by the standard NIOSH variables. Each modifier applies a specific multiplier:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Modifier</th><th>Factor</th><th>Applies when</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Two-person lift</strong></td>
+              <td>Pf = 0.85</td>
+              <td>The load is lifted by two workers simultaneously, sharing the weight.</td>
+            </tr>
+            <tr>
+              <td><strong>Additional physical tasks</strong></td>
+              <td>Tf = 0.80</td>
+              <td>The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
+            </tr>
+            <tr>
+              <td><strong>One-hand lifting</strong></td>
+              <td>Of = 0.60</td>
+              <td>A lift is performed with only one hand instead of two.</td>
+            </tr>
+            <tr>
+              <td><strong>Extended duration</strong></td>
+              <td>eM</td>
+              <td>The work shift exceeds 8 hours. The multiplier value depends on shift length.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Select or check the modifiers that apply to the observed work. Multiple modifiers can be selected at once, and their effects are multiplicatively combined in the final RWL calculation.</p>
+
+        <!-- ── STEP 4 ── -->
+        <h2 id="trim-lifting-tasks"><span class="step-num">4</span> Trim &amp; Define Lifting Tasks</h2>
+
+        <p>This is the most complex step and the one with the most interactive controls. You use the 3D viewport and timeline to define the precise observation window and to mark individual lifting tasks within that window.</p>
+
+        <h3>The 3D viewport and playback controls</h3>
+
+        <p>On the right side of the screen, the viewport displays the loaded motion capture recording as an animated 3D avatar. Below the viewport are playback controls:</p>
+
+        <ul>
+          <li><strong>Play/pause button</strong> — Start or stop the animation.</li>
+          <li><strong>Speed selector</strong> — Choose playback speed: 0.5× (slow), 1× (normal), 1.5× (faster), 2× (double speed).</li>
+        </ul>
+
+        <p>Below the controls is the <strong>timeline</strong>, a horizontal bar showing the full duration of the recording. This is where you perform trimming and task marking.</p>
+
+        <h3>Trimming the observation window</h3>
+
+        <p>Trimming defines the start and end points of the observation period — the portion of the recording that will be analyzed. Only lifting tasks within the trimmed range are included in the assessment.</p>
+
+        <p>Two vertical handle lines appear on the timeline, marking the trim range:</p>
+
+        <ul>
+          <li><strong>Start handle (left)</strong> — Drag to move the observation start point.</li>
+          <li><strong>End handle (right)</strong> — Drag to move the observation end point.</li>
+        </ul>
+
+        <p>The shaded region between the handles represents the observation window. As you adjust the handles, Motionprint recalculates the <strong>frequency</strong> based on the trimmed duration and the number of lifting tasks inside the window. Frequency is expressed as lifts per minute and must fall within NIOSH's acceptable range of 0.2–15 lifts/min.</p>
+
+        <p>If your frequency falls outside this range, Motionprint displays a warning and prevents the assessment from running. You can resolve this by either adjusting the trim range or reducing/increasing the number of marked tasks.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Session data only</div>
-            <p>Content entered in the Findings tab is kept in memory for the current session. It is included when you export the report to PDF or Excel, but it is not saved to disk automatically between sessions. Make sure to export before closing the report if you want to preserve your findings.</p>
+            <div class="callout-label">Frequency = Tasks ÷ Trimmed duration</div>
+            <p>If you have marked 5 lifting tasks in a 2-minute observation window, the frequency is 5 ÷ 2 = 2.5 lifts/min, which is within the acceptable range and will proceed normally.</p>
           </div>
         </div>
 
-        <!-- ── EXPORT ── -->
-        <h2 id="export">Export</h2>
+        <h3>Defining lifting tasks</h3>
 
-        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes all three tabs:</p>
+        <p>A lifting task is a distinct lifting action that you want to assess. It is defined by a start frame and an end frame within the observation window. For each task, you must specify the load weight and the quality of the grip (coupling).</p>
+
+        <p>To define a task:</p>
+
+        <ol>
+          <li>Click and drag on the timeline to select a frame range. A blue highlight appears showing your selection.</li>
+          <li>Click the <strong>Add</strong> button to create a task from that range.</li>
+          <li>A task entry appears in the task list on the left. Fill in the required fields:
+            <ul>
+              <li><strong>Start frame</strong> — The frame number where the lift begins (auto-populated).</li>
+              <li><strong>End frame</strong> — The frame number where the lift ends (auto-populated).</li>
+              <li><strong>Load weight</strong> — The weight of the object being lifted, in kilograms. Required field.</li>
+              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the quality of the grip:
+                <ul>
+                  <li><strong>Good</strong> — The object has convenient handles or a grip surface; the lift is performed with a secure grasp.</li>
+                  <li><strong>Fair</strong> — The object has less-than-optimal handles or the grip is moderately awkward.</li>
+                  <li><strong>Poor</strong> — The object has no handles, or the grip is significantly awkward or unstable.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>Once a task is created, you can edit or delete it. If you adjust the trim range to exclude a task's frame range, that task is automatically removed from the assessment.</p>
+
+        <h3>Multiple lifting tasks and CLI</h3>
+
+        <p>If you mark two or more lifting tasks, Motionprint switches to multi-task mode. In multi-task assessments, each task is assigned a Single-Task Lifting Index (STLI), and these are combined using the Composite Lifting Index (CLI) formula to produce a single final risk score. This is useful for assessing workstations where the operator performs multiple distinct lifting movements.</p>
+
+        <p>For more details on how the CLI is calculated, see the <a href="understanding-niosh-assessment.html#cli">Understanding the NIOSH Assessment</a> article.</p>
+
+        <h3>Frequency validation</h3>
+
+        <p>At any time, Motionprint validates your frequency against NIOSH limits. The frequency is automatically recalculated as you add, remove, or reorder tasks, and as you adjust the trim range. If the frequency is out of bounds, a warning message appears:</p>
+
         <ul>
-          <li>All Score Overview data — general information, scores, multiplier breakdowns, and the CLI overview if the assessment is multi-task.</li>
-          <li>The Analysis data — frame-by-frame values, the score graph, zone distributions, critical moments, and the peak frame screenshot.</li>
-          <li>The Findings content with its full section structure (if the Findings tab is enabled).</li>
+          <li><strong>Frequency &lt; 0.2 lifts/min</strong> — Too few tasks in the observation window. Either extend the observation window or add more tasks.</li>
+          <li><strong>Frequency &gt; 15 lifts/min</strong> — Too many tasks in the observation window. Either narrow the window or remove tasks.</li>
         </ul>
+
+        <p>The assessment cannot run until frequency is within 0.2–15 lifts/min.</p>
+
+        <!-- ── RUNNING ── -->
+        <h2 id="running-assessment">Running the Assessment</h2>
+
+        <p>Once all four steps are complete and all required fields are valid, the <strong>Run Assessment</strong> button activates and becomes clickable. Click it to submit the assessment to Motionprint's backend for processing.</p>
+
+        <p>A loading screen appears briefly while the data is transmitted and the NIOSH calculation is performed. Once complete, Motionprint automatically navigates to the report view, where you can review the Score Overview, Analysis, and Findings tabs.</p>
+
+        <p>If an error occurs during processing (invalid data, server issue, etc.), an error message is displayed and you are returned to the input page. You can then correct the issue and try again.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
-              <a href="niosh-assessment-setup.html" class="related-card">
+              <a href="niosh-report-walkthrough.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Setting Up a NIOSH Assessment</span>
+                <span class="related-card-title">NIOSH Report Walkthrough</span>
               </a>
-              <a href="niosh-report-settings.html" class="related-card">
-                <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">NIOSH Report Settings</span>
+              <a href="understanding-niosh-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the NIOSH Assessment</span>
               </a>
             </div>
           </div>
@@ -589,8 +568,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','score-overview','analysis','findings','export'];
-  var tocIds   = ['toc-overview','toc-score','toc-analysis','toc-findings','toc-export'];
+  var sections = ['overview','upload-recording','general-information','additional-modifiers','trim-lifting-tasks','running-assessment'];
+  var tocIds   = ['toc-overview','toc-upload','toc-general','toc-modifiers','toc-trim','toc-run'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;

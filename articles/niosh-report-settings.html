@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIOSH Report Walkthrough — Motionprint Ergo Help</title>
+  <title>NIOSH Report Settings — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="A guided tour of every tab in a completed NIOSH report in Motionprint Ergo: Score Overview, Analysis, and Findings." />
+  <meta name="description" content="Configure default behavior for all NIOSH assessments in Motionprint Ergo: input fields, analysis modes, viewport layout, and export templates." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -226,14 +226,14 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">NIOSH Report Walkthrough</span>
+        <span style="color:rgba(255,255,255,.6)">NIOSH Report Settings</span>
       </nav>
       <span class="article-eyebrow">Using Reports</span>
-      <h1>NIOSH Report Walkthrough</h1>
+      <h1>NIOSH Report Settings</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          12 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -258,9 +258,9 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">2. Analysis</a></li>
-          <li id="toc-findings"><a href="#findings">3. Findings</a></li>
+          <li id="toc-input"><a href="#input-data">Input &amp; Data</a></li>
+          <li id="toc-analysis"><a href="#analysis-scoring">Analysis &amp; Scoring</a></li>
+          <li id="toc-viewport"><a href="#viewport">Viewport</a></li>
           <li id="toc-export"><a href="#export">Export</a></li>
         </ul>
         <div class="toc-divider">
@@ -274,249 +274,292 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through each tab — what it shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
+        <p class="article-lead">The NIOSH Report Settings page is your central configuration hub for all NIOSH assessments in Motionprint Ergo. Settings you choose here become persistent defaults applied to every new assessment — whether you need to adjust reference standards, toggle optional modifiers, customize your report layout, or control export filenames. Changes take effect the next time you open or run an assessment.</p>
 
         <!-- ── OVERVIEW ── -->
-        <h2 id="overview">Report structure</h2>
+        <h2 id="overview">Overview</h2>
 
-        <p>The report opens with a tab bar at the top. Depending on your NIOSH report settings, you will see two or three tabs:</p>
+        <p>The settings page is accessed from the NIOSH assessment interface and displays all configuration options as a stacked set of modular cards. At the top of the page, an action bar provides two buttons:</p>
 
         <ul>
-          <li><strong>Score Overview</strong> — the complete assessment result: scores, multiplier breakdowns, and the position data at the key frame.</li>
-          <li><strong>Analysis</strong> — an interactive deep dive into how each variable behaves frame by frame across the entire lift.</li>
-          <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the NIOSH report settings.</li>
+          <li><strong>Save</strong> — commits all changes and closes the settings page, making them active for future assessments.</li>
+          <li><strong>Discard changes</strong> — reverts all unsaved edits and exits the settings page without applying any changes.</li>
         </ul>
 
-        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to update general information such as workplace, evaluator, and comments) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
+        <p>The settings are organized into four functional modules, each addressing a specific aspect of how NIOSH assessments are performed, displayed, and exported. Each module contains toggles, dropdown selectors, text inputs, or custom lists depending on the type of setting.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Multi-task assessments</div>
-            <p>If your assessment contains two or more lifting tasks, a <strong>task selector</strong> appears at the top of the Score Overview and Analysis tabs. Use it to switch between individual tasks or (on Score Overview) the CLI Overview, which shows the aggregated Composite Lifting Index across all tasks. See the <a href="understanding-niosh-assessment.html#cli">Understanding the NIOSH Assessment</a> article for details on how the CLI is calculated.</p>
+            <div class="callout-label">Settings are global defaults</div>
+            <p>All settings apply to every NIOSH assessment created after you save them. They are stored locally on your system and persist across sessions. If you need different settings for a specific assessment, you can adjust them within that assessment before running the analysis — the global defaults do not lock you in.</p>
           </div>
         </div>
 
-        <figure style="margin:24px 0;">
-          <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score Overview tab — showing the complete single-task NIOSH result</figcaption>
-        </figure>
+        <!-- ── MODULE 1 ── -->
+        <h2 id="input-data">Input &amp; Data</h2>
 
-        <!-- ── SECTION 1 ── -->
-        <h2 id="score-overview"><span class="step-num">1</span> Score Overview</h2>
-
-        <p>The Score Overview tab gives you everything a standard manual NIOSH assessment would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
-
-        <h3>General information card</h3>
-        <p>The top-left card displays metadata about the assessment session. All fields can be edited inline by clicking the Edit button at the top of the report.</p>
+        <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
 
         <table class="info-table">
-          <thead><tr><th>Field</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td>Working time</td><td>Total time spent at the workstation (e.g. "2 h 15 min").</td></tr>
-            <tr><td>Date</td><td>The evaluation date.</td></tr>
-            <tr><td>Cycle duration</td><td>Duration of one repetitive lifting cycle, used to derive lift frequency.</td></tr>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if the privacy setting "Hide evaluator name" is enabled.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if "Hide operator name" is enabled.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Risk assessment card</h3>
-        <p>The top-right card shows the primary risk result. Its content adapts depending on whether the report is single-task or multi-task.</p>
-
-        <h4>Single-task view</h4>
-        <ul>
-          <li>A label identifying the assessed frame (e.g. "Single Lift at Frame 120").</li>
-          <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), orange (1.0–3.0), red (&gt; 3.0).</li>
-          <li>The actual load weight and the Recommended Weight Limit (RWL) side by side.</li>
-          <li>A short sentence interpreting the risk level in plain language.</li>
-          <li>A warning if the Frequency Multiplier equals zero, meaning the lift frequency exceeds NIOSH limits.</li>
-        </ul>
-
-        <h4>Multi-task — individual task view</h4>
-        <ul>
-          <li>Two colour-coded badges: <strong>STLI</strong> (Single-Task Lifting Index) and <strong>FILI</strong> (Frequency-Independent Lifting Index).</li>
-          <li>Three weight figures: actual load weight, STRWL (single-task RWL), and FIRWL (frequency-independent RWL).</li>
-        </ul>
-
-        <h4>Multi-task — CLI Overview</h4>
-        <ul>
-          <li>The total number of lifting tasks and a colour-coded <strong>CLI badge</strong>.</li>
-          <li>Identifies the highest-risk task (Task 1 by STLI rank) and its load weight.</li>
-        </ul>
-
-        <h3>Peak moment screenshot and position data</h3>
-        <p>Below the two cards, the main area shows a screenshot of the 3D avatar at the key frame of the lift — the peak moment frame (or origin/destination frame, depending on the analysis mode set in NIOSH report settings). Alongside the screenshot, a data panel shows:</p>
-        <ul>
-          <li>The absolute frame number and its timestamp within the recording.</li>
-          <li>The relative position within the lifting task (e.g. "45/120 in lifting task").</li>
-          <li>The four biomechanical variables at that frame: <strong>H</strong> (cm), <strong>V</strong> (cm), <strong>D</strong> (cm), <strong>A</strong> (°).</li>
-        </ul>
-
-        <h3>Frequency and coupling tables</h3>
-        <p>Below the screenshot, the layout splits into two columns.</p>
-        <p>The left column shows the <strong>Frequency Multiplier (FM) lookup table</strong> for the applicable shift duration. The row matching the task's calculated frequency is highlighted with a colour-coded badge, making it easy to see exactly which FM value was applied.</p>
-        <p>The right column shows the <strong>Coupling Multiplier (CM) table</strong> with rows for Good, Fair, and Poor coupling quality, each split by vertical hand height (V &lt; 75 cm or V ≥ 75 cm). The cell matching the task's coupling selection and V value is highlighted.</p>
-
-        <h3>Calculations breakdown</h3>
-        <p>Still in the right column, below the CM table, is a full step-by-step derivation of the result, organised into four expandable sections:</p>
-        <ol>
-          <li><strong>Multiplier derivations</strong> — each of the four motion-derived multipliers (HM, VM, DM, AM) with its formula, the substituted values at the key frame, and a colour-coded risk dot indicating input quality.</li>
-          <li><strong>RWL calculation</strong> — the complete formula with all seven multipliers and any additional modifiers (Pf, Tf, Of, eM) substituted in, followed by the numerical result. In multi-task mode, an additional row shows the FIRWL calculated with FM = 1.0.</li>
-          <li><strong>LI calculation</strong> — LI = Load Weight / RWL with the colour-coded result. In multi-task mode, additional rows show the STLI and FILI.</li>
-          <li><strong>Error state</strong> — if lift frequency exceeds NIOSH limits (FM = 0), all calculation sections switch to red borders and display "N/A".</li>
-        </ol>
-
-        <h3>CLI Overview (multi-task only)</h3>
-        <p>When "CLI Overview" is selected from the task selector, the main area is replaced by a dedicated CLI breakdown:</p>
-        <ul>
-          <li><strong>Frequency Multipliers section</strong> — shows how individual task frequencies are summed cumulatively and the corresponding FM value for each cumulative level.</li>
-          <li><strong>ΣΔLIᵢ section</strong> — shows the incremental ΔLI contribution of each task from Task 2 onward.</li>
-          <li><strong>CLI result</strong> — the final CLI value with a colour-coded badge and the summary formula CLI = STLI₁ + ΣΔLIᵢ.</li>
-          <li><strong>Task breakdown table</strong> — all tasks ranked by STLI, showing STRWL, FIRWL, STLI, FILI, and ΔLI for each. A summary row at the bottom shows the STLI₁ and the ΣΔLIᵢ total.</li>
-        </ul>
-
-        <!-- ── SECTION 2 ── -->
-        <h2 id="analysis"><span class="step-num">2</span> Analysis</h2>
-
-        <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph.</p>
-
-        <figure style="margin:24px 0;">
-          <div style="background:var(--bg-subtle,#f5f5f7);border-radius:12px;border:1px solid var(--border);padding:20px 20px 28px;">
-            <img src="../printscreens/analysis.png" alt="Analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights panel" style="width:100%;border-radius:8px;display:block;" />
-          </div>
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Analysis tab — 3D viewer, score-per-frame graph, and frame insights panel</figcaption>
-        </figure>
-
-        <h3>Variable selector</h3>
-        <p>At the top of the tab, a <strong>Select variable</strong> dropdown lets you choose which value to inspect across the recording. Changing the variable updates the graph, the frame insights panel, and the zone distribution chart simultaneously. Options:</p>
-        <ul>
-          <li><strong>LI</strong> (single-task) or <strong>STLI</strong> (multi-task) — the Lifting Index per frame.</li>
-          <li><strong>H (horizontal)</strong> — horizontal hand distance from the midpoint between the ankles (cm).</li>
-          <li><strong>V (vertical)</strong> — vertical hand height above the floor (cm).</li>
-          <li><strong>A (asymmetry)</strong> — trunk twist angle from the worker's midline (°).</li>
-        </ul>
-
-        <h3>3D viewport</h3>
-        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. Four camera presets — Perspective, Front, Side, and Top — are accessible via an overlay in the top-left corner of the viewport.</p>
-        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the graph. When enabled, colour-coded spheres appear on the avatar at the shoulders, wrists, and back, showing the real-time risk level for the selected variable at the current frame: green (low), orange (medium), red (high).</p>
-
-        <h3>Score-per-frame graph</h3>
-        <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
-
-        <table class="zone-table">
-          <thead><tr><th>Variable</th><th>Risk zones</th></tr></thead>
+          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td><strong>LI / STLI</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
-                <span class="zone-dot zone-red"></span>Red 2.0–3.0+
-              </td>
+              <td>Gender not required</td>
+              <td>Off</td>
+              <td>Toggle to hide the gender field from the input page and report. Useful if gender is not a relevant factor in your assessment protocol.</td>
             </tr>
             <tr>
-              <td><strong>H</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–36 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red 52–63+ cm
-              </td>
+              <td>Hide operator name</td>
+              <td>Off</td>
+              <td>Toggle to conceal the worker's name. Helpful for privacy-focused assessments or when anonymity is desired in exported reports.</td>
             </tr>
             <tr>
-              <td><strong>V</strong></td>
-              <td>
-                <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 20–50 cm &nbsp;
-                <span class="zone-dot zone-green"></span>Green 50–100 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 100–130 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red &gt;130 cm
-              </td>
+              <td>Hide evaluator name</td>
+              <td>Off</td>
+              <td>Toggle to conceal the assessor's name from the report. Useful in certain documentation or compliance workflows.</td>
             </tr>
             <tr>
-              <td><strong>A</strong></td>
-              <td>
-                <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
-                <span class="zone-dot zone-red"></span>Red 90–135°
-              </td>
+              <td>Reference mass / Load Constant</td>
+              <td>23 kg (NIOSH 1994)</td>
+              <td>Selector. Choose the reference standard that governs the Load Constant (LC) used in RWL calculations. Impacts the Recommended Weight Limit directly and all derived results.</td>
             </tr>
           </tbody>
         </table>
 
-        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. You can also drag to select a frame range, which lets you define a custom critical moment for that selection.</p>
+        <h3>Load Constant values and standards</h3>
 
-        <p>Playback controls sit in a vertical stack to the left of the graph: a play/pause button and a speed selector (0.5×, 1×, 1.5×, 2×).</p>
+        <p>The Reference mass selector determines which Load Constant is used throughout the assessment. The available options and their corresponding LC values are:</p>
 
-        <h3>Frame insights panel</h3>
-        <p>A fixed panel to the right of the viewport shows three sections that update as you scrub through frames:</p>
-
-        <h4>Current frame data</h4>
-        <p>Shows the numerical value of the selected variable at the current frame (with its unit), the corresponding NIOSH multiplier value (e.g. "HM: 0.893"), and a visual bar divided into the same risk zones as the graph — with a dot indicating where the current value falls. If the value has been clamped per NIOSH rules (e.g. H capped at its 25 cm minimum), both the original and clamped values are shown.</p>
-
-        <h4>Zone distribution</h4>
-        <p>A pie chart showing what percentage of the lifting task's frames fall into each risk zone for the selected variable. This is an aggregate across the entire task and does not change as you scrub — it gives you an at-a-glance sense of how much of the lift was spent in each risk category.</p>
-
-        <h4>Critical moments</h4>
-        <p>Critical moments are significant instants or periods in the lift that are worth highlighting. They appear as markers on the graph and are listed in this panel. There are three types:</p>
-        <ul>
-          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest LI/STLI in the task.</li>
-          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range where the score consistently exceeds a risk threshold.</li>
-          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the Add (+) button.</li>
-        </ul>
-        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Critical moments are included in the exported report.</p>
+        <table class="info-table">
+          <thead><tr><th>Standard</th><th>Load Constant</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>NIOSH 1994</td>
+              <td>23 kg</td>
+              <td>Original U.S. NIOSH guideline. Widely used in North America.</td>
+            </tr>
+            <tr>
+              <td>ISO 11228-1:2021 / EU</td>
+              <td>25 kg</td>
+              <td>Current European standard for manual handling. Higher LC than NIOSH 1994.</td>
+            </tr>
+            <tr>
+              <td>ISO reduced</td>
+              <td>15 kg</td>
+              <td>Conservative variant for special populations or high-risk scenarios.</td>
+            </tr>
+            <tr>
+              <td>ISO further reduced</td>
+              <td>10 kg</td>
+              <td>Most restrictive standard, suitable for vulnerable workers or highly demanding tasks.</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Tip: identify the pain points</div>
-            <p>Switch between variables (H, V, A, LI) to understand which factor is driving the risk score at each point in the lift. A frame that scores poorly on LI might be caused by a high H, a low V, or a large A — the zone distribution and graph together make this immediately visible.</p>
+            <div class="callout-label">Choose your standard carefully</div>
+            <p>The Load Constant you select influences the RWL and Lifting Index directly. Ensure it aligns with your regulatory jurisdiction, client requirements, or organizational policy. Switching standards mid-assessment can significantly alter results.</p>
           </div>
         </div>
 
-        <!-- ── SECTION 3 ── -->
-        <h2 id="findings"><span class="step-num">3</span> Findings</h2>
+        <!-- ── MODULE 2 ── -->
+        <h2 id="analysis-scoring">Analysis &amp; Scoring</h2>
 
-        <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the NIOSH report settings.</p>
+        <p>The Analysis &amp; Scoring module determines how assessments are calculated and which result modifiers and optional tabs are available.</p>
 
-        <h3>Default structure</h3>
-        <p>The tab displays a vertical stack of section blocks, each with a title and a multi-line text area. If you have not customised the sections, the five defaults are:</p>
-        <ol>
-          <li>Current Situation</li>
-          <li>Observations</li>
-          <li>Risk Assessment</li>
-          <li>Recommendations</li>
-          <li>Conclusion</li>
-        </ol>
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Analysis mode</td>
+              <td>Peak moment</td>
+              <td>Selector. Choose between Peak moment (analyses all frames; auto-detects highest LI) or Origin/Destination (reports only start and end frame positions).</td>
+            </tr>
+            <tr>
+              <td>Two-person lift</td>
+              <td>Off</td>
+              <td>Toggle to enable the Pf = 0.85 modifier per ISO 11228-1 Annex E, reflecting reduced load per lifter when two workers share the task.</td>
+            </tr>
+            <tr>
+              <td>Additional physical tasks</td>
+              <td>Off</td>
+              <td>Toggle to enable the Tf = 0.80 modifier for workstations where lifting is one of multiple concurrent physical tasks.</td>
+            </tr>
+            <tr>
+              <td>One-hand lifting</td>
+              <td>Off</td>
+              <td>Toggle to enable the Of = 0.60 modifier when the lift is performed with only one hand.</td>
+            </tr>
+            <tr>
+              <td>Extended duration</td>
+              <td>Off</td>
+              <td>Toggle to enable the eM (extended multiplier) for shifts lasting longer than 8 hours, per ISO 11228-1.</td>
+            </tr>
+            <tr>
+              <td>Auto-detect critical moments</td>
+              <td>On</td>
+              <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h3>Customisation</h3>
-        <p>The entire Findings structure is configurable from the NIOSH report settings page:</p>
+        <h3>Analysis mode explained</h3>
+
+        <p><strong>Peak moment</strong> is the recommended default for most assessments. It analyses every frame of the lifting motion, automatically identifies the single frame with the highest Lifting Index, and reports the biomechanical values at that critical moment. This approach captures the true peak risk.</p>
+
+        <p><strong>Origin/Destination</strong> mode only examines the start and end frames of the lift. Use this mode if your assessment protocol focuses on the initial pickup and final placement rather than the entire motion trajectory.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Peak moment is recommended</div>
+            <p>Peak moment analysis ensures you capture the most critical instant of risk. Origin/Destination is rarely necessary and is primarily offered for special regulatory or methodological requirements.</p>
+          </div>
+        </div>
+
+        <h3>Findings tab configuration</h3>
+
+        <p>The Findings tab in the report (if enabled) is a free-form documentation area. You can customize it from this module:</p>
+
         <ul>
-          <li>Enable or disable the Findings tab entirely.</li>
-          <li>Rename the tab (default: "Findings", max 50 characters).</li>
-          <li>Add, rename, reorder, or delete individual sections using a drag-and-drop list.</li>
-          <li>Reset to the five defaults at any time.</li>
+          <li><strong>Enable/Disable</strong> — toggle whether the Findings tab appears in the report at all.</li>
+          <li><strong>Tab title</strong> — text input (max 50 characters) to rename the tab. Default is "Findings".</li>
+          <li><strong>Sections list</strong> — add, rename, reorder (drag-and-drop), or delete individual section blocks within the Findings tab. Each section has a title and a multi-line text area for notes.</li>
+          <li><strong>Reset to defaults</strong> — button to restore the standard section structure: General Observations, Risk Factors Identified, and Recommendations.</li>
+        </ul>
+
+        <!-- ── MODULE 3 ── -->
+        <h2 id="viewport">Viewport</h2>
+
+        <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab, ensuring consistent visualization across your assessments.</p>
+
+        <h3>Input page viewport</h3>
+
+        <p>Configuration for the 3D viewer on the input page before the assessment is run:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Layout</td>
+              <td>Single view / Split view</td>
+              <td>Single view shows the 3D avatar alone. Split view shows the 3D model alongside video or reference imagery.</td>
+            </tr>
+            <tr>
+              <td>Camera view</td>
+              <td>Perspective, Front, Side, Top</td>
+              <td>Perspective is a realistic angled view. Front, Side, and Top are orthogonal views useful for checking alignments.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Analysis page viewport</h3>
+
+        <p>Configuration for the 3D viewer and graph on the Analysis tab, where frame-by-frame risk is explored:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Layout</td>
+              <td>Single view / Split view</td>
+              <td>Single view displays the 3D viewer full-width. Split view places the graph alongside the viewport.</td>
+            </tr>
+            <tr>
+              <td>Camera view</td>
+              <td>Perspective, Front, Side, Top</td>
+              <td>Choose the default camera angle for the Analysis 3D viewer.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Defaults can be overridden</div>
+            <p>The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always manually change the camera view using the preset buttons or orbit freely with your mouse. The global settings do not lock the interface.</p>
+          </div>
+        </div>
+
+        <!-- ── MODULE 4 ── -->
+        <h2 id="export">Export</h2>
+
+        <p>The Export module controls the naming conventions for PDF and Excel files when you export a completed NIOSH assessment report.</p>
+
+        <h3>Filename templates</h3>
+
+        <p>Each export format (PDF and Excel) can have its own custom filename template. The default template is:</p>
+
+        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
+
+        <p>The file extension (.pdf, .xlsx) is appended automatically — you do not need to include it in the template.</p>
+
+        <h3>Available variables</h3>
+
+        <p>You can insert any of the following variables into your template. They will be substituted with actual assessment data when you export:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Variable</th><th>Description</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>{operator}</td>
+              <td>Name of the worker being assessed.</td>
+              <td>John Smith</td>
+            </tr>
+            <tr>
+              <td>{evaluator}</td>
+              <td>Name of the assessor.</td>
+              <td>Jane Doe</td>
+            </tr>
+            <tr>
+              <td>{workstation}</td>
+              <td>Name or description of the assessed location.</td>
+              <td>Assembly Station 3</td>
+            </tr>
+            <tr>
+              <td>{record_date}</td>
+              <td>Date of the assessment session (format: YYYY-MM-DD).</td>
+              <td>2026-03-15</td>
+            </tr>
+            <tr>
+              <td>{current_date}</td>
+              <td>Today's date when the export is generated (format: YYYY-MM-DD).</td>
+              <td>2026-03-29</td>
+            </tr>
+            <tr>
+              <td>{current_time}</td>
+              <td>Current time when the export is generated (format: HH:MM:SS).</td>
+              <td>14:32:45</td>
+            </tr>
+            <tr>
+              <td>{report_type}</td>
+              <td>Type of report (e.g. NIOSH, NIOSH-CLI if multi-task).</td>
+              <td>NIOSH</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example templates</h3>
+
+        <p>Here are some common filename patterns you might use:</p>
+
+        <ul>
+          <li><strong>{operator}_{workstation}_{record_date}</strong> — groups files by worker, task, and date.</li>
+          <li><strong>{evaluator}_{current_date}_{workstation}</strong> — organizes by assessor and workstation.</li>
+          <li><strong>{workstation}_{record_date}_{current_time}</strong> — includes timestamp to prevent accidental overwrites.</li>
+          <li><strong>NIOSH_{operator}_{report_type}</strong> — simple format prefixed with "NIOSH".</li>
         </ul>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Session data only</div>
-            <p>Content entered in the Findings tab is kept in memory for the current session. It is included when you export the report to PDF or Excel, but it is not saved to disk automatically between sessions. Make sure to export before closing the report if you want to preserve your findings.</p>
+            <div class="callout-label">Keep filenames practical</div>
+            <p>Avoid overly long or complex templates — they can result in unwieldy filenames. Use variables that are relevant to your workflow and that will help you locate and identify exported reports later.</p>
           </div>
         </div>
-
-        <!-- ── EXPORT ── -->
-        <h2 id="export">Export</h2>
-
-        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes all three tabs:</p>
-        <ul>
-          <li>All Score Overview data — general information, scores, multiplier breakdowns, and the CLI overview if the assessment is multi-task.</li>
-          <li>The Analysis data — frame-by-frame values, the score graph, zone distributions, critical moments, and the peak frame screenshot.</li>
-          <li>The Findings content with its full section structure (if the Findings tab is enabled).</li>
-        </ul>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -527,9 +570,9 @@
                 <span class="related-card-cat">Using Reports</span>
                 <span class="related-card-title">Setting Up a NIOSH Assessment</span>
               </a>
-              <a href="niosh-report-settings.html" class="related-card">
+              <a href="niosh-report-walkthrough.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">NIOSH Report Settings</span>
+                <span class="related-card-title">NIOSH Report Walkthrough</span>
               </a>
             </div>
           </div>
@@ -589,8 +632,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','score-overview','analysis','findings','export'];
-  var tocIds   = ['toc-overview','toc-score','toc-analysis','toc-findings','toc-export'];
+  var sections = ['overview','input-data','analysis-scoring','viewport','export'];
+  var tocIds   = ['toc-overview','toc-input','toc-analysis','toc-viewport','toc-export'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
