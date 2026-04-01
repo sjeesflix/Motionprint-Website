@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Exporting Reports (PDF & Excel) — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Export completed NIOSH and KIM-LHC reports to PDF for sharing or Excel for further analysis. Configure filename templates, choose export format, and manage report deliverables." />
+  <meta name="description" content="Export completed reports to PDF for sharing or Excel for further analysis. Configure filename templates, choose export format, and manage report deliverables." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -274,7 +274,7 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo can export any completed report — NIOSH or KIM-LHC — to PDF or Excel. Use PDF to share a formatted, print-ready report with a client or archive it alongside a project. Use Excel when you need raw assessment data for further analysis, custom processing, or integration into your own reporting workflow.</p>
+        <p class="article-lead">Motionprint Ergo can export any completed report to PDF or Excel. Use PDF to share a formatted, print-ready report with a client or archive it alongside a project. Use Excel when you need raw assessment data for further analysis, custom processing, or integration into your own reporting workflow.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Overview</h2>
@@ -286,43 +286,25 @@
 
         <p>The Export button sits in the tab bar at the top of every completed report, next to the Edit button. Clicking it opens an export dialog where you choose the format. The file is generated immediately and saved to your device's default downloads folder.</p>
 
-        <p>For multi-task NIOSH assessments, the export always includes all tasks and the CLI overview — you cannot export individual tasks separately.</p>
-
         <!-- ── PDF VS EXCEL ── -->
         <h2 id="formats">PDF vs Excel — what each format contains</h2>
 
         <h3>PDF export</h3>
 
-        <p>The PDF is a formatted, read-only document designed for sharing. It includes:</p>
-
-        <ul>
-          <li>The Score Overview tab in full: general information card, risk assessment card, multiplier breakdown table, and the position data card at the peak/limiting frame.</li>
-          <li>For multi-task assessments: the CLI overview page in addition to each individual task result.</li>
-          <li>The Analysis tab data: the score-per-frame graph, zone distribution, critical moments list, and a screenshot of the 3D viewer at the peak frame.</li>
-          <li>The Findings tab content (if enabled): the tab title and all sections with their text.</li>
-        </ul>
-
-        <p>The PDF layout mirrors the on-screen report layout and is optimised for A4/Letter printing.</p>
+        <p>The PDF is a formatted, read-only document designed for sharing and archiving. It mirrors the on-screen report layout exactly — including the score overview, analysis charts and visualisations, and the findings section (if enabled). The layout is optimised for A4/Letter printing and suited for client deliverables, compliance documentation, or project records.</p>
 
         <h3>Excel export</h3>
 
-        <p>The Excel file contains the raw data behind the report, structured for further analysis:</p>
-
-        <ul>
-          <li>A summary sheet with general information and the final scores (LI, RWL, all multipliers).</li>
-          <li>For multi-task assessments: a CLI sheet with the composite index and per-task STLI/FILI values.</li>
-          <li>An analysis data sheet with the frame-by-frame values for H, V, D, A, F, C and the resulting LI/RWL per frame.</li>
-          <li>A findings sheet (if the Findings tab is enabled) with all section titles and text content.</li>
-        </ul>
-
-        <p>Use the Excel export when you need to compare results across multiple sessions, build custom dashboards, or process the data outside Motionprint Ergo.</p>
+        <p>The Excel file contains the structured data behind the report, suited for further analysis and processing. It includes summary information, all input values, calculated scores, and frame-level data in tabular form — ready to filter, compare across sessions, or feed into your own reporting tools.</p>
 
         <!-- ── FILENAME TEMPLATES ── -->
         <h2 id="templates">Filename templates</h2>
 
         <p>Each report type has its own configurable filename template, set in that report type's settings page (e.g. NIOSH Report Settings). The template uses placeholder variables that are replaced with actual assessment data at the moment of export.</p>
 
-        <p><strong>Default template:</strong> <code>{workstation}_{record_date}_NIOSH</code></p>
+        <p>The PDF and Excel templates are configured <strong>independently</strong> — you can use a different naming pattern for each format. For example, a descriptive name for PDFs you share externally, and a structured code for Excel files you import into a database.</p>
+
+        <p><strong>Default template:</strong> <code>{workstation}_{record_date}_{report_type}</code></p>
 
         <p>The file extension (.pdf or .xlsx) is appended automatically — do not include it in the template.</p>
 
@@ -377,14 +359,6 @@
           <li><strong>{workstation}_{record_date}_{current_time}</strong> — adds a timestamp to prevent overwrites.</li>
         </ul>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Filename templates are per report type</div>
-            <p>Go to <a href="niosh-report-settings.html">NIOSH Report Settings</a> to set the template for NIOSH exports.</p>
-          </div>
-        </div>
-
         <!-- ── TIPS ── -->
         <h2 id="tips">Tips</h2>
 
@@ -392,14 +366,13 @@
           <li>Keep templates short and meaningful — long filenames can be truncated on some systems.</li>
           <li>Use {record_date} rather than {current_date} if you want the filename to reflect when the assessment took place, not when you exported it.</li>
           <li>If you export the same report multiple times, add {current_time} to avoid overwriting previous exports.</li>
-          <li>The PDF and Excel templates are independent — you can use different patterns for each format.</li>
         </ul>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Names and hidden fields</div>
-            <p>If {operator} or {evaluator} are hidden in the report settings, those variables will produce an empty string in the filename. Prefer {workstation} or {record_date} for reliable filenames when name fields may be hidden.</p>
+            <div class="callout-label">Empty variables</div>
+            <p>The variables {workstation}, {operator}, and {evaluator} depend on data entered on the input or results page. If any of these fields are left empty in the assessment, the corresponding variable will be omitted from the filename entirely — it will not appear as a blank or placeholder. Prefer {record_date} or {report_type} for a reliable base when these fields may not always be filled in.</p>
           </div>
         </div>
 
