@@ -96,6 +96,12 @@
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
 
+    /* Article figures / screenshots */
+    .article-figure { margin: 28px 0; }
+    .article-figure img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-sm img { max-width: 520px; margin: 0 auto; }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
+
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
@@ -284,7 +290,17 @@
         <!-- ── TRIGGERING AN EXPORT ── -->
         <h2 id="trigger">Triggering an export</h2>
 
-        <p>The Export button sits in the tab bar at the top of every completed report, next to the Edit button. Clicking it opens an export dialog where you choose the format. The file is generated immediately and saved to your device's default downloads folder.</p>
+        <figure class="article-figure">
+          <img src="exportfunction.jpg" alt="The Export button highlighted in the report tab bar" />
+          <figcaption>The Export button (upload icon) in the report tab bar, highlighted next to the Edit button.</figcaption>
+        </figure>
+
+        <p>The Export button sits in the tab bar at the top of every completed report, next to the Edit button. Clicking it opens an export dialog where you select the format (PDF or Excel), confirm the filename, and set a save location. The output folder defaults to the folder last used for that specific report and format, so repeat exports always land in the right place. The file is generated once you confirm your selections.</p>
+
+        <figure class="article-figure figure-sm">
+          <img src="exportwindow.jpg" alt="The Export Report dialog showing format selection, filename field, and save location" />
+          <figcaption>The Export Report dialog — choose the format, confirm the filename, and set the save location before exporting.</figcaption>
+        </figure>
 
         <!-- ── PDF VS EXCEL ── -->
         <h2 id="formats">PDF vs Excel — what each format contains</h2>
@@ -295,7 +311,7 @@
 
         <h3>Excel export</h3>
 
-        <p>The Excel file contains the structured data behind the report, suited for further analysis and processing. It includes summary information, all input values, calculated scores, and frame-level data in tabular form — ready to filter, compare across sessions, or feed into your own reporting tools.</p>
+        <p>The Excel file contains the structured data behind the report, suited for further analysis and processing. It includes summary information, all input values, calculated scores, and frame-level data in tabular form — ready to filter, compare across sessions, or feed into your own reporting tools. The layout is also optimised for A4 printing, so you can produce a clean physical copy of the raw data when needed.</p>
 
         <!-- ── FILENAME TEMPLATES ── -->
         <h2 id="templates">Filename templates</h2>
@@ -307,6 +323,11 @@
         <p><strong>Default template:</strong> <code>{workstation}_{record_date}_{report_type}</code></p>
 
         <p>The file extension (.pdf or .xlsx) is appended automatically — do not include it in the template.</p>
+
+        <figure class="article-figure">
+          <img src="exportsettings.jpg" alt="Filename template settings showing PDF and Excel tabs, template input field, available variables, and a live filename preview" />
+          <figcaption>Filename template settings in the report type's settings page — configure separate templates for PDF and Excel, with a live preview of the resulting filename.</figcaption>
+        </figure>
 
         <h3>Available variables</h3>
 
