@@ -282,7 +282,7 @@
           <li><strong>Forward-direction marker</strong> — a small triangle on the floor pointing in the +Z direction, colored in your brand color, indicating which way the recorded subject was facing.</li>
         </ul>
 
-        <p>The scene uses ambient lighting (intensity 0.7) and a directional key light for realistic shading of the avatar. When company branding is enabled, your company logo is displayed as a texture on the avatar's chest. The viewport also fully respects your interface theme — sky color, tile colors, grid lines, and avatar materials all adapt to light and dark mode.</p>
+        <p>The scene uses ambient lighting (intensity 0.7) and a directional key light for realistic shading of the avatar. Your brand color (as set in Settings) is used as the highlight color on the avatar, and also colors the forward-direction marker on the floor. The viewport fully respects your interface theme — sky color, tile colors, grid lines, and avatar materials all adapt to light and dark mode.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
@@ -302,8 +302,8 @@
 
         <ul>
           <li><strong>Single</strong> — one full-width viewport. The default.</li>
-          <li><strong>Two Horizontal</strong> — two viewports placed side by side.</li>
-          <li><strong>Two Vertical</strong> — two viewports stacked top and bottom.</li>
+          <li><strong>Two Horizontal</strong> — two viewports stacked top and bottom.</li>
+          <li><strong>Two Vertical</strong> — two viewports placed side by side.</li>
           <li><strong>Quad</strong> — four viewports in a 2 × 2 grid.</li>
         </ul>
 
@@ -325,14 +325,14 @@
 
         <ul>
           <li><strong>3D</strong> — perspective view from a three-quarter angle. The default. Supports free orbit.</li>
-          <li><strong>Front</strong> — facing the front of the avatar.</li>
-          <li><strong>Back</strong> — facing the back of the avatar.</li>
-          <li><strong>Left</strong> — viewing the avatar's left side.</li>
-          <li><strong>Right</strong> — viewing the avatar's right side.</li>
-          <li><strong>Top</strong> — bird's-eye view looking straight down.</li>
+          <li><strong>Front</strong> — orthographic view facing the front of the avatar.</li>
+          <li><strong>Back</strong> — orthographic view facing the back of the avatar.</li>
+          <li><strong>Left</strong> — orthographic view of the avatar's left side.</li>
+          <li><strong>Right</strong> — orthographic view of the avatar's right side.</li>
+          <li><strong>Top</strong> — orthographic bird's-eye view looking straight down.</li>
         </ul>
 
-        <p>The circular menu uses a pie-slice layout with arc segments surrounding a center "3D" button. Your camera view selection is saved per viewport and persists between sessions.</p>
+        <p>In all views, zooming focuses on the avatar's pelvis as the center point. The circular menu uses a pie-slice layout with arc segments surrounding a center "3D" button. Your camera view selection is saved per viewport and persists between sessions.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
@@ -346,7 +346,7 @@
         <!-- ── SECTION 4 ── -->
         <h2 id="navigation">Mouse &amp; Keyboard</h2>
 
-        <p>You navigate the 3D viewport using standard mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
+        <p>You navigate the 3D viewport using mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
 
         <table class="shortcut-table">
           <thead>
@@ -355,15 +355,11 @@
           <tbody>
             <tr>
               <td>Left or right mouse button — drag</td>
-              <td>Orbit / rotate around the avatar</td>
-            </tr>
-            <tr>
-              <td>Middle mouse button — drag</td>
-              <td>Pan the view horizontally and vertically</td>
+              <td>Rotate around the avatar (3D view only)</td>
             </tr>
             <tr>
               <td>Scroll wheel</td>
-              <td>Zoom in and out (range: 0.1 m – 20.0 m from focal point)</td>
+              <td>Zoom in and out, centered on the avatar's pelvis (range: 0.1 m – 20.0 m)</td>
             </tr>
             <tr>
               <td><span class="kbd">R</span></td>
@@ -380,7 +376,7 @@
             Screenshot
           </span>
           <div class="media-placeholder-title">Mouse controls diagram</div>
-          <div class="media-placeholder-desc">A clean diagram or illustration showing the three mouse actions (left-drag = rotate, middle-drag = pan, scroll = zoom) overlaid on a viewport screenshot. Include a small keyboard icon with "R" labeled "Reset camera." This can be a designed graphic rather than a raw screenshot.</div>
+          <div class="media-placeholder-desc">A clean diagram or illustration showing the two mouse actions (left/right-drag = rotate in 3D view, scroll = zoom) overlaid on a viewport screenshot. Include a small keyboard icon with "R" labeled "Reset camera." This can be a designed graphic rather than a raw screenshot.</div>
         </div>
 
         <!-- ── SECTION 5 ── -->
@@ -403,7 +399,7 @@
           <li><strong>4×</strong> — quadruple speed, useful for quickly scanning long recordings.</li>
         </ul>
 
-        <p>Playback is driven by the recording's native frame rate (typically 60 Hz), multiplied by the selected speed factor.</p>
+        <p>Playback is driven by the recording's native frame rate, multiplied by the selected speed factor.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
@@ -417,20 +413,11 @@
         <!-- ── SECTION 6 ── -->
         <h2 id="timeline">Timeline &amp; Frame Counter</h2>
 
-        <p>The timeline spans the center of the playback controls bar and shows your current position within the recording. The frame counter to its right gives you precise frame and time information.</p>
+        <p>The timeline spans the center of the playback controls bar and shows your current position within the recording. The frame counter to its right gives you precise frame information.</p>
 
-        <h3>Timeline Scrubber</h3>
+        <h3>Playback Position Bar</h3>
 
-        <p>The timeline consists of a neutral gray background track with a colored progress overlay and a circular scrub thumb at the current frame position. Click anywhere on the track to jump to that point in the recording, or click and drag the thumb to scrub through the animation smoothly. The thumb snaps to frame boundaries.</p>
-
-        <h3>Frame &amp; Time Counter</h3>
-
-        <p>The counter to the right of the timeline shows two lines that update in real time as the animation plays or you scrub:</p>
-
-        <ul>
-          <li><strong>Top line:</strong> current frame / total frames — e.g., <code>123 / 456 fr</code></li>
-          <li><strong>Bottom line:</strong> current time / total duration in seconds — e.g., <code>2.05s / 7.60s</code></li>
-        </ul>
+        <p>The timeline consists of a neutral background track with a colored progress overlay in your brand color and a rectangular scrub thumb at the current frame position. Click anywhere on the track to jump to that point in the recording.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
@@ -438,7 +425,7 @@
             Screenshot
           </span>
           <div class="media-placeholder-title">Timeline and frame counter</div>
-          <div class="media-placeholder-desc">Close-up of the timeline and frame counter area. Annotate: ① background track, ② progress bar, ③ scrub thumb, ④ frame counter (top line), ⑤ time counter (bottom line). Use a frame somewhere in the middle of the recording so both progress and remaining are visible.</div>
+          <div class="media-placeholder-desc">Close-up of the timeline and frame counter area. Annotate: ① background track, ② progress bar (brand color), ③ rectangular scrub thumb. Use a frame somewhere in the middle of the recording so both progress and remaining are visible.</div>
         </div>
 
         <!-- ── CLOSING NOTE ── -->
@@ -446,7 +433,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Report-specific controls</div>
-            <p>In report-specific contexts, additional controls appear around the viewport — including trim markers, variable selectors, score graphs, and body risk indicators. See the <a href="niosh-report-walkthrough.html">NIOSH Report Walkthrough</a> and <a href="niosh-report-settings.html">NIOSH Report Settings</a> articles for details on those features.</p>
+            <p>In report-specific contexts, additional controls appear around the viewport — including trim markers, variable selectors, score graphs, and body risk indicators. See the report specific articles for details on those features.</p>
           </div>
         </div>
 
