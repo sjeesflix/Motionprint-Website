@@ -100,6 +100,10 @@
     .article-figure { margin: 28px 0; }
     .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
     .article-figure.figure-full img { max-width: 100%; }
+    .figure-side { float: right; margin: 4px 0 24px 32px; width: 260px; }
+    .figure-side img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .figure-side figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
+    @media (max-width: 600px) { .figure-side { float: none; width: 100%; margin: 24px 0; } }
     .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
 
     /* Lead */
@@ -284,14 +288,10 @@
 
         <p>The scene uses ambient lighting (intensity 0.7) and a directional key light for realistic shading of the avatar. Your brand color (as set in Settings) is used as the highlight color on the avatar, and also colors the forward-direction marker on the floor. The viewport fully respects your interface theme — sky color, tile colors, grid lines, and avatar materials all adapt to light and dark mode.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">3D viewport — default state</div>
-          <div class="media-placeholder-desc">Full screenshot of the 3D viewport in default state (single layout, 3D camera, avatar visible on checkerboard floor). Annotate: ① avatar, ② checkerboard floor with grid, ③ axis marker strips, ④ forward-direction triangle. Show in light mode. Optionally include a small dark-mode inset for comparison.</div>
-        </div>
+        <figure class="article-figure figure-full">
+          <img src="viewport.jpg" alt="3D viewport in default state showing avatar on checkerboard floor" />
+          <figcaption>The 3D viewport in its default single-panel state, showing the avatar, checkerboard floor with grid, axis marker strips, and the forward-direction marker.</figcaption>
+        </figure>
 
         <!-- ── SECTION 2 ── -->
         <h2 id="layouts">Viewport Layouts</h2>
@@ -309,19 +309,15 @@
 
         <p>Each panel in a multi-viewport layout has its own independent camera view and camera state. The default layout — including which of the four layouts to use and what camera view each panel should show — can be configured in Report Settings, separately for each report type and per input and result page.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">All four viewport layouts</div>
-          <div class="media-placeholder-desc">Four-panel composite showing each layout option in use. Label each panel: Single, Two Horizontal, Two Vertical, Quad. Use the same motion recording in each so the data is consistent. Highlight the layout selector buttons in the top-left of one panel with a callout.</div>
-        </div>
-
         <!-- ── SECTION 3 ── -->
         <h2 id="camera">Camera Views</h2>
 
         <p>Each viewport has a <strong>camera view selector</strong> button in its <strong>top-right corner</strong>, showing the name of the current view (e.g., "3D"). Clicking it opens a circular menu with six preset angles.</p>
+
+        <figure class="figure-side">
+          <img src="cameraview.gif" alt="Camera view selector button and circular menu" />
+          <figcaption>The camera view selector and its circular menu.</figcaption>
+        </figure>
 
         <ul>
           <li><strong>3D</strong> — perspective view from a three-quarter angle. The default. Supports free orbit.</li>
@@ -333,15 +329,7 @@
         </ul>
 
         <p>In all views, zooming focuses on the avatar's pelvis as the center point. The circular menu uses a pie-slice layout with arc segments surrounding a center "3D" button.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Camera view selector and circular menu</div>
-          <div class="media-placeholder-desc">Two-part image. Left: the viewport with the camera view selector button visible in the top-right corner. Right: the circular camera menu open, with all six options labeled. Optionally, a strip of small thumbnails below showing what each camera angle looks like.</div>
-        </div>
+        <div style="clear:both"></div>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="navigation">Mouse &amp; Keyboard</h2>
@@ -370,14 +358,10 @@
 
         <p>The right-click context menu is suppressed inside the viewport so it does not interfere with orbit controls. When your cursor is over the viewport, page scrolling is disabled to prevent accidental scroll-away while zooming.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Mouse controls diagram</div>
-          <div class="media-placeholder-desc">A clean diagram or illustration showing the two mouse actions (left/right-drag = rotate in 3D view, scroll = zoom) overlaid on a viewport screenshot. Include a small keyboard icon with "R" labeled "Reset camera." This can be a designed graphic rather than a raw screenshot.</div>
-        </div>
+        <figure class="article-figure figure-full">
+          <img src="rotate.gif" alt="Mouse controls — rotating and zooming the 3D viewport" />
+          <figcaption>Left or right mouse drag to orbit the camera; scroll wheel to zoom.</figcaption>
+        </figure>
 
         <!-- ── SECTION 5 ── -->
         <h2 id="playback">Playback Controls</h2>
@@ -401,14 +385,6 @@
 
         <p>Playback is driven by the recording's native frame rate, multiplied by the selected speed factor.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Playback controls — speed selector and play/pause</div>
-          <div class="media-placeholder-desc">Close-up of the playback controls bar showing: ① the playback speed selector with the dropdown open showing all four options, ② the play/pause button. Annotate each element with a numbered callout.</div>
-        </div>
 
         <!-- ── SECTION 6 ── -->
         <h2 id="timeline">Timeline &amp; Frame Counter</h2>
@@ -419,14 +395,6 @@
 
         <p>The timeline consists of a neutral background track with a colored progress overlay in your brand color and a rectangular scrub thumb at the current frame position. Click anywhere on the track to jump to that point in the recording.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Timeline and frame counter</div>
-          <div class="media-placeholder-desc">Close-up of the timeline and frame counter area. Annotate: ① background track, ② progress bar (brand color), ③ rectangular scrub thumb. Use a frame somewhere in the middle of the recording so both progress and remaining are visible.</div>
-        </div>
 
         <!-- ── CLOSING NOTE ── -->
         <div class="callout callout-info">
