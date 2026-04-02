@@ -276,7 +276,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated February 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -296,10 +296,9 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-branding"><a href="#branding-options">1. Branding Options</a></li>
-          <li id="toc-colors"><a href="#color-settings">2. Color Settings</a></li>
-          <li id="toc-reports"><a href="#report-customization">3. Report Customization</a></li>
-          <li id="toc-calc"><a href="#calculation-settings">4. Calculation Settings</a></li>
+          <li id="toc-branding"><a href="#branding">Branding</a></li>
+          <li id="toc-theme"><a href="#theme">Interface Theme</a></li>
+          <li id="toc-using"><a href="#using-branding">Using Company Branding</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -312,29 +311,35 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo lets you tailor the look and feel of your reports so they carry your organisation's identity when shared with clients or management. This article walks through every customization option — from logo and color settings to report layout and the settings that influence how results are displayed.</p>
+        <p class="article-lead">Motionprint Ergo lets you tailor the look and feel of your application and exported reports so they carry your organisation's identity when shared with clients or management. This article walks through every customization option available under Settings → General — from logo and color settings to the interface theme.</p>
 
-        <!-- ── SECTION 1 ── -->
-        <h2 id="branding-options"><span class="step-num">1</span> Branding Options</h2>
-        <p>All branding and customization settings are found under <strong>Settings → Branding &amp; Reports</strong> in the top menu bar. Changes apply immediately to all future exports and are saved per installation.</p>
+        <!-- ── BRANDING ── -->
+        <h2 id="branding">Branding</h2>
+
+        <p>All branding settings are found under <strong>Settings → General</strong>, in the <strong>Branding</strong> section. This section contains your company logo, minimized logo, brand color, company name, and active menu color. Changes are saved per installation and apply once you click the Apply button in the action bar at the bottom.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Settings → Branding &amp; Reports panel</div>
-          <div class="media-placeholder-desc">Full-width screenshot of the Branding &amp; Reports settings screen, showing all four sub-sections: Company Logo, Company Name, Accent Color, and Report Layout. Highlight the navigation path (Settings menu → Branding &amp; Reports) with an arrow or label.</div>
+          <div class="media-placeholder-title">Settings → General — Branding section</div>
+          <div class="media-placeholder-desc">Full-width screenshot of the General settings tab with the Branding module visible, showing all sub-sections: Company Logo, Minimized Company Logo, Brand Color, Company Name, and Active Menu Color. Highlight the navigation path (Settings menu → General tab → Branding block) with an arrow or label.</div>
         </div>
 
         <h3>Company Logo</h3>
-        <p>Upload your organisation's logo and it will appear in the header of every exported report — both PDF and Excel. Click <strong>Upload Logo</strong> and select your file.</p>
+
+        <p>Upload your organisation's logo and it will appear in the top-left corner of the application sidebar. When the <strong>Use Company Branding</strong> setting is enabled for a specific report, the logo will also appear on the cover page of exported reports (PDF and Excel). Click the logo preview area to select your file.</p>
+
         <ul>
-          <li><strong>Supported formats:</strong> PNG, JPG, SVG</li>
-          <li><strong>Recommended size:</strong> 300 × 100 px, transparent background (PNG or SVG preferred)</li>
-          <li><strong>Max file size:</strong> 2 MB</li>
+          <li><strong>Supported formats:</strong> SVG, PNG, JPG, JPEG</li>
+          <li><strong>Ideal dimensions:</strong> 180 × 20 pixels (for horizontal logos) — different aspect ratios are supported</li>
+          <li><strong>Background:</strong> Transparent background recommended (PNG or SVG preferred)</li>
         </ul>
-        <p>A live preview shows exactly how the logo will appear in the report header. To remove a logo, click the trash icon next to the current upload.</p>
+
+        <p>A live preview shows exactly how the logo will appear. To replace the current logo, click the preview area again. To reset to the default Motionprint logo, click the reset button next to the preview.</p>
+
+        <p>Click the info icon (ℹ) in the top-right corner of the Company Logo section for a quick reference of supported formats and dimensions.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
@@ -342,29 +347,61 @@
             Screenshot
           </span>
           <div class="media-placeholder-title">Logo upload area with live preview</div>
-          <div class="media-placeholder-desc">Two-part screenshot: left side shows the upload area with an uploaded logo thumbnail and the remove/replace controls; right side (or inset) shows the resulting report header with the logo in the top-left corner. A simple arrow or bracket connecting the two halves makes this clear.</div>
+          <div class="media-placeholder-desc">Two-part screenshot: left side shows the upload area with an uploaded logo thumbnail and the reset control; right side (or inset) shows the application sidebar with the logo in the top-left corner. A simple arrow or bracket connecting the two halves makes this clear.</div>
+        </div>
+
+        <h3>Minimized Company Logo</h3>
+
+        <p>The minimized logo is a compact version of your company logo that appears when the application sidebar is collapsed. This allows your branding to remain visible even in the minimized navigation view.</p>
+
+        <ul>
+          <li><strong>Supported formats:</strong> SVG, PNG, JPG, JPEG</li>
+          <li><strong>Ideal dimensions:</strong> 64 × 64 pixels (square format recommended)</li>
+          <li><strong>Background:</strong> Transparent background recommended</li>
+        </ul>
+
+        <p>Upload a square icon or abbreviated version of your logo here. If no minimized logo is set, the default Motionprint icon will be used when the sidebar is collapsed.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Minimized logo upload area</div>
+          <div class="media-placeholder-desc">Side-by-side screenshot: left side shows the minimized logo upload area in settings; right side shows the collapsed sidebar with the minimized logo visible in the top-left corner.</div>
         </div>
 
         <h3>Company Name</h3>
-        <p>Enter your organisation's name in the <strong>Company Name</strong> field. This text is used in:</p>
+
+        <p>Enter your organisation's name in the <strong>Company Name</strong> field. When the <strong>Use Company Branding</strong> setting is enabled for a specific report, this name is used in:</p>
+
         <ul>
-          <li>The report header, displayed below the logo</li>
-          <li>The PDF footer alongside the export date and page number</li>
-          <li>The "Prepared by" line on the optional report cover page</li>
+          <li>The PDF footer (displayed alongside the page number on every page)</li>
+          <li>The cover page of exported reports (PDF and Excel)</li>
         </ul>
 
-        <!-- ── SECTION 2 ── -->
-        <h2 id="color-settings"><span class="step-num">2</span> Color Settings</h2>
-        <p>The color settings control the accent color used throughout your exported reports — chart fills, section dividers, data labels, and neutral UI elements inside the PDF.</p>
+        <p>If the company name is left empty or Use Company Branding is not enabled, "Motionprint" will be shown as the default name in exports.</p>
 
-        <h3>Primary Accent Color</h3>
-        <p>Click the color swatch next to <strong>Accent Color</strong> to open the color picker. You can enter a hex value directly (<code>#EA523B</code>) or use the picker to choose visually. The report preview on the right-hand side updates in real time.</p>
+        <h3>Brand Color</h3>
+
+        <p>Click the color swatch next to <strong>Brand Color</strong> to open the color picker. You can enter a hex value directly or use the HSV sliders to choose visually. An opacity slider lets you fine-tune transparency.</p>
+
+        <p>The brand color is applied across:</p>
+
+        <ul>
+          <li><strong>The application UI</strong> — buttons, active navigation highlighting, text selection, icon tints, and progress indicators</li>
+          <li><strong>PDF exports</strong> — section header backgrounds, cover page title color, chart accents, page decorations, and dividers</li>
+          <li><strong>Excel exports</strong> — header cell backgrounds, title cells, and section header colors</li>
+          <li><strong>3D avatar</strong> — the company logo texture applied to the avatar</li>
+        </ul>
+
+        <p>The default brand color is Motionprint Orange (<code>#EA523B</code>). Click the reset button to restore it at any time.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div class="callout-text">
             <div class="callout-label">Note</div>
-            <p>Risk-level colors (green, amber, red) are standardised by the NIOSH and KIM-LHC methodologies and cannot be changed. Your brand accent color applies only to neutral and informational elements.</p>
+            <p>Risk-level colors (green, amber, red) are standardised by the NIOSH and KIM-LHC methodologies and cannot be changed. Your brand color applies only to neutral and informational elements.</p>
           </div>
         </div>
 
@@ -373,121 +410,78 @@
             <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
             GIF / Screen recording
           </span>
-          <div class="media-placeholder-title">Color picker in action — live report preview updating</div>
-          <div class="media-placeholder-desc">A short looping screen recording (5–8 seconds): user opens the color picker, drags the selector from one color to another (e.g., the default red to a blue-grey), and the report preview panel on the right updates in real time showing the chart bar colors and section header rule color changing. End on a non-default brand color so the "before and after" is obvious.</div>
+          <div class="media-placeholder-title">Color picker in action — live app preview updating</div>
+          <div class="media-placeholder-desc">A short looping screen recording (5–8 seconds): user opens the color picker, drags the HSV selector from one color to another (e.g., the default orange to a blue-grey), and the application UI updates in real time showing button colors and accent elements changing. End on a non-default brand color so the "before and after" is obvious.</div>
         </div>
 
-        <h3>Report Color Scheme</h3>
-        <p>Choose the overall background style for PDF exports:</p>
+        <h3>Active Menu Color</h3>
+
+        <p>The active menu color controls the highlight color used for the currently selected menu item in the sidebar navigation. Because the brand color is used for button styling, a separate active menu color ensures that selected menu items remain clearly readable regardless of the chosen brand color.</p>
+
+        <p>This setting has <strong>separate values for Light mode and Dark mode</strong>, each with its own color picker, hex input, and opacity slider. This lets you ensure the active menu text and background contrast correctly against both themes.</p>
+
         <ul>
-          <li><strong>Light</strong> (default) — white background, dark text, colored accents. Best for print and most digital sharing scenarios.</li>
-          <li><strong>Dark</strong> — dark-grey background, light text, colored accents. Works well for on-screen presentations.</li>
+          <li><strong>Light mode default:</strong> <code>#F5F5F5</code> (light gray)</li>
+          <li><strong>Dark mode default:</strong> <code>#202020</code> (dark gray)</li>
         </ul>
+
+        <p>The active menu color only affects the application interface — it does not apply to exported reports.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Light vs Dark report color scheme — side-by-side</div>
-          <div class="media-placeholder-desc">Side-by-side screenshot of the same NIOSH report page (e.g., the Score Overview tab) rendered in Light mode (left) and Dark mode (right). Both should show the same data so the visual difference is clear. Label each panel "Light" and "Dark".</div>
+          <div class="media-placeholder-title">Active menu color settings — light and dark</div>
+          <div class="media-placeholder-desc">Screenshot of the Active Menu Color section showing both the light-mode and dark-mode color pickers side by side, each with their own hex input and reset button.</div>
         </div>
 
-        <!-- ── SECTION 3 ── -->
-        <h2 id="report-customization"><span class="step-num">3</span> Report Customization</h2>
-        <p>These settings control which sections appear in exported reports and how the overall layout is structured. They apply to both PDF exports and the on-screen report viewer.</p>
+        <!-- ── INTERFACE THEME ── -->
+        <h2 id="theme">Interface Theme</h2>
 
-        <h3>Cover Page</h3>
-        <p>Toggle <strong>Include Cover Page</strong> to add a title page to every PDF export. When enabled, you can configure:</p>
+        <p>The interface theme setting is found under <strong>Settings → General</strong>, in the <strong>Interface</strong> section directly below the Branding section.</p>
+
+        <p>Choose between two application themes:</p>
+
         <ul>
-          <li><strong>Report Title</strong> — default: "Ergonomic Assessment Report"; customizable per export or as a global default</li>
-          <li><strong>Project / Client Reference</strong> — optional free-text field that appears below the title</li>
-          <li><strong>Assessor Name</strong> — the name shown in the "Prepared by" line</li>
+          <li><strong>Light</strong> — Light background, dark text. The default theme.</li>
+          <li><strong>Dark</strong> — Dark background, light text. Easier on the eyes in low-light environments.</li>
         </ul>
+
+        <p>The selected theme affects the entire application interface — backgrounds, text colors, borders, and menu styling. The Active Menu Color setting (under Branding) has separate values for each theme to ensure proper contrast in both modes.</p>
+
+        <p>The interface theme does not affect exported reports. PDF and Excel exports use their own styling based on the brand color and report-specific settings.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-screenshot">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Cover page configuration and preview</div>
-          <div class="media-placeholder-desc">Split view: left side shows the cover page settings panel with the toggle enabled and all fields filled in; right side shows the resulting PDF cover page with logo, report title, client reference, date, and "Prepared by" line visible.</div>
+          <div class="media-placeholder-title">Interface theme toggle — Light vs Dark</div>
+          <div class="media-placeholder-desc">Side-by-side screenshot of the same Motionprint screen in Light mode (left) and Dark mode (right). Both should show the same page so the visual difference is clear. Label each panel "Light" and "Dark".</div>
         </div>
 
-        <h3>Included Sections</h3>
-        <p>Use the <strong>Report Sections</strong> checklist to choose which content blocks are included in PDF exports. This lets you tailor reports for different audiences — for example, a summary-only version for management versus a full data export for an ergonomics specialist.</p>
+        <!-- ── USING COMPANY BRANDING ── -->
+        <h2 id="using-branding">Using Company Branding in Reports</h2>
+
+        <p>The branding settings defined above (company logo, company name, brand color) can be applied to exported reports on a per-report basis. Each report type (NIOSH, KIM-LHC) has a <strong>Use Company Branding</strong> toggle in its own report settings.</p>
+
+        <p>When <strong>Use Company Branding</strong> is enabled for a report:</p>
+
         <ul>
-          <li>Score Summary <em>(always included, cannot be disabled)</em></li>
-          <li>In-Depth Analysis tab</li>
-          <li>Findings &amp; Recommendations</li>
-          <li>3D Visualization screenshots</li>
-          <li>Raw data appendix</li>
+          <li>The company logo appears on the cover page (replacing the default Motionprint logo)</li>
+          <li>The company name appears in the PDF footer on every page</li>
+          <li>The brand color is used for section headers, chart accents, and other styling elements in both PDF and Excel exports</li>
         </ul>
 
-        <h3>Header &amp; Footer</h3>
-        <p>Customize what appears in the running header and footer of each report page:</p>
-        <ul>
-          <li><strong>Header:</strong> logo (left), report title (center), export date (right) — each element can be toggled on or off individually</li>
-          <li><strong>Footer:</strong> page number, company name, optional confidentiality statement (free-text, max 80 characters)</li>
-        </ul>
+        <p>When disabled, exports use the default Motionprint logo, name, and color scheme.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Header &amp; footer controls with an annotated report page</div>
-          <div class="media-placeholder-desc">Screenshot of a single report page showing a customized header and footer. Use numbered callouts (1, 2, 3…) to label each element: ① logo in header, ② report title, ③ date, ④ footer page number, ⑤ confidentiality text. The settings panel can appear in a sidebar or inset.</div>
-        </div>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="calculation-settings"><span class="step-num">4</span> Settings That Influence Calculations</h2>
-        <p>Motionprint Ergo's NIOSH and KIM-LHC calculations follow the published, standardised methodologies — the core algorithm is fixed. However, a handful of application-level settings affect how results are classified and displayed.</p>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div class="callout-text">
-            <div class="callout-label">Important</div>
-            <p>None of these settings change the underlying ergonomic calculation. They only affect how thresholds are visualised and labeled in your reports.</p>
+            <div class="callout-label">Tip</div>
+            <p>If you only want to set up branding once and use it everywhere, configure your logo, name, and color in Settings → General → Branding, then enable Use Company Branding in each report's settings.</p>
           </div>
-        </div>
-
-        <h3>NIOSH — Organisation Alert Threshold</h3>
-        <p>The standard NIOSH guidelines define a Lifting Index (LI) of 1.0 as the point at which risk becomes present. In <strong>Settings → Assessment → NIOSH</strong>, you can optionally set a custom <strong>Organisation Alert</strong> level — for example, LI ≥ 0.85 — which triggers an early advisory badge in the report before the formal LI 1.0 threshold is reached.</p>
-        <p>This is useful if your organisation's H&amp;S policy requires intervention before the standard threshold. The LI value itself is unchanged; only the advisory color and label in the report are affected.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">NIOSH threshold settings panel</div>
-          <div class="media-placeholder-desc">Screenshot of Settings → Assessment → NIOSH showing the default threshold markers (LI 1.0 and LI 3.0) and the optional "Organisation Alert" input field set to a custom value (e.g., 0.85). A small inset or annotation should show how the custom threshold appears as a yellow advisory band in the Score Summary chart.</div>
-        </div>
-
-        <h3>KIM-LHC — Risk Score Display</h3>
-        <p>KIM-LHC risk scores range from 1 to 4 with fixed action-level definitions. You cannot adjust the thresholds, but in <strong>Settings → Assessment → KIM</strong> you can configure whether the report shows:</p>
-        <ul>
-          <li>The numeric risk score only</li>
-          <li>The action-level text description only</li>
-          <li>Both (default)</li>
-        </ul>
-
-        <h3>Units &amp; Locale</h3>
-        <p>Found under <strong>Settings → General</strong>:</p>
-        <ul>
-          <li><strong>Weight unit:</strong> kilograms (kg, default) or pounds (lb). Applies to all weight inputs and report outputs.</li>
-          <li><strong>Date format:</strong> DD/MM/YYYY or MM/DD/YYYY</li>
-          <li><strong>Language:</strong> English (default). Additional report languages may be added in future releases.</li>
-        </ul>
-
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Settings → General: Units &amp; Locale panel</div>
-          <div class="media-placeholder-desc">Clean screenshot of the Units &amp; Locale settings panel showing all three dropdowns (weight unit, date format, language) in their default state.</div>
         </div>
 
         <!-- ── ARTICLE FOOTER ── -->
@@ -495,21 +489,13 @@
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
-              <a href="#" class="related-card">
+              <a href="exporting-reports.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
                 <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
               </a>
-              <a href="#" class="related-card">
-                <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">3D View &amp; Interface Controls</span>
-              </a>
-              <a href="#" class="related-card">
+              <a href="niosh-report-settings.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">NIOSH Report Walkthrough</span>
-              </a>
-              <a href="#" class="related-card">
-                <span class="related-card-cat">Licensing &amp; Admin</span>
-                <span class="related-card-title">License &amp; Activation Guide</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
             </div>
           </div>
@@ -569,8 +555,8 @@
 
 <script>
   // TOC scroll-spy
-  var sections = ['branding-options','color-settings','report-customization','calculation-settings'];
-  var tocIds   = ['toc-branding','toc-colors','toc-reports','toc-calc'];
+  var sections = ['branding','theme','using-branding'];
+  var tocIds   = ['toc-branding','toc-theme','toc-using'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
