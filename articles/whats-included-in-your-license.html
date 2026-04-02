@@ -302,7 +302,7 @@
         <div class="tier-grid">
           <div class="tier-card">
             <div class="tier-name">Individual</div>
-            <div class="tier-price">€2,500 <span>/ year</span></div>
+            
             <div class="tier-desc">For consultants and freelancers working independently.</div>
             <div class="tier-detail"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 1 user, 2 devices</div>
             <div class="tier-detail"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full platform access</div>
@@ -310,7 +310,7 @@
           </div>
           <div class="tier-card tier-featured">
             <div class="tier-name">Team</div>
-            <div class="tier-price">€2,000 <span>/ seat / year</span></div>
+            
             <div class="tier-desc">For small to medium-sized companies with 5–19 seats.</div>
             <div class="tier-detail"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 5–19 seats, 2 devices each</div>
             <div class="tier-detail"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full platform access</div>
@@ -346,7 +346,7 @@
           </div>
           <div class="feature-item">
             <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Offline usage for up to 30 days, followed by a 7-day grace period before re-authentication is required</p>
+            <p>Offline usage for up to 30 days after activation — a 7-day grace period applies if the token cannot be refreshed due to no internet connection</p>
           </div>
           <div class="feature-item">
             <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -362,13 +362,13 @@
         <p>Each seat entitles one user to activate Motionprint Ergo on up to <strong>2 devices</strong> simultaneously — for example, a desktop workstation and a laptop. Activations are tracked by machine fingerprint; switching devices requires deactivating one before activating another.</p>
 
         <h3>Offline usage</h3>
-        <p>Once activated, Motionprint Ergo can run without an internet connection for <strong>30 days</strong>. After this period a 7-day grace period begins, during which the app continues to function but prompts re-authentication. If connectivity is not restored within the grace period, the app enters read-only mode until the license is re-validated.</p>
+        <p>Once activated, Motionprint Ergo can run without an internet connection for up to <strong>30 days</strong>. During this time the app auto-refreshes its license token silently when it detects connectivity. If the token expires without a refresh, a 7-day grace period begins — the app continues to work but shows a warning asking you to connect to the internet. After 37 days offline without a refresh, the app is locked until connectivity is restored and the token is refreshed. Note: this is separate from subscription expiry (see Renewal &amp; Expiry below).</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Non-transferable</div>
-            <p>Licenses are issued to a named user and are non-transferable between individuals. Exceeding device limits or sharing a license key between users may result in suspension. Contact support to reassign a seat when a team member changes.</p>
+            <p>Licenses are issued to a named individual and cannot be transferred between people. However, you can move your license between your own devices at any time by deactivating on one machine and activating on another. If a team member leaves, contact support to reassign their seat.</p>
           </div>
         </div>
 
@@ -379,11 +379,10 @@
         <h3>How to add seats</h3>
         <ul>
           <li>Contact <a href="mailto:support@motionprint.nl">Motionprint support</a> or your account manager to request additional seats — upgrades are processed the same business day</li>
-          <li>For API-managed deployments, additional seats can be requested via the license server API; the <code>generate_license.py</code> script supports specifying updated seat counts when issuing a revised key</li>
-        </ul>
+          </ul>
 
         <h3>Seat upgrades</h3>
-        <p>When seats are added, a new license key is issued with the updated seat limit. Existing activations continue without interruption — users simply re-activate with the new key the next time the license is checked. No data or settings are lost during a seat upgrade.</p>
+        <p>When seats are added, your existing license is updated — in most cases no action is needed on your end. In some situations a new license key may be issued; you will be notified if reactivation is required. No data or settings are lost.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
