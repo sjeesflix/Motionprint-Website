@@ -139,6 +139,11 @@
     .key-block { background: var(--dark); border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 18px; font-weight: 700; color: rgba(255,255,255,.85); text-align: center; letter-spacing: .06em; }
     .key-block span { color: var(--red); }
 
+    /* Article figures */
+    .article-figure { margin: 28px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
+
     /* Feature list */
     .feature-list { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
     .feature-item { display: flex; gap: 12px; align-items: flex-start; }
@@ -310,10 +315,15 @@
 
         <div class="steps-list">
           <div class="steps-list-item"><p>Open Motionprint Ergo. The activation screen appears automatically on first launch.</p></div>
-          <div class="steps-list-item"><p>Enter your license key in the format <code>MP-XXXX-XXXX-XXXX-XXXX</code> and click <strong>Activate</strong>.</p></div>
+          <div class="steps-list-item"><p>Enter your license key in the format <code>MP-XXXX-XXXX-XXXX-XXXX</code> and click <strong>Activate License</strong>.</p></div>
           <div class="steps-list-item"><p>The app submits your license key and machine fingerprint to the License Server for validation.</p></div>
           <div class="steps-list-item"><p>On successful validation, the license is activated and the application opens.</p></div>
         </div>
+
+        <figure class="article-figure">
+          <img src="licenseactivation.jpg" alt="Motionprint Ergo activation screen" />
+          <figcaption>The activation screen on first launch.</figcaption>
+        </figure>
 
         <div class="callout callout-info">
   <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -340,33 +350,26 @@
 
         <!-- ── SECTION 2 ── -->
         <h2 id="seat-management"><span class="step-num">2</span> Seat Management</h2>
-        <p>Each Motionprint Ergo license includes Each license includes seats — each seat allows activation on up to 2 devices (for example, a workstation and a laptop). The total number of concurrent devices equals your seat count multiplied by 2. — the maximum number of devices that can be simultaneously activated under that license. Seats are assigned automatically when a device is activated.</p>
+        <p>Each license includes a set number of seats based on your plan. Each seat allows activation on up to 2 devices (for example, a workstation and a laptop). An Individual plan includes 1 seat (2 devices total).</p>
 
-        <h3>Checking available seats</h3>
-        <p>You can view the number of activated seats and remaining capacity at any time from within the application:</p>
-        <ul>
-          <li>Open Motionprint Ergo and navigate to <strong>Settings → License</strong></li>
-          <li>The License Management page shows your plan, total seats, and how many are currently in use</li>
-          <li>For API-based seat queries, use the <code>GET /api/v1/license/status</code> endpoint with your license key</li>
-        </ul>
+        <h3>Your license in the app</h3>
+        <p>Go to <strong>Settings → License</strong> to see your license status, masked key, tier, subscription expiry date, days remaining, and token refresh countdown.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">License Management page in Motionprint Ergo</div>
-          <div class="media-placeholder-desc">Screenshot of the Settings → License page showing the license tier, seat usage indicator, and list of activated devices. Provided by client.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="licensesettingg.jpg" alt="Settings → License page in Motionprint Ergo" />
+          <figcaption>The Settings → License page.</figcaption>
+        </figure>
 
-        <h3>Revoking or reassigning a seat</h3>
-        <p>To free a seat — for example, to move a license from one machine to another — deactivate the license on the current device first, then activate it on the new one.</p>
+        <h3>Freeing a device slot</h3>
+        <p>To free a device slot — for example, to use your license on a different machine — deactivate it on the current device first, then activate on the new one.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p>On the machine you want to free, go to <strong>Settings → License</strong> and click <strong>Deactivate License</strong>.</p></div>
-          <div class="steps-list-item"><p>Confirm the deactivation. The seat is released immediately and becomes available.</p></div>
-          <div class="steps-list-item"><p>Activate the license on the new machine using the same key via online or offline activation.</p></div>
+          <div class="steps-list-item"><p>On the machine you want to free, go to <strong>Settings → License</strong> and click <strong>Deactivate</strong>.</p></div>
+          <div class="steps-list-item"><p>Confirm the dialog. The device slot is released immediately.</p></div>
+          <div class="steps-list-item"><p>Activate the license on the new machine using the same key.</p></div>
         </div>
+
+        <p>If you need to free a slot on a machine you no longer have access to, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>.</p>
 
         <!-- ── SECTION 3 ── -->
         <h2 id="license-transfer"><span class="step-num">3</span> License Transfer</h2>
@@ -378,7 +381,7 @@
             <div class="workflow-step-num">1</div>
             <div>
               <div class="workflow-step-title">Deactivate on the old machine</div>
-              <p class="workflow-step-desc">In Motionprint Ergo on the old machine, go to <strong>Settings → License → Deactivate License</strong>. This releases the device slot, making it available for use on another machine.</p>
+              <p class="workflow-step-desc">In Motionprint Ergo on the old machine, go to <strong>Settings → License → Deactivate</strong>. This releases the device slot, making it available for use on another machine.</p>
             </div>
           </div>
           <div class="workflow-step">
