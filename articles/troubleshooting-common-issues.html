@@ -154,6 +154,33 @@
     .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
     .footer-legal a:hover { color: rgba(255,255,255,.5); }
 
+    /* ── SUPPORT FORM ── */
+    .support-form-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 32px 36px 28px; max-width: 620px; }
+    .support-form-wrap h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--text); margin: 0 0 4px; }
+    .support-form-wrap .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--text); }
+    .form-label .req { color: var(--red); margin-left: 2px; }
+    .form-input { font-family: var(--font-body); font-size: 13px; color: var(--text); padding: 10px 13px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--white); transition: border-color .2s, box-shadow .2s; outline: none; width: 100%; box-sizing: border-box; }
+    .form-input::placeholder { color: var(--muted-2); }
+    .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(234,82,59,.1); }
+    .form-input.invalid { border-color: #ef4444; }
+    textarea.form-input { resize: vertical; min-height: 90px; }
+    .form-submit { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .form-btn { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: #fff; background: var(--red); border: none; border-radius: 8px; padding: 12px 24px; cursor: pointer; transition: background .15s; width: 100%; }
+    .form-btn:hover { background: var(--red-light); }
+    .form-btn:disabled { opacity: .65; cursor: not-allowed; }
+    .form-note { font-size: 11px; color: var(--muted-2); text-align: center; }
+    .form-status { margin-top: 14px; padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; display: none; }
+    .form-status.success { display: block; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+    .form-status.error { display: block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .6s linear infinite; display: none; vertical-align: middle; margin-right: 6px; }
+    .form-btn.loading .spinner { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } .support-form-wrap { padding: 24px 20px 20px; } }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .article-layout { grid-template-columns: 1fr; }
@@ -349,27 +376,11 @@
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The file is XML but is not an MVNX recording file — it may be a different Xsens export format or an unrelated XML document.</p>
+              <p>The file is XML but is not a MVNX recording file — it may be a different Xsens export format or an unrelated XML document.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Confirm you are importing an MVNX file exported from Xsens MVN Analyze or Animate (not BVH, C3D, or another format)</li>
+                <li>Confirm you are importing a MVNX file exported from Xsens MVN Analyze or Animate (not BVH, C3D, or another format)</li>
                 <li>Re-export using <strong>File → Export</strong> in MVN Analyze and select the MVNX format</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="issue-card">
-            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
-              <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"MVNX file has no T-pose frame"</span>
-              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="issue-body">
-              <p>Motionprint Ergo requires a T-pose calibration frame at the start of the recording to correctly initialise the body model.</p>
-              <p><strong>Fix:</strong></p>
-              <ul>
-                <li>In MVN Analyze, ensure the subject performed a T-pose calibration before the recording started</li>
-                <li>When re-exporting, make sure the T-pose frame is included — check your MVNX export options and do not trim the start of the recording</li>
               </ul>
             </div>
           </div>
@@ -706,12 +717,37 @@
           <li>The MVNX file or report that triggered the issue, if applicable</li>
         </ul>
 
-        <div class="callout callout-green">
-          <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <div>
-            <div class="callout-label">Get in touch</div>
-            <p>Email the support team at <a href="mailto:support@motion-print.com" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">support@motion-print.com</a> or use the contact form on the <a href="../index.html#contact" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">Motionprint website</a>.</p>
-          </div>
+        <div class="support-form-wrap">
+          <h3>Contact support</h3>
+          <p class="form-sub">Fill in your details and describe the issue. We'll get back to you as soon as possible.</p>
+          <form id="supportForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Name <span class="req">*</span></label>
+                <input type="text" name="name" class="form-input" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email <span class="req">*</span></label>
+                <input type="email" name="email" class="form-input" placeholder="you@company.com" required>
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Motionprint Ergo version</label>
+                <input type="text" name="version" class="form-input" placeholder="e.g. 2.3.1 — found in Settings">
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Describe your issue <span class="req">*</span></label>
+                <textarea name="message" class="form-input" placeholder="What were you doing when the issue occurred? Include any error messages and steps to reproduce." rows="5" required></textarea>
+              </div>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="form-btn" id="supportSubmitBtn">
+                <span class="spinner"></span>
+                <span class="btn-text">Send to support</span>
+              </button>
+              <span class="form-note">We'll never share your data with third parties.</span>
+            </div>
+            <div class="form-status" id="supportFormStatus"></div>
+          </form>
         </div>
 
         <!-- ── ARTICLE FOOTER ── -->
@@ -801,6 +837,65 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Support form handler
+  (function() {
+    var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
+    var form = document.getElementById('supportForm');
+    var btn = document.getElementById('supportSubmitBtn');
+    var status = document.getElementById('supportFormStatus');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = '';
+      form.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+
+      var name = form.querySelector('[name="name"]');
+      var email = form.querySelector('[name="email"]');
+      var message = form.querySelector('[name="message"]');
+      var valid = true;
+
+      [name, email, message].forEach(function(field) {
+        if (!field.value.trim()) { field.classList.add('invalid'); valid = false; }
+      });
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('invalid'); valid = false;
+      }
+      if (!valid) {
+        status.className = 'form-status error';
+        status.textContent = 'Please fill in all required fields.';
+        return;
+      }
+
+      btn.classList.add('loading'); btn.disabled = true;
+      var data = {
+        topic: 'Support request',
+        name: name.value.trim(),
+        email: email.value.trim(),
+        version: form.querySelector('[name="version"]').value.trim(),
+        message: message.value.trim()
+      };
+
+      try {
+        var res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = 'Message sent. We'll get back to you shortly.';
+          form.reset();
+        } else { throw new Error(); }
+      } catch(err) {
+        status.className = 'form-status error';
+        status.textContent = 'Something went wrong. Email us directly at support@motion-print.com.';
+      } finally {
+        btn.classList.remove('loading'); btn.disabled = false;
+      }
+    });
+  })();
 
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
