@@ -277,7 +277,7 @@
         <ul class="toc-list">
           <li id="toc-processing"><a href="#processing-errors">1. Processing Errors</a></li>
           <li id="toc-license"><a href="#license-issues">2. Licence Activation</a></li>
-          <li id="toc-reports"><a href="#report-failures">3. Report Generation</a></li>
+          <li id="toc-reports"><a href="#report-failures">3. Report Export Issues</a></li>
           <li id="toc-display"><a href="#display-glitches">4. Display Glitches</a></li>
           <li id="toc-contact"><a href="#contact-support">5. Contact Support</a></li>
         </ul>
@@ -303,11 +303,11 @@
           <div class="issue-card open">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"File could not be imported — missing segments"</span>
+              <span class="issue-title">Missing body segments</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>This error appears when the MVNX file does not contain all 23 body segments required by the Motionprint Ergo body model.</p>
+              <p>The MVNX file does not contain all 23 body segments required by the Motionprint Ergo body model.</p>
               <p><strong>Cause:</strong> The recording was made with an incomplete sensor set — one or more Xsens sensors were not connected, not calibrated, or not recognised by MVN Analyze before the session started.</p>
               <p><strong>Fix:</strong></p>
               <ul>
@@ -321,17 +321,16 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Invalid file format" on import</span>
+              <span class="issue-title">Invalid or corrupted MVNX file</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Motionprint Ergo only accepts the MVNX format. This error occurs when the selected file is not a valid MVNX file or has been corrupted.</p>
+              <p>The file is not valid XML, is missing its subject element, or is missing the frame rate. Motionprint Ergo cannot import it.</p>
+              <p><strong>Cause:</strong> The file was damaged or incompletely written during export, or is not a genuine MVNX export (e.g. a BVH, C3D, or other format with a renamed extension).</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Confirm the file has a <code>.mvnx</code> extension and was exported directly from Xsens MVN Analyze or Animate</li>
-                <li>Avoid renaming the file before import — the MVNX header contains metadata that must match the file structure</li>
-                <li>If the file was transferred from another machine, check it was not corrupted during transfer by comparing file sizes</li>
-                <li>Re-export from MVN Analyze if in doubt</li>
+                <li>Re-export from MVN Analyze using the default MVNX export settings</li>
+                <li>If the file was transferred via email or cloud storage, re-download the original — do not open and re-save the file as this can corrupt the XML</li>
               </ul>
             </div>
           </div>
@@ -339,80 +338,17 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">Assessment completes but all scores show zero or N/A</span>
+              <span class="issue-title">Missing or empty motion data</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>This usually means the recording did not contain a detectable lifting moment, or the load weight was entered as zero.</p>
+              <p>The file contains no motion data frames, or is missing the orientation or position data streams required for analysis.</p>
+              <p><strong>Cause:</strong> The recording was empty (started and stopped immediately), or the file was exported without position or orientation data enabled.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Check that the load weight field in the assessment setup is filled in with a non-zero value</li>
-                <li>Verify the recording covers the full lifting motion — recordings that begin or end mid-lift may not produce a complete moment</li>
-                <li>In the Analysis tab, confirm that the asymmetry and trunk angle graphs show meaningful data across the recording timeline</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="issue-card">
-            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
-              <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"MVNX file is not valid XML" or file appears corrupted</span>
-              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="issue-body">
-              <p>The file cannot be parsed because it is not valid XML — usually caused by a failed or interrupted export from MVN Analyze.</p>
-              <p><strong>Fix:</strong></p>
-              <ul>
-                <li>Re-export the MVNX file from MVN Analyze using the default export settings</li>
-                <li>If the file was transferred between machines, verify it was not corrupted during transfer by comparing file sizes</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="issue-card">
-            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
-              <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Not a valid MVNX file" — missing subject element</span>
-              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="issue-body">
-              <p>The file is XML but is not a MVNX recording file — it may be a different Xsens export format or an unrelated XML document.</p>
-              <p><strong>Fix:</strong></p>
-              <ul>
-                <li>Confirm you are importing a MVNX file exported from Xsens MVN Analyze or Animate (not BVH, C3D, or another format)</li>
-                <li>Re-export using <strong>File → Export</strong> in MVN Analyze and select the MVNX format</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="issue-card">
-            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
-              <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"MVNX file contains no motion data frames"</span>
-              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="issue-body">
-              <p>The MVNX file was exported successfully but contains no actual motion frames — the recording may have been empty or stopped immediately.</p>
-              <p><strong>Fix:</strong></p>
-              <ul>
-                <li>Open the recording in MVN Analyze and confirm it contains motion data before exporting</li>
+                <li>Open the recording in MVN Analyze and verify it contains motion data before exporting</li>
+                <li>Re-export using the default MVNX export settings — do not deselect any data streams</li>
                 <li>Re-record the session if the original capture did not complete correctly</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="issue-card">
-            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
-              <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Missing orientation or position data"</span>
-              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-            <div class="issue-body">
-              <p>The MVNX file is missing the sensor orientation or position streams required for analysis. This is caused by incorrect export settings in MVN Analyze.</p>
-              <p><strong>Fix:</strong></p>
-              <ul>
-                <li>Re-export using the default MVNX export settings in MVN Analyze — do not deselect any data streams</li>
-                <li>Ensure both orientation and position data are included in the export options</li>
               </ul>
             </div>
           </div>
@@ -545,8 +481,8 @@
         </div>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="report-failures"><span class="step-num">3</span> Report Generation Failures</h2>
-        <p>Report generation issues typically arise from missing assessment data, insufficient disk space, or problems with the output path.</p>
+        <h2 id="report-failures"><span class="step-num">3</span> Report Export Issues</h2>
+        <p>Export issues occur when saving a completed assessment as PDF or Excel. They are usually caused by file permissions, a locked file, or insufficient disk space.</p>
 
         <div class="issue-list">
 
@@ -607,17 +543,47 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Cannot create output directory" or report fails to save</span>
+              <span class="issue-title">File is locked — cannot overwrite</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The report engine could not write to the selected output folder.</p>
+              <p>The target PDF or Excel file is already open in another application, preventing Motionprint Ergo from writing to it.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Check that the output folder exists and that you have write permission to it</li>
-                <li>Avoid saving to network drives, read-only directories, or system-protected paths</li>
-                <li>Check that you have sufficient disk space on the target drive</li>
-                <li>Try saving to a local folder such as Desktop or Documents instead</li>
+                <li>Close the file in your PDF viewer, Excel, or any other application that has it open</li>
+                <li>Then retry the export</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">Export path is not writable</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The selected save location requires elevated permissions or no longer exists — for example, a disconnected network drive or a system-protected directory.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Choose a different output folder such as your Documents or Desktop directory</li>
+                <li>If saving to a network drive, verify it is connected and that you have write access</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-warn">Warning</span>
+              <span class="issue-title">Insufficient disk space</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The drive where the report is being saved does not have enough free space to complete the export.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Free up space on the target drive and try again</li>
+                <li>Alternatively, choose a save location on a drive with more available space</li>
               </ul>
             </div>
           </div>
