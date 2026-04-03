@@ -284,7 +284,7 @@
               <p><strong>Cause:</strong> The recording was made with an incomplete sensor set — one or more Xsens sensors were not connected, not calibrated, or not recognised by MVN Analyze before the session started.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Re-record the session with all 17 Xsens sensors connected and calibrated</li>
+                <li>Re-record the session with a full Xsens sensor set, all connected and calibrated</li>
                 <li>Verify in MVN Analyze that all segments show green before starting the recording</li>
                 <li>Re-export the MVNX file from MVN Analyze using the default export settings</li>
               </ul>
@@ -328,6 +328,86 @@
 
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"MVNX file is not valid XML" or file appears corrupted</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The file cannot be parsed because it is not valid XML — usually caused by a failed or interrupted export from MVN Analyze.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Re-export the MVNX file from MVN Analyze using the default export settings</li>
+                <li>If the file was transferred between machines, verify it was not corrupted during transfer by comparing file sizes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"Not a valid MVNX file" — missing subject element</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The file is XML but is not an MVNX recording file — it may be a different Xsens export format or an unrelated XML document.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Confirm you are importing an MVNX file exported from Xsens MVN Analyze or Animate (not BVH, C3D, or another format)</li>
+                <li>Re-export using <strong>File → Export</strong> in MVN Analyze and select the MVNX format</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"MVNX file has no T-pose frame"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>Motionprint Ergo requires a T-pose calibration frame at the start of the recording to correctly initialise the body model.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>In MVN Analyze, ensure the subject performed a T-pose calibration before the recording started</li>
+                <li>When re-exporting, make sure the T-pose frame is included — check your MVNX export options and do not trim the start of the recording</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"MVNX file contains no motion data frames"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The MVNX file was exported successfully but contains no actual motion frames — the recording may have been empty or stopped immediately.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Open the recording in MVN Analyze and confirm it contains motion data before exporting</li>
+                <li>Re-record the session if the original capture did not complete correctly</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"Missing orientation or position data"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The MVNX file is missing the sensor orientation or position streams required for analysis. This is caused by incorrect export settings in MVN Analyze.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Re-export using the default MVNX export settings in MVN Analyze — do not deselect any data streams</li>
+                <li>Ensure both orientation and position data are included in the export options</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-warn">Warning</span>
               <span class="issue-title">Processing is very slow or appears to hang</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -364,7 +444,7 @@
                 <li>Confirm the machine has an active internet connection</li>
                 <li>Check whether a firewall or proxy is blocking outbound HTTPS connections — the licence server communicates on port 443</li>
                 <li>If your organisation uses a proxy, configure it in your system network settings so the application can route through it</li>
-                <li>If internet access is not available, use offline activation instead — see the <a href="license-activation-guide.html">License &amp; Activation Guide</a></li>
+                <li>Ensure the domain <code>license.motion-print.com</code> is not blocked by a firewall, proxy, or VPN</li>
               </ul>
             </div>
           </div>
@@ -380,7 +460,7 @@
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>Deactivate the licence on a device you no longer need by going to <strong>Settings → Licence → Deactivate</strong> on that machine</li>
-                <li>If the old machine is no longer accessible, contact <a href="mailto:support@motionprint.nl">Motionprint support</a> to manually release a seat</li>
+                <li>If the old machine is no longer accessible, contact <a href="mailto:support@motion-print.com">Motionprint support</a> to manually release a seat</li>
                 <li>To add more seats to your plan, see <a href="whats-included-in-your-license.html">What's Included in Your License</a></li>
               </ul>
             </div>
@@ -400,6 +480,37 @@
                 <li>Avoid extra spaces before or after the key when pasting</li>
                 <li>Confirm you are using the key from your purchase confirmation email — trial keys and purchased keys are different</li>
                 <li>If your subscription has expired, the key will also return this error until renewed</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"License expired"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>Your subscription has passed its expiry date. The app enters read-only mode for 7 days, then locks entirely.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> to renew your subscription</li>
+                <li>Once renewed, re-enter your license key on the activation screen to restore full access</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"License disabled"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The license key has been administratively disabled. This is not a standard activation error and requires manual intervention.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> with your license key for assistance</li>
               </ul>
             </div>
           </div>
@@ -481,6 +592,25 @@
             </div>
           </div>
 
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"Cannot create output directory" or report fails to save</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The report engine could not write to the selected output folder.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Check that the output folder exists and that you have write permission to it</li>
+                <li>Avoid saving to network drives, read-only directories, or system-protected paths</li>
+                <li>Check that you have sufficient disk space on the target drive</li>
+                <li>Try saving to a local folder such as Desktop or Documents instead</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
         <!-- ── SECTION 4 ── -->
@@ -530,12 +660,12 @@
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Motionprint Ergo remembers its last window position. If a monitor was disconnected, the window may reopen outside the visible display area.</p>
+              <p>If a monitor was disconnected or display configuration changed, the window may reopen outside the visible display area.</p>
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>With Motionprint Ergo focused in the taskbar, press <strong>Windows + Arrow keys</strong> to move the window back onto the screen</li>
                 <li>Alternatively, right-click the taskbar icon → <strong>Move</strong>, then use the arrow keys to bring the window into view</li>
-                <li>Resizing the window and moving it to your primary display will reset its saved position for future launches</li>
+
               </ul>
             </div>
           </div>
@@ -572,7 +702,7 @@
         <ul>
           <li>A brief description of what you were doing when the issue occurred</li>
           <li>The exact error message (a screenshot is helpful)</li>
-          <li>Your operating system version and Motionprint Ergo version (found in <strong>Help → About</strong>)</li>
+          <li>Your operating system version and Motionprint Ergo version (found in <strong>Settings</strong>)</li>
           <li>The MVNX file or report that triggered the issue, if applicable</li>
         </ul>
 
@@ -580,7 +710,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <div>
             <div class="callout-label">Get in touch</div>
-            <p>Email the support team at <a href="mailto:support@motionprint.nl" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">support@motionprint.nl</a> or use the contact form on the <a href="../index.html#contact" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">Motionprint website</a>. Responses are typically sent within one business day.</p>
+            <p>Email the support team at <a href="mailto:support@motion-print.com" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">support@motion-print.com</a> or use the contact form on the <a href="../index.html#contact" style="color:#10b981;border-bottom:1px solid rgba(16,185,129,.3);">Motionprint website</a>.</p>
           </div>
         </div>
 
