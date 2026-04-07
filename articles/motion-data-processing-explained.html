@@ -265,7 +265,6 @@
           <li id="toc-validation"><a href="#validation">3. Upload &amp; Validation</a></li>
           <li id="toc-biomechanical"><a href="#biomechanical">4. Deriving Biomechanical Variables</a></li>
           <li id="toc-scoring"><a href="#scoring">5. Assessment-Specific Scoring</a></li>
-          <li id="toc-inputs-table"><a href="#inputs-table">6. Auto-Derived vs. User-Entered</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -342,9 +341,8 @@
         <h2 id="validation"><span class="step-num">3</span> Upload &amp; Validation</h2>
         <p>When a file is uploaded, Motionprint Ergo validates its structure before allowing the assessment to proceed. The validation checks that:</p>
         <ul>
-          <li>The file is valid XML and can be fully parsed</li>
+          <li>The file is valid and can be fully parsed</li>
           <li>A <code>&lt;subject&gt;</code> element is present with a <code>frameRate</code> attribute</li>
-          <li>A T-pose calibration frame is present</li>
           <li>At least one normal motion frame exists with both position and orientation data</li>
         </ul>
         <p>If any check fails, a specific error message is shown explaining what is missing or incorrect. Metadata extracted during validation — frame rate, segment count, total frame count — is used to configure the processing pipeline for that recording.</p>
@@ -354,15 +352,15 @@
         <p>The core of the processing pipeline converts the segment positions and orientations from the motion data into the distances, heights, and angles that assessment methods need. This happens in three steps.</p>
 
         <h3>Anatomical landmark positions</h3>
-        <p>Segment positions in the MVNX file represent the origin of each body segment — not the precise anatomical points that biomechanical calculations require. For example, the NIOSH Lifting Equation needs the exact position of the hand palm and the ankle mid-point, not the hand segment origin.</p>
-        <p>To obtain precise anatomical landmark positions, the pipeline takes the segment origin and adds a fixed body-frame offset vector (defined for each landmark), then rotates that offset using the segment's quaternion orientation to bring it into world coordinates. This rotation is done via quaternion-to-rotation-matrix conversion. The result is the anatomical landmark's position in world space at that frame — for example, the palm centre, the medial malleolus, or the shoulder tip.</p>
+        <p>Segment positions in the MVNX file represent the origin of each body segment. In addition to segment origins, MVNX provides positional data for specific bony landmarks — precise anatomical reference points such as the palm centre, medial malleolus, or shoulder tip — stored separately in the file. The pipeline reads these landmark positions directly where they are available.</p>
+        <p>Where a landmark position is not stored explicitly in the file, the pipeline derives it by taking the segment origin and adding a fixed body-frame offset vector, then rotating that offset using the segment's quaternion orientation to bring it into world coordinates via quaternion-to-rotation-matrix conversion.</p>
 
         <h3>Distances, heights, and angles</h3>
         <p>With anatomical landmarks positioned in world space, the pipeline extracts the variables each assessment method requires:</p>
         <ul>
           <li><strong>Horizontal distances</strong> are computed from XY-plane projections of landmark positions (e.g., the distance between ankle mid-point and hand mid-point in the horizontal plane)</li>
           <li><strong>Vertical heights</strong> are read from the Z-coordinate of the relevant landmark relative to the calibrated floor plane (Z is the vertical axis in MVNX convention)</li>
-          <li><strong>Asymmetry angles</strong> are computed as the angle between the mid-sagittal direction and the load displacement vector, both projected onto the horizontal plane. The mid-sagittal direction is derived from foot and pelvis orientations using quaternion-to-rotation-matrix conversion, with a ±2-frame smoothing window applied (NIOSH only)</li>
+          <li><strong>Body segment orientations</strong> are derived from each segment's quaternion by converting to a rotation matrix. These represent the absolute orientation of a segment in world space and are used to compute angles relative to gravity, the vertical axis, or other reference directions as required by the assessment method</li>
           <li><strong>Joint angles</strong> are read directly from the pre-computed values stored in the input file — they are not re-derived by the pipeline</li>
         </ul>
 
@@ -371,65 +369,7 @@
 
         <!-- ── SECTION 5 ── -->
         <h2 id="scoring"><span class="step-num">5</span> Assessment-Specific Scoring</h2>
-        <p>Once biomechanical variables are derived, the selected assessment method applies its scoring logic. Each method defines which variables it needs and how they combine into a risk score. The platform is designed to support additional assessment methods as they are added; currently available methods include the NIOSH Lifting Equation and KIM-LHC.</p>
-
-        <h3>NIOSH Lifting Equation</h3>
-        <p>The NIOSH method takes four auto-derived variables — H (horizontal distance), V (vertical hand height), D (vertical travel distance), and A (asymmetry angle) — and two user-entered inputs: F (task frequency) and C (coupling quality). Each variable produces a dimensionless multiplier. The Recommended Weight Limit (RWL) and Lifting Index (LI) are computed per frame:</p>
-
-        <div class="formula-block">
-          <span class="formula-label">NIOSH Lifting Equation</span>
-          RWL = LC × HM × VM × DM × AM × FM × CM<br>
-          LI = Load Weight / RWL
-        </div>
-
-        <p>The asymmetry multiplier AM illustrates how the formula responds to motion data: AM = 1 − (0.0032 × A), where A is the asymmetry angle in degrees. At A = 0° the penalty is zero (AM = 1.0); at the cap of A = 135° the AM reaches 0.57. Two analysis modes are available: <strong>peak-frame mode</strong> uses the frame with the highest LI within the lifting moment; <strong>origin/destination mode</strong> uses H, V, and A at the moment start frame and D across the full travel range. When multiple lifting moments are defined, a Composite Lifting Index (CLI) aggregates across all moments.</p>
-
-        <h3>KIM-LHC</h3>
-        <p>KIM-LHC (Key Indicator Method for Lifting, Holding, and Carrying) classifies the worker's body posture at the start and end frames of each lifting moment. The classification matches the observed joint angles against 10 posture categories — standing straight, slightly bent, medium bent, bended, max bended, lifting arms, squat straight, squat low, on knees up, and sitting on knees — across 5 body regions (trunk, shoulders, elbows, knees, hands). The matching uses weighted angle-threshold scoring: each posture template defines angle ranges for each body region, and the template with the highest weighted match score is selected.</p>
-        <p>Alongside posture classification, per-frame violation flags are computed for: trunk bending above 20°, trunk twisting above 30°, asymmetric hand positioning, and excessive hand distance from the body. The final KIM-LHC score combines a load rating, body posture score, and additional condition factors multiplied by a time rating. The result is mapped to one of four colour-coded risk bands (green, yellow, orange, red).</p>
-
-        <!-- ── SECTION 6 ── -->
-        <h2 id="inputs-table"><span class="step-num">6</span> Auto-Derived vs. User-Entered</h2>
-        <p>The following table summarises which inputs to the assessment are derived automatically from the motion data and which must be entered manually on the input configuration page. The exact fields depend on the selected assessment method.</p>
-
-        <table class="threshold-table">
-          <thead>
-            <tr>
-              <th>Auto-derived from motion data</th>
-              <th>User-entered on input page</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Horizontal distance (H)</td>
-              <td>Load weight</td>
-            </tr>
-            <tr>
-              <td>Vertical hand height (V)</td>
-              <td>Task frequency</td>
-            </tr>
-            <tr>
-              <td>Vertical travel distance (D)</td>
-              <td>Work duration</td>
-            </tr>
-            <tr>
-              <td>Asymmetry angle (A)</td>
-              <td>Coupling quality</td>
-            </tr>
-            <tr>
-              <td>Body posture angles (trunk, shoulders, elbows, knees)</td>
-              <td>Workplace / environmental conditions</td>
-            </tr>
-            <tr>
-              <td>Trunk bending and twisting angles</td>
-              <td>Subject and session metadata</td>
-            </tr>
-            <tr>
-              <td>Per-frame risk scores and time-series</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <p>Once biomechanical variables are derived, the selected assessment method applies its scoring logic. Each method defines which variables it needs and how they combine into a risk score. How the NIOSH Lifting Equation and KIM-LHC specifically use these variables — including their formulas, multipliers, and risk classification — is covered in the dedicated articles for each method.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -502,8 +442,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','data-input','validation','biomechanical','scoring','inputs-table'];
-  var tocIds   = ['toc-overview','toc-data-input','toc-validation','toc-biomechanical','toc-scoring','toc-inputs-table'];
+  var sections = ['overview','data-input','validation','biomechanical','scoring'];
+  var tocIds   = ['toc-overview','toc-data-input','toc-validation','toc-biomechanical','toc-scoring'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
