@@ -336,7 +336,7 @@
             <div class="workflow-step-num">1</div>
             <div class="workflow-step-body">
               <div class="workflow-step-title">Select an assessment method</div>
-              <p class="workflow-step-desc">Choose the ergonomic standard to apply — for example, the NIOSH Lifting Equation or KIM-LHC. Additional methods are on the roadmap.</p>
+              <p class="workflow-step-desc">Choose the ergonomic standard to apply — for example, the NIOSH Lifting Equation or KIM-LHC.</p>
             </div>
           </li>
           <li class="workflow-step">
@@ -404,18 +404,8 @@
 
         <h3>Supported input</h3>
         <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze or Animate. The recording contains segment positions, orientations, joint angles, and foot contacts, sampled at up to 60 Hz. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit).</p>
-        <p>Support for additional motion capture sources — including Xsens Livestream and camera-based tracking via MediaPipe — is on the roadmap and will be selectable from the input source screen.</p>
-
         <h3>File validation</h3>
-        <p>Once a file is selected, the app validates it before allowing you to proceed. The validation checks that the file is valid XML, contains the required subject element and frame rate attribute, includes a T-pose calibration frame, and has at least one normal motion frame with position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect.</p>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">T-pose required</div>
-            <p>Every MVNX recording must include a T-pose calibration frame. This is the default calibration pose in Xsens MVN and is present in all standard exports — but if your file was exported without one, validation will fail with a specific error message.</p>
-          </div>
-        </div>
+        <p>Once a file is selected, the app validates it before allowing you to proceed. The validation checks that the file is valid, contains the required subject elements and frame rate attributes and has at least one normal motion frame with the required position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="configure"><span class="step-num">4</span> Configuring the Assessment</h2>
@@ -425,7 +415,7 @@
         <p>Use the playbar to set the start and end of the task window you want to analyse. This focuses the assessment on the relevant movement and excludes idle time at the beginning or end of the recording.</p>
 
         <h3>Defining lifting moments</h3>
-        <p>A lifting moment is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete lift or handling action. You can define one or more lifting moments. The system analyses each moment separately and, when multiple moments are defined, produces composite scores across all of them. This step is what gives the peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each user-defined moment.</p>
+        <p>A lifting moment is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete lift or handling action. You can define one or more lifting moments. The system analyses each moment separately and, if applicable, produces composite scores and/or averages across all of them when multiple moments are defined. This step is what gives the peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each user-defined moment.</p>
 
         <h3>Task parameters and metadata</h3>
         <p>The remaining fields on this screen depend on the selected assessment method. In general, you will enter task parameters such as load weight, task frequency, work duration, and body posture conditions — the exact fields vary by method. You will also enter metadata such as the workplace name, evaluator name, subject identifier, and assessment date, which appear in the exported report.</p>
@@ -457,7 +447,7 @@
         <p>After processing completes, results are displayed across three tabs. Each tab surfaces a different layer of the assessment output.</p>
 
         <h3>Tab 1 — Score Overview</h3>
-        <p>The Score Overview tab shows the headline risk score for the assessment. For NIOSH assessments this is the Lifting Index (LI) — or the Composite Lifting Index (CLI) when multiple moments are defined — alongside the individual STLI and delta-LI values per moment. For KIM-LHC assessments, the total risk score is mapped to one of four colour-coded risk bands (green, yellow, orange, red), with the contributing sub-scores broken down below the headline result. Both methods include clearly defined risk bands and recommended actions based on the score.</p>
+        <p>The Score Overview tab shows the headline risk score for the assessment. The score is mapped to a colour-coded risk band with clearly defined thresholds and recommended actions. Where the selected method supports it, contributing sub-scores are broken down below the headline result — giving full visibility into which factors are driving the risk level. When multiple lifting moments are defined, composite or aggregated scores are shown alongside the per-moment breakdown.</p>
 
         <h3>Tab 2 — In-Depth Analysis</h3>
         <p>The In-Depth Analysis tab is built around a <strong>3D avatar viewer</strong>. The avatar plays back the worker's exact posture frame-by-frame, animated from the motion capture data. A risk score graph is displayed alongside the avatar and stays in sync — so as the avatar moves through the recording, the graph highlights where in the task the risk was highest.</p>
