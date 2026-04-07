@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Data Processing Explained — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="How Motionprint Ergo converts raw Xsens inertial sensor data into joint angles, posture classifications and ergonomic assessment inputs." />
+  <meta name="description" content="How Motionprint Ergo processes motion capture data — from file validation and biomechanical variable extraction to assessment-specific risk scoring." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -236,11 +236,11 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          7 min read
+          10 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated February 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -260,11 +260,12 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-input"><a href="#raw-input">1. Raw Data Input</a></li>
-          <li id="toc-conversion"><a href="#data-conversion">2. Data Conversion</a></li>
-          <li id="toc-posture"><a href="#posture-classification">3. Posture Classification</a></li>
-          <li id="toc-assessment"><a href="#assessment-inputs">4. Assessment Inputs</a></li>
-          <li id="toc-errors"><a href="#error-handling">5. Error Handling</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-data-input"><a href="#data-input">2. Motion Data Input</a></li>
+          <li id="toc-validation"><a href="#validation">3. Upload &amp; Validation</a></li>
+          <li id="toc-biomechanical"><a href="#biomechanical">4. Deriving Biomechanical Variables</a></li>
+          <li id="toc-scoring"><a href="#scoring">5. Assessment-Specific Scoring</a></li>
+          <li id="toc-inputs-table"><a href="#inputs-table">6. Auto-Derived vs. User-Entered</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -277,27 +278,32 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo processes raw inertial sensor data from Xsens motion capture systems to generate actionable ergonomic insights. This article explains what happens between importing an MVNX file and seeing a risk score — how sensor data is structured, how it is converted into joint angles, how postures are classified, and how the metrics fed into NIOSH and KIM-LHC assessments are derived.</p>
+        <p class="article-lead">This article explains how Motionprint Ergo processes motion capture data into ergonomic risk scores — what happens at each stage of the pipeline, how biomechanical variables are derived from recorded movement, and how assessment methods apply those variables to produce a result.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="raw-input"><span class="step-num">1</span> Raw Data Input</h2>
-        <p>The input to every Motionprint Ergo assessment is an MVNX file — an XML-format file exported by Xsens MVN Analyze or Animate at the end of a motion capture session. This file contains everything the Xsens MVN Engine computed from the raw IMU sensor signals during the recording.</p>
+        <h2 id="overview"><span class="step-num">1</span> Overview</h2>
+        <p>The processing pipeline takes a motion capture recording as input and produces a per-frame time-series of biomechanical variables and risk scores as output. The pipeline runs entirely locally on your machine — no motion data is transmitted externally at any point.</p>
+        <p>The pipeline has four stages: the recording is uploaded and validated; biomechanical variables are derived from the position and orientation data; the selected assessment method applies its scoring logic to those variables; and the results are rendered as interactive graphs, a 3D avatar playback, and an exportable report.</p>
 
-        <h3>What the sensors capture</h3>
-        <p>Each Xsens sensor unit contains an accelerometer and a gyroscope. The MVN Engine fuses the raw signals from all sensors worn on the body to compute a consistent, drift-corrected representation of the full body pose at every frame. The data written to the MVNX file is the output of this fusion process — not the raw IMU signals themselves.</p>
+        <!-- ── SECTION 2 ── -->
+        <h2 id="data-input"><span class="step-num">2</span> Motion Data Input</h2>
 
-        <h3>Data channels in the MVNX file</h3>
-        <p>Motionprint Ergo reads the following data channels from each MVNX file:</p>
+        <h3>What motion capture data contains</h3>
+        <p>A motion capture recording models the body as a set of rigid segments — torso, limbs, hands, feet — each tracked independently in three-dimensional space. At every frame, the system records the position of each segment (its location in world coordinates) and its orientation (the rotation of the segment relative to a reference frame). From adjacent segment orientations, joint angles — the relative rotation between two connected segments — can be derived for every joint in the body.</p>
+        <p>This produces a dense per-frame dataset: for a recording at 60 Hz, there are 60 snapshots of the full body pose per second. The entire recording becomes a time-series of positions, orientations, and angles that the processing pipeline works through frame by frame.</p>
+
+        <h3>Currently supported: Xsens MVNX</h3>
+        <p>Motionprint Ergo currently supports <strong>Xsens MVNX</strong> — an XML format exported from Xsens MVN Analyze Pro. Each sensor unit in the Xsens MVN system contains an accelerometer and gyroscope. The MVN Engine fuses the raw signals from all body-worn sensors into a clean, drift-corrected full-body pose at every frame. The MVNX file contains the output of this fusion process, not the raw sensor signals themselves.</p>
+        <p>The data channels read from each MVNX file are:</p>
         <ul>
-          <li><strong>3D segment positions</strong> — world-space coordinates (x, y, z) for the centre of mass of each body segment, at every frame</li>
-          <li><strong>Segment orientations</strong> — quaternion (q<sub>w</sub>, q<sub>x</sub>, q<sub>y</sub>, q<sub>z</sub>) representing the rotation of each segment in 3D space</li>
-          <li><strong>Joint angles</strong> — three-axis angles (flexion/extension, axial rotation, lateral bending) for each of the 22 joints</li>
-          <li><strong>Centre of mass</strong> — the calculated whole-body centre of mass trajectory over time</li>
-          <li><strong>Foot contacts</strong> — left and right foot contact flags indicating ground contact at each frame</li>
+          <li><strong>Segment positions</strong> — world-space (x, y, z) coordinates for each of the 23 body segments at every frame</li>
+          <li><strong>Segment orientations</strong> — quaternion (q<sub>w</sub>, q<sub>x</sub>, q<sub>y</sub>, q<sub>z</sub>) representing each segment's rotation in 3D space</li>
+          <li><strong>Joint angles</strong> — pre-computed three-axis angles (flexion/extension, axial rotation, lateral bending) for each joint, computed by the MVN Engine and stored in the file</li>
+          <li><strong>Foot contacts</strong> — left and right foot contact flags, used in 3D visualisation only (not in assessment calculations)</li>
         </ul>
 
         <h3>Body model</h3>
-        <p>Motionprint Ergo uses the standard Xsens 23-segment body model. Each segment has its own position and orientation tracked independently at every frame.</p>
+        <p>The standard Xsens 23-segment body model is used. Each segment has its own position and orientation tracked independently at every frame.</p>
 
         <div class="segment-grid">
           <div class="segment-group">
@@ -332,144 +338,98 @@
           </div>
         </div>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Supported formats</div>
-            <p>Motionprint Ergo primarily supports the MVNX format. For specific assessments, CSV input may also be supported. Preprocessing scripts are available for trimming recordings and regenerating derived variables when raw exports require adjustment before import.</p>
-          </div>
-        </div>
-
-        <!-- ── SECTION 2 ── -->
-        <h2 id="data-conversion"><span class="step-num">2</span> Data Conversion</h2>
-        <p>Before ergonomic metrics can be computed, the raw orientation and position data from the MVNX file must be converted into the angle and distance representations that assessment methods work with.</p>
-
-        <h3>Quaternion to joint angles</h3>
-        <p>Segment orientations in the MVNX file are stored as quaternions — a compact, gimbal-lock-free representation of 3D rotation. To compute joint angles, Motionprint Ergo converts relative quaternions between adjacent body segments into Euler angle representations using specific axis permutations that match the anatomical joint convention for each joint.</p>
-        <p>This produces the three-axis joint angles (flexion/extension, axial rotation, lateral bending or abduction/adduction) used in posture classification and biomechanical calculations. The Xsens MVN Engine applies filtering during the capture session itself to produce clean orientation data; Motionprint Ergo performs additional post-processing to ensure data quality and consistency across the full recording before passing it to the assessment pipeline.</p>
-
-        <h3>Frame-by-frame processing</h3>
-        <p>Every derived metric — posture angles, hand distances, joint loads, asymmetry values, and rolling risk scores — is computed independently for every frame in the recording. A 60-second recording at 60 Hz produces 3,600 data points per metric. This frame-level computation creates the full time-series dataset rendered as interactive graphs in the Analysis tab, allowing you to identify the exact moment in the recording where a high-risk posture occurred.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Analysis tab — frame-by-frame time-series graph</div>
-          <div class="media-placeholder-desc">Screenshot of the Analysis tab in Motionprint Ergo showing the time-series line chart of a key metric (e.g. trunk angle or asymmetry score) across the full recording, with peak markers highlighted. Provided by client.</div>
-        </div>
-
         <!-- ── SECTION 3 ── -->
-        <h2 id="posture-classification"><span class="step-num">3</span> Posture Classification</h2>
-        <p>Alongside angle computation, Motionprint Ergo classifies the worker's body posture for every frame. This classification is used in the KIM-LHC assessment — which scores posture across 10 body regions — and populates the posture breakdown view in the results screen.</p>
+        <h2 id="validation"><span class="step-num">3</span> Upload &amp; Validation</h2>
+        <p>When a file is uploaded, Motionprint Ergo validates its structure before allowing the assessment to proceed. The validation checks that:</p>
+        <ul>
+          <li>The file is valid XML and can be fully parsed</li>
+          <li>A <code>&lt;subject&gt;</code> element is present with a <code>frameRate</code> attribute</li>
+          <li>A T-pose calibration frame is present</li>
+          <li>At least one normal motion frame exists with both position and orientation data</li>
+        </ul>
+        <p>If any check fails, a specific error message is shown explaining what is missing or incorrect. Metadata extracted during validation — frame rate, segment count, total frame count — is used to configure the processing pipeline for that recording.</p>
 
-        <h3>Classification logic</h3>
-        <p>Postures such as upright standing, trunk bending, lateral inclination, and trunk rotation are identified frame-by-frame using proprietary classification algorithms applied to the computed joint angles. Each body region is assigned to a posture category based on the angle ranges it falls within at that frame.</p>
+        <!-- ── SECTION 4 ── -->
+        <h2 id="biomechanical"><span class="step-num">4</span> Deriving Biomechanical Variables</h2>
+        <p>The core of the processing pipeline converts the segment positions and orientations from the motion data into the distances, heights, and angles that assessment methods need. This happens in three steps.</p>
+
+        <h3>Anatomical landmark positions</h3>
+        <p>Segment positions in the MVNX file represent the origin of each body segment — not the precise anatomical points that biomechanical calculations require. For example, the NIOSH Lifting Equation needs the exact position of the hand palm and the ankle mid-point, not the hand segment origin.</p>
+        <p>To obtain precise anatomical landmark positions, the pipeline takes the segment origin and adds a fixed body-frame offset vector (defined for each landmark), then rotates that offset using the segment's quaternion orientation to bring it into world coordinates. This rotation is done via quaternion-to-rotation-matrix conversion. The result is the anatomical landmark's position in world space at that frame — for example, the palm centre, the medial malleolus, or the shoulder tip.</p>
+
+        <h3>Distances, heights, and angles</h3>
+        <p>With anatomical landmarks positioned in world space, the pipeline extracts the variables each assessment method requires:</p>
+        <ul>
+          <li><strong>Horizontal distances</strong> are computed from XY-plane projections of landmark positions (e.g., the distance between ankle mid-point and hand mid-point in the horizontal plane)</li>
+          <li><strong>Vertical heights</strong> are read from the Z-coordinate of the relevant landmark relative to the calibrated floor plane (Z is the vertical axis in MVNX convention)</li>
+          <li><strong>Asymmetry angles</strong> are computed as the angle between the mid-sagittal direction and the load displacement vector, both projected onto the horizontal plane. The mid-sagittal direction is derived from foot and pelvis orientations using quaternion-to-rotation-matrix conversion, with a ±2-frame smoothing window applied (NIOSH only)</li>
+          <li><strong>Joint angles</strong> are read directly from the pre-computed values stored in the input file — they are not re-derived by the pipeline</li>
+        </ul>
+
+        <h3>Frame-by-frame time-series</h3>
+        <p>Every variable is computed independently at every frame of the recording. A 60-second recording at 60 Hz produces 3,600 values per variable. This produces a full per-frame time-series for each metric — the dataset that drives the interactive graphs and 3D avatar playback in the In-Depth Analysis tab. The time-series lets you see not just the peak risk value, but where in the recording it occurred and how it evolved across the task.</p>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="scoring"><span class="step-num">5</span> Assessment-Specific Scoring</h2>
+        <p>Once biomechanical variables are derived, the selected assessment method applies its scoring logic. Each method defines which variables it needs and how they combine into a risk score. The platform is designed to support additional assessment methods as they are added; currently available methods include the NIOSH Lifting Equation and KIM-LHC.</p>
+
+        <h3>NIOSH Lifting Equation</h3>
+        <p>The NIOSH method takes four auto-derived variables — H (horizontal distance), V (vertical hand height), D (vertical travel distance), and A (asymmetry angle) — and two user-entered inputs: F (task frequency) and C (coupling quality). Each variable produces a dimensionless multiplier. The Recommended Weight Limit (RWL) and Lifting Index (LI) are computed per frame:</p>
+
+        <div class="formula-block">
+          <span class="formula-label">NIOSH Lifting Equation</span>
+          RWL = LC × HM × VM × DM × AM × FM × CM<br>
+          LI = Load Weight / RWL
+        </div>
+
+        <p>The asymmetry multiplier AM illustrates how the formula responds to motion data: AM = 1 − (0.0032 × A), where A is the asymmetry angle in degrees. At A = 0° the penalty is zero (AM = 1.0); at the cap of A = 135° the AM reaches 0.57. Two analysis modes are available: <strong>peak-frame mode</strong> uses the frame with the highest LI within the lifting moment; <strong>origin/destination mode</strong> uses H, V, and A at the moment start frame and D across the full travel range. When multiple lifting moments are defined, a Composite Lifting Index (CLI) aggregates across all moments.</p>
+
+        <h3>KIM-LHC</h3>
+        <p>KIM-LHC (Key Indicator Method for Lifting, Holding, and Carrying) classifies the worker's body posture at the start and end frames of each lifting moment. The classification matches the observed joint angles against 10 posture categories — standing straight, slightly bent, medium bent, bended, max bended, lifting arms, squat straight, squat low, on knees up, and sitting on knees — across 5 body regions (trunk, shoulders, elbows, knees, hands). The matching uses weighted angle-threshold scoring: each posture template defines angle ranges for each body region, and the template with the highest weighted match score is selected.</p>
+        <p>Alongside posture classification, per-frame violation flags are computed for: trunk bending above 20°, trunk twisting above 30°, asymmetric hand positioning, and excessive hand distance from the body. The final KIM-LHC score combines a load rating, body posture score, and additional condition factors multiplied by a time rating. The result is mapped to one of four colour-coded risk bands (green, yellow, orange, red).</p>
+
+        <!-- ── SECTION 6 ── -->
+        <h2 id="inputs-table"><span class="step-num">6</span> Auto-Derived vs. User-Entered</h2>
+        <p>The following table summarises which inputs to the assessment are derived automatically from the motion data and which must be entered manually on the input configuration page. The exact fields depend on the selected assessment method.</p>
 
         <table class="threshold-table">
           <thead>
             <tr>
-              <th>Posture type</th>
-              <th>Classification threshold</th>
-              <th>Body region</th>
+              <th>Auto-derived from motion data</th>
+              <th>User-entered on input page</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Trunk rotation</td>
-              <td>Axial rotation <code>&gt; 10°</code></td>
-              <td>L5 / T12 joint</td>
+              <td>Horizontal distance (H)</td>
+              <td>Load weight</td>
             </tr>
             <tr>
-              <td>Lateral trunk inclination</td>
-              <td>Lateral bending <code>&gt; 10°</code></td>
-              <td>L5 / T12 joint</td>
+              <td>Vertical hand height (V)</td>
+              <td>Task frequency</td>
             </tr>
             <tr>
-              <td>Trunk flexion</td>
-              <td>Flexion/extension angle ranges</td>
-              <td>L5 / T12 joint</td>
+              <td>Vertical travel distance (D)</td>
+              <td>Work duration</td>
+            </tr>
+            <tr>
+              <td>Asymmetry angle (A)</td>
+              <td>Coupling quality</td>
+            </tr>
+            <tr>
+              <td>Body posture angles (trunk, shoulders, elbows, knees)</td>
+              <td>Workplace / environmental conditions</td>
+            </tr>
+            <tr>
+              <td>Trunk bending and twisting angles</td>
+              <td>Subject and session metadata</td>
+            </tr>
+            <tr>
+              <td>Per-frame risk scores and time-series</td>
+              <td></td>
             </tr>
           </tbody>
         </table>
-
-        <h3>Transitions and boundary values</h3>
-        <p>The classification engine is designed to handle transitions smoothly — posture categories are not assigned per-frame in isolation but take the movement trajectory into account to avoid spurious rapid switching between categories at boundary values. This ensures that brief postural fluctuations at a threshold boundary do not inflate the classified time in a higher-risk posture category.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type is-diagram">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Custom diagram
-          </span>
-          <div class="media-placeholder-title">Body posture classification diagram</div>
-          <div class="media-placeholder-desc">Anatomical silhouette showing the 10 KIM-LHC body regions with colour-coded posture categories. Each region should display the active posture class for a sample frame. Custom graphic.</div>
-        </div>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="assessment-inputs"><span class="step-num">4</span> Assessment Inputs</h2>
-        <p>Once joint angles and posture classifications are established, Motionprint Ergo extracts the specific metrics required by the selected assessment method. These are passed to the NIOSH or KIM-LHC scoring modules to produce the final risk score.</p>
-
-        <h3>Metrics extracted</h3>
-        <ul>
-          <li><strong>Joint loads</strong> — estimated mechanical load at key joints (spine, shoulders, hips) based on segment positions and movement dynamics</li>
-          <li><strong>Asymmetry angles</strong> — the angle of trunk asymmetry relative to the hands, computed at every frame of the lifting moment</li>
-          <li><strong>Ergonomic risk scores</strong> — the intermediate sub-scores for each assessment factor, aggregated into the final risk score</li>
-        </ul>
-
-        <h3>Key derived variables</h3>
-        <p>Several biomechanical variables required by the NIOSH Lifting Equation are derived automatically from the motion data, eliminating the need for manual measurement during or after the recording.</p>
-        <ul>
-          <li><strong>H — Horizontal distance</strong>: horizontal distance between the worker's ankle mid-point and the mid-point of the hands at lift origin, from 3D segment positions</li>
-          <li><strong>V — Vertical hand height</strong>: height of the hands above the floor at lift origin, from the Y-axis position of the hand segments relative to the calibrated floor plane</li>
-          <li><strong>D — Vertical travel distance</strong>: absolute vertical distance the hands travel between lift origin and destination</li>
-          <li><strong>A — Asymmetry angle</strong>: angular deviation of the pelvis mid-sagittal plane from the hands mid-sagittal plane</li>
-        </ul>
-
-        <h3>Asymmetry multiplier (AM)</h3>
-        <p>The asymmetry angle A is used to compute the <strong>Asymmetry Multiplier (AM)</strong>, one of the six multipliers in the NIOSH Lifting Equation. A higher asymmetry angle results in a lower AM, which increases the overall Lifting Index.</p>
-
-        <div class="formula-block">
-          <span class="formula-label">NIOSH Asymmetry Multiplier</span>
-          AM = 1 − (0.0032 × A)
-        </div>
-
-        <p>Where <strong>A</strong> is the asymmetry angle in degrees. An asymmetry angle of 0° gives AM = 1.0 (no penalty); at A = 135° the AM reaches its minimum value of 0.57. Values of A beyond 135° are capped at 135° per the NIOSH standard.</p>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Note</div>
-            <p>H, V, D, and A are each computed for every frame of the lifting moment. The NIOSH calculation uses the values at the lift origin (start of the moment) for H, V, and A, and the full vertical travel range for D. Peak and mean values for each variable are available in the detailed output.</p>
-          </div>
-        </div>
-
-        <!-- ── SECTION 5 ── -->
-        <h2 id="error-handling"><span class="step-num">5</span> Error Handling</h2>
-        <p>Motionprint Ergo validates the MVNX file and the motion data at multiple points in the processing pipeline. When issues are detected, the platform provides clear feedback rather than silently producing unreliable results.</p>
-
-        <h3>File validation</h3>
-        <p>Before any processing begins, the imported file is checked for:</p>
-        <ul>
-          <li>Presence of all 23 required body segments</li>
-          <li>Valid joint angle data for the joints used in the selected assessment method</li>
-          <li>Consistent frame rate throughout the recording</li>
-          <li>Correct coordinate mapping and segment orientation format</li>
-          <li>Minimum frame count (recordings too short cannot produce a meaningful assessment)</li>
-          <li>No corrupted or truncated frame data</li>
-        </ul>
-        <p>If validation fails, Motionprint Ergo displays a specific error message indicating which check failed and what needs to be corrected before re-importing.</p>
-
-        <h3>Missing and noisy data</h3>
-        <p>For cases where data is partially missing or contains sensor artefacts, the platform uses fallback mechanisms to handle edge cases gracefully. Where a reliable result cannot be produced, the platform defaults to a degraded output mode — for example, flagging affected metrics in the report rather than silently computing from incomplete data. User alerts are shown in the results view whenever a fallback has been applied, so you always know the confidence level of each output value.</p>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div>
-            <div class="callout-label">Best practice</div>
-            <p>To minimise validation errors, always export MVNX files with the default Xsens MVN settings and ensure all 17 sensors are connected and calibrated before recording. Incomplete sensor sets will result in missing segment data.</p>
-          </div>
-        </div>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -480,9 +440,9 @@
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">How Motionprint Ergo Works</span>
               </a>
-              <a href="customization-branding.html" class="related-card">
-                <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">Customization &amp; Branding</span>
+              <a href="understanding-niosh-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the NIOSH Assessment</span>
               </a>
             </div>
           </div>
@@ -542,8 +502,8 @@
 </footer>
 
 <script>
-  var sections = ['raw-input','data-conversion','posture-classification','assessment-inputs','error-handling'];
-  var tocIds   = ['toc-input','toc-conversion','toc-posture','toc-assessment','toc-errors'];
+  var sections = ['overview','data-input','validation','biomechanical','scoring','inputs-table'];
+  var tocIds   = ['toc-overview','toc-data-input','toc-validation','toc-biomechanical','toc-scoring','toc-inputs-table'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
