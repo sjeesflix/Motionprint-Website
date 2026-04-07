@@ -398,6 +398,7 @@
 </section>
 
 <!-- ── TUTORIAL VIDEOS — CATEGORY NAVIGATION ── -->
+<!-- TUTORIAL VIDEOS SECTION — commented out until videos are ready to publish
 <section class="resources-section" id="tutorials">
   <div class="container">
     <div class="section-header">
@@ -472,8 +473,9 @@
     </div>
   </div>
 </section>
+END TUTORIAL VIDEOS SECTION -->
 
-<!-- ── VIDEO SUBSECTION 1: PRODUCT OVERVIEW ── -->
+<!-- ── VIDEO SUBSECTION 1: PRODUCT OVERVIEW ── (commented out with tutorials section above)
 <section class="resources-section video-subsection" id="videos-overview">
   <div class="container">
     <a href="#tutorials" class="video-back-link back-link-videos">
@@ -520,8 +522,9 @@
     </div>
   </div>
 </section>
+END VIDEO SUBSECTION 1 -->
 
-<!-- ── VIDEO SUBSECTION 2: GETTING STARTED ── -->
+<!-- ── VIDEO SUBSECTION 2: GETTING STARTED ── (commented out with tutorials section above)
 <section class="resources-section video-subsection" id="videos-getting-started">
   <div class="container">
     <a href="#tutorials" class="video-back-link back-link-videos">
@@ -567,6 +570,7 @@
     </div>
   </div>
 </section>
+END VIDEO SUBSECTION 2 -->
 
 <!--
   ════════════════════════════════════════════════════════════════
@@ -845,7 +849,7 @@
     <div class="cards-grid cards-grid-2">
       <a href="articles/niosh-assessment-setup.html" class="article-card" style="text-decoration:none;color:inherit;">
         <div class="article-tag"><span class="video-tag tag-niosh">NIOSH</span></div>
-        <div class="article-title">Running a NIOSH Assessment</div>
+        <div class="article-title">Setting Up a NIOSH Assessment</div>
         <p class="article-desc">A step-by-step guide to the NIOSH input page: uploading a recording, entering session data, trimming the timeline, and defining lifting tasks.</p>
         <div class="article-footer">
           <span>10 min read</span>
@@ -854,7 +858,7 @@
       </a>
       <a href="articles/niosh-report-walkthrough.html" class="article-card" style="text-decoration:none;color:inherit;">
         <div class="article-tag"><span class="video-tag tag-niosh">NIOSH</span></div>
-        <div class="article-title">Reading Your NIOSH Report</div>
+        <div class="article-title">NIOSH Report Walkthrough</div>
         <p class="article-desc">A guided tour of every tab in the NIOSH report: Score Overview, Analysis, and Findings — and how to act on the results.</p>
         <div class="article-footer">
           <span>12 min read</span>
@@ -892,24 +896,16 @@
       <p class="section-sub">Detailed guides for the platform's export, visualisation and customisation capabilities.</p>
     </div>
     <div class="cards-grid">
-      <a href="articles/exporting-reports.html" class="article-card" style="text-decoration:none;color:inherit;">
-        <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
-        <div class="article-title">Exporting Reports (PDF &amp; Excel)</div>
-        <p class="article-desc">How to export a completed report to PDF for sharing or to Excel for custom analysis — including filename templates and available variables.</p>
-        <div class="article-footer">
-          <span>7 min read</span>
-          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
-        </div>
-      </a>
-      <a href="articles/3d-view-controls.html" class="article-card" style="text-decoration:none;color:inherit;">
-        <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
-        <div class="article-title">3D View &amp; Interface Controls</div>
-        <p class="article-desc">Navigate the 3D viewport, switch camera angles, control playback speed, and use the timeline scrubber to review motion recordings.</p>
-        <div class="article-footer">
-          <span>6 min read</span>
-          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
-        </div>
-      </a>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">Exporting Reports (PDF &amp; Excel)</div>
+        <p class="coming-desc">How to export a completed report to PDF for sharing, and to Excel for custom analysis and archiving.</p>
+      </div>
+      <div class="coming-card">
+        <div class="coming-label">Coming soon</div>
+        <div class="coming-title">3D View &amp; Interface Controls</div>
+        <p class="coming-desc">Controls for the 3D skeleton viewer: playback, camera position, timeline navigation and annotation markers.</p>
+      </div>
       <a href="articles/customization-branding.html" class="article-card" style="text-decoration:none;color:inherit;">
         <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
         <div class="article-title">Customization &amp; Branding</div>
@@ -1246,7 +1242,7 @@
       <div>
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
-          <li><a href="resources.html#tutorials">Tutorials</a></li>
+          <!-- <li><a href="resources.html#tutorials">Tutorials</a></li> -->
           <li><a href="resources.html#knowledge">Knowledge base</a></li>
           <li><a href="resources.html#validation">Research &amp; documentation</a></li>
           <li><a href="resources.html#support">Support</a></li>
@@ -1307,7 +1303,7 @@
     });
   }
 
-  setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' });
+  // setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' }); // commented out — tutorials section hidden
   setupCategoryGroup({ group: 'kb',     parentId: 'knowledge',  subsectionClass: 'kb-subsection',    backLinkClass: 'back-link-kb'     });
 
   // ── Contact form ──
