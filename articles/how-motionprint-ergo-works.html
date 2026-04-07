@@ -134,6 +134,12 @@
       margin-right: 10px; vertical-align: middle; flex-shrink: 0;
     }
 
+    /* Article figures / screenshots */
+    .article-figure { margin: 28px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-small img { max-width: 300px; }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
+
     /* Media placeholders */
     .media-placeholder {
       border: 2px dashed #d1d9e0; border-radius: 12px;
@@ -389,7 +395,9 @@
         <p>The first screen in the workflow is the report selection page, where you choose which ergonomic assessment method to apply to your recording.</p>
         <p>Currently available methods include the <strong>NIOSH Lifting Equation</strong> — which produces a Lifting Index (LI) and Composite Lifting Index (CLI) for multi-task scenarios — and <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying), which maps risk to a four-level colour-coded band. Additional methods are planned and will appear on this screen as they become available.</p>
 
-        <img src="selectingmethod.jpg" alt="Assessment method selection screen" style="width:100%;border-radius:10px;margin:24px 0;display:block;" />
+        <figure class="article-figure figure-small">
+          <img src="selectingmethod.jpg" alt="Assessment method selection screen" />
+        </figure>
 
         <!-- ── SECTION 3 ── -->
         <h2 id="upload"><span class="step-num">3</span> Uploading Motion Data</h2>
@@ -413,7 +421,9 @@
         <h3>Task parameters and metadata</h3>
         <p>The remaining fields on this screen depend on the selected assessment method. In general, you will enter task parameters such as load weight, task frequency, work duration, and body posture conditions — the exact fields vary by method. You will also enter metadata such as the workplace name, evaluator name, subject identifier, and assessment date, which appear in the exported report.</p>
 
-        <img src="inputconfigscreen.jpg" alt="Input configuration screen" style="width:100%;border-radius:10px;margin:24px 0;display:block;" />
+        <figure class="article-figure">
+          <img src="inputconfigscreen.jpg" alt="Input configuration screen" />
+        </figure>
 
         <!-- ── SECTION 5 ── -->
         <h2 id="processing"><span class="step-num">5</span> Processing</h2>
@@ -439,7 +449,9 @@
         <p>The In-Depth Analysis tab is built around a <strong>3D avatar viewer</strong>. The avatar plays back the worker's exact posture frame-by-frame, animated from the motion capture data. A risk score graph is displayed alongside the avatar and stays in sync — so as the avatar moves through the recording, the graph highlights where in the task the risk was highest.</p>
         <p>Playback controls let you play, pause, adjust speed, and jump to any frame manually. You can also switch the viewport between the different lifting moments you defined, inspecting each one independently. This makes it straightforward to explain a specific finding — such as an asymmetric peak load — to a worker or a client in concrete visual terms.</p>
 
-        <img src="analysisloop.gif" alt="In-Depth Analysis tab — 3D avatar playback with risk score graph" style="width:100%;border-radius:10px;margin:24px 0;display:block;" />
+        <figure class="article-figure">
+          <img src="analysisloop.gif" alt="In-Depth Analysis tab — 3D avatar playback with risk score graph" />
+        </figure>
 
         <h3>Tab 3 — Findings</h3>
         <p>The Findings tab presents the assessment's recommendations and observations in a structured format suitable for inclusion in a client report. The content and visibility of this tab can be configured in the app's report settings — it can be toggled off if you prefer a results-only output.</p>
