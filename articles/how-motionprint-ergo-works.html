@@ -395,16 +395,12 @@
         <p>The first screen in the workflow is the report selection page, where you choose which ergonomic assessment method to apply to your recording.</p>
         <p>Currently available methods include the <strong>NIOSH Lifting Equation</strong> — which produces a Lifting Index (LI) and Composite Lifting Index (CLI) for multi-task scenarios — and <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying), which maps risk to a four-level colour-coded band. Additional methods are planned and will appear on this screen as they become available.</p>
 
-        <figure class="article-figure figure-small">
-          <img src="selectingmethod.jpg" alt="Assessment method selection screen" />
-        </figure>
-
         <!-- ── SECTION 3 ── -->
         <h2 id="upload"><span class="step-num">3</span> Uploading Motion Data</h2>
         <p>After selecting an assessment method, you choose your motion capture source and upload a recording file.</p>
 
         <h3>Supported input</h3>
-        <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze or Animate. The recording contains segment positions, orientations, joint angles, and foot contacts, sampled at up to 60 Hz. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit).</p>
+        <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze Pro. The recording contains segment positions, orientations, joint angles and foot contacts. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit).</p>
         <h3>File validation</h3>
         <p>Once a file is selected, the app validates it before allowing you to proceed. The validation checks that the file is valid, contains the required subject elements and frame rate attributes and has at least one normal motion frame with the required position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect.</p>
 
@@ -461,7 +457,7 @@
         <p>Once you are satisfied with the results, you can export the assessment in PDF or Excel format — or both.</p>
 
         <h3>PDF report</h3>
-        <p>The PDF export is a fully formatted assessment document ready to share with clients, H&amp;S managers, or regulatory bodies. It includes the headline risk score, a breakdown of contributing risk factors, findings and recommendations, and embedded 3D posture screenshots from the In-Depth Analysis tab. Your organisation's branding — logo, accent colour, and company name — is applied automatically based on your settings in <strong>Settings → Report Settings</strong>. A cover page can also be toggled on or off.</p>
+        <p>The PDF export is a fully formatted assessment document ready to share with clients, H&amp;S managers, or regulatory bodies. It includes the headline risk score, a breakdown of contributing risk factors, findings and recommendations, and embedded 3D posture screenshots from the In-Depth Analysis tab. Your organisation's branding — logo, accent colour, and company name — is applied automatically based on your settings in <strong>Settings → General</strong>.</p>
 
         <h3>Excel export</h3>
         <p>The Excel export provides structured data with colour-coded risk levels, making it straightforward to compare results across assessments, build trend charts, or feed data into an existing H&amp;S management system. Like the PDF, it includes embedded 3D posture screenshots alongside the tabulated score data.</p>
