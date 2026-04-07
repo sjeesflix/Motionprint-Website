@@ -237,11 +237,11 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          5 min read
+          7 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -264,7 +264,8 @@
           <li id="toc-handling"><a href="#motion-data">1. Motion Data Handling</a></li>
           <li id="toc-storage"><a href="#local-storage">2. Local Storage</a></li>
           <li id="toc-external"><a href="#external-transmission">3. External Transmission</a></li>
-          <li id="toc-security"><a href="#security">4. Security Implementation</a></li>
+          <li id="toc-security"><a href="#security">4. Security</a></li>
+          <li id="toc-gdpr"><a href="#gdpr">5. GDPR &amp; Data Protection</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -286,7 +287,7 @@
               Stays on your machine
             </div>
             <ul>
-              <li>Motion capture recordings (.mvnx)</li>
+              <li>Motion capture recordings</li>
               <li>Session files and intermediate data</li>
               <li>Generated PDF and Excel reports</li>
               <li>Assessment results and scores</li>
@@ -301,6 +302,7 @@
             <ul>
               <li>Licence key (for validation)</li>
               <li>Machine fingerprint (for seat tracking)</li>
+              <li>Device name (your computer's hostname)</li>
               <li>No motion data — ever</li>
               <li>No reports or file contents</li>
               <li>Encrypted over HTTPS</li>
@@ -310,14 +312,14 @@
 
         <!-- ── SECTION 1 ── -->
         <h2 id="motion-data"><span class="step-num">1</span> Motion Data Handling</h2>
-        <p>Every step of the Motionprint Ergo processing pipeline — from MVNX import through joint angle calculation, posture classification, and risk scoring — runs entirely on the user's local machine. No cloud processing occurs at any point.</p>
+        <p>Every step of the Motionprint Ergo processing pipeline — from motion capture import through joint angle calculation, posture classification, and risk scoring — runs entirely on the user's local machine. No cloud processing occurs at any point.</p>
 
         <h3>Local-only processing</h3>
-        <p>When you import an MVNX file, the data is read from your local filesystem and passed directly to the processing pipeline running on your machine. The output — assessment scores, time-series graphs, and report files — is written back to your local output directory. The application does not make any outbound network requests during this process.</p>
+        <p>When you import a motion capture file, the data is read from your local filesystem and passed directly to the processing pipeline running on your machine. The output — assessment scores, time-series graphs, and report files — is saved locally on your device. The application does not make any outbound network requests during this process.</p>
 
         <h3>What is never transmitted</h3>
         <ul>
-          <li><strong>Motion capture recordings</strong> — .mvnx files and their contents remain on your device at all times</li>
+          <li><strong>Motion capture recordings</strong> — your recording files and their contents remain on your device at all times</li>
           <li><strong>Session files</strong> — intermediate processing data, joint angle arrays, and posture classifications are stored locally and never shared</li>
           <li><strong>Assessment reports</strong> — generated PDF and Excel files are saved to your local output directory and are not uploaded anywhere</li>
           <li><strong>Worker or subject data</strong> — any personal or identifying information associated with a recording stays on your machine</li>
@@ -333,34 +335,22 @@
 
         <!-- ── SECTION 2 ── -->
         <h2 id="local-storage"><span class="step-num">2</span> Local Storage</h2>
-        <p>All output files are written to a local output directory on your machine. The directory structure is organised by assessment type so reports are easy to locate.</p>
+        <p>All reports and exports are generated locally on your machine and saved to a folder of your choosing. Nothing is uploaded or synced to any external location.</p>
 
-        <h3>Output directory structure</h3>
-        <div class="file-tree">
-          <div class="ft-dir">output/</div>
-          <div class="ft-indent ft-dir">NIOSHreport/</div>
-          <div class="ft-indent2 ft-file">report_<span class="ft-ext">.pdf</span></div>
-          <div class="ft-indent2 ft-file">report_<span class="ft-ext">.xlsx</span></div>
-          <div class="ft-indent2 ft-file">session_data<span class="ft-ext">.json</span></div>
-          <div class="ft-indent ft-dir">KIMLHCreport/</div>
-          <div class="ft-indent2 ft-file">report_<span class="ft-ext">.pdf</span></div>
-          <div class="ft-indent2 ft-file">report_<span class="ft-ext">.xlsx</span></div>
-          <div class="ft-indent2 ft-file">session_data<span class="ft-ext">.json</span></div>
-        </div>
-
-        <h3>File formats</h3>
+        <h3>Output formats</h3>
         <ul>
-          <li><strong>.mvnx</strong> — the original Xsens motion capture recording, read at import and not modified by Motionprint Ergo</li>
-          <li><strong>.json</strong> — intermediate structured data generated during processing (joint angles, posture classifications, frame-level scores); stored alongside each report for traceability</li>
-          <li><strong>.pdf</strong> — the formatted assessment report, including risk scores, charts, and recommendations</li>
-          <li><strong>.xlsx</strong> — the detailed data export, providing full multiplier breakdowns and per-moment data in spreadsheet format</li>
+          <li><strong>PDF reports</strong> — formatted assessment reports including risk scores, charts, and recommendations, generated entirely on-device</li>
+          <li><strong>Excel exports (.xlsx)</strong> — detailed data exports with full multiplier breakdowns and per-moment data, generated entirely on-device</li>
         </ul>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <h3>Choosing where to save</h3>
+        <p>When you export a report, Motionprint Ergo opens a file picker so you can choose exactly where to save it. The application remembers the last folder you used for each report type and export format, so you don't have to navigate there each time. You can save reports to any folder you have write access to on your machine.</p>
+
+        <div class="callout callout-green">
+          <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <div>
-            <div class="callout-label">Output directory location</div>
-            <p>The output directory defaults to a folder within the Motionprint Ergo application data path. You can change the output location in <strong>Settings → Storage</strong> to any local folder you have write access to. Network drives are supported but not recommended for performance reasons.</p>
+            <div class="callout-label">You stay in control</div>
+            <p>Reports are saved exactly where you choose. There is no automatic sync, background upload, or cloud storage of any kind — the file lands on your machine and stays there.</p>
           </div>
         </div>
 
@@ -372,8 +362,9 @@
         <ul>
           <li><strong>Licence key</strong> — your <code>MP-XXXX-XXXX-XXXX-XXXX</code> key, sent to the Motionprint Licence Server to verify it is valid and active</li>
           <li><strong>Machine fingerprint</strong> — a unique identifier derived from hardware characteristics of your device, used to track seat activation and prevent licence sharing</li>
+          <li><strong>Device name</strong> — your computer's hostname (e.g. "DESKTOP-FELIX"), used for device identification in the licence management dashboard</li>
         </ul>
-        <p>No file contents, motion data, report data, or personally identifiable information is included in licence validation requests. The request contains only the two fields above.</p>
+        <p>No file contents, motion data, report data, or assessment results are included in licence validation requests. The request contains only the fields above.</p>
 
         <h3>When validation occurs</h3>
         <ul>
@@ -391,29 +382,21 @@
         </div>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="security"><span class="step-num">4</span> Security Implementation</h2>
-        <p>Motionprint Ergo applies encryption at two levels: in transit (for licence validation requests) and at rest (for locally stored sensitive data).</p>
+        <h2 id="security"><span class="step-num">4</span> Security</h2>
+        <p>Motionprint Ergo protects sensitive data both on your device and in transit to the licence server.</p>
 
         <div class="security-list">
           <div class="security-item">
-            <div class="security-key">Encryption standard</div>
-            <div class="security-val">AES-256-GCM is used to encrypt sensitive data both in transit and for locally stored private keys. This is the same standard used in modern banking and enterprise security systems.</div>
-          </div>
-          <div class="security-item">
-            <div class="security-key">Key derivation</div>
-            <div class="security-val">Encryption keys for locally stored data are derived from the machine fingerprint. This means that encrypted local data can only be decrypted on the machine it was created on — not if copied to another device.</div>
-          </div>
-          <div class="security-item">
-            <div class="security-key">Private key storage</div>
-            <div class="security-val">Private keys are stored in a protected location on the local filesystem with restricted file permissions. They are not stored in user-accessible directories or included in any application logs.</div>
+            <div class="security-key">Local data encryption</div>
+            <div class="security-val">Sensitive data stored locally — such as licence tokens — is encrypted using industry-standard encryption tied to your device's hardware identity. This means the data cannot be read if copied to another machine.</div>
           </div>
           <div class="security-item">
             <div class="security-key">Transit security</div>
-            <div class="security-val">All communication with the Licence Server is made over HTTPS (TLS 1.2 or higher). The licence key and machine fingerprint payload is additionally encrypted before transmission.</div>
+            <div class="security-val">All communication with the Licence Server is made over HTTPS. Your licence key, machine fingerprint, and device name are transmitted securely and cannot be read in transit.</div>
           </div>
           <div class="security-item">
             <div class="security-key">No telemetry</div>
-            <div class="security-val">Motionprint Ergo does not collect usage analytics, crash reports, or diagnostic telemetry. No application behaviour data is transmitted externally.</div>
+            <div class="security-val">Motionprint Ergo does not collect usage analytics, crash reports, or diagnostic telemetry. No application behaviour data is ever transmitted externally.</div>
           </div>
         </div>
 
@@ -421,9 +404,32 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <div>
             <div class="callout-label">Summary</div>
-            <p>Your motion capture data, session files, and reports never leave your machine. The only external communication is a small, encrypted licence validation request containing no motion data. All local sensitive data is protected by AES-256-GCM encryption tied to your device's hardware identity.</p>
+            <p>Your motion capture recordings, session files, and reports never leave your machine. The only external communication is a small, encrypted licence validation request — containing no motion data, no file contents, and no assessment results.</p>
           </div>
         </div>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="gdpr"><span class="step-num">5</span> GDPR &amp; Data Protection</h2>
+        <p>Motionprint Ergo is built around a simple principle: your motion data never leaves your machine. No movement recordings, assessment results, or report files are processed anywhere other than your local device, which means the most sensitive data your organisation handles is never exposed to external systems.</p>
+
+        <h3>What the licence server stores</h3>
+        <p>The Motionprint Licence Server stores the minimum data required to manage your licence. This includes the name and email address associated with your licence, your organisation name if applicable, and the hardware identifiers used to track which devices are activated. IP addresses are retained in server audit logs for security purposes.</p>
+        <p>No motion capture data, assessment results, or report content is ever stored server-side.</p>
+
+        <h3>EU data residency</h3>
+        <p>The Motionprint Licence Server is hosted on Hetzner infrastructure in Helsinki, Finland. All licence data is stored and processed within the European Union and does not leave EU jurisdiction.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Data residency</div>
+            <p>Licence data is stored on EU-based infrastructure (Hetzner, Helsinki, Finland) and does not leave the European Union.</p>
+          </div>
+        </div>
+
+        <h3>Your rights &amp; data requests</h3>
+        <p>You have the right to request access to, correction of, or deletion of the personal data held in connection with your licence. As Motionprint continues to develop its data handling infrastructure, deletion requests are currently handled manually by the support team. To submit a request, contact us via the support page.</p>
+        <p>Motionprint is committed to GDPR compliance and is actively working to add automated data management capabilities, including self-service data export and deletion, in future releases.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -496,8 +502,8 @@
 </footer>
 
 <script>
-  var sections = ['motion-data','local-storage','external-transmission','security'];
-  var tocIds   = ['toc-handling','toc-storage','toc-external','toc-security'];
+  var sections = ['motion-data','local-storage','external-transmission','security','gdpr'];
+  var tocIds   = ['toc-handling','toc-storage','toc-external','toc-security','toc-gdpr'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
