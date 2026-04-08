@@ -102,13 +102,13 @@
     /* Steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
     .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
-    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
 
     /* Phase steps */
     .phase-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; counter-reset: phase-counter; }
     .phase-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; counter-increment: phase-counter; }
-    .phase-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .phase-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .phase-body { flex: 1; min-width: 0; }
     .phase-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .phase-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
@@ -546,12 +546,10 @@
 
         <div class="method-grid">
           <div class="method-card">
-            <div class="method-card-tag">Available</div>
             <div class="method-card-title">KIM-LHC</div>
             <p class="method-card-desc">Key Indicator Method for Lifting, Holding &amp; Carrying (BAuA, Germany). Use this method when assessing tasks that involve carrying, lifting, or holding loads.</p>
           </div>
           <div class="method-card">
-            <div class="method-card-tag">Available</div>
             <div class="method-card-title">NIOSH Lifting Equation</div>
             <p class="method-card-desc">Revised NIOSH Lifting Equation (NIOSH/CDC). Use this method when assessing lifting tasks, especially those involving repetition or multi-task scenarios.</p>
           </div>
@@ -588,10 +586,8 @@
 
         <p>The app checks the following during validation. If any check fails, an error is shown and you cannot proceed until the file is corrected:</p>
         <ul>
-          <li>The file is valid XML.</li>
           <li>It contains a <code>&lt;subject&gt;</code> element.</li>
           <li>It has a <code>frameRate</code> attribute.</li>
-          <li>It contains a T-pose calibration frame.</li>
           <li>It contains at least one normal motion frame with position and orientation data.</li>
         </ul>
 
@@ -619,7 +615,6 @@
         <p>The task parameters section collects the values required by your chosen assessment method. Fields that you pre-configured in Settings will be filled in automatically. Common parameters include:</p>
         <ul>
           <li>Load weight (per moment, or shared across all moments)</li>
-          <li>Worker gender</li>
           <li>Daily working hours and task frequency</li>
           <li>Method-specific factors</li>
         </ul>
@@ -653,7 +648,7 @@
               <div class="tab-card-name">Score Overview</div>
             </div>
             <div class="tab-card-body">
-              <p>Shows the top-level risk score for the assessment. For NIOSH, this is the <strong>Lifting Index (LI)</strong> for single-task assessments, or the <strong>Composite Lifting Index (CLI)</strong> with per-task STLI and delta-LI breakdown for multi-task assessments. For KIM-LHC, this is the total <strong>risk score</strong> mapped to one of four colour-coded risk bands: green, yellow, orange, or red. Per-moment scores are listed when multiple lifting moments were defined.</p>
+              <p>Presents the complete assessment result in the same structured format as a manual assessment — the primary output page. Scores, breakdowns, and supporting data are laid out exactly as the chosen method defines them, giving an immediate and recognisable overview of the outcome.</p>
             </div>
           </div>
           <div class="tab-card">
@@ -662,7 +657,7 @@
               <div class="tab-card-name">In-Depth Analysis</div>
             </div>
             <div class="tab-card-body">
-              <p>Contains the <strong>3D avatar viewer</strong> — an interactive, animated visualisation of the motion capture data rendering the assessment period. Frame-by-frame scores are displayed alongside the viewer (Lifting Index per frame for NIOSH; KIM-LHC score per frame for KIM-LHC). Playback speed can be adjusted, and selecting a lifting moment in the score panel updates the viewer to show that moment's frame range.</p>
+              <p>Contains the <strong>3D avatar viewer</strong> — an interactive, animated visualisation of the motion capture data across the assessment period. Frame-by-frame scores are displayed alongside the viewer, and playback speed can be adjusted. Selecting a moment in the score panel updates the viewer to that moment's frame range.</p>
             </div>
           </div>
           <div class="tab-card">
@@ -682,7 +677,7 @@
             Screenshot
           </div>
           <div class="media-placeholder-title">Results screen — Score Overview tab</div>
-          <div class="media-placeholder-desc">The results screen showing the Score Overview tab with a NIOSH or KIM-LHC risk score and per-moment breakdown.</div>
+          <div class="media-placeholder-desc">The results screen showing the Score Overview tab.</div>
         </div>
 
         <!-- Phase 6 -->
@@ -708,7 +703,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Company branding in exports</div>
-            <p>Your company logo, name, and accent colour (set in <strong>Settings → General</strong>) appear in exports when branding is enabled in the method-specific report settings. A cover page can also be toggled on or off from there.</p>
+            <p>Your company logo, name, and accent colour (set in <strong>Settings → General</strong>) appear in exports when branding is enabled in the method-specific report settings.</p>
           </div>
         </div>
 
