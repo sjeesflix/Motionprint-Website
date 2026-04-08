@@ -166,7 +166,7 @@
     .tab-cards { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .tab-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
     .tab-card-header { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 11px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .tab-card-name { font-size: 14px; font-weight: 700; color: var(--text); }
     .tab-card-body { padding: 16px 18px; }
     .tab-card-body p { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
@@ -380,19 +380,10 @@
         <p>The installer is available from the Motionprint download page. The setup wizard handles everything — no manual configuration is required.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p>Go to <a href="../download.html">motion-print.com/download.html</a> and click <strong>Download for Windows</strong>.</p></div>
+          <div class="steps-list-item"><p>Go to <a href="../download.html" style="display:inline-flex;align-items:center;gap:4px;font-weight:600;color:var(--red);text-decoration:none;border-bottom:none;background:rgba(234,82,59,.06);border:1px solid rgba(234,82,59,.22);border-radius:6px;padding:2px 10px;white-space:nowrap;">motion-print.com/download <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></a> and click <strong>Download for Windows</strong>.</p></div>
           <div class="steps-list-item"><p>The installer file is approximately 80 MB (.exe format). Save it to a convenient location.</p></div>
           <div class="steps-list-item"><p>Open the downloaded file and follow the on-screen setup wizard.</p></div>
           <div class="steps-list-item"><p>Once setup completes, launch <strong>Motionprint Ergo</strong> from the Start menu or the desktop shortcut.</p></div>
-        </div>
-
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Download page — Download for Windows button highlighted</div>
-          <div class="media-placeholder-desc">Show the download button on motion-print.com/download.html.</div>
         </div>
 
         <!-- ── SECTION 3 ── -->
@@ -410,15 +401,6 @@
         </div>
 
         <div class="key-block"><span>MP</span>-XXXX-XXXX-XXXX-XXXX</div>
-
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Activation screen — licence key entry field and Activate License button</div>
-          <div class="media-placeholder-desc">The centred card with the title "Activate Motionprint Ergo", showing the input field and button.</div>
-        </div>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -473,11 +455,6 @@
             <div class="info-card-value">Main working area</div>
             <div class="info-card-desc">The right-hand area displays the active page — method selection, input configuration, or results.</div>
           </div>
-          <div class="info-card">
-            <div class="info-card-label">Licence banner</div>
-            <div class="info-card-value">Top of window</div>
-            <div class="info-card-desc">A warning banner appears here if your subscription is approaching expiry or has entered read-only mode.</div>
-          </div>
         </div>
 
         <h3>Recommended settings before your first assessment</h3>
@@ -511,8 +488,8 @@
           <div class="phase-item">
             <div class="phase-num">3</div>
             <div class="phase-body">
-              <div class="phase-title">Configure input — trim, moments, and task parameters</div>
-              <p class="phase-desc">Trim the recording, mark lifting moments, enter task parameters, and add metadata.</p>
+              <div class="phase-title">Configure input — trim, lifting tasks, and parameters</div>
+              <p class="phase-desc">Trim the recording, define lifting tasks, enter task parameters, and add metadata.</p>
             </div>
           </div>
           <div class="phase-item">
@@ -551,20 +528,16 @@
           </div>
           <div class="method-card">
             <div class="method-card-title">NIOSH Lifting Equation</div>
-            <p class="method-card-desc">Revised NIOSH Lifting Equation (NIOSH/CDC). Use this method when assessing lifting tasks, especially those involving repetition or multi-task scenarios.</p>
+            <p class="method-card-desc">Revised NIOSH Lifting Equation. Use this method when assessing lifting tasks, especially those involving repetition or multi-task scenarios.</p>
           </div>
         </div>
 
         <p>Click the tile for the method you want to use to proceed.</p>
 
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Create page — method selection tiles</div>
-          <div class="media-placeholder-desc">The Create page showing available assessment method tiles.</div>
-        </div>
+        <figure style="margin:24px 0;">
+          <img src="../selectingmethod.jpg" alt="Create page — assessment method selection" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Create page — assessment method selection</figcaption>
+        </figure>
 
         <!-- Phase 2 -->
         <h3>Phase 2 — Select Input Source and Load Your File</h3>
@@ -596,20 +569,16 @@
         <p>The input configuration page has four sub-sections. Work through each one before clicking Process.</p>
 
         <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3a — Trim the Recording</h3>
-        <p>A playbar at the top of the input page lets you preview the motion data. Two trim markers define the active start and end of the analysis window. Drag the markers on the playbar to exclude any idle time at the beginning or end of the recording. Trimming happens here in the UI — there are no separate preprocessing scripts.</p>
+        <p>A playbar at the top of the input page lets you preview the motion data. Two trim markers define the active start and end of the analysis window. Drag the markers so the trimmed range begins exactly at the start of the first cycle and ends exactly at the end of the last cycle — this can be a single lifting task or multiple ones if you plan to define more than one. Trimming happens here in the UI — there are no separate preprocessing scripts.</p>
 
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Input configuration page — playbar with trim markers</div>
-          <div class="media-placeholder-desc">The playbar at the top of the input configuration page, showing the two draggable trim markers.</div>
-        </div>
+        <figure style="margin:24px 0;">
+          <img src="../trimmarkers.gif" alt="Playbar with draggable trim markers on the input configuration page" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Trim markers on the playbar — align to the start and end of the cycle</figcaption>
+        </figure>
 
-        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3b — Define Lifting Moments</h3>
-        <p>Within the trimmed range, mark one or more <strong>lifting moments</strong> — time windows corresponding to individual lifts or load-handling cycles. Each moment is defined by a start frame and an end frame, set via the playbar. The backend finds the peak risk frame within each user-defined moment.</p>
-        <p>For multi-task NIOSH assessments, you can define multiple lifting moments. The app will calculate a Composite Lifting Index (CLI) from the combined moments.</p>
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3b — Define Lifting Tasks</h3>
+        <p>Within the trimmed range, mark one or more <strong>lifting tasks</strong> — time windows corresponding to individual lifts or load-handling cycles. Each task is defined by a start frame and an end frame, set via the playbar. The backend finds the peak risk frame within each user-defined task.</p>
+        <p>For multi-task assessments, you can define multiple lifting tasks. The app calculates the combined result across all defined tasks.</p>
 
         <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3c — Enter Task Parameters</h3>
         <p>The task parameters section collects the values required by your chosen assessment method. Fields that you pre-configured in Settings will be filled in automatically. Common parameters include:</p>
@@ -671,15 +640,6 @@
           </div>
         </div>
 
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Results screen — Score Overview tab</div>
-          <div class="media-placeholder-desc">The results screen showing the Score Overview tab.</div>
-        </div>
-
         <!-- Phase 6 -->
         <h3>Phase 6 — Export the Report</h3>
         <p>Click <strong>Export</strong> from the results screen to open the export window. You can export in two formats:</p>
@@ -707,15 +667,6 @@
           </div>
         </div>
 
-        <div class="media-placeholder">
-          <div class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Screenshot
-          </div>
-          <div class="media-placeholder-title">Export window — format selection, output folder, and filename</div>
-          <div class="media-placeholder-desc">The export popup showing the PDF/Excel format choice, folder picker, and filename field.</div>
-        </div>
-
         <!-- ── SECTION 6 ── -->
         <h2 id="next">6. What's Next</h2>
 
@@ -723,19 +674,12 @@
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
-          <li><strong>Visit the Resources page</strong> at <a href="../resources.html">motion-print.com/resources.html</a> for deep-dive articles on the NIOSH and KIM-LHC methodologies, the 3D viewer, report customisation, and licence management.</li>
+          <li><strong>Visit the Resources page</strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management — <a href="../resources.html" style="display:inline-flex;align-items:center;gap:4px;font-weight:600;color:var(--red);text-decoration:none;border-bottom:none;background:rgba(234,82,59,.06);border:1px solid rgba(234,82,59,.22);border-radius:6px;padding:2px 10px;white-space:nowrap;">motion-print.com/resources <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></a></li>
           <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
         </ul>
 
         <!-- ── ARTICLE END ── -->
         <div class="article-end">
-          <div>
-            <div class="helpful-label">Was this article helpful?</div>
-            <div style="display:flex;gap:8px;margin-top:10px;">
-              <button class="helpful-btn">👍 Yes</button>
-              <button class="helpful-btn">👎 No</button>
-            </div>
-          </div>
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
