@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uploading &amp; Processing Xsens Data — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="Export an MVNX file from MVN Analyze Pro, select it in Motionprint Ergo, understand the validation checks, and reach the input configuration page ready to process." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #ea523b; --red-light: #f06449;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"] { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
+    .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+    .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
+
+    /* Lead */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Steps list */
+    .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
+    .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
+
+    /* Req table */
+    .req-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .req-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .req-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    .req-table tr:last-child td { border-bottom: none; }
+    .req-table td:first-child { font-weight: 600; }
+
+    /* Error table */
+    .error-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13px; }
+    .error-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .error-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.55; }
+    .error-table tr:last-child td { border-bottom: none; }
+    .error-table td:first-child { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg-2); color: var(--text); white-space: normal; min-width: 220px; }
+
+    /* Callouts */
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout.callout-green { border-left-color: #10b981; background: rgba(16,185,129,.04); }
+    .callout.callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout.callout-green .callout-icon { stroke: #10b981; }
+    .callout.callout-warn .callout-icon { stroke: #f59e0b; }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout.callout-green .callout-label { color: #10b981; }
+    .callout.callout-warn .callout-label { color: #f59e0b; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 16px 0 20px; display: flex; flex-direction: column; gap: 8px; }
+    .checklist li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); line-height: 1.55; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+    .checklist li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px; }
+
+    /* Article footer */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+      .error-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#kb-getting-started">Getting Started</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">Uploading &amp; Processing Xsens Data</span>
+      </nav>
+      <span class="article-eyebrow">Getting Started</span>
+      <h1>Uploading &amp; Processing Xsens Data</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          10 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated April 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Getting Started
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- TOC sidebar -->
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-before"><a href="#before">1. Before You Start</a></li>
+          <li id="toc-requirements"><a href="#requirements">2. Recording Requirements</a></li>
+          <li id="toc-export"><a href="#export">3. Exporting from MVN Analyze Pro</a></li>
+          <li id="toc-select"><a href="#select">4. Selecting the File</a></li>
+          <li id="toc-errors"><a href="#errors">5. Validation Errors</a></li>
+          <li id="toc-next"><a href="#next">6. After a Successful Load</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <!-- Article content -->
+      <div class="article-body">
+
+        <p class="article-lead">Motionprint Ergo currently supports motion capture data via Xsens MVNX files. This article walks you through exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
+
+        <!-- ── SECTION 1 ── -->
+        <h2 id="before">1. Before You Start</h2>
+
+        <p>Make sure the following are in place before continuing.</p>
+
+        <ul class="checklist">
+          <li><strong>Motionprint Ergo installed and activated</strong> — if you haven't done this yet, see the <a href="getting-started-ergo.html">Getting Started guide</a>.</li>
+          <li><strong>MVN Analyze Pro installed</strong> — any recent version that supports MVNX version 4 export. This is standard in current releases.</li>
+          <li><strong>A completed Xsens motion capture session</strong> — the subject should have performed the work task being assessed. The recording must have been collected with a full sensor setup and a successful T-pose calibration.</li>
+          <li><strong>The session file accessible on your computer</strong> — you will need to browse to it from within Motionprint Ergo. The app reads the file directly from disk, so it must remain in its location after you select it.</li>
+        </ul>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="requirements">2. Recording Requirements — What the File Must Contain</h2>
+
+        <p>Before covering the export steps, it is worth understanding what makes a recording valid. The most common source of errors is not a software misconfiguration — it is a recording that is missing required data, either because of how the session was captured or because of the export settings used. Getting this right once prevents most issues.</p>
+
+        <div class="callout callout-warn">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">MVNX version 4 required</div>
+            <p>Motionprint Ergo requires <strong>MVNX version 4</strong>. Earlier versions may omit position data or have structural differences that will cause validation to fail. Always set the version to 4 when exporting, and check all data points.</p>
+          </div>
+        </div>
+
+        <h3>Required file structure</h3>
+
+        <table class="req-table">
+          <thead>
+            <tr>
+              <th>Requirement</th>
+              <th>Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>T-pose calibration frame</td>
+              <td>Used as the neutral reference for body segment orientation. Without it, validation fails immediately with a clear error message.</td>
+            </tr>
+            <tr>
+              <td><code>frameRate</code> attribute</td>
+              <td>Required to calculate timing-based metrics. Must be present on the subject element.</td>
+            </tr>
+            <tr>
+              <td>Motion frames with position data</td>
+              <td>Segment positions are used for spatial calculations across all assessment methods.</td>
+            </tr>
+            <tr>
+              <td>Motion frames with orientation data</td>
+              <td>Segment orientations are used for posture angles including trunk bending, twisting, and wrist angles.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;subject&gt;</code> element</td>
+              <td>Top-level structural requirement. Its absence means the file is not a valid MVNX file.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>What to record</h3>
+
+        <p>The recording should capture the portion of the session where the load handling or lifting task takes place. It does not need to be perfectly trimmed — Motionprint Ergo includes a built-in trim tool on the input configuration page where you can set the active analysis window. However, recordings that contain only unrelated movement with no lifting or load handling will produce unusable results.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Practical tip</div>
+            <p>All required data is included automatically when you export from MVN Analyze Pro with <strong>MVNX version 4</strong> and <strong>all data points checked</strong>. The most common cause of missing data is exporting with a limited data selection or using an older format version.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="export">3. Exporting from MVN Analyze Pro</h2>
+
+        <p>The steps below describe the settings that matter for compatibility with Motionprint Ergo. The exact menu layout in MVN Analyze Pro may vary slightly between versions, but the core export options — format, version, and data selection — are present in all recent releases.</p>
+
+        <div class="steps-list">
+          <div class="steps-list-item"><p>Open your session in <strong>MVN Analyze Pro</strong>.</p></div>
+          <div class="steps-list-item"><p>Go to <strong>File → Export</strong> (or the equivalent export option in your version).</p></div>
+          <div class="steps-list-item"><p>Select <strong>MVNX</strong> as the export format.</p></div>
+          <div class="steps-list-item"><p>Set the MVNX version to <strong>4</strong>. This is critical — earlier versions may omit position data or have structural differences that cause validation to fail.</p></div>
+          <div class="steps-list-item"><p>In the data selection panel, <strong>check all data points</strong>. Do not deselect any data categories — Motionprint Ergo uses position, orientation, joint angle, and landmark data.</p></div>
+          <div class="steps-list-item"><p>Choose a destination folder you can easily navigate to from Motionprint Ergo — for example, a dedicated folder for your ergonomic assessments.</p></div>
+          <div class="steps-list-item"><p>Click <strong>Export</strong> and wait for the file to finish writing. MVNX files range from a few MB to several hundred MB depending on recording length.</p></div>
+          <div class="steps-list-item"><p>Note the location of the saved <code>.mvnx</code> file — you will browse to it in the next step.</p></div>
+        </div>
+
+        <p>There is no file size limit imposed by Motionprint Ergo. That said, recording length should reflect a representative work cycle rather than an entire shift — a few minutes of task activity is typically sufficient.</p>
+
+        <!-- ── SECTION 4 ── -->
+        <h2 id="select">4. Selecting the File in Motionprint Ergo</h2>
+
+        <p>Once you have a valid MVNX file, the flow inside Motionprint Ergo is straightforward.</p>
+
+        <div class="steps-list">
+          <div class="steps-list-item"><p>In Motionprint Ergo, click <strong>Create</strong> in the sidebar and select your assessment method.</p></div>
+          <div class="steps-list-item"><p>The <strong>Input Source</strong> page appears. Click the <strong>Xsens MVNX</strong> tile to select it as the input source.</p></div>
+          <div class="steps-list-item"><p>A file browser opens. Navigate to the folder where you saved the <code>.mvnx</code> file, select it, and confirm.</p></div>
+          <div class="steps-list-item"><p>A brief <em>Validating and loading file…</em> indicator appears while the app performs a structural check. This typically completes in under a second even for large files.</p></div>
+          <div class="steps-list-item"><p>If validation passes, the app navigates automatically to the <strong>Input Configuration</strong> page. If it fails, an error message is shown — see the next section for what each message means.</p></div>
+        </div>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Do not move the file after selecting it</div>
+            <p>The app stores the file path and reads from it directly — no data is transferred to a server or copied elsewhere. If the file is moved or deleted before you run the analysis, the app will show: <em>"The MVNX file could not be found on your computer. It may have been moved or deleted. Please select the file again."</em></p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="errors">5. Validation Errors — What They Mean and How to Fix Them</h2>
+
+        <p>Validation happens in two stages. The first stage is a fast structural check that runs as soon as you select a file — errors here are shown immediately. The second stage is a deeper data completeness check that runs during processing — errors here appear if a specific data stream required by the assessment method is absent from the extracted variables.</p>
+
+        <h3>Stage 1 — Structural validation (shown immediately after file selection)</h3>
+
+        <table class="error-table">
+          <thead>
+            <tr>
+              <th style="width:38%">Error message</th>
+              <th style="width:35%">Cause</th>
+              <th>Fix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Please select a valid .mvnx file.</td>
+              <td>File does not have a <code>.mvnx</code> extension, or the file no longer exists at the selected path.</td>
+              <td>Re-select the correct file.</td>
+            </tr>
+            <tr>
+              <td>MVNX file is not valid XML: [detail]</td>
+              <td>The file is corrupted or was not written completely during export.</td>
+              <td>Re-export from MVN Analyze Pro.</td>
+            </tr>
+            <tr>
+              <td>Not a valid MVNX file (missing subject element).</td>
+              <td>The file does not have standard MVNX structure. May be from an incompatible version or a different Xsens product.</td>
+              <td>Re-export using MVNX version 4.</td>
+            </tr>
+            <tr>
+              <td>MVNX file is missing frameRate.</td>
+              <td>The <code>&lt;subject&gt;</code> element lacks a <code>frameRate</code> attribute.</td>
+              <td>Re-export using MVNX version 4 with all data points enabled.</td>
+            </tr>
+            <tr>
+              <td>MVNX file has no T-pose frame. Please re-export from Xsens MVN Analyze Pro.</td>
+              <td>No calibration frame was found. This happens if the T-pose was excluded from the export, or the session was not calibrated before recording.</td>
+              <td>Re-export including calibration data, or re-calibrate the session in MVN Analyze Pro before exporting.</td>
+            </tr>
+            <tr>
+              <td>MVNX file contains no motion data frames.</td>
+              <td>The file has no normal motion frames — it may be a calibration-only file.</td>
+              <td>Ensure you are exporting the full session, not just the calibration.</td>
+            </tr>
+            <tr>
+              <td>MVNX frames are missing orientation data.</td>
+              <td>Orientation data was excluded during export.</td>
+              <td>Re-export with all data points checked.</td>
+            </tr>
+            <tr>
+              <td>MVNX frames are missing position data.</td>
+              <td>Position data was excluded during export.</td>
+              <td>Re-export with all data points checked.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Stage 2 — Data completeness validation (shown during processing)</h3>
+
+        <p>If the structural check passes but a specific data stream required by the assessment method is absent from the extracted variables, an error appears during processing. The message pattern is: <em>"Please export [data name] data in .mvnx."</em> — for example:</p>
+
+        <ul>
+          <li><em>Please export trunk bending angles data in .mvnx.</em></li>
+          <li><em>Please export left hand positions data in .mvnx.</em></li>
+          <li><em>Please export right wrist angles data in .mvnx.</em></li>
+        </ul>
+
+        <p>The fix for all stage 2 errors is the same: re-export from MVN Analyze Pro with MVNX version 4 and all data points checked. These errors indicate that individual data streams were deselected during the original export.</p>
+
+        <!-- ── SECTION 6 ── -->
+        <h2 id="next">6. After a Successful File Load</h2>
+
+        <p>When the file passes validation, the app saves the file path and immediately navigates to the <strong>Input Configuration</strong> page for your chosen assessment method. From here you can:</p>
+
+        <ul>
+          <li>Preview the motion capture data on the playbar and set trim markers to define the active analysis window</li>
+          <li>Define one or more <strong>lifting tasks</strong> — time windows corresponding to individual load-handling cycles</li>
+          <li>Enter task parameters and metadata</li>
+          <li>Click <strong>Process</strong> to run the analysis</li>
+        </ul>
+
+        <p>These steps are covered in full in the <a href="getting-started-ergo.html">Getting Started with Motionprint Ergo</a> guide.</p>
+
+        <!-- ── ARTICLE END ── -->
+        <div class="article-end">
+          <div>
+            <div class="related-label">Related articles</div>
+            <div class="related-grid">
+              <a href="getting-started-ergo.html" class="related-card">
+                <span class="related-card-cat">Getting Started</span>
+                <span class="related-card-title">Getting Started with Motionprint Ergo</span>
+              </a>
+              <a href="niosh-assessment-setup.html" class="related-card">
+                <span class="related-card-cat">Assessment Methods</span>
+                <span class="related-card-title">NIOSH Assessment Setup</span>
+              </a>
+              <a href="troubleshooting-common-issues.html" class="related-card">
+                <span class="related-card-cat">Troubleshooting</span>
+                <span class="related-card-title">Troubleshooting Common Issues</span>
+              </a>
+              <a href="whats-included-in-your-license.html" class="related-card">
+                <span class="related-card-cat">Licence</span>
+                <span class="related-card-title">What's Included in Your Licence</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /article-body -->
+    </div><!-- /article-layout -->
+  </div><!-- /container -->
+</div><!-- /article-outer -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img src="../Motionprint-full.png" alt="Motionprint" style="height:24px;display:block;margin-bottom:12px;opacity:.7;">
+        <p class="footer-tagline">Motion capture ergonomics for the modern workplace.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../download.html">Download</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html">Knowledge Base</a></li>
+          <li><a href="../resources.html#kb-getting-started">Getting Started</a></li>
+          <li><a href="../resources.html#kb-methods">Assessment Methods</a></li>
+          <li><a href="../resources.html#kb-reports">Reports &amp; Export</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOC active state on scroll -->
+<script>
+  (function () {
+    const sections = [
+      { id: 'before',       toc: 'toc-before' },
+      { id: 'requirements', toc: 'toc-requirements' },
+      { id: 'export',       toc: 'toc-export' },
+      { id: 'select',       toc: 'toc-select' },
+      { id: 'errors',       toc: 'toc-errors' },
+      { id: 'next',         toc: 'toc-next' },
+    ];
+
+    function onScroll() {
+      let current = sections[0].toc;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
+      }
+      sections.forEach(s => {
+        document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
