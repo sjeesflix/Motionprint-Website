@@ -117,7 +117,7 @@
     .error-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .error-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.55; }
     .error-table tr:last-child td { border-bottom: none; }
-    .error-table td:first-child { font-family: 'Courier New', monospace; font-size: 12px; background: var(--bg-2); color: var(--text); white-space: normal; min-width: 220px; }
+    .error-table td:first-child { font-size: 13px; font-style: italic; color: var(--text); white-space: normal; min-width: 220px; }
 
     /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
@@ -275,7 +275,7 @@
       <!-- Article content -->
       <div class="article-body">
 
-        <p class="article-lead">Motionprint Ergo currently supports motion capture data via Xsens MVNX files. This article walks you through exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
+        <p class="article-lead">Motionprint Ergo supports motion capture data via Xsens MVNX files. This article walks you through exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
 
         <!-- ── SECTION 1 ── -->
         <h2 id="before">1. Before You Start</h2>
@@ -285,7 +285,7 @@
         <ul class="checklist">
           <li><strong>Motionprint Ergo installed and activated</strong> — if you haven't done this yet, see the <a href="getting-started-ergo.html">Getting Started guide</a>.</li>
           <li><strong>MVN Analyze Pro installed</strong> — any recent version that supports MVNX version 4 export. This is standard in current releases.</li>
-          <li><strong>A completed Xsens motion capture session</strong> — the subject should have performed the work task being assessed. The recording must have been collected with a full sensor setup and a successful T-pose calibration.</li>
+          <li><strong>A completed Xsens motion capture session</strong> — the subject should have performed the work task being assessed. The recording must have been collected with a full sensor setup and a completed calibration in MVN Analyze Pro.</li>
           <li><strong>The session file accessible on your computer</strong> — you will need to browse to it from within Motionprint Ergo. The app reads the file directly from disk, so it must remain in its location after you select it.</li>
         </ul>
 
@@ -313,8 +313,8 @@
           </thead>
           <tbody>
             <tr>
-              <td>T-pose calibration frame</td>
-              <td>Used as the neutral reference for body segment orientation. Without it, validation fails immediately with a clear error message.</td>
+              <td>T-pose frame</td>
+              <td>MVN Analyze Pro automatically includes a T-pose frame in MVNX exports regardless of the calibration type used in the session. This frame is used by the backend to map body segment orientations. Without it, validation fails immediately.</td>
             </tr>
             <tr>
               <td><code>frameRate</code> attribute</td>
@@ -337,7 +337,7 @@
 
         <h3>What to record</h3>
 
-        <p>The recording should capture the portion of the session where the load handling or lifting task takes place. It does not need to be perfectly trimmed — Motionprint Ergo includes a built-in trim tool on the input configuration page where you can set the active analysis window. However, recordings that contain only unrelated movement with no lifting or load handling will produce unusable results.</p>
+        <p>The recording should capture the portion of the session where the load handling or lifting task takes place. Before exporting, it is worth doing a rough trim in MVN Analyze Pro to remove significant idle time at the start or end — this reduces the file size and speeds up loading in Motionprint Ergo. You do not need to trim precisely; Motionprint Ergo includes a built-in trim tool on the input configuration page where you can set the exact analysis window. However, recordings that contain only unrelated movement with no lifting or load handling will produce unusable results.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -424,8 +424,8 @@
             </tr>
             <tr>
               <td>MVNX file has no T-pose frame. Please re-export from Xsens MVN Analyze Pro.</td>
-              <td>No calibration frame was found. This happens if the T-pose was excluded from the export, or the session was not calibrated before recording.</td>
-              <td>Re-export including calibration data, or re-calibrate the session in MVN Analyze Pro before exporting.</td>
+              <td>The T-pose frame was not included in the export. MVN Analyze Pro includes this automatically, so this typically means the file was exported with a limited or non-standard data selection.</td>
+              <td>Re-export from MVN Analyze Pro with MVNX version 4 and all data points checked.</td>
             </tr>
             <tr>
               <td>MVNX file contains no motion data frames.</td>
