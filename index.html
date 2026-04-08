@@ -512,6 +512,34 @@
     .pricing-cta { width: 100%; justify-content: center; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
     .pricing-cta:hover { transform: scale(1.03); }
 
+    /* ── ROI CALCULATOR ── */
+    .roi-section { padding: 96px 0; background: var(--white); }
+    .roi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .roi-inputs { display: flex; flex-direction: column; gap: 32px; }
+    .roi-input-group { display: flex; flex-direction: column; gap: 10px; }
+    .roi-label { display: flex; justify-content: space-between; align-items: baseline; }
+    .roi-label-text { font-size: 14px; font-weight: 600; color: var(--text); }
+    .roi-label-value { font-size: 20px; font-weight: 700; color: var(--red); font-family: var(--font-display); }
+    .roi-label-unit { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 2px; }
+    .roi-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 2px; background: var(--border); outline: none; cursor: pointer; }
+    .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; box-shadow: 0 2px 8px rgba(234,82,59,.35); transition: transform .15s; }
+    .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .roi-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(234,82,59,.35); }
+    .roi-hint { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
+    .roi-card { background: var(--dark); border-radius: var(--radius); padding: 40px 36px; position: sticky; top: 88px; }
+    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 28px; }
+    .roi-stat { display: flex; flex-direction: column; gap: 4px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-stat:last-of-type { border-bottom: none; }
+    .roi-stat-label { font-size: 12px; color: rgba(255,255,255,.4); }
+    .roi-stat-value { font-size: 26px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-stat-value.is-green { color: #4ade80; }
+    .roi-stat-value.is-red { color: #f87171; }
+    .roi-stat-sub { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
+    .roi-divider { height: 1px; background: rgba(255,255,255,.08); margin: 4px 0; }
+    .roi-cta { display: block; text-align: center; margin-top: 28px; background: var(--red); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 12px 20px; text-decoration: none; transition: background .15s; }
+    .roi-cta:hover { background: var(--red-light); }
+    .roi-assumption { font-size: 12px; color: rgba(255,255,255,.25); text-align: center; margin-top: 14px; line-height: 1.5; }
+
     /* ── CTA BANNER ── */
     .cta-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
     .cta-section::before {
@@ -675,7 +703,7 @@
       .app-body { grid-template-columns: 1fr; }
       .hero { padding: 100px 0 48px; }
       .hero-sub { font-size: 15px; }
-      .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .pricing-section, .cta-section { padding: 64px 0; }
+      .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .roi-section, .pricing-section, .cta-section { padding: 64px 0; }
       .section-header { margin-bottom: 36px; }
       .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
       .problem-stats { grid-template-columns: 1fr; }
@@ -688,6 +716,8 @@
       .methods-grid { grid-template-columns: 1fr 1fr; }
       .custom-section .btn { width: 100%; justify-content: center; }
       .custom-card { padding: 24px 20px; }
+      .roi-layout { grid-template-columns: 1fr; }
+      .roi-card { position: static; }
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card { padding: 28px 24px; }
       .pricing-card--featured { transform: none; padding: 36px 24px; }
@@ -1220,6 +1250,138 @@
     </div>
   </div>
 </section>
+
+<!-- ── ROI CALCULATOR ── -->
+<section class="roi-section" id="roi">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Return on investment</span>
+      <h2 class="section-title">How much time does it save?</h2>
+      <p class="section-sub">A traditional ergonomic assessment — observation, manual calculation, report writing — takes hours. Motionprint automates the analysis. See how quickly the licence pays for itself.</p>
+    </div>
+    <div class="roi-layout">
+
+      <!-- Inputs -->
+      <div class="roi-inputs">
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Assessments per year</span>
+            <span class="roi-label-value" id="val-assessments">20</span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-assessments" min="1" max="200" step="1" value="20">
+          <span class="roi-hint">How many individual ergonomic assessments you run in a year across all clients or projects.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Time per assessment without Motionprint</span>
+            <span class="roi-label-value" id="val-manual"><span id="disp-manual">3</span><span class="roi-label-unit">h</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-manual" min="1" max="8" step="0.5" value="3">
+          <span class="roi-hint">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Your hourly rate</span>
+            <span class="roi-label-value" id="val-rate">€<span id="disp-rate">100</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-rate" min="50" max="300" step="10" value="100">
+          <span class="roi-hint">Your billable or internal hourly rate. Used to calculate the monetary value of time saved.</span>
+        </div>
+      </div>
+
+      <!-- Results card -->
+      <div class="roi-card">
+        <div class="roi-card-title">Your estimated return</div>
+
+        <div class="roi-stat">
+          <span class="roi-stat-label">Time saved per assessment</span>
+          <span class="roi-stat-value" id="res-saved-each">—</span>
+          <span class="roi-stat-sub">vs. <span id="res-manual-label">3h</span> manually &mdash; Motionprint takes ~45 min</span>
+        </div>
+        <div class="roi-stat">
+          <span class="roi-stat-label">Total hours saved per year</span>
+          <span class="roi-stat-value" id="res-hours-year">—</span>
+          <span class="roi-stat-sub">across <span id="res-assessments-label">20</span> assessments</span>
+        </div>
+        <div class="roi-divider"></div>
+        <div class="roi-stat">
+          <span class="roi-stat-label">Value of time saved</span>
+          <span class="roi-stat-value" id="res-value">—</span>
+          <span class="roi-stat-sub">at €<span id="res-rate-label">100</span>/hour</span>
+        </div>
+        <div class="roi-stat">
+          <span class="roi-stat-label">Annual licence cost</span>
+          <span class="roi-stat-value" style="font-size:20px;color:rgba(255,255,255,.5);">€2,500</span>
+        </div>
+        <div class="roi-divider"></div>
+        <div class="roi-stat">
+          <span class="roi-stat-label">Net annual saving</span>
+          <span class="roi-stat-value is-green" id="res-net">—</span>
+        </div>
+        <div class="roi-stat">
+          <span class="roi-stat-label">ROI</span>
+          <span class="roi-stat-value is-green" id="res-roi">—</span>
+        </div>
+
+        <a href="#pricing" class="roi-cta">See pricing →</a>
+        <p class="roi-assumption">Based on ~45 min per assessment with Motionprint Ergo (setup, review, and export). Actual time may vary.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const MOTIONPRINT_HOURS = 0.75;
+  const LICENCE_COST = 2500;
+
+  function fmt(n) {
+    return n.toLocaleString('de-DE'); // European number formatting
+  }
+
+  function calc() {
+    const assessments = parseInt(document.getElementById('sl-assessments').value);
+    const manual = parseFloat(document.getElementById('sl-manual').value);
+    const rate = parseInt(document.getElementById('sl-rate').value);
+
+    const savedEach = Math.max(0, manual - MOTIONPRINT_HOURS);
+    const hoursYear = savedEach * assessments;
+    const valueYear = hoursYear * rate;
+    const net = valueYear - LICENCE_COST;
+    const roi = LICENCE_COST > 0 ? ((net / LICENCE_COST) * 100) : 0;
+
+    // Update input display labels
+    document.getElementById('val-assessments').textContent = assessments;
+    document.getElementById('disp-manual').textContent = manual % 1 === 0 ? manual : manual.toFixed(1);
+    document.getElementById('disp-rate').textContent = rate;
+
+    // Update result labels
+    document.getElementById('res-manual-label').textContent = (manual % 1 === 0 ? manual : manual.toFixed(1)) + 'h';
+    document.getElementById('res-assessments-label').textContent = assessments;
+    document.getElementById('res-rate-label').textContent = rate;
+
+    // Update results
+    document.getElementById('res-saved-each').textContent = savedEach > 0
+      ? (savedEach % 1 === 0 ? savedEach : savedEach.toFixed(1)) + 'h per assessment'
+      : '—';
+    document.getElementById('res-hours-year').textContent = hoursYear > 0
+      ? (hoursYear % 1 === 0 ? fmt(hoursYear) : fmt(Math.round(hoursYear * 10) / 10)) + ' hours'
+      : '—';
+    document.getElementById('res-value').textContent = '€' + fmt(Math.round(valueYear));
+    document.getElementById('res-net').textContent = net >= 0 ? '€' + fmt(Math.round(net)) : '−€' + fmt(Math.round(Math.abs(net)));
+    document.getElementById('res-net').className = 'roi-stat-value ' + (net >= 0 ? 'is-green' : 'is-red');
+    document.getElementById('res-roi').textContent = roi >= 0 ? '+' + Math.round(roi) + '%' : Math.round(roi) + '%';
+    document.getElementById('res-roi').className = 'roi-stat-value ' + (roi >= 0 ? 'is-green' : 'is-red');
+  }
+
+  ['sl-assessments', 'sl-manual', 'sl-rate'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', calc);
+  });
+
+  calc();
+})();
+</script>
 
 <!-- ── PRICING ── -->
 <section class="pricing-section" id="pricing">
