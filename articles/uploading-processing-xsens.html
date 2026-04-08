@@ -314,7 +314,7 @@
           <tbody>
             <tr>
               <td>T-pose frame</td>
-              <td>MVN Analyze Pro automatically includes a T-pose frame in MVNX exports regardless of the calibration type used in the session. This frame is used by the backend to map body segment orientations. Without it, validation fails immediately.</td>
+              <td>Used by the backend to map body segment orientations. The T-pose frame is included automatically when exporting a properly calibrated session with all data points checked. Without it, validation fails immediately.</td>
             </tr>
             <tr>
               <td><code>frameRate</code> attribute</td>
@@ -403,9 +403,14 @@
           </thead>
           <tbody>
             <tr>
+              <td>File not found.</td>
+              <td>The file no longer exists at the path that was selected — it may have been moved or deleted.</td>
+              <td>Browse for the file again from its new location.</td>
+            </tr>
+            <tr>
               <td>Please select a valid .mvnx file.</td>
-              <td>File does not have a <code>.mvnx</code> extension, or the file no longer exists at the selected path.</td>
-              <td>Re-select the correct file.</td>
+              <td>The selected file does not have a <code>.mvnx</code> extension.</td>
+              <td>Select the correct <code>.mvnx</code> file exported from MVN Analyze Pro.</td>
             </tr>
             <tr>
               <td>MVNX file is not valid XML: [detail]</td>
@@ -423,8 +428,8 @@
               <td>Re-export using MVNX version 4 with all data points enabled.</td>
             </tr>
             <tr>
-              <td>MVNX file has no T-pose frame. Please re-export from Xsens MVN Analyze Pro.</td>
-              <td>The T-pose frame was not included in the export. MVN Analyze Pro includes this automatically, so this typically means the file was exported with a limited or non-standard data selection.</td>
+              <td>MVNX file has no T-pose frame. Please re-export from Xsens MVN Analyze.</td>
+              <td>The T-pose frame was not found in the file. This typically means the file was exported with a limited data selection or without all data points checked.</td>
               <td>Re-export from MVN Analyze Pro with MVNX version 4 and all data points checked.</td>
             </tr>
             <tr>
