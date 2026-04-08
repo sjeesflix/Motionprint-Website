@@ -475,7 +475,7 @@
 
     /* ── PRICING ── */
     .pricing-section { padding: 96px 0; background: var(--bg); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: stretch; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: center; }
     .pricing-card {
       background: var(--white); border: 1.5px solid var(--border);
       border-radius: var(--radius); padding: 40px 36px; position: relative;
@@ -483,6 +483,24 @@
       transition: box-shadow .25s ease;
     }
     .pricing-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.1); }
+    .pricing-card--featured {
+      background: var(--dark); border-color: var(--dark);
+      padding: 52px 40px;
+      box-shadow: 0 28px 72px rgba(13,15,18,.22);
+      transform: scale(1.03);
+      z-index: 1;
+    }
+    .pricing-card--featured:hover { box-shadow: 0 36px 88px rgba(13,15,18,.32); }
+    .pricing-card--featured .pricing-tier { color: rgba(255,255,255,.4); }
+    .pricing-card--featured .pricing-price { color: #fff; }
+    .pricing-card--featured .pricing-period { color: rgba(255,255,255,.4); }
+    .pricing-card--featured .pricing-divider { background: rgba(255,255,255,.1); }
+    .pricing-card--featured .pricing-desc { color: rgba(255,255,255,.5); }
+    .pricing-card--featured .pfeat { color: rgba(255,255,255,.82); }
+    .pricing-card--featured .pfeat-check { background: rgba(234,82,59,.22); }
+    .pricing-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); background: rgba(234,82,59,.1); border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
+    .pricing-savings { font-size: 12px; color: rgba(255,255,255,.42); margin-top: 6px; margin-bottom: 24px; }
+    .pricing-savings strong { color: #4ade80; font-weight: 600; }
     .pricing-tier { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .pricing-price { font-family: var(--font-body); font-weight: 500; font-size: 28px; color: var(--muted); line-height: 1; margin-bottom: 4px; }
     .pricing-price sub { font-size: 16px; vertical-align: middle; font-weight: 400; }
@@ -678,7 +696,7 @@
       .custom-card { padding: 24px 20px; }
       .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card { padding: 28px 24px; }
-      .multiyear-note { display: none; }
+      .pricing-card--featured { transform: none; padding: 36px 24px; }
       .forwho-inner { gap: 32px; }
       .cta-actions .btn { width: 100%; justify-content: center; }
       .cta-title br { display: none; }
@@ -1215,51 +1233,61 @@
     <div class="section-header">
       <span class="eyebrow">Pricing</span>
       <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-sub">Annual licences per user. Every tier includes all current methods and exports — and we continuously add new features and assessment methods over time. No per-report fees.</p>
+      <p class="section-sub">Available per seat as an annual or monthly subscription. Every plan includes all current assessment methods and exports. New features added continuously — no per-report fees.</p>
     </div>
     <div class="pricing-grid">
+
+      <!-- Monthly -->
       <div class="pricing-card">
-        <div class="pricing-tier">Annual licence</div>
-        <div class="pricing-price"><sub>€</sub>2,500</div>
-        <div class="pricing-period">per year &mdash; 1 seat, 2 devices</div>
+        <div class="pricing-tier">Monthly</div>
+        <div class="pricing-price"><sub>€</sub>250</div>
+        <div class="pricing-period">per month &mdash; 1 seat, 2 devices</div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">For ergonomics consultants and freelancers who need professional assessment capability.</p>
+        <p class="pricing-desc">Full access on a month-to-month basis. Same features as the annual licence, billed monthly.</p>
         <ul class="pricing-feats">
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>MVNX file upload</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Annual licence – 1 seat">Get started</a>
+        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Monthly licence – 1 seat">Get started</a>
       </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Team · Annual</div>
-        <div class="pricing-price" style="margin-top:10px"><sub>€</sub>2,000</div>
-        <div class="pricing-period">per seat / year &mdash; 5 to 19 seats</div>
+
+      <!-- Annual (featured) -->
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-badge">Best value</div>
+        <div class="pricing-tier">Annual licence</div>
+        <div class="pricing-price"><sub>€</sub>2,500</div>
+        <div class="pricing-savings">per year &mdash; 1 seat, 2 devices &nbsp;·&nbsp; <strong>save €500 vs monthly</strong></div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">For companies deploying assessments across a team. Volume efficiency built into the per-seat rate.</p>
+        <p class="pricing-desc">The most cost-effective way to run ergonomic assessments. Everything in the monthly plan at 17% off.</p>
         <ul class="pricing-feats">
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Everything in Individual</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>5 to 19 seats</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Priority support</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Team – 5 to 19 seats">Get started</a>
+        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Annual licence – 1 seat">Get started</a>
       </div>
+
+      <!-- Team, Enterprise & Academic -->
       <div class="pricing-card">
-        <div class="pricing-tier">Enterprise &amp; Academic</div>
+        <div class="pricing-tier">Team, Enterprise &amp; Academic</div>
         <div class="pricing-price" style="margin-top:10px">On request</div>
-        <div class="pricing-period">20+ seats or university / research</div>
+        <div class="pricing-period">Multiple seats &mdash; teams, organisations &amp; research</div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">Volume agreements for large organisations and discounted pricing for universities and research groups.</p>
+        <p class="pricing-desc">Volume pricing for teams and organisations, and discounted licences for universities and research groups.</p>
         <ul class="pricing-feats">
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Custom quote for 20+ seats</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Everything in the annual plan</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Volume pricing per seat</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Academic &amp; research discounts</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Dedicated onboarding</li>
         </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Enterprise / Academic – 20+ seats">Contact us</a>
+        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Team / Enterprise / Academic">Contact us</a>
       </div>
+
     </div>
-    <p class="multiyear-note" style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:32px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
     <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;">Not sure yet? <a href="#contact" onclick="openContactForm(event)" data-topic="Trial licence request" style="color:var(--red);text-decoration:none;font-weight:600;">Ask about a trial licence →</a></p>
   </div>
 </section>
