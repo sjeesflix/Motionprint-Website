@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with Motionprint Ergo — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="Download, install, and activate Motionprint Ergo, then run your first ergonomic assessment and export a report — step by step." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #ea523b; --red-light: #f06449;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"] { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
+    .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+    .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
+
+    /* Lead */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Steps list */
+    .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
+    .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
+
+    /* Phase steps */
+    .phase-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; counter-reset: phase-counter; }
+    .phase-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; counter-increment: phase-counter; }
+    .phase-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .phase-body { flex: 1; min-width: 0; }
+    .phase-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .phase-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* Info grid */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+    .info-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .info-card-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 6px; }
+    .info-card-value { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .info-card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+
+    /* Req table */
+    .req-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .req-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .req-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    .req-table tr:last-child td { border-bottom: none; }
+    .req-table td:first-child { font-weight: 600; white-space: nowrap; }
+
+    /* Key block */
+    .key-block { background: var(--dark); border-radius: 10px; padding: 16px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 18px; font-weight: 700; color: rgba(255,255,255,.85); text-align: center; letter-spacing: .06em; }
+    .key-block span { color: var(--red); }
+
+    /* Callouts */
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout.callout-green { border-left-color: #10b981; background: rgba(16,185,129,.04); }
+    .callout.callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout.callout-green .callout-icon { stroke: #10b981; }
+    .callout.callout-warn .callout-icon { stroke: #f59e0b; }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout.callout-green .callout-label { color: #10b981; }
+    .callout.callout-warn .callout-label { color: #f59e0b; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Media placeholders */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-video { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+
+    /* Method cards */
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .method-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .method-card-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); background: rgba(234,82,59,.08); border-radius: 4px; padding: 3px 8px; margin-bottom: 10px; }
+    .method-card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .method-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* Tabs display */
+    .tab-cards { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+    .tab-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .tab-card-header { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
+    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .tab-card-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .tab-card-body { padding: 16px 18px; }
+    .tab-card-body p { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
+    .tab-card-body p:last-child { margin-bottom: 0; }
+    .tab-card-body ul { font-size: 14px; color: var(--text); padding-left: 18px; margin: 8px 0 0; }
+    .tab-card-body li { margin-bottom: 4px; line-height: 1.55; }
+
+    /* Export grid */
+    .export-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .export-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .export-card-icon { font-size: 22px; margin-bottom: 10px; }
+    .export-card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .export-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* Offline table */
+    .offline-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .offline-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .offline-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    .offline-table tr:last-child td { border-bottom: none; }
+
+    /* Article footer */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .helpful-label { font-size: 14px; font-weight: 600; color: var(--text); }
+    .helpful-btn { font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 7px 18px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--muted); transition: border-color .15s, color .15s; }
+    .helpful-btn:hover { border-color: var(--red); color: var(--red); }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .export-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#kb-getting-started">Getting Started</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">Getting Started with Motionprint Ergo</span>
+      </nav>
+      <span class="article-eyebrow">Getting Started</span>
+      <h1>Getting Started with Motionprint Ergo</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated April 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Getting Started
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- TOC sidebar -->
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-requirements"><a href="#requirements">1. Before You Begin</a></li>
+          <li id="toc-install"><a href="#install">2. Download &amp; Install</a></li>
+          <li id="toc-activate"><a href="#activate">3. Activate Your Licence</a></li>
+          <li id="toc-navigate"><a href="#navigate">4. Navigating the App</a></li>
+          <li id="toc-report"><a href="#report">5. Create Your First Report</a></li>
+          <li id="toc-next"><a href="#next">6. What's Next</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <!-- Article content -->
+      <div class="article-body">
+
+        <p class="article-lead">This guide takes you from a fresh installation of Motionprint Ergo to a completed, exported ergonomic assessment report. No prior experience with the app is assumed.</p>
+
+        <!-- ── SECTION 1 ── -->
+        <h2 id="requirements">1. Before You Begin — System Requirements</h2>
+
+        <p>Verify the following before downloading. The current release of Motionprint Ergo runs on Windows only — a macOS version is planned but not yet available.</p>
+
+        <table class="req-table">
+          <thead>
+            <tr>
+              <th>Requirement</th>
+              <th>Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Operating system</td>
+              <td>Windows 10 or Windows 11 (64-bit)</td>
+            </tr>
+            <tr>
+              <td>RAM</td>
+              <td>4 GB minimum; 8 GB recommended</td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>500 MB free disk space</td>
+            </tr>
+            <tr>
+              <td>Internet connection</td>
+              <td>Required for licence activation and ongoing validation</td>
+            </tr>
+            <tr>
+              <td>macOS / Linux</td>
+              <td>Not yet available (macOS coming soon)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You will also need an active Motionprint licence key before you can use the app. If you don't have one yet, visit the <a href="../index.html#pricing">pricing page</a> or request a free trial.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">No admin rights needed</div>
+            <p>Motionprint Ergo installs as a per-user application. You do not need administrator rights on your machine to install or run it.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="install">2. Download and Install</h2>
+
+        <p>The installer is available from the Motionprint download page. The setup wizard handles everything — no manual configuration is required.</p>
+
+        <div class="steps-list">
+          <div class="steps-list-item"><p>Go to <a href="../download.html">motion-print.com/download.html</a> and click <strong>Download for Windows</strong>.</p></div>
+          <div class="steps-list-item"><p>The installer file is approximately 80 MB (.exe format). Save it to a convenient location.</p></div>
+          <div class="steps-list-item"><p>Open the downloaded file and follow the on-screen setup wizard.</p></div>
+          <div class="steps-list-item"><p>Once setup completes, launch <strong>Motionprint Ergo</strong> from the Start menu or the desktop shortcut.</p></div>
+        </div>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Download page — Download for Windows button highlighted</div>
+          <div class="media-placeholder-desc">Show the download button on motion-print.com/download.html.</div>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="activate">3. Activate Your Licence</h2>
+
+        <p>The first screen you see when you open Motionprint Ergo is the activation screen. Enter your licence key here to unlock the app.</p>
+
+        <h3>Activation steps</h3>
+
+        <div class="steps-list">
+          <div class="steps-list-item"><p>On the activation screen, locate the text field labelled with the key format.</p></div>
+          <div class="steps-list-item"><p>Enter your licence key in the format shown below, then click <strong>Activate License</strong>.</p></div>
+          <div class="steps-list-item"><p>The app contacts the Motionprint licence server to validate your key and register this machine. An active internet connection is required at this step.</p></div>
+          <div class="steps-list-item"><p>On success, a confirmation message appears briefly and the app opens automatically after approximately 2 seconds.</p></div>
+        </div>
+
+        <div class="key-block"><span>MP</span>-XXXX-XXXX-XXXX-XXXX</div>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Activation screen — licence key entry field and Activate License button</div>
+          <div class="media-placeholder-desc">The centred card with the title "Activate Motionprint Ergo", showing the input field and button.</div>
+        </div>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Invalid key?</div>
+            <p>If activation fails, an error message appears below the input field (for example, "Invalid license key"). Check that the key was copied correctly, with all hyphens included. Contact support if the issue persists.</p>
+          </div>
+        </div>
+
+        <h3>Device limits</h3>
+        <p>Each licence seat allows activation on up to <strong>2 devices</strong> — for example, a workstation and a laptop. The device pool is shared across the licence; there is no per-user device assignment. The number of seats available depends on your licence tier. See the <a href="whats-included-in-your-license.html">What's Included in Your Licence</a> article for full details.</p>
+
+        <h3>Working offline after activation</h3>
+        <p>Once activated, Motionprint Ergo stores a signed token locally so you can continue working without a constant internet connection. Here is how the offline grace period works:</p>
+
+        <table class="offline-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>What happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Normal use (internet available)</td>
+              <td>The app refreshes the local token automatically on startup when the token is older than approximately 20 days.</td>
+            </tr>
+            <tr>
+              <td>Internet unavailable</td>
+              <td>The app continues to work for up to 7 additional days past token expiry, displaying a reminder to reconnect.</td>
+            </tr>
+            <tr>
+              <td>Offline for more than 37 days</td>
+              <td>The app requires an internet connection to re-validate before it can be used again.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ── SECTION 4 ── -->
+        <h2 id="navigate">4. Navigating the App</h2>
+
+        <p>After activation, the main window opens. Take a moment to familiarise yourself with the layout before running your first assessment.</p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-card-label">Sidebar</div>
+            <div class="info-card-value">Create &amp; Settings</div>
+            <div class="info-card-desc">The left-hand sidebar has two destinations: <strong>Create</strong> to start a new report, and <strong>Settings</strong> to configure the app.</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Content area</div>
+            <div class="info-card-value">Main working area</div>
+            <div class="info-card-desc">The right-hand area displays the active page — method selection, input configuration, or results.</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Licence banner</div>
+            <div class="info-card-value">Top of window</div>
+            <div class="info-card-desc">A warning banner appears here if your subscription is approaching expiry or has entered read-only mode.</div>
+          </div>
+        </div>
+
+        <h3>Recommended settings before your first assessment</h3>
+        <p>Configuring a few defaults upfront saves time on every subsequent report. These settings are optional, but worth doing before you begin.</p>
+        <ul>
+          <li><strong>Settings → General</strong> — Enter your company name, upload a logo, and choose an accent colour and interface theme (light or dark). These values are used in exported reports when company branding is enabled.</li>
+          <li><strong>Settings → [Method name]</strong> — Each assessment method has its own settings page where you can pre-configure defaults such as gender, reference mass, and whether to auto-detect critical moments. Configuring these saves time when running repeated assessments of the same type.</li>
+        </ul>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="report">5. Create Your First Report</h2>
+
+        <p>Creating a report follows six phases, from selecting a method through to exporting the final document. Click <strong>Create</strong> in the sidebar to begin.</p>
+
+        <!-- Phase overview -->
+        <div class="phase-list">
+          <div class="phase-item">
+            <div class="phase-num">1</div>
+            <div class="phase-body">
+              <div class="phase-title">Select an assessment method</div>
+              <p class="phase-desc">Choose KIM-LHC or NIOSH Lifting Equation from the method tiles on the Create page.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">2</div>
+            <div class="phase-body">
+              <div class="phase-title">Select input source and load your file</div>
+              <p class="phase-desc">Select Xsens MVNX as the input source and browse to your .mvnx file. The app validates it automatically.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">3</div>
+            <div class="phase-body">
+              <div class="phase-title">Configure input — trim, moments, and task parameters</div>
+              <p class="phase-desc">Trim the recording, mark lifting moments, enter task parameters, and add metadata.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">4</div>
+            <div class="phase-body">
+              <div class="phase-title">Process</div>
+              <p class="phase-desc">Click Process. The analysis runs locally on your machine — no data leaves your device.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">5</div>
+            <div class="phase-body">
+              <div class="phase-title">View results</div>
+              <p class="phase-desc">Review scores, the 3D avatar viewer, and interpretive findings across three tabs.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">6</div>
+            <div class="phase-body">
+              <div class="phase-title">Export the report</div>
+              <p class="phase-desc">Export as a formatted PDF or structured Excel workbook.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Each phase is described in detail below.</p>
+
+        <!-- Phase 1 -->
+        <h3>Phase 1 — Select an Assessment Method</h3>
+        <p>The Create page displays available assessment methods as selectable tiles. Currently available methods include:</p>
+
+        <div class="method-grid">
+          <div class="method-card">
+            <div class="method-card-tag">Available</div>
+            <div class="method-card-title">KIM-LHC</div>
+            <p class="method-card-desc">Key Indicator Method for Lifting, Holding &amp; Carrying (BAuA, Germany). Use this method when assessing tasks that involve carrying, lifting, or holding loads.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-card-tag">Available</div>
+            <div class="method-card-title">NIOSH Lifting Equation</div>
+            <p class="method-card-desc">Revised NIOSH Lifting Equation (NIOSH/CDC). Use this method when assessing lifting tasks, especially those involving repetition or multi-task scenarios.</p>
+          </div>
+        </div>
+
+        <p>Additional methods — such as KIM-ABP for Manual Pushing &amp; Pulling — are shown on the screen as coming soon. Click the tile for the method you want to use to proceed.</p>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Create page — method selection tiles</div>
+          <div class="media-placeholder-desc">The Create page showing KIM-LHC and NIOSH tiles as active, and additional tiles marked as coming soon.</div>
+        </div>
+
+        <!-- Phase 2 -->
+        <h3>Phase 2 — Select Input Source and Load Your File</h3>
+        <p>After selecting a method, you land on the input source page. <strong>Xsens MVNX</strong> is the currently supported motion capture format. Additional sources — including live tracking and camera-based capture — are planned and shown as coming soon.</p>
+
+        <div class="steps-list">
+          <div class="steps-list-item"><p>On the input source page, click the <strong>Xsens MVNX</strong> option to select it.</p></div>
+          <div class="steps-list-item"><p>Click the browse button to open a file dialog and select your MVNX file. The file is read directly from disk — it is not uploaded to any server.</p></div>
+          <div class="steps-list-item"><p>The app validates the file automatically. If validation passes, you are taken to the input configuration page. If validation fails, an error is displayed and you can select a different file.</p></div>
+        </div>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Preparing your MVNX file</div>
+            <p>The recording should capture the portion where the load handling task occurs — it can be trimmed in the next step if it contains idle time before or after. When exporting from MVN Analyze, select <strong>MVNX version 4</strong> and ensure all data points are checked.</p>
+          </div>
+        </div>
+
+        <p>The app checks the following during validation. If any check fails, an error is shown and you cannot proceed until the file is corrected:</p>
+        <ul>
+          <li>The file is valid XML.</li>
+          <li>It contains a <code>&lt;subject&gt;</code> element.</li>
+          <li>It has a <code>frameRate</code> attribute.</li>
+          <li>It contains a T-pose calibration frame.</li>
+          <li>It contains at least one normal motion frame with position and orientation data.</li>
+        </ul>
+
+        <!-- Phase 3 -->
+        <h3>Phase 3 — Configure Input: Trim, Moments, and Task Parameters</h3>
+        <p>The input configuration page has four sub-sections. Work through each one before clicking Process.</p>
+
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3a — Trim the Recording</h3>
+        <p>A playbar at the top of the input page lets you preview the motion data. Two trim markers define the active start and end of the analysis window. Drag the markers on the playbar to exclude any idle time at the beginning or end of the recording. Trimming happens here in the UI — there are no separate preprocessing scripts.</p>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Input configuration page — playbar with trim markers</div>
+          <div class="media-placeholder-desc">The playbar at the top of the input configuration page, showing the two draggable trim markers.</div>
+        </div>
+
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3b — Define Lifting Moments</h3>
+        <p>Within the trimmed range, mark one or more <strong>lifting moments</strong> — time windows corresponding to individual lifts or load-handling cycles. Each moment is defined by a start frame and an end frame, set via the playbar. The backend finds the peak risk frame within each user-defined moment.</p>
+        <p>For multi-task NIOSH assessments, you can define multiple lifting moments. The app will calculate a Composite Lifting Index (CLI) from the combined moments.</p>
+
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3c — Enter Task Parameters</h3>
+        <p>The task parameters section collects the values required by your chosen assessment method. Fields that you pre-configured in Settings will be filled in automatically. Common parameters include:</p>
+        <ul>
+          <li>Load weight (per moment, or shared across all moments)</li>
+          <li>Worker gender</li>
+          <li>Daily working hours and task frequency</li>
+          <li>Method-specific factors</li>
+        </ul>
+        <p>NIOSH-specific parameters include reference mass, one-hand lifting toggle, two-person lift toggle, and extended duration mode. KIM-LHC-specific parameters include spatial conditions, adverse conditions, work organisation, force transfer quality, and clothing impairment.</p>
+
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3d — Add Metadata</h3>
+        <p>Enter the operator name, evaluator name, workplace or job title, and assessment date. These values appear on the report cover page and header. Fields can be hidden in Settings if they are not relevant to your workflow.</p>
+
+        <!-- Phase 4 -->
+        <h3>Phase 4 — Process</h3>
+        <p>Once the input configuration is complete, click <strong>Process</strong> at the bottom of the page. A progress overlay appears, showing a real-time status message as the analysis runs (for example, "Extracting landmarks…" or "Calculating scores…").</p>
+
+        <div class="callout callout-green">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <div class="callout-label">All processing is local</div>
+            <p>The analysis runs entirely on your machine. No motion data is sent to any external server. The only external contact during normal use is the periodic licence check with the Motionprint licence server.</p>
+          </div>
+        </div>
+
+        <p>Processing time depends on the length of the recording and your machine's performance. Most recordings complete in a few seconds to tens of seconds. If your licence subscription has expired, the app will display the relevant licence message rather than proceeding to results.</p>
+
+        <!-- Phase 5 -->
+        <h3>Phase 5 — View Results</h3>
+        <p>The results screen has three tabs. You can switch between them freely after processing completes.</p>
+
+        <div class="tab-cards">
+          <div class="tab-card">
+            <div class="tab-card-header">
+              <div class="tab-card-num">1</div>
+              <div class="tab-card-name">Score Overview</div>
+            </div>
+            <div class="tab-card-body">
+              <p>Shows the top-level risk score for the assessment. For NIOSH, this is the <strong>Lifting Index (LI)</strong> for single-task assessments, or the <strong>Composite Lifting Index (CLI)</strong> with per-task STLI and delta-LI breakdown for multi-task assessments. For KIM-LHC, this is the total <strong>risk score</strong> mapped to one of four colour-coded risk bands: green, yellow, orange, or red. Per-moment scores are listed when multiple lifting moments were defined.</p>
+            </div>
+          </div>
+          <div class="tab-card">
+            <div class="tab-card-header">
+              <div class="tab-card-num">2</div>
+              <div class="tab-card-name">In-Depth Analysis</div>
+            </div>
+            <div class="tab-card-body">
+              <p>Contains the <strong>3D avatar viewer</strong> — an interactive, animated visualisation of the motion capture data rendering the assessment period. Frame-by-frame scores are displayed alongside the viewer (Lifting Index per frame for NIOSH; KIM-LHC score per frame for KIM-LHC). Playback speed can be adjusted, and selecting a lifting moment in the score panel updates the viewer to show that moment's frame range.</p>
+            </div>
+          </div>
+          <div class="tab-card">
+            <div class="tab-card-header">
+              <div class="tab-card-num">3</div>
+              <div class="tab-card-name">Findings</div>
+            </div>
+            <div class="tab-card-body">
+              <p>Presents interpretive findings: which risk factors are highest, which parameters drove the score, and guidance notes. This tab is optional — it can be enabled or disabled in the method-specific settings.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Results screen — Score Overview tab</div>
+          <div class="media-placeholder-desc">The results screen showing the Score Overview tab with a NIOSH or KIM-LHC risk score and per-moment breakdown.</div>
+        </div>
+
+        <!-- Phase 6 -->
+        <h3>Phase 6 — Export the Report</h3>
+        <p>Click <strong>Export</strong> from the results screen to open the export window. You can export in two formats:</p>
+
+        <div class="export-grid">
+          <div class="export-card">
+            <div class="export-card-icon">📄</div>
+            <div class="export-card-title">PDF (.pdf)</div>
+            <p class="export-card-desc">A formatted assessment report including the score overview, critical moment snapshots, per-moment breakdown, and (if enabled) findings and company branding. Use this for sharing with stakeholders or archiving.</p>
+          </div>
+          <div class="export-card">
+            <div class="export-card-icon">📊</div>
+            <div class="export-card-title">Excel (.xlsx)</div>
+            <p class="export-card-desc">A structured workbook with data sheets for scores, per-frame data, moment definitions, and key parameters. Use this for further data analysis or integration with your own systems.</p>
+          </div>
+        </div>
+
+        <p>In the export popup, choose the format, select an output folder, and confirm the filename. The filename defaults to the template configured in Settings (for example, <code>{workplace}_{report_type}_{date}.pdf</code>), and the app remembers the last used folder per method and format.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Company branding in exports</div>
+            <p>Your company logo, name, and accent colour (set in <strong>Settings → General</strong>) appear in exports when branding is enabled in the method-specific report settings. A cover page can also be toggled on or off from there.</p>
+          </div>
+        </div>
+
+        <div class="media-placeholder">
+          <div class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Screenshot
+          </div>
+          <div class="media-placeholder-title">Export window — format selection, output folder, and filename</div>
+          <div class="media-placeholder-desc">The export popup showing the PDF/Excel format choice, folder picker, and filename field.</div>
+        </div>
+
+        <!-- ── SECTION 6 ── -->
+        <h2 id="next">6. What's Next</h2>
+
+        <p>You've completed your first assessment and exported a report. Here are a few ways to continue:</p>
+        <ul>
+          <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
+          <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
+          <li><strong>Visit the Resources page</strong> at <a href="../resources.html">motion-print.com/resources.html</a> for deep-dive articles on the NIOSH and KIM-LHC methodologies, the 3D viewer, report customisation, and licence management.</li>
+          <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
+        </ul>
+
+        <!-- ── ARTICLE END ── -->
+        <div class="article-end">
+          <div>
+            <div class="helpful-label">Was this article helpful?</div>
+            <div style="display:flex;gap:8px;margin-top:10px;">
+              <button class="helpful-btn">👍 Yes</button>
+              <button class="helpful-btn">👎 No</button>
+            </div>
+          </div>
+          <div>
+            <div class="related-label">Related articles</div>
+            <div class="related-grid">
+              <a href="license-activation-guide.html" class="related-card">
+                <span class="related-card-cat">Getting Started</span>
+                <span class="related-card-title">Licence &amp; Activation Guide</span>
+              </a>
+              <a href="niosh-assessment-setup.html" class="related-card">
+                <span class="related-card-cat">Assessment Methods</span>
+                <span class="related-card-title">NIOSH Assessment Setup</span>
+              </a>
+              <a href="exporting-reports.html" class="related-card">
+                <span class="related-card-cat">Reports</span>
+                <span class="related-card-title">Exporting Reports</span>
+              </a>
+              <a href="whats-included-in-your-license.html" class="related-card">
+                <span class="related-card-cat">Licence</span>
+                <span class="related-card-title">What's Included in Your Licence</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /article-body -->
+    </div><!-- /article-layout -->
+  </div><!-- /container -->
+</div><!-- /article-outer -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img src="../Motionprint-full.png" alt="Motionprint" style="height:24px;display:block;margin-bottom:12px;opacity:.7;">
+        <p class="footer-tagline">Motion capture ergonomics for the modern workplace.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../download.html">Download</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html">Knowledge Base</a></li>
+          <li><a href="../resources.html#kb-getting-started">Getting Started</a></li>
+          <li><a href="../resources.html#kb-methods">Assessment Methods</a></li>
+          <li><a href="../resources.html#kb-reports">Reports &amp; Export</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOC active state on scroll -->
+<script>
+  (function () {
+    const sections = [
+      { id: 'requirements', toc: 'toc-requirements' },
+      { id: 'install',      toc: 'toc-install' },
+      { id: 'activate',     toc: 'toc-activate' },
+      { id: 'navigate',     toc: 'toc-navigate' },
+      { id: 'report',       toc: 'toc-report' },
+      { id: 'next',         toc: 'toc-next' },
+    ];
+
+    function onScroll() {
+      let current = sections[0].toc;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
+      }
+      sections.forEach(s => {
+        document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
