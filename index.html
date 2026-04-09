@@ -541,10 +541,15 @@
     .roi-stat-value.is-red { color: #f87171; }
     .roi-stat-sub { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 1px; }
     /* Formula row: value − cost = net */
-    .roi-formula { display: flex; align-items: center; gap: 6px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .roi-formula-part { flex: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-    .roi-formula-part .roi-stat-value { font-size: 16px; }
-    .roi-formula-op { font-size: 15px; color: rgba(255,255,255,.25); font-weight: 400; flex-shrink: 0; padding: 0 1px; }
+    .roi-formula { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-formula-labels { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; margin-bottom: 3px; }
+    .roi-formula-labels span { font-size: 11px; color: rgba(255,255,255,.4); }
+    .roi-formula-values { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; align-items: center; }
+    .roi-formula-val { font-size: 16px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-formula-val.is-green { color: #4ade80; }
+    .roi-formula-val.is-red { color: #f87171; }
+    .roi-formula-val.is-muted { color: rgba(255,255,255,.4); }
+    .roi-formula-op { font-size: 14px; color: rgba(255,255,255,.25); font-weight: 400; text-align: center; }
     /* ROI highlight */
     .roi-highlight { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; margin: 10px 0 0; background: rgba(74,222,128,.09); border-radius: 8px; border: 1px solid rgba(74,222,128,.18); }
     .roi-highlight-label { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.55); }
@@ -1325,19 +1330,17 @@
 
         <!-- Row 2: formula value − cost = net -->
         <div class="roi-formula">
-          <div class="roi-formula-part">
-            <span class="roi-stat-label">Time value</span>
-            <span class="roi-stat-value" id="res-value">—</span>
+          <div class="roi-formula-labels">
+            <span>Time value</span><span></span>
+            <span>Licence</span><span></span>
+            <span>Net saving</span>
           </div>
-          <span class="roi-formula-op">−</span>
-          <div class="roi-formula-part">
-            <span class="roi-stat-label">Licence</span>
-            <span class="roi-stat-value" style="color:rgba(255,255,255,.45);">€2.500</span>
-          </div>
-          <span class="roi-formula-op">=</span>
-          <div class="roi-formula-part">
-            <span class="roi-stat-label">Net saving</span>
-            <span class="roi-stat-value is-green" id="res-net">—</span>
+          <div class="roi-formula-values">
+            <span class="roi-formula-val" id="res-value">—</span>
+            <span class="roi-formula-op">−</span>
+            <span class="roi-formula-val is-muted">€2.500</span>
+            <span class="roi-formula-op">=</span>
+            <span class="roi-formula-val is-green" id="res-net">—</span>
           </div>
         </div>
 
@@ -1383,7 +1386,6 @@
     // Update result labels
     document.getElementById('res-manual-label').textContent = (manual % 1 === 0 ? manual : manual.toFixed(1)) + 'h';
     document.getElementById('res-assessments-label').textContent = assessments;
-    document.getElementById('res-rate-label').textContent = rate;
 
     // Update results
     document.getElementById('res-saved-each').textContent = savedEach > 0
@@ -1394,7 +1396,7 @@
       : '—';
     document.getElementById('res-value').textContent = '€' + fmt(Math.round(valueYear));
     document.getElementById('res-net').textContent = net >= 0 ? '€' + fmt(Math.round(net)) : '−€' + fmt(Math.round(Math.abs(net)));
-    document.getElementById('res-net').className = 'roi-stat-value ' + (net >= 0 ? 'is-green' : 'is-red');
+    document.getElementById('res-net').className = 'roi-formula-val ' + (net >= 0 ? 'is-green' : 'is-red');
     document.getElementById('res-roi').textContent = roi >= 0 ? '+' + Math.round(roi) + '%' : Math.round(roi) + '%';
     document.getElementById('res-roi').className = 'roi-highlight-value ' + (roi >= 0 ? 'is-green' : 'is-red');
   }
