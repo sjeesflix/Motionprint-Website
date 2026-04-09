@@ -526,19 +526,19 @@
     .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
     .roi-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(234,82,59,.35); }
     .roi-hint { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
-    .roi-card { background: var(--dark); border-radius: var(--radius); padding: 40px 36px; position: sticky; top: 88px; }
-    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 28px; }
-    .roi-stat { display: flex; flex-direction: column; gap: 4px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-card { background: var(--dark); border-radius: var(--radius); padding: 24px 28px; position: sticky; top: 88px; }
+    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 14px; }
+    .roi-stat { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
     .roi-stat:last-of-type { border-bottom: none; }
-    .roi-stat-label { font-size: 12px; color: rgba(255,255,255,.4); }
-    .roi-stat-value { font-size: 26px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-stat-label { font-size: 11px; color: rgba(255,255,255,.4); }
+    .roi-stat-value { font-size: 21px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
     .roi-stat-value.is-green { color: #4ade80; }
     .roi-stat-value.is-red { color: #f87171; }
-    .roi-stat-sub { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 2px; }
-    .roi-divider { height: 1px; background: rgba(255,255,255,.08); margin: 4px 0; }
-    .roi-cta { display: block; text-align: center; margin-top: 28px; background: var(--red); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 12px 20px; text-decoration: none; transition: background .15s; }
+    .roi-stat-sub { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 1px; }
+    .roi-divider { height: 1px; background: rgba(255,255,255,.08); margin: 2px 0; }
+    .roi-cta { display: block; text-align: center; margin-top: 16px; background: var(--red); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 10px 20px; text-decoration: none; transition: background .15s; }
     .roi-cta:hover { background: var(--red-light); }
-    .roi-assumption { font-size: 12px; color: rgba(255,255,255,.25); text-align: center; margin-top: 14px; line-height: 1.5; }
+    .roi-assumption { font-size: 11px; color: rgba(255,255,255,.25); text-align: center; margin-top: 8px; line-height: 1.5; }
 
     /* ── CTA BANNER ── */
     .cta-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
@@ -1296,7 +1296,7 @@
         <div class="roi-stat">
           <span class="roi-stat-label">Time saved per assessment</span>
           <span class="roi-stat-value" id="res-saved-each">—</span>
-          <span class="roi-stat-sub">vs. <span id="res-manual-label">3h</span> manually &mdash; Motionprint takes ~45 min</span>
+          <span class="roi-stat-sub">vs. <span id="res-manual-label">3h</span> manually &mdash; Motionprint takes ~30 min</span>
         </div>
         <div class="roi-stat">
           <span class="roi-stat-label">Total hours saved per year</span>
@@ -1324,7 +1324,7 @@
         </div>
 
         <a href="#pricing" class="roi-cta">See pricing →</a>
-        <p class="roi-assumption">Based on ~45 min per assessment with Motionprint Ergo (setup, review, and export). Actual time may vary.</p>
+        <p class="roi-assumption">Based on ~30 min per assessment with Motionprint Ergo (including motion capture setup, review, and export). Actual time may vary.</p>
       </div>
 
     </div>
@@ -1333,7 +1333,7 @@
 
 <script>
 (function () {
-  const MOTIONPRINT_HOURS = 0.75;
+  const MOTIONPRINT_HOURS = 0.5;
   const LICENCE_COST = 2500;
 
   function fmt(n) {
