@@ -371,15 +371,15 @@
             <div class="multiplier-abbr">FM</div>
             <div>
               <div class="multiplier-name">Frequency Multiplier</div>
-              <p class="multiplier-desc">Adjusts for lifting frequency and shift duration. In Motionprint Ergo, frequency is calculated automatically: the cycle time you configure in the app is divided by the number of lifting tasks within that cycle. The resulting lifts-per-minute value is used to look up FM from the standard NIOSH frequency table.</p>
-              <div class="multiplier-source">Derived from cycle time setting and number of lifting tasks</div>
+              <p class="multiplier-desc">Adjusts for lifting frequency, vertical hand height category, and shift duration. In Motionprint Ergo, frequency is calculated automatically from the recording: the number of lifting tasks within the trimmed recording is divided by the trimmed duration in minutes to give lifts per minute. That value — together with V height category and the shift duration you set — is used to look up FM from the standard NIOSH frequency table.</p>
+              <div class="multiplier-source">Derived from lifting task count ÷ trimmed recording duration</div>
             </div>
           </div>
           <div class="multiplier-row">
             <div class="multiplier-abbr">CM</div>
             <div>
               <div class="multiplier-name">Coupling Multiplier</div>
-              <p class="multiplier-desc">Adjusts for the quality of the grip between the worker's hands and the load. Values are Good (1.0), Fair (0.95), or Poor (0.90), depending on the coupling quality selected and the vertical hand height (V).</p>
+              <p class="multiplier-desc">Adjusts for the quality of the grip between the worker's hands and the load. Values depend on both coupling quality and vertical hand height: Good is always 1.0; Poor is always 0.90; Fair is 0.95 by default, but improves to 1.00 when V ≥ 75 cm. Coupling quality is entered manually per lifting task.</p>
               <div class="multiplier-source">Entered manually per lifting task</div>
             </div>
           </div>
@@ -597,7 +597,7 @@
 
         <figure style="margin:24px 0;">
           <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo showing RWL, Lifting Index, risk level and position variables" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score Overview tab — equivalent to a standard manual NIOSH assessment result</figcaption>
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score overview tab — equivalent to a standard manual NIOSH assessment result</figcaption>
         </figure>
 
         <!-- ── SECTION 9 ── -->
@@ -631,16 +631,14 @@
             <div class="workflow-step-num">4</div>
             <div>
               <div class="workflow-step-title">Report output</div>
-              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score Overview</strong> gives you everything a standard manual NIOSH assessment would produce: RWL, Lifting Index, risk level, and a full multiplier summary — ready to share or archive. <strong>Analysis</strong> is for deep-diving into how the key variables (V, H, A, LI) behave over time, so you can pinpoint exactly which frames and postures are driving the risk score. You can also toggle on body risk indicators to instantly see colour-coded risk levels on the 3D model at the shoulders, wrists, and back. <strong>Findings</strong> lets you define and document your own observations to round out the report.</p>
+              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score overview</strong> gives you everything a standard manual NIOSH assessment would produce: RWL, Lifting Index, risk level, and a full multiplier summary — ready to share or archive. <strong>In-depth analysis</strong> is for deep-diving into how the key variables (V, H, A, LI) behave over time, so you can pinpoint exactly which frames and postures are driving the risk score. You can also toggle on body risk indicators to instantly see colour-coded risk levels on the 3D model at the shoulders, wrists, and back. <strong>Findings</strong> lets you define and document your own observations to round out the report.</p>
             </div>
           </div>
         </div>
 
         <figure style="margin:24px 0;">
-          <div style="background:var(--bg-subtle,#f5f5f7);border-radius:12px;border:1px solid var(--border);padding:20px 20px 28px;">
-            <img src="../printscreens/analysis.png" alt="Analysis tab in Motionprint Ergo showing variable behaviour over time with zone distribution and frame insights" style="width:100%;border-radius:8px;display:block;" />
-          </div>
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Analysis tab — variable timeline with zone distribution and 3D frame viewer</figcaption>
+          <img src="analysisloop.gif" alt="In-depth analysis tab in Motionprint Ergo showing variable behaviour over time with zone distribution and frame insights" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">In-depth analysis tab — variable timeline with zone distribution and 3D frame viewer</figcaption>
         </figure>
 
         <!-- ── ARTICLE FOOTER ── -->
