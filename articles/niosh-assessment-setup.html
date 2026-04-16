@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setting Up a NIOSH Assessment — Motionprint Ergo Help</title>
+  <title>Running a NIOSH Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Step-by-step guide to the NIOSH assessment input page: uploading motion capture data, configuring parameters, trimming recordings, and defining lifting tasks." />
+  <meta name="description" content="Step-by-step guide to running a NIOSH assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -226,10 +226,10 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Setting Up a NIOSH Assessment</span>
+        <span style="color:rgba(255,255,255,.6)">Running a NIOSH Assessment</span>
       </nav>
       <span class="article-eyebrow">Using Reports</span>
-      <h1>Setting Up a NIOSH Assessment</h1>
+      <h1>Running a NIOSH Assessment</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -258,11 +258,12 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-upload"><a href="#upload-recording">Upload Recording</a></li>
-          <li id="toc-general"><a href="#general-information">General Information</a></li>
-          <li id="toc-modifiers"><a href="#additional-modifiers">Additional Modifiers</a></li>
-          <li id="toc-trim"><a href="#trim-lifting-tasks">Trim &amp; Lifting Tasks</a></li>
-          <li id="toc-run"><a href="#running-assessment">Running Assessment</a></li>
+          <li id="toc-select-report"><a href="#select-report">① Select Report</a></li>
+          <li id="toc-select-source"><a href="#select-input-source">② Select Input Source</a></li>
+          <li id="toc-upload"><a href="#upload-recording">③ Upload Recording</a></li>
+          <li id="toc-trim"><a href="#trim-lifting-tasks">④ Trim &amp; Lifting Tasks</a></li>
+          <li id="toc-task-info"><a href="#task-information">⑤ Task Information</a></li>
+          <li id="toc-process"><a href="#processing">Processing</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -275,195 +276,116 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Before Motionprint Ergo can calculate a NIOSH assessment result, you must configure the input parameters. This article walks through the assessment setup page — every field, every step, and every control — so you can prepare a recording for analysis with confidence.</p>
+        <p class="article-lead">This article walks through the complete process of running a NIOSH assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Overview</h2>
 
-        <p>The NIOSH assessment input page is a single, scrollable screen with two main regions: a left panel containing a step-by-step form and a right panel displaying an interactive 3D viewport with playback and timeline controls.</p>
+        <p>A NIOSH assessment in Motionprint Ergo spans three separate screens and five numbered steps, indicated by the circled step markers (①②③④⑤) displayed in the app. The table below shows the complete flow:</p>
 
-        <p>The form is divided into four sequential steps that must be completed in order:</p>
-        <ol>
-          <li><strong>Upload Recording</strong> — Load an MVNX motion capture file.</li>
-          <li><strong>General Information</strong> — Enter workplace, operator, evaluator, and other metadata.</li>
-          <li><strong>Additional Modifiers</strong> — Apply conditional multipliers (appears only if enabled).</li>
-          <li><strong>Trim &amp; Define Lifting Tasks</strong> — Set the observation window and mark individual lifting actions.</li>
-        </ol>
+        <table class="info-table">
+          <thead><tr><th>Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
+          <tbody>
+            <tr><td>①</td><td>Select the report you want to create</td><td>Create page</td></tr>
+            <tr><td>②</td><td>Select your input source</td><td>Input Source page</td></tr>
+            <tr><td>③</td><td>Upload your recording</td><td>Input Source page (same screen)</td></tr>
+            <tr><td>④</td><td>Trim the file and specify lifting tasks</td><td>Input page — 3D viewport on right, form on left</td></tr>
+            <tr><td>⑤</td><td>Provide task information</td><td>Input page (same screen, scrolls down from step ④)</td></tr>
+          </tbody>
+        </table>
 
-        <p>Each step must be completed before moving to the next. The <strong>Run Assessment</strong> button at the bottom remains disabled until all required fields are filled and the assessment is ready to execute.</p>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Real-time validation</div>
-            <p>Motionprint validates all entries as you type. If a required field is missing or invalid, a clear error message appears and the Run button stays disabled. This prevents incomplete assessments from being submitted.</p>
-          </div>
-        </div>
+        <p>After completing all five steps, the <strong>Process</strong> button at the bottom of the input page becomes active. Clicking it submits the assessment and navigates you to the report.</p>
 
         <!-- ── STEP 1 ── -->
-        <h2 id="upload-recording"><span class="step-num">1</span> Upload Recording</h2>
+        <h2 id="select-report"><span class="step-num">①</span> Select Report</h2>
 
-        <p>The input source selector at the top of this step offers three options: <strong>Xsens MVNX File</strong>, Xsens Livestream, and MediaPipe. Xsens MVNX File is the currently supported format; the other two options are shown as coming soon and are not yet available.</p>
+        <p>The assessment begins on the <strong>Create page</strong>, where you choose which type of report to run. Two report tiles are shown:</p>
 
-        <p>Select <strong>Xsens MVNX File</strong> and click the file upload control to browse your system and select an MVNX file. Once a valid file is loaded, the 3D viewport on the right instantly renders the recorded movement and the timeline populates with the full duration of the recording.</p>
+        <ul>
+          <li><strong>KIM-LHC</strong> — Lifting, Holding and Carrying</li>
+          <li><strong>NIOSH</strong> — Lifting Tasks</li>
+        </ul>
 
-        <p>No other steps in the form become accessible until a valid recording file is loaded. If you attempt to load an invalid or corrupted file, Motionprint displays an error message and prompts you to try again.</p>
+        <p>Click the <strong>NIOSH</strong> tile to select it, then click <strong>Continue</strong> to proceed to the next step.</p>
+
+        <!-- ── STEP 2 ── -->
+        <h2 id="select-input-source"><span class="step-num">②</span> Select Input Source</h2>
+
+        <p>The next screen is the <strong>Input Source page</strong>. Three input source tiles are displayed:</p>
+
+        <ul>
+          <li><strong>Xsens MVNX File</strong> — available now</li>
+          <li><strong>Xsens Livestream</strong> — coming soon (greyed out)</li>
+          <li><strong>MediaPipe</strong> — coming soon (greyed out)</li>
+        </ul>
+
+        <p>Select your input source. Currently only <strong>Xsens MVNX File</strong> is supported. As new capture methods become available they will become selectable here.</p>
+
+        <!-- ── STEP 3 ── -->
+        <h2 id="upload-recording"><span class="step-num">③</span> Upload Recording</h2>
+
+        <p>After selecting an input source, the upload control appears on the same Input Source screen. For Xsens MVNX, click the upload area to browse your system and select a <code>.mvnx</code> file.</p>
+
+        <p>Once a valid file is loaded, Motionprint Ergo takes you to the main input page (steps ④ and ⑤). If the file is invalid or corrupted, an error message appears and you can try again.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">MVNX format requirement</div>
-            <p>If you are recording with Xsens MotionCapture, export the recorded session as an MVNX file before importing into Motionprint. The MVNX format preserves all motion data and skeletal information needed for biomechanical analysis.</p>
+            <p>If you are recording with Xsens MVN, export the session as an MVNX file before importing into Motionprint Ergo. The MVNX format preserves all motion data and skeletal information needed for biomechanical analysis.</p>
           </div>
         </div>
 
-        <!-- ── STEP 2 ── -->
-        <h2 id="general-information"><span class="step-num">2</span> General Information</h2>
-
-        <p>This step collects metadata and contextual details about the assessment session. Some fields are always required; others appear or disappear based on your NIOSH report settings.</p>
-
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Workplace</td>
-              <td>Yes</td>
-              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3" or "Warehouse Packing Area"). Required text field.</td>
-            </tr>
-            <tr>
-              <td>Date</td>
-              <td>No</td>
-              <td>The evaluation date. Defaults to today. Uses separate year, month, and day selectors.</td>
-            </tr>
-            <tr>
-              <td>Operator</td>
-              <td>Conditional</td>
-              <td>Name or ID of the worker being assessed. Hidden if "Hide operator name" is enabled in NIOSH report settings to protect privacy.</td>
-            </tr>
-            <tr>
-              <td>Evaluator</td>
-              <td>Conditional</td>
-              <td>Name or ID of the ergonomist or assessor conducting the evaluation. Hidden if "Hide evaluator name" is enabled in settings.</td>
-            </tr>
-            <tr>
-              <td>Gender</td>
-              <td>Conditional</td>
-              <td>Worker gender (radio buttons: Male / Female). Conditional based on "Gender not required" setting. Used to refine certain biomechanical calculations.</td>
-            </tr>
-            <tr>
-              <td>Working time</td>
-              <td>Yes</td>
-              <td>Total hours and minutes spent at the workstation per shift. Required field with separate inputs for hours and minutes. Used to determine the Frequency Multiplier duration category (see below).</td>
-            </tr>
-            <tr>
-              <td>Comments</td>
-              <td>No</td>
-              <td>Optional multi-line text field for notes, observations, or contextual information about the assessment.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Working time and duration category</h3>
-
-        <p>The <strong>Working time</strong> value you enter directly determines which Frequency Multiplier (FM) lookup table is used during assessment. Motionprint automatically categorizes the shift duration as follows:</p>
-
-        <ul>
-          <li><strong>Short duration</strong> — ≤ 1 hour at the workstation.</li>
-          <li><strong>Moderate duration</strong> — Greater than 1 hour, up to 2 hours.</li>
-          <li><strong>Long duration</strong> — Greater than 2 hours (shifts of 2+ hours).</li>
-        </ul>
-
-        <p>Each category has its own FM lookup table; the appropriate table is selected automatically once you confirm the working time.</p>
-
-        <!-- ── STEP 3 ── -->
-        <h2 id="additional-modifiers"><span class="step-num">3</span> Additional Modifiers</h2>
-
-        <p>Additional Modifiers is a conditional step that only appears if modifiers are enabled in your NIOSH report settings. If your settings do not include any modifiers, this step is skipped entirely and you proceed directly to the trim and lifting tasks step.</p>
-
-        <p>When enabled, this step allows you to apply multiplicative adjustment factors that account for special lifting conditions not captured by the standard NIOSH variables. Each modifier applies a specific multiplier:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Modifier</th><th>Factor</th><th>Applies when</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong>Two-person lift</strong></td>
-              <td>Pf = 0.85</td>
-              <td>The load is lifted by two workers simultaneously, sharing the weight.</td>
-            </tr>
-            <tr>
-              <td><strong>Additional physical tasks</strong></td>
-              <td>Tf = 0.80</td>
-              <td>The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
-            </tr>
-            <tr>
-              <td><strong>One-hand lifting</strong></td>
-              <td>Of = 0.60</td>
-              <td>A lift is performed with only one hand instead of two.</td>
-            </tr>
-            <tr>
-              <td><strong>Extended duration</strong></td>
-              <td>eM</td>
-              <td>The work shift exceeds 8 hours. The multiplier varies by shift length: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>Select or check the modifiers that apply to the observed work. Multiple modifiers can be selected at once, and their effects are multiplicatively combined in the final RWL calculation.</p>
-
         <!-- ── STEP 4 ── -->
-        <h2 id="trim-lifting-tasks"><span class="step-num">4</span> Trim &amp; Define Lifting Tasks</h2>
+        <h2 id="trim-lifting-tasks"><span class="step-num">④</span> Trim the File and Specify Lifting Tasks</h2>
 
-        <p>This is the most complex step and the one with the most interactive controls. You use the 3D viewport and timeline to define the precise observation window and to mark individual lifting tasks within that window.</p>
+        <p>This is the main input page — a new screen with a <strong>3D viewport on the right</strong> showing the loaded avatar and a <strong>form panel on the left</strong>. This step is where you define the observation window and mark each individual lifting action.</p>
 
         <h3>The 3D viewport and playback controls</h3>
 
-        <p>On the right side of the screen, the viewport displays the loaded motion capture recording as an animated 3D avatar. Below the viewport are playback controls:</p>
+        <p>The viewport renders the motion capture recording as an animated 3D avatar. Below the viewport are playback controls:</p>
 
         <ul>
           <li><strong>Play/pause button</strong> — Start or stop the animation.</li>
-          <li><strong>Speed selector</strong> — Choose playback speed: 0.5× (slow), 1× (normal), 1.5× (faster), 2× (double speed).</li>
+          <li><strong>Speed selector</strong> — Choose playback speed: 0.5× (slow motion), 1× (normal), 1.5×, or 2× (double speed).</li>
         </ul>
 
-        <p>Below the controls is the <strong>timeline</strong>, a horizontal bar showing the full duration of the recording. This is where you perform trimming and task marking.</p>
+        <p>Below the playback controls is the <strong>timeline</strong> — a horizontal bar representing the full duration of the recording. You use the timeline to trim the recording and mark lifting tasks.</p>
 
         <h3>Trimming the observation window</h3>
 
-        <p>Trimming defines the start and end points of the observation period — the portion of the recording that will be analyzed. Only lifting tasks within the trimmed range are included in the assessment.</p>
+        <p>The observation window defines which portion of the recording is included in the assessment. Anything outside the trimmed range is ignored.</p>
 
-        <p>Two vertical handle lines appear on the timeline, marking the trim range:</p>
+        <p>Two draggable vertical handles appear on the timeline:</p>
 
         <ul>
-          <li><strong>Start handle (left)</strong> — Drag to move the observation start point.</li>
-          <li><strong>End handle (right)</strong> — Drag to move the observation end point.</li>
+          <li><strong>Start handle (left)</strong> — Drag to set where the observation period begins.</li>
+          <li><strong>End handle (right)</strong> — Drag to set where it ends.</li>
         </ul>
 
-        <p>The shaded region between the handles represents the observation window. As you adjust the handles, Motionprint recalculates the <strong>frequency</strong> based on the trimmed duration and the number of lifting tasks inside the window. Frequency is expressed as lifts per minute and must fall within NIOSH's acceptable range of 0.2–15 lifts/min.</p>
-
-        <p>If your frequency falls outside this range, Motionprint displays a warning and prevents the assessment from running. You can resolve this by either adjusting the trim range or reducing/increasing the number of marked tasks.</p>
+        <p>The shaded region between the handles is the observation window. As you adjust the handles, Motionprint Ergo automatically recalculates the <strong>lift frequency</strong> — the number of lifting tasks divided by the trimmed duration in minutes. Frequency must fall within NIOSH's acceptable range of <strong>0.2–15 lifts/min</strong>. If it falls outside this range, a warning is shown and the Process button stays disabled until you correct it.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Frequency = Tasks ÷ Trimmed duration</div>
-            <p>If you have marked 5 lifting tasks in a 2-minute observation window, the frequency is 5 ÷ 2 = 2.5 lifts/min, which is within the acceptable range and will proceed normally.</p>
+            <p>Example: 5 lifting tasks in a 2-minute observation window gives a frequency of 2.5 lifts/min — within the acceptable range. If the frequency is too low, extend the window or add more tasks. If too high, narrow the window or remove tasks.</p>
           </div>
         </div>
 
         <h3>Defining lifting tasks</h3>
 
-        <p>A lifting task is a distinct lifting action that you want to assess. It is defined by a start frame and an end frame within the observation window. For each task, you must specify the load weight and the quality of the grip (coupling).</p>
-
-        <p>To define a task:</p>
+        <p>A lifting task is a distinct lifting action within the observation window. Each task is defined by a start frame and an end frame. To add one:</p>
 
         <ol>
-          <li>Click and drag on the timeline to select a frame range. A blue highlight appears showing your selection.</li>
+          <li>Click and drag on the timeline to highlight a frame range. A blue highlight shows your selection.</li>
           <li>Click the <strong>Add</strong> button to create a task from that range.</li>
-          <li>A task entry appears in the task list on the left. Fill in the required fields:
+          <li>The task appears in the list on the left. Fill in the required fields:
             <ul>
-              <li><strong>Start frame</strong> — The frame number where the lift begins (auto-populated from your selection; editable).</li>
-              <li><strong>End frame</strong> — The frame number where the lift ends (auto-populated from your selection; editable).</li>
-              <li><strong>Load weight</strong> — The weight of the object being lifted, in kilograms. You can type a value directly or use the slider. The form also offers predefined load weight categories (configurable in NIOSH report settings) as quick-select options.</li>
-              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the grip quality. See the table below for descriptions of each level.</li>
+              <li><strong>Start frame</strong> — Auto-populated from your selection; editable.</li>
+              <li><strong>End frame</strong> — Auto-populated from your selection; editable.</li>
+              <li><strong>Load weight</strong> — Weight of the object being lifted, in kilograms. Type a value directly or use the slider. Predefined load weight categories (configurable in NIOSH report settings) are also available as quick-select options.</li>
+              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the grip quality.</li>
             </ul>
           </li>
         </ol>
@@ -486,33 +408,118 @@
           </tbody>
         </table>
 
-        <p>Once a task is created, you can edit or delete it using the controls next to each task in the list. Tasks can also be reordered. If you adjust the trim range to exclude a task's frame range, that task is automatically removed from the assessment.</p>
+        <p>You can edit, delete, or reorder tasks in the list at any time. If you adjust the trim handles to exclude a task's frame range, that task is removed automatically.</p>
 
-        <h3>Multiple lifting tasks and CLI</h3>
+        <h3>Multiple lifting tasks and CLI mode</h3>
 
-        <p>If you mark two or more lifting tasks, Motionprint switches to multi-task mode. In multi-task assessments, each task is assigned a Single-Task Lifting Index (STLI), and these are combined using the Composite Lifting Index (CLI) formula to produce a single final risk score. This is useful for assessing workstations where the operator performs multiple distinct lifting movements.</p>
+        <p>If you define two or more lifting tasks, Motionprint Ergo automatically switches to multi-task mode. Each task receives a Single-Task Lifting Index (STLI), and the results are combined into a Composite Lifting Index (CLI). This is appropriate when the worker performs several distinct lifting movements at the same workstation.</p>
 
-        <p>For more details on how the CLI is calculated, see the <a href="understanding-niosh-assessment.html#cli">Understanding the NIOSH Assessment</a> article.</p>
+        <p>For a full explanation of how the CLI is calculated, see the <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a> article.</p>
 
-        <h3>Frequency validation</h3>
+        <!-- ── STEP 5 ── -->
+        <h2 id="task-information"><span class="step-num">⑤</span> Provide Task Information</h2>
 
-        <p>At any time, Motionprint validates your frequency against NIOSH limits. The frequency is automatically recalculated as you add, remove, or reorder tasks, and as you adjust the trim range. If the frequency is out of bounds, a warning message appears:</p>
+        <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata about the assessment session. Some fields are always shown; others appear or are hidden based on your <a href="niosh-report-settings.html">NIOSH report settings</a>.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Workplace</td>
+              <td>Yes</td>
+              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3").</td>
+            </tr>
+            <tr>
+              <td>Evaluator</td>
+              <td>Conditional</td>
+              <td>Name or ID of the assessor. Hidden if "Hide evaluator name" is enabled in NIOSH report settings.</td>
+            </tr>
+            <tr>
+              <td>Operator</td>
+              <td>Conditional</td>
+              <td>Name or ID of the worker being assessed. Hidden if "Hide operator name" is enabled in settings.</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>Conditional</td>
+              <td>Worker gender (Male / Female). Hidden if "Gender not required" is enabled in settings.</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>No</td>
+              <td>The evaluation date. Defaults to today. Uses separate year, month, and day selectors.</td>
+            </tr>
+            <tr>
+              <td>Working time</td>
+              <td>Yes</td>
+              <td>Total hours and minutes at the workstation per shift. Used to determine the Frequency Multiplier (FM) duration category.</td>
+            </tr>
+            <tr>
+              <td>Comments</td>
+              <td>No</td>
+              <td>Optional multi-line text field for notes or contextual observations about the assessment.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Working time and duration category</h3>
+
+        <p>The <strong>Working time</strong> value determines which FM lookup table is applied. Motionprint Ergo categorises the shift duration automatically:</p>
 
         <ul>
-          <li><strong>Frequency &lt; 0.2 lifts/min</strong> — Too few tasks in the observation window. Either extend the observation window or add more tasks.</li>
-          <li><strong>Frequency &gt; 15 lifts/min</strong> — Too many tasks in the observation window. Either narrow the window or remove tasks.</li>
+          <li><strong>Short duration</strong> — ≤ 1 hour at the workstation.</li>
+          <li><strong>Moderate duration</strong> — Greater than 1 hour, up to 2 hours.</li>
+          <li><strong>Long duration</strong> — Greater than 2 hours.</li>
         </ul>
 
-        <p>The assessment cannot run until frequency is within 0.2–15 lifts/min.</p>
+        <p>The correct FM table is selected automatically once you enter the working time.</p>
 
-        <!-- ── RUNNING ── -->
-        <h2 id="running-assessment">Running the Assessment</h2>
+        <h3>Additional modifiers</h3>
 
-        <p>Once all four steps are complete and all required fields are valid, the <strong>Run Assessment</strong> button activates and becomes clickable. Click it to submit the assessment to Motionprint's backend for processing.</p>
+        <p>If any additional modifiers are enabled in your NIOSH report settings, a modifier sub-section appears within this step. Modifiers apply multiplicative adjustment factors to account for special lifting conditions not captured by the standard NIOSH variables. Select the ones that apply — multiple modifiers can be active at once and their effects are combined in the RWL calculation.</p>
 
-        <p>A loading screen appears briefly while the data is transmitted and the NIOSH calculation is performed. Once complete, Motionprint automatically navigates to the report view, where you can review the Score Overview, Analysis, and Findings tabs.</p>
+        <table class="info-table">
+          <thead><tr><th>Modifier</th><th>Factor</th><th>Applies when</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Two-person lift</td>
+              <td>Pf = 0.85</td>
+              <td>The load is lifted by two workers simultaneously, sharing the weight.</td>
+            </tr>
+            <tr>
+              <td>Additional physical tasks</td>
+              <td>Tf = 0.80</td>
+              <td>The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
+            </tr>
+            <tr>
+              <td>One-hand lifting</td>
+              <td>Of = 0.60</td>
+              <td>A lift is performed with only one hand instead of two.</td>
+            </tr>
+            <tr>
+              <td>Extended duration</td>
+              <td>eM</td>
+              <td>The work shift exceeds 8 hours. Multiplier varies by shift length: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p>If an error occurs during processing (invalid data, server issue, etc.), an error message is displayed and you are returned to the input page. You can then correct the issue and try again.</p>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Modifiers are opt-in</div>
+            <p>The additional modifiers sub-section only appears if at least one modifier is enabled in your NIOSH report settings. If no modifiers are enabled, this section is hidden entirely and you proceed directly to processing.</p>
+          </div>
+        </div>
+
+        <!-- ── PROCESSING ── -->
+        <h2 id="processing">Processing the Assessment</h2>
+
+        <p>Once all required fields are filled and at least one lifting task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment.</p>
+
+        <p>A loading overlay appears showing progress and current status as the NIOSH calculation runs. Once complete, Motionprint Ergo automatically navigates to the report view, where you can review the <strong>Score Overview</strong>, <strong>Analysis</strong>, and <strong>Findings</strong> tabs.</p>
+
+        <p>If an error occurs during processing, an error message is displayed. You are returned to the input page where you can correct the issue and try again.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -589,8 +596,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','upload-recording','general-information','additional-modifiers','trim-lifting-tasks','running-assessment'];
-  var tocIds   = ['toc-overview','toc-upload','toc-general','toc-modifiers','toc-trim','toc-run'];
+  var sections = ['overview','select-report','select-input-source','upload-recording','trim-lifting-tasks','task-information','processing'];
+  var tocIds   = ['toc-overview','toc-select-report','toc-select-source','toc-upload','toc-trim','toc-task-info','toc-process'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
@@ -616,3 +623,4 @@
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
