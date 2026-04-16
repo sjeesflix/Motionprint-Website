@@ -237,7 +237,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -335,24 +335,24 @@
           <thead><tr><th>Standard</th><th>Load Constant</th><th>Notes</th></tr></thead>
           <tbody>
             <tr>
-              <td>NIOSH 1994</td>
-              <td>23 kg</td>
-              <td>Original U.S. NIOSH guideline. Widely used in North America.</td>
-            </tr>
-            <tr>
-              <td>ISO 11228-1:2021 / EU</td>
+              <td>EN 1005-2 &amp; ISO 11228-1:2003</td>
               <td>25 kg</td>
-              <td>Current European standard for manual handling. Higher LC than NIOSH 1994.</td>
+              <td>European standard for manual handling risk assessment. Higher Load Constant than the NIOSH default.</td>
             </tr>
             <tr>
-              <td>ISO reduced</td>
+              <td>NIOSH RNLE &amp; ISO 11228-1:2021</td>
+              <td>23 kg <em>(default)</em></td>
+              <td>The U.S. Revised NIOSH Lifting Equation and current ISO 11228-1 standard. The default selection, widely used internationally.</td>
+            </tr>
+            <tr>
+              <td>ISO 11228-1:2021 Table B.1</td>
               <td>15 kg</td>
-              <td>Conservative variant for special populations or high-risk scenarios.</td>
+              <td>Conservative variant for special populations or high-risk scenarios per ISO 11228-1 Annex B.</td>
             </tr>
             <tr>
-              <td>ISO further reduced</td>
+              <td>ISO 11228-1:2021 Table B.1</td>
               <td>10 kg</td>
-              <td>Most restrictive standard, suitable for vulnerable workers or highly demanding tasks.</td>
+              <td>Most restrictive standard, suitable for vulnerable workers or particularly demanding tasks per ISO 11228-1 Annex B.</td>
             </tr>
           </tbody>
         </table>
@@ -403,6 +403,21 @@
               <td>On</td>
               <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
             </tr>
+            <tr>
+              <td>Findings enabled</td>
+              <td>On</td>
+              <td>Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
+            </tr>
+            <tr>
+              <td>Findings title</td>
+              <td>"Findings"</td>
+              <td>Text input (max 50 characters) to rename the Findings tab. The custom title appears in the report tab bar and in exported files.</td>
+            </tr>
+            <tr>
+              <td>Findings sections</td>
+              <td>5 defaults</td>
+              <td>Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
+            </tr>
           </tbody>
         </table>
 
@@ -428,7 +443,7 @@
           <li><strong>Enable/Disable</strong> — toggle whether the Findings tab appears in the report at all.</li>
           <li><strong>Tab title</strong> — text input (max 50 characters) to rename the tab. Default is "Findings".</li>
           <li><strong>Sections list</strong> — add, rename, reorder (drag-and-drop), or delete individual section blocks within the Findings tab. Each section has a title and a multi-line text area for notes.</li>
-          <li><strong>Reset to defaults</strong> — button to restore the standard section structure: General Observations, Risk Factors Identified, and Recommendations.</li>
+          <li><strong>Reset to defaults</strong> — button to restore the standard section structure: Current Situation, Observations, Risk Assessment, Recommendations, and Conclusion.</li>
         </ul>
 
         <!-- ── MODULE 3 ── -->
@@ -487,17 +502,98 @@
         <!-- ── MODULE 4 ── -->
         <h2 id="export">Export</h2>
 
-        <p>The Export module lets you configure the filename template used when a completed NIOSH report is exported to PDF or Excel. The default template is:</p>
+        <p>The Export module controls the naming conventions for PDF and Excel files when you export a completed NIOSH assessment report.</p>
 
-        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
+        <h3>Company branding</h3>
 
-        <p>You can customise this independently for PDF and Excel using placeholder variables such as <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{operator}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{evaluator}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{workstation}</code>, <code style="font-family:monospace;font-size:13px;background:var(--bg);padding:2px 6px;border-radius:4px;">{record_date}</code>, and more. The file extension is appended automatically.</p>
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Use company branding</td>
+              <td>Off</td>
+              <td>Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Full export documentation</div>
-            <p>For a complete guide to exporting — including what each format contains, the full list of template variables, and filename tips — see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
+            <div class="callout-label">Company name and logo</div>
+            <p>The company name and logo used for branding are configured in the <strong>General Settings</strong> page, not the NIOSH-specific settings. Set them there once; they will then apply to all branded exports across all assessment types.</p>
+          </div>
+        </div>
+
+        <h3>Filename templates</h3>
+
+        <p>Each export format (PDF and Excel) can have its own custom filename template. The default template is:</p>
+
+        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
+
+        <p>The file extension (.pdf, .xlsx) is appended automatically — you do not need to include it in the template.</p>
+
+        <h3>Available variables</h3>
+
+        <p>You can insert any of the following variables into your template. They will be substituted with actual assessment data when you export:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Variable</th><th>Description</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>{operator}</td>
+              <td>Name of the worker being assessed.</td>
+              <td>John Smith</td>
+            </tr>
+            <tr>
+              <td>{evaluator}</td>
+              <td>Name of the assessor.</td>
+              <td>Jane Doe</td>
+            </tr>
+            <tr>
+              <td>{workstation}</td>
+              <td>Name or description of the assessed location.</td>
+              <td>Assembly Station 3</td>
+            </tr>
+            <tr>
+              <td>{record_date}</td>
+              <td>Date of the assessment session (format: YYYY-MM-DD).</td>
+              <td>2026-03-15</td>
+            </tr>
+            <tr>
+              <td>{current_date}</td>
+              <td>Today's date when the export is generated (format: YYYY-MM-DD).</td>
+              <td>2026-03-29</td>
+            </tr>
+            <tr>
+              <td>{current_time}</td>
+              <td>Current time when the export is generated (format: HH:MM:SS).</td>
+              <td>14:32:45</td>
+            </tr>
+            <tr>
+              <td>{report_type}</td>
+              <td>Type of report (e.g. NIOSH, NIOSH-CLI if multi-task).</td>
+              <td>NIOSH</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example templates</h3>
+
+        <p>Here are some common filename patterns you might use:</p>
+
+        <ul>
+          <li><strong>{operator}_{workstation}_{record_date}</strong> — groups files by worker, task, and date.</li>
+          <li><strong>{evaluator}_{current_date}_{workstation}</strong> — organizes by assessor and workstation.</li>
+          <li><strong>{workstation}_{record_date}_{current_time}</strong> — includes timestamp to prevent accidental overwrites.</li>
+          <li><strong>NIOSH_{operator}_{report_type}</strong> — simple format prefixed with "NIOSH".</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Keep filenames practical</div>
+            <p>Avoid overly long or complex templates — they can result in unwieldy filenames. Use variables that are relevant to your workflow and that will help you locate and identify exported reports later.</p>
           </div>
         </div>
 
@@ -508,11 +604,19 @@
             <div class="related-grid">
               <a href="niosh-assessment-setup.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Running a NIOSH Assessment</span>
+                <span class="related-card-title">Setting Up a NIOSH Assessment</span>
               </a>
               <a href="niosh-report-walkthrough.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Reading Your NIOSH Report</span>
+                <span class="related-card-title">Reading the NIOSH Report Results</span>
+              </a>
+              <a href="understanding-niosh-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the NIOSH Assessment</span>
+              </a>
+              <a href="exporting-reports.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
               </a>
             </div>
           </div>

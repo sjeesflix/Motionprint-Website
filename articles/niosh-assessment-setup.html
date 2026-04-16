@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running a NIOSH Assessment — Motionprint Ergo Help</title>
+  <title>Setting Up a NIOSH Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="Step-by-step guide to the NIOSH assessment input page: uploading motion capture data, configuring parameters, trimming recordings, and defining lifting tasks." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -226,10 +226,10 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Running a NIOSH Assessment</span>
+        <span style="color:rgba(255,255,255,.6)">Setting Up a NIOSH Assessment</span>
       </nav>
       <span class="article-eyebrow">Using Reports</span>
-      <h1>Running a NIOSH Assessment</h1>
+      <h1>Setting Up a NIOSH Assessment</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -237,7 +237,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -303,9 +303,9 @@
         <!-- ── STEP 1 ── -->
         <h2 id="upload-recording"><span class="step-num">1</span> Upload Recording</h2>
 
-        <p>Motion capture data must be provided as an MVNX file — the Xsens motion capture format. This is the only supported input format for NIOSH assessments in Motionprint Ergo.</p>
+        <p>The input source selector at the top of this step offers three options: <strong>Xsens MVNX File</strong>, Xsens Livestream, and MediaPipe. Xsens MVNX File is the currently supported format; the other two options are shown as coming soon and are not yet available.</p>
 
-        <p>Click the file upload control to browse your system and select an MVNX file. Once a valid file is loaded, the 3D viewport on the right instantly renders the recorded movement and the timeline populates with the full duration of the recording.</p>
+        <p>Select <strong>Xsens MVNX File</strong> and click the file upload control to browse your system and select an MVNX file. Once a valid file is loaded, the 3D viewport on the right instantly renders the recorded movement and the timeline populates with the full duration of the recording.</p>
 
         <p>No other steps in the form become accessible until a valid recording file is loaded. If you attempt to load an invalid or corrupted file, Motionprint displays an error message and prompts you to try again.</p>
 
@@ -329,6 +329,11 @@
               <td>Workplace</td>
               <td>Yes</td>
               <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3" or "Warehouse Packing Area"). Required text field.</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>No</td>
+              <td>The evaluation date. Defaults to today. Uses separate year, month, and day selectors.</td>
             </tr>
             <tr>
               <td>Operator</td>
@@ -398,7 +403,7 @@
             <tr>
               <td><strong>Extended duration</strong></td>
               <td>eM</td>
-              <td>The work shift exceeds 8 hours. The multiplier value depends on shift length.</td>
+              <td>The work shift exceeds 8 hours. The multiplier varies by shift length: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
             </tr>
           </tbody>
         </table>
@@ -455,21 +460,33 @@
           <li>Click the <strong>Add</strong> button to create a task from that range.</li>
           <li>A task entry appears in the task list on the left. Fill in the required fields:
             <ul>
-              <li><strong>Start frame</strong> — The frame number where the lift begins (auto-populated).</li>
-              <li><strong>End frame</strong> — The frame number where the lift ends (auto-populated).</li>
-              <li><strong>Load weight</strong> — The weight of the object being lifted, in kilograms. Required field.</li>
-              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the quality of the grip:
-                <ul>
-                  <li><strong>Good</strong> — The object has convenient handles or a grip surface; the lift is performed with a secure grasp.</li>
-                  <li><strong>Fair</strong> — The object has less-than-optimal handles or the grip is moderately awkward.</li>
-                  <li><strong>Poor</strong> — The object has no handles, or the grip is significantly awkward or unstable.</li>
-                </ul>
-              </li>
+              <li><strong>Start frame</strong> — The frame number where the lift begins (auto-populated from your selection; editable).</li>
+              <li><strong>End frame</strong> — The frame number where the lift ends (auto-populated from your selection; editable).</li>
+              <li><strong>Load weight</strong> — The weight of the object being lifted, in kilograms. You can type a value directly or use the slider. The form also offers predefined load weight categories (configurable in NIOSH report settings) as quick-select options.</li>
+              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the grip quality. See the table below for descriptions of each level.</li>
             </ul>
           </li>
         </ol>
 
-        <p>Once a task is created, you can edit or delete it. If you adjust the trim range to exclude a task's frame range, that task is automatically removed from the assessment.</p>
+        <table class="info-table">
+          <thead><tr><th>Coupling rating</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Good</td>
+              <td>Optimal handles or cut-out handholds on a container; comfortable, secure grip with the hand well-wrapped around the object.</td>
+            </tr>
+            <tr>
+              <td>Fair</td>
+              <td>Less-than-optimal handles or grip surfaces; moderate difficulty maintaining a firm hold on the object.</td>
+            </tr>
+            <tr>
+              <td>Poor</td>
+              <td>No handles; fingers flexed approximately 90° at the knuckle; awkward, unstable, or bulky object with no suitable grip point.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Once a task is created, you can edit or delete it using the controls next to each task in the list. Tasks can also be reordered. If you adjust the trim range to exclude a task's frame range, that task is automatically removed from the assessment.</p>
 
         <h3>Multiple lifting tasks and CLI</h3>
 
@@ -504,7 +521,11 @@
             <div class="related-grid">
               <a href="niosh-report-walkthrough.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Reading Your NIOSH Report</span>
+                <span class="related-card-title">Reading the NIOSH Report Results</span>
+              </a>
+              <a href="niosh-report-settings.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
               <a href="understanding-niosh-assessment.html" class="related-card">
                 <span class="related-card-cat">Methodology</span>

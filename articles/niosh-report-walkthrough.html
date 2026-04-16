@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reading Your NIOSH Report — Motionprint Ergo Help</title>
+  <title>Reading the NIOSH Report Results — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="A guided tour of every tab in a completed NIOSH report in Motionprint Ergo: Score Overview, Analysis, and Findings." />
+  <meta name="description" content="A comprehensive walkthrough of every element in the NIOSH report results view — Score Overview, Analysis, and Findings tabs — in Motionprint Ergo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -226,10 +226,10 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Reading Your NIOSH Report</span>
+        <span style="color:rgba(255,255,255,.6)">Reading the NIOSH Report Results</span>
       </nav>
       <span class="article-eyebrow">Using Reports</span>
-      <h1>Reading Your NIOSH Report</h1>
+      <h1>Reading the NIOSH Report Results</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -237,7 +237,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -274,7 +274,7 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through each tab — what it shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
+        <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through every element in the results view — what each section shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Report structure</h2>
@@ -401,7 +401,7 @@
 
         <h3>3D viewport</h3>
         <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. Four camera presets — Perspective, Front, Side, and Top — are accessible via an overlay in the top-left corner of the viewport.</p>
-        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the graph. When enabled, colour-coded spheres appear on the avatar at the shoulders, wrists, and back, showing the real-time risk level for the selected variable at the current frame: green (low), orange (medium), red (high).</p>
+        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the score graph (not the viewport itself). When enabled, colour-coded spheres appear on the 3D avatar at the shoulders, wrists, and trunk/back. The sphere colours reflect the risk level for the currently selected variable at the current frame — green for low risk, orange for medium risk, and red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
 
         <h3>Score-per-frame graph</h3>
         <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
@@ -420,18 +420,18 @@
             <tr>
               <td><strong>H</strong></td>
               <td>
-                <span class="zone-dot zone-green"></span>Green 0–36 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red 52–63+ cm
+                <span class="zone-dot zone-green"></span>Green ≤36 cm &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 36–52 cm &nbsp;
+                <span class="zone-dot zone-red"></span>Red &gt;52 cm
               </td>
             </tr>
             <tr>
               <td><strong>V</strong></td>
               <td>
                 <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 20–50 cm &nbsp;
-                <span class="zone-dot zone-green"></span>Green 50–100 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 100–130 cm &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 20–40 cm &nbsp;
+                <span class="zone-dot zone-green"></span>Green 40–110 cm &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 110–130 cm &nbsp;
                 <span class="zone-dot zone-red"></span>Red &gt;130 cm
               </td>
             </tr>
@@ -446,7 +446,7 @@
           </tbody>
         </table>
 
-        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. You can also drag to select a frame range, which lets you define a custom critical moment for that selection.</p>
+        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. To define a custom critical moment, drag to select a frame range on the graph; an <strong>Add (+)</strong> button appears once a range is selected, which creates the moment and adds it to the critical moments list.</p>
 
         <p>Playback controls sit in a vertical stack to the left of the graph: a play/pause button and a speed selector (0.5×, 1×, 1.5×, 2×).</p>
 
@@ -525,14 +525,18 @@
             <div class="related-grid">
               <a href="niosh-assessment-setup.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
-                <span class="related-card-title">Running a NIOSH Assessment</span>
+                <span class="related-card-title">Setting Up a NIOSH Assessment</span>
               </a>
               <a href="niosh-report-settings.html" class="related-card">
                 <span class="related-card-cat">Using Reports</span>
                 <span class="related-card-title">NIOSH Report Settings</span>
               </a>
+              <a href="understanding-niosh-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the NIOSH Assessment</span>
+              </a>
               <a href="exporting-reports.html" class="related-card">
-                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-cat">Using Reports</span>
                 <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
               </a>
             </div>
