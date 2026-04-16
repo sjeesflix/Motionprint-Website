@@ -103,6 +103,12 @@
     .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
     .step-num-plain { font-size: 13px; font-weight: 700; color: var(--muted-2); }
 
+    /* Figures */
+    .article-figure { margin: 20px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-full img { max-width: 100%; }
+    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
+
     /* Tab badge */
     .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
     .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -310,7 +316,7 @@
         <!-- ── STEP 3 ── -->
         <h2 id="upload-recording"><span class="step-num">4</span> Setup Your Input Source</h2>
 
-        <p>After selecting your input source, the upload control appears on the same Input Source screen. For Xsens MVNX, click the upload area to browse your system and select a <code>.mvnx</code> file.</p>
+        <p>After selecting your input source, the upload control appears on the same Input Source screen. For Xsens MVNX, click the upload area to browse your system and select a .mvnx file.</p>
 
         <p>Once a valid file is loaded, Motionprint Ergo takes you to the main input page (steps 4 and 5). If the file is invalid or corrupted, an error message appears and you can try again.</p>
 
@@ -318,7 +324,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Working with Xsens MVNX files</div>
-            <p>Before importing, export your session from Xsens MVN as an MVNX file. This format preserves all motion data and skeletal information needed for analysis. For a full walkthrough of the export and upload process, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
+            <p>Before importing, export your session from Xsens MVN as a MVNX file. This format preserves all motion data and skeletal information needed for analysis. For a full walkthrough of the export and upload process, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
           </div>
         </div>
 
@@ -378,8 +384,9 @@
           </li>
         </ol>
 
-        <!-- GIF placeholder: defining a lifting task on the timeline -->
-        <div style="width:100%;border-radius:10px;border:2px dashed var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;min-height:180px;margin:16px 0;color:var(--muted-2);font-size:13px;font-weight:600;">GIF — defining a lifting task</div>
+        <figure class="article-figure">
+          <img src="liftingmoments.gif" alt="Defining a lifting task by selecting a frame range on the timeline" />
+        </figure>
 
         <table class="info-table">
           <thead><tr><th>Coupling rating</th><th>Description</th></tr></thead>
@@ -462,7 +469,7 @@
 
         <h3>Additional modifiers</h3>
 
-        <p>If any additional modifiers are enabled in your NIOSH report settings, a modifier sub-section appears within this step. Modifiers apply multiplicative adjustment factors to account for special lifting conditions not captured by the standard NIOSH variables.</p>
+        <p>If any additional modifiers are enabled in your NIOSH report settings, they will appear in the lifting task editing window so they can be set per individual task. The exception is the <strong>Extended duration (eM)</strong> modifier, which is applied automatically based on the working time you entered — no manual selection is needed.</p>
 
         <table class="info-table">
           <thead><tr><th>Modifier</th><th>Factor</th><th>How it is set</th></tr></thead>
@@ -604,13 +611,4 @@
   onScroll();
 
   document.addEventListener('click', function(e) {
-    var nav = document.getElementById('mnav');
-    var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
-                                                 
+    var nav = document.getElementById('mn
