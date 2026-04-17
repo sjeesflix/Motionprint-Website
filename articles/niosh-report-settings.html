@@ -279,12 +279,9 @@
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Overview</h2>
 
-        <p>The settings page is accessed from the NIOSH assessment interface and displays all configuration options as a stacked set of modular cards. At the top of the page, an action bar provides two buttons:</p>
+        <p>The settings page is accessed via <strong>Sidebar → Settings → Reports tab</strong>. At the top of the first card (Module 1: Input &amp; Data) a report-type dropdown lets you switch between KIM-LHC and NIOSH settings — switching with unsaved changes triggers a confirmation dialog. All configuration options are displayed as a stacked set of modular cards.</p>
 
-        <ul>
-          <li><strong>Save</strong> — commits all changes and closes the settings page, making them active for future assessments.</li>
-          <li><strong>Discard changes</strong> — reverts all unsaved edits and exits the settings page without applying any changes.</li>
-        </ul>
+        <p>At the bottom of the card stack, an action bar provides a single <strong>Save and apply</strong> button. Clicking it saves your changes to preferences; the page stays open and the button becomes disabled until you make further changes. There is no dedicated Discard button — if you navigate away with unsaved changes, a confirmation dialog appears asking whether you want to leave; choosing "Yes" discards the changes implicitly.</p>
 
         <p>The settings are organized into four functional modules, each addressing a specific aspect of how NIOSH assessments are performed, displayed, and exported. Each module contains toggles, dropdown selectors, text inputs, or custom lists depending on the type of setting.</p>
 
@@ -307,7 +304,7 @@
             <tr>
               <td>Gender not required</td>
               <td>Off</td>
-              <td>Toggle to hide the gender field from the input page and report. Useful if gender is not a relevant factor in your assessment protocol.</td>
+              <td>Toggle to hide the gender field from the input page and report for privacy purposes. This setting does not affect calculations — gender has no influence on the NIOSH score.</td>
             </tr>
             <tr>
               <td>Hide operator name</td>
@@ -332,26 +329,30 @@
         <p>The Reference mass selector determines which Load Constant is used throughout the assessment. The available options and their corresponding LC values are:</p>
 
         <table class="info-table">
-          <thead><tr><th>Standard</th><th>Load Constant</th><th>Notes</th></tr></thead>
+          <thead><tr><th>Standard</th><th>Load Constant</th><th>Population coverage</th><th>Notes</th></tr></thead>
           <tbody>
             <tr>
               <td>EN 1005-2 &amp; ISO 11228-1:2003</td>
               <td>25 kg</td>
+              <td>—</td>
               <td>European standard for manual handling risk assessment. Higher Load Constant than the NIOSH default.</td>
             </tr>
             <tr>
               <td>NIOSH RNLE &amp; ISO 11228-1:2021</td>
               <td>23 kg <em>(default)</em></td>
+              <td>99% men / 75% women</td>
               <td>The U.S. Revised NIOSH Lifting Equation and current ISO 11228-1 standard. The default selection, widely used internationally.</td>
             </tr>
             <tr>
               <td>ISO 11228-1:2021 Table B.1</td>
               <td>15 kg</td>
-              <td>Conservative variant for special populations or high-risk scenarios per ISO 11228-1 Annex B.</td>
+              <td>90% men / 90% women</td>
+              <td>Conservative variant for mixed or female-majority workforces and high-risk scenarios per ISO 11228-1 Annex B.</td>
             </tr>
             <tr>
               <td>ISO 11228-1:2021 Table B.1</td>
               <td>10 kg</td>
+              <td>—</td>
               <td>Most restrictive standard, suitable for vulnerable workers or particularly demanding tasks per ISO 11228-1 Annex B.</td>
             </tr>
           </tbody>
@@ -381,25 +382,25 @@
             <tr>
               <td>Two-person lift</td>
               <td>Off</td>
-              <td>Toggle to enable the Pf = 0.85 modifier per ISO 11228-1 Annex E, reflecting reduced load per lifter when two workers share the task.</td>
+              <td>Toggle to enable the Pf = 0.85 modifier per ISO 11228-1:2021 Annex E, reflecting reduced load per lifter when two workers share the task. Set per individual lifting task.</td>
             </tr>
             <tr>
               <td>Additional physical tasks</td>
               <td>Off</td>
-              <td>Toggle to enable the Tf = 0.80 modifier for workstations where lifting is one of multiple concurrent physical tasks.</td>
+              <td>Toggle to enable the Tf = 0.80 modifier per ISO 11228-1:2021 Annex E for workstations where lifting is one of multiple concurrent physical tasks. Set per individual lifting task.</td>
             </tr>
             <tr>
               <td>One-hand lifting</td>
               <td>Off</td>
-              <td>Toggle to enable the Of = 0.60 modifier when the lift is performed with only one hand.</td>
+              <td>Toggle to enable the Of = 0.60 modifier per ISO 11228-1:2021 Annex E when the lift is performed with only one hand. Set per individual lifting task.</td>
             </tr>
             <tr>
               <td>Extended duration</td>
               <td>Off</td>
-              <td>Toggle to enable the eM (extended multiplier) for shifts lasting longer than 8 hours, per ISO 11228-1.</td>
+              <td>Toggle to enable the eM modifier per ISO 11228-1:2021 Table 3 for shifts lasting longer than 8 hours. Applied automatically based on working time when frequency &gt; 0.2 lifts/min. Values: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
             </tr>
             <tr>
-              <td>Auto-detect critical moments</td>
+              <td>Auto-generated critical moments</td>
               <td>On</td>
               <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
             </tr>
@@ -411,7 +412,7 @@
             <tr>
               <td>Findings title</td>
               <td>"Findings"</td>
-              <td>Text input (max 50 characters) to rename the Findings tab. The custom title appears in the report tab bar and in exported files.</td>
+              <td>Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files. The 50-character limit is enforced by the input field.</td>
             </tr>
             <tr>
               <td>Findings sections</td>
@@ -423,15 +424,15 @@
 
         <h3>Analysis mode explained</h3>
 
-        <p><strong>Peak moment</strong> is the recommended default for most assessments. It analyses every frame of the lifting motion, automatically identifies the single frame with the highest Lifting Index, and reports the biomechanical values at that critical moment. This approach captures the true peak risk.</p>
+        <p><strong>Peak moment</strong> is the recommended default for most assessments. It analyses every frame of the lifting motion to find the worst-case LI, catching problematic mid-lift postures that origin/destination analysis would miss. The biomechanical values at that critical frame are what appear in the report.</p>
 
-        <p><strong>Origin/Destination</strong> mode only examines the start and end frames of the lift. Use this mode if your assessment protocol focuses on the initial pickup and final placement rather than the entire motion trajectory.</p>
+        <p><strong>Origin/Destination</strong> (labelled "Traditional" in the app) only examines the start and end frames of the lift, matching standard manual NIOSH methodology. Choose this mode when your assessment protocol or regulatory requirement specifically calls for origin/destination analysis.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Peak moment is recommended</div>
-            <p>Peak moment analysis ensures you capture the most critical instant of risk. Origin/Destination is rarely necessary and is primarily offered for special regulatory or methodological requirements.</p>
+            <p>Peak moment captures the true worst-case risk across the full motion. Origin/Destination is appropriate when a protocol specifically requires traditional NIOSH methodology — for example, when results need to be comparable to assessments performed without motion capture.</p>
           </div>
         </div>
 
@@ -460,33 +461,33 @@
           <tbody>
             <tr>
               <td>Layout</td>
-              <td>Single view / Split view</td>
-              <td>Single view shows the 3D avatar alone. Split view shows the 3D model alongside video or reference imagery.</td>
+              <td>Single view, Two horizontal, Two vertical, Four views</td>
+              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal shows two viewports side by side. Two vertical stacks them. Four views shows a 2×2 grid.</td>
             </tr>
             <tr>
               <td>Camera view</td>
-              <td>Perspective, Front, Side, Top</td>
-              <td>Perspective is a realistic angled view. Front, Side, and Top are orthogonal views useful for checking alignments.</td>
+              <td>Perspective, Front, Back, Left, Right, Top</td>
+              <td>Sets the default camera angle. Perspective is a realistic angled view. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
             </tr>
           </tbody>
         </table>
 
         <h3>Analysis page viewport</h3>
 
-        <p>Configuration for the 3D viewer and graph on the Analysis tab, where frame-by-frame risk is explored:</p>
+        <p>Configuration for the 3D viewer on the In-depth analysis tab, where frame-by-frame risk is explored:</p>
 
         <table class="info-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Layout</td>
-              <td>Single view / Split view</td>
-              <td>Single view displays the 3D viewer full-width. Split view places the graph alongside the viewport.</td>
+              <td>Single view, Two horizontal, Two vertical, Four views</td>
+              <td>Controls how many viewports are shown in the analysis tab. See input page descriptions above for layout details.</td>
             </tr>
             <tr>
               <td>Camera view</td>
-              <td>Perspective, Front, Side, Top</td>
-              <td>Choose the default camera angle for the Analysis 3D viewer.</td>
+              <td>Perspective, Front, Back, Left, Right, Top</td>
+              <td>Sets the default camera angle for the analysis viewport(s). When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
             </tr>
           </tbody>
         </table>
@@ -495,7 +496,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Defaults can be overridden</div>
-            <p>The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always manually change the camera view using the preset buttons or orbit freely with your mouse. The global settings do not lock the interface.</p>
+            <p>The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always change the layout and camera view interactively, or orbit freely with your mouse. The global settings do not lock the interface.</p>
           </div>
         </div>
 
@@ -520,40 +521,40 @@
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Company name and logo</div>
-            <p>The company name and logo used for branding are configured in the <strong>General Settings</strong> page, not the NIOSH-specific settings. Set them there once; they will then apply to all branded exports across all assessment types.</p>
+            <div class="callout-label">Company branding is configured in General Settings</div>
+            <p>The company name, logo, and brand colours (primary colour, secondary colour, active menu colour) are configured in <strong>Sidebar → Settings → General</strong>, not here. Set them there once and they apply to all branded exports across all report types.</p>
           </div>
         </div>
 
         <h3>Filename templates</h3>
 
-        <p>Each export format (PDF and Excel) can have its own custom filename template. The default template is:</p>
+        <p>PDF and Excel exports each have their own filename template, both defaulting to:</p>
 
         <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
 
-        <p>The file extension (.pdf, .xlsx) is appended automatically — you do not need to include it in the template.</p>
+        <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically.</p>
 
         <h3>Available variables</h3>
 
         <p>You can insert any of the following variables into your template. They will be substituted with actual assessment data when you export:</p>
 
         <table class="info-table">
-          <thead><tr><th>Variable</th><th>Description</th><th>Example</th></tr></thead>
+          <thead><tr><th>Variable</th><th>Description</th><th>Example value</th></tr></thead>
           <tbody>
             <tr>
               <td>{operator}</td>
               <td>Name of the worker being assessed.</td>
-              <td>John Smith</td>
+              <td>JohnDoe</td>
             </tr>
             <tr>
               <td>{evaluator}</td>
               <td>Name of the assessor.</td>
-              <td>Jane Doe</td>
+              <td>JaneSmith</td>
             </tr>
             <tr>
               <td>{workstation}</td>
               <td>Name or description of the assessed location.</td>
-              <td>Assembly Station 3</td>
+              <td>AssemblyStation3</td>
             </tr>
             <tr>
               <td>{record_date}</td>
@@ -567,8 +568,8 @@
             </tr>
             <tr>
               <td>{current_time}</td>
-              <td>Current time when the export is generated (format: HH:MM:SS).</td>
-              <td>14:32:45</td>
+              <td>Current time when the export is generated (format: HH-mm-ss, using hyphens — colons are not valid in filenames on Windows).</td>
+              <td>14-32-45</td>
             </tr>
             <tr>
               <td>{report_type}</td>
@@ -577,6 +578,12 @@
             </tr>
           </tbody>
         </table>
+
+        <h3>Validation and fallback</h3>
+
+        <p>The template is validated before saving. The following characters are not allowed in filenames and will be rejected: <code>&lt; &gt; : " / \ | ? *</code></p>
+
+        <p>If the substituted template produces an empty filename (for example, because all variables resolve to blank values), the app automatically generates a fallback filename in the format <code>{reportType}_{currentDate}</code>.</p>
 
         <h3>Example templates</h3>
 
