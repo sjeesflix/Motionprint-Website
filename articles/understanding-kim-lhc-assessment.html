@@ -297,7 +297,12 @@
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>KIM-LHC produces a single <strong>End Score</strong> (also called the risk score) for each lifting moment. The End Score determines the risk level across four categories:</p>
 
-        <table class="threshold-table">
+        <table class="threshold-table" style="table-layout:fixed;">
+          <colgroup>
+            <col style="width:110px;">
+            <col style="width:200px;">
+            <col>
+          </colgroup>
           <thead>
             <tr>
               <th>End Score</th>
@@ -318,12 +323,12 @@
             </tr>
             <tr>
               <td><code>50 – 100</code></td>
-              <td><span class="risk-badge risk-high">Substantially increased risk</span></td>
+              <td><span class="risk-badge risk-medium">Substantially increased risk</span></td>
               <td>Physical overload is also possible for normally resilient persons. Workplace redesign is recommended.</td>
             </tr>
             <tr>
               <td><code>≥ 100</code></td>
-              <td><span class="risk-badge risk-vhigh">High risk</span></td>
+              <td><span class="risk-badge risk-high">High risk</span></td>
               <td>Physical overload is likely. Workplace redesign is necessary.</td>
             </tr>
           </tbody>
@@ -674,7 +679,16 @@
 
         <!-- ── SECTION 9 ── -->
         <h2 id="time-rating"><span class="step-num">9</span> Time Rating</h2>
-        <p>The Time Rating is a multiplier between 1 and 10 that reflects how frequently the lifting task is performed during a full work shift. In Motionprint Ergo, frequency is calculated automatically: the user enters the total working hours or minutes, and the app divides this by the cycle duration derived from the trimmed recording length and the number of lifting moments.</p>
+        <p>The Time Rating is a multiplier between 1 and 10 that reflects how frequently the lifting task is performed during a full work shift, expressed in cycles per day. In Motionprint Ergo, frequency is calculated automatically: the user enters the total working hours or minutes, and the app derives the cycle duration from the trimmed recording length and the number of defined lifting moments.</p>
+
+        <div class="formula-block">
+          <span class="formula-label">Frequency</span>
+          <span class="formula-text">Working time (seconds) ÷ Cycle duration per moment</span>
+        </div>
+        <div class="formula-block">
+          <span class="formula-label">Cycle duration</span>
+          <span class="formula-text">Trimmed recording length ÷ Number of lifting moments</span>
+        </div>
 
         <table class="threshold-table">
           <thead>
@@ -717,7 +731,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">In Motionprint Ergo</div>
-            <p>Unlike the NIOSH CLI, the KIM-LHC method does not define a formal composite index formula for multi-task aggregation. Moment scores are independent of each other and an averaged overview is provided across all defined moments.</p>
+            <p>The KIM-LHC method does not define a formal composite index formula for multi-task aggregation. Moment scores are independent and an averaged overview is provided across all defined moments.</p>
           </div>
         </div>
 
@@ -837,21 +851,4 @@
       var el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
     });
-    tocIds.forEach(function(id, i) {
-      var li = document.getElementById(id);
-      if (li) { li.classList.toggle('active', i === active); }
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  document.addEventListener('click', function(e) {
-    var nav = document.getElementById('mnav');
-    var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+   
