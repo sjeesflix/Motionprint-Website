@@ -257,11 +257,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-input"><a href="#input-data">Input &amp; Data</a></li>
-          <li id="toc-analysis"><a href="#analysis-scoring">Analysis &amp; Scoring</a></li>
-          <li id="toc-viewport"><a href="#viewport">Viewport</a></li>
-          <li id="toc-export"><a href="#export">Export</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-input"><a href="#input-data">2. Input &amp; Data</a></li>
+          <li id="toc-analysis"><a href="#analysis-scoring">3. Analysis &amp; Scoring</a></li>
+          <li id="toc-viewport"><a href="#viewport">4. Viewport</a></li>
+          <li id="toc-export"><a href="#export">5. Export</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -279,7 +279,7 @@
         <!-- ── OVERVIEW ── -->
         <h2 id="overview">Overview</h2>
 
-        <p>The settings page is accessed via <strong>Sidebar → Settings → Reports tab</strong>. At the top of the first card (Module 1: Input &amp; Data) a report-type dropdown lets you switch between KIM-LHC and NIOSH settings — switching with unsaved changes triggers a confirmation dialog. All configuration options are displayed as a stacked set of modular cards.</p>
+        <p>The settings page is accessed via <strong>Sidebar → Settings → Reports tab</strong>. At the top of the first card a report-type dropdown lets you select which report methodology to configure — select <strong>NIOSH</strong> here. Switching with unsaved changes triggers a confirmation dialog. All configuration options are displayed as a stacked set of modular cards.</p>
 
         <p>At the bottom of the card stack, an action bar provides a single <strong>Save and apply</strong> button. Clicking it saves your changes to preferences; the page stays open and the button becomes disabled until you make further changes. There is no dedicated Discard button — if you navigate away with unsaved changes, a confirmation dialog appears asking whether you want to leave; choosing "Yes" discards the changes implicitly.</p>
 
@@ -318,7 +318,7 @@
             </tr>
             <tr>
               <td>Reference mass / Load Constant</td>
-              <td>23 kg (NIOSH 1994)</td>
+              <td>23 kg</td>
               <td>Selector. Choose the reference standard that governs the Load Constant (LC) used in RWL calculations. Impacts the Recommended Weight Limit directly and all derived results.</td>
             </tr>
           </tbody>
@@ -334,7 +334,7 @@
             <tr>
               <td>EN 1005-2 &amp; ISO 11228-1:2003</td>
               <td>25 kg</td>
-              <td>—</td>
+              <td>95% men / 70% women</td>
               <td>European standard for manual handling risk assessment. Higher Load Constant than the NIOSH default.</td>
             </tr>
             <tr>
@@ -346,13 +346,13 @@
             <tr>
               <td>ISO 11228-1:2021 Table B.1</td>
               <td>15 kg</td>
-              <td>90% men / 90% women</td>
+              <td>99% men / 90% women</td>
               <td>Conservative variant for mixed or female-majority workforces and high-risk scenarios per ISO 11228-1 Annex B.</td>
             </tr>
             <tr>
               <td>ISO 11228-1:2021 Table B.1</td>
               <td>10 kg</td>
-              <td>—</td>
+              <td>99% population</td>
               <td>Most restrictive standard, suitable for vulnerable workers or particularly demanding tasks per ISO 11228-1 Annex B.</td>
             </tr>
           </tbody>
@@ -450,11 +450,7 @@
         <!-- ── MODULE 3 ── -->
         <h2 id="viewport">Viewport</h2>
 
-        <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab, ensuring consistent visualization across your assessments.</p>
-
-        <h3>Input page viewport</h3>
-
-        <p>Configuration for the 3D viewer on the input page before the assessment is run:</p>
+        <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the In-depth analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply to both pages:</p>
 
         <table class="info-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
@@ -472,26 +468,6 @@
           </tbody>
         </table>
 
-        <h3>Analysis page viewport</h3>
-
-        <p>Configuration for the 3D viewer on the In-depth analysis tab, where frame-by-frame risk is explored:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Layout</td>
-              <td>Single view, Two horizontal, Two vertical, Four views</td>
-              <td>Controls how many viewports are shown in the analysis tab. See input page descriptions above for layout details.</td>
-            </tr>
-            <tr>
-              <td>Camera view</td>
-              <td>Perspective, Front, Back, Left, Right, Top</td>
-              <td>Sets the default camera angle for the analysis viewport(s). When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
-            </tr>
-          </tbody>
-        </table>
-
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
@@ -504,6 +480,14 @@
         <h2 id="export">Export</h2>
 
         <p>The Export module controls the naming conventions for PDF and Excel files when you export a completed NIOSH assessment report.</p>
+
+        <h3>Filename templates</h3>
+
+        <p>PDF and Excel exports each have their own filename template, both defaulting to:</p>
+
+        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
+
+        <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically. For a full overview of available variables, validation rules, fallback behaviour, and example templates, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
 
         <h3>Company branding</h3>
 
@@ -522,85 +506,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Company branding is configured in General Settings</div>
-            <p>The company name, logo, and brand colours (primary colour, secondary colour, active menu colour) are configured in <strong>Sidebar → Settings → General</strong>, not here. Set them there once and they apply to all branded exports across all report types.</p>
-          </div>
-        </div>
-
-        <h3>Filename templates</h3>
-
-        <p>PDF and Excel exports each have their own filename template, both defaulting to:</p>
-
-        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_NIOSH</p>
-
-        <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically.</p>
-
-        <h3>Available variables</h3>
-
-        <p>You can insert any of the following variables into your template. They will be substituted with actual assessment data when you export:</p>
-
-        <table class="info-table">
-          <thead><tr><th>Variable</th><th>Description</th><th>Example value</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>{operator}</td>
-              <td>Name of the worker being assessed.</td>
-              <td>JohnDoe</td>
-            </tr>
-            <tr>
-              <td>{evaluator}</td>
-              <td>Name of the assessor.</td>
-              <td>JaneSmith</td>
-            </tr>
-            <tr>
-              <td>{workstation}</td>
-              <td>Name or description of the assessed location.</td>
-              <td>AssemblyStation3</td>
-            </tr>
-            <tr>
-              <td>{record_date}</td>
-              <td>Date of the assessment session (format: YYYY-MM-DD).</td>
-              <td>2026-03-15</td>
-            </tr>
-            <tr>
-              <td>{current_date}</td>
-              <td>Today's date when the export is generated (format: YYYY-MM-DD).</td>
-              <td>2026-03-29</td>
-            </tr>
-            <tr>
-              <td>{current_time}</td>
-              <td>Current time when the export is generated (format: HH-mm-ss, using hyphens — colons are not valid in filenames on Windows).</td>
-              <td>14-32-45</td>
-            </tr>
-            <tr>
-              <td>{report_type}</td>
-              <td>Type of report (e.g. NIOSH, NIOSH-CLI if multi-task).</td>
-              <td>NIOSH</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Validation and fallback</h3>
-
-        <p>The template is validated before saving. The following characters are not allowed in filenames and will be rejected: <code>&lt; &gt; : " / \ | ? *</code></p>
-
-        <p>If the substituted template produces an empty filename (for example, because all variables resolve to blank values), the app automatically generates a fallback filename in the format <code>{reportType}_{currentDate}</code>.</p>
-
-        <h3>Example templates</h3>
-
-        <p>Here are some common filename patterns you might use:</p>
-
-        <ul>
-          <li><strong>{operator}_{workstation}_{record_date}</strong> — groups files by worker, task, and date.</li>
-          <li><strong>{evaluator}_{current_date}_{workstation}</strong> — organizes by assessor and workstation.</li>
-          <li><strong>{workstation}_{record_date}_{current_time}</strong> — includes timestamp to prevent accidental overwrites.</li>
-          <li><strong>NIOSH_{operator}_{report_type}</strong> — simple format prefixed with "NIOSH".</li>
-        </ul>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Keep filenames practical</div>
-            <p>Avoid overly long or complex templates — they can result in unwieldy filenames. Use variables that are relevant to your workflow and that will help you locate and identify exported reports later.</p>
+            <p>The company name, logo, and brand colours (primary colour, secondary colour, active menu colour) are configured in <strong>Sidebar → Settings → General</strong>, not here. Set them there once and they apply to all branded exports across all report types. See <a href="customization-branding.html">Customization &amp; Branding</a> for a full walkthrough.</p>
           </div>
         </div>
 
@@ -710,3 +616,4 @@
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
