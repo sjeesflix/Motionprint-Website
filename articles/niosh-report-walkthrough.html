@@ -259,7 +259,7 @@
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">Overview</a></li>
           <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">2. Analysis</a></li>
+          <li id="toc-analysis"><a href="#analysis">2. In-depth analysis</a></li>
           <li id="toc-findings"><a href="#findings">3. Findings</a></li>
           <li id="toc-export"><a href="#export">Export</a></li>
         </ul>
@@ -282,12 +282,12 @@
         <p>The report opens with a tab bar at the top. Depending on your NIOSH report settings, you will see two or three tabs:</p>
 
         <ul>
-          <li><strong>Score Overview</strong> — the complete assessment result: scores, multiplier breakdowns, and the position data at the key frame.</li>
-          <li><strong>Analysis</strong> — an interactive deep dive into how each variable behaves frame by frame across the entire lift.</li>
+          <li><strong>Score overview</strong> — the complete assessment result: scores, multiplier breakdowns, and the position data at the key frame.</li>
+          <li><strong>In-depth analysis</strong> — an interactive deep dive into how each variable behaves frame by frame across the entire lift.</li>
           <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the NIOSH report settings.</li>
         </ul>
 
-        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to update general information such as workplace, evaluator, and comments) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
+        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to return to the input page and update any information from the assessment — lifting tasks, trim settings, task information, and more) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -298,8 +298,8 @@
         </div>
 
         <figure style="margin:24px 0;">
-          <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score Overview tab — showing the complete single-task NIOSH result</figcaption>
+          <img src="../printscreens/score_overview.png" alt="Score Overview tab in Motionprint Ergo" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score overview tab — showing the complete single-task NIOSH result</figcaption>
         </figure>
 
         <!-- ── SECTION 1 ── -->
@@ -325,6 +325,7 @@
 
         <h3>Risk assessment card</h3>
         <p>The top-right card shows the primary risk result. Its content adapts depending on whether the report is single-task or multi-task.</p>
+        <p>In all views, a warning is shown if the Frequency Multiplier equals zero — meaning the lift frequency exceeds NIOSH limits.</p>
 
         <h4>Single-task view</h4>
         <ul>
@@ -332,19 +333,21 @@
           <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), orange (1.0–3.0), red (&gt; 3.0).</li>
           <li>The actual load weight and the Recommended Weight Limit (RWL) side by side.</li>
           <li>A short sentence interpreting the risk level in plain language.</li>
-          <li>A warning if the Frequency Multiplier equals zero, meaning the lift frequency exceeds NIOSH limits.</li>
         </ul>
 
         <h4>Multi-task — individual task view</h4>
         <ul>
           <li>Two colour-coded badges: <strong>STLI</strong> (Single-Task Lifting Index) and <strong>FILI</strong> (Frequency-Independent Lifting Index).</li>
           <li>Three weight figures: actual load weight, STRWL (single-task RWL), and FIRWL (frequency-independent RWL).</li>
+          <li>A short sentence interpreting the risk level in plain language.</li>
         </ul>
 
         <h4>Multi-task — CLI Overview</h4>
         <ul>
-          <li>The total number of lifting tasks and a colour-coded <strong>CLI badge</strong>.</li>
+          <li>The total number of lifting tasks and a colour-coded <strong>CLI badge</strong> showing the Composite Lifting Index.</li>
+          <li>The highest STLI across all tasks (worst individual lifting index) alongside the cumulative CLI.</li>
           <li>Identifies the highest-risk task (Task 1 by STLI rank) and its load weight.</li>
+          <li>A short sentence interpreting the risk level in plain language.</li>
         </ul>
 
         <h3>Peak moment screenshot and position data</h3>
@@ -358,14 +361,14 @@
         <h3>Frequency and coupling tables</h3>
         <p>Below the screenshot, the layout splits into two columns.</p>
         <p>The left column shows the <strong>Frequency Multiplier (FM) lookup table</strong> for the applicable shift duration. The row matching the task's calculated frequency is highlighted with a colour-coded badge, making it easy to see exactly which FM value was applied.</p>
-        <p>The right column shows the <strong>Coupling Multiplier (CM) table</strong> with rows for Good, Fair, and Poor coupling quality, each split by vertical hand height (V &lt; 75 cm or V ≥ 75 cm). The cell matching the task's coupling selection and V value is highlighted.</p>
+        <p>The right column shows the <strong>Coupling Multiplier (CM) table</strong> with rows for Good, Fair, and Poor coupling quality, each split by vertical hand height (V &lt; 75 cm or V ≥ 75 cm). The cell matching the task's coupling selection and V value is shown.</p>
 
         <h3>Calculations breakdown</h3>
         <p>Still in the right column, below the CM table, is a full step-by-step derivation of the result, organised into four expandable sections:</p>
         <ol>
           <li><strong>Multiplier derivations</strong> — each of the four motion-derived multipliers (HM, VM, DM, AM) with its formula, the substituted values at the key frame, and a colour-coded risk dot indicating input quality.</li>
-          <li><strong>RWL calculation</strong> — the complete formula with all seven multipliers and any additional modifiers (Pf, Tf, Of, eM) substituted in, followed by the numerical result. In multi-task mode, an additional row shows the FIRWL calculated with FM = 1.0.</li>
-          <li><strong>LI calculation</strong> — LI = Load Weight / RWL with the colour-coded result. In multi-task mode, additional rows show the STLI and FILI.</li>
+          <li><strong>RWL calculation</strong> — the complete formula with all seven multipliers and any additional modifiers (Pf, Tf, Of, eM) substituted in, followed by the numerical result. In multi-task mode, the RWL is referred to as STRWL (Single-Task RWL), and an additional row shows the FIRWL calculated with FM = 1.0.</li>
+          <li><strong>LI calculation</strong> — LI = Load Weight / RWL with the colour-coded result. In multi-task mode, STLI is shown in place of LI, and an additional row shows the FILI.</li>
           <li><strong>Error state</strong> — if lift frequency exceeds NIOSH limits (FM = 0), all calculation sections switch to red borders and display "N/A".</li>
         </ol>
 
@@ -384,10 +387,8 @@
         <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph.</p>
 
         <figure style="margin:24px 0;">
-          <div style="background:var(--bg-subtle,#f5f5f7);border-radius:12px;border:1px solid var(--border);padding:20px 20px 28px;">
-            <img src="../printscreens/analysis.png" alt="Analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights panel" style="width:100%;border-radius:8px;display:block;" />
-          </div>
-          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Analysis tab — 3D viewer, score-per-frame graph, and frame insights panel</figcaption>
+          <img src="nioshanalysis.gif" alt="In-depth analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">In-depth analysis tab — 3D viewer, score-per-frame graph, and frame insights</figcaption>
         </figure>
 
         <h3>Variable selector</h3>
@@ -400,8 +401,7 @@
         </ul>
 
         <h3>3D viewport</h3>
-        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. Four camera presets — Perspective, Front, Side, and Top — are accessible via an overlay in the top-left corner of the viewport.</p>
-        <p>You can toggle <strong>body risk indicators</strong> on and off using the icon button to the left of the score graph (not the viewport itself). When enabled, colour-coded spheres appear on the 3D avatar at the shoulders, wrists, and trunk/back. The sphere colours reflect the risk level for the currently selected variable at the current frame — green for low risk, orange for medium risk, and red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
+        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. In the top-left corner of the viewport you can set how many views are shown (1, 2 horizontal, 2 vertical, or 4), and per view choose from Perspective, Front, Right side, Left side, Back, and Top. For a full overview of viewport controls and navigation, see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a>.</p>
 
         <h3>Score-per-frame graph</h3>
         <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
@@ -446,14 +446,14 @@
           </tbody>
         </table>
 
-        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. To define a custom critical moment, drag to select a frame range on the graph; an <strong>Add (+)</strong> button appears once a range is selected, which creates the moment and adds it to the critical moments list.</p>
+        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync.</p>
 
-        <p>Playback controls sit in a vertical stack to the left of the graph: a play/pause button and a speed selector (0.5×, 1×, 1.5×, 2×).</p>
+        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, colour-coded spheres appear on the 3D avatar at the shoulders, wrists, and trunk/back. The sphere colours reflect the risk level for the currently selected variable at the current frame — green for low risk, orange for medium risk, and red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
 
-        <h3>Frame insights panel</h3>
+        <h3>Right-side panel</h3>
         <p>A fixed panel to the right of the viewport shows three sections that update as you scrub through frames:</p>
 
-        <h4>Current frame data</h4>
+        <h4>Frame insights</h4>
         <p>Shows the numerical value of the selected variable at the current frame (with its unit), the corresponding NIOSH multiplier value (e.g. "HM: 0.893"), and a visual bar divided into the same risk zones as the graph — with a dot indicating where the current value falls. If the value has been clamped per NIOSH rules (e.g. H capped at its 25 cm minimum), both the original and clamped values are shown.</p>
 
         <h4>Zone distribution</h4>
@@ -462,11 +462,11 @@
         <h4>Critical moments</h4>
         <p>Critical moments are significant instants or periods in the lift that are worth highlighting. They appear as markers on the graph and are listed in this panel. There are three types:</p>
         <ul>
-          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest LI/STLI in the task.</li>
-          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range where the score consistently exceeds a risk threshold.</li>
-          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the Add (+) button.</li>
+          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest LI/STLI in the task. Can be enabled or disabled in the NIOSH report settings.</li>
+          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range where the score consistently exceeds a risk threshold. Sustained risk periods are always at least 1 second long. Can be enabled or disabled in the NIOSH report settings.</li>
+          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the <strong>Add (+)</strong> button.</li>
         </ul>
-        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Critical moments are included in the exported report.</p>
+        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Both auto-detected moments (peak moment and sustained risk period) and custom moments can be edited and deleted by the user. Critical moments are included in the exported report.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -500,23 +500,16 @@
           <li>Reset to the five defaults at any time.</li>
         </ul>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Session data only</div>
-            <p>Content entered in the Findings tab is kept in memory for the current session. It is included when you export the report to PDF or Excel, but it is not saved to disk automatically between sessions. Make sure to export before closing the report if you want to preserve your findings.</p>
-          </div>
-        </div>
-
         <!-- ── EXPORT ── -->
         <h2 id="export">Export</h2>
 
-        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes all three tabs:</p>
+        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes:</p>
         <ul>
-          <li>All Score Overview data — general information, scores, multiplier breakdowns, and the CLI overview if the assessment is multi-task.</li>
-          <li>The Analysis data — frame-by-frame values, the score graph, zone distributions, critical moments, and the peak frame screenshot.</li>
-          <li>The Findings content with its full section structure (if the Findings tab is enabled).</li>
+          <li>All Score overview data — general information, scores, multiplier breakdowns, and the CLI overview if the assessment is multi-task.</li>
+          <li>The In-depth analysis data — frame-by-frame values, the score graph, zone distributions, critical moments, and the peak frame screenshot.</li>
+          <li>The Findings content with its full section structure (if the Findings tab is enabled and content has been entered).</li>
         </ul>
+        <p>For a full overview of export formats, options, and configuration, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
