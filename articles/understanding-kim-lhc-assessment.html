@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Understanding the KIM-LHC Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your End Score." />
+  <meta name="description" content="How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your Total Score." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -119,9 +119,16 @@
     /* Threshold table */
     .threshold-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
     .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
-    .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
     .threshold-table tr:last-child td { border-bottom: none; }
     .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); }
+
+    /* Color dot */
+    .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .color-dot.green  { background: #10b981; }
+    .color-dot.yellow { background: #f59e0b; }
+    .color-dot.red    { background: #ea523b; }
+    td.color-cell { width: 28px; padding: 10px 6px 10px 12px; }
 
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
@@ -130,7 +137,7 @@
     .risk-high   { background: rgba(234,82,59,.12);  color: #ea523b; }
     .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
 
-    /* Scoring component rows (like multiplier-grid in NIOSH) */
+    /* Scoring component rows */
     .component-grid { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
     .component-row { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
     .component-abbr { font-family: var(--font-body); font-size: 14px; font-weight: 800; color: var(--red); margin-top: 2px; letter-spacing: .01em; line-height: 1.2; }
@@ -143,10 +150,21 @@
     .gender-tables { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0 20px; }
     .gender-table-label { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 8px; }
 
+    /* Time rating compact grid */
+    .time-rating-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 20px; }
+    .tr-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; }
+    .tr-freq { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .tr-mult { font-size: 15px; font-weight: 700; color: var(--text); }
+
+    /* Article figure */
+    .article-figure { margin: 24px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; }
+
     /* Workflow steps */
     .workflow-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .workflow-step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; margin-top: 1px; }
     .workflow-step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
 
@@ -179,6 +197,7 @@
       .article-toc { display: none; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
       .gender-tables { grid-template-columns: 1fr; }
+      .time-rating-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -269,7 +288,7 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
-          <li id="toc-formula"><a href="#end-score-formula">2. The End Score Formula</a></li>
+          <li id="toc-formula"><a href="#total-score-formula">2. The Total Score Formula</a></li>
           <li id="toc-load-rating"><a href="#load-rating">3. Load Rating</a></li>
           <li id="toc-load-handling"><a href="#load-handling">4. Load Handling</a></li>
           <li id="toc-body-posture"><a href="#body-posture-score">5. Body Posture Score</a></li>
@@ -277,7 +296,7 @@
           <li id="toc-unfavorable"><a href="#unfavorable-conditions">7. Unfavorable Working Conditions</a></li>
           <li id="toc-work-org"><a href="#work-organization">8. Work Organization</a></li>
           <li id="toc-time-rating"><a href="#time-rating">9. Time Rating</a></li>
-          <li id="toc-multi"><a href="#multi-moment">10. Multi-Moment Assessments</a></li>
+          <li id="toc-multi"><a href="#multi-task">10. Multi-Task Assessments</a></li>
           <li id="toc-implementation"><a href="#implementation">11. Implementation</a></li>
         </ul>
         <div class="toc-divider">
@@ -291,21 +310,21 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">The KIM-LHC (Key Indicator Method — Lifting, Holding, Carrying) is a screening tool for evaluating the physical load of manual handling tasks. It was developed by the German Federal Institute for Occupational Safety and Health (BAuA). Motionprint Ergo implements it in full — automatically extracting body posture, load handling, and biomechanical variables from motion capture data and computing the risk score for every lifting moment in your recording. This article explains how the method works, what each scoring component represents, and how to interpret your results.</p>
+        <p class="article-lead">The KIM-LHC (Key Indicator Method — Lifting, Holding, Carrying) is a screening tool for evaluating the physical load of manual handling tasks. It was developed by the German Federal Institute for Occupational Safety and Health (BAuA). Motionprint Ergo implements it in full — automatically extracting body posture, load handling, and biomechanical variables from motion capture data and computing the risk score for every lifting task in your recording. This article explains how the method works, what each scoring component represents, and how to interpret your results.</p>
 
         <!-- ── SECTION 1 ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
-        <p>KIM-LHC produces a single <strong>End Score</strong> (also called the risk score) for each lifting moment. The End Score determines the risk level across four categories:</p>
+        <p>KIM-LHC produces a single <strong>Total Score</strong> for each lifting task. The Total Score determines the risk level across four categories:</p>
 
         <table class="threshold-table" style="table-layout:fixed;">
           <colgroup>
             <col style="width:110px;">
-            <col style="width:200px;">
+            <col style="width:210px;">
             <col>
           </colgroup>
           <thead>
             <tr>
-              <th>End Score</th>
+              <th>Total Score</th>
               <th>Risk Level</th>
               <th>Interpretation</th>
             </tr>
@@ -343,22 +362,22 @@
         </div>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="end-score-formula"><span class="step-num">2</span> The End Score Formula</h2>
-        <p>The End Score is calculated by multiplying the Total Rating Points by the Time Rating:</p>
+        <h2 id="total-score-formula"><span class="step-num">2</span> The Total Score Formula</h2>
+        <p>The Total Score is calculated by multiplying the Rating Points by the Time Rating:</p>
 
         <div class="formula-block">
-          <span class="formula-label">End Score</span>
-          <span class="formula-text">End Score = Total Rating Points × Time Rating</span>
+          <span class="formula-label">Total Score</span>
+          <span class="formula-text">Total Score = Rating Points × Time Rating</span>
         </div>
 
-        <p>Total Rating Points is itself the sum of five individual scoring components:</p>
+        <p>Rating Points is itself the sum of five individual scoring components:</p>
 
         <div class="formula-block">
-          <span class="formula-label">Total Rating Points</span>
+          <span class="formula-label">Rating Points</span>
           <span class="formula-text">Load Rating + Load Handling + Total Body Score + Unfavorable Working Conditions + Work Organization</span>
         </div>
 
-        <p>Each component contributes points that reflect a specific aspect of physical workload. The Time Rating then acts as a multiplier that scales the total based on how frequently the task is repeated during the work shift. A high Total Rating Points value at low frequency can still produce an acceptable End Score, and vice versa — frequency is a critical part of the overall assessment.</p>
+        <p>Each component contributes points that reflect a specific aspect of physical workload. The Time Rating then acts as a multiplier that scales the total based on how frequently the task is repeated during the work shift. A high Rating Points value at low frequency can still produce an acceptable Total Score, and vice versa — frequency is a critical part of the overall assessment.</p>
 
         <div class="component-grid">
           <div class="component-row">
@@ -366,7 +385,7 @@
             <div>
               <div class="component-name">Load Rating</div>
               <p class="component-desc">Points based on the weight of the handled object, differentiated by worker gender. Heavier loads produce a higher rating.</p>
-              <div class="component-source">Entered manually per lifting moment</div>
+              <div class="component-source">Entered manually per lifting task</div>
             </div>
           </div>
           <div class="component-row">
@@ -405,7 +424,8 @@
 
         <!-- ── SECTION 3 ── -->
         <h2 id="load-rating"><span class="step-num">3</span> Load Rating</h2>
-        <p>The Load Rating is determined by the weight of the object being handled. The rating depends on the worker's gender, reflecting physiological differences in load capacity. The weight category is entered manually per lifting moment; gender is selected on the input page (or can be hidden via settings if not required for your assessment).</p>
+        <p>The Load Rating is determined by the weight of the object being handled. When gender is enabled in the KIM-LHC settings, the rating is differentiated by worker gender, reflecting physiological differences in load capacity. When gender is disabled, the women's reference values are applied. The weight category is entered manually per lifting task.</p>
+        <p>Note that the 0 – 3 kg weight category is <strong>switched off by default</strong> and is not part of the official KIM-LHC method. It can be enabled in the KIM-LHC report settings if your assessments require it.</p>
 
         <div class="gender-tables">
           <div>
@@ -413,21 +433,22 @@
             <table class="threshold-table">
               <thead>
                 <tr>
+                  <th style="width:28px;"></th>
                   <th>Weight</th>
                   <th>Points</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>0 – 3 kg</td><td>2</td></tr>
-                <tr><td>3 – 5 kg</td><td>4</td></tr>
-                <tr><td>5 – 10 kg</td><td>6</td></tr>
-                <tr><td>10 – 15 kg</td><td>8</td></tr>
-                <tr><td>15 – 20 kg</td><td>11</td></tr>
-                <tr><td>20 – 25 kg</td><td>15</td></tr>
-                <tr><td>25 – 30 kg</td><td>25</td></tr>
-                <tr><td>30 – 35 kg</td><td>35</td></tr>
-                <tr><td>35 – 40 kg</td><td>75</td></tr>
-                <tr><td>&gt; 40 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>2</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>4</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>6</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>10 – 15 kg</td><td>8</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>11</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>15</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>25 – 30 kg</td><td>25</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>35</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
               </tbody>
             </table>
           </div>
@@ -436,39 +457,38 @@
             <table class="threshold-table">
               <thead>
                 <tr>
+                  <th style="width:28px;"></th>
                   <th>Weight</th>
                   <th>Points</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>0 – 3 kg</td><td>4</td></tr>
-                <tr><td>3 – 5 kg</td><td>6</td></tr>
-                <tr><td>5 – 10 kg</td><td>9</td></tr>
-                <tr><td>10 – 15 kg</td><td>12</td></tr>
-                <tr><td>15 – 20 kg</td><td>25</td></tr>
-                <tr><td>20 – 25 kg</td><td>75</td></tr>
-                <tr><td>25 – 30 kg</td><td>85</td></tr>
-                <tr><td>30 – 35 kg</td><td>100</td></tr>
-                <tr><td>35 – 40 kg</td><td>100</td></tr>
-                <tr><td>&gt; 40 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>4</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>6</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>9</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>12</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>25</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>75</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>85</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <p>Color-coded risk indication for Load Rating: <strong>Green</strong> ≤ 8 (men) / ≤ 12 (women) &nbsp;·&nbsp; <strong>Yellow</strong> 9 – 25 (men) / 13 – 85 (women) &nbsp;·&nbsp; <strong>Red</strong> ≥ 35 (men) / ≥ 100 (women).</p>
-
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Customizable in settings</div>
-            <p>The load rating tables can be fully customized in the KIM-LHC report settings. You can also disable the 0 – 3 kg weight category if it is not relevant to your assessments. Custom tables are stored per gender and persist across sessions.</p>
+            <p>The load rating tables can be fully customized in the KIM-LHC report settings. You can also enable the 0 – 3 kg weight category if it is relevant to your assessments. Custom tables are stored per gender and persist across sessions.</p>
           </div>
         </div>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="load-handling"><span class="step-num">4</span> Load Handling</h2>
-        <p>Load Handling assesses how symmetrically the load is held. Motionprint Ergo determines this automatically by measuring the lateral and vertical asymmetry between the left and right hand positions relative to the pelvis. A threshold of 100 mm is applied for both horizontal and vertical asymmetry.</p>
+        <p>Load Handling assesses how symmetrically the load is held. Motionprint Ergo determines this automatically by measuring the lateral and vertical asymmetry between the left and right hand positions relative to the pelvis. A spatial threshold of 100 mm is applied, combined with a duration threshold of 50% of the lifting task to distinguish temporary from predominant one-handed or asymmetric handling.</p>
 
         <table class="threshold-table">
           <thead>
@@ -493,73 +513,31 @@
           </tbody>
         </table>
 
-        <p>Color-coded risk indication for Load Handling: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> = 2 &nbsp;·&nbsp; <strong>Red</strong> = 4.</p>
+        <p>Color-coded risk indication: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> = 2 &nbsp;·&nbsp; <strong>Red</strong> = 4.</p>
 
         <!-- ── SECTION 5 ── -->
         <h2 id="body-posture-score"><span class="step-num">5</span> Body Posture Score</h2>
-        <p>The body posture score is determined from the combination of the worker's <strong>start posture</strong> (at the beginning of the lifting moment) and <strong>finish posture</strong> (at the end). Motionprint Ergo classifies these automatically from the motion capture data using six biomechanical features: trunk flexion, shoulder flexion, elbow flexion, knee flexion, knee height, and hand height. Each feature is weighted and compared against reference ranges to identify the best-matching posture class.</p>
+        <p>The body posture score is determined from the combination of the worker's <strong>start posture</strong> (at the beginning of the lifting task) and <strong>finish posture</strong> (at the end). Motionprint Ergo classifies these automatically from the motion capture data using biomechanical features derived from joint angles in the recording.</p>
+        <p>Ten posture classes are defined, ranging from a fully upright standing position to highly strained positions such as squatting or kneeling. The start→finish posture combination produces a body posture score from 0 to 20 points — the more demanding the postures and the greater the difference between them, the higher the score. The table and posture illustration below show the full combination matrix and how each class maps to a score:</p>
 
-        <h3>Posture classes</h3>
-        <p>Ten posture classes are defined, ranging from fully upright to highly strained positions:</p>
-        <ol>
-          <li>Standing straight</li>
-          <li>Slightly bent back</li>
-          <li>Medium bent back</li>
-          <li>Bended back</li>
-          <li>Max bended back</li>
-          <li>Lifting arms (hands above shoulder)</li>
-          <li>Squat with straight back</li>
-          <li>Squat low</li>
-          <li>On knees (upright)</li>
-          <li>Sitting on knees</li>
-        </ol>
-
-        <h3>Combination score</h3>
-        <p>The start→finish posture combination produces a body posture score from 0 to 20 points. The score depends on how ergonomically demanding both postures are and how different they are from each other:</p>
-
-        <table class="threshold-table">
-          <thead>
-            <tr>
-              <th>Combination type</th>
-              <th>Score</th>
-              <th>Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Both upright</td><td><code>0</code></td><td>Standing straight → Standing straight</td></tr>
-            <tr><td>One upright, one moderate</td><td><code>3</code></td><td>Standing straight → Slightly bent back</td></tr>
-            <tr><td>Both moderate</td><td><code>5</code></td><td>Slightly bent back → Medium bent back</td></tr>
-            <tr><td>One upright, one strained</td><td><code>7</code></td><td>Standing straight → Bended back</td></tr>
-            <tr><td>One upright, one extreme</td><td><code>9</code></td><td>Standing straight → Squat low</td></tr>
-            <tr><td>One moderate, one strained</td><td><code>10</code></td><td>Slightly bent back → Bended back</td></tr>
-            <tr><td>One moderate, one extreme</td><td><code>13</code></td><td>Slightly bent back → Squat low</td></tr>
-            <tr><td>Both strained</td><td><code>15</code></td><td>Bended back → Bended back</td></tr>
-            <tr><td>One strained, one extreme</td><td><code>18</code></td><td>Bended back → Squat low</td></tr>
-            <tr><td>Both extreme</td><td><code>20</code></td><td>Squat low → On knees</td></tr>
-          </tbody>
-        </table>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Automated posture detection</div>
-            <p>Manual KIM-LHC assessments require the assessor to visually judge the start and finish posture. Motionprint Ergo identifies these automatically from joint angles in your motion capture data, removing observer bias and eliminating the need for a trained assessor to be present during the task.</p>
-          </div>
-        </div>
+        <figure class="article-figure">
+          <img src="body posture points.jpg" alt="KIM-LHC body posture classes and combination score matrix" />
+          <figcaption>Body posture classes and start→finish combination scores used by Motionprint Ergo for KIM-LHC assessment</figcaption>
+        </figure>
 
         <!-- ── SECTION 6 ── -->
         <h2 id="additional-points"><span class="step-num">6</span> Additional Points (Body Posture)</h2>
-        <p>On top of the base body posture score, additional points are added for specific posture conditions detected during the lifting moment. The total of all additional points is <strong>capped at 6</strong>. The Total Body Score is therefore:</p>
+        <p>On top of the base body posture score, additional points are added for specific posture conditions detected during the lifting task. The Total Body Score is therefore:</p>
 
         <div class="formula-block">
           <span class="formula-label">Total Body Score</span>
-          <span class="formula-text">Body Posture Score + min(Additional Points, 6)</span>
+          <span class="formula-text">Body Posture Score + Additional Points (max 6)</span>
         </div>
 
         <p>Four conditions are evaluated, all measured automatically from motion capture data:</p>
 
-        <h3>Twisting / Lateral bending</h3>
-        <p>Detects whether the trunk is significantly rotated or laterally bent during the lift. The threshold is 20° for both lateral bending and trunk twisting.</p>
+        <h3>Trunk twisting / side-bending</h3>
+        <p>Detects whether the trunk is significantly rotated or laterally bent during the task. The threshold is 20° for both lateral bending and trunk twisting.</p>
         <table class="threshold-table">
           <thead><tr><th>Frames exceeding threshold</th><th>Points</th></tr></thead>
           <tbody>
@@ -569,7 +547,7 @@
           </tbody>
         </table>
 
-        <h3>Hands far from body</h3>
+        <h3>Load distance to body</h3>
         <p>Detects whether the hands are positioned more than 170 mm from the body — increasing lever arm forces on the spine.</p>
         <table class="threshold-table">
           <thead><tr><th>Frames exceeding threshold</th><th>Points</th></tr></thead>
@@ -581,7 +559,7 @@
         </table>
 
         <h3>Hands between elbow and shoulder height</h3>
-        <p>Detects whether the hands are working in the elevated zone between elbow and shoulder height during the lift.</p>
+        <p>Detects whether the hands are working in the elevated zone between elbow and shoulder height during the task.</p>
         <table class="threshold-table">
           <thead><tr><th>Frames in elevated zone</th><th>Points</th></tr></thead>
           <tbody>
@@ -619,7 +597,7 @@
           <tbody>
             <tr>
               <td><strong>Hand/arm movement</strong> (wrist deviations)</td>
-              <td>0, 1, or 2 — based on wrist flexion &gt;75°, extension &gt;60°, ulnar deviation &gt;30°, radial deviation &gt;15°, pronation &gt;60°, supination &gt;60°, using the same 5% / 25% frame thresholds as additional points</td>
+              <td>0, 1, or 2 — based on wrist flexion &gt;75°, extension &gt;60°, ulnar deviation &gt;30°, radial deviation &gt;15°, pronation &gt;60°, supination &gt;60°, using the same 5% / 25% frame thresholds</td>
               <td>Derived automatically from motion capture</td>
             </tr>
             <tr>
@@ -651,93 +629,68 @@
         </table>
 
         <p>The Unfavorable Conditions Score is the sum of all six factors.</p>
-
-        <p>Color-coded risk indication for Unfavorable Working Conditions: <strong>Green</strong> ≤ 4 &nbsp;·&nbsp; <strong>Yellow</strong> 5 – 9 &nbsp;·&nbsp; <strong>Red</strong> ≥ 10.</p>
+        <p>Color-coded risk indication: <strong>Green</strong> ≤ 4 &nbsp;·&nbsp; <strong>Yellow</strong> 5 – 9 &nbsp;·&nbsp; <strong>Red</strong> ≥ 10.</p>
 
         <!-- ── SECTION 8 ── -->
         <h2 id="work-organization"><span class="step-num">8</span> Work Organization</h2>
-        <p>The Work Organization score reflects the quality of task scheduling and rest provisions. It is entered manually on the input page. A higher score indicates that scheduling and rest breaks are more restricted or unfavorable, adding to the overall workload assessment.</p>
-
-        <table class="threshold-table">
-          <thead>
-            <tr>
-              <th>Level</th>
-              <th>Input</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Good</td><td><code>0</code></td><td>0</td></tr>
-            <tr><td>Restricted</td><td><code>1</code></td><td>2</td></tr>
-            <tr><td>Unfavorable</td><td><code>2</code></td><td>4</td></tr>
-          </tbody>
-        </table>
-
-        <p>The input value is multiplied by 2 to produce the final Work Organization points.</p>
-
-        <p>Color-coded risk indication for Work Organization: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> ≤ 2 &nbsp;·&nbsp; <strong>Red</strong> &gt; 2.</p>
+        <p>The Work Organization score reflects the quality of task scheduling and rest provisions. It is entered manually on the input page and has three levels: <strong>Good</strong> (0 points), <strong>Restricted</strong> (2 points), and <strong>Unfavorable</strong> (4 points).</p>
+        <p>Color-coded risk indication: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> = 2 &nbsp;·&nbsp; <strong>Red</strong> = 4.</p>
 
         <!-- ── SECTION 9 ── -->
         <h2 id="time-rating"><span class="step-num">9</span> Time Rating</h2>
-        <p>The Time Rating is a multiplier between 1 and 10 that reflects how frequently the lifting task is performed during a full work shift, expressed in cycles per day. In Motionprint Ergo, frequency is calculated automatically: the user enters the total working hours or minutes, and the app derives the cycle duration from the trimmed recording length and the number of defined lifting moments.</p>
+        <p>The Time Rating is a multiplier between 1 and 10 that reflects how frequently the lifting task is performed during a full work shift, expressed in cycles per day. In Motionprint Ergo, frequency is calculated automatically: the user enters the total working hours or minutes, and the app derives the cycle duration from the trimmed recording length and the number of defined lifting tasks.</p>
 
         <div class="formula-block">
           <span class="formula-label">Frequency</span>
-          <span class="formula-text">Working time (seconds) ÷ Cycle duration per moment</span>
+          <span class="formula-text">Working time (seconds) ÷ Cycle duration per task</span>
         </div>
         <div class="formula-block">
           <span class="formula-label">Cycle duration</span>
-          <span class="formula-text">Trimmed recording length ÷ Number of lifting moments</span>
+          <span class="formula-text">Trimmed recording length ÷ Number of lifting tasks</span>
         </div>
 
-        <table class="threshold-table">
-          <thead>
-            <tr>
-              <th>Frequency (cycles / day)</th>
-              <th>Time Rating</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>≥ 2500</td><td><code>10</code></td></tr>
-            <tr><td>≥ 2000</td><td><code>9</code></td></tr>
-            <tr><td>≥ 1500</td><td><code>8</code></td></tr>
-            <tr><td>≥ 1000</td><td><code>7</code></td></tr>
-            <tr><td>≥ 750</td><td><code>6</code></td></tr>
-            <tr><td>≥ 500</td><td><code>5</code></td></tr>
-            <tr><td>≥ 300</td><td><code>4</code></td></tr>
-            <tr><td>≥ 220</td><td><code>3.5</code></td></tr>
-            <tr><td>≥ 150</td><td><code>3</code></td></tr>
-            <tr><td>≥ 100</td><td><code>2.5</code></td></tr>
-            <tr><td>≥ 50</td><td><code>2</code></td></tr>
-            <tr><td>≥ 20</td><td><code>1.5</code></td></tr>
-            <tr><td>≥ 5</td><td><code>1</code></td></tr>
-          </tbody>
-        </table>
+        <p>The frequency is then looked up in the table below to determine the Time Rating:</p>
+
+        <div class="time-rating-grid">
+          <div class="tr-chip"><span class="tr-freq">≥ 2500 cycles/day</span><span class="tr-mult">× 10</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 2000 cycles/day</span><span class="tr-mult">× 9</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 1500 cycles/day</span><span class="tr-mult">× 8</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 1000 cycles/day</span><span class="tr-mult">× 7</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 750 cycles/day</span><span class="tr-mult">× 6</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 500 cycles/day</span><span class="tr-mult">× 5</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 300 cycles/day</span><span class="tr-mult">× 4</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 220 cycles/day</span><span class="tr-mult">× 3.5</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 150 cycles/day</span><span class="tr-mult">× 3</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 100 cycles/day</span><span class="tr-mult">× 2.5</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 50 cycles/day</span><span class="tr-mult">× 2</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 20 cycles/day</span><span class="tr-mult">× 1.5</span></div>
+          <div class="tr-chip"><span class="tr-freq">≥ 5 cycles/day</span><span class="tr-mult">× 1</span></div>
+        </div>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Shared across all moments</div>
-            <p>The Time Rating is the same for all moments in the assessment — it reflects the overall shift workload, not the frequency of individual lifting moments. The cycle duration is computed from the total recording length divided by the number of defined moments.</p>
+            <div class="callout-label">Shared across all tasks</div>
+            <p>The Time Rating is the same for all tasks in the assessment — it reflects the overall shift workload, not the frequency of individual lifting tasks. The cycle duration is computed from the total recording length divided by the number of defined tasks.</p>
           </div>
         </div>
 
         <!-- ── SECTION 10 ── -->
-        <h2 id="multi-moment"><span class="step-num">10</span> Multi-Moment Assessments</h2>
-        <p>When a worker performs more than one distinct lifting movement within a recording, Motionprint Ergo supports defining multiple lifting moments. Each moment has its own frame range and load weight, and is scored independently — producing its own Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and End Score.</p>
-        <p>The results page provides a moment selector to switch between individual moment results. When multiple moments exist, the app also computes an averaged overview that aggregates scores across all moments, giving a holistic view of the overall task demand for the full recording.</p>
+        <h2 id="multi-task"><span class="step-num">10</span> Multi-Task Assessments</h2>
+        <p>When a worker performs more than one distinct lifting movement within a recording, Motionprint Ergo supports defining multiple lifting tasks. Each task has its own frame range and load weight, and is scored independently — producing its own Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and Total Score.</p>
+        <p>The results page provides a task selector to switch between individual task results. When multiple tasks exist and the averaged overview is enabled in the KIM-LHC settings, the app also computes an averaged overview that aggregates scores across all tasks, giving a holistic view of the overall task demand for the full recording.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">In Motionprint Ergo</div>
-            <p>The KIM-LHC method does not define a formal composite index formula for multi-task aggregation. Moment scores are independent and an averaged overview is provided across all defined moments.</p>
+            <p>The KIM-LHC method does not define a formal composite index formula for multi-task aggregation. Task scores are independent and an averaged overview is provided when enabled in the KIM-LHC settings.</p>
           </div>
         </div>
 
         <!-- ── SECTION 11 ── -->
         <h2 id="implementation"><span class="step-num">11</span> Implementation in Motionprint Ergo</h2>
-        <p>Motionprint Ergo implements the full KIM-LHC method in a dedicated processing pipeline that applies BAuA posture thresholds and scoring criteria to the motion capture data frame by frame, across all defined lifting moments.</p>
+        <p>Motionprint Ergo implements the full KIM-LHC method in a dedicated processing pipeline that applies BAuA posture thresholds and scoring criteria to the motion capture data frame by frame, across all defined lifting tasks.</p>
 
         <h3>Calculation workflow</h3>
         <div class="workflow-steps">
@@ -752,21 +705,21 @@
             <div class="workflow-step-num">2</div>
             <div>
               <div class="workflow-step-title">Score computation</div>
-              <p class="workflow-step-desc">Each scoring component is computed per lifting moment. The body posture is classified using weighted joint angle matching against the 10 reference postures. Additional points for twisting, hand distance, and hand height are determined from frame-by-frame analysis using percentage-of-frames thresholds.</p>
+              <p class="workflow-step-desc">Each scoring component is computed per lifting task. The body posture is classified using weighted joint angle matching against the 10 reference postures. Additional points for twisting, load distance, and hand height are determined from frame-by-frame analysis using percentage-of-frames thresholds.</p>
             </div>
           </div>
           <div class="workflow-step">
             <div class="workflow-step-num">3</div>
             <div>
-              <div class="workflow-step-title">End Score calculation</div>
-              <p class="workflow-step-desc">All component scores are summed into Total Rating Points, then multiplied by the Time Rating to produce the End Score. For multi-moment assessments, individual scores and an averaged overview are computed across all defined moments.</p>
+              <div class="workflow-step-title">Total Score calculation</div>
+              <p class="workflow-step-desc">All component scores are summed into Rating Points, then multiplied by the Time Rating to produce the Total Score. For multi-task assessments, individual scores and (if enabled) an averaged overview are computed across all defined tasks.</p>
             </div>
           </div>
           <div class="workflow-step">
             <div class="workflow-step-num">4</div>
             <div>
               <div class="workflow-step-title">Report output</div>
-              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score overview</strong> shows a visual summary of all components with color-coded risk indicators for each: Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and the final End Score. <strong>In-depth analysis</strong> lets you explore per-frame score graphs, critical moments, and a synchronized 3D viewer to see exactly which frames and postures are driving the score. <strong>Findings</strong> (if enabled in settings) provides editable sections for documenting observations — the same structure as in the NIOSH report.</p>
+              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score overview</strong> shows a visual summary of all components with color-coded risk indicators for each: Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and the final Total Score. <strong>In-depth analysis</strong> lets you explore per-frame score graphs, critical moments, and a synchronized 3D viewer to see exactly which frames and postures are driving the score. <strong>Findings</strong> (if enabled in settings) provides editable sections for documenting observations.</p>
             </div>
           </div>
         </div>
@@ -842,13 +795,6 @@
 </footer>
 
 <script>
-  var sections = ['overview','end-score-formula','load-rating','load-handling','body-posture-score','additional-points','unfavorable-conditions','work-organization','time-rating','multi-moment','implementation'];
+  var sections = ['overview','total-score-formula','load-rating','load-handling','body-posture-score','additional-points','unfavorable-conditions','work-organization','time-rating','multi-task','implementation'];
   var tocIds   = ['toc-overview','toc-formula','toc-load-rating','toc-load-handling','toc-body-posture','toc-additional','toc-unfavorable','toc-work-org','toc-time-rating','toc-multi','toc-implementation'];
-  function onScroll() {
-    var scrollY = window.scrollY + 100;
-    var active = 0;
-    sections.forEach(function(id, i) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
-    });
-   
+  f
