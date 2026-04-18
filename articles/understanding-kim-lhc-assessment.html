@@ -518,13 +518,29 @@
         <!-- ── SECTION 5 ── -->
         <h2 id="body-posture-score"><span class="step-num">5</span> Body Posture Score</h2>
         <p>The body posture score is determined from the combination of the worker's <strong>start posture</strong> (at the beginning of the lifting task) and <strong>finish posture</strong> (at the end). Motionprint Ergo classifies these automatically from the motion capture data using biomechanical features derived from joint angles in the recording.</p>
-        <div style="display:flex; gap:24px; align-items:flex-start; margin:16px 0 20px;">
-          <figure style="flex-shrink:0; margin:0; width:230px;">
-            <img src="body posture points.jpg" alt="KIM-LHC body posture classes and combination score matrix" style="display:block; width:100%; border-radius:10px; border:1px solid var(--border); box-shadow:var(--shadow-sm);" />
-            <figcaption style="font-size:12px; color:var(--muted); margin-top:6px; text-align:center; line-height:1.4;">Body posture classes and start→finish combination scores</figcaption>
-          </figure>
-          <p style="margin:0; font-size:15px; line-height:1.72;">Ten posture classes are defined, ranging from a fully upright standing position to highly strained positions such as squatting or kneeling. The start→finish posture combination produces a body posture score from 0 to 20 points — the more demanding the postures and the greater the difference between them, the higher the score. The illustration shows the full combination matrix and how each class maps to a score.</p>
-        </div>
+        <p>Ten posture classes are defined, ranging from fully upright to highly strained. The start→finish combination produces a score from 0 to 20 points — the more demanding the postures and the greater the difference between them, the higher the score:</p>
+
+        <table class="threshold-table">
+          <thead>
+            <tr>
+              <th>Start posture</th>
+              <th>Finish posture</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standing straight</td><td>Standing straight</td><td><code>0</code></td></tr>
+            <tr><td>Standing straight</td><td>Slightly bent back</td><td><code>3</code></td></tr>
+            <tr><td>Slightly bent back</td><td>Medium bent back</td><td><code>5</code></td></tr>
+            <tr><td>Standing straight</td><td>Bended back</td><td><code>7</code></td></tr>
+            <tr><td>Standing straight</td><td>Squat low</td><td><code>9</code></td></tr>
+            <tr><td>Slightly bent back</td><td>Bended back</td><td><code>10</code></td></tr>
+            <tr><td>Slightly bent back</td><td>Squat low</td><td><code>13</code></td></tr>
+            <tr><td>Bended back</td><td>Bended back</td><td><code>15</code></td></tr>
+            <tr><td>Bended back</td><td>Squat low</td><td><code>18</code></td></tr>
+            <tr><td>Squat low</td><td>On knees</td><td><code>20</code></td></tr>
+          </tbody>
+        </table>
 
         <!-- ── SECTION 6 ── -->
         <h2 id="additional-points"><span class="step-num">6</span> Additional Points (Body Posture)</h2>
@@ -786,15 +802,4 @@
     var scrollY = window.scrollY + 100;
     var active = 0;
     sections.forEach(function(id, i) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
-    });
-    tocIds.forEach(function(id, i) {
-      var li = document.getElementById(id);
-      if (li) { li.classList.toggle('active', i === active); }
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
- 
+      var el = document.getElementById
