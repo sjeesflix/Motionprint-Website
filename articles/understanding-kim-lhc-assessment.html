@@ -738,4 +738,113 @@
             <div class="workflow-step-num">3</div>
             <div>
               <div class="workflow-step-title">Total Score calculation</div>
-              <p class="workflow-step-desc">All compone
+              <p class="workflow-step-desc">All component scores are summed into Rating Points, then multiplied by the Time Rating to produce the Total Score. For multi-task assessments, individual scores and (if enabled) an averaged overview are computed across all defined tasks.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">4</div>
+            <div>
+              <div class="workflow-step-title">Report output</div>
+              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score overview</strong> shows a visual summary of all components with color-coded risk indicators for each: Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and the final Total Score. <strong>In-depth analysis</strong> lets you explore per-frame score graphs, critical moments, and a synchronized 3D viewer to see exactly which frames and postures are driving the score. <strong>Findings</strong> (if enabled in settings) provides editable sections for documenting observations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── ARTICLE FOOTER ── -->
+        <div class="article-end">
+          <div>
+            <div class="related-label">Related articles</div>
+            <div class="related-grid">
+              <a href="motion-data-processing-explained.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Motion Data Processing Explained</span>
+              </a>
+              <a href="how-motionprint-ergo-works.html" class="related-card">
+                <span class="related-card-cat">Getting Started</span>
+                <span class="related-card-title">How Motionprint Ergo Works</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" style="display:block;margin-bottom:10px;">
+          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#how">How it works</a></li>
+          <li><a href="../index.html#methods">Supported methods</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../index.html#contact">Request demo</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html#tutorials">Tutorials</a></li>
+          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="../resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var sections = ['overview','total-score-formula','load-rating','load-handling','body-posture-score','additional-points','unfavorable-conditions','work-organization','time-rating','multi-task','implementation'];
+  var tocIds   = ['toc-overview','toc-formula','toc-load-rating','toc-load-handling','toc-body-posture','toc-additional','toc-unfavorable','toc-work-org','toc-time-rating','toc-multi','toc-implementation'];
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
