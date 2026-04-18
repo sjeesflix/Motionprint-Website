@@ -158,7 +158,7 @@
 
     /* Article figure */
     .article-figure { margin: 24px 0; }
-    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure img { display: block; max-width: 465px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
     .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; }
 
     /* Workflow steps */
@@ -584,7 +584,7 @@
 
         <!-- ── SECTION 7 ── -->
         <h2 id="unfavorable-conditions"><span class="step-num">7</span> Unfavorable Working Conditions</h2>
-        <p>Six environmental and task condition factors contribute additional points to the assessment. These reflect conditions that increase musculoskeletal strain beyond what load, posture, and frequency alone capture. Five of the six factors are entered manually on the input page; hand/arm movement is the one factor derived automatically from motion capture data.</p>
+        <p>Six environmental and task condition factors contribute additional points to the assessment. These reflect conditions that increase musculoskeletal strain beyond what load, posture, and frequency alone capture. Four of the six factors are entered manually on the input page; hand/arm movement and difficulties holding/carrying are derived automatically from motion capture data.</p>
 
         <table class="threshold-table">
           <thead>
@@ -617,8 +617,8 @@
             </tr>
             <tr>
               <td><strong>Difficulties holding / carrying</strong></td>
-              <td>0, 2, or 5</td>
-              <td>Manual entry</td>
+              <td>0, 2, or 5 — derived from the task's frame range (hold duration) and cumulative horizontal pelvis displacement (carrying distance): load held &gt; 10 s or carried &gt; 5 m scores 5; held 5 – 10 s or carried 2 – 5 m scores 2; otherwise 0</td>
+              <td>Derived automatically from motion capture</td>
             </tr>
             <tr>
               <td><strong>Impairing clothing</strong></td>
@@ -649,23 +649,7 @@
           <span class="formula-text">Trimmed recording length ÷ Number of lifting tasks</span>
         </div>
 
-        <p>The frequency is then looked up in the table below to determine the Time Rating:</p>
-
-        <div class="time-rating-grid">
-          <div class="tr-chip"><span class="tr-freq">≥ 2500 cycles/day</span><span class="tr-mult">× 10</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 2000 cycles/day</span><span class="tr-mult">× 9</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 1500 cycles/day</span><span class="tr-mult">× 8</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 1000 cycles/day</span><span class="tr-mult">× 7</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 750 cycles/day</span><span class="tr-mult">× 6</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 500 cycles/day</span><span class="tr-mult">× 5</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 300 cycles/day</span><span class="tr-mult">× 4</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 220 cycles/day</span><span class="tr-mult">× 3.5</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 150 cycles/day</span><span class="tr-mult">× 3</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 100 cycles/day</span><span class="tr-mult">× 2.5</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 50 cycles/day</span><span class="tr-mult">× 2</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 20 cycles/day</span><span class="tr-mult">× 1.5</span></div>
-          <div class="tr-chip"><span class="tr-freq">≥ 5 cycles/day</span><span class="tr-mult">× 1</span></div>
-        </div>
+        <p>The resulting frequency maps to a Time Rating of <strong>×1</strong> (≥ 5/day), <strong>×1.5</strong> (≥ 20), <strong>×2</strong> (≥ 50), <strong>×2.5</strong> (≥ 100), <strong>×3</strong> (≥ 150), <strong>×3.5</strong> (≥ 220), <strong>×4</strong> (≥ 300), <strong>×5</strong> (≥ 500), <strong>×6</strong> (≥ 750), <strong>×7</strong> (≥ 1000), <strong>×8</strong> (≥ 1500), <strong>×9</strong> (≥ 2000), or <strong>×10</strong> (≥ 2500 cycles/day).</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -797,4 +781,28 @@
 <script>
   var sections = ['overview','total-score-formula','load-rating','load-handling','body-posture-score','additional-points','unfavorable-conditions','work-organization','time-rating','multi-task','implementation'];
   var tocIds   = ['toc-overview','toc-formula','toc-load-rating','toc-load-handling','toc-body-posture','toc-additional','toc-unfavorable','toc-work-org','toc-time-rating','toc-multi','toc-implementation'];
-  f
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
