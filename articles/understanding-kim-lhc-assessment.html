@@ -525,22 +525,23 @@
         <table class="threshold-table">
           <thead>
             <tr>
+              <th style="width:28px;"></th>
+              <th style="width:60px;">Score</th>
               <th>Posture A</th>
               <th>Posture B</th>
-              <th>Score</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Standing straight</td><td>Standing straight</td><td><code>0</code></td></tr>
-            <tr><td>Standing straight</td><td>Slightly bent back</td><td><code>3</code></td></tr>
-            <tr><td>Slightly bent back</td><td>Medium bent back</td><td><code>5</code></td></tr>
-            <tr><td>Standing straight</td><td>Bended back</td><td><code>7</code></td></tr>
-            <tr><td>Standing straight</td><td>Squat low</td><td><code>9</code></td></tr>
-            <tr><td>Slightly bent back</td><td>Bended back</td><td><code>10</code></td></tr>
-            <tr><td>Slightly bent back</td><td>Squat low</td><td><code>13</code></td></tr>
-            <tr><td>Bended back</td><td>Bended back</td><td><code>15</code></td></tr>
-            <tr><td>Bended back</td><td>Squat low</td><td><code>18</code></td></tr>
-            <tr><td>Squat low</td><td>On knees</td><td><code>20</code></td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>Standing straight</td><td>Standing straight</td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>3</code></td><td>Standing straight</td><td>Slightly bent back</td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>5</code></td><td>Slightly bent back</td><td>Medium bent back</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>7</code></td><td>Standing straight</td><td>Bended back</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>9</code></td><td>Standing straight</td><td>Squat low</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>10</code></td><td>Slightly bent back</td><td>Bended back</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>13</code></td><td>Slightly bent back</td><td>Squat low</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>15</code></td><td>Bended back</td><td>Bended back</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>18</code></td><td>Bended back</td><td>Squat low</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>20</code></td><td>Squat low</td><td>On knees</td></tr>
           </tbody>
         </table>
 
@@ -619,17 +620,17 @@
             </tr>
             <tr>
               <td><strong>Force transfer / force application</strong></td>
-              <td>0, 1, or 2</td>
+              <td>0, 1, or 2 — Easy (0): stable grip points, non-slip surfaces, balanced weight; Restricted (1): handles or surfaces that reduce contact quality, requires higher holding forces or work gloves; Hindered (2): slippery, soft, or sharp edges, missing or poor grips, uneven weight distribution</td>
               <td>Manual entry</td>
             </tr>
             <tr>
               <td><strong>Adverse ambient conditions</strong></td>
-              <td>0 or 1</td>
+              <td>0 or 1 — No (0): comfortable temperature and humidity, dry stable footing with good visibility; Yes (1): poor visibility, strong drafts, standing water, ice, mud, or slippery surfaces</td>
               <td>Manual entry</td>
             </tr>
             <tr>
               <td><strong>Spatial conditions</strong></td>
-              <td>0, 1, or 2</td>
+              <td>0, 1, or 2 — Good (0): working area ≥ 1.5 m² with free room to move, clean flat floor; Restricted (1): working area &lt; 1.5 m², floor incline up to 5°, load must be positioned precisely; Unfavorable (2): very confined space with insufficient headroom, floor very dirty, uneven, rough, with steps or potholes</td>
               <td>Manual entry</td>
             </tr>
             <tr>
@@ -639,14 +640,13 @@
             </tr>
             <tr>
               <td><strong>Impairing clothing</strong></td>
-              <td>0 or 1</td>
+              <td>0 or 1 — No (0): normal work clothing that does not restrict movement; Yes (1): heavy protective equipment, hazmat suits, or bulky clothing restricting movement</td>
               <td>Manual entry</td>
             </tr>
           </tbody>
         </table>
 
-        <p>The Unfavorable Conditions Score is the sum of all six factors.</p>
-        <p>Color-coded risk indication: <strong>Green</strong> ≤ 4 &nbsp;·&nbsp; <strong>Yellow</strong> 5 – 9 &nbsp;·&nbsp; <strong>Red</strong> ≥ 10.</p>
+        <p>The Unfavorable Conditions Score is the sum of all six factors: <span class="color-dot green" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≤ 4 &nbsp;·&nbsp; <span class="color-dot yellow" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> 5 – 9 &nbsp;·&nbsp; <span class="color-dot red" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≥ 10.</p>
 
         <!-- ── SECTION 8 ── -->
         <h2 id="work-organization"><span class="step-num">8</span> Work Organization</h2>
@@ -660,9 +660,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>Good</td></tr>
-            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>2</code></td><td>Restricted</td></tr>
-            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>4</code></td><td>Unfavorable</td></tr>
+            <tr>
+              <td class="color-cell"><span class="color-dot green"></span></td>
+              <td><code>0</code></td>
+              <td><strong>Good</strong> — physical tasks vary often throughout the day (including different types of workload), with no prolonged periods of high exertion in any single task.</td>
+            </tr>
+            <tr>
+              <td class="color-cell"><span class="color-dot yellow"></span></td>
+              <td><code>2</code></td>
+              <td><strong>Restricted</strong> — tasks change only occasionally, with some stretches of repeated high exertion in one type of work.</td>
+            </tr>
+            <tr>
+              <td class="color-cell"><span class="color-dot red"></span></td>
+              <td><code>4</code></td>
+              <td><strong>Unfavorable</strong> — very little variation, with frequent, repeated peaks of high exertion in the same task during the working day.</td>
+            </tr>
           </tbody>
         </table>
 
@@ -691,7 +703,7 @@
 
         <!-- ── SECTION 10 ── -->
         <h2 id="multi-task"><span class="step-num">10</span> Multi-Task Assessments</h2>
-        <p>When a worker performs more than one distinct lifting movement within a recording, Motionprint Ergo supports defining multiple lifting tasks. Each task has its own frame range and load weight, and is scored independently — producing its own Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and Total Score.</p>
+        <p>When a worker performs more than one distinct lifting movement within a recording, Motionprint Ergo supports defining multiple lifting tasks. Each task has its own frame range and load weight, and is scored independently for Load Rating, Load Handling, Total Body Score, and the automatically derived unfavorable working conditions (hand/arm movement and difficulties holding/carrying). The manually entered conditions — force transfer, adverse ambient conditions, spatial conditions, impairing clothing, and work organization — are shared across all tasks.</p>
         <p>The results page provides a task selector to switch between individual task results. When multiple tasks exist and the averaged overview is enabled in the KIM-LHC settings, the app also computes an averaged overview that aggregates scores across all tasks, giving a holistic view of the overall task demand for the full recording.</p>
 
         <div class="callout callout-info">
@@ -712,75 +724,18 @@
             <div class="workflow-step-num">1</div>
             <div>
               <div class="workflow-step-title">Input data</div>
-              <p class="workflow-step-desc">Body posture, trunk angles, hand positions, wrist angles, and load handling asymmetry are extracted automatically from motion capture data. Manual inputs — load weight category, working conditions, work organization, working hours, and gender — are entered in the assessment setup panel and passed to the processing pipeline.</p>
+              <p class="workflow-step-desc">Body posture, trunk angles, hand positions, wrist angles, and load handling asymmetry are extracted automatically from motion capture data. Manual inputs — load weight category, working conditions, work organization, working hours, gender, and the trim range (start/end frame) defining the active portion of the recording — are entered in the assessment setup panel and passed to the processing pipeline.</p>
             </div>
           </div>
           <div class="workflow-step">
             <div class="workflow-step-num">2</div>
             <div>
               <div class="workflow-step-title">Score computation</div>
-              <p class="workflow-step-desc">Each scoring component is computed per lifting task. The body posture is classified using weighted joint angle matching against the 10 reference postures. Additional points for twisting, load distance, and hand height are determined from frame-by-frame analysis using percentage-of-frames thresholds.</p>
+              <p class="workflow-step-desc">Each scoring component is computed per lifting task. The body posture is classified using weighted joint angle matching against the 10 reference postures. Additional points for trunk twisting, load distance from body, and hand height are determined from frame-by-frame analysis using percentage-of-frames thresholds. Load handling asymmetry, hand/arm movement (wrist deviations), and difficulties holding/carrying are also derived automatically per task. The load rating is looked up from the weight category and gender.</p>
             </div>
           </div>
           <div class="workflow-step">
             <div class="workflow-step-num">3</div>
             <div>
               <div class="workflow-step-title">Total Score calculation</div>
-              <p class="workflow-step-desc">All component scores are summed into Rating Points, then multiplied by the Time Rating to produce the Total Score. For multi-task assessments, individual scores and (if enabled) an averaged overview are computed across all defined tasks.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="workflow-step-num">4</div>
-            <div>
-              <div class="workflow-step-title">Report output</div>
-              <p class="workflow-step-desc">Results are presented across three report tabs. <strong>Score overview</strong> shows a visual summary of all components with color-coded risk indicators for each: Load Rating, Load Handling, Total Body Score, Unfavorable Working Conditions, Work Organization, and the final Total Score. <strong>In-depth analysis</strong> lets you explore per-frame score graphs, critical moments, and a synchronized 3D viewer to see exactly which frames and postures are driving the score. <strong>Findings</strong> (if enabled in settings) provides editable sections for documenting observations.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── ARTICLE FOOTER ── -->
-        <div class="article-end">
-          <div>
-            <div class="related-label">Related articles</div>
-            <div class="related-grid">
-              <a href="motion-data-processing-explained.html" class="related-card">
-                <span class="related-card-cat">Methodology</span>
-                <span class="related-card-title">Motion Data Processing Explained</span>
-              </a>
-              <a href="how-motionprint-ergo-works.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">How Motionprint Ergo Works</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </article>
-    </div>
-  </div>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <a href="../index.html" style="display:block;margin-bottom:10px;">
-          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
-        </a>
-        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Product</div>
-        <ul class="footer-links">
-          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
-          <li><a href="../index.html#how">How it works</a></li>
-          <li><a href="../index.html#methods">Supported methods</a></li>
-          <li><a href="../index.html#pricing">Pricing</a></li>
-          <li><a href="../download.html">Download</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="../index.html#custom">Cus
+              <p class="workflow-step-desc">All compone
