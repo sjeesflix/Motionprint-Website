@@ -408,8 +408,8 @@
             <div class="component-abbr">UC</div>
             <div>
               <div class="component-name">Unfavorable Working Conditions</div>
-              <p class="component-desc">Points for six environmental and task condition factors, including hand/arm movement, force transfer, spatial constraints, and clothing.</p>
-              <div class="component-source">Mostly manual entry; hand/arm movement derived from motion capture data</div>
+              <p class="component-desc">Points for six environmental and task condition factors, including hand/arm movement, difficulties holding/carrying, force transfer, spatial constraints, and clothing.</p>
+              <div class="component-source">Mostly manual entry; hand/arm movement and difficulties holding/carrying derived from motion capture data</div>
             </div>
           </div>
           <div class="component-row">
@@ -493,38 +493,40 @@
         <table class="threshold-table">
           <thead>
             <tr>
-              <th>Points</th>
+              <th style="width:28px;"></th>
+              <th style="width:60px;">Points</th>
               <th>Condition</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td class="color-cell"><span class="color-dot green"></span></td>
               <td><code>0</code></td>
               <td>Load is handled with both hands and symmetrically</td>
             </tr>
             <tr>
+              <td class="color-cell"><span class="color-dot yellow"></span></td>
               <td><code>2</code></td>
               <td>Load is handled temporarily with one hand and/or asymmetrically, uneven load distribution</td>
             </tr>
             <tr>
+              <td class="color-cell"><span class="color-dot red"></span></td>
               <td><code>4</code></td>
               <td>Load is handled predominantly with one hand or with an unstable load centre</td>
             </tr>
           </tbody>
         </table>
 
-        <p>Color-coded risk indication: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> = 2 &nbsp;·&nbsp; <strong>Red</strong> = 4.</p>
-
         <!-- ── SECTION 5 ── -->
         <h2 id="body-posture-score"><span class="step-num">5</span> Body Posture Score</h2>
         <p>The body posture score is determined from the combination of the worker's <strong>start posture</strong> (at the beginning of the lifting task) and <strong>finish posture</strong> (at the end). Motionprint Ergo classifies these automatically from the motion capture data using biomechanical features derived from joint angles in the recording.</p>
-        <p>Ten posture classes are defined, ranging from fully upright to highly strained. The start→finish combination produces a score from 0 to 20 points — the more demanding the postures and the greater the difference between them, the higher the score:</p>
+        <p>Ten posture classes are defined, ranging from fully upright to highly strained. The score is determined by the combination of the two postures observed at the beginning and end of the lifting task. The order is interchangeable — the same score applies regardless of which posture occurs at start or finish. The greater the gap between posture classes, the higher the score:</p>
 
         <table class="threshold-table">
           <thead>
             <tr>
-              <th>Start posture</th>
-              <th>Finish posture</th>
+              <th>Posture A</th>
+              <th>Posture B</th>
               <th>Score</th>
             </tr>
           </thead>
@@ -556,48 +558,46 @@
         <h3>Trunk twisting / side-bending</h3>
         <p>Detects whether the trunk is significantly rotated or laterally bent during the task. The threshold is 20° for both lateral bending and trunk twisting.</p>
         <table class="threshold-table">
-          <thead><tr><th>Frames exceeding threshold</th><th>Points</th></tr></thead>
+          <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames exceeding threshold</th></tr></thead>
           <tbody>
-            <tr><td>&lt; 5% of frames</td><td><code>0</code></td></tr>
-            <tr><td>5 – 25% of frames</td><td><code>1</code></td></tr>
-            <tr><td>&gt; 25% of frames</td><td><code>3</code></td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>3</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
         </table>
 
         <h3>Load distance to body</h3>
         <p>Detects whether the hands are positioned more than 170 mm from the body — increasing lever arm forces on the spine.</p>
         <table class="threshold-table">
-          <thead><tr><th>Frames exceeding threshold</th><th>Points</th></tr></thead>
+          <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames exceeding threshold</th></tr></thead>
           <tbody>
-            <tr><td>&lt; 5% of frames</td><td><code>0</code></td></tr>
-            <tr><td>5 – 25% of frames</td><td><code>1</code></td></tr>
-            <tr><td>&gt; 25% of frames</td><td><code>3</code></td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>3</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
         </table>
 
         <h3>Hands between elbow and shoulder height</h3>
         <p>Detects whether the hands are working in the elevated zone between elbow and shoulder height during the task.</p>
         <table class="threshold-table">
-          <thead><tr><th>Frames in elevated zone</th><th>Points</th></tr></thead>
+          <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames in elevated zone</th></tr></thead>
           <tbody>
-            <tr><td>&lt; 5% of frames</td><td><code>0</code></td></tr>
-            <tr><td>5 – 25% of frames</td><td><code>0.5</code></td></tr>
-            <tr><td>&gt; 25% of frames</td><td><code>1.0</code></td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>0.5</code></td><td>5 – 25% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>1.0</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
         </table>
 
         <h3>Hands above shoulder</h3>
         <p>Detects highly elevated hand positions — above shoulder height — which significantly increase shoulder and spinal loading.</p>
         <table class="threshold-table">
-          <thead><tr><th>Frames above shoulder</th><th>Points</th></tr></thead>
+          <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames above shoulder</th></tr></thead>
           <tbody>
-            <tr><td>&lt; 5% of frames</td><td><code>0</code></td></tr>
-            <tr><td>5 – 25% of frames</td><td><code>1</code></td></tr>
-            <tr><td>&gt; 25% of frames</td><td><code>2</code></td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>2</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
         </table>
-
-        <p>Color-coded risk indication for Total Body Score: <strong>Green</strong> ≤ 8 &nbsp;·&nbsp; <strong>Yellow</strong> 9 – 18 &nbsp;·&nbsp; <strong>Red</strong> ≥ 19.</p>
 
         <!-- ── SECTION 7 ── -->
         <h2 id="unfavorable-conditions"><span class="step-num">7</span> Unfavorable Working Conditions</h2>
@@ -650,8 +650,21 @@
 
         <!-- ── SECTION 8 ── -->
         <h2 id="work-organization"><span class="step-num">8</span> Work Organization</h2>
-        <p>The Work Organization score reflects the quality of task scheduling and rest provisions. It is entered manually on the input page and has three levels: <strong>Good</strong> (0 points), <strong>Restricted</strong> (2 points), and <strong>Unfavorable</strong> (4 points).</p>
-        <p>Color-coded risk indication: <strong>Green</strong> = 0 &nbsp;·&nbsp; <strong>Yellow</strong> = 2 &nbsp;·&nbsp; <strong>Red</strong> = 4.</p>
+        <p>The Work Organization score reflects the quality of task scheduling and rest provisions. It is entered manually on the input page.</p>
+        <table class="threshold-table">
+          <thead>
+            <tr>
+              <th style="width:28px;"></th>
+              <th style="width:60px;">Points</th>
+              <th>Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>Good</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>2</code></td><td>Restricted</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>4</code></td><td>Unfavorable</td></tr>
+          </tbody>
+        </table>
 
         <!-- ── SECTION 9 ── -->
         <h2 id="time-rating"><span class="step-num">9</span> Time Rating</h2>
@@ -770,36 +783,4 @@
       <div>
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
-          <li><a href="../index.html#custom">Custom Solutions</a></li>
-          <li><a href="../index.html#contact">Request demo</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Resources</div>
-        <ul class="footer-links">
-          <li><a href="../resources.html#tutorials">Tutorials</a></li>
-          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
-          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
-          <li><a href="../resources.html#support">Support</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
-      <div class="footer-legal">
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  var sections = ['overview','total-score-formula','load-rating','load-handling','body-posture-score','additional-points','unfavorable-conditions','work-organization','time-rating','multi-task','implementation'];
-  var tocIds   = ['toc-overview','toc-formula','toc-load-rating','toc-load-handling','toc-body-posture','toc-additional','toc-unfavorable','toc-work-org','toc-time-rating','toc-multi','toc-implementation'];
-  function onScroll() {
-    var scrollY = window.scrollY + 100;
-    var active = 0;
-    sections.forEach(function(id, i) {
-      var el = document.getElementById
+          <li><a href="../index.html#custom">Cus
