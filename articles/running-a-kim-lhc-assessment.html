@@ -80,7 +80,7 @@
     .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
@@ -93,7 +93,7 @@
 
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
     .step-num-plain { font-size: 13px; font-weight: 700; color: var(--muted-2); }
 
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
@@ -477,7 +477,7 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
+                                    <div class="related-grid">
               <a href="reading-the-kim-lhc-report-results.html" class="related-card">
                 <span class="related-card-cat">KIM-LHC</span>
                 <span class="related-card-title">Reading the KIM-LHC Report Results</span>
@@ -485,10 +485,6 @@
               <a href="kim-lhc-report-settings.html" class="related-card">
                 <span class="related-card-cat">KIM-LHC</span>
                 <span class="related-card-title">KIM-LHC Report Settings</span>
-              </a>
-              <a href="understanding-kim-lhc-assessment.html" class="related-card">
-                <span class="related-card-cat">KIM-LHC</span>
-                <span class="related-card-title">Understanding the KIM-LHC Assessment</span>
               </a>
             </div>
           </div>
