@@ -121,13 +121,13 @@
     .zone-table tr:last-child td { border-bottom: none; }
     .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
     .zone-green  { background: #10b981; }
-    .zone-yellow { background: #f97316; }
+    .zone-yellow { background: #e3ad21; }
     .zone-red    { background: #ef4444; }
-    .zone-orange { background: #f97316; }
+    .zone-orange { background: #e3ad21; }
 
-    .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+    .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 3px; vertical-align: middle; }
     .dot-green  { background: #10b981; }
-    .dot-yellow { background: #f97316; }
+    .dot-yellow { background: #e3ad21; }
     .dot-red    { background: #ef4444; }
 
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -295,7 +295,7 @@
 
         <p>The Score Overview tab gives you the complete KIM-LHC result across all scoring components, presented in a structured layout you can read at a glance and share in a report.</p>
 
-        <p>Throughout the Score Overview tab, each component value is displayed alongside a color-coded risk dot: <span class="color-dot dot-green"></span> green for low risk, <span class="color-dot dot-yellow"></span> orange for elevated risk, and <span class="color-dot dot-red"></span> red for high risk.</p>
+        <p>Throughout the Score Overview tab, each component value is displayed alongside a color-coded risk dot: <span class="color-dot dot-green"></span> green for low risk, <span class="color-dot dot-yellow"></span> yellow for elevated risk, and <span class="color-dot dot-red"></span> red for high risk.</p>
 
         <h3>Lifting task selector (multi-task only)</h3>
 
@@ -320,7 +320,7 @@
         <p>The top-right card shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
 
         <table class="info-table" style="font-size:13px;">
-          <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Orange</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
+          <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Yellow</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
           <tbody>
             <tr>
               <td>Effective load weight</td>
@@ -362,7 +362,7 @@
           <tbody>
             <tr><td><span class="zone-dot zone-green"></span>&lt; 20</td><td>Low risk</td></tr>
             <tr><td><span class="zone-dot zone-green"></span>20–&lt; 50</td><td>Slightly increased risk</td></tr>
-            <tr><td><span class="zone-dot zone-orange"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
+            <tr><td><span class="zone-dot zone-yellow"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
             <tr><td><span class="zone-dot zone-red"></span>≥ 100</td><td>High risk</td></tr>
           </tbody>
         </table>
@@ -453,11 +453,11 @@
 
         <h3>Score-per-frame graph</h3>
 
-        <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into color-coded risk zones. For the Total Score, zones follow the overall risk thresholds (green &lt; 20, light yellow 20–50, yellow 50–100, red ≥ 100). For sub-variables, zones use green and orange/red thresholds appropriate for that specific measurement.</p>
+        <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into color-coded risk zones. For the Total Score, zones follow the overall risk thresholds (green &lt; 20, green 20–50, yellow 50–100, red ≥ 100). For sub-variables, zones use green and yellow/red thresholds appropriate for that specific measurement.</p>
 
         <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync.</p>
 
-        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, color-coded spheres appear on the 3D avatar at relevant joint locations. The sphere colors reflect the risk level for the currently selected variable at the current frame — green for low risk, orange for medium risk, red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
+        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, color-coded spheres appear on the 3D avatar at relevant joint locations. The sphere colors reflect the risk level for the currently selected variable at the current frame — green for low risk, yellow for medium risk, red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
 
         <h3>Right-side panel</h3>
 
