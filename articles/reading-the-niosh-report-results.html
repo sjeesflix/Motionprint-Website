@@ -85,7 +85,7 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
@@ -136,7 +136,7 @@
     .zone-table tr:last-child td { border-bottom: none; }
     .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
     .zone-green  { background: #10b981; }
-    .zone-yellow { background: #f59e0b; }
+    .zone-yellow { background: #f97316; }
     .zone-red    { background: #ef4444; }
     .zone-orange { background: #f97316; }
 
@@ -257,11 +257,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">2. In-depth analysis</a></li>
-          <li id="toc-findings"><a href="#findings">3. Findings</a></li>
-          <li id="toc-export"><a href="#export">Export</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-score"><a href="#score-overview">2. Score Overview</a></li>
+          <li id="toc-analysis"><a href="#analysis">3. In-depth analysis</a></li>
+          <li id="toc-findings"><a href="#findings">4. Findings</a></li>
+          <li id="toc-export"><a href="#export">5. Export</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -277,7 +277,7 @@
         <p class="article-lead">Once a NIOSH assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through every element in the results view — what each section shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
 
         <!-- ── OVERVIEW ── -->
-        <h2 id="overview">Report structure</h2>
+        <h2 id="overview"><span class="step-num">1</span> Report structure</h2>
 
         <p>The report opens with a tab bar at the top. Depending on your NIOSH report settings, you will see two or three tabs:</p>
 
@@ -303,7 +303,7 @@
         </figure>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="score-overview"><span class="step-num">1</span> Score Overview</h2>
+        <h2 id="score-overview"><span class="step-num">2</span> Score Overview</h2>
 
         <p>The Score Overview tab gives you everything a standard manual NIOSH assessment would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
 
@@ -378,7 +378,7 @@
         </ul>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="analysis"><span class="step-num">2</span> Analysis</h2>
+        <h2 id="analysis"><span class="step-num">3</span> Analysis</h2>
 
         <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph.</p>
 
@@ -409,7 +409,7 @@
               <td><strong>LI / STLI</strong></td>
               <td>
                 <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 1.0–2.0 &nbsp;
                 <span class="zone-dot zone-red"></span>Red 2.0–3.0+
               </td>
             </tr>
@@ -435,7 +435,7 @@
               <td><strong>A</strong></td>
               <td>
                 <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 45–90° &nbsp;
                 <span class="zone-dot zone-red"></span>Red 90–135°
               </td>
             </tr>
@@ -473,7 +473,7 @@
         </div>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="findings"><span class="step-num">3</span> Findings</h2>
+        <h2 id="findings"><span class="step-num">4</span> Findings</h2>
 
         <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the NIOSH report settings.</p>
 
@@ -497,7 +497,7 @@
         </ul>
 
         <!-- ── EXPORT ── -->
-        <h2 id="export">Export</h2>
+        <h2 id="export"><span class="step-num">5</span> Export</h2>
 
         <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the NIOSH report settings. The exported file includes:</p>
         <ul>
@@ -613,4 +613,3 @@
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                
