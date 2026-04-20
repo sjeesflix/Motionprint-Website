@@ -106,7 +106,7 @@
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
 
     /* Tab badge */
     .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
@@ -283,14 +283,14 @@
         <p class="article-lead">Motionprint Ergo can export any completed report to PDF or Excel. Use PDF to share a formatted, print-ready report with a client or archive it alongside a project. Use Excel when you need raw assessment data for further analysis, custom processing, or integration into your own reporting workflow.</p>
 
         <!-- ── OVERVIEW ── -->
-        <h2 id="overview">Overview</h2>
+        <h2 id="overview"><span class="step-num">1</span> Overview</h2>
 
         <p>Every completed assessment in Motionprint Ergo yields a report that you can save and share. The application supports two export formats, each serving a different purpose in your workflow. The choice between them depends on whether you need a polished, presentation-ready deliverable or structured data for further processing.</p>
 
         <!-- ── TRIGGERING AN EXPORT ── -->
-        <h2 id="trigger">Triggering an export</h2>
+        <h2 id="trigger"><span class="step-num">2</span> Triggering an export</h2>
 
-        <figure class="article-figure">
+        <figure class="article-figure figure-sm">
           <img src="exportfunction.jpg" alt="The Export button highlighted in the report tab bar" />
           <figcaption>The Export button (export icon) in the report tab bar, highlighted next to the Edit button.</figcaption>
         </figure>
@@ -303,7 +303,7 @@
         </figure>
 
         <!-- ── PDF VS EXCEL ── -->
-        <h2 id="formats">PDF vs Excel — what each format contains</h2>
+        <h2 id="formats"><span class="step-num">3</span> PDF vs Excel — what each format contains</h2>
 
         <h3>PDF export</h3>
 
@@ -314,7 +314,7 @@
         <p>The Excel file contains the structured data behind the report, suited for further analysis and processing. It includes summary information, all input values, calculated scores, and frame-level data in tabular form — ready to filter, compare across sessions, or feed into your own reporting tools. The layout is also optimised for A4 printing, so you can produce a clean physical copy of the raw data when needed.</p>
 
         <!-- ── FILENAME TEMPLATES ── -->
-        <h2 id="templates">Filename templates</h2>
+        <h2 id="templates"><span class="step-num">4</span> Filename templates</h2>
 
         <p>Each report type has its own configurable filename template, set in that report type's settings page (e.g. NIOSH Report Settings). The template uses placeholder variables that are replaced with actual assessment data at the moment of export.</p>
 
@@ -381,7 +381,7 @@
         </ul>
 
         <!-- ── TIPS ── -->
-        <h2 id="tips">Tips</h2>
+        <h2 id="tips"><span class="step-num">5</span> Tips</h2>
 
         <ul>
           <li>Keep templates short and meaningful — long filenames can be truncated on some systems.</li>
@@ -401,18 +401,14 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
-              <a href="customization-branding.html" class="related-card">
-                <span class="related-card-cat">Platform</span>
-                <span class="related-card-title">Customization &amp; Branding</span>
+                                    <div class="related-grid">
+              <a href="niosh-report-settings.html" class="related-card">
+                <span class="related-card-cat">NIOSH</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
               <a href="kim-lhc-report-settings.html" class="related-card">
                 <span class="related-card-cat">KIM-LHC</span>
                 <span class="related-card-title">KIM-LHC Report Settings</span>
-              </a>
-              <a href="niosh-report-settings.html" class="related-card">
-                <span class="related-card-cat">NIOSH</span>
-                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
             </div>
           </div>
