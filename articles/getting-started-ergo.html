@@ -105,13 +105,13 @@
     /* Steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
     .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
-    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
 
     /* Phase steps */
     .phase-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; counter-reset: phase-counter; }
     .phase-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; counter-increment: phase-counter; }
-    .phase-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .phase-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .phase-body { flex: 1; min-width: 0; }
     .phase-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .phase-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
@@ -169,7 +169,7 @@
     .tab-cards { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .tab-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
     .tab-card-header { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 11px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .tab-card-name { font-size: 14px; font-weight: 700; color: var(--text); }
     .tab-card-body { padding: 16px 18px; }
     .tab-card-body p { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
@@ -656,7 +656,7 @@
           </div>
         </div>
 
-        <p>In the export popup, choose the format, select an output folder, and confirm the filename. The filename defaults to the template configured in Settings (for example, <code>{workplace}_{report_type}_{date}.pdf</code>), and the app remembers the last used folder per method and format.</p>
+        <p>In the export popup, choose the format, select an output folder, and confirm the filename. The filename defaults to the template configured in Settings (for example, <code>{workplace}_{report_type}_{current_date}.pdf</code>), and the app remembers the last used folder per method and format.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -673,7 +673,7 @@
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
-          <li><strong>Visit the Resources page</strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management — <a href="../resources.html" style="display:inline-flex;align-items:center;gap:3px;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(234,82,59,.35);">motion-print.com/resources <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-bottom:1px;" viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></a></li>
+          <li><strong>Visit the <a href="../resources.html">Resources page</a></strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management</li>
           <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
         </ul>
 
@@ -681,22 +681,14 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
-              <a href="uploading-processing-xsens.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Uploading &amp; Processing Xsens Data</span>
-              </a>
-              <a href="license-activation-guide.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">License &amp; Activation Guide</span>
-              </a>
+                                    <div class="related-grid">
               <a href="how-motionprint-ergo-works.html" class="related-card">
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">How Motionprint Ergo Works</span>
               </a>
-              <a href="whats-included-in-your-license.html" class="related-card">
-                <span class="related-card-cat">Support</span>
-                <span class="related-card-title">What&#39;s Included in Your License</span>
+              <a href="uploading-processing-xsens.html" class="related-card">
+                <span class="related-card-cat">Getting Started</span>
+                <span class="related-card-title">Uploading &amp; Processing Xsens Data</span>
               </a>
             </div>
           </div>
