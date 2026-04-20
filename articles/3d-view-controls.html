@@ -85,7 +85,7 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
@@ -172,7 +172,8 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
-  </style>
+      .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+</style>
 </head>
 <body>
 
@@ -252,12 +253,12 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-viewport"><a href="#viewport">The 3D Viewport</a></li>
-          <li id="toc-layouts"><a href="#layouts">Viewport Layouts</a></li>
-          <li id="toc-camera"><a href="#camera">Camera Views</a></li>
-          <li id="toc-navigation"><a href="#navigation">Mouse &amp; Keyboard</a></li>
-          <li id="toc-playback"><a href="#playback">Playback Controls</a></li>
-          <li id="toc-timeline"><a href="#timeline">Timeline &amp; Frame Counter</a></li>
+          <li id="toc-viewport"><a href="#viewport">1. The 3D Viewport</a></li>
+          <li id="toc-layouts"><a href="#layouts">2. Viewport Layouts</a></li>
+          <li id="toc-camera"><a href="#camera">3. Camera Views</a></li>
+          <li id="toc-navigation"><a href="#navigation">4. Mouse &amp; Keyboard</a></li>
+          <li id="toc-playback"><a href="#playback">5. Playback Controls</a></li>
+          <li id="toc-timeline"><a href="#timeline">6. Timeline &amp; Frame Counter</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -273,7 +274,7 @@
         <p class="article-lead">Motionprint Ergo renders motion capture data as a 3D animated avatar. This article covers the viewport controls, camera options, and playback interface you'll use to navigate and review recordings.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="viewport">The 3D Viewport</h2>
+        <h2 id="viewport"><span class="step-num">1</span>The 3D Viewport</h2>
 
         <p>The 3D viewport is the central element of every recording view in Motionprint Ergo. It renders a full animated avatar using a 3D scene that gives you spatial context while reviewing motion data.</p>
 
@@ -294,7 +295,7 @@
         </figure>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="layouts">Viewport Layouts</h2>
+        <h2 id="layouts"><span class="step-num">2</span>Viewport Layouts</h2>
 
         <p>The layout selector in the <strong>top-left corner</strong> of the viewport lets you split the view into multiple panels, each with its own independent camera. This is useful for monitoring posture from several angles simultaneously.</p>
 
@@ -310,7 +311,7 @@
         <p>Each panel in a multi-viewport layout has its own independent camera view and camera state. The default layout — including which of the four layouts to use and what camera view each panel should show — can be configured in Report Settings, separately for each report type and per input and result page.</p>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="camera">Camera Views</h2>
+        <h2 id="camera"><span class="step-num">3</span>Camera Views</h2>
 
         <p>Each viewport has a <strong>camera view selector</strong> button in its <strong>top-right corner</strong>, showing the name of the current view (e.g., "3D"). Clicking it opens a circular menu with six preset angles.</p>
 
@@ -332,7 +333,7 @@
         <div style="clear:both"></div>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="navigation">Mouse &amp; Keyboard</h2>
+        <h2 id="navigation"><span class="step-num">4</span>Mouse &amp; Keyboard</h2>
 
         <p>You navigate the 3D viewport using mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
 
@@ -364,7 +365,7 @@
         </figure>
 
         <!-- ── SECTION 5 ── -->
-        <h2 id="playback">Playback Controls</h2>
+        <h2 id="playback"><span class="step-num">5</span>Playback Controls</h2>
 
         <p>The playback controls are located in the bar <strong>below the viewport</strong>. They let you play, pause, and adjust the speed of the animation.</p>
 
@@ -387,7 +388,7 @@
 
 
         <!-- ── SECTION 6 ── -->
-        <h2 id="timeline">Timeline &amp; Frame Counter</h2>
+        <h2 id="timeline"><span class="step-num">6</span>Timeline &amp; Frame Counter</h2>
 
         <p>The timeline spans the center of the playback controls bar and shows your current position within the recording. The frame counter to its right gives you precise frame information.</p>
 
@@ -410,21 +411,13 @@
           <div>
             <div class="related-label">Related articles</div>
                         <div class="related-grid">
-              <a href="reading-the-kim-lhc-report-results.html" class="related-card">
-                <span class="related-card-cat">KIM-LHC</span>
-                <span class="related-card-title">Reading the KIM-LHC Report Results</span>
-              </a>
-              <a href="reading-the-niosh-report-results.html" class="related-card">
+              <a href="niosh-report-settings.html" class="related-card">
                 <span class="related-card-cat">NIOSH</span>
-                <span class="related-card-title">Reading the NIOSH Report Results</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
-              <a href="exporting-reports.html" class="related-card">
-                <span class="related-card-cat">Platform</span>
-                <span class="related-card-title">Exporting Reports</span>
-              </a>
-              <a href="motion-data-processing-explained.html" class="related-card">
-                <span class="related-card-cat">Platform</span>
-                <span class="related-card-title">Motion Data Processing Explained</span>
+              <a href="kim-lhc-report-settings.html" class="related-card">
+                <span class="related-card-cat">KIM-LHC</span>
+                <span class="related-card-title">KIM-LHC Report Settings</span>
               </a>
             </div>
           </div>
