@@ -53,8 +53,8 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #64748b; }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #64748b; border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
@@ -237,7 +237,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          7 min read
+          6 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -435,10 +435,14 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-            <div class="related-grid">
+                        <div class="related-grid">
               <a href="license-activation-guide.html" class="related-card">
-                <span class="related-card-cat">Licensing</span>
+                <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">License &amp; Activation Guide</span>
+              </a>
+              <a href="whats-included-in-your-license.html" class="related-card">
+                <span class="related-card-cat">Support</span>
+                <span class="related-card-title">What&#39;s Included in Your License</span>
               </a>
               <a href="troubleshooting-common-issues.html" class="related-card">
                 <span class="related-card-cat">Support</span>
