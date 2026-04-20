@@ -85,7 +85,7 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
@@ -100,7 +100,7 @@
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-right: 10px; flex-shrink: 0; line-height: 1; }
 
     /* Media placeholders */
     .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
@@ -135,14 +135,14 @@
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
     .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
-    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-medium { background: rgba(227,173,33,.12); color: #e3ad21; }
     .risk-high   { background: rgba(234,82,59,.12);  color: #ea523b; }
-    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+    .risk-vhigh  { background: rgba(234,82,59,.12);  color: #ea523b; }
 
     /* Workflow steps */
     .workflow-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; line-height: 1; margin-top: 0; }
     .workflow-step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
 
@@ -653,10 +653,6 @@
               <a href="reading-the-niosh-report-results.html" class="related-card">
                 <span class="related-card-cat">NIOSH</span>
                 <span class="related-card-title">Reading the NIOSH Report Results</span>
-              </a>
-              <a href="motion-data-processing-explained.html" class="related-card">
-                <span class="related-card-cat">Platform</span>
-                <span class="related-card-title">Motion Data Processing Explained</span>
               </a>
             </div>
           </div>
