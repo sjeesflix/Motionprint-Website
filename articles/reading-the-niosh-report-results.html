@@ -136,9 +136,9 @@
     .zone-table tr:last-child td { border-bottom: none; }
     .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
     .zone-green  { background: #10b981; }
-    .zone-yellow { background: #f97316; }
+    .zone-yellow { background: #e3ad21; }
     .zone-red    { background: #ef4444; }
-    .zone-orange { background: #f97316; }
+    .zone-orange { background: #e3ad21; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -330,7 +330,7 @@
         <h4>Single-task view</h4>
         <ul>
           <li>A label identifying the assessed frame (e.g. "Single Lift at Frame 120").</li>
-          <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), orange (1.0–3.0), red (&gt; 3.0).</li>
+          <li>A colour-coded <strong>LI badge</strong> — green (≤ 1.0), yellow (1.0–3.0), red (&gt; 3.0).</li>
           <li>The actual load weight and the Recommended Weight Limit (RWL) side by side.</li>
         </ul>
 
@@ -409,7 +409,7 @@
               <td><strong>LI / STLI</strong></td>
               <td>
                 <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 1.0–2.0 &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
                 <span class="zone-dot zone-red"></span>Red 2.0–3.0+
               </td>
             </tr>
@@ -417,7 +417,7 @@
               <td><strong>H</strong></td>
               <td>
                 <span class="zone-dot zone-green"></span>Green ≤36 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 36–52 cm &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
                 <span class="zone-dot zone-red"></span>Red &gt;52 cm
               </td>
             </tr>
@@ -425,9 +425,9 @@
               <td><strong>V</strong></td>
               <td>
                 <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 20–40 cm &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 20–40 cm &nbsp;
                 <span class="zone-dot zone-green"></span>Green 40–110 cm &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 110–130 cm &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 110–130 cm &nbsp;
                 <span class="zone-dot zone-red"></span>Red &gt;130 cm
               </td>
             </tr>
@@ -435,7 +435,7 @@
               <td><strong>A</strong></td>
               <td>
                 <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 45–90° &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
                 <span class="zone-dot zone-red"></span>Red 90–135°
               </td>
             </tr>
@@ -444,7 +444,7 @@
 
         <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync.</p>
 
-        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, colour-coded spheres appear on the 3D avatar at the shoulders, wrists, and trunk/back. The sphere colours reflect the risk level for the currently selected variable at the current frame — green for low risk, orange for medium risk, and red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
+        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, colour-coded spheres appear on the 3D avatar at the shoulders, wrists, and trunk/back. The sphere colours reflect the risk level for the currently selected variable at the current frame — green for low risk, yellow for medium risk, and red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
 
         <h3>Right-side panel</h3>
         <p>A fixed panel to the right of the viewport shows three sections that update as you scrub through frames:</p>
