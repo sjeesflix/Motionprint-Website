@@ -292,7 +292,7 @@
         <p>This produces a dense per-frame dataset: for a recording at 60 Hz, there are 60 snapshots of the full body pose per second. The entire recording becomes a time-series of positions, orientations, and angles that the processing pipeline works through frame by frame.</p>
 
         <h3>Currently supported: Xsens MVNX</h3>
-        <p>Motionprint Ergo currently supports <strong>Xsens MVNX</strong> — an XML format exported from Xsens MVN Analyze Pro. Each sensor unit in the Xsens MVN system contains an accelerometer and gyroscope. The MVN Engine fuses the raw signals from all body-worn sensors into a clean, drift-corrected full-body pose at every frame. The MVNX file contains the output of this fusion process, not the raw sensor signals themselves.</p>
+        <p>Motionprint Ergo currently supports <strong>Xsens MVNX</strong> — an XML format exported from Xsens MVN Analyze Pro. Each sensor unit in the Xsens MVN system contains an accelerometer and gyroscope. The MVN Engine fuses the raw signals from all body-worn sensors into a clean, drift-corrected full-body pose at every frame. The MVNX file contains the output of this fusion process, not the raw sensor signals themselves. For step-by-step instructions on importing your recordings, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
         <p>The data channels read from each MVNX file are:</p>
         <ul>
           <li><strong>Segment positions</strong> — world-space (x, y, z) coordinates for each of the 23 body segments at every frame</li>
@@ -369,7 +369,7 @@
 
         <!-- ── SECTION 5 ── -->
         <h2 id="scoring"><span class="step-num">5</span> Assessment-Specific Scoring</h2>
-        <p>Once biomechanical variables are derived, the selected assessment method applies its scoring logic. Each method defines which variables it needs and how they combine into a risk score. How the NIOSH Lifting Equation and KIM-LHC specifically use these variables — including their formulas, multipliers, and risk classification — is covered in the dedicated articles for each method.</p>
+        <p>Once biomechanical variables are derived, the selected assessment method applies its scoring logic. Each method defines which variables it needs and how they combine into a risk score. How each assessment method specifically uses these variables — including its formulas, multipliers, and risk classification — is covered in the dedicated article for that method.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
