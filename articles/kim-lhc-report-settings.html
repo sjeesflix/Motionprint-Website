@@ -297,7 +297,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Gender affects load rating calculations</div>
-            <p>Unlike NIOSH, gender in KIM-LHC directly affects scoring: men and women have different reference values in the load rating table. When gender is hidden, the app applies female values as the conservative default. See the <a href="understanding-kim-lhc-assessment.html#load-rating">Understanding the KIM-LHC Assessment</a> article for the default load rating tables.</p>
+            <p>Gender in KIM-LHC directly affects scoring: men and women have different reference values in the load rating table. When gender is hidden, the app applies female values as the conservative default. See the <a href="understanding-kim-lhc-assessment.html#load-rating">Understanding the KIM-LHC Assessment</a> article for the default load rating tables.</p>
           </div>
         </div>
 
@@ -346,7 +346,7 @@
 
         <p>The load weight scoring table lets you override the BAuA default load rating values used in the assessment. The editor shows two rows — <strong>Men</strong> and <strong>Women</strong> — across ten weight bin columns. Each cell is an editable integer between 0 and 100, representing the load rating score for that gender and weight category.</p>
 
-        <p>The weight bins are: 0–3, 3–5, 5–10, 10–15, 15–20, 20–25, 25–30, 30–35, 35–40, and &gt;40 kg. The first column (0–3 kg) has a separate <strong>Enable 0–3 kg</strong> checkbox that is off by default. When disabled, the 0–3 kg weight bin is hidden on the input page and unavailable for task definition. A <strong>Reset to defaults</strong> button restores all values to the BAuA standard reference tables.</p>
+        <p>The weight bins are: 3–5, 5–10, 10–15, 15–20, 20–25, 25–30, 30–35, 35–40, and &gt;40 kg. A <strong>Reset to defaults</strong> button restores all values to the BAuA standard reference tables.</p>
 
         <p>Default values (BAuA reference):</p>
 
@@ -354,19 +354,19 @@
           <thead>
             <tr>
               <th></th>
-              <th>0–3</th><th>3–5</th><th>5–10</th><th>10–15</th><th>15–20</th>
+              <th>3–5</th><th>5–10</th><th>10–15</th><th>15–20</th>
               <th>20–25</th><th>25–30</th><th>30–35</th><th>35–40</th><th>&gt;40</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Men</td>
-              <td>2</td><td>4</td><td>6</td><td>8</td><td>11</td>
+              <td>4</td><td>6</td><td>8</td><td>11</td>
               <td>15</td><td>25</td><td>35</td><td>75</td><td>100</td>
             </tr>
             <tr>
               <td>Women</td>
-              <td>4</td><td>6</td><td>9</td><td>12</td><td>25</td>
+              <td>6</td><td>9</td><td>12</td><td>25</td>
               <td>75</td><td>85</td><td>100</td><td>100</td><td>100</td>
             </tr>
           </tbody>
@@ -433,7 +433,7 @@
 
         <p>PDF and Excel exports each have their own filename template, both defaulting to:</p>
 
-        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{record_date}_{report_type}</p>
+        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{current_date}_{report_type}</p>
 
         <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically. For a full overview of available variables, validation rules, fallback behaviour, and example templates, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
 
