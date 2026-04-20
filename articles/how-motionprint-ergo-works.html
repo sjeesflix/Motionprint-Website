@@ -111,7 +111,7 @@
       line-height: 1.15; letter-spacing: -.025em; color: var(--text);
       margin-top: 60px; margin-bottom: 18px;
       padding-bottom: 14px; border-bottom: 1px solid var(--border);
-      scroll-margin-top: 88px;
+      scroll-margin-top: 88px; display: flex; align-items: center;
     }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
@@ -130,7 +130,7 @@
       display: inline-flex; align-items: center; justify-content: center;
       width: 28px; height: 28px; border-radius: 50%;
       background: rgba(234,82,59,.1); color: var(--red);
-      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1;
       margin-right: 10px; vertical-align: middle; flex-shrink: 0;
     }
 
@@ -175,7 +175,7 @@
     .workflow-steps { list-style: none; padding-left: 0; margin-bottom: 16px; display: flex; flex-direction: column; gap: 0; }
     .workflow-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border); }
     .workflow-step:last-child { border-bottom: none; }
-    .workflow-step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .workflow-step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; margin-top: 0; }
     .workflow-step-body { flex: 1; }
     .workflow-step-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
@@ -356,7 +356,7 @@
             <div class="workflow-step-num">3</div>
             <div class="workflow-step-body">
               <div class="workflow-step-title">Configure the assessment</div>
-              <p class="workflow-step-desc">Trim the recording, define lifting moments, and enter task parameters and metadata.</p>
+              <p class="workflow-step-desc">Trim the recording, define lifting tasks, and enter task parameters and metadata.</p>
             </div>
           </li>
           <li class="workflow-step">
@@ -393,44 +393,47 @@
         <!-- ── SECTION 2 ── -->
         <h2 id="assessment"><span class="step-num">2</span> Selecting an Assessment</h2>
         <p>The first screen in the workflow is the report selection page, where you choose which ergonomic assessment method to apply to your recording.</p>
-        <p>Currently available methods include the <strong>NIOSH Lifting Equation</strong> — which produces a Lifting Index (LI) and Composite Lifting Index (CLI) for multi-task scenarios — and <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying), which maps risk to a four-level colour-coded band. Additional methods are planned and will appear on this screen as they become available.</p>
+        <p>Currently available methods include the <strong>NIOSH Lifting Equation</strong> — which produces a Lifting Index (LI) and Composite Lifting Index (CLI) for multi-task scenarios — and <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying), which maps risk to a four-level colour-coded band. Additional methods are planned and will appear on this screen as they become available. See <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a> and <a href="understanding-kim-lhc-assessment.html">Understanding the KIM-LHC Assessment</a> for a full breakdown of how each method works.</p>
 
         <!-- ── SECTION 3 ── -->
         <h2 id="upload"><span class="step-num">3</span> Uploading Motion Data</h2>
         <p>After selecting an assessment method, you choose your motion capture source and upload a recording file.</p>
 
         <h3>Supported input</h3>
-        <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze Pro. The recording contains segment positions, orientations, joint angles and foot contacts. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit).</p>
+        <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze Pro. The recording contains segment positions, orientations, joint angles and foot contacts. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit). For step-by-step setup instructions and supported hardware configurations, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
         <h3>File validation</h3>
         <p>Once a file is selected, the app validates it before allowing you to proceed. The validation checks that the file is valid, contains the required subject elements and frame rate attributes and has at least one normal motion frame with the required position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="configure"><span class="step-num">4</span> Configuring the Assessment</h2>
-        <p>The input configuration screen is where you prepare the recording for analysis. There are three things to set up here: trimming the recording, defining lifting moments, and entering task parameters.</p>
+        <p>The input configuration screen is where you prepare the recording for analysis. There are three things to set up here: trimming the recording, defining lifting tasks, and entering task parameters.</p>
 
         <h3>Trimming the recording</h3>
         <p>Use the playbar to set the start and end of the task window you want to analyse. This focuses the assessment on the relevant movement and excludes idle time at the beginning or end of the recording.</p>
 
-        <h3>Defining lifting moments</h3>
-        <p>A lifting moment is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete lift or handling action. You can define one or more lifting moments. The system analyses each moment separately and, if applicable, produces composite scores and/or averages across all of them when multiple moments are defined. This step is what gives the peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each user-defined moment.</p>
+        <h3>Defining lifting tasks</h3>
+        <p>A lifting task is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete lift or handling action. You can define one or more lifting tasks. The system analyses each moment separately and, if applicable, produces composite scores and/or averages across all of them when multiple lifting tasks are defined. This step is what gives the peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each user-defined lifting task.</p>
+
+
+        <figure class="article-figure">
+          <img src="liftingmoments.gif" alt="Defining lifting tasks on the playbar" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption>Defining lifting tasks — marking the start and end frame of each lifting movement on the playbar</figcaption>
+        </figure>
 
         <h3>Task parameters and metadata</h3>
         <p>The remaining fields on this screen depend on the selected assessment method. In general, you will enter task parameters such as load weight, task frequency, work duration, and body posture conditions — the exact fields vary by method. You will also enter metadata such as the workplace name, evaluator name, subject identifier, and assessment date, which appear in the exported report.</p>
 
-        <figure class="article-figure">
-          <img src="inputconfigscreen.jpg" alt="Input configuration screen" />
-        </figure>
 
         <!-- ── SECTION 5 ── -->
         <h2 id="processing"><span class="step-num">5</span> Processing</h2>
         <p>Once you confirm your configuration and press Process, the backend begins analysing the recording. A progress overlay appears with real-time status messages and a percentage bar, updated as each stage of the pipeline completes.</p>
-        <p>The processing pipeline extracts biomechanical variables frame by frame — segment positions, orientations, joint angles, posture deviation metrics — and then computes the risk scores for each lifting moment using the selected assessment method. All of this runs locally on your machine; no data is transmitted externally during processing.</p>
+        <p>The processing pipeline extracts biomechanical variables frame by frame — segment positions, orientations, joint angles, posture deviation metrics — and then computes the risk scores for each lifting task using the selected assessment method. All of this runs locally on your machine; no data is transmitted externally during processing.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Processing time</div>
-            <p>Processing time depends on recording length and the number of lifting moments defined. Most assessments complete within a few seconds. The progress bar gives you a live indication of how far through the analysis the backend is.</p>
+            <p>Processing time depends on recording length and the number of lifting tasks defined. Most assessments complete within a few seconds. The progress bar gives you a live indication of how far through the analysis the backend is.</p>
           </div>
         </div>
 
@@ -439,14 +442,15 @@
         <p>After processing completes, results are displayed across three tabs. Each tab surfaces a different layer of the assessment output.</p>
 
         <h3>Tab 1 — Score Overview</h3>
-        <p>The Score Overview tab presents the results in the same structure as the manual version of the selected assessment method — the way an assessor would traditionally fill it in on paper or in a spreadsheet. Each variable, multiplier, and sub-score is laid out as it appears in the official method, so the output is immediately familiar and auditable. The headline risk score is mapped to a colour-coded risk band with clearly defined thresholds and recommended actions. When multiple lifting moments are defined, composite or aggregated scores are shown alongside the per-moment breakdown.</p>
+        <p>The Score Overview tab presents the results in the same structure as the manual version of the selected assessment method — the way an assessor would traditionally fill it in on paper or in a spreadsheet. Each variable, multiplier, and sub-score is laid out as it appears in the official method, so the output is immediately familiar and auditable. The headline risk score is mapped to a colour-coded risk band with clearly defined thresholds and recommended actions. When multiple lifting tasks are defined, composite or aggregated scores are shown alongside the per-task breakdown.</p>
 
         <h3>Tab 2 — In-Depth Analysis</h3>
         <p>The In-Depth Analysis tab is built around a <strong>3D avatar viewer</strong>. The avatar plays back the worker's exact posture frame-by-frame, animated from the motion capture data. A risk score graph is displayed alongside the avatar and stays in sync — so as the avatar moves through the recording, the graph highlights where in the task the risk was highest.</p>
-        <p>Playback controls let you play, pause, adjust speed, and jump to any frame manually. You can also switch the viewport between the different lifting moments you defined, inspecting each one independently. This makes it straightforward to explain a specific finding — such as an asymmetric peak load — to a worker or a client in concrete visual terms.</p>
+        <p>Playback controls let you play, pause, adjust speed, and jump to any frame manually. You can also switch the viewport between the different lifting tasks you defined, inspecting each one independently. This makes it straightforward to explain a specific finding — such as an asymmetric peak load — to a worker or a client in concrete visual terms.</p>
 
         <figure class="article-figure">
           <img src="analysisloop.gif" alt="In-Depth Analysis tab — 3D avatar playback with risk score graph" />
+          <figcaption>In-depth analysis tab — 3D avatar playback, score-per-frame graph, frame insights, zone distribution and critical moments</figcaption>
         </figure>
 
         <h3>Tab 3 — Findings</h3>
@@ -457,13 +461,13 @@
         <p>Once you are satisfied with the results, you can export the assessment in PDF or Excel format — or both.</p>
 
         <h3>PDF report</h3>
-        <p>The PDF export is a fully formatted assessment document ready to share with clients, H&amp;S managers, or regulatory bodies. It includes the headline risk score, a breakdown of contributing risk factors, findings and recommendations, and embedded 3D posture screenshots from the In-Depth Analysis tab. Your organisation's branding — logo, accent colour, and company name — is applied automatically based on your settings in <strong>Settings → General</strong>.</p>
+        <p>The PDF export is a fully formatted assessment document ready to share with clients, H&amp;S managers, or regulatory bodies. It includes the headline risk score, a breakdown of contributing risk factors, findings and recommendations, and embedded 3D posture screenshots from the In-Depth Analysis tab. Your organisation's branding — logo, accent colour, and company name — is applied automatically based on your settings in <strong>Settings → General</strong>. See <a href="customization-branding.html">Customization &amp; Branding</a> for setup instructions.</p>
 
         <h3>Excel export</h3>
         <p>The Excel export provides structured data with colour-coded risk levels, making it straightforward to compare results across assessments, build trend charts, or feed data into an existing H&amp;S management system. Like the PDF, it includes embedded 3D posture screenshots alongside the tabulated score data.</p>
 
         <h3>Saving and filenames</h3>
-        <p>When you export, a file picker opens so you can choose exactly where to save the file. The app remembers the last-used folder for each report type and format. Export filenames follow a customisable template — for example, <code>{workstation}_{record_date}_{report_type}</code> — which you can configure in report settings.</p>
+        <p>When you export, a file picker opens so you can choose exactly where to save the file. The app remembers the last-used folder for each report type and format. Export filenames follow a customisable template — for example, <code>{workstation}_{current_date}_{report_type}</code> — which you can configure in report settings. See <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for the full list of available variables and options.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
