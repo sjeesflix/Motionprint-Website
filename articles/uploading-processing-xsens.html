@@ -85,7 +85,7 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
@@ -99,10 +99,13 @@
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
+    /* Step number circles */
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+
     /* Steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
     .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
-    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 12px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
 
     /* Req table */
@@ -138,6 +141,12 @@
     .checklist { list-style: none; padding: 0; margin: 16px 0 20px; display: flex; flex-direction: column; gap: 8px; }
     .checklist li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); line-height: 1.55; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
     .checklist li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px; }
+
+    /* Prereq cards */
+    .prereq-list { display: flex; flex-direction: column; gap: 8px; margin: 16px 0 24px; }
+    .prereq-item { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+    .prereq-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .prereq-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -259,7 +268,7 @@
         <ul class="toc-list">
           <li id="toc-before"><a href="#before">1. Before You Start</a></li>
           <li id="toc-requirements"><a href="#requirements">2. Recording Requirements</a></li>
-          <li id="toc-export"><a href="#export">3. Exporting from MVN Analyze Pro</a></li>
+          <li id="toc-export"><a href="#export">3. Exporting from MVN</a></li>
           <li id="toc-select"><a href="#select">4. Selecting the File</a></li>
           <li id="toc-errors"><a href="#errors">5. Validation Errors</a></li>
           <li id="toc-next"><a href="#next">6. After a Successful Load</a></li>
@@ -278,19 +287,31 @@
         <p class="article-lead">Motionprint Ergo supports motion capture data via Xsens MVNX files. This article walks you through exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="before">1. Before You Start</h2>
+        <h2 id="before"><span class="step-num">1</span> Before You Start</h2>
 
         <p>Make sure the following are in place before continuing.</p>
 
-        <ul class="checklist">
-          <li><strong>Motionprint Ergo installed and activated</strong> — if you haven't done this yet, see the <a href="getting-started-ergo.html">Getting Started guide</a>.</li>
-          <li><strong>MVN Analyze Pro installed</strong> — any recent version that supports MVNX version 4 export. This is standard in current releases.</li>
-          <li><strong>A completed Xsens motion capture session</strong> — the subject should have performed the work task being assessed. The recording must have been collected with a full sensor setup and a completed calibration in MVN Analyze Pro.</li>
-          <li><strong>The session file accessible on your computer</strong> — you will need to browse to it from within Motionprint Ergo. The app reads the file directly from disk, so it must remain in its location after you select it.</li>
-        </ul>
+        <div class="prereq-list">
+          <div class="prereq-item">
+            <div class="prereq-title">Motionprint Ergo installed and activated</div>
+            <p class="prereq-desc">If you haven't done this yet, see the <a href="getting-started-ergo.html">Getting Started guide</a>.</p>
+          </div>
+          <div class="prereq-item">
+            <div class="prereq-title">MVN Analyze Pro installed</div>
+            <p class="prereq-desc">Any recent version that supports MVNX version 4 export — this is standard in current releases.</p>
+          </div>
+          <div class="prereq-item">
+            <div class="prereq-title">A completed Xsens motion capture session</div>
+            <p class="prereq-desc">The subject should have performed the work task being assessed. The recording must have been collected with a full sensor setup and a completed calibration in MVN Analyze Pro.</p>
+          </div>
+          <div class="prereq-item">
+            <div class="prereq-title">The session file accessible on your computer</div>
+            <p class="prereq-desc">You will need to browse to it from within Motionprint Ergo. The app reads the file directly from disk, so it must remain in its location after you select it.</p>
+          </div>
+        </div>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="requirements">2. Recording Requirements — What the File Must Contain</h2>
+        <h2 id="requirements"><span class="step-num">2</span> Recording Requirements</h2>
 
         <p>Before covering the export steps, it is worth understanding what makes a recording valid. The most common source of errors is not a software misconfiguration — it is a recording that is missing required data, either because of how the session was captured or because of the export settings used. Getting this right once prevents most issues.</p>
 
@@ -317,7 +338,7 @@
               <td>Used by the backend to map body segment orientations. The T-pose frame is included automatically when exporting a properly calibrated session with all data points checked. Without it, validation fails immediately.</td>
             </tr>
             <tr>
-              <td><code>frameRate</code> attribute</td>
+              <td>frameRate attribute</td>
               <td>Required to calculate timing-based metrics. Must be present on the subject element.</td>
             </tr>
             <tr>
@@ -329,7 +350,7 @@
               <td>Segment orientations are used for posture angles including trunk bending, twisting, and wrist angles.</td>
             </tr>
             <tr>
-              <td><code>&lt;subject&gt;</code> element</td>
+              <td>&lt;subject&gt; element</td>
               <td>Top-level structural requirement. Its absence means the file is not a valid MVNX file.</td>
             </tr>
           </tbody>
@@ -348,7 +369,7 @@
         </div>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="export">3. Exporting from MVN Analyze Pro</h2>
+        <h2 id="export"><span class="step-num">3</span> Exporting from MVN</h2>
 
         <p>The steps below describe the settings that matter for compatibility with Motionprint Ergo. The exact menu layout in MVN Analyze Pro may vary slightly between versions, but the core export options — format, version, and data selection — are present in all recent releases.</p>
 
@@ -366,7 +387,7 @@
         <p>There is no file size limit imposed by Motionprint Ergo, and MVNX files have been tested successfully with recordings up to one hour in length. That said, recording length should reflect a representative work cycle rather than an entire shift — a few minutes of task activity is typically sufficient.</p>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="select">4. Selecting the File in Motionprint Ergo</h2>
+        <h2 id="select"><span class="step-num">4</span> Selecting the File in Motionprint Ergo</h2>
 
         <p>Once you have a valid MVNX file, the flow inside Motionprint Ergo is straightforward.</p>
 
@@ -387,7 +408,7 @@
         </div>
 
         <!-- ── SECTION 5 ── -->
-        <h2 id="errors">5. Validation Errors — What They Mean and How to Fix Them</h2>
+        <h2 id="errors"><span class="step-num">5</span> Validation Errors</h2>
 
         <p>Validation happens in two stages. The first stage is a fast structural check that runs as soon as you select a file — errors here are shown immediately. The second stage is a deeper data completeness check that runs during processing — errors here appear if a specific data stream required by the assessment method is absent from the extracted variables.</p>
 
@@ -463,7 +484,7 @@
         <p>The fix for all stage 2 errors is the same: re-export from MVN Analyze Pro with MVNX version 4 and all data points checked. These errors indicate that individual data streams were deselected during the original export.</p>
 
         <!-- ── SECTION 6 ── -->
-        <h2 id="next">6. After a Successful File Load</h2>
+        <h2 id="next"><span class="step-num">6</span> After a Successful File Load</h2>
 
         <p>When the file passes validation, the app saves the file path and immediately navigates to the <strong>Input Configuration</strong> page for your chosen assessment method. From here you can:</p>
 
@@ -480,18 +501,14 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
+                                    <div class="related-grid">
               <a href="getting-started-ergo.html" class="related-card">
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">Getting Started with Motionprint Ergo</span>
               </a>
-              <a href="how-motionprint-ergo-works.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">How Motionprint Ergo Works</span>
-              </a>
-              <a href="troubleshooting-common-issues.html" class="related-card">
-                <span class="related-card-cat">Support</span>
-                <span class="related-card-title">Troubleshooting Common Issues</span>
+              <a href="motion-data-processing-explained.html" class="related-card">
+                <span class="related-card-cat">Platform</span>
+                <span class="related-card-title">Motion Data Processing Explained</span>
               </a>
             </div>
           </div>
