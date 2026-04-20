@@ -80,7 +80,7 @@
     .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
@@ -121,13 +121,13 @@
     .zone-table tr:last-child td { border-bottom: none; }
     .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
     .zone-green  { background: #10b981; }
-    .zone-yellow { background: #f59e0b; }
+    .zone-yellow { background: #f97316; }
     .zone-red    { background: #ef4444; }
     .zone-orange { background: #f97316; }
 
     .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
     .dot-green  { background: #10b981; }
-    .dot-yellow { background: #f59e0b; }
+    .dot-yellow { background: #f97316; }
     .dot-red    { background: #ef4444; }
 
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -244,11 +244,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-overview"><a href="#overview">Overview</a></li>
-          <li id="toc-score"><a href="#score-overview">1. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">2. Analysis</a></li>
-          <li id="toc-findings"><a href="#findings">3. Findings</a></li>
-          <li id="toc-export"><a href="#export">Export</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-score"><a href="#score-overview">2. Score Overview</a></li>
+          <li id="toc-analysis"><a href="#analysis">3. Analysis</a></li>
+          <li id="toc-findings"><a href="#findings">4. Findings</a></li>
+          <li id="toc-export"><a href="#export">5. Export</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -264,7 +264,7 @@
         <p class="article-lead">Once a KIM-LHC assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through every element in the results view — what each section shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
 
         <!-- ── OVERVIEW ── -->
-        <h2 id="overview">Report structure</h2>
+        <h2 id="overview"><span class="step-num">1</span> Report structure</h2>
 
         <p>The report opens with a tab bar at the top. Depending on your KIM-LHC report settings, you will see two or three tabs:</p>
 
@@ -284,37 +284,49 @@
           </div>
         </div>
 
+
+        <figure style="margin:24px 0;">
+          <img src="../printscreens/kim-lhcoverview.jpg" alt="Score Overview tab in Motionprint Ergo showing the KIM-LHC result" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Score overview tab — showing the complete KIM-LHC result</figcaption>
+        </figure>
+
         <!-- ── SECTION 1 ── -->
-        <h2 id="score-overview"><span class="step-num">1</span> Score Overview</h2>
+        <h2 id="score-overview"><span class="step-num">2</span> Score Overview</h2>
 
         <p>The Score Overview tab gives you the complete KIM-LHC result across all scoring components, presented in a structured layout you can read at a glance and share in a report.</p>
 
+        <p>Throughout the Score Overview tab, each component value is displayed alongside a color-coded risk dot: <span class="color-dot dot-green"></span> green for low risk, <span class="color-dot dot-yellow"></span> orange for elevated risk, and <span class="color-dot dot-red"></span> red for high risk.</p>
+
         <h3>Lifting task selector (multi-task only)</h3>
 
-        <p>When the assessment contains two or more lifting tasks, a dropdown at the top of the tab lets you switch between them. Individual task entries show the weight category and frame range for that task. The <strong>Average (all moments)</strong> option — if it appears — shows the aggregated result across all tasks. In average mode, only the General information card and Total Score Summary card are displayed; all detailed component blocks are hidden, and values are shown to one decimal place.</p>
+        <p>When the assessment contains two or more lifting tasks, a dropdown at the top of the tab lets you switch between them. Individual task entries show the weight category and frame range for that task. The <strong>Average (all moments)</strong> option — if enabled in settings — shows the aggregated result across all tasks. In average mode, only the General information card and Total Score Summary card are displayed; all detailed component blocks are hidden, and values are shown to one decimal place.</p>
 
         <h3>General information card</h3>
 
-        <p>The top-left card (335 px) displays the assessment session's identity fields. All fields can be edited inline by clicking the Edit button at the top of the report. The card shows Workplace, Evaluator (hidden if "Hide evaluator name" is enabled in settings), and Operator (hidden if "Hide operator name" is enabled).</p>
+        <p>The top-left card displays metadata about the assessment session. All fields can be edited inline by clicking the Edit button at the top of the report.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
+            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if the privacy setting "Hide evaluator name" is enabled.</td></tr>
+            <tr><td>Operator</td><td>The worker being assessed. Hidden if "Hide operator name" is enabled.</td></tr>
+            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+          </tbody>
+        </table>
 
         <h3>Total Score Summary card</h3>
 
-        <p>The top-right card (335 px) shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
+        <p>The top-right card shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
 
         <table class="info-table" style="font-size:13px;">
-          <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Yellow</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
+          <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Orange</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
           <tbody>
             <tr>
-              <td>Effective load weight (men)</td>
-              <td>≤ 8</td>
-              <td>9–25</td>
-              <td>&gt; 25</td>
-            </tr>
-            <tr>
-              <td>Effective load weight (women)</td>
-              <td>≤ 12</td>
-              <td>13–85</td>
-              <td>&gt; 85</td>
+              <td>Effective load weight</td>
+              <td>&lt; 15 kg</td>
+              <td>15 – 30 kg</td>
+              <td>&gt; 30 kg</td>
             </tr>
             <tr>
               <td>Load handling conditions</td>
@@ -349,8 +361,8 @@
           <thead><tr><th>Total Score</th><th>Risk level</th></tr></thead>
           <tbody>
             <tr><td><span class="zone-dot zone-green"></span>&lt; 20</td><td>Low risk</td></tr>
-            <tr><td><span class="zone-dot zone-yellow" style="background:#d4e85b"></span>20–&lt; 50</td><td>Slightly increased risk</td></tr>
-            <tr><td><span class="zone-dot zone-yellow"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
+            <tr><td><span class="zone-dot zone-green"></span>20–&lt; 50</td><td>Slightly increased risk</td></tr>
+            <tr><td><span class="zone-dot zone-orange"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
             <tr><td><span class="zone-dot zone-red"></span>≥ 100</td><td>High risk</td></tr>
           </tbody>
         </table>
@@ -367,21 +379,21 @@
 
         <h3>Load Handling Conditions</h3>
 
-        <p>A three-row display showing the Good (0), Restricted (2), and Unfavorable (4) options with their score values. The active row — determined by automatic analysis of the motion data — is highlighted with a color-coded dot (green / yellow / red).</p>
+        <p>A three-row display showing the Good (0), Restricted (2), and Unfavorable (4) options with their score values. The active row — determined by automatic analysis of the motion data — is highlighted.</p>
 
         <h3>Body Postures</h3>
 
-        <p>Displayed in the left column of the detail area. A 10-row combination grid shows all possible start/finish posture pairs with SVG illustrations. The columns are labelled <strong>Start/Finish</strong> and <strong>Finish/Start</strong> to indicate that the combination is symmetric — the same score applies regardless of which posture is start vs. finish. The active combination determined by the motion analysis is highlighted. Possible scores: 0, 3, 5, 7, 9, 10, 13, 15, 18, 20.</p>
+        <p>Displayed in the left column of the detail area. A 10-row combination grid shows all possible start/finish posture pairs. The columns are labelled <strong>Start/Finish</strong> and <strong>Finish/Start</strong> to indicate that the combination is symmetric — the same score applies regardless of which posture is start vs. finish. The active combination determined by the motion analysis is highlighted. Possible scores: 0, 3, 5, 7, 9, 10, 13, 15, 18, 20.</p>
 
         <h3>Additional Points</h3>
 
-        <p>Displayed in the right column, stacked above the Total Body Score. Four sub-scores are shown, each with its own value and color-coded risk dot:</p>
+        <p>Displayed in the right column, stacked above the Total Body Score. Four sub-scores are shown, each with its own value:</p>
 
         <ul>
-          <li><strong>Trunk twisting / side-bending</strong> — score 0, 2, or 4, derived from the percentage of frames with significant trunk rotation or lateral flexion.</li>
-          <li><strong>Load distance to body</strong> — score 0, 2, or 4, derived from frame-by-frame analysis of hand-to-body distance.</li>
-          <li><strong>Hands between elbow and shoulder</strong> — score 0, 1, or 2, derived from the percentage of frames with hands in this height range.</li>
-          <li><strong>Hands above shoulder</strong> — score 0, 2, or 4, derived from the percentage of frames with hands above shoulder height.</li>
+          <li><strong>Trunk twisting / side-bending</strong> — score 0, 1, or 3, derived from the percentage of frames with significant trunk rotation or lateral flexion.</li>
+          <li><strong>Load distance to body</strong> — score 0, 1, or 3, derived from frame-by-frame analysis of hand-to-body distance.</li>
+          <li><strong>Hands between elbow and shoulder</strong> — score 0, 0.5, or 1, derived from the percentage of frames with hands in this height range.</li>
+          <li><strong>Hands above shoulder</strong> — score 0, 1, or 2, derived from the percentage of frames with hands above shoulder height.</li>
         </ul>
 
         <p>The four additional point values are summed, then capped at 6 points before contributing to the Total Body Score.</p>
@@ -410,12 +422,17 @@
 
         <h3>Work Organization</h3>
 
-        <p>A three-row display showing Good (0), Restricted (2), and Unfavorable (4) options. The active row — set on the input page — is highlighted with a color-coded dot.</p>
+        <p>A three-row display showing Good (0), Restricted (2), and Unfavorable (4) options. The active row — set on the input page — is highlighted.</p>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="analysis"><span class="step-num">2</span> Analysis</h2>
+        <h2 id="analysis"><span class="step-num">3</span> Analysis</h2>
 
         <p>The Analysis tab is where you go beyond the summary and explore how risk variables evolve across the entire lifting movement. It is built around an interactive 3D viewer and a frame-by-frame score graph. The Analysis tab shows individual lifting tasks only — the average option is not available here.</p>
+
+        <figure style="margin:24px 0;">
+          <img src="analysisloop.gif" alt="In-depth analysis tab in Motionprint Ergo showing the 3D viewer, score graph, and frame insights" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">In-depth analysis tab — 3D viewer, score-per-frame graph, frame insights, zone distribution and critical moments</figcaption>
+        </figure>
 
         <h3>Variable selector</h3>
 
@@ -470,12 +487,12 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Tip: identify the contributing factors</div>
-            <p>Switch between variables (Total score, trunk twisting, load distance, hand height, hand/arm position) to understand which factor is driving the risk score at each point in the lift. The zone distribution and graph together make this immediately visible across the full task duration.</p>
+            <p>Switch between variables (Total score, load handling conditions, trunk twisting, load distance, hand height, hand/arm position) to understand which factor is driving the risk score at each point in the lift. The zone distribution and graph together make this immediately visible across the full task duration.</p>
           </div>
         </div>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="findings"><span class="step-num">3</span> Findings</h2>
+        <h2 id="findings"><span class="step-num">4</span> Findings</h2>
 
         <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the KIM-LHC report settings.</p>
 
@@ -503,7 +520,7 @@
         </ul>
 
         <!-- ── EXPORT ── -->
-        <h2 id="export">Export</h2>
+        <h2 id="export"><span class="step-num">5</span> Export</h2>
 
         <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the KIM-LHC report settings. The exported file includes:</p>
 
