@@ -1409,11 +1409,12 @@
 
   // ── Support form ──
   (function() {
+    var WEBHOOK_URL = 'https://192-168-2-17.felixwolbert.direct.quickconnect.to/motionprint-contact/contact';
     var supForm = document.getElementById('supportForm');
     if (!supForm) return;
     var supBtn = document.getElementById('supSubmitBtn');
     var supStatus = document.getElementById('supStatus');
-    supForm.addEventListener('submit', function(e) {
+    supForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       supStatus.style.display = 'none'; supStatus.textContent = '';
       var nameF    = supForm.querySelector('[name="name"]');
@@ -1435,19 +1436,28 @@
         supStatus.textContent = emailInvalid ? 'Please enter a valid email address.' : 'Please fill in all required fields.';
         return;
       }
-      var name    = nameF.value.trim();
-      var email   = emailF.value.trim();
-      var company = companyF.value.trim();
-      var subject = (subjectF ? subjectF.value.trim() : '') || 'Support request';
-      var message = messageF ? messageF.value.trim() : '';
-      var body = 'Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + company + '\n\n' + message;
-      var mailto = 'mailto:support@motion-print.com'
-        + '?subject=' + encodeURIComponent('[Support] ' + subject)
-        + '&body='    + encodeURIComponent(body);
-      window.location.href = mailto;
-      supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
-      supStatus.textContent = 'Your email client should open with the message pre-filled. If nothing happens, email us directly at support@motion-print.com.';
-      supForm.reset();
+      supBtn.disabled = true; supBtn.textContent = 'Sending…';
+      try {
+        var res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:    nameF.value.trim(),
+            email:   emailF.value.trim(),
+            company: companyF.value.trim(),
+            subject: subjectF ? subjectF.value.trim() : '',
+            message: messageF ? messageF.value.trim() : ''
+          })
+        });
+        if (res.ok) {
+          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
+          supStatus.textContent = "Message sent! We'll get back to you within one business day. A confirmation has been sent to your email.";
+          supForm.reset();
+        } else { throw new Error(); }
+      } catch(err) {
+        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
+        supStatus.textContent = 'Something went wrong. Please email us directly at support@motion-print.com.';
+      } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
     });
   })();
 </script>
