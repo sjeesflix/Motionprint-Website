@@ -1413,44 +1413,41 @@
     if (!supForm) return;
     var supBtn = document.getElementById('supSubmitBtn');
     var supStatus = document.getElementById('supStatus');
-    supForm.addEventListener('submit', async function(e) {
+    supForm.addEventListener('submit', function(e) {
       e.preventDefault();
       supStatus.style.display = 'none'; supStatus.textContent = '';
-      var nameF = supForm.querySelector('[name="name"]');
-      var emailF = supForm.querySelector('[name="email"]');
+      var nameF    = supForm.querySelector('[name="name"]');
+      var emailF   = supForm.querySelector('[name="email"]');
       var companyF = supForm.querySelector('[name="company"]');
+      var subjectF = supForm.querySelector('[name="subject"]');
+      var messageF = supForm.querySelector('[name="message"]');
       var valid = true;
       var emailInvalid = false;
       [nameF, emailF, companyF].forEach(function(f) {
         f.style.borderColor = f.value.trim() ? '' : '#ef4444';
         if (!f.value.trim()) valid = false;
       });
-      if (emailF.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value.trim())) { emailF.style.borderColor = '#ef4444'; valid = false; emailInvalid = true; }
+      if (emailF.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value.trim())) {
+        emailF.style.borderColor = '#ef4444'; valid = false; emailInvalid = true;
+      }
       if (!valid) {
         supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
         supStatus.textContent = emailInvalid ? 'Please enter a valid email address.' : 'Please fill in all required fields.';
         return;
       }
-      supBtn.disabled = true; supBtn.textContent = 'Sending…';
-      var subject = (supForm.querySelector('[name="subject"]').value || '').trim();
-      var data = {
-        topic: 'Support request',
-        name: nameF.value.trim(),
-        email: emailF.value.trim(),
-        company: companyF.value.trim(),
-        message: (subject ? 'Subject: ' + subject + '\n\n' : '') + (supForm.querySelector('[name="message"]').value || '').trim()
-      };
-      try {
-        var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        if (res.ok) {
-          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
-          supStatus.textContent = "Thanks! We'll get back to you shortly.";
-          supForm.reset();
-        } else { throw new Error(); }
-      } catch(err) {
-        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
-        supStatus.textContent = 'Something went wrong. Please email us directly at support@motion-print.com.';
-      } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
+      var name    = nameF.value.trim();
+      var email   = emailF.value.trim();
+      var company = companyF.value.trim();
+      var subject = (subjectF ? subjectF.value.trim() : '') || 'Support request';
+      var message = messageF ? messageF.value.trim() : '';
+      var body = 'Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + company + '\n\n' + message;
+      var mailto = 'mailto:support@motion-print.com'
+        + '?subject=' + encodeURIComponent('[Support] ' + subject)
+        + '&body='    + encodeURIComponent(body);
+      window.location.href = mailto;
+      supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
+      supStatus.textContent = 'Your email client should open with the message pre-filled. If nothing happens, email us directly at support@motion-print.com.';
+      supForm.reset();
     });
   })();
 </script>
