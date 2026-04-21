@@ -1298,6 +1298,8 @@
 </footer>
 
 <script>
+  var WORKER_URL = 'https://contact.motion-print.com/contact';
+
   // ── Generic category-group tab handler ──
   function setupCategoryGroup(opts) {
     var cards = document.querySelectorAll('a.video-cat-card[data-group="' + opts.group + '"][data-target]');
@@ -1370,7 +1372,6 @@
   document.querySelectorAll('a[href="#contact"]').forEach(function(link) { link.addEventListener('click', openContactForm); });
 
   (function() {
-    var WORKER_URL = 'https://contact.motion-print.com/contact';
     var form = document.getElementById('contactForm');
     var btn = document.getElementById('submitBtn');
     var status = document.getElementById('formStatus');
@@ -1448,4 +1449,4 @@
 </script>
 </body>
 </html>
-              
+               
