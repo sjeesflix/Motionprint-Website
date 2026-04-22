@@ -1483,7 +1483,7 @@
       <h2 class="cta-title">Ready to automate your<br> <em>ergonomic workflow?</em></h2>
       <p class="cta-sub">Book a demo and see Motionprint Ergo in action — we can use your own Xsens data.</p>
       <div class="cta-actions" id="ctaButtons">
-        <a href="#contact" class="btn btn-ghost" onclick="openContactForm(event)">Book a demo</a>
+        <a href="#contact" class="btn btn-ghost" onclick="openContactForm(event)">Request a demo</a>
       </div>
       <div class="contact-card" id="contactCard">
         <div class="form-header">
@@ -1692,7 +1692,7 @@
 
   // Contact form handler
   (function() {
-    const WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
+    const WORKER_URL = 'https://contact.motion-print.com/contact';
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('submitBtn');
     const status = document.getElementById('formStatus');
@@ -1729,8 +1729,13 @@
       // Submit
       btn.classList.add('loading');
       btn.disabled = true;
+      var topic = form.querySelector('[name="topic"]').value;
+            var supportTopics = ['Trial licence request', 'Method suggestion'];
+      var destination = supportTopics.indexOf(topic) !== -1 ? 'support' : 'info';
       var data = {
-        topic: form.querySelector('[name="topic"]').value,
+        destination: destination,
+        subject: topic,
+        topic: topic,
         name: name.value.trim(),
         email: email.value.trim(),
         company: company.value.trim(),
