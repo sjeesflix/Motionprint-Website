@@ -416,12 +416,14 @@
     var topicSelect = document.getElementById('formTopic');
     var el = (e && e.currentTarget) ? e.currentTarget : null;
     var btnText = el ? el.textContent.trim().toLowerCase() : '';
-    if (btnText.indexOf('contact') !== -1) {
-      title.textContent = 'Contact us'; topicSelect.value = 'General inquiry';
-    } else {
-      title.textContent = 'Request a demo'; topicSelect.value = 'Demo request';
+    if (!card.classList.contains('open')) {
+      if (btnText.indexOf('contact') !== -1) {
+        title.textContent = 'Contact us'; topicSelect.value = 'General inquiry';
+      } else {
+        title.textContent = 'Request a demo'; topicSelect.value = 'Demo request';
+      }
+      btns.style.display = 'none'; card.classList.add('open');
     }
-    if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
     setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
     setTimeout(function() { card.querySelector('input.form-input').focus(); }, 450);
   }
