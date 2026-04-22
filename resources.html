@@ -1382,8 +1382,8 @@
     var topicSelect = document.getElementById('formTopic');
     var el = (e && e.currentTarget) ? e.currentTarget : null;
     var btnText = el ? el.textContent.trim().toLowerCase() : '';
-    if (btnText.indexOf('contact') !== -1) { title.textContent = 'Contact us'; topicSelect.value = 'General inquiry'; }
-    else { title.textContent = 'Book a demo'; topicSelect.value = 'Demo request'; }
+    if (btnText.indexOf('contact') !== -1) { title.textContent = 'Contact us'; topicSelect.value = 'General inquiry'; window._cfDestination = 'support'; }
+    else { title.textContent = 'Book a demo'; topicSelect.value = 'Demo request'; window._cfDestination = 'info'; }
     if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
     setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
     setTimeout(function() { card.querySelector('input.form-input-cf').focus(); }, 450);
@@ -1413,7 +1413,7 @@
       if (!valid) { status.className = 'cf-status error'; status.textContent = 'Please fill in all required fields.'; return; }
       btn.classList.add('loading'); btn.disabled = true;
       var topic = form.querySelector('[name="topic"]').value;
-      var data = { destination: topic === 'Demo request' ? 'info' : 'support', subject: topic, topic: topic, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
+      var data = { destination: window._cfDestination || 'support', subject: topic, topic: topic, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
       try {
         var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         if (res.ok) { status.className = 'cf-status success'; status.textContent = "Thank you! We'll be in touch shortly."; form.reset(); }
