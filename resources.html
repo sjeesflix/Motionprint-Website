@@ -1224,7 +1224,7 @@
       <h2 class="cta-title">Ready to automate your<br><em>ergonomic workflow?</em></h2>
       <p class="cta-sub">Book a demo and see Motionprint Ergo in action with your own Xsens data.</p>
       <div class="cta-actions" id="ctaButtons">
-        <a href="#contact" class="btn btn-ghost">Book a demo</a>
+        <a href="#contact" class="btn btn-ghost">Request a demo</a>
       </div>
       <div class="contact-card" id="contactCard">
         <div class="form-header">
@@ -1383,7 +1383,7 @@
     var el = (e && e.currentTarget) ? e.currentTarget : null;
     var btnText = el ? el.textContent.trim().toLowerCase() : '';
     if (btnText.indexOf('contact') !== -1) { title.textContent = 'Contact us'; topicSelect.value = 'General inquiry'; window._cfDestination = 'support'; }
-    else { title.textContent = 'Book a demo'; topicSelect.value = 'Demo request'; window._cfDestination = 'info'; }
+    else { title.textContent = 'Request a demo'; topicSelect.value = 'Demo request'; window._cfDestination = 'info'; }
     if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
     setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
     setTimeout(function() { card.querySelector('input.form-input-cf').focus(); }, 450);
