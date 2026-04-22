@@ -1413,7 +1413,9 @@
       if (!valid) { status.className = 'cf-status error'; status.textContent = 'Please fill in all required fields.'; return; }
       btn.classList.add('loading'); btn.disabled = true;
       var topic = form.querySelector('[name="topic"]').value;
-      var data = { destination: window._cfDestination || 'support', subject: topic, topic: topic, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
+      var supportTopics = ['Trial licence request', 'Method suggestion'];
+      var destination = (window._cfDestination === 'info' && supportTopics.indexOf(topic) !== -1) ? 'support' : (window._cfDestination || 'support');
+      var data = { destination: destination, subject: topic, topic: topic, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
       try {
         var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         if (res.ok) { status.className = 'cf-status success'; status.textContent = "Thank you! We'll be in touch shortly."; form.reset(); }
