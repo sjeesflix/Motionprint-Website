@@ -1348,8 +1348,8 @@
     setupCategoryGroup({ group: 'kb', parentId: 'knowledge', subsectionClass: 'kb-subsection', backLinkClass: 'back-link-kb' });
   });
 
-  // ── KB inline click helpers (fallback for frameworks that swallow addEventListener) ──
-  function kbClick(targetId) {
+  // ── KB inline click helpers — assigned to window so inline onclick can always find them ──
+  window.kbClick = function(targetId) {
     var cards = document.querySelectorAll('a.video-cat-card[data-group="kb"]');
     var parentEl = document.getElementById('knowledge');
     var clickedCard = document.querySelector('a.video-cat-card[data-target="' + targetId + '"]');
@@ -1366,14 +1366,14 @@
         requestAnimationFrame(function() { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
       }
     }
-  }
-  function kbBack() {
+  };
+  window.kbBack = function() {
     var cards = document.querySelectorAll('a.video-cat-card[data-group="kb"]');
     var parentEl = document.getElementById('knowledge');
     cards.forEach(function(c) { c.classList.remove('is-active'); });
     document.querySelectorAll('.kb-subsection').forEach(function(s) { s.classList.remove('is-active'); });
     if (parentEl) { parentEl.style.paddingBottom = ''; parentEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  }
+  };
 
   // ── Contact form ──
   function openContactForm(e) {
@@ -1437,5 +1437,4 @@
   // ── Support form ──
   (function() {
     var supForm = document.getElementById('supportForm');
-    if (!supForm) return;
   
