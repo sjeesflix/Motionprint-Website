@@ -645,7 +645,7 @@
     <div class="video-cat-nav">
 
       <!-- A · Product Overview -->
-      <a href="#kb-overview" class="video-cat-card" data-target="kb-overview" data-group="kb">
+      <a href="#kb-overview" class="video-cat-card" data-target="kb-overview" data-group="kb" onclick="kbClick('kb-overview'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
         </div>
@@ -657,7 +657,7 @@
       </a>
 
       <!-- B · Assessment Methods -->
-      <a href="#kb-insights" class="video-cat-card" data-target="kb-insights" data-group="kb">
+      <a href="#kb-insights" class="video-cat-card" data-target="kb-insights" data-group="kb" onclick="kbClick('kb-insights'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
@@ -669,7 +669,7 @@
       </a>
 
       <!-- C · Getting Started -->
-      <a href="#kb-getting-started" class="video-cat-card" data-target="kb-getting-started" data-group="kb">
+      <a href="#kb-getting-started" class="video-cat-card" data-target="kb-getting-started" data-group="kb" onclick="kbClick('kb-getting-started'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         </div>
@@ -681,7 +681,7 @@
       </a>
 
       <!-- D · Using Reports -->
-      <a href="#kb-reports" class="video-cat-card" data-target="kb-reports" data-group="kb">
+      <a href="#kb-reports" class="video-cat-card" data-target="kb-reports" data-group="kb" onclick="kbClick('kb-reports'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
         </div>
@@ -693,7 +693,7 @@
       </a>
 
       <!-- E · Platform Features -->
-      <a href="#kb-features" class="video-cat-card" data-target="kb-features" data-group="kb">
+      <a href="#kb-features" class="video-cat-card" data-target="kb-features" data-group="kb" onclick="kbClick('kb-features'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
         </div>
@@ -705,7 +705,7 @@
       </a>
 
       <!-- F · Licensing & Administration -->
-      <a href="#kb-licensing" class="video-cat-card" data-target="kb-licensing" data-group="kb">
+      <a href="#kb-licensing" class="video-cat-card" data-target="kb-licensing" data-group="kb" onclick="kbClick('kb-licensing'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
@@ -717,7 +717,7 @@
       </a>
 
       <!-- G · Support -->
-      <a href="#kb-support" class="video-cat-card" data-target="kb-support" data-group="kb">
+      <a href="#kb-support" class="video-cat-card" data-target="kb-support" data-group="kb" onclick="kbClick('kb-support'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
@@ -735,7 +735,7 @@
 <!-- ── KB SUBSECTION A: PRODUCT OVERVIEW ── -->
 <section class="resources-section kb-subsection" id="kb-overview">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -770,7 +770,7 @@
 <!-- ── KB SUBSECTION B: METHODOLOGY ── -->
 <section class="resources-section kb-subsection" id="kb-insights">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -805,7 +805,7 @@
 <!-- ── KB SUBSECTION C: GETTING STARTED ── -->
 <section class="resources-section kb-subsection" id="kb-getting-started">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -840,7 +840,7 @@
 <!-- ── KB SUBSECTION D: USING REPORTS ── -->
 <section class="resources-section kb-subsection" id="kb-reports">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -911,7 +911,7 @@
 <!-- ── KB SUBSECTION E: PLATFORM FEATURES ── -->
 <section class="resources-section kb-subsection" id="kb-features">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -953,7 +953,7 @@
 <!-- ── KB SUBSECTION F: LICENSING & ADMIN ── -->
 <section class="resources-section kb-subsection" id="kb-licensing">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -988,7 +988,7 @@
 <!-- ── KB SUBSECTION G: SUPPORT ── -->
 <section class="resources-section kb-subsection" id="kb-support">
   <div class="container">
-    <a href="#knowledge" class="video-back-link back-link-kb">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
       <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
       Articles &amp; Documentation
     </a>
@@ -1348,6 +1348,33 @@
     setupCategoryGroup({ group: 'kb', parentId: 'knowledge', subsectionClass: 'kb-subsection', backLinkClass: 'back-link-kb' });
   });
 
+  // ── KB inline click helpers (fallback for frameworks that swallow addEventListener) ──
+  function kbClick(targetId) {
+    var cards = document.querySelectorAll('a.video-cat-card[data-group="kb"]');
+    var parentEl = document.getElementById('knowledge');
+    var clickedCard = document.querySelector('a.video-cat-card[data-target="' + targetId + '"]');
+    var wasActive = clickedCard && clickedCard.classList.contains('is-active');
+    cards.forEach(function(c) { c.classList.remove('is-active'); });
+    document.querySelectorAll('.kb-subsection').forEach(function(s) { s.classList.remove('is-active'); });
+    if (parentEl) { parentEl.style.paddingBottom = ''; }
+    if (!wasActive) {
+      if (clickedCard) { clickedCard.classList.add('is-active'); }
+      var section = document.getElementById(targetId);
+      if (section) {
+        section.classList.add('is-active');
+        if (parentEl) { parentEl.style.paddingBottom = '24px'; }
+        requestAnimationFrame(function() { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      }
+    }
+  }
+  function kbBack() {
+    var cards = document.querySelectorAll('a.video-cat-card[data-group="kb"]');
+    var parentEl = document.getElementById('knowledge');
+    cards.forEach(function(c) { c.classList.remove('is-active'); });
+    document.querySelectorAll('.kb-subsection').forEach(function(s) { s.classList.remove('is-active'); });
+    if (parentEl) { parentEl.style.paddingBottom = ''; parentEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+
   // ── Contact form ──
   function openContactForm(e) {
     if (e) e.preventDefault();
@@ -1411,37 +1438,4 @@
   (function() {
     var supForm = document.getElementById('supportForm');
     if (!supForm) return;
-    var supBtn = document.getElementById('supSubmitBtn');
-    var supStatus = document.getElementById('supStatus');
-    supForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      supStatus.style.display = 'none'; supStatus.textContent = '';
-      var nameF = supForm.querySelector('[name="name"]');
-      var emailF = supForm.querySelector('[name="email"]');
-      var companyF = supForm.querySelector('[name="company"]');
-      var valid = true;
-      [nameF, emailF, companyF].forEach(function(f) {
-        f.style.borderColor = f.value.trim() ? '' : '#ef4444';
-        if (!f.value.trim()) valid = false;
-      });
-      var invalidEmail = emailF.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value);
-      if (invalidEmail) { emailF.style.borderColor = '#ef4444'; valid = false; }
-      if (!valid) { supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca'; supStatus.textContent = invalidEmail ? 'Please enter a valid email address.' : 'Please fill in all required fields.'; return; }
-      supBtn.disabled = true; supBtn.textContent = 'Sending…';
-      var subject = (supForm.querySelector('[name="subject"]').value || '').trim();
-      var data = {
-        topic: 'Support request',
-        name: nameF.value.trim(),
-        email: emailF.value.trim(),
-        company: companyF.value.trim(),
-        message: (subject ? 'Subject: ' + subject + '\n\n' : '') + (supForm.querySelector('[name="message"]').value || '').trim()
-      };
-      try {
-        var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        if (res.ok) {
-          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
-          supStatus.textContent = "Thanks! We'll get back to you shortly.";
-          supForm.reset();
-        } else { throw new Error(); }
-      } catch(err) {
-        supStatus.style.display = 'block'; supStat
+  
