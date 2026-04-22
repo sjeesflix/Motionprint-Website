@@ -1177,12 +1177,12 @@
         <div id="supportFormIntro">
           <h3 style="font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;">Contact support</h3>
           <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:20px;">Didn't find your answer in the FAQ? Send us a message and we'll get back to you as soon as possible.</p>
-          <button type="button" class="btn btn-primary" id="showSupportForm" style="width:100%;justify-content:center;">Send a message</button>
+          <button type="button" class="btn btn-primary" id="showSupportForm" onclick="document.getElementById('supportFormIntro').style.display='none';document.getElementById('supportFormWrapper').style.display='block';" style="width:100%;justify-content:center;">Send a message</button>
         </div>
         <div id="supportFormWrapper" style="display:none">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
           <h3 style="font-size:18px;font-weight:700;color:var(--text);margin:0;">Contact support</h3>
-          <button type="button" id="hideSupportForm" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--muted);line-height:1;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+          <button type="button" id="hideSupportForm" onclick="document.getElementById('supportFormWrapper').style.display='none';document.getElementById('supportFormIntro').style.display='block';" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--muted);line-height:1;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
         </div>
         <form class="contact-form" id="supportForm" novalidate>
           <div class="form-row">
@@ -1344,7 +1344,9 @@
   }
 
   // setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' }); // commented out — tutorials section hidden
-  setupCategoryGroup({ group: 'kb',     parentId: 'knowledge',  subsectionClass: 'kb-subsection',    backLinkClass: 'back-link-kb'     });
+  document.addEventListener('DOMContentLoaded', function() {
+    setupCategoryGroup({ group: 'kb', parentId: 'knowledge', subsectionClass: 'kb-subsection', backLinkClass: 'back-link-kb' });
+  });
 
   // ── Contact form ──
   function openContactForm(e) {
@@ -1442,6 +1444,4 @@
           supForm.reset();
         } else { throw new Error(); }
       } catch(err) {
-        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
-        supStatus.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
-      } finally { supBtn.disabled = false; su
+        supStatus.style.display = 'block'; supStat
