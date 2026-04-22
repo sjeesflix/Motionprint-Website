@@ -335,11 +335,11 @@
     <h2>Want to talk? <em>We'd love to hear from you.</em></h2>
     <p>Whether you're curious about the product, exploring a partnership, or just want to share feedback — reach out directly.</p>
     <div class="about-cta-btns" id="ctaButtons">
-      <a href="#contact" class="btn btn-primary">Book a demo</a>
+      <a href="#contact" class="btn btn-primary">Request a demo</a>
     </div>
     <div class="contact-card" id="contactCard">
       <div class="form-header">
-        <div><h3 id="formTitle">Request a demo</h3><p class="form-sub">Fill in your details and we'll get back to you within one business day.</p></div>
+        <div><h3 id="formTitle">Request a demo</h3><p class="form-sub">Fill in your details and we'll get back to you as soon as possible.</p></div>
         <button type="button" class="form-close" onclick="closeContactForm()" aria-label="Close"><svg viewBox="0 0 16 16" width="18" height="18"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></button>
       </div>
       <form id="contactForm" novalidate>
@@ -419,7 +419,7 @@
     if (btnText.indexOf('contact') !== -1) {
       title.textContent = 'Contact us'; topicSelect.value = 'General inquiry';
     } else {
-      title.textContent = 'Book a demo'; topicSelect.value = 'Demo request';
+      title.textContent = 'Request a demo'; topicSelect.value = 'Demo request';
     }
     if (!card.classList.contains('open')) { btns.style.display = 'none'; card.classList.add('open'); }
     setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 30);
@@ -436,7 +436,7 @@
   document.querySelectorAll('a[href="#contact"]').forEach(function(link) { link.addEventListener('click', openContactForm); });
 
   (function() {
-    var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
+    var WORKER_URL = 'https://contact.motion-print.com/contact';
     var form = document.getElementById('contactForm');
     var btn = document.getElementById('submitBtn');
     var status = document.getElementById('formStatus');
@@ -450,7 +450,20 @@
       if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('invalid'); valid = false; }
       if (!valid) { status.className = 'form-status error'; status.textContent = 'Please fill in all required fields.'; return; }
       btn.classList.add('loading'); btn.disabled = true;
-      var data = { topic: form.querySelector('[name="topic"]').value, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
+      var topic = form.querySelector('[name="topic"]').value;
+      var supportTopics = ['Trial licence request', 'Method suggestion'];
+      var destination = supportTopics.indexOf(topic) !== -1 ? 'support' : 'info';
+      var data = {
+        destination: destination,
+        subject: topic,
+        topic: topic,
+        name: name.value.trim(),
+        email: email.value.trim(),
+        company: company.value.trim(),
+        role: form.querySelector('[name="role"]').value.trim(),
+        phone: form.querySelector('[name="phone"]').value.trim(),
+        message: form.querySelector('[name="message"]').value.trim()
+      };
       try {
         var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         if (res.ok) { status.className = 'form-status success'; status.textContent = "Thank you! We'll be in touch shortly."; form.reset(); }
