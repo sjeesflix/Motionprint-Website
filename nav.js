@@ -32,7 +32,7 @@ document.write(`
   <a href="index.html#pricing">Pricing</a>
   <a href="resources.html">Resources</a>
   <a href="about.html">About</a>
-  <a href="#contact" class="btn btn-primary">Request demo</a>
+  <a href="#contact" class="nav-demo mnav-cta">Request demo</a>
 </div>
 `);
 

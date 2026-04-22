@@ -788,8 +788,8 @@
           <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
           NIOSH &amp; KIM-LHC
         </div>
-        <div class="trust-sep"></div>
-        <div class="trust-item">
+        <div class="trust-sep trust-sep-pdf"></div>
+        <div class="trust-item trust-item-pdf">
           <svg viewBox="0 0 16 16"><path d="M13 10V13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h3"/><polyline points="8 9.5 13 2 10.5 2 13 2 13 4.5"/></svg>
           PDF &amp; Excel export
         </div>
@@ -1109,7 +1109,7 @@
           <div class="step-icon">
             <svg viewBox="0 0 22 22"><path d="M16 10l-5-5-5 5"/><line x1="11" y1="5" x2="11" y2="17"/><rect x="3" y="17" width="16" height="2" rx="1"/></svg>
           </div>
-          <h3 class="step-title">Upload your motion capture data</h3>
+          <h3 class="step-title"><span class="hide-mobile">Upload your motion capture data</span><span class="show-mobile">Upload motion capture data</span></h3>
         </div>
         <p class="step-desc">Export your recording and upload it directly into Motionprint Ergo. No complex setup or conversion required.</p>
         <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
@@ -1292,7 +1292,7 @@
             <span class="roi-label-value" id="val-manual"><span id="disp-manual">3</span><span class="roi-label-unit">h</span></span>
           </div>
           <input type="range" class="roi-slider" id="sl-manual" min="1" max="8" step="0.5" value="3">
-          <span class="roi-hint">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
+          <span class="roi-hint hide-mobile">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
         </div>
         <div class="roi-input-group">
           <div class="roi-label">
@@ -1383,7 +1383,7 @@
 
     // Update results
     document.getElementById('res-saved-each').textContent = savedEach > 0
-      ? (savedEach % 1 === 0 ? savedEach : savedEach.toFixed(1)) + 'h per assessment'
+      ? (savedEach % 1 === 0 ? savedEach : savedEach.toFixed(1)) + (window.innerWidth <= 768 ? 'h' : 'h per assessment')
       : '—';
     document.getElementById('res-hours-year').textContent = hoursYear > 0
       ? (hoursYear % 1 === 0 ? fmt(hoursYear) : fmt(Math.round(hoursYear * 10) / 10)) + ' hours'
@@ -1409,7 +1409,7 @@
     <div class="section-header">
       <span class="eyebrow">Pricing</span>
       <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-sub">Available per seat as an annual or monthly subscription. Every plan includes all current assessment methods and exports. New features added continuously — no per-report fees.</p>
+      <p class="section-sub">Available per seat as an annual or monthly subscription. Every plan includes all current assessment methods and exports. New features added continuously<span class="hide-mobile"> — no per-report fees</span>.</p>
     </div>
     <div class="pricing-grid">
 

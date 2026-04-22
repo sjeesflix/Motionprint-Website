@@ -38,3 +38,19 @@ nav {
   .nav-links, .nav-download { display: none; }
   .nav-hamburger { display: block; }
 }
+
+/* Mobile nav CTA button — matches top bar nav-demo */
+.mobile-nav .mnav-cta {
+  margin-top: 20px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--red);
+  border-radius: 6px;
+  border-bottom: none;
+  text-align: center;
+  justify-content: center;
+  transition: background-color .15s;
+}
+.mobile-nav .mnav-cta:hover { background: var(--red-light); color: #fff; }
