@@ -414,6 +414,7 @@
     .method-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
     .method-suggest { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 600; color: var(--red); text-decoration: none; }
     .method-suggest:hover { text-decoration: underline; }
+    a.method-card { display: block; color: inherit; text-decoration: none; }
 
     /* ── FOR WHO ── */
     .forwho { padding: 96px 0; background: var(--white); }
@@ -1185,18 +1186,20 @@
       <p class="section-sub">Two validated methods available now, with more continuously being added to the platform.</p>
     </div>
     <div class="methods-grid">
-      <div class="method-card">
+      <a href="articles/understanding-niosh-assessment.html" class="method-card">
         <div class="method-status live"><span class="status-dot"></span> Available now</div>
         <div class="method-name">NIOSH</div>
         <div class="method-full">For evaluating manual lifting and lowering tasks</div>
         <p class="method-desc">Calculates the Lifting Index (LI) for single-task lifting or the Composite Lifting Index (CLI) for multi-task scenarios — quantifying the physical demand of manual lifting operations.</p>
-      </div>
-      <div class="method-card">
+        <span class="method-suggest">Learn more →</span>
+      </a>
+      <a href="articles/understanding-kim-lhc-assessment.html" class="method-card">
         <div class="method-status live"><span class="status-dot"></span> Available now</div>
         <div class="method-name">KIM-LHC</div>
         <div class="method-full">For assessing lifting, holding and carrying tasks</div>
         <p class="method-desc">German BAuA standard for evaluating the risk of physical overload from manual handling tasks — based on load weight, duration, posture and working conditions.</p>
-      </div>
+        <span class="method-suggest">Learn more →</span>
+      </a>
       <div class="method-card coming">
         <div class="method-name">More to come</div>
         <div class="method-full">Continuously expanding</div>
@@ -1565,13 +1568,13 @@
           <li><a href="#how">How it works</a></li>
           <li><a href="#methods">Supported methods</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="download.html">Download</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Services</div>
         <ul class="footer-links">
           <li><a href="#custom">Custom Solutions</a></li>
+          <li><a href="download.html">Download</a></li>
           <li><a href="#contact">Request demo</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1579,7 +1582,6 @@
       <div>
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
-          <li><a href="resources.html#tutorials">Tutorials</a></li>
           <li><a href="resources.html#knowledge">Knowledge base</a></li>
           <li><a href="resources.html#validation">Research &amp; documentation</a></li>
           <li><a href="resources.html#support">Support</a></li>
