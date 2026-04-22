@@ -634,7 +634,7 @@
   document.querySelectorAll('a[href="#contact"]').forEach(function(link) { link.addEventListener('click', openContactForm); });
 
   (function() {
-    var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
+    var WORKER_URL = 'https://contact.motion-print.com/contact';
     var form = document.getElementById('contactForm');
     var btn = document.getElementById('submitBtn');
     var status = document.getElementById('formStatus');
@@ -648,7 +648,20 @@
       if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.classList.add('invalid'); valid = false; }
       if (!valid) { status.className = 'form-status error'; status.textContent = 'Please fill in all required fields.'; return; }
       btn.classList.add('loading'); btn.disabled = true;
-      var data = { topic: form.querySelector('[name="topic"]').value, name: name.value.trim(), email: email.value.trim(), company: company.value.trim(), role: form.querySelector('[name="role"]').value.trim(), phone: form.querySelector('[name="phone"]').value.trim(), message: form.querySelector('[name="message"]').value.trim() };
+      var topic = form.querySelector('[name="topic"]').value;
+      var supportTopics = ['Trial licence request', 'Method suggestion'];
+      var destination = supportTopics.indexOf(topic) !== -1 ? 'support' : 'info';
+      var data = {
+        destination: destination,
+        subject: topic,
+        topic: topic,
+        name: name.value.trim(),
+        email: email.value.trim(),
+        company: company.value.trim(),
+        role: form.querySelector('[name="role"]').value.trim(),
+        phone: form.querySelector('[name="phone"]').value.trim(),
+        message: form.querySelector('[name="message"]').value.trim()
+      };
       try {
         var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         if (res.ok) { status.className = 'form-status success'; status.textContent = "Thank you! We'll be in touch shortly."; form.reset(); }
