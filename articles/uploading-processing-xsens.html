@@ -131,7 +131,7 @@
     .error-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .error-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.55; }
     .error-table tr:last-child td { border-bottom: none; }
-    .error-table td:first-child { font-size: 13px; font-style: italic; color: var(--text); white-space: normal; min-width: 220px; }
+    .error-table td:first-child { font-size: 13px; font-style: italic; color: var(--text); white-space: normal; }
 
     /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
@@ -195,7 +195,12 @@
       .related-grid { grid-template-columns: 1fr; }
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
-      .error-table { display: block; overflow-x: auto; }
+      .error-table th:nth-child(1), .error-table td:nth-child(1) { width: 28%; }
+      .error-table th:nth-child(2), .error-table td:nth-child(2) { width: 36%; }
+      .error-table th:nth-child(3), .error-table td:nth-child(3) { width: 36%; }
+      .error-table { font-size: 12px; }
+      .error-table td { padding: 8px 8px; }
+      .error-table th { padding: 8px 8px; }
     }
   </style>
 </head>
@@ -432,7 +437,7 @@
         <table class="error-table">
           <thead>
             <tr>
-              <th style="width:38%">Error message</th>
+              <th style="width:32%">Error message</th>
               <th style="width:35%">Cause</th>
               <th>Fix</th>
             </tr>
