@@ -132,7 +132,9 @@
     .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
     .threshold-table tr:last-child td { border-bottom: none; }
-    .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); }
+    .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); white-space: nowrap; }
+    .risk-overview-table td:first-child, .risk-overview-table th:first-child { width: 1%; white-space: nowrap; }
+    .risk-overview-table td:nth-child(2), .risk-overview-table th:nth-child(2) { width: 1%; white-space: nowrap; }
 
     /* Color dot */
     .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -331,12 +333,7 @@
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>KIM-LHC produces a single <strong>Total Score</strong> for each lifting task. The Total Score determines the risk level across four categories:</p>
 
-        <table class="threshold-table" style="table-layout:fixed;">
-          <colgroup>
-            <col style="width:110px;">
-            <col style="width:210px;">
-            <col>
-          </colgroup>
+        <table class="threshold-table risk-overview-table">
           <thead>
             <tr>
               <th>Total Score</th>
@@ -442,56 +439,28 @@
         <p>The Load Rating is determined by the weight of the object being handled. When gender is enabled in the KIM-LHC settings, the rating is differentiated by worker gender, reflecting physiological differences in load capacity. When gender is disabled, the women's reference values are applied. The weight category is entered manually per lifting task.</p>
         <p>Note that the 0 – 3 kg weight category is <strong>switched off by default</strong> and is not part of the official KIM-LHC method. It can be enabled in the KIM-LHC report settings if your assessments require it.</p>
 
-        <div class="gender-tables">
-          <div>
-            <div class="gender-table-label">Men</div>
-            <table class="threshold-table">
-              <thead>
-                <tr>
-                  <th style="width:28px;"></th>
-                  <th>Weight</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>2</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>4</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>6</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>8</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>11</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>15</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>25</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>35</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div class="gender-table-label">Women</div>
-            <table class="threshold-table">
-              <thead>
-                <tr>
-                  <th style="width:28px;"></th>
-                  <th>Weight</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>4</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>6</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>9</td></tr>
-                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>12</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>25</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>75</td></tr>
-                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>85</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>100</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>100</td></tr>
-                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <table class="threshold-table">
+          <thead>
+            <tr>
+              <th style="width:28px;"></th>
+              <th>Weight</th>
+              <th>Points (Men)</th>
+              <th>Points (Women)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>2</td><td>4</td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>4</td><td>6</td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>6</td><td>9</td></tr>
+            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>8</td><td>12</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>11</td><td>25</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>15</td><td>75</td></tr>
+            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>25</td><td>85</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>35</td><td>100</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td><td>100</td></tr>
+            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td><td>100</td></tr>
+          </tbody>
+        </table>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
