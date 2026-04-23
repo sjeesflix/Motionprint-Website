@@ -107,6 +107,8 @@
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+    .info-table.summary-table td:first-child { width: 38%; white-space: normal; }
+    .info-table.subfactor-table td:first-child { width: 38%; white-space: normal; }
 
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
     .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
@@ -118,13 +120,13 @@
     .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
     .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .zone-table tr:last-child td { border-bottom: none; }
-    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
     .zone-green  { background: #10b981; }
     .zone-yellow { background: #e3ad21; }
     .zone-red    { background: #ef4444; }
     .zone-orange { background: #e3ad21; }
 
-    .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 3px; vertical-align: middle; }
+    .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 3px; vertical-align: -1px; }
     .dot-green  { background: #10b981; }
     .dot-yellow { background: #e3ad21; }
     .dot-red    { background: #ef4444; }
@@ -318,7 +320,7 @@
 
         <p>The top-right card shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
 
-        <table class="info-table" style="font-size:13px;">
+        <table class="info-table summary-table" style="font-size:13px;">
           <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Yellow</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
           <tbody>
             <tr>
@@ -405,7 +407,7 @@
 
         <p>A full-width block showing all six sub-factors, each with a score value and color-coded dot. Two of these are derived automatically from the motion data; four are set manually on the input page:</p>
 
-        <table class="info-table">
+        <table class="info-table subfactor-table">
           <thead><tr><th>Sub-factor</th><th>Source</th><th>Score values</th></tr></thead>
           <tbody>
             <tr><td>Hand/arm motion</td><td>Auto (wrist angles)</td><td>0 / 1 / 2</td></tr>
