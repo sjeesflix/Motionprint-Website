@@ -683,37 +683,12 @@
           <li>The MVNX file or report that triggered the issue, if applicable</li>
         </ul>
 
-        <div class="support-form-wrap">
-          <h3>Contact support</h3>
-          <p class="form-sub">Fill in your details and describe the issue. We'll get back to you as soon as possible.</p>
-          <form id="supportForm" novalidate>
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Name <span class="req">*</span></label>
-                <input type="text" name="name" class="form-input" placeholder="Your name" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email <span class="req">*</span></label>
-                <input type="email" name="email" class="form-input" placeholder="you@company.com" required>
-              </div>
-              <div class="form-group full">
-                <label class="form-label">Motionprint Ergo version</label>
-                <input type="text" name="version" class="form-input" placeholder="e.g. 2.3.1 — found in Settings">
-              </div>
-              <div class="form-group full">
-                <label class="form-label">Describe your issue <span class="req">*</span></label>
-                <textarea name="message" class="form-input" placeholder="What were you doing when the issue occurred? Include any error messages and steps to reproduce." rows="5" required></textarea>
-              </div>
-            </div>
-            <div class="form-submit">
-              <button type="submit" class="form-btn" id="supportSubmitBtn">
-                <span class="spinner"></span>
-                <span class="btn-text">Send to support</span>
-              </button>
-              <span class="form-note">We'll never share your data with third parties.</span>
-            </div>
-            <div class="form-status" id="supportFormStatus"></div>
-          </form>
+        <div class="callout callout-info" style="margin-top:32px;">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Contact support</div>
+            <p>Use the contact form on the Resources page to send a message to the support team. Include your Motionprint Ergo version, a description of the issue, and any relevant error messages or screenshots. <a href="../resources.html#contact" style="color:var(--red);border-bottom:1px solid rgba(234,82,59,.3);">Go to contact form →</a></p>
+          </div>
         </div>
 
         <!-- ── ARTICLE FOOTER ── -->
@@ -803,65 +778,6 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // Support form handler
-  (function() {
-    var WORKER_URL = 'https://contact.motion-print.com/contact';
-    var form = document.getElementById('supportForm');
-    var btn = document.getElementById('supportSubmitBtn');
-    var status = document.getElementById('supportFormStatus');
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      status.className = 'form-status';
-      status.textContent = '';
-      form.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
-
-      var name = form.querySelector('[name="name"]');
-      var email = form.querySelector('[name="email"]');
-      var message = form.querySelector('[name="message"]');
-      var valid = true;
-
-      [name, email, message].forEach(function(field) {
-        if (!field.value.trim()) { field.classList.add('invalid'); valid = false; }
-      });
-      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        email.classList.add('invalid'); valid = false;
-      }
-      if (!valid) {
-        status.className = 'form-status error';
-        status.textContent = 'Please fill in all required fields.';
-        return;
-      }
-
-      btn.classList.add('loading'); btn.disabled = true;
-      var data = {
-        topic: 'Support request',
-        name: name.value.trim(),
-        email: email.value.trim(),
-        version: form.querySelector('[name="version"]').value.trim(),
-        message: message.value.trim()
-      };
-
-      try {
-        var res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (res.ok) {
-          status.className = 'form-status success';
-          status.textContent = 'Message sent. We'll get back to you shortly.';
-          form.reset();
-        } else { throw new Error(); }
-      } catch(err) {
-        status.className = 'form-status error';
-        status.textContent = 'Something went wrong. Email us directly at support@motion-print.com.';
-      } finally {
-        btn.classList.remove('loading'); btn.disabled = false;
-      }
-    });
-  })();
 
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
