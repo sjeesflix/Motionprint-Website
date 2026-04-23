@@ -129,6 +129,8 @@
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
     .info-table.modifiers-table td:first-child { white-space: normal; width: auto; }
+    .info-table.overview-table td:first-child { width: 48px; white-space: nowrap; }
+    .info-table.task-info-table td:first-child { width: 95px; }
 
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
@@ -291,7 +293,7 @@
 
         <p>A NIOSH assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
 
-        <table class="info-table">
+        <table class="info-table overview-table">
           <thead><tr><th style="width:48px">Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
           <tbody>
             <tr><td><span class="step-num-plain">1</span></td><td>Select the report you want to create</td><td>Create page</td></tr>
@@ -420,8 +422,8 @@
 
         <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata about the assessment session. Some fields are always shown; others appear or are hidden based on your <a href="niosh-report-settings.html">NIOSH report settings</a>.</p>
 
-        <table class="info-table">
-          <thead><tr><th style="width:110px">Field</th><th style="width:80px">Required?</th><th>Description</th></tr></thead>
+        <table class="info-table task-info-table">
+          <thead><tr><th style="width:95px">Field</th><th style="width:80px">Required?</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Workplace</td>
