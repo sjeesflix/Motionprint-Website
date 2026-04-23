@@ -107,6 +107,8 @@
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+    .info-table.settings-table td:first-child { width: 30%; white-space: normal; }
+    .info-table.settings-table td:nth-child(2) { width: 15%; }
 
     /* Weight table grid */
     .weight-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13px; text-align: center; }
@@ -271,7 +273,7 @@
 
         <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -305,7 +307,7 @@
 
         <p>The Analysis &amp; Scoring module is the most KIM-LHC-specific section. It controls the load rating table, multi-task scoring behavior, and report structure options.</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -399,7 +401,7 @@
 
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply independently to each page:</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -438,7 +440,7 @@
 
         <h3>Export settings</h3>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
