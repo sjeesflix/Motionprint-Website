@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://motion-print.com/sitemap.xml
