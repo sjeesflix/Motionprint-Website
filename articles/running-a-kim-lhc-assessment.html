@@ -108,6 +108,8 @@
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+    .info-table.overview-table td:first-child { width: 48px; white-space: nowrap; }
+    .info-table.task-info-table td:first-child { width: 95px; }
 
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
@@ -249,8 +251,8 @@
 
         <p>A KIM-LHC assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
 
-        <table class="info-table">
-          <thead><tr><th>Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
+        <table class="info-table overview-table">
+          <thead><tr><th style="width:48px">Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
           <tbody>
             <tr><td><span class="step-num-plain">1</span></td><td>Select the report you want to create</td><td>Create page</td></tr>
             <tr><td><span class="step-num-plain">2</span></td><td>Select your input source</td><td>Input Source page</td></tr>
@@ -360,8 +362,8 @@
 
         <p>The <strong>left card</strong> contains:</p>
 
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+        <table class="info-table task-info-table">
+          <thead><tr><th style="width:95px">Field</th><th style="width:80px">Required?</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Workplace</td>
@@ -383,8 +385,8 @@
 
         <p>The <strong>right card</strong> contains:</p>
 
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+        <table class="info-table task-info-table">
+          <thead><tr><th style="width:95px">Field</th><th style="width:80px">Required?</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Date</td>
@@ -410,8 +412,8 @@
 
         <p><strong>Row 1:</strong></p>
 
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Options</th><th>Description</th></tr></thead>
+        <table class="info-table task-info-table">
+          <thead><tr><th style="width:95px">Field</th><th style="width:80px">Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Adverse ambient conditions</td>
@@ -433,8 +435,8 @@
 
         <p><strong>Row 2:</strong></p>
 
-        <table class="info-table">
-          <thead><tr><th>Field</th><th>Options</th><th>Description</th></tr></thead>
+        <table class="info-table task-info-table">
+          <thead><tr><th style="width:95px">Field</th><th style="width:80px">Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Work organization</td>
