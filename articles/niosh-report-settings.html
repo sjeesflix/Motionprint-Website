@@ -121,6 +121,8 @@
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+    .info-table.settings-table td:first-child { width: 30%; white-space: normal; }
+    .info-table.settings-table td:nth-child(2) { width: 15%; }
 
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
@@ -298,7 +300,7 @@
 
         <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -328,7 +330,7 @@
 
         <p>The Reference mass selector determines which Load Constant is used throughout the assessment. The available options and their corresponding LC values are:</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Standard</th><th>Load Constant</th><th>Population coverage</th><th>Notes</th></tr></thead>
           <tbody>
             <tr>
@@ -371,7 +373,7 @@
 
         <p>The Analysis &amp; Scoring module determines how assessments are calculated and which result modifiers and optional tabs are available.</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -452,7 +454,7 @@
 
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the In-depth analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply to both pages:</p>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -491,7 +493,7 @@
 
         <h3>Export settings</h3>
 
-        <table class="info-table">
+        <table class="info-table settings-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
