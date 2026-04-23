@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Motionprint Ergo turns motion capture recordings into standardised ergonomic risk assessment reports — NIOSH and KIM-LHC — automatically, on your local machine." />
   <link rel="canonical" href="https://motion-print.com/" />
@@ -773,25 +774,67 @@
   <link rel="stylesheet" href="nav.css">
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Motionprint Ergo",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Windows",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "description": "Free trial available"
-    },
-    "description": "Motionprint Ergo turns motion capture recordings into standardised ergonomic risk assessment reports — NIOSH Lifting Equation and KIM-LHC — automatically, on your local machine.",
-    "url": "https://motion-print.com",
-    "publisher": {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "Organization",
       "name": "Motionprint",
-      "url": "https://motion-print.com"
+      "url": "https://motion-print.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://motion-print.com/Motionprint-full.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://motion-print.com/resources.html#contact"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "Motionprint",
+      "url": "https://motion-print.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://motion-print.com/resources.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Motionprint Ergo",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Ergonomics Software",
+      "operatingSystem": "Windows",
+      "softwareVersion": "1.0.0",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Free trial available"
+      },
+      "description": "Motionprint Ergo automatically turns Xsens motion capture recordings into standardised ergonomic risk assessment reports \u2014 NIOSH Lifting Equation and KIM-LHC \u2014 entirely on your local machine.",
+      "featureList": [
+        "NIOSH Lifting Equation assessment",
+        "KIM-LHC assessment",
+        "Xsens MVNX file support",
+        "PDF and Excel export",
+        "Multi-task CLI assessment",
+        "3D avatar visualization"
+      ],
+      "url": "https://motion-print.com",
+      "downloadUrl": "https://motion-print.com/download.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Motionprint",
+        "url": "https://motion-print.com"
+      }
     }
-  }
+  ]
+}
   </script>
 </head>
 <body>
