@@ -202,6 +202,18 @@
     .ref-link:hover { opacity: .75; }
     .ref-link svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+
+    /* ── EXAMPLE REPORTS ── */
+    .sample-reports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    .sample-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 0; }
+    .sample-card-method { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .sample-card-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+    .sample-card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 22px; }
+    .sample-card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .sample-dl-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 7px 14px; border-radius: 7px; text-decoration: none; transition: opacity .15s; border: 1.5px solid var(--border); color: var(--text); background: var(--bg); cursor: not-allowed; opacity: .5; }
+    .sample-dl-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .sample-coming { font-size: 11px; color: var(--muted-2); align-self: center; }
+    @media (max-width: 600px) { .sample-reports-grid { grid-template-columns: 1fr; } }
     /* ── SUPPORT ── */
     .support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .faq-list { display: flex; flex-direction: column; gap: 0; }
@@ -1055,6 +1067,46 @@
   ════════════════════════════════════════════════════════════════
 -->
 
+<!-- ── EXAMPLE REPORTS ── -->
+<section class="resources-section" id="example-reports" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Example outputs</span>
+      <h2 class="section-title">See what a report looks like</h2>
+      <p class="section-sub">Download a sample PDF report for each assessment method — generated from fictional data so you can see exactly what your clients and colleagues will receive.</p>
+    </div>
+    <div class="sample-reports-grid">
+
+      <div class="sample-card">
+        <div class="sample-card-method">NIOSH Lifting Equation</div>
+        <div class="sample-card-title">Single-task NIOSH assessment report</div>
+        <div class="sample-card-desc">Includes the Score Overview tab with RWL, Lifting Index, all seven multipliers, and risk level — plus the In-depth Analysis tab with per-frame graphs and critical moment highlights.</div>
+        <div class="sample-card-actions">
+          <span class="sample-dl-btn">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PDF report
+          </span>
+          <span class="sample-coming">Coming soon</span>
+        </div>
+      </div>
+
+      <div class="sample-card">
+        <div class="sample-card-method">KIM — Lifting, Holding &amp; Carrying</div>
+        <div class="sample-card-title">Single-task KIM-LHC assessment report</div>
+        <div class="sample-card-desc">Includes the Score Overview tab with all five scoring components, Time Rating, Total Score, and color-coded risk indicators — plus the In-depth Analysis tab with per-frame score graphs.</div>
+        <div class="sample-card-actions">
+          <span class="sample-dl-btn">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PDF report
+          </span>
+          <span class="sample-coming">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── RESEARCH & DOCUMENTATION ── -->
 <section class="resources-section" id="validation">
   <div class="container">
@@ -1283,6 +1335,7 @@
           <!-- <li><a href="resources.html#tutorials">Tutorials</a></li> -->
           <li><a href="resources.html#knowledge">Knowledge base</a></li>
           <li><a href="resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="resources.html#example-reports">Example reports</a></li>
           <li><a href="resources.html#support">Support</a></li>
         </ul>
       </div>
