@@ -134,7 +134,8 @@
     .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
     .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .zone-table tr:last-child td { border-bottom: none; }
-    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+    .zone-label { display: inline-block; white-space: nowrap; margin-right: 10px; margin-bottom: 2px; }
     .zone-green  { background: #10b981; }
     .zone-yellow { background: #e3ad21; }
     .zone-red    { background: #ef4444; }
@@ -408,35 +409,35 @@
             <tr>
               <td><strong>LI / STLI</strong></td>
               <td>
-                <span class="zone-dot zone-green"></span>Green 0–1.0 &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0 &nbsp;
-                <span class="zone-dot zone-red"></span>Red 2.0–3.0+
+                <span class="zone-label"><span class="zone-dot zone-green"></span>Green 0–1.0</span>
+                <span class="zone-label"><span class="zone-dot zone-yellow"></span>Yellow 1.0–2.0</span>
+                <span class="zone-label"><span class="zone-dot zone-red"></span>Red 2.0–3.0+</span>
               </td>
             </tr>
             <tr>
               <td><strong>H</strong></td>
               <td>
-                <span class="zone-dot zone-green"></span>Green ≤36 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 36–52 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red &gt;52 cm
+                <span class="zone-label"><span class="zone-dot zone-green"></span>Green ≤36 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-yellow"></span>Yellow 36–52 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-red"></span>Red &gt;52 cm</span>
               </td>
             </tr>
             <tr>
               <td><strong>V</strong></td>
               <td>
-                <span class="zone-dot zone-red"></span>Red &lt;20 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 20–40 cm &nbsp;
-                <span class="zone-dot zone-green"></span>Green 40–110 cm &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 110–130 cm &nbsp;
-                <span class="zone-dot zone-red"></span>Red &gt;130 cm
+                <span class="zone-label"><span class="zone-dot zone-red"></span>Red &lt;20 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-yellow"></span>Yellow 20–40 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-green"></span>Green 40–110 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-yellow"></span>Yellow 110–130 cm</span>
+                <span class="zone-label"><span class="zone-dot zone-red"></span>Red &gt;130 cm</span>
               </td>
             </tr>
             <tr>
               <td><strong>A</strong></td>
               <td>
-                <span class="zone-dot zone-green"></span>Green 0–45° &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 45–90° &nbsp;
-                <span class="zone-dot zone-red"></span>Red 90–135°
+                <span class="zone-label"><span class="zone-dot zone-green"></span>Green 0–45°</span>
+                <span class="zone-label"><span class="zone-dot zone-yellow"></span>Yellow 45–90°</span>
+                <span class="zone-label"><span class="zone-dot zone-red"></span>Red 90–135°</span>
               </td>
             </tr>
           </tbody>
