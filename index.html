@@ -1018,7 +1018,7 @@
               <div class="acard">
                 <div class="acard-lbl">Session info</div>
                 <div class="arow"><span class="arow-k">Date</span><span class="arow-v">24 Feb 2026</span></div>
-                <div class="arow"><span class="arow-k">Duration</span><span class="arow-v">1m 42s</span></div>
+                <div class="arow"><span class="arow-k">Duration</span><span class="arow-v">7s</span></div>
                 <div class="arow"><span class="arow-k">Method</span><span class="arow-v">Multi-NIOSH</span></div>
                 <div class="arow"><span class="arow-k">Tasks</span><span class="arow-v">3 detected</span></div>
                 <div class="arow"><span class="arow-k">CLI</span><span class="arow-v red">3.1 ⚠</span></div>
@@ -1029,8 +1029,7 @@
                 <div class="rrow" style="margin-bottom:8px"><span class="rname">Task B – Transport</span><span class="rdot" style="background:#f59e0b"></span><span class="rlbl" style="color:#f59e0b">STLI 1.4</span></div>
                 <div class="rrow" style="margin-bottom:8px"><span class="rname">Task C – Placement</span><span class="rdot" style="background:#22c55e"></span><span class="rlbl" style="color:#22c55e">STLI 0.7</span></div>
                 <div style="margin-top:10px;padding:9px;background:#fff8f7;border-radius:7px;border:1px solid rgba(234,82,59,.14)">
-                  <div style="font-size:9px;font-weight:700;color:var(--red);margin-bottom:3px">RECOMMENDATION</div>
-                  <div style="font-size:10px;color:#6b7280;line-height:1.45">Reduce load or frequency for Task A. Consider mechanical assist for lifting from floor level.</div>
+                  <div style="font-size:10px;color:#6b7280;line-height:1.45">The CLI of 3.1 indicates the task is unacceptable for most workers. Make adjustments to the stations or provide proper training.</div>
                 </div>
               </div>
               <!-- 3D avatar card — transparent PNG on custom sky + ground plane -->
@@ -1755,4 +1754,7 @@
         }
       } catch (err) {
         status.className = 'form-status error';
-        status.textContent = 'Something went wrong. Please email us at info@motion-print.com ins
+        status.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
+      } finally {
+        btn.classList.remove('loading');
+        btn.disable
