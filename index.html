@@ -2,22 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Motionprint Ergo turns motion capture recordings into standardised ergonomic risk assessment reports — NIOSH and KIM-LHC — automatically, on your local machine." />
-  <link rel="canonical" href="https://motion-print.com/" />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Motionprint — Ergonomic Risk Assessments, Automated" />
-  <meta property="og:description" content="Motionprint Ergo turns motion capture recordings into standardised ergonomic risk assessment reports — NIOSH and KIM-LHC — automatically, on your local machine." />
-  <meta property="og:url" content="https://motion-print.com/" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-og.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Motionprint — Ergonomic Risk Assessments, Automated" />
-  <meta name="twitter:description" content="Motionprint Ergo turns motion capture recordings into standardised ergonomic risk assessment reports — NIOSH and KIM-LHC — automatically, on your local machine." />
-  <meta name="twitter:image" content="https://motion-print.com/Motionprint-og.png" />
   <title>Motionprint — Ergonomic Risk Assessments, Automated</title>
   <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -772,70 +757,6 @@
     }
   </style>
   <link rel="stylesheet" href="nav.css">
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "name": "Motionprint",
-      "url": "https://motion-print.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://motion-print.com/Motionprint-full.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://motion-print.com/resources.html#contact"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "name": "Motionprint",
-      "url": "https://motion-print.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://motion-print.com/resources.html?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "Motionprint Ergo",
-      "applicationCategory": "BusinessApplication",
-      "applicationSubCategory": "Ergonomics Software",
-      "operatingSystem": "Windows",
-      "softwareVersion": "1.0.0",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "description": "Free trial available"
-      },
-      "description": "Motionprint Ergo automatically turns Xsens motion capture recordings into standardised ergonomic risk assessment reports \u2014 NIOSH Lifting Equation and KIM-LHC \u2014 entirely on your local machine.",
-      "featureList": [
-        "NIOSH Lifting Equation assessment",
-        "KIM-LHC assessment",
-        "Xsens MVNX file support",
-        "PDF and Excel export",
-        "Multi-task CLI assessment",
-        "3D avatar visualization"
-      ],
-      "url": "https://motion-print.com",
-      "downloadUrl": "https://motion-print.com/download.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com"
-      }
-    }
-  ]
-}
-  </script>
 </head>
 <body>
 
@@ -866,6 +787,11 @@
         <div class="trust-item">
           <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
           NIOSH &amp; KIM-LHC
+        </div>
+        <div class="trust-sep trust-sep-pdf"></div>
+        <div class="trust-item trust-item-pdf">
+          <svg viewBox="0 0 16 16"><path d="M13 10V13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h3"/><polyline points="8 9.5 13 2 10.5 2 13 2 13 4.5"/></svg>
+          PDF &amp; Excel export
         </div>
       </div>
     </div>
@@ -1112,20 +1038,20 @@
                 <!-- Ground plane with perspective grid mesh -->
                 <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
                 <!-- Avatar -->
-                <video src="avatarmp4.mp4" autoplay loop muted playsinline oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
+                <img src="gifavatar.gif" alt="3D avatar" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;">
                 <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
               </div>
               <!-- Graph card -->
               <div class="acard" style="padding:10px 12px 8px;display:flex;flex-direction:column;">
-                <div class="acard-lbl" style="margin-bottom:6px;">Asymmetry over time</div>
+                <div class="acard-lbl" style="margin-bottom:6px;">Horizontal load distance</div>
                 <svg viewBox="0 0 240 80" preserveAspectRatio="none" style="flex:1;width:100%;border-radius:5px;overflow:hidden;display:block;">
                   <rect y="0" width="240" height="27" fill="#fecaca" opacity=".55"/>
                   <rect y="27" width="240" height="26" fill="#fde68a" opacity=".45"/>
                   <rect y="53" width="240" height="27" fill="#bbf7d0" opacity=".55"/>
                   <line x1="0" y1="27" x2="240" y2="27" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <line x1="0" y1="53" x2="240" y2="53" stroke="#fff" stroke-width=".7" opacity=".7"/>
-                  <path id="liCurve" d="M0,66 C18,66 36,65 54,65 S72,66 90,65 S108,65 126,64 S138,62 148,58 S158,52 168,48 S182,44 196,45 S214,47 228,48 L240,48" fill="none" stroke="#64748b" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-                  <!-- Animated marker — driven by video.currentTime for perfect sync -->
+                  <path id="liCurve" d="M0,68 C10,68 20,67 35,67 S50,68 65,67 S80,67 95,66 S110,65 122,63 S132,60 142,57 S152,53 162,50 S174,47 186,46 S200,46 215,47 L240,48" fill="none" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+                  <!-- Animated marker — synced to GIF duration via rAF loop -->
                   <line id="graphDot" x1="0" x2="0" y1="0" y2="80" stroke="#ea523b" stroke-width="1.5" opacity=".8"/>
                 </svg>
                 <div style="display:flex;gap:7px;margin-top:6px;">
@@ -1143,28 +1069,31 @@
 </section>
 <script>
 (function(){
-  var video = document.querySelector('#ergo video');
-  var path  = document.getElementById('liCurve');
-  var dot   = document.getElementById('graphDot');
-  if(!video||!path||!dot) return;
-  var len = path.getTotalLength();
-  function sync(){
-    if(video.duration){
-      var p  = video.currentTime / video.duration;
-      var t  = 0.02 + p * 0.96;
-      var pt = path.getPointAtLength(t * len);
-      dot.setAttribute('x1', pt.x);
-      dot.setAttribute('x2', pt.x);
-    }
-    requestAnimationFrame(sync);
+  var path = document.getElementById('liCurve');
+  var dot  = document.getElementById('graphDot');
+  if(!path||!dot) return;
+  var len     = path.getTotalLength();
+  var GIF_MS  = 7330; /* gifavatar.gif total duration */
+  var startTs = null;
+  var running = false;
+  function tick(ts){
+    if(!startTs) startTs = ts;
+    var p  = ((ts - startTs) % GIF_MS) / GIF_MS;
+    var t  = 0.02 + p * 0.96;
+    var pt = path.getPointAtLength(t * len);
+    dot.setAttribute('x1', pt.x);
+    dot.setAttribute('x2', pt.x);
+    if(running) requestAnimationFrame(tick);
   }
-  sync();
-  /* Play when scrolled into view — fixes mobile autoplay */
+  function start(){ if(!running){ running=true; startTs=null; requestAnimationFrame(tick); } }
+  function stop(){  running=false; }
+  start();
   if('IntersectionObserver' in window){
+    var gif = document.querySelector('#ergo img[src="gifavatar.gif"]');
     var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ e.isIntersecting ? video.play() : video.pause(); });
+      entries.forEach(function(e){ e.isIntersecting ? start() : stop(); });
     },{threshold:0.1});
-    obs.observe(video);
+    if(gif) obs.observe(gif);
   }
 })();
 </script>
@@ -1183,7 +1112,7 @@
           <div class="step-icon">
             <svg viewBox="0 0 22 22"><path d="M16 10l-5-5-5 5"/><line x1="11" y1="5" x2="11" y2="17"/><rect x="3" y="17" width="16" height="2" rx="1"/></svg>
           </div>
-          <h3 class="step-title">Upload motion capture data</h3>
+          <h3 class="step-title"><span class="hide-mobile">Upload your motion capture data</span><span class="show-mobile">Upload motion capture data</span></h3>
         </div>
         <p class="step-desc">Export your recording and upload it directly into Motionprint Ergo. No complex setup or conversion required.</p>
         <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
@@ -1827,12 +1756,4 @@
       } catch (err) {
         status.className = 'form-status error';
         status.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
-      } finally {
-        btn.classList.remove('loading');
-        btn.disabled = false;
-      }
-    });
-  })();
-</script>
-</body>
-</html>
+     
