@@ -27,9 +27,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: #ea523b;
-      --red-dark: #c93f28;
-      --red-light: #f06449;
+      --red: #1D9E75;
+      --red-dark: #0F6E56;
+      --red-light: #5DCAA5;
       --dark: #0d0f12;
       --dark-2: #161a20;
       --dark-3: #1e2530;
@@ -96,7 +96,7 @@
     }
     .cl-hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(234,82,59,.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 70% at 50% 0%, rgba(29,158,117,.08) 0%, transparent 70%);
     }
     .cl-hero-inner { max-width: 680px; position: relative; }
     .cl-hero h1 {
@@ -137,7 +137,7 @@
       transition: color .15s, background .15s;
     }
     .cl-version-link:hover { color: var(--text); background: var(--bg); }
-    .cl-version-link.current { color: var(--red); background: rgba(234,82,59,.07); }
+    .cl-version-link.current { color: var(--red); background: rgba(29,158,117,.07); }
 
     /* ── CHANGELOG ENTRY ── */
     .cl-entry {
@@ -167,7 +167,7 @@
       font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
       padding: 4px 10px; border-radius: 20px;
     }
-    .cl-badge-initial { background: rgba(234,82,59,.1); color: var(--red); }
+    .cl-badge-initial { background: rgba(29,158,117,.1); color: var(--red); }
     /* For future use: */
     /* .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; } */
     /* .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; } */
