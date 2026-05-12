@@ -706,7 +706,6 @@
   </div>
 </section>
 
-<!-- ── MOTIONPRINT ERGO ── -->
 <section class="ergo-section" id="ergo">
   <div class="container">
     <div class="ergo-inner">
@@ -716,28 +715,36 @@
         <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-top:14px;max-width:440px;">Use your motion capture data and Motionprint Ergo to automatically calculate validated risk scores and to generate structured reports — ready to export to PDF or Excel with your own branding for your H&amp;S documentation.</p>
         <ul class="ergo-features">
           <li class="ergo-feat">
-            <div class="ergo-feat-icon"><svg viewBox="0 0 16 16"><path d="M2 12l3.5-3.5L9 12l5-7"/></svg></div>
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><path d="M2 12l3.5-3.5L9 12l5-7"/></svg>
+            </div>
             <div>
               <div class="ergo-feat-title">Automated risk calculation</div>
               <div class="ergo-feat-desc">NIOSH and KIM-LHC scores calculated directly from your motion capture data — minimal input required, no manual assessments.</div>
             </div>
           </li>
           <li class="ergo-feat">
-            <div class="ergo-feat-icon"><svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg></div>
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg>
+            </div>
             <div>
               <div class="ergo-feat-title">Professional report export</div>
               <div class="ergo-feat-desc">Export structured reports as PDF or Excel with your own branding — ready for H&amp;S documentation, client delivery and regulatory review.</div>
             </div>
           </li>
           <li class="ergo-feat">
-            <div class="ergo-feat-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg></div>
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+            </div>
             <div>
               <div class="ergo-feat-title">Expanding methodology library</div>
               <div class="ergo-feat-desc">New assessment methods are continuously added to the platform, keeping your programme aligned with evolving ergonomic standards.</div>
             </div>
           </li>
           <li class="ergo-feat">
-            <div class="ergo-feat-icon"><svg viewBox="0 0 16 16"><path d="M4 8h8M8 4l4 4-4 4"/></svg></div>
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+            </div>
             <div>
               <div class="ergo-feat-title">From tool to platform</div>
               <div class="ergo-feat-desc">Motionprint is growing beyond a single tool — new data sources, workflows and integrations are on the roadmap, built around your organisation's needs.</div>
@@ -749,21 +756,22 @@
           <a href="#how" class="btn btn-secondary">How it works</a>
         </div>
       </div>
+      <!-- Second app mockup — multi-NIOSH -->
       <div>
         <div class="app-shell" style="background:#e4e6ea;">
           <div class="app-window">
-            <div class="app-chrome">
-              <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
-              <div class="chrome-bar">motion-print.com/ergo</div>
-            </div>
             <div class="app-tabs-bar">
               <div class="atab on">Score overview</div>
               <div class="atab">In-depth analysis</div>
               <div class="atab">Findings</div>
               <div class="atab-spacer"></div>
               <div class="atab-actions">
-                <div class="atab-btn"><svg viewBox="0 0 16 16"><path d="M11 2.5l2.5 2.5L5 13.5H2.5V11L11 2.5z"/></svg></div>
-                <div class="atab-btn"><svg viewBox="0 0 16 16"><path d="M8 2v8M5 5l3-3 3 3"/><path d="M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1"/></svg></div>
+                <div class="atab-btn">
+                  <svg viewBox="0 0 16 16"><path d="M11 2.5l2.5 2.5L5 13.5H2.5V11L11 2.5z"/></svg>
+                </div>
+                <div class="atab-btn">
+                  <svg viewBox="0 0 16 16"><path d="M8 2v8M5 5l3-3 3 3"/><path d="M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1"/></svg>
+                </div>
               </div>
             </div>
             <div class="app-body">
@@ -773,7 +781,7 @@
                 <div class="arow"><span class="arow-k">Duration</span><span class="arow-v">7s</span></div>
                 <div class="arow"><span class="arow-k">Method</span><span class="arow-v">Multi-NIOSH</span></div>
                 <div class="arow"><span class="arow-k">Tasks</span><span class="arow-v">3 detected</span></div>
-                <div class="arow"><span class="arow-k">CLI</span><span class="arow-v red">3.1 &#9888;</span></div>
+                <div class="arow"><span class="arow-k">CLI</span><span class="arow-v red">3.1 ⚠</span></div>
               </div>
               <div class="acard acard-risk">
                 <div class="acard-lbl">Risk per task</div>
@@ -784,11 +792,15 @@
                   <div style="font-size:10px;color:#6b7280;line-height:1.45">The CLI of 3.1 indicates the task is unacceptable for most workers.</div>
                 </div>
               </div>
+              <!-- 3D avatar card — transparent PNG on custom sky + ground plane -->
               <div class="acard" style="padding:0;overflow:hidden;position:relative;min-height:120px;background:linear-gradient(to bottom,#c2d0dd,#b4c3d2 46%,#b4c3d2 46%);">
+                <!-- Ground plane with perspective grid mesh -->
                 <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
-                <video src="trueavatar.mp4" autoplay loop muted playsinline disablepictureinpicture oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
+                <!-- Avatar -->
+                <video src="trueavatar.mp4" autoplay loop muted playsinline oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
                 <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
               </div>
+              <!-- Graph card -->
               <div class="acard" style="padding:10px 12px 8px;display:flex;flex-direction:column;">
                 <div class="acard-lbl" style="margin-bottom:6px;">Horizontal load distance</div>
                 <svg viewBox="0 0 240 80" preserveAspectRatio="none" style="flex:1;width:100%;border-radius:5px;overflow:hidden;display:block;">
@@ -798,6 +810,7 @@
                   <line x1="0" y1="27" x2="240" y2="27" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <line x1="0" y1="53" x2="240" y2="53" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <path id="liCurve" d="M0,73 C12,73 26,55 36,53 C52,50 72,48 98,47 C122,46 142,47 160,47 C172,45 184,38 200,28 C208,22 222,20 240,19" fill="none" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+                  <!-- Animated marker — driven by video.currentTime for perfect sync -->
                   <line id="graphDot" x1="0" x2="0" y1="0" y2="80" stroke="#1D9E75" stroke-width="1.5" opacity=".8"/>
                 </svg>
                 <div style="display:flex;gap:7px;margin-top:6px;">
@@ -805,13 +818,6 @@
                   <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#fde68a;display:inline-block"></span>Medium</span>
                   <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#86efac;display:inline-block"></span>Low</span>
                 </div>
-              </div>
-            </div>
-            <div class="app-export-bar">
-              <span class="export-label">Ready to export</span>
-              <div class="export-btns">
-                <div class="ebtn ebtn-pdf">PDF</div>
-                <div class="ebtn ebtn-xl">Excel</div>
               </div>
             </div>
           </div>
@@ -838,6 +844,7 @@
     requestAnimationFrame(sync);
   }
   sync();
+  /* Play when scrolled into view — fixes mobile autoplay */
   if('IntersectionObserver' in window){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ e.isIntersecting ? video.play() : video.pause(); });
@@ -846,6 +853,7 @@
   }
 })();
 </script>
+
 
 <!-- ── HOW IT WORKS ── -->
 <section class="how" id="how">
