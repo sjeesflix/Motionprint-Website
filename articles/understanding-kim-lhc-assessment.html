@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Understanding the KIM-LHC Scoring System | Motionprint Ergo</title>
+  <title>Understanding the KIM-LHC Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your Total Score." />
   <link rel="canonical" href="https://motion-print.com/articles/understanding-kim-lhc-assessment.html" />
-  <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Understanding the KIM-LHC Scoring System | Motionprint Ergo" />
+  <meta property="og:title" content="Understanding the KIM-LHC Assessment — Motionprint Ergo Help" />
   <meta property="og:description" content="How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your Total Score." />
   <meta property="og:url" content="https://motion-print.com/articles/understanding-kim-lhc-assessment.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-og.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Understanding the KIM-LHC Scoring System | Motionprint Ergo" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Understanding the KIM-LHC Assessment — Motionprint Ergo Help" />
   <meta name="twitter:description" content="How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your Total Score." />
-  <meta name="twitter:image" content="https://motion-print.com/Motionprint-og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --red: #ea523b; --red-light: #f06449;
+      --red: #1D9E75; --red-light: #5DCAA5;
       --dark: #0d0f12; --dark-2: #161a20;
       --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
       --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
@@ -65,8 +61,19 @@
     .mobile-nav a:hover { color: #fff; }
 
     /* ── ARTICLE HERO ── */
+    
+    /* ── BACK LINK ── */
+    .article-back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
+      text-decoration: none; margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .article-back-link:hover { color: rgba(255,255,255,.72); }
+    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
+    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
-    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
@@ -91,7 +98,7 @@
     .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
     .toc-list a:hover { color: var(--text); background: var(--bg); }
     .toc-list li.active { border-left-color: var(--red); }
-    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
     .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
     .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
     .toc-back:hover { color: var(--red); }
@@ -106,7 +113,7 @@
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
     .article-body strong { font-weight: 700; color: var(--text); }
-    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
     .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
 
@@ -114,10 +121,10 @@
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
 
     /* Callouts */
-    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
     .callout.callout-info .callout-icon { stroke: #3b82f6; }
@@ -135,22 +142,20 @@
     .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
     .threshold-table tr:last-child td { border-bottom: none; }
-    .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); white-space: nowrap; }
-    .risk-overview-table td:first-child, .risk-overview-table th:first-child { width: 1%; white-space: nowrap; }
-    .risk-overview-table td:nth-child(2), .risk-overview-table th:nth-child(2) { width: 110px; }
+    .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); }
 
     /* Color dot */
     .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .color-dot.green  { background: #10b981; }
     .color-dot.yellow { background: #e3ad21; }
-    .color-dot.red    { background: #ea523b; }
+    .color-dot.red    { background: #1D9E75; }
     td.color-cell { width: 28px; padding: 10px 6px 10px 12px; }
 
     /* Risk badge */
     .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
     .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
     .risk-medium { background: rgba(227,173,33,.12); color: #e3ad21; }
-    .risk-high   { background: rgba(234,82,59,.12);  color: #ea523b; }
+    .risk-high   { background: rgba(29,158,117,.12);  color: #1D9E75; }
     .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
 
     /* Scoring component rows */
@@ -180,7 +185,7 @@
     /* Workflow steps */
     .workflow-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .workflow-step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; margin-top: 0; }
+    .workflow-step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; margin-top: 0; }
     .workflow-step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
 
@@ -189,7 +194,7 @@
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
-    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
 
@@ -224,62 +229,6 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TechArticle",
-      "headline": "Understanding the KIM-LHC Scoring System",
-      "description": "How the KIM-LHC scoring system works: load rating, body posture, unfavorable conditions, time rating, and how to interpret your Total Score.",
-      "url": "https://motion-print.com/articles/understanding-kim-lhc-assessment.html",
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-23",
-      "author": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://motion-print.com/Motionprint-full.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://motion-print.com/articles/understanding-kim-lhc-assessment.html"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://motion-print.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Resources",
-          "item": "https://motion-print.com/resources.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Understanding the KIM-LHC Scoring System",
-          "item": "https://motion-print.com/articles/understanding-kim-lhc-assessment.html"
-        }
-      ]
-    }
-  ]
-}
-  </script>
 </head>
 <body>
 
@@ -321,6 +270,10 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
+      <a href="../resources.html" class="article-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to resources
+      </a>
             <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
@@ -388,7 +341,12 @@
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>KIM-LHC produces a single <strong>Total Score</strong> for each lifting task. The Total Score determines the risk level across four categories:</p>
 
-        <table class="threshold-table risk-overview-table">
+        <table class="threshold-table" style="table-layout:fixed;">
+          <colgroup>
+            <col style="width:110px;">
+            <col style="width:210px;">
+            <col>
+          </colgroup>
           <thead>
             <tr>
               <th>Total Score</th>
@@ -494,28 +452,56 @@
         <p>The Load Rating is determined by the weight of the object being handled. When gender is enabled in the KIM-LHC settings, the rating is differentiated by worker gender, reflecting physiological differences in load capacity. When gender is disabled, the women's reference values are applied. The weight category is entered manually per lifting task.</p>
         <p>Note that the 0 – 3 kg weight category is <strong>switched off by default</strong> and is not part of the official KIM-LHC method. It can be enabled in the KIM-LHC report settings if your assessments require it.</p>
 
-        <table class="threshold-table">
-          <thead>
-            <tr>
-              <th style="width:28px;"></th>
-              <th>Weight</th>
-              <th>Points Men</th>
-              <th>Points Women</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>2</td><td>4</td></tr>
-            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>4</td><td>6</td></tr>
-            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>6</td><td>9</td></tr>
-            <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>8</td><td>12</td></tr>
-            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>11</td><td>25</td></tr>
-            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>15</td><td>75</td></tr>
-            <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>25</td><td>85</td></tr>
-            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>35</td><td>100</td></tr>
-            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td><td>100</td></tr>
-            <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td><td>100</td></tr>
-          </tbody>
-        </table>
+        <div class="gender-tables">
+          <div>
+            <div class="gender-table-label">Men</div>
+            <table class="threshold-table">
+              <thead>
+                <tr>
+                  <th style="width:28px;"></th>
+                  <th>Weight</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>2</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>4</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>6</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>8</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>11</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>15</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>25</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>35</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div class="gender-table-label">Women</div>
+            <table class="threshold-table">
+              <thead>
+                <tr>
+                  <th style="width:28px;"></th>
+                  <th>Weight</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>0 – 3 kg</td><td>4</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>3 – 5 kg</td><td>6</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>5 – 10 kg</td><td>9</td></tr>
+                <tr><td class="color-cell"><span class="color-dot green"></span></td><td>10 – 15 kg</td><td>12</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>15 – 20 kg</td><td>25</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>20 – 25 kg</td><td>75</td></tr>
+                <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td>25 – 30 kg</td><td>85</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>30 – 35 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>100</td></tr>
+                <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -685,7 +671,7 @@
           </tbody>
         </table>
 
-        <p>The Unfavorable Conditions Score is the sum of all six factors: <span class="color-dot green" style="display:inline-block;vertical-align:-1px;margin-right:3px;"></span> ≤ 4 &nbsp;·&nbsp; <span class="color-dot yellow" style="display:inline-block;vertical-align:-1px;margin-right:3px;"></span> 5 – 9 &nbsp;·&nbsp; <span class="color-dot red" style="display:inline-block;vertical-align:-1px;margin-right:3px;"></span> ≥ 10.</p>
+        <p>The Unfavorable Conditions Score is the sum of all six factors: <span class="color-dot green" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≤ 4 &nbsp;·&nbsp; <span class="color-dot yellow" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> 5 – 9 &nbsp;·&nbsp; <span class="color-dot red" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≥ 10.</p>
 
         <!-- ── SECTION 8 ── -->
         <h2 id="work-organization"><span class="step-num">8</span> Work Organization</h2>

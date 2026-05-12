@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>License Activation & Seat Management | Motionprint Ergo</title>
+  <title>License &amp; Activation Guide — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="How to activate your Motionprint Ergo license, manage seat assignments, and transfer your license to a new machine." />
   <link rel="canonical" href="https://motion-print.com/articles/license-activation-guide.html" />
-  <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="License Activation & Seat Management | Motionprint Ergo" />
+  <meta property="og:title" content="License &amp; Activation Guide — Motionprint Ergo Help" />
   <meta property="og:description" content="How to activate your Motionprint Ergo license, manage seat assignments, and transfer your license to a new machine." />
   <meta property="og:url" content="https://motion-print.com/articles/license-activation-guide.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-og.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="License Activation & Seat Management | Motionprint Ergo" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="License &amp; Activation Guide — Motionprint Ergo Help" />
   <meta name="twitter:description" content="How to activate your Motionprint Ergo license, manage seat assignments, and transfer your license to a new machine." />
-  <meta name="twitter:image" content="https://motion-print.com/Motionprint-og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --red: #ea523b; --red-light: #f06449;
+      --red: #1D9E75; --red-light: #5DCAA5;
       --dark: #0d0f12; --dark-2: #161a20;
       --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
       --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
@@ -65,8 +61,19 @@
     .mobile-nav a:hover { color: #fff; }
 
     /* ── ARTICLE HERO ── */
+    
+    /* ── BACK LINK ── */
+    .article-back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
+      text-decoration: none; margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .article-back-link:hover { color: rgba(255,255,255,.72); }
+    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
+    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
-    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
@@ -91,7 +98,7 @@
     .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
     .toc-list a:hover { color: var(--text); background: var(--bg); }
     .toc-list li.active { border-left-color: var(--red); }
-    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
     .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
     .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
     .toc-back:hover { color: var(--red); }
@@ -106,7 +113,7 @@
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
     .article-body strong { font-weight: 700; color: var(--text); }
-    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
     .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
 
@@ -114,12 +121,12 @@
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
 
     /* Numbered steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
     .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
-    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
 
     /* Info cards */
@@ -138,7 +145,7 @@
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
     /* Callouts */
-    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
     .callout.callout-green { border-left-color: #10b981; background: rgba(16,185,129,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
@@ -176,7 +183,7 @@
     /* Workflow steps */
     .workflow-steps { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .workflow-step { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .workflow-step-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .workflow-step-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .workflow-step-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
 
@@ -188,7 +195,7 @@
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
-    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
 
@@ -223,62 +230,6 @@
       .info-grid { grid-template-columns: 1fr; }
     }
   </style>
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TechArticle",
-      "headline": "License Activation & Seat Management",
-      "description": "How to activate your Motionprint Ergo license, manage seat assignments, and transfer your license to a new machine.",
-      "url": "https://motion-print.com/articles/license-activation-guide.html",
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-23",
-      "author": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://motion-print.com/Motionprint-full.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://motion-print.com/articles/license-activation-guide.html"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://motion-print.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Resources",
-          "item": "https://motion-print.com/resources.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "License Activation & Seat Management",
-          "item": "https://motion-print.com/articles/license-activation-guide.html"
-        }
-      ]
-    }
-  ]
-}
-  </script>
 </head>
 <body>
 
@@ -320,6 +271,10 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
+      <a href="../resources.html" class="article-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to resources
+      </a>
             <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>

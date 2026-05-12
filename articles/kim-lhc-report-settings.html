@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KIM-LHC Report Settings & Configuration | Motionprint Ergo</title>
+  <title>KIM-LHC Report Settings — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="Configure default behavior for all KIM-LHC assessments in Motionprint Ergo: input fields, load rating tables, analysis scoring, viewport layout, and export templates." />
   <link rel="canonical" href="https://motion-print.com/articles/kim-lhc-report-settings.html" />
-  <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="KIM-LHC Report Settings & Configuration | Motionprint Ergo" />
+  <meta property="og:title" content="KIM-LHC Report Settings — Motionprint Ergo Help" />
   <meta property="og:description" content="Configure default behavior for all KIM-LHC assessments in Motionprint Ergo: input fields, load rating tables, analysis scoring, viewport layout, and export templates." />
   <meta property="og:url" content="https://motion-print.com/articles/kim-lhc-report-settings.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-og.png" />
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KIM-LHC Report Settings & Configuration | Motionprint Ergo" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="KIM-LHC Report Settings — Motionprint Ergo Help" />
   <meta name="twitter:description" content="Configure default behavior for all KIM-LHC assessments in Motionprint Ergo: input fields, load rating tables, analysis scoring, viewport layout, and export templates." />
-  <meta name="twitter:image" content="https://motion-print.com/Motionprint-og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --red: #ea523b; --red-light: #f06449;
+      --red: #1D9E75; --red-light: #5DCAA5;
       --dark: #0d0f12; --dark-2: #161a20;
       --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
       --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
@@ -62,8 +58,20 @@
     .mobile-nav.open { display: flex; }
     .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
     .mobile-nav a:hover { color: #fff; }
+
+    
+    /* ── BACK LINK ── */
+    .article-back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
+      text-decoration: none; margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .article-back-link:hover { color: rgba(255,255,255,.72); }
+    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
+    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
-    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(234,82,59,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
@@ -86,7 +94,7 @@
     .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
     .toc-list a:hover { color: var(--text); background: var(--bg); }
     .toc-list li.active { border-left-color: var(--red); }
-    .toc-list li.active a { color: var(--red); background: rgba(234,82,59,.05); }
+    .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
     .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
     .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
     .toc-back:hover { color: var(--red); }
@@ -101,14 +109,14 @@
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
     .article-body strong { font-weight: 700; color: var(--text); }
-    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(234,82,59,.3); transition: border-color .15s; }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
 
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(234,82,59,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
 
-    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(234,82,59,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
     .callout.callout-info .callout-icon { stroke: #3b82f6; }
@@ -121,14 +129,12 @@
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
-    .info-table.settings-table td:first-child { width: 30%; white-space: normal; }
-    .info-table.settings-table td:nth-child(2) { width: 15%; }
 
     /* Weight table grid */
-    .weight-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 12px; text-align: center; }
-    .weight-table th { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); padding: 5px 10px; border-bottom: 2px solid var(--border); background: var(--bg); }
-    .weight-table td { padding: 5px 10px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
-    .weight-table td:first-child { font-weight: 600; text-align: left; padding-left: 12px; width: 90px; background: var(--bg); }
+    .weight-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 13px; text-align: center; }
+    .weight-table th { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); padding: 7px 8px; border-bottom: 2px solid var(--border); background: var(--bg); }
+    .weight-table td { padding: 9px 8px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .weight-table td:first-child { font-weight: 700; text-align: left; padding-left: 12px; width: 60px; background: var(--bg); }
     .weight-table tr:last-child td { border-bottom: none; }
     .weight-table th:first-child { text-align: left; padding-left: 12px; }
 
@@ -136,7 +142,7 @@
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
-    .related-card:hover { border-color: rgba(234,82,59,.4); box-shadow: var(--shadow-sm); }
+    .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
 
@@ -167,62 +173,6 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
-  <script type="application/ld+json">
-  {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "TechArticle",
-      "headline": "KIM-LHC Report Settings & Configuration",
-      "description": "Configure default behavior for all KIM-LHC assessments in Motionprint Ergo: input fields, load rating tables, analysis scoring, viewport layout, and export templates.",
-      "url": "https://motion-print.com/articles/kim-lhc-report-settings.html",
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-23",
-      "author": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://motion-print.com/Motionprint-full.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://motion-print.com/articles/kim-lhc-report-settings.html"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://motion-print.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Resources",
-          "item": "https://motion-print.com/resources.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "KIM-LHC Report Settings & Configuration",
-          "item": "https://motion-print.com/articles/kim-lhc-report-settings.html"
-        }
-      ]
-    }
-  ]
-}
-  </script>
 </head>
 <body>
 
@@ -264,6 +214,10 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
+      <a href="../resources.html" class="article-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to resources
+      </a>
             <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
@@ -343,7 +297,7 @@
 
         <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
 
-        <table class="info-table settings-table">
+        <table class="info-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -377,7 +331,7 @@
 
         <p>The Analysis &amp; Scoring module is the most KIM-LHC-specific section. It controls the load rating table, multi-task scoring behavior, and report structure options.</p>
 
-        <table class="info-table settings-table">
+        <table class="info-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -424,21 +378,22 @@
         <table class="weight-table">
           <thead>
             <tr>
-              <th>Weight</th>
-              <th>Men</th>
-              <th>Women</th>
+              <th></th>
+              <th>3–5</th><th>5–10</th><th>10–15</th><th>15–20</th>
+              <th>20–25</th><th>25–30</th><th>30–35</th><th>35–40</th><th>&gt;40</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>3–5 kg</td><td>4</td><td>6</td></tr>
-            <tr><td>5–10 kg</td><td>6</td><td>9</td></tr>
-            <tr><td>10–15 kg</td><td>8</td><td>12</td></tr>
-            <tr><td>15–20 kg</td><td>11</td><td>25</td></tr>
-            <tr><td>20–25 kg</td><td>15</td><td>75</td></tr>
-            <tr><td>25–30 kg</td><td>25</td><td>85</td></tr>
-            <tr><td>30–35 kg</td><td>35</td><td>100</td></tr>
-            <tr><td>35–40 kg</td><td>75</td><td>100</td></tr>
-            <tr><td>&gt;40 kg</td><td>100</td><td>100</td></tr>
+            <tr>
+              <td>Men</td>
+              <td>4</td><td>6</td><td>8</td><td>11</td>
+              <td>15</td><td>25</td><td>35</td><td>75</td><td>100</td>
+            </tr>
+            <tr>
+              <td>Women</td>
+              <td>6</td><td>9</td><td>12</td><td>25</td>
+              <td>75</td><td>85</td><td>100</td><td>100</td><td>100</td>
+            </tr>
           </tbody>
         </table>
 
@@ -470,7 +425,7 @@
 
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply independently to each page:</p>
 
-        <table class="info-table settings-table">
+        <table class="info-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
@@ -509,7 +464,7 @@
 
         <h3>Export settings</h3>
 
-        <table class="info-table settings-table">
+        <table class="info-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>

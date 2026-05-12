@@ -6,16 +6,6 @@
   <title>Getting Started with Motionprint Ergo — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="Download, install, and activate Motionprint Ergo, then run your first ergonomic assessment and export a report — step by step." />
-  <link rel="canonical" href="https://motion-print.com/articles/getting-started-ergo.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Getting Started with Motionprint Ergo — Motionprint Ergo Help" />
-  <meta property="og:description" content="Download, install, and activate Motionprint Ergo, then run your first ergonomic assessment and export a report — step by step." />
-  <meta property="og:url" content="https://motion-print.com/articles/getting-started-ergo.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Getting Started with Motionprint Ergo — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Download, install, and activate Motionprint Ergo, then run your first ergonomic assessment and export a report — step by step." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -61,17 +51,6 @@
     .mobile-nav a:hover { color: #fff; }
 
     /* ── ARTICLE HERO ── */
-    
-    /* ── BACK LINK ── */
-    .article-back-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
-      text-decoration: none; margin-bottom: 28px;
-      transition: color .2s;
-    }
-    .article-back-link:hover { color: rgba(255,255,255,.72); }
-    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
-    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
     .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
@@ -79,8 +58,8 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #3b82f6; }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #3b82f6; border-radius: 2px; }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
@@ -106,7 +85,7 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
@@ -120,19 +99,16 @@
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    /* Step number circles */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
-
     /* Steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
     .steps-list-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; counter-increment: step-counter; }
-    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .steps-list-item::before { content: counter(step-counter); display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 12px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .steps-list-item p { font-size: 14px; color: var(--text); line-height: 1.6; margin: 0; }
 
     /* Phase steps */
     .phase-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; counter-reset: phase-counter; }
     .phase-item { display: flex; gap: 16px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; counter-increment: phase-counter; }
-    .phase-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .phase-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .phase-body { flex: 1; min-width: 0; }
     .phase-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
     .phase-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0; }
@@ -190,7 +166,7 @@
     .tab-cards { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
     .tab-card { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
     .tab-card-header { background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; flex-shrink: 0; }
+    .tab-card-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 11px; font-weight: 700; line-height: 1; flex-shrink: 0; }
     .tab-card-name { font-size: 14px; font-weight: 700; color: var(--text); }
     .tab-card-body { padding: 16px 18px; }
     .tab-card-body p { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 10px; }
@@ -297,11 +273,7 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
-      <a href="../resources.html" class="article-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to resources
-      </a>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
@@ -315,7 +287,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          10 min read
+          12 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -360,7 +332,7 @@
         <p class="article-lead">This guide takes you from a fresh installation of Motionprint Ergo to a completed, exported ergonomic assessment report. No prior experience with the app is assumed.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="requirements"><span class="step-num">1</span> Before You Begin — System Requirements</h2>
+        <h2 id="requirements">1. Before You Begin — System Requirements</h2>
 
         <p>Verify the following before downloading. The current release of Motionprint Ergo runs on Windows only.</p>
 
@@ -403,29 +375,19 @@
         </div>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="install"><span class="step-num">2</span> Download and Install</h2>
+        <h2 id="install">2. Download and Install</h2>
 
         <p>The installer is available from the Motionprint download page. The setup wizard handles everything — no manual configuration is required.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p><a href="../download.html">Go to the download page</a> and click <strong>Download for Windows</strong>.</p></div>
-          <div class="steps-list-item"><p>Your browser will show a security prompt warning that the file may harm your computer. This is a standard Windows browser warning — click <strong>Download anyway</strong> to proceed.</p></div>
-          <div class="steps-list-item"><p>Once the download finishes, open your browser's download bar. If the file shows a warning that it "isn't commonly downloaded", click the <strong>⋯</strong> menu next to it and select <strong>Keep</strong>.</p></div>
-          <div class="steps-list-item"><p>A Microsoft Defender SmartScreen dialog will appear stating it couldn't verify the file. The default button is <strong>Delete</strong> — click <strong>Keep anyway</strong> to save the file.</p></div>
-          <div class="steps-list-item"><p>Open the downloaded installer and follow the on-screen setup wizard.</p></div>
+          <div class="steps-list-item"><p>Go to <a href="../download.html" style="display:inline-flex;align-items:center;gap:3px;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(29,158,117,.35);">motion-print.com/download <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-bottom:1px;" viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></a> and click <strong>Download for Windows</strong>.</p></div>
+          <div class="steps-list-item"><p>The installer file is approximately 80 MB (.exe format). Save it to a convenient location.</p></div>
+          <div class="steps-list-item"><p>Open the downloaded file and follow the on-screen setup wizard.</p></div>
           <div class="steps-list-item"><p>Once setup completes, launch <strong>Motionprint Ergo</strong> from the Start menu or the desktop shortcut.</p></div>
         </div>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Why does Windows show a security warning?</div>
-            <p>These prompts appear because Motionprint Ergo is a relatively new application that hasn't yet been downloaded by a large enough number of users for Microsoft's SmartScreen to automatically recognise it as trusted. The installer is safe — SmartScreen simply flags any executable that hasn't yet built up a broad download history.</p>
-          </div>
-        </div>
-
         <!-- ── SECTION 3 ── -->
-        <h2 id="activate"><span class="step-num">3</span> Activate Your Licence</h2>
+        <h2 id="activate">3. Activate Your Licence</h2>
 
         <p>The first screen you see when you open Motionprint Ergo is the activation screen. Enter your licence key here to unlock the app.</p>
 
@@ -478,7 +440,7 @@
         </table>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="navigate"><span class="step-num">4</span> Navigating the App</h2>
+        <h2 id="navigate">4. Navigating the App</h2>
 
         <p>After activation, the main window opens. Take a moment to familiarise yourself with the layout before running your first assessment.</p>
 
@@ -503,7 +465,7 @@
         </ul>
 
         <!-- ── SECTION 5 ── -->
-        <h2 id="report"><span class="step-num">5</span> Create Your First Report</h2>
+        <h2 id="report">5. Create Your First Report</h2>
 
         <p>Creating a report follows six phases, from selecting a method through to exporting the final document. Click <strong>Create</strong> in the sidebar to begin.</p>
 
@@ -691,7 +653,7 @@
           </div>
         </div>
 
-        <p>In the export popup, choose the format, select an output folder, and confirm the filename. The filename defaults to the template configured in Settings (for example, <code>{workplace}_{report_type}_{current_date}.pdf</code>), and the app remembers the last used folder per method and format.</p>
+        <p>In the export popup, choose the format, select an output folder, and confirm the filename. The filename defaults to the template configured in Settings (for example, <code>{workplace}_{report_type}_{date}.pdf</code>), and the app remembers the last used folder per method and format.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -702,13 +664,13 @@
         </div>
 
         <!-- ── SECTION 6 ── -->
-        <h2 id="next"><span class="step-num">6</span> What's Next</h2>
+        <h2 id="next">6. What's Next</h2>
 
         <p>You've completed your first assessment and exported a report. Here are a few ways to continue:</p>
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
-          <li><strong>Visit the <a href="../resources.html">Resources page</a></strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management</li>
+          <li><strong>Visit the Resources page</strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management — <a href="../resources.html" style="display:inline-flex;align-items:center;gap:3px;color:var(--red);text-decoration:none;border-bottom:1px solid rgba(29,158,117,.35);">motion-print.com/resources <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-bottom:1px;" viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></a></li>
           <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
         </ul>
 
@@ -716,14 +678,22 @@
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                                    <div class="related-grid">
-              <a href="how-motionprint-ergo-works.html" class="related-card">
+            <div class="related-grid">
+              <a href="license-activation-guide.html" class="related-card">
                 <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">How Motionprint Ergo Works</span>
+                <span class="related-card-title">Licence &amp; Activation Guide</span>
               </a>
-              <a href="uploading-processing-xsens.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Uploading &amp; Processing Xsens Data</span>
+              <a href="niosh-assessment-setup.html" class="related-card">
+                <span class="related-card-cat">Assessment Methods</span>
+                <span class="related-card-title">NIOSH Assessment Setup</span>
+              </a>
+              <a href="exporting-reports.html" class="related-card">
+                <span class="related-card-cat">Reports</span>
+                <span class="related-card-title">Exporting Reports</span>
+              </a>
+              <a href="whats-included-in-your-license.html" class="related-card">
+                <span class="related-card-cat">Licence</span>
+                <span class="related-card-title">What's Included in Your Licence</span>
               </a>
             </div>
           </div>

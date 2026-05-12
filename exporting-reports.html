@@ -3,19 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What's Included in Your License — Motionprint Ergo Help</title>
+  <title>Exporting Reports (PDF & Excel) — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
-  <link rel="canonical" href="https://motion-print.com/articles/whats-included-in-your-license.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="What's Included in Your License — Motionprint Ergo Help" />
-  <meta property="og:description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
-  <meta property="og:url" content="https://motion-print.com/articles/whats-included-in-your-license.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="What's Included in Your License — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
+  <meta name="description" content="Export completed reports to PDF for sharing or Excel for further analysis. Configure filename templates, choose export format, and manage report deliverables." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -38,7 +28,12 @@
     .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
     /* ── NAV ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,15,18,.94); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.07); height: 64px; transform: translateZ(0); will-change: transform; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
     .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
     .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
@@ -56,17 +51,6 @@
     .mobile-nav a:hover { color: #fff; }
 
     /* ── ARTICLE HERO ── */
-    
-    /* ── BACK LINK ── */
-    .article-back-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
-      text-decoration: none; margin-bottom: 28px;
-      transition: color .2s;
-    }
-    .article-back-link:hover { color: rgba(255,255,255,.72); }
-    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
-    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
     .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
@@ -74,8 +58,8 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #64748b; }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #64748b; border-radius: 2px; }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
@@ -85,12 +69,12 @@
     .article-outer { padding: 56px 0 88px; }
     .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
 
-    /* TOC */
+    /* TOC sidebar */
     .article-toc { position: sticky; top: 88px; }
     .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
     .toc-list { list-style: none; }
     .toc-list li { border-left: 2px solid var(--border); }
-    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, background .15s; }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
     .toc-list a:hover { color: var(--text); background: var(--bg); }
     .toc-list li.active { border-left-color: var(--red); }
     .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
@@ -101,87 +85,72 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
-    .article-body strong { font-weight: 700; }
+    .article-body strong { font-weight: 700; color: var(--text); }
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
-    .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
+
+    /* Article figures / screenshots */
+    .article-figure { margin: 28px 0; }
+    .article-figure img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-sm img { max-width: 520px; margin: 0 auto; }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
 
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
 
-    /* Tier cards */
-    .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
-    .tier-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
-    .tier-card.tier-featured { border-color: var(--red); background: rgba(29,158,117,.03); }
-    .tier-name { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); }
-    .tier-card.tier-featured .tier-name { color: var(--red); }
-    .tier-price { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -.02em; line-height: 1.1; }
-    .tier-price span { font-size: 13px; font-weight: 500; color: var(--muted); }
-    .tier-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
-    .tier-detail { font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 6px; }
-    .tier-detail svg { width: 14px; height: 14px; stroke: #10b981; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-
-    /* Feature list */
-    .feature-list { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
-    .feature-item { display: flex; gap: 12px; align-items: flex-start; }
-    .feature-check { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
-    .feature-check svg { width: 18px; height: 18px; stroke: #10b981; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .feature-item p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.6; }
+    /* Tab badge */
+    .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
+    .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
-    .callout.callout-green { border-left-color: #10b981; background: rgba(16,185,129,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
     .callout.callout-info .callout-icon { stroke: #3b82f6; }
-    .callout.callout-green .callout-icon { stroke: #10b981; }
     .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
     .callout.callout-info .callout-label { color: #3b82f6; }
-    .callout.callout-green .callout-label { color: #10b981; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Threshold / comparison table */
-    .threshold-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
-    .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
-    .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
-    .threshold-table tr:last-child td { border-bottom: none; }
-    .threshold-table code { font-size: 12px; }
-    .check-yes { color: #10b981; font-weight: 700; }
-    .check-no  { color: var(--muted-2); }
+    /* Info table */
+    .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
 
-    /* Timeline */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
-    .timeline-item { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 20px; position: relative; }
-    .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 13px; top: 28px; bottom: 0; width: 2px; background: var(--border); }
-    .timeline-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .timeline-dot.dot-active { background: rgba(29,158,117,.1); border-color: var(--red); }
-    .timeline-dot.dot-warn  { background: rgba(245,158,11,.1); border-color: #f59e0b; }
-    .timeline-dot.dot-lock  { background: rgba(107,114,128,.1); border-color: #6b7280; }
-    .timeline-dot svg { width: 12px; height: 12px; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .timeline-dot.dot-active svg { stroke: var(--red); }
-    .timeline-dot.dot-warn  svg { stroke: #f59e0b; }
-    .timeline-dot.dot-lock  svg { stroke: #6b7280; }
-    .timeline-content { padding-top: 3px; }
-    .timeline-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .timeline-desc  { font-size: 14px; color: var(--muted); line-height: 1.55; }
+    /* Risk badge */
+    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
+    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
+    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-high   { background: rgba(29,158,117,.12);  color: #1D9E75; }
+    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+
+    /* Zone table */
+    .zone-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+    .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
+    .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .zone-table tr:last-child td { border-bottom: none; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-green  { background: #10b981; }
+    .zone-yellow { background: #f59e0b; }
+    .zone-red    { background: #ef4444; }
+    .zone-orange { background: #f97316; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
-    .helpful-label { font-size: 14px; font-weight: 600; color: var(--text); }
-    .helpful-btn { font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 7px 18px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--muted); transition: border-color .15s, color .15s; }
-    .helpful-btn:hover { border-color: var(--red); color: var(--red); }
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
     .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
@@ -205,7 +174,6 @@
       .article-layout { grid-template-columns: 1fr; }
       .article-toc { display: none; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .tier-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -214,7 +182,6 @@
       .related-grid { grid-template-columns: 1fr; }
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
-      .tier-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -258,25 +225,21 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
-      <a href="../resources.html" class="article-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to resources
-      </a>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="../resources.html#kb-licensing">Licensing &amp; Administration</a>
+        <a href="../resources.html#kb-features">Platform Features</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">What's Included in Your License</span>
+        <span style="color:rgba(255,255,255,.6)">Exporting Reports (PDF &amp; Excel)</span>
       </nav>
-      <span class="article-eyebrow">Support</span>
-      <h1>What's Included in Your License</h1>
+      <span class="article-eyebrow">Platform Features</span>
+      <h1>Exporting Reports (PDF &amp; Excel)</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          3 min read
+          7 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -284,7 +247,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Licensing &amp; Administration
+          Platform Features
         </div>
       </div>
     </div>
@@ -296,14 +259,15 @@
   <div class="container">
     <div class="article-layout">
 
-      <!-- TOC -->
+      <!-- TOC sidebar -->
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-covered"><a href="#whats-covered">1. What's Covered</a></li>
-          <li id="toc-fair-use"><a href="#fair-use">2. Fair Use Terms</a></li>
-          <li id="toc-seats"><a href="#adding-seats">3. Adding Seats</a></li>
-          <li id="toc-renewal"><a href="#renewal">4. Renewal &amp; Expiry</a></li>
+          <li id="toc-overview"><a href="#overview">Overview</a></li>
+          <li id="toc-trigger"><a href="#trigger">Triggering an export</a></li>
+          <li id="toc-formats"><a href="#formats">PDF vs Excel</a></li>
+          <li id="toc-templates"><a href="#templates">Filename templates</a></li>
+          <li id="toc-tips"><a href="#tips">Tips</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -316,111 +280,136 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">This article explains what your Motionprint Ergo license includes, the fair use terms that apply to all plans, how to add seats, and what happens at renewal.</p>
+        <p class="article-lead">Motionprint Ergo can export any completed report to PDF or Excel. Use PDF to share a formatted, print-ready report with a client or archive it alongside a project. Use Excel when you need raw assessment data for further analysis, custom processing, or integration into your own reporting workflow.</p>
 
-        <!-- ── SECTION 1 ── -->
-        <h2 id="whats-covered"><span class="step-num">1</span> What's Covered</h2>
-        <p>All Motionprint Ergo licenses — regardless of tier — include the following features.</p>
+        <!-- ── OVERVIEW ── -->
+        <h2 id="overview">Overview</h2>
 
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Full access to all ergonomic assessments available in your version of Motionprint Ergo</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Detailed PDF and Excel report generation with charts, risk scores, and per-frame analysis</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Real-time 3D motion visualization with frame-by-frame playback and body risk indicators</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Company branding — customize the interface and reports with your logo, company name, and brand color</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Offline usage for up to 30 days after activation (see Fair Use Terms)</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Read-only mode for 7 days after subscription expiry — view and export existing reports, but new processing is paused until renewed</p>
-          </div>
-        </div>
+        <p>Every completed assessment in Motionprint Ergo yields a report that you can save and share. The application supports two export formats, each serving a different purpose in your workflow. The choice between them depends on whether you need a polished, presentation-ready deliverable or structured data for further processing.</p>
 
-        <!-- ── SECTION 2 ── -->
-        <h2 id="fair-use"><span class="step-num">2</span> Fair Use Terms</h2>
-        <p>All Motionprint Ergo licenses are subject to fair use conditions that ensure the licensing system remains secure and that each seat represents a genuine user.</p>
+        <!-- ── TRIGGERING AN EXPORT ── -->
+        <h2 id="trigger">Triggering an export</h2>
 
-        <h3>Device limits</h3>
-        <p>Each seat entitles one user to activate Motionprint Ergo on up to <strong>2 devices</strong> simultaneously — for example, a desktop workstation and a laptop. Activations are tracked by machine fingerprint; switching devices requires deactivating one before activating another.</p>
+        <figure class="article-figure">
+          <img src="exportfunction.jpg" alt="The Export button highlighted in the report tab bar" />
+          <figcaption>The Export button (export icon) in the report tab bar, highlighted next to the Edit button.</figcaption>
+        </figure>
 
-        <h3>Offline usage</h3>
-        <p>Once activated, Motionprint Ergo can run without an internet connection for up to <strong>30 days</strong>. During this time the app auto-refreshes its license token silently when it detects connectivity. If the token expires without a refresh, a 7-day grace period begins — the app continues to work but shows a warning asking you to connect to the internet. After 37 days offline without a refresh, the app is locked until connectivity is restored and the token is refreshed. Note: this is separate from subscription expiry (see Renewal &amp; Expiry below).</p>
+        <p>The Export button sits in the tab bar at the top of every completed report, next to the Edit button. Clicking it opens an export dialog where you select the format (PDF or Excel), confirm the filename, and set a save location. The output folder defaults to the folder last used for that specific report and format, so repeat exports always land in the right place. The file is generated once you confirm your selections.</p>
+
+        <figure class="article-figure figure-sm">
+          <img src="exportwindow.jpg" alt="The Export Report dialog showing format selection, filename field, and save location" />
+          <figcaption>The Export Report dialog — choose the format, confirm the filename, and set the save location before exporting.</figcaption>
+        </figure>
+
+        <!-- ── PDF VS EXCEL ── -->
+        <h2 id="formats">PDF vs Excel — what each format contains</h2>
+
+        <h3>PDF export</h3>
+
+        <p>The PDF is a formatted, read-only document designed for sharing and archiving. It mirrors the on-screen report layout exactly — including the score overview, analysis charts and visualisations, and the findings section (if enabled). The layout is optimised for A4/Letter printing and suited for client deliverables, compliance documentation, or project records.</p>
+
+        <h3>Excel export</h3>
+
+        <p>The Excel file contains the structured data behind the report, suited for further analysis and processing. It includes summary information, all input values, calculated scores, and frame-level data in tabular form — ready to filter, compare across sessions, or feed into your own reporting tools. The layout is also optimised for A4 printing, so you can produce a clean physical copy of the raw data when needed.</p>
+
+        <!-- ── FILENAME TEMPLATES ── -->
+        <h2 id="templates">Filename templates</h2>
+
+        <p>Each report type has its own configurable filename template, set in that report type's settings page (e.g. NIOSH Report Settings). The template uses placeholder variables that are replaced with actual assessment data at the moment of export.</p>
+
+        <p>The PDF and Excel templates are configured <strong>independently</strong> — you can use a different naming pattern for each format. For example, a descriptive name for PDFs you share externally, and a structured code for Excel files you import into a database.</p>
+
+        <p><strong>Default template:</strong> <code>{workstation}_{current_date}_{report_type}</code></p>
+
+        <p>The file extension (.pdf or .xlsx) is appended automatically — do not include it in the template.</p>
+
+        <figure class="article-figure">
+          <img src="exportsettings.jpg" alt="Filename template settings showing PDF and Excel tabs, template input field, available variables, and a live filename preview" />
+          <figcaption>Filename template settings in the report type's settings page — configure separate templates for PDF and Excel, with a live preview of the filename.</figcaption>
+        </figure>
+
+        <h3>Available variables</h3>
+
+        <table class="info-table">
+          <thead><tr><th>Variable</th><th>Replaced with</th><th>Example value</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>{operator}</td>
+              <td>Name of the worker being assessed</td>
+              <td>John Smith</td>
+            </tr>
+            <tr>
+              <td>{evaluator}</td>
+              <td>Name of the assessor</td>
+              <td>Jane Doe</td>
+            </tr>
+            <tr>
+              <td>{workstation}</td>
+              <td>Name or description of the workstation</td>
+              <td>Assembly Station 3</td>
+            </tr>
+            <tr>
+              <td>{record_date}</td>
+              <td>Date of the motion capture recording (YYYY-MM-DD)</td>
+              <td>2026-03-15</td>
+            </tr>
+            <tr>
+              <td>{current_date}</td>
+              <td>Today's date at the moment of export (YYYY-MM-DD)</td>
+              <td>2026-03-29</td>
+            </tr>
+            <tr>
+              <td>{current_time}</td>
+              <td>Current time at the moment of export (HH:MM:SS)</td>
+              <td>14:32:45</td>
+            </tr>
+            <tr>
+              <td>{report_type}</td>
+              <td>Report type identifier</td>
+              <td>NIOSH</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example templates</h3>
+
+        <ul>
+          <li><strong>{operator}_{workstation}_{record_date}</strong> — groups files by worker, task, and date.</li>
+          <li><strong>{evaluator}_{current_date}_{workstation}</strong> — organises by assessor and workstation.</li>
+          <li><strong>{workstation}_{record_date}_{current_time}</strong> — adds a timestamp to prevent overwrites.</li>
+        </ul>
+
+        <!-- ── TIPS ── -->
+        <h2 id="tips">Tips</h2>
+
+        <ul>
+          <li>Keep templates short and meaningful — long filenames can be truncated on some systems.</li>
+          <li>Use {record_date} rather than {current_date} if you want the filename to reflect when the assessment took place, not when you exported it.</li>
+          <li>If you export the same report multiple times, add {current_time} to avoid overwriting previous exports.</li>
+        </ul>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Non-transferable</div>
-            <p>Licenses are issued to a named individual and cannot be transferred between people. However, you can move your license between your own devices at any time by deactivating on one machine and activating on another. If a team member leaves, or if you need to free a device slot on a machine you no longer have access to, contact <a href="mailto:support@motion-print.com" style="color:var(--red);border-bottom:1px solid rgba(29,158,117,.3);">support@motion-print.com</a>.</p>
+            <div class="callout-label">Empty variables</div>
+            <p>The variables {workstation}, {operator}, and {evaluator} depend on data entered on the input or results page. If any of these fields are left empty in the assessment, the corresponding variable will be omitted from the filename entirely — it will not appear as a blank or placeholder. Prefer {record_date} or {report_type} for a reliable base when these fields may not always be filled in.</p>
           </div>
         </div>
-
-        <!-- ── SECTION 3 ── -->
-        <h2 id="adding-seats"><span class="step-num">3</span> Adding Seats</h2>
-        <p>To add seats or change your plan tier, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>. Seats are added the same business day and your license is updated automatically — you will be notified if a new key is required.</p>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="renewal"><span class="step-num">4</span> Renewal &amp; Expiry</h2>
-        <p>Motionprint Ergo licenses are annual subscriptions.</p>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot dot-active">
-              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">~14 days before expiry</div>
-              <div class="timeline-desc">A renewal reminder appears inside the app. Full access continues.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot dot-warn">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">Expiry date</div>
-              <div class="timeline-desc">A <strong>7-day read-only grace period</strong> begins — you can view and export existing reports but cannot process new assessments.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot dot-lock">
-              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">After grace period</div>
-              <div class="timeline-desc">Full lock. The application requires a renewed license key before any functionality is restored.</div>
-            </div>
-          </div>
-        </div>
-
-        <p>To renew, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
-              <a href="license-activation-guide.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">License &amp; Activation Guide</span>
+            <div class="related-grid">
+              <a href="niosh-report-settings.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
               </a>
-              <a href="getting-started-ergo.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Getting Started with Motionprint Ergo</span>
+              <a href="niosh-report-walkthrough.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">Reading Your NIOSH Report</span>
               </a>
-
             </div>
           </div>
         </div>
@@ -479,8 +468,8 @@
 </footer>
 
 <script>
-  var sections = ['whats-covered','fair-use','adding-seats','renewal'];
-  var tocIds   = ['toc-covered','toc-fair-use','toc-seats','toc-renewal'];
+  var sections = ['overview','trigger','formats','templates','tips'];
+  var tocIds   = ['toc-overview','toc-trigger','toc-formats','toc-templates','toc-tips'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;

@@ -3,19 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What's Included in Your License — Motionprint Ergo Help</title>
+  <title>3D View &amp; Interface Controls — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
-  <link rel="canonical" href="https://motion-print.com/articles/whats-included-in-your-license.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="What's Included in Your License — Motionprint Ergo Help" />
-  <meta property="og:description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
-  <meta property="og:url" content="https://motion-print.com/articles/whats-included-in-your-license.html" />
-  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="What's Included in Your License — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="What's covered by your Motionprint Ergo subscription, fair use terms, how to add seats, and how renewal and upgrades work." />
+  <meta name="description" content="Learn how to navigate the 3D viewport, switch camera views, control playback speed, and use the timeline scrubber in Motionprint Ergo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -38,7 +28,12 @@
     .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
     /* ── NAV ── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,15,18,.94); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.07); height: 64px; transform: translateZ(0); will-change: transform; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
     .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
     .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
@@ -56,17 +51,6 @@
     .mobile-nav a:hover { color: #fff; }
 
     /* ── ARTICLE HERO ── */
-    
-    /* ── BACK LINK ── */
-    .article-back-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
-      text-decoration: none; margin-bottom: 28px;
-      transition: color .2s;
-    }
-    .article-back-link:hover { color: rgba(255,255,255,.72); }
-    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
-    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
     .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
@@ -74,8 +58,8 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #64748b; }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #64748b; border-radius: 2px; }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
@@ -85,12 +69,12 @@
     .article-outer { padding: 56px 0 88px; }
     .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
 
-    /* TOC */
+    /* TOC sidebar */
     .article-toc { position: sticky; top: 88px; }
     .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
     .toc-list { list-style: none; }
     .toc-list li { border-left: 2px solid var(--border); }
-    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, background .15s; }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
     .toc-list a:hover { color: var(--text); background: var(--bg); }
     .toc-list li.active { border-left-color: var(--red); }
     .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
@@ -101,87 +85,61 @@
 
     /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
-    .article-body strong { font-weight: 700; }
+    .article-body strong { font-weight: 700; color: var(--text); }
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
-    .article-body code { font-family: 'Courier New', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; color: var(--text); }
+    .article-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
+
+    /* Article figures / screenshots */
+    .article-figure { margin: 28px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-full img { max-width: 100%; }
+    .figure-side { float: right; margin: 4px 0 24px 32px; width: 130px; }
+    .figure-side img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .figure-side figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
+    @media (max-width: 600px) { .figure-side { float: none; width: 100%; margin: 24px 0; } }
+    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
 
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
-
-    /* Tier cards */
-    .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
-    .tier-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
-    .tier-card.tier-featured { border-color: var(--red); background: rgba(29,158,117,.03); }
-    .tier-name { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); }
-    .tier-card.tier-featured .tier-name { color: var(--red); }
-    .tier-price { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -.02em; line-height: 1.1; }
-    .tier-price span { font-size: 13px; font-weight: 500; color: var(--muted); }
-    .tier-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
-    .tier-detail { font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 6px; }
-    .tier-detail svg { width: 14px; height: 14px; stroke: #10b981; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-
-    /* Feature list */
-    .feature-list { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
-    .feature-item { display: flex; gap: 12px; align-items: flex-start; }
-    .feature-check { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
-    .feature-check svg { width: 18px; height: 18px; stroke: #10b981; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .feature-item p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.6; }
+    /* Media placeholders */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
     /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
-    .callout.callout-green { border-left-color: #10b981; background: rgba(16,185,129,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
     .callout.callout-info .callout-icon { stroke: #3b82f6; }
-    .callout.callout-green .callout-icon { stroke: #10b981; }
     .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
     .callout.callout-info .callout-label { color: #3b82f6; }
-    .callout.callout-green .callout-label { color: #10b981; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Threshold / comparison table */
-    .threshold-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
-    .threshold-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
-    .threshold-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
-    .threshold-table tr:last-child td { border-bottom: none; }
-    .threshold-table code { font-size: 12px; }
-    .check-yes { color: #10b981; font-weight: 700; }
-    .check-no  { color: var(--muted-2); }
-
-    /* Timeline */
-    .timeline { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
-    .timeline-item { display: flex; gap: 16px; align-items: flex-start; padding-bottom: 20px; position: relative; }
-    .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 13px; top: 28px; bottom: 0; width: 2px; background: var(--border); }
-    .timeline-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .timeline-dot.dot-active { background: rgba(29,158,117,.1); border-color: var(--red); }
-    .timeline-dot.dot-warn  { background: rgba(245,158,11,.1); border-color: #f59e0b; }
-    .timeline-dot.dot-lock  { background: rgba(107,114,128,.1); border-color: #6b7280; }
-    .timeline-dot svg { width: 12px; height: 12px; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .timeline-dot.dot-active svg { stroke: var(--red); }
-    .timeline-dot.dot-warn  svg { stroke: #f59e0b; }
-    .timeline-dot.dot-lock  svg { stroke: #6b7280; }
-    .timeline-content { padding-top: 3px; }
-    .timeline-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .timeline-desc  { font-size: 14px; color: var(--muted); line-height: 1.55; }
+    /* Shortcut table */
+    .shortcut-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .shortcut-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .shortcut-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .shortcut-table tr:last-child td { border-bottom: none; }
+    .shortcut-table td:first-child { font-weight: 600; white-space: nowrap; }
+    .kbd { display: inline-block; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; padding: 2px 7px; color: var(--text); }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
-    .helpful-label { font-size: 14px; font-weight: 600; color: var(--text); }
-    .helpful-btn { font-family: var(--font-body); font-size: 13px; font-weight: 600; padding: 7px 18px; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--border); background: var(--white); color: var(--muted); transition: border-color .15s, color .15s; }
-    .helpful-btn:hover { border-color: var(--red); color: var(--red); }
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
     .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
@@ -205,7 +163,6 @@
       .article-layout { grid-template-columns: 1fr; }
       .article-toc { display: none; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .tier-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -214,7 +171,6 @@
       .related-grid { grid-template-columns: 1fr; }
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
-      .tier-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -258,33 +214,29 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
-      <a href="../resources.html" class="article-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to resources
-      </a>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="../resources.html#kb-licensing">Licensing &amp; Administration</a>
+        <a href="../resources.html#kb-features">Platform Features</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">What's Included in Your License</span>
+        <span style="color:rgba(255,255,255,.6)">3D View &amp; Interface Controls</span>
       </nav>
-      <span class="article-eyebrow">Support</span>
-      <h1>What's Included in Your License</h1>
+      <span class="article-eyebrow">Platform Features</span>
+      <h1>3D View &amp; Interface Controls</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          3 min read
+          6 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated April 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Licensing &amp; Administration
+          Platform Features
         </div>
       </div>
     </div>
@@ -296,14 +248,16 @@
   <div class="container">
     <div class="article-layout">
 
-      <!-- TOC -->
+      <!-- TOC sidebar -->
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-covered"><a href="#whats-covered">1. What's Covered</a></li>
-          <li id="toc-fair-use"><a href="#fair-use">2. Fair Use Terms</a></li>
-          <li id="toc-seats"><a href="#adding-seats">3. Adding Seats</a></li>
-          <li id="toc-renewal"><a href="#renewal">4. Renewal &amp; Expiry</a></li>
+          <li id="toc-viewport"><a href="#viewport">The 3D Viewport</a></li>
+          <li id="toc-layouts"><a href="#layouts">Viewport Layouts</a></li>
+          <li id="toc-camera"><a href="#camera">Camera Views</a></li>
+          <li id="toc-navigation"><a href="#navigation">Mouse &amp; Keyboard</a></li>
+          <li id="toc-playback"><a href="#playback">Playback Controls</a></li>
+          <li id="toc-timeline"><a href="#timeline">Timeline &amp; Frame Counter</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -316,111 +270,162 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">This article explains what your Motionprint Ergo license includes, the fair use terms that apply to all plans, how to add seats, and what happens at renewal.</p>
+        <p class="article-lead">Motionprint Ergo renders motion capture data as a 3D animated avatar. This article covers the viewport controls, camera options, and playback interface you'll use to navigate and review recordings.</p>
 
         <!-- ── SECTION 1 ── -->
-        <h2 id="whats-covered"><span class="step-num">1</span> What's Covered</h2>
-        <p>All Motionprint Ergo licenses — regardless of tier — include the following features.</p>
+        <h2 id="viewport">The 3D Viewport</h2>
 
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Full access to all ergonomic assessments available in your version of Motionprint Ergo</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Detailed PDF and Excel report generation with charts, risk scores, and per-frame analysis</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Real-time 3D motion visualization with frame-by-frame playback and body risk indicators</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Company branding — customize the interface and reports with your logo, company name, and brand color</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Offline usage for up to 30 days after activation (see Fair Use Terms)</p>
-          </div>
-          <div class="feature-item">
-            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <p>Read-only mode for 7 days after subscription expiry — view and export existing reports, but new processing is paused until renewed</p>
-          </div>
-        </div>
+        <p>The 3D viewport is the central element of every recording view in Motionprint Ergo. It renders a full animated avatar using a 3D scene that gives you spatial context while reviewing motion data.</p>
+
+        <p>The scene contains several fixed elements to help you orient yourself:</p>
+
+        <ul>
+          <li><strong>Checkerboard floor</strong> — a 25 × 25 m area with 0.5 m tile size, providing a sense of scale.</li>
+          <li><strong>Grid lines</strong> — fine lines at tile boundaries overlaid on the floor.</li>
+          <li><strong>Axis markers</strong> — darker emphasis strips running along the X and Z center lines for spatial orientation.</li>
+          <li><strong>Forward-direction marker</strong> — a small triangle on the floor pointing in the +Z direction, colored in your brand color, indicating which way the recorded subject was facing.</li>
+        </ul>
+
+        <p>The scene uses ambient lighting (intensity 0.7) and a directional key light for realistic shading of the avatar. Your brand color (as set in Settings) is used as the highlight color on the avatar, and also colors the forward-direction marker on the floor. The viewport fully respects your interface theme — sky color, tile colors, grid lines, and avatar materials all adapt to light and dark mode.</p>
+
+        <figure class="article-figure">
+          <img src="viewport.jpg" alt="3D viewport in default state showing avatar on checkerboard floor" />
+          <figcaption>The 3D viewport in default state.</figcaption>
+        </figure>
 
         <!-- ── SECTION 2 ── -->
-        <h2 id="fair-use"><span class="step-num">2</span> Fair Use Terms</h2>
-        <p>All Motionprint Ergo licenses are subject to fair use conditions that ensure the licensing system remains secure and that each seat represents a genuine user.</p>
+        <h2 id="layouts">Viewport Layouts</h2>
 
-        <h3>Device limits</h3>
-        <p>Each seat entitles one user to activate Motionprint Ergo on up to <strong>2 devices</strong> simultaneously — for example, a desktop workstation and a laptop. Activations are tracked by machine fingerprint; switching devices requires deactivating one before activating another.</p>
+        <p>The layout selector in the <strong>top-left corner</strong> of the viewport lets you split the view into multiple panels, each with its own independent camera. This is useful for monitoring posture from several angles simultaneously.</p>
 
-        <h3>Offline usage</h3>
-        <p>Once activated, Motionprint Ergo can run without an internet connection for up to <strong>30 days</strong>. During this time the app auto-refreshes its license token silently when it detects connectivity. If the token expires without a refresh, a 7-day grace period begins — the app continues to work but shows a warning asking you to connect to the internet. After 37 days offline without a refresh, the app is locked until connectivity is restored and the token is refreshed. Note: this is separate from subscription expiry (see Renewal &amp; Expiry below).</p>
+        <p>Four layouts are available:</p>
 
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div>
-            <div class="callout-label">Non-transferable</div>
-            <p>Licenses are issued to a named individual and cannot be transferred between people. However, you can move your license between your own devices at any time by deactivating on one machine and activating on another. If a team member leaves, or if you need to free a device slot on a machine you no longer have access to, contact <a href="mailto:support@motion-print.com" style="color:var(--red);border-bottom:1px solid rgba(29,158,117,.3);">support@motion-print.com</a>.</p>
-          </div>
-        </div>
+        <ul>
+          <li><strong>Single</strong> — one full-width viewport. The default.</li>
+          <li><strong>Two Horizontal</strong> — two viewports stacked top and bottom.</li>
+          <li><strong>Two Vertical</strong> — two viewports placed side by side.</li>
+          <li><strong>Quad</strong> — four viewports in a 2 × 2 grid.</li>
+        </ul>
+
+        <p>Each panel in a multi-viewport layout has its own independent camera view and camera state. The default layout — including which of the four layouts to use and what camera view each panel should show — can be configured in Report Settings, separately for each report type and per input and result page.</p>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="adding-seats"><span class="step-num">3</span> Adding Seats</h2>
-        <p>To add seats or change your plan tier, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>. Seats are added the same business day and your license is updated automatically — you will be notified if a new key is required.</p>
+        <h2 id="camera">Camera Views</h2>
+
+        <p>Each viewport has a <strong>camera view selector</strong> button in its <strong>top-right corner</strong>, showing the name of the current view (e.g., "3D"). Clicking it opens a circular menu with six preset angles.</p>
+
+        <figure class="figure-side">
+          <img src="cameraview.gif" alt="Camera view selector button and circular menu" />
+          <figcaption>The view selector.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>3D</strong> — perspective view from a three-quarter angle. The default. Supports free orbit.</li>
+          <li><strong>Front</strong> — orthographic view facing the front of the avatar.</li>
+          <li><strong>Back</strong> — orthographic view facing the back of the avatar.</li>
+          <li><strong>Left</strong> — orthographic view of the avatar's left side.</li>
+          <li><strong>Right</strong> — orthographic view of the avatar's right side.</li>
+          <li><strong>Top</strong> — orthographic bird's-eye view looking straight down.</li>
+        </ul>
+
+        <p>In all views, zooming focuses on the avatar's pelvis as the center point. The circular menu uses a pie-slice layout with arc segments surrounding a center "3D" button.</p>
+        <div style="clear:both"></div>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="renewal"><span class="step-num">4</span> Renewal &amp; Expiry</h2>
-        <p>Motionprint Ergo licenses are annual subscriptions.</p>
+        <h2 id="navigation">Mouse &amp; Keyboard</h2>
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot dot-active">
-              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">~14 days before expiry</div>
-              <div class="timeline-desc">A renewal reminder appears inside the app. Full access continues.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot dot-warn">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">Expiry date</div>
-              <div class="timeline-desc">A <strong>7-day read-only grace period</strong> begins — you can view and export existing reports but cannot process new assessments.</div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot dot-lock">
-              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <div class="timeline-content">
-              <div class="timeline-title">After grace period</div>
-              <div class="timeline-desc">Full lock. The application requires a renewed license key before any functionality is restored.</div>
-            </div>
+        <p>You navigate the 3D viewport using mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
+
+        <table class="shortcut-table">
+          <thead>
+            <tr><th>Input</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Left or right mouse button — drag</td>
+              <td>Rotate around the avatar (3D view only)</td>
+            </tr>
+            <tr>
+              <td>Scroll wheel</td>
+              <td>Zoom in and out, centered on the avatar's pelvis (range: 0.1 m – 20.0 m)</td>
+            </tr>
+            <tr>
+              <td><span class="kbd">R</span></td>
+              <td>Reset the active viewport camera to its default position</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The right-click context menu is suppressed inside the viewport so it does not interfere with orbit controls. When your cursor is over the viewport, page scrolling is disabled to prevent accidental scroll-away while zooming.</p>
+
+        <figure class="article-figure">
+          <img src="rotate.gif" alt="Mouse controls — rotating and zooming the 3D viewport" />
+          <figcaption>Left or right mouse drag to orbit the camera; scroll wheel to zoom.</figcaption>
+        </figure>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="playback">Playback Controls</h2>
+
+        <p>The playback controls are located in the bar <strong>below the viewport</strong>. They let you play, pause, and adjust the speed of the animation.</p>
+
+        <h3>Play / Pause</h3>
+
+        <p>The play/pause button is a square button in the center of the control bar. Click it to start or stop playback. The icon switches between a play triangle and a pause symbol to reflect the current state.</p>
+
+        <h3>Playback Speed</h3>
+
+        <p>The speed selector is to the <strong>left of the play/pause button</strong>, marked with a stopwatch icon. Click it to open a dropdown with four options:</p>
+
+        <ul>
+          <li><strong>0.5×</strong> — half speed, useful for detailed inspection of individual movements.</li>
+          <li><strong>1×</strong> — normal speed, matching the original recording frame rate. The default.</li>
+          <li><strong>2×</strong> — double speed.</li>
+          <li><strong>4×</strong> — quadruple speed, useful for quickly scanning long recordings.</li>
+        </ul>
+
+        <p>Playback is driven by the recording's native frame rate, multiplied by the selected speed factor.</p>
+
+
+        <!-- ── SECTION 6 ── -->
+        <h2 id="timeline">Timeline &amp; Frame Counter</h2>
+
+        <p>The timeline spans the center of the playback controls bar and shows your current position within the recording. The frame counter to its right gives you precise frame information.</p>
+
+        <h3>Playback Position Bar</h3>
+
+        <p>The timeline shows a neutral background track with a colored progress overlay in your brand color. A vertical line marks the current frame position, with a small rectangular label above it showing the frame number. Click anywhere on the track to move the playhead to that point.</p>
+
+
+        <!-- ── CLOSING NOTE ── -->
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Report-specific controls</div>
+            <p>In report-specific contexts, additional controls appear around the viewport — including trim markers, variable selectors, score graphs, and body risk indicators. See the report specific articles for details on those features.</p>
           </div>
         </div>
-
-        <p>To renew, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
-              <a href="license-activation-guide.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">License &amp; Activation Guide</span>
+            <div class="related-grid">
+              <a href="exporting-reports.html" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
               </a>
-              <a href="getting-started-ergo.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Getting Started with Motionprint Ergo</span>
+              <a href="customization-branding.html" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">Customization &amp; Branding</span>
               </a>
-
+              <a href="niosh-report-walkthrough.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">Reading Your NIOSH Report</span>
+              </a>
+              <a href="niosh-report-settings.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">NIOSH Report Settings</span>
+              </a>
             </div>
           </div>
         </div>
@@ -479,8 +484,8 @@
 </footer>
 
 <script>
-  var sections = ['whats-covered','fair-use','adding-seats','renewal'];
-  var tocIds   = ['toc-covered','toc-fair-use','toc-seats','toc-renewal'];
+  var sections = ['viewport','layouts','camera','navigation','playback','timeline'];
+  var tocIds   = ['toc-viewport','toc-layouts','toc-camera','toc-navigation','toc-playback','toc-timeline'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;

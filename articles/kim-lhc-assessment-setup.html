@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Running a NIOSH Assessment — Motionprint Ergo Help</title>
+  <title>Running a KIM-LHC Assessment — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Step-by-step guide to running a NIOSH assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
-  <link rel="canonical" href="https://motion-print.com/articles/running-a-niosh-assessment.html" />
+  <meta name="description" content="Step-by-step guide to running a KIM-LHC assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
+  <link rel="canonical" href="https://motion-print.com/articles/kim-lhc-assessment-setup.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Running a NIOSH Assessment — Motionprint Ergo Help" />
-  <meta property="og:description" content="Step-by-step guide to running a NIOSH assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
-  <meta property="og:url" content="https://motion-print.com/articles/running-a-niosh-assessment.html" />
+  <meta property="og:title" content="Running a KIM-LHC Assessment — Motionprint Ergo Help" />
+  <meta property="og:description" content="Step-by-step guide to running a KIM-LHC assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
+  <meta property="og:url" content="https://motion-print.com/articles/kim-lhc-assessment-setup.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Running a NIOSH Assessment — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Step-by-step guide to running a NIOSH assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
+  <meta name="twitter:title" content="Running a KIM-LHC Assessment — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="Step-by-step guide to running a KIM-LHC assessment in Motionprint Ergo: selecting a report, uploading a recording, trimming the file, defining lifting tasks, and processing the result." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -37,7 +37,6 @@
     a, button, [role="button"] { cursor: pointer; }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
@@ -60,18 +59,6 @@
     .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
     .mobile-nav a:hover { color: #fff; }
 
-    /* ── ARTICLE HERO ── */
-    
-    /* ── BACK LINK ── */
-    .article-back-link {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
-      text-decoration: none; margin-bottom: 28px;
-      transition: color .2s;
-    }
-    .article-back-link:hover { color: rgba(255,255,255,.72); }
-    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
-    .article-back-link:hover svg { transform: translateX(-3px); }
     .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
     .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
     .article-hero-inner { position: relative; z-index: 1; }
@@ -79,18 +66,16 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8b5cf6; }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #8b5cf6; border-radius: 2px; }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--red); border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
     .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── ARTICLE LAYOUT ── */
     .article-outer { padding: 56px 0 88px; }
     .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
 
-    /* TOC sidebar */
     .article-toc { position: sticky; top: 88px; }
     .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
     .toc-list { list-style: none; }
@@ -104,9 +89,8 @@
     .toc-back:hover { color: var(--red); }
     .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* Article body */
     .article-body { min-width: 0; }
-    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
     .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
@@ -117,24 +101,11 @@
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
 
-    /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    /* Step number */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
     .step-num-plain { font-size: 13px; font-weight: 700; color: var(--muted-2); }
 
-    /* Figures */
-    .article-figure { margin: 20px 0; }
-    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-    .article-figure.figure-full img { max-width: 100%; }
-    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
-
-    /* Tab badge */
-    .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
-    .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
@@ -143,32 +114,12 @@
     .callout.callout-info .callout-label { color: #3b82f6; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Info table */
     .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
     .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
     .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
 
-    /* Risk badge */
-    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
-    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
-    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
-    .risk-high   { background: rgba(29,158,117,.12);  color: #1D9E75; }
-    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
-
-    /* Zone table */
-    .zone-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
-    .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
-    .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .zone-table tr:last-child td { border-bottom: none; }
-    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-    .zone-green  { background: #10b981; }
-    .zone-yellow { background: #f59e0b; }
-    .zone-red    { background: #ef4444; }
-    .zone-orange { background: #e3ad21; }
-
-    /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
     .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -177,7 +128,6 @@
     .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
     .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
 
-    /* ── FOOTER ── */
     footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
     .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
     .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
@@ -191,7 +141,6 @@
     .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
     .footer-legal a:hover { color: rgba(255,255,255,.5); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .article-layout { grid-template-columns: 1fr; }
       .article-toc { display: none; }
@@ -247,25 +196,21 @@
 <div class="article-hero">
   <div class="container">
     <div class="article-hero-inner">
-      <a href="../resources.html" class="article-back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to resources
-      </a>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-reports">Using Reports</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Running a NIOSH Assessment</span>
+        <span style="color:rgba(255,255,255,.6)">Running a KIM-LHC Assessment</span>
       </nav>
-      <span class="article-eyebrow">NIOSH</span>
-      <h1>Running a NIOSH Assessment</h1>
+      <span class="article-eyebrow">Using Reports</span>
+      <h1>Running a KIM-LHC Assessment</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          8 min read
+          12 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -308,12 +253,12 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">This article walks through the complete process of running a NIOSH assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them.</p>
+        <p class="article-lead">This article walks through the complete process of running a KIM-LHC assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
 
-        <p>A NIOSH assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
+        <p>A KIM-LHC assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
 
         <table class="info-table">
           <thead><tr><th>Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
@@ -331,7 +276,7 @@
         <!-- ── STEP 1 ── -->
         <h2 id="select-report"><span class="step-num">2</span> Select Report</h2>
 
-        <p>The assessment begins on the <strong>Create page</strong>, where you choose which type of report to run. Select the <strong>NIOSH</strong> tile from the available options, then click <strong>Continue</strong> to proceed to the next step.</p>
+        <p>The assessment begins on the <strong>Create page</strong>, where you choose which type of report to run. Select the <strong>KIM-LHC</strong> tile from the available options, then click <strong>Continue</strong> to proceed to the next step.</p>
 
         <!-- ── STEP 2 ── -->
         <h2 id="select-input-source"><span class="step-num">3</span> Select Input Source</h2>
@@ -380,21 +325,21 @@
           <li><strong>End handle (right)</strong> — Drag to set where it ends.</li>
         </ul>
 
-        <p>The region outside the two handles is shown in a shaded colour, indicating that part of the recording is excluded from the assessment. As you adjust the handles, Motionprint Ergo automatically recalculates the <strong>lift frequency</strong> — the number of lifting tasks divided by the trimmed duration in minutes. Frequency must fall within NIOSH's acceptable range of <strong>0.2–15 lifts/min</strong>. If it falls outside this range, a warning is shown and the Process button stays disabled until you correct it.</p>
+        <p>The region outside the two handles is shown in a shaded colour, indicating that part of the recording is excluded from the assessment. As you adjust the handles, Motionprint Ergo automatically recalculates the lift frequency — the number of lifting tasks divided by the trimmed duration. The KIM-LHC method requires a minimum of <strong>5 cycles/day</strong> to assign a valid Time Rating. If the calculated frequency falls below this threshold, a warning is shown and the Process button stays disabled until you correct it.</p>
 
         <img src="trimmarkers.gif" alt="Dragging trim markers on the playbar to set the observation window" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;margin:16px 0;" />
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Frequency = Tasks ÷ Trimmed duration</div>
-            <p>Example: 5 lifting tasks in a 2-minute observation window gives a frequency of 2.5 lifts/min — within the acceptable range. If the frequency is too low, extend the window or add more tasks. If too high, narrow the window or remove tasks.</p>
+            <div class="callout-label">Time Rating is frequency-based</div>
+            <p>The KIM-LHC Time Rating is determined by the calculated cycle frequency (tasks per day). A minimum of 5 cycles/day is required; below this the assessment cannot proceed. See the <a href="understanding-kim-lhc-assessment.html#time-rating">Understanding the KIM-LHC Assessment</a> article for the full Time Rating table and multiplier values.</p>
           </div>
         </div>
 
         <h3>Defining lifting tasks</h3>
 
-        <p>A lifting task is a distinct lifting action within the observation window. Each task is defined by a start frame and an end frame. Tasks must have a minimum duration of <strong>1.0 second</strong>. To add one:</p>
+        <p>A lifting task represents a distinct lifting movement within the observation window. Each task is defined by a start frame, an end frame, and a load weight category. Tasks must have a minimum duration of <strong>1.0 second</strong>. Overlapping frame ranges between tasks are not permitted. To add a task:</p>
 
         <ol>
           <li>Click and drag on the timeline to highlight a frame range. The selection is shown in the branding colour configured in your settings.</li>
@@ -403,46 +348,31 @@
             <ul>
               <li><strong>Start frame</strong> — Auto-populated from your selection; editable.</li>
               <li><strong>End frame</strong> — Auto-populated from your selection; editable.</li>
-              <li><strong>Load weight</strong> — Weight of the object being lifted, in kilograms. Set using the slider.</li>
-              <li><strong>Coupling rating</strong> — Select Good, Fair, or Poor to describe the grip quality.</li>
+              <li><strong>Load weight category</strong> — Select the weight bin that describes the load being lifted, using the slider. Available bins: 3–5 kg, 5–10 kg, 10–15 kg, 15–20 kg, 20–25 kg, 25–30 kg, 30–35 kg, 35–40 kg, &gt;40 kg. The 0–3 kg bin is hidden by default and can be enabled in the KIM-LHC report settings.</li>
             </ul>
           </li>
         </ol>
 
-        <figure class="article-figure">
-          <img src="liftingmoments.gif" alt="Defining a lifting task by selecting a frame range on the timeline" />
+        <figure style="margin:16px 0;">
+          <img src="liftingmoments.gif" alt="Defining a lifting task by selecting a frame range on the timeline" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
         </figure>
-
-        <table class="info-table">
-          <thead><tr><th>Coupling rating</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Good</td>
-              <td>Optimal handles or cut-out handholds on a container; comfortable, secure grip with the hand well-wrapped around the object.</td>
-            </tr>
-            <tr>
-              <td>Fair</td>
-              <td>Less-than-optimal handles or grip surfaces; moderate difficulty maintaining a firm hold on the object.</td>
-            </tr>
-            <tr>
-              <td>Poor</td>
-              <td>No handles; fingers flexed approximately 90° at the knuckle; awkward, unstable, or bulky object with no suitable grip point.</td>
-            </tr>
-          </tbody>
-        </table>
 
         <p>You can edit or delete tasks in the list at any time. If you adjust the trim handles to exclude a task's frame range, that task is removed or adjusted automatically.</p>
 
-        <h3>Multiple lifting tasks and CLI mode</h3>
+        <h3>Multiple lifting tasks</h3>
 
-        <p>If you define two or more lifting tasks, Motionprint Ergo automatically switches to multi-task mode. Each task receives a Single-Task Lifting Index (STLI), and the results are combined into a Composite Lifting Index (CLI). This is appropriate when the worker performs several distinct lifting movements at the same workstation.</p>
-
-        <p>For a full explanation of how the CLI is calculated, see the <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a> article.</p>
+        <p>You can define as many lifting tasks as needed within the observation window. In Motionprint Ergo, each KIM-LHC lifting task is scored independently. When the <strong>Generate averaged overview</strong> setting is enabled in the KIM-LHC report settings and you have two or more tasks, an additional averaged overview is computed across all tasks. For a full explanation of how multi-task scoring works, see the <a href="understanding-kim-lhc-assessment.html#multi-task">Understanding the KIM-LHC Assessment</a> article.</p>
 
         <!-- ── STEP 5 ── -->
         <h2 id="task-information"><span class="step-num">6</span> Provide Task Information</h2>
 
-        <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata about the assessment session. Some fields are always shown; others appear or are hidden based on your <a href="niosh-report-settings.html">NIOSH report settings</a>.</p>
+        <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata and working condition details about the assessment. Some fields are always shown; others appear or are hidden based on your <a href="kim-lhc-report-settings.html">KIM-LHC report settings</a>.</p>
+
+        <h3>Task information cards</h3>
+
+        <p>Two side-by-side cards collect session metadata.</p>
+
+        <p>The <strong>left card</strong> contains:</p>
 
         <table class="info-table">
           <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
@@ -450,111 +380,123 @@
             <tr>
               <td>Workplace</td>
               <td>No</td>
-              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3"). This field is always visible and cannot be hidden in settings.</td>
+              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3"). Always visible; cannot be hidden in settings.</td>
             </tr>
             <tr>
               <td>Evaluator</td>
               <td>No</td>
-              <td>Name or ID of the assessor. Can be hidden via "Hide evaluator name" in NIOSH report settings.</td>
+              <td>Name or ID of the assessor. Can be hidden via "Hide evaluator name" in KIM-LHC report settings.</td>
             </tr>
             <tr>
               <td>Operator</td>
               <td>No</td>
-              <td>Name or ID of the worker being assessed. Can be hidden via "Hide operator name" in settings.</td>
+              <td>Name or ID of the worker being assessed. Can be hidden via "Hide operator name" in KIM-LHC report settings.</td>
             </tr>
-            <tr>
-              <td>Gender</td>
-              <td>No</td>
-              <td>Worker gender (Male / Female). Can be hidden via "Gender not required" in settings.</td>
-            </tr>
+          </tbody>
+        </table>
+
+        <p>The <strong>right card</strong> contains:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+          <tbody>
             <tr>
               <td>Date</td>
               <td>Yes</td>
-              <td>The evaluation date. Set automatically to today's date using separate year, month, and day selectors.</td>
+              <td>The evaluation date. Defaults to today's date automatically.</td>
             </tr>
             <tr>
-              <td>Working time</td>
+              <td>Station time</td>
               <td>Yes</td>
-              <td>Total hours and minutes at the workstation per shift. Used to determine the Frequency Multiplier (FM) duration category.</td>
+              <td>Time spent at this station performing the same repetitive movement, entered using separate hours and minutes pickers. Used to calculate the cycle frequency for the Time Rating lookup.</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>Working time and duration category</h3>
+        <h3>Working conditions</h3>
 
-        <p>The <strong>Working time</strong> value determines which FM lookup table is applied. Motionprint Ergo categorises the shift duration automatically:</p>
+        <p>Below the task information cards, five required fields capture the working conditions at the station. All five must be set before the Process button becomes active. The fields are arranged in two rows:</p>
 
-        <ul>
-          <li><strong>Short duration</strong> — ≤ 1 hour at the workstation.</li>
-          <li><strong>Moderate duration</strong> — Greater than 1 hour, up to 2 hours.</li>
-          <li><strong>Long duration</strong> — Greater than 2 hours.</li>
-        </ul>
-
-        <p>The correct FM table is selected automatically once you enter the working time.</p>
-
-        <h3>Additional modifiers</h3>
-
-        <p>If any additional modifiers are enabled in your NIOSH report settings, they will appear in the lifting task editing window so they can be set per individual task. The exception is the <strong>Extended duration (eM)</strong> modifier, which is applied automatically based on the working time you entered — no manual selection is needed.</p>
+        <p><strong>Row 1:</strong></p>
 
         <table class="info-table">
-          <thead><tr><th>Modifier</th><th>Factor</th><th>How it is set</th></tr></thead>
+          <thead><tr><th>Field</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Two-person lift (Pf)</td>
-              <td>0.85</td>
-              <td>Set per lifting task in the task editing window. The load is lifted by two workers simultaneously, sharing the weight.</td>
+              <td>Adverse ambient conditions</td>
+              <td>No / Yes</td>
+              <td>Select <strong>Yes</strong> if the worker is exposed to significant adverse environmental factors — such as heat, cold, humidity, whole-body vibration, or dust — that increase physical strain beyond normal conditions. Select <strong>No</strong> if conditions are within normal ranges.</td>
             </tr>
             <tr>
-              <td>Additional physical tasks (Tf)</td>
-              <td>0.80</td>
-              <td>Set per lifting task in the task editing window. The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
+              <td>Impairing clothes or equipment</td>
+              <td>No / Yes</td>
+              <td>Select <strong>Yes</strong> if the worker wears personal protective equipment or clothing that noticeably restricts freedom of movement — for example, heavy protective suits, gloves that limit grip sensitivity, or respiratory protection that increases exertion. Select <strong>No</strong> if standard work clothing is worn.</td>
             </tr>
             <tr>
-              <td>One-hand lifting (Of)</td>
-              <td>0.60</td>
-              <td>Set per lifting task in the task editing window. A lift is performed with only one hand instead of two.</td>
-            </tr>
-            <tr>
-              <td>Extended duration (eM)</td>
-              <td>Varies</td>
-              <td>Applied automatically based on the working time entered above. Applies when the work shift exceeds 8 hours: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
+              <td>Spatial conditions</td>
+              <td>Good / Restricted / Unfavorable</td>
+              <td>Describes available working space. <strong>Good</strong>: sufficient space for all lifting movements with no constraints. <strong>Restricted</strong>: limited space requires occasional postural adjustments or compromises. <strong>Unfavorable</strong>: severely cramped conditions force significant postural constraints throughout the task.</td>
             </tr>
           </tbody>
         </table>
 
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>Row 2:</strong></p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Options</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Work organization</td>
+              <td>Good / Restricted / Unfavorable</td>
+              <td>Describes the overall work rhythm and recovery opportunity. <strong>Good</strong>: adequate recovery times, varied tasks, no significant time pressure. <strong>Restricted</strong>: moderate time pressure or reduced recovery; some ability to self-pace. <strong>Unfavorable</strong>: high time pressure, minimal recovery time, monotonous repetitive work with no meaningful pauses.</td>
+            </tr>
+            <tr>
+              <td>Force transfer and application</td>
+              <td>Easy / Restricted / Hindered</td>
+              <td>Describes how easily force can be transferred between the worker and the load. <strong>Easy</strong>: good grip surfaces, stable load, smooth and controlled transfer. <strong>Restricted</strong>: moderate grip difficulty or a somewhat unstable load requiring extra care. <strong>Hindered</strong>: poor grip, unstable or difficult-to-handle load, awkward force application throughout the lift.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Each field has an info icon you can tap to read a short in-app description of the options.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Modifiers are opt-in</div>
-            <p>The additional modifiers sub-section only appears if at least one modifier is enabled in your NIOSH report settings. If no modifiers are enabled, this section is hidden entirely and you proceed directly to processing.</p>
+            <div class="callout-label">All five fields are required</div>
+            <p>All five working condition fields are required. The Process button stays disabled until every field has a selection.</p>
           </div>
         </div>
 
         <!-- ── PROCESSING ── -->
         <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
 
-        <p>Once all required fields are filled and at least one lifting task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment.</p>
+        <p>Once all required fields are filled, at least one lifting task is defined, and all five unfavorable working condition fields are selected, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment.</p>
 
-        <p>A loading overlay appears showing progress and current status as the NIOSH calculation runs. Once complete, Motionprint Ergo automatically navigates to the report view, where you can review the <strong>Score Overview</strong>, <strong>Analysis</strong>, and <strong>Findings</strong> tabs. For a full walkthrough of every section in the report, see <a href="reading-the-niosh-report-results.html">Reading the NIOSH Report Results</a>.</p>
+        <p>A loading overlay appears showing progress and current status as the KIM-LHC calculation runs. Once complete, Motionprint Ergo automatically navigates to the report view, where you can review the <strong>Score Overview</strong>, <strong>Analysis</strong>, and <strong>Findings</strong> tabs. For a full walkthrough of every section in the report, see <a href="reading-the-kim-lhc-report-results.html">Reading the KIM-LHC Report Results</a>.</p>
 
         <p>If an error occurs during processing, an error message is displayed. You are returned to the input page where you can correct the issue and try again.</p>
 
         <h3>Making changes after processing</h3>
 
-        <p>If you are on the report page and want to adjust any input — tasks, task information, or modifiers — click the <strong>Edit</strong> button on the report page. This returns you to the input page with all your existing settings intact, so you can make changes and re-process without starting over.</p>
+        <p>If you are on the report page and want to adjust any input — tasks, task information, or working conditions — click the <strong>Edit</strong> button on the report page. This returns you to the input page with all your existing settings intact, so you can make changes and re-process without starting over.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
             <div class="related-label">Related articles</div>
-                                    <div class="related-grid">
-              <a href="reading-the-niosh-report-results.html" class="related-card">
-                <span class="related-card-cat">NIOSH</span>
-                <span class="related-card-title">Reading the NIOSH Report Results</span>
+            <div class="related-grid">
+              <a href="reading-the-kim-lhc-report-results.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">Reading the KIM-LHC Report Results</span>
               </a>
-              <a href="niosh-report-settings.html" class="related-card">
-                <span class="related-card-cat">NIOSH</span>
-                <span class="related-card-title">NIOSH Report Settings</span>
+              <a href="kim-lhc-report-settings.html" class="related-card">
+                <span class="related-card-cat">Using Reports</span>
+                <span class="related-card-title">KIM-LHC Report Settings</span>
+              </a>
+              <a href="understanding-kim-lhc-assessment.html" class="related-card">
+                <span class="related-card-cat">Methodology</span>
+                <span class="related-card-title">Understanding the KIM-LHC Assessment</span>
               </a>
             </div>
           </div>
