@@ -1384,10 +1384,12 @@
           destination: 'info',
           subject: 'ROI Calculator Lead',
           topic: 'ROI Calculator Lead',
-          name: '',
+          name: 'ROI Calculator User',
           email: email,
-          company: '',
-          message: 'Via ROI calculator — ' + assessments + ' assessments/yr, ' + manual + 'h manual, €' + rate + '/h'
+          company: 'Via website',
+          role: '',
+          phone: '',
+          message: 'ROI calculator unlocked by: ' + email + '\n\nSlider values:\n- Assessments per year: ' + assessments + '\n- Manual time per assessment: ' + manual + 'h\n- Hourly rate: €' + rate
         })
       });
     } catch (err) { /* unlock anyway */ }
