@@ -27,9 +27,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: #ea523b;
-      --red-dark: #c93f28;
-      --red-light: #f06449;
+      --red: #1D9E75;
+      --red-dark: #0F6E56;
+      --red-light: #5DCAA5;
       --dark: #0d0f12;
       --dark-2: #161a20;
       --dark-3: #1e2530;
@@ -70,8 +70,8 @@
       border-radius: 8px; padding: 12px 22px; cursor: pointer;
       text-decoration: none; transition: all .2s ease; border: none; white-space: nowrap;
     }
-    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(234,82,59,.35); }
-    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(234,82,59,.45); }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(29,158,117,.35); }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(29,158,117,.45); }
     .btn-secondary { background: var(--white); color: var(--text); border: 1.5px solid var(--border); }
     .btn-secondary:hover { border-color: #c9d0da; background: var(--bg); }
     .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
@@ -87,7 +87,7 @@
     }
     .about-hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(234,82,59,.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(29,158,117,.07) 0%, transparent 70%);
     }
     .about-hero-inner { max-width: 720px; }
     .about-hero h1 {
@@ -169,7 +169,7 @@
     }
     .about-mission::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(234,82,59,.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(29,158,117,.08) 0%, transparent 70%);
     }
     .about-mission-inner { max-width: 680px; margin: 0 auto; position: relative; }
     .about-mission-quote {
@@ -231,7 +231,7 @@
     .form-label .req { color: var(--red); margin-left: 2px; }
     .form-input { font-family: var(--font-body); font-size: 13px; color: var(--text); padding: 10px 13px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--bg); transition: border-color .2s, box-shadow .2s; outline: none; width: 100%; box-sizing: border-box; }
     .form-input::placeholder { color: var(--muted-2); }
-    .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(234,82,59,.1); }
+    .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(29,158,117,.1); }
     .form-input.invalid { border-color: #ef4444; }
     textarea.form-input { resize: vertical; min-height: 80px; }
     select.form-input { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
