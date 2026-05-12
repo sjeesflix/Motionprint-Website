@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motionprint — Ergonomic Risk Assessments, Automated</title>
+  <meta name="description" content="Motionprint Ergo transforms motion capture data into validated ergonomic risk assessment reports — automatically. Supports NIOSH and KIM-LHC. Export to branded PDF or Excel." />
+  <link rel="canonical" href="https://motion-print.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Motionprint" />
+  <meta property="og:title" content="Motionprint — Ergonomic Risk Assessments, Automated" />
+  <meta property="og:description" content="Motionprint Ergo transforms motion capture data into validated ergonomic risk assessment reports — automatically. Supports NIOSH and KIM-LHC. Export to branded PDF or Excel." />
+  <meta property="og:url" content="https://motion-print.com/" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Motionprint — Ergonomic Risk Assessments, Automated" />
+  <meta name="twitter:description" content="Motionprint Ergo transforms motion capture data into validated ergonomic risk assessment reports — automatically. Supports NIOSH and KIM-LHC. Export to branded PDF or Excel." />
+  <meta name="twitter:image" content="https://motion-print.com/Motionprint-social.png" />
   <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,8 +45,8 @@
       --shadow-lg: 0 32px 80px rgba(13,15,18,.20);
     }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default;  overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
     a, button, [role="button"], label[for], select { cursor: pointer; }
 
     /* ── UTILITIES ── */
@@ -73,12 +85,11 @@
     .btn-ghost:hover { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.3); }
 
 
-    /* ── HERO ── */
+    /* ── HERO (full-width video background) ── */
     .hero {
       position: relative;
       height: 100vh; height: 100svh; min-height: 640px;
-      overflow: hidden;
-      width: 100%; max-width: 100vw;
+      overflow: hidden; width: 100%; max-width: 100vw;
       display: flex; align-items: flex-end; justify-content: center;
     }
     .hero-video-bg { position: absolute; inset: 0; z-index: 0; }
@@ -91,13 +102,6 @@
       position: relative; z-index: 2;
       text-align: center; max-width: 720px; padding: 0 28px 60px;
     }
-    .hero-eyebrow { margin-bottom: 24px; }
-    .hero-h1 {
-      font-family: var(--font-display); font-weight: 800;
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: 1.03; letter-spacing: -.03em; color: #fff; margin-bottom: 20px;
-    }
-    .hero-h1 em { font-style: italic; color: var(--red); }
     .hero-sub {
       font-size: 18px; color: rgba(255,255,255,.6); line-height: 1.65;
       max-width: 500px; margin: 0 auto 36px;
@@ -106,7 +110,6 @@
       display: flex; align-items: center; justify-content: center;
       gap: 12px; flex-wrap: wrap;
     }
-
 
     /* ── APP SHELL (mockup) ── */
     .app-shell {
@@ -497,6 +500,19 @@
     .roi-cta:hover { background: var(--red-light); }
     .roi-assumption { font-size: 11px; color: rgba(255,255,255,.25); text-align: center; margin-top: 8px; line-height: 1.5; }
 
+    /* ── ROI GATE OVERLAY ── */
+    .roi-gate { position:absolute;inset:0;background:var(--dark);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;z-index:10; }
+    .roi-gate-icon { width:44px;height:44px;border-radius:50%;background:rgba(29,158,117,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px; }
+    .roi-gate-icon svg { width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
+    .roi-gate-title { font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3; }
+    .roi-gate-sub { font-size:13px;color:rgba(255,255,255,.45);line-height:1.5;margin-bottom:20px;max-width:240px; }
+    .roi-gate-input { width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:14px;outline:none;box-sizing:border-box;transition:border-color .15s; }
+    .roi-gate-input::placeholder { color:rgba(255,255,255,.3); }
+    .roi-gate-input:focus { border-color:var(--red); }
+    .roi-gate-btn { width:100%;margin-top:10px;background:var(--red);color:#fff;font-size:14px;font-weight:600;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;transition:background .15s; }
+    .roi-gate-btn:hover { background:var(--red-light); }
+    .roi-gate-note { font-size:11px;color:rgba(255,255,255,.25);margin-top:10px;line-height:1.5; }
+
     /* ── CTA BANNER ── */
     .cta-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
     .cta-section::before {
@@ -645,7 +661,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .ergo-inner, .forwho-inner, .custom-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-inner, .ergo-inner, .forwho-inner, .custom-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { order: -1; }
       .pricing-grid { grid-template-columns: 1fr 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
       .ergo-inner > div { min-width: 0; }
@@ -656,11 +673,7 @@
       .app-tabs-bar { display: none; }
       .acard-risk { display: none; }
       .app-body { grid-template-columns: 1fr; }
-      .hero-sub { font-size: 16px; }
-      .hero { height: 56vw; min-height: 300px; max-height: 460px; }
-      .hero-content { padding: 0 20px calc(44px + env(safe-area-inset-bottom, 0px)); }
-      .hero-actions { flex-direction: row; justify-content: center; gap: 8px; flex-wrap: wrap; }
-      .hero-actions .btn { padding: 10px 18px; font-size: 13px; }
+      .hero-sub { font-size: 15px; }
       .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .roi-section, .pricing-section, .cta-section { padding: 64px 0; }
       .section-header { margin-bottom: 36px; }
       .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
@@ -689,16 +702,67 @@
     }
     @media (max-width: 520px) {
       .methods-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; align-items: center; }
     }
-      @media (max-width: 480px) {
-      .hero-sub { font-size: 14px; max-width: 100%; }
-      .hero-content { padding: 0 16px calc(36px + env(safe-area-inset-bottom, 0px)); }
-      .hero-video-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; overflow: hidden; }
-      .hero-video-bg video { width: 100%; height: 100%; object-fit: cover; object-position: center; min-width: 0; min-height: 0; }
+
+    /* ── MOBILE HERO ── */
+    .hero-btns-mobile { display: none; }
+    @media (max-width: 768px) {
+      html { overflow-x: hidden; }
+      body { overflow-x: hidden; }
+      .hero { height: 56vw; min-height: 300px; max-height: 460px; }
+      .hero-content { padding: 0 20px calc(28px + env(safe-area-inset-bottom, 0px)); }
+      .hero-actions { display: none; }
+      .hero-btns-mobile {
+        display: flex; flex-direction: row; justify-content: center;
+        gap: 8px; flex-wrap: wrap; padding: 16px 20px;
+      }
+      .hero-btns-mobile .btn { padding: 10px 18px; font-size: 13px; }
+      .hero-btns-mobile .btn-ghost {
+        background: var(--text); color: #fff; border-color: var(--text);
+      }
+      .hero-btns-mobile .btn-ghost:hover { background: #222; border-color: #222; }
     }
-    </style>
+    @media (max-width: 480px) {
+      .hero-sub { font-size: 15px; }
+      .hero-content { padding: 0 16px calc(20px + env(safe-area-inset-bottom, 0px)); }
+    }
+  </style>
   <link rel="stylesheet" href="nav.css">
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Motionprint Ergo",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows",
+      "description": "Motionprint Ergo automatically turns motion capture recordings into validated ergonomic risk assessment reports. Supports NIOSH lifting equation and KIM-LHC assessment methods. Export branded PDF or Excel reports for H&S documentation.",
+      "featureList": ["NIOSH assessment automation", "KIM-LHC assessment automation", "PDF export with custom branding", "Excel export", "Xsens MVNX support", "3D motion playback"],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Motionprint",
+        "url": "https://motion-print.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Motionprint",
+      "url": "https://motion-print.com",
+      "logo": "https://motion-print.com/Motionprint-full.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@motion-print.com",
+        "contactType": "sales"
+      }
+    }
+  ]
+  </script>
 </head>
 <body>
 
@@ -723,6 +787,13 @@
     </div>
   </div>
 </section>
+<div class="hero-btns-mobile">
+  <a href="#contact" class="btn btn-primary">Request a demo</a>
+  <a href="download.html" class="btn btn-ghost">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download free
+  </a>
+</div>
 
 <!-- ── LOGOS STRIP ── -->
 
@@ -801,6 +872,7 @@
   </div>
 </section>
 
+<!-- ── MOTIONPRINT ERGO ── -->
 <section class="ergo-section" id="ergo">
   <div class="container">
     <div class="ergo-inner">
@@ -892,7 +964,7 @@
                 <!-- Ground plane with perspective grid mesh -->
                 <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
                 <!-- Avatar -->
-                <video src="trueavatar.mp4" autoplay loop muted playsinline oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
+                <video src="trueavatar.mp4" autoplay loop muted playsinline disablepictureinpicture oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
                 <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
               </div>
               <!-- Graph card -->
@@ -949,7 +1021,6 @@
 })();
 </script>
 
-
 <!-- ── HOW IT WORKS ── -->
 <section class="how" id="how">
   <div class="container">
@@ -966,7 +1037,7 @@
           </div>
           <h3 class="step-title"><span class="hide-mobile">Upload your motion capture data</span><span class="show-mobile">Upload motion capture data</span></h3>
         </div>
-        <p class="step-desc">Export your recording and upload it directly into Motionprint Ergo. No complex setup or conversion required.</p>
+        <p class="step-desc">Export your recording from your motion capture system and drop the file directly into Motionprint Ergo. No conversion or complex setup required.</p>
         <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
       </div>
       <div class="how-step">
@@ -1127,7 +1198,7 @@
     <div class="section-header">
       <span class="eyebrow">Return on investment</span>
       <h2 class="section-title">How much time does it save?</h2>
-      <p class="section-sub">A traditional ergonomic assessment — observation, manual calculation, report writing — takes hours. Motionprint automates the analysis. See how quickly the licence pays for itself.</p>
+      <p class="section-sub">A traditional ergonomic assessment — observation, manual calculation, report writing — takes hours. Motionprint automates the analysis. Adjust the sliders to estimate how much time and money you could save each year.</p>
     </div>
     <div class="roi-layout">
 
@@ -1160,7 +1231,7 @@
       </div>
 
       <!-- Results card -->
-      <div class="roi-card">
+      <div class="roi-card" style="position:relative;overflow:hidden;">
         <div class="roi-card-title">Your estimated return</div>
 
         <!-- Row 1: time saved per assessment + total hours -->
@@ -1177,20 +1248,11 @@
           </div>
         </div>
 
-        <!-- Row 2: formula value − cost = net -->
-        <div class="roi-formula">
-          <div class="roi-formula-labels">
-            <span>Time value</span><span></span>
-            <span>Licence</span><span></span>
-            <span>Net saving</span>
-          </div>
-          <div class="roi-formula-values">
-            <span class="roi-formula-val" id="res-value">—</span>
-            <span class="roi-formula-op">−</span>
-            <span class="roi-formula-val is-muted">€2.500</span>
-            <span class="roi-formula-op">=</span>
-            <span class="roi-formula-val is-green" id="res-net">—</span>
-          </div>
+        <!-- Time value saved -->
+        <div class="roi-stat">
+          <span class="roi-stat-label">Total time value saved</span>
+          <span class="roi-stat-value" id="res-value">—</span>
+          <span class="roi-stat-sub">per year at your hourly rate</span>
         </div>
 
         <!-- ROI highlight -->
@@ -1199,8 +1261,22 @@
           <span class="roi-highlight-value" id="res-roi">—</span>
         </div>
 
-        <a href="#pricing" class="roi-cta">See pricing →</a>
-        <p class="roi-assumption">Based on ~30 min per assessment with Motionprint Ergo (including motion capture setup, review, and export). Actual time may vary.</p>
+        <a href="#contact" class="roi-cta" onclick="openContactForm(event)">Request a demo →</a>
+        <p class="roi-assumption">ROI estimate based on standard per-seat licence pricing. Contact us for your exact quote.</p>
+
+        <!-- Email gate overlay -->
+        <div id="roi-gate" class="roi-gate">
+          <div class="roi-gate-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div class="roi-gate-title">Unlock your ROI estimate</div>
+          <p class="roi-gate-sub">Enter your email to see your personalised return on investment.</p>
+          <form id="roi-gate-form" novalidate>
+            <input type="email" id="roi-gate-email" class="roi-gate-input" placeholder="you@company.com" autocomplete="email" required>
+            <button type="submit" id="roi-gate-submit" class="roi-gate-btn">Show my ROI →</button>
+          </form>
+          <p class="roi-gate-note">No spam. We'll only send you relevant product info.</p>
+        </div>
       </div>
 
     </div>
@@ -1244,8 +1320,6 @@
       ? (hoursYear % 1 === 0 ? fmt(hoursYear) : fmt(Math.round(hoursYear * 10) / 10)) + ' hours'
       : '—';
     document.getElementById('res-value').textContent = '€' + fmt(Math.round(valueYear));
-    document.getElementById('res-net').textContent = net >= 0 ? '€' + fmt(Math.round(net)) : '−€' + fmt(Math.round(Math.abs(net)));
-    document.getElementById('res-net').className = 'roi-formula-val ' + (net >= 0 ? 'is-green' : 'is-red');
     document.getElementById('res-roi').textContent = roi >= 0 ? '+' + Math.round(roi) + '%' : Math.round(roi) + '%';
     document.getElementById('res-roi').className = 'roi-highlight-value ' + (roi >= 0 ? 'is-green' : 'is-red');
   }
@@ -1258,55 +1332,106 @@
 })();
 </script>
 
+<script>
+// ROI email gate
+(function () {
+  var gate = document.getElementById('roi-gate');
+  if (!gate) return;
+
+  // Already unlocked this session?
+  if (sessionStorage.getItem('roi_unlocked') === '1') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  document.getElementById('roi-gate-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var emailEl = document.getElementById('roi-gate-email');
+    var btn     = document.getElementById('roi-gate-submit');
+    var email   = emailEl.value.trim();
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailEl.style.borderColor = '#f87171';
+      return;
+    }
+    emailEl.style.borderColor = '';
+    btn.textContent = 'One moment…';
+    btn.disabled = true;
+
+    // Capture slider context for lead quality
+    var assessments = document.getElementById('sl-assessments').value;
+    var manual      = document.getElementById('sl-manual').value;
+    var rate        = document.getElementById('sl-rate').value;
+
+    try {
+      await fetch('https://contact.motion-print.com/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          destination: 'info',
+          subject: 'ROI Calculator Lead',
+          topic: 'ROI Calculator Lead',
+          name: '',
+          email: email,
+          company: '',
+          message: 'Via ROI calculator — ' + assessments + ' assessments/yr, ' + manual + 'h manual, €' + rate + '/h'
+        })
+      });
+    } catch (err) { /* unlock anyway */ }
+
+    sessionStorage.setItem('roi_unlocked', '1');
+    gate.style.transition = 'opacity .35s ease';
+    gate.style.opacity = '0';
+    setTimeout(function () { gate.style.display = 'none'; }, 360);
+  });
+})();
+</script>
+
 <!-- ── PRICING ── -->
 <section class="pricing-section" id="pricing">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Pricing</span>
-      <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-sub">Available per seat as an annual or monthly subscription. Every plan includes all current assessment methods and exports. New features added continuously<span class="hide-mobile"> — no per-report fees</span>.</p>
+      <span class="eyebrow">Plans</span>
+      <h2 class="section-title">The right plan for<br><em>your workflow</em></h2>
+      <p class="section-sub">Available per seat as a monthly or annual subscription. Every plan includes all current assessment methods, PDF and Excel export, and continuous updates — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us for pricing</a>.</p>
     </div>
     <div class="pricing-grid">
 
       <!-- Monthly -->
       <div class="pricing-card">
         <div class="pricing-tier">Monthly</div>
-        <div class="pricing-price"><sub>€</sub>250</div>
-        <div class="pricing-period">per month &mdash; 1 seat, 2 devices</div>
+        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">1 seat &mdash; billed monthly</div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">Full access on a month-to-month basis. Same features as the annual licence, billed monthly.</p>
+        <p class="pricing-desc">Full access on a flexible month-to-month basis. No long-term commitment required.</p>
         <ul class="pricing-feats">
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Monthly licence – 1 seat">Get started</a>
+        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Monthly licence – 1 seat">Request pricing</a>
       </div>
 
       <!-- Annual (featured) -->
       <div class="pricing-card pricing-card--featured">
         <div class="pricing-badge">Best value</div>
         <div class="pricing-tier">Annual licence</div>
-        <div class="pricing-price"><sub>€</sub>2,500</div>
-        <div class="pricing-period" style="margin-bottom:6px;">per year &mdash; 1 seat, 2 devices</div>
-        <div class="pricing-savings"><strong>Save €500 vs monthly</strong></div>
+        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">1 seat &mdash; billed annually</div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">The most cost-effective way to run ergonomic assessments. Everything in the monthly plan at 17% off.</p>
+        <p class="pricing-desc">The most cost-effective way to run ergonomic assessments. Everything in the monthly plan at a significant discount.</p>
         <ul class="pricing-feats">
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Annual licence – 1 seat">Get started</a>
+        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Annual licence – 1 seat">Request pricing</a>
       </div>
 
       <!-- Team, Enterprise & Academic -->
       <div class="pricing-card">
         <div class="pricing-tier">Team, Enterprise &amp; Academic</div>
-        <div class="pricing-price" style="margin-top:10px">On request</div>
-        <div class="pricing-period">Multiple seats &mdash; teams, organisations &amp; research</div>
+        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">Multiple seats &mdash; teams, organisations &amp; research</div>
         <div class="pricing-divider"></div>
         <p class="pricing-desc">Volume pricing for teams and organisations, and discounted licences for universities and research groups.</p>
         <ul class="pricing-feats">
@@ -1319,7 +1444,7 @@
       </div>
 
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:32px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:32px;">Pricing is tailored to your use case — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> to get a quote.</p>
     <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;">Not sure yet? <a href="#contact" onclick="openContactForm(event)" data-topic="Trial licence request" style="color:var(--red);text-decoration:none;font-weight:600;">Ask about a trial licence →</a></p>
   </div>
 </section>
@@ -1413,7 +1538,7 @@
           <li><a href="#ergo">Motionprint Ergo</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#methods">Supported methods</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#pricing">Plans &amp; Pricing</a></li>
         </ul>
       </div>
       <div>
@@ -1617,4 +1742,3 @@
 </script>
 </body>
 </html>
-                                                                                                                                                       
