@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motionprint — Ergonomic Risk Assessments, Automated</title>
+  <link rel="icon" type="image/png" href="Motionprint-minimized.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #ea523b;
+      --red-dark: #c93f28;
+      --red-light: #f06449;
+      --dark: #0d0f12;
+      --dark-2: #161a20;
+      --dark-3: #1e2530;
+      --text: #111827;
+      --muted: #6b7280;
+      --muted-2: #9ca3af;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f9fafb;
+      --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+      --shadow-lg: 0 32px 80px rgba(13,15,18,.20);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"], label[for], select { cursor: pointer; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+    .eyebrow-light { color: rgba(255,255,255,.45); }
+    .eyebrow-light::before { background: var(--red); }
+
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.1; letter-spacing: -.03em; color: var(--text); margin-top: 14px;
+    }
+    .section-title em { font-style: italic; color: var(--red); }
+    .section-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 520px; margin: 14px auto 0; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      border-radius: 8px; padding: 12px 22px; cursor: pointer;
+      text-decoration: none; transition: all .2s ease; border: none; white-space: nowrap;
+    }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 20px rgba(234,82,59,.35); }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-1px); box-shadow: 0 6px 28px rgba(234,82,59,.45); }
+    .btn-secondary { background: var(--white); color: var(--text); border: 1.5px solid var(--border); }
+    .btn-secondary:hover { border-color: #c9d0da; background: var(--bg); }
+    .btn-ghost { background: transparent; color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
+    .btn-ghost:hover { background: rgba(255,255,255,.06); color: #fff; border-color: rgba(255,255,255,.3); }
+
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 120px 0 88px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 60%, rgba(234,82,59,.13) 0%, transparent 52%),
+        radial-gradient(ellipse at 90% 10%, rgba(234,82,59,.07) 0%, transparent 48%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      display: grid; grid-template-columns: 1fr 1.15fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow { margin-bottom: 24px; }
+    .hero-h1 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(40px, 5.5vw, 66px);
+      line-height: 1.03; letter-spacing: -.03em; color: #fff; margin-bottom: 22px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--red); }
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,.5); line-height: 1.65;
+      max-width: 430px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .trust-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(255,255,255,.38); font-weight: 500; }
+    .trust-item svg { width: 14px; height: 14px; stroke: rgba(255,255,255,.3); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .trust-sep { width: 1px; height: 14px; background: rgba(255,255,255,.1); }
+
+    /* ── HERO VISUAL (sensor figure) ── */
+    .hero-visual {
+      position: relative; border-radius: 20px; overflow: hidden;
+      background: linear-gradient(155deg, #111720 0%, #0c1016 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 32px 80px rgba(0,0,0,.5), 0 0 60px rgba(234,82,59,.06);
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 0 32px;
+    }
+    .hero-visual::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .xsens-svg { width: 180px; height: auto; position: relative; z-index: 1; }
+    .sd { fill: var(--red); filter: drop-shadow(0 0 4px rgba(234,82,59,.8)); animation: sensorPulse 2.4s ease-in-out infinite; }
+    .sd-d1 { animation-delay: .3s; }
+    .sd-d2 { animation-delay: .6s; }
+    .sd-d3 { animation-delay: .9s; }
+    .sd-d4 { animation-delay: 1.2s; }
+    @keyframes sensorPulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+    .hv-rec {
+      position: absolute; top: 16px; left: 16px; z-index: 2;
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 5px 10px;
+      font-size: 11px; font-weight: 600; color: rgba(255,255,255,.7);
+      backdrop-filter: blur(8px);
+    }
+    .hv-rec-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #ef4444; flex-shrink: 0;
+      animation: recBlink 1.2s ease-in-out infinite;
+    }
+    @keyframes recBlink { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+    @keyframes scanLine { 0% { transform: translateX(10px); } 50% { transform: translateX(220px); } 100% { transform: translateX(10px); } }
+    @keyframes dotY { 0%,5%,95%,100% { cy: 66; } 20% { cy: 65; } 35% { cy: 62; } 45% { cy: 50; } 50% { cy: 47; } 55% { cy: 50; } 65% { cy: 62; } 80% { cy: 65; } }
+    .hv-card {
+      position: absolute; bottom: 16px; right: 16px; z-index: 2;
+      background: rgba(13,15,18,.82); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px; padding: 12px 14px; min-width: 148px;
+      backdrop-filter: blur(12px);
+    }
+    .hv-card-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.35); margin-bottom: 6px; }
+    .hv-card-score { font-size: 22px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 3px; }
+    .hv-card-score strong { color: var(--red); }
+    .hv-card-risk { font-size: 11px; color: var(--red); font-weight: 600; margin-bottom: 10px; }
+    .hv-card-bars { display: flex; flex-direction: column; gap: 5px; }
+    .hv-bar-row { display: flex; align-items: center; gap: 6px; }
+    .hv-bar-row span { font-size: 10px; color: rgba(255,255,255,.35); min-width: 42px; }
+    .hv-bar-track { flex: 1; height: 3px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+    .hv-bar-track div { height: 100%; border-radius: 2px; }
+
+    /* ── APP SHELL (mockup) ── */
+    .app-shell {
+      background: #e8eaee;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 48px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+    }
+    .app-window {
+      background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #d1d5db;
+    }
+    .app-chrome {
+      background: #f5f6f8; border-bottom: 1px solid #e5e7eb;
+      padding: 9px 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .chrome-dots { display: flex; gap: 5px; }
+    .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .chrome-dot.r { background: #ff5f56; } .chrome-dot.y { background: #febc2e; } .chrome-dot.g { background: #28c840; }
+    .chrome-bar {
+      flex: 1; background: #ebebed; border-radius: 4px; height: 20px;
+      display: flex; align-items: center; padding: 0 10px;
+      font-size: 10px; color: #9ca3af; font-weight: 500;
+    }
+    .app-tabs-bar {
+      background: #fff; border-bottom: 1px solid #e5e7eb;
+      display: flex; align-items: center; padding: 10px 14px; gap: 6px;
+    }
+    .atab {
+      font-size: 11px; font-weight: 600; padding: 6px 14px;
+      color: #6b7280; border-radius: 7px; cursor: default;
+      background: #f3f4f6; border: none;
+    }
+    .atab.on { background: var(--red); color: #fff; }
+    .atab-spacer { flex: 1; }
+    .atab-actions { display: flex; gap: 6px; }
+    .atab-btn {
+      width: 30px; height: 30px; border-radius: 7px; cursor: default;
+      background: #f9fafb; border: 1px solid #e5e7eb;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .atab-btn svg { width: 14px; height: 14px; stroke: #6b7280; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .app-body {
+      background: #f0f2f5; padding: 10px; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .acard {
+      background: #fff; border-radius: 8px; border: 1px solid #e8edf3;
+      padding: 12px 14px; box-shadow: 0 1px 4px rgba(15,23,42,.05);
+    }
+    .acard-lbl {
+      font-size: 9px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #9ca3af; margin-bottom: 9px;
+    }
+    .arow {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 11px; padding: 4px 0; border-bottom: 1px solid #f5f6f8;
+    }
+    .arow:last-child { border-bottom: none; }
+    .arow-k { color: #9ca3af; }
+    .arow-v { font-weight: 700; color: #111827; }
+    .arow-v.red { color: var(--red); }
+    /* stick figure */
+    .stick-wrap { display: flex; align-items: center; gap: 10px; background: #f8fafc; border-radius: 7px; border: 1px solid #eef0f4; padding: 10px; margin-top: 8px; }
+    .stick-data { display: flex; flex-direction: column; gap: 3px; }
+    /* risk card */
+    .risk-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .donut-wrap { position: relative; flex-shrink: 0; }
+    .donut-val { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #111827; }
+    .risk-meta-name { font-size: 11px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+    .risk-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+    .risk-badge.mod { background: rgba(234,82,59,.1); color: var(--red); }
+    .rrow { display: flex; align-items: center; gap: 6px; font-size: 10px; margin-bottom: 6px; }
+    .rrow:last-child { margin-bottom: 0; }
+    .rdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .rname { flex: 1; color: #6b7280; }
+    .rlbl { font-weight: 700; font-size: 10px; min-width: 36px; text-align: right; }
+    /* score bar */
+    .sbar-wrap { margin-top: 10px; }
+    .sbar-lbls { display: flex; justify-content: space-between; font-size: 9px; color: #9ca3af; margin-bottom: 4px; }
+    .sbar-track { height: 5px; border-radius: 3px; background: linear-gradient(to right, #86efac, #fde68a, #fca5a5); position: relative; }
+    .sbar-pin { width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--red); position: absolute; top: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 3px rgba(234,82,59,.18); }
+    /* timeline */
+    .tl-bars { display: flex; align-items: flex-end; gap: 2px; height: 36px; }
+    .tb { flex: 1; border-radius: 2px 2px 0 0; }
+    .tl { background: #bbf7d0; } .tm { background: #fde68a; } .th { background: #fca5a5; }
+    .app-export-bar {
+      background: #f9fafb; border-top: 1px solid #e5e7eb;
+      padding: 9px 14px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .export-label { font-size: 11px; color: #9ca3af; font-weight: 500; }
+    .export-btns { display: flex; gap: 6px; }
+    .ebtn { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 4px; cursor: default; }
+    .ebtn-pdf { background: var(--red); color: #fff; }
+    .ebtn-xl { background: #16a34a; color: #fff; }
+
+    /* ── LOGOS STRIP ── */
+    .logos-strip {
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .logos-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .logos-lbl { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); flex-shrink: 0; }
+    .logos-sep { width: 1px; height: 18px; background: var(--border); }
+    .logos-items { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .litem { font-size: 13px; font-weight: 700; letter-spacing: .05em; color: #c9d0da; transition: color .2s; }
+    .litem:hover { color: var(--muted); }
+
+    /* ── PROBLEM ── */
+    .problem {
+      padding: 96px 0; background: var(--bg);
+      background-image: radial-gradient(rgba(234,82,59,.035) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .problem-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      background: #111720;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px; overflow: hidden; margin-bottom: 48px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.15);
+    }
+    .ps-item {
+      padding: 32px 40px; display: flex; flex-direction: column;
+      border-right: 1px solid rgba(255,255,255,.07); position: relative;
+    }
+    .ps-item::before {
+      content: ''; display: block; width: 28px; height: 3px;
+      background: var(--red); border-radius: 2px; margin-bottom: 16px;
+    }
+    .ps-item:last-child { border-right: none; }
+    .ps-num {
+      font-family: var(--font-display); font-size: 52px;
+      color: #fff; line-height: 1; letter-spacing: -.02em; margin-bottom: 8px;
+    }
+    .ps-num sup { font-size: 24px; vertical-align: super; }
+    .ps-label { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.4; }
+    .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .prob-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red); border-radius: 14px;
+      padding: 28px 22px 24px; display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      transition: box-shadow .25s ease;
+    }
+    .prob-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,.1); }
+    .prob-card-num {
+      position: absolute; top: -4px; right: 14px;
+      font-family: var(--font-display); font-size: 100px;
+      color: rgba(234,82,59,.08); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .prob-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .prob-card-icon {
+      width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prob-card-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .prob-card h3 { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.25; }
+    .prob-card p { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .prob-card-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
+      font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: .03em;
+    }
+    .prob-card-tag svg { width: 11px; height: 11px; stroke: var(--red); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+
+    /* ── ERGO SECTION ── */
+    .ergo-section { padding: 96px 0; background: var(--white); }
+    .ergo-inner { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: center; }
+    .ergo-features { list-style: none; display: flex; flex-direction: column; margin: 28px 0 36px; }
+    .ergo-buttons { display: flex; }
+    .ergo-feat {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+    }
+    .ergo-feat:first-child { padding-top: 0; }
+    .ergo-feat-icon {
+      width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .ergo-feat-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ergo-feat-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .ergo-feat-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding: 96px 0; background: var(--bg); }
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+    .how-step {
+      background: var(--white); border: 1px solid var(--border);
+      border-top: 3px solid var(--red); border-radius: 14px;
+      padding: 28px 22px 24px; position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      transition: box-shadow .25s ease;
+    }
+    .how-step:hover { box-shadow: 0 12px 32px rgba(0,0,0,.1); }
+    .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .step-icon {
+      width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-icon svg { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .step-num {
+      position: absolute; top: 10px; right: 16px;
+      font-family: var(--font-display); font-size: 48px; line-height: 1;
+      color: rgba(0,0,0,.06); pointer-events: none; user-select: none;
+    }
+    .step-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.25; }
+    .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .step-connector {
+      position: absolute; right: -20px; top: 50%; transform: translateY(-50%); z-index: 2;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--white); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-connector svg { width: 13px; height: 13px; stroke: var(--muted-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .how-step:last-child .step-connector { display: none; }
+
+    /* ── METHODS ── */
+    .methods { padding: 96px 0; background: var(--bg); }
+    .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+    .method-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: border-color .2s, box-shadow .2s; }
+    .method-card:hover:not(.coming) { border-color: #c4cad4; box-shadow: var(--shadow-sm); }
+    .method-card.coming { background: #f2f3f5; border-style: dashed; border-color: #d1d5db; box-shadow: none; opacity: 0.72; }
+    .method-status {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .method-status.live { color: var(--red); }
+    .method-status.soon { color: var(--muted-2); }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .method-name { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .method-full { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    .method-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .method-suggest { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 600; color: var(--red); text-decoration: none; }
+    .method-suggest:hover { text-decoration: underline; }
+    a.method-card { display: block; color: inherit; text-decoration: none; }
+
+    /* ── FOR WHO ── */
+    .forwho { padding: 96px 0; background: var(--white); }
+    .forwho-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .forwho-personas { list-style: none; display: flex; flex-direction: column; padding-top: 4px; }
+    .forwho-persona {
+      display: flex; flex-direction: column;
+      padding: 20px 0; border-bottom: 1px solid var(--border);
+    }
+    .forwho-persona:first-child { padding-top: 0; }
+    .forwho-persona:last-child { border-bottom: none; padding-bottom: 0; }
+    .forwho-persona-role { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .forwho-persona-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CUSTOM SOLUTIONS ── */
+    .custom-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
+    .custom-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 65% 50%, rgba(234,82,59,.11) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .custom-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .custom-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; letter-spacing: -.03em; color: #fff; margin-top: 14px; }
+    .custom-title em { font-style: italic; color: var(--red); }
+    .custom-sub { font-size: 15px; color: rgba(255,255,255,.45); line-height: 1.65; margin-top: 14px; }
+    .custom-points { list-style: none; margin: 28px 0 20px; display: flex; flex-direction: column; gap: 12px; }
+    .custom-note {
+      font-size: 13px; color: rgba(255,255,255,.35); line-height: 1.6;
+      border-left: 2px solid rgba(234,82,59,.35); padding-left: 12px; margin-bottom: 28px;
+    }
+    .cpoint {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.5;
+    }
+    .cpoint-dot {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+      background: rgba(234,82,59,.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cpoint-dot svg { width: 10px; height: 10px; stroke: var(--red); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .custom-card {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius); padding: 32px 28px;
+    }
+    .custom-card-lbl { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 16px; }
+    .cex { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .cex:last-child { border-bottom: none; }
+    .cex-icon {
+      width: 38px; height: 38px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(234,82,59,.15);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cex-icon svg { width: 16px; height: 16px; stroke: var(--red); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cex-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8); margin-bottom: 3px; }
+    .cex-desc { font-size: 12px; color: rgba(255,255,255,.38); line-height: 1.45; }
+
+    /* ── PRICING ── */
+    .pricing-section { padding: 96px 0; background: var(--bg); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: center; }
+    .pricing-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 40px 36px; position: relative;
+      display: flex; flex-direction: column;
+      transition: box-shadow .25s ease;
+    }
+    .pricing-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.1); }
+    .pricing-card--featured {
+      background: var(--white); border-color: var(--red);
+      border-width: 2px;
+      padding: 52px 40px;
+      box-shadow: 0 20px 56px rgba(234,82,59,.13);
+      transform: scale(1.03);
+      z-index: 1;
+    }
+    .pricing-card--featured:hover { box-shadow: 0 28px 72px rgba(234,82,59,.2); }
+    .pricing-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); background: rgba(234,82,59,.08); border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
+    .pricing-savings { font-size: 12px; color: var(--muted); margin-top: 6px; margin-bottom: 24px; }
+    .pricing-savings strong { color: #16a34a; font-weight: 600; }
+    .pricing-tier { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .pricing-price { font-family: var(--font-body); font-weight: 500; font-size: 28px; color: var(--muted); line-height: 1; margin-bottom: 4px; }
+    .pricing-price sub { font-size: 16px; vertical-align: middle; font-weight: 400; }
+    .pricing-period { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .pricing-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+    .pricing-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin-bottom: 24px; }
+    .pricing-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; flex: 1; }
+    .pfeat { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text); }
+    .pfeat-check {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      background: rgba(234,82,59,.1);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pfeat-check svg { width: 10px; height: 10px; stroke: var(--red); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .pricing-cta { width: 100%; justify-content: center; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
+    .pricing-cta:hover { transform: scale(1.03); }
+
+    /* ── ROI CALCULATOR ── */
+    .roi-section { padding: 96px 0; background: var(--white); }
+    .roi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .roi-inputs { display: flex; flex-direction: column; gap: 32px; }
+    .roi-input-group { display: flex; flex-direction: column; gap: 10px; }
+    .roi-label { display: flex; justify-content: space-between; align-items: baseline; }
+    .roi-label-text { font-size: 14px; font-weight: 600; color: var(--text); }
+    .roi-label-value { font-size: 20px; font-weight: 700; color: var(--red); font-family: var(--font-display); }
+    .roi-label-unit { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 2px; }
+    .roi-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 2px; background: var(--border); outline: none; cursor: pointer; }
+    .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; box-shadow: 0 2px 8px rgba(234,82,59,.35); transition: transform .15s; }
+    .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .roi-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(234,82,59,.35); }
+    .roi-hint { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
+    .roi-card { background: var(--dark); border-radius: var(--radius); padding: 24px 28px; position: sticky; top: 88px; }
+    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 14px; }
+    /* Two-column stat row */
+    .roi-row-2 { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-stat { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-stat:last-of-type { border-bottom: none; }
+    .roi-row-2 .roi-stat { border-bottom: none; }
+    .roi-row-2 .roi-stat:first-child { border-right: 1px solid rgba(255,255,255,.08); padding-right: 14px; }
+    .roi-row-2 .roi-stat:last-child { padding-left: 14px; }
+    .roi-stat-label { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 1px; }
+    .roi-stat-value { font-size: 21px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-stat-value.is-green { color: #4ade80; }
+    .roi-stat-value.is-red { color: #f87171; }
+    .roi-stat-sub { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 1px; }
+    /* Formula row: value − cost = net */
+    .roi-formula { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-formula-labels { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; margin-bottom: 3px; }
+    .roi-formula-labels span { font-size: 11px; color: rgba(255,255,255,.4); }
+    .roi-formula-values { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; align-items: center; }
+    .roi-formula-val { font-size: 16px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-formula-val.is-green { color: #4ade80; }
+    .roi-formula-val.is-red { color: #f87171; }
+    .roi-formula-val.is-muted { color: rgba(255,255,255,.4); }
+    .roi-formula-op { font-size: 14px; color: rgba(255,255,255,.25); font-weight: 400; text-align: center; }
+    /* ROI highlight */
+    .roi-highlight { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; margin: 10px 0 0; background: rgba(74,222,128,.09); border-radius: 8px; border: 1px solid rgba(74,222,128,.18); }
+    .roi-highlight-label { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .roi-highlight-value { font-size: 26px; font-weight: 700; color: #4ade80; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1; }
+    .roi-highlight-value.is-green { color: #4ade80; }
+    .roi-highlight-value.is-red { color: #f87171; }
+    .roi-divider { height: 1px; background: rgba(255,255,255,.08); margin: 2px 0; }
+    .roi-cta { display: block; text-align: center; margin-top: 14px; background: var(--red); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 10px 20px; text-decoration: none; transition: background .15s; }
+    .roi-cta:hover { background: var(--red-light); }
+    .roi-assumption { font-size: 11px; color: rgba(255,255,255,.25); text-align: center; margin-top: 8px; line-height: 1.5; }
+
+    /* ── CTA BANNER ── */
+    .cta-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(234,82,59,.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 50%, rgba(234,82,59,.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .cta-inner { text-align: center; position: relative; z-index: 1; }
+    .cta-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(32px, 4.5vw, 58px);
+      color: #fff; line-height: 1.07; letter-spacing: -.03em;
+      margin: 14px 0 18px;
+    }
+    .cta-title em { font-style: italic; color: var(--red); }
+    .cta-sub { font-size: 16px; color: rgba(255,255,255,.42); margin-bottom: 36px; }
+    .cta-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    /* ── CONTACT FORM ── */
+    .contact-card {
+      background: #fff; border-radius: 14px; padding: 40px 36px 36px;
+      max-width: 620px; margin: 0 auto; text-align: left;
+      box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      display: none; opacity: 0; transform: translateY(18px);
+    }
+    .contact-card.open {
+      display: block;
+      animation: formReveal .4s ease forwards;
+    }
+    @keyframes formReveal {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .form-header .form-sub { margin-bottom: 0; }
+    .contact-card h3 {
+      font-family: var(--font-display); font-weight: 700; font-size: 22px;
+      color: var(--text); margin: 0 0 4px;
+    }
+    .contact-card .form-sub {
+      font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5;
+    }
+    .form-close {
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--muted); transition: all .15s; flex-shrink: 0;
+    }
+    .form-close:hover { background: var(--border); color: var(--text); }
+    select.form-input {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 32px; cursor: pointer;
+    }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 12px; font-weight: 600; color: var(--text);
+    }
+    .form-label .req { color: var(--red); margin-left: 2px; }
+    .form-input {
+      font-family: var(--font-body); font-size: 13px; color: var(--text);
+      padding: 10px 13px; border-radius: 8px;
+      border: 1.5px solid var(--border); background: var(--bg);
+      transition: border-color .2s, box-shadow .2s; outline: none;
+      width: 100%; box-sizing: border-box;
+    }
+    .form-input::placeholder { color: var(--muted-2); }
+    .form-input:focus {
+      border-color: var(--red); box-shadow: 0 0 0 3px rgba(234,82,59,.1);
+    }
+    .form-input.invalid { border-color: #ef4444; }
+    textarea.form-input { resize: vertical; min-height: 80px; }
+    .form-submit {
+      margin-top: 20px; display: flex; flex-direction: column; align-items: stretch; gap: 10px;
+    }
+    .form-submit .btn { width: 100%; justify-content: center; padding: 14px 24px; font-size: 15px; }
+    .form-submit .btn:disabled {
+      opacity: .65; cursor: not-allowed; transform: none !important;
+    }
+    .form-note { font-size: 11px; color: var(--muted-2); text-align: center; }
+    .form-status {
+      margin-top: 14px; padding: 10px 14px; border-radius: 8px;
+      font-size: 13px; font-weight: 500; display: none;
+    }
+    .form-status.success {
+      display: block; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;
+    }
+    .form-status.error {
+      display: block; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    }
+    .spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin .6s linear infinite; display: none;
+    }
+    .btn.loading .spinner { display: inline-block; }
+    .btn.loading .btn-text { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 520px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 28px 20px 24px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 56px 0 32px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px;
+      padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 22px; color: #fff; display: block; margin-bottom: 10px; text-decoration: none; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up   { animation: fadeUp .65s ease both; }
+    .fade-up-2 { animation: fadeUp .65s .13s ease both; }
+    .fade-up-3 { animation: fadeUp .65s .26s ease both; }
+
+    @keyframes barPulse { 0%,100% { opacity:.8; transform: scaleY(1); } 50% { opacity:1; transform: scaleY(1.1); } }
+    .tl-bars .tb { animation: barPulse 2.8s ease-in-out infinite; }
+    .tl-bars .tb:nth-child(2n)  { animation-delay:.2s; }
+    .tl-bars .tb:nth-child(3n)  { animation-delay:.4s; }
+    .tl-bars .tb:nth-child(4n)  { animation-delay:.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner, .ergo-inner, .forwho-inner, .custom-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { order: -1; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .ergo-inner > div { min-width: 0; }
+      .app-shell { margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .hero-actions { display: none; }
+      .ergo-buttons { display: none; }
+      .app-tabs-bar { display: none; }
+      .acard-risk { display: none; }
+      .app-body { grid-template-columns: 1fr; }
+      .hero { padding: 100px 0 48px; }
+      .hero-sub { font-size: 15px; }
+      .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .roi-section, .pricing-section, .cta-section { padding: 64px 0; }
+      .section-header { margin-bottom: 36px; }
+      .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
+      .problem-stats { grid-template-columns: 1fr; }
+      .ps-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .ps-item:last-child { border-bottom: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; gap: 12px; }
+      .how-step { border-radius: var(--radius); }
+      .step-connector { display: none; }
+      .methods-grid { grid-template-columns: 1fr 1fr; }
+      .custom-section .btn { width: 100%; justify-content: center; }
+      .custom-card { padding: 24px 20px; }
+      .roi-layout { grid-template-columns: 1fr; }
+      .roi-card { position: static; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card { padding: 28px 24px; }
+      .pricing-card--featured { transform: none; padding: 36px 24px; }
+      .forwho-inner { gap: 32px; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+      .cta-title br { display: none; }
+      .cta-title { font-size: 26px; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; }
+      .logos-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+    @media (max-width: 520px) {
+      .methods-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<script src="nav.js"></script>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left fade-up">
+      <div class="hero-eyebrow">
+        <span class="eyebrow eyebrow-light">From movement to improvement</span>
+      </div>
+      <h1 class="hero-h1">Ergonomic risk<br>assessments,<br><em>automated.</em></h1>
+      <p class="hero-sub">Motionprint Ergo transforms motion capture data into validated ergonomic reports — in minutes, not days.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Request a demo</a>
+        <a href="download.html" class="btn btn-ghost hero-download-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download free
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <svg viewBox="0 0 16 16"><polyline points="3 8 6.5 11.5 13 4.5"/><circle cx="8" cy="8" r="6.5"/></svg>
+          Xsens compatible
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-item">
+          <svg viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M8 5v6"/></svg>
+          NIOSH &amp; KIM-LHC
+        </div>
+        <div class="trust-sep trust-sep-pdf"></div>
+        <div class="trust-item trust-item-pdf">
+          <svg viewBox="0 0 16 16"><path d="M13 10V13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h3"/><polyline points="8 9.5 13 2 10.5 2 13 2 13 4.5"/></svg>
+          PDF &amp; Excel export
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual: Xsens sensor figure -->
+    <div class="hero-right fade-up-2">
+      <div class="hero-visual">
+        <!-- SVG: human figure with MVN Awinda sensor dots -->
+        <svg class="xsens-svg" viewBox="0 0 200 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Skeleton lines -->
+          <g stroke="rgba(255,255,255,.18)" stroke-width="1.5" stroke-linecap="round">
+            <line x1="100" y1="52" x2="100" y2="68"/>
+            <line x1="68" y1="72" x2="132" y2="72"/>
+            <line x1="100" y1="72" x2="100" y2="148"/>
+            <line x1="68" y1="72" x2="52" y2="112"/>
+            <line x1="52" y1="112" x2="46" y2="150"/>
+            <line x1="132" y1="72" x2="148" y2="112"/>
+            <line x1="148" y1="112" x2="154" y2="150"/>
+            <line x1="92" y1="148" x2="86" y2="222"/>
+            <line x1="86" y1="222" x2="84" y2="290"/>
+            <line x1="108" y1="148" x2="114" y2="222"/>
+            <line x1="114" y1="222" x2="116" y2="290"/>
+          </g>
+          <!-- Head circle -->
+          <circle cx="100" cy="34" r="18" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+          <!-- 17 Sensor dots -->
+          <circle class="sd" cx="100" cy="20" r="4"/>
+          <circle class="sd" cx="100" cy="88" r="4"/>
+          <circle class="sd" cx="100" cy="148" r="4"/>
+          <circle class="sd sd-d1" cx="68" cy="70" r="4"/>
+          <circle class="sd sd-d1" cx="132" cy="70" r="4"/>
+          <circle class="sd sd-d2" cx="54" cy="93" r="3.5"/>
+          <circle class="sd sd-d2" cx="146" cy="93" r="3.5"/>
+          <circle class="sd sd-d3" cx="48" cy="132" r="3.5"/>
+          <circle class="sd sd-d3" cx="152" cy="132" r="3.5"/>
+          <circle class="sd sd-d4" cx="45" cy="154" r="3"/>
+          <circle class="sd sd-d4" cx="155" cy="154" r="3"/>
+          <circle class="sd sd-d2" cx="88" cy="178" r="3.5"/>
+          <circle class="sd sd-d2" cx="112" cy="178" r="3.5"/>
+          <circle class="sd sd-d3" cx="85" cy="250" r="3.5"/>
+          <circle class="sd sd-d3" cx="115" cy="250" r="3.5"/>
+          <circle class="sd sd-d4" cx="83" cy="292" r="3"/>
+          <circle class="sd sd-d4" cx="117" cy="292" r="3"/>
+        </svg>
+
+        <!-- Recording badge -->
+        <div class="hv-rec">
+          <span class="hv-rec-dot"></span>
+          Recording
+        </div>
+
+        <!-- Floating score card -->
+        <div class="hv-card">
+          <div class="hv-card-label">NIOSH Assessment</div>
+          <div class="hv-card-score">LI <strong>2.5</strong></div>
+          <div class="hv-card-risk">Moderate Risk</div>
+          <div class="hv-card-bars">
+            <div class="hv-bar-row">
+              <span>Lifting</span>
+              <div class="hv-bar-track"><div style="width:80%;background:#ef4444"></div></div>
+            </div>
+            <div class="hv-bar-row">
+              <span>Bending</span>
+              <div class="hv-bar-track"><div style="width:55%;background:#f59e0b"></div></div>
+            </div>
+            <div class="hv-bar-row">
+              <span>Twisting</span>
+              <div class="hv-bar-track"><div style="width:28%;background:#22c55e"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOGOS STRIP ── -->
+
+<!-- ── PROBLEM ── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The challenge</span>
+      <h2 class="section-title">The problem with <em>manual assessments</em></h2>
+      <p class="section-sub">Traditional ergonomic analysis is slow, subjective and hard to scale — especially across repetitive industrial tasks.</p>
+    </div>
+    <div class="problem-stats">
+      <div class="ps-item">
+        <span class="ps-num">4<sup>+</sup>h</span>
+        <span class="ps-label">per full assessment cycle</span>
+      </div>
+      <div class="ps-item">
+        <span class="ps-num">±30%</span>
+        <span class="ps-label">variance between assessors</span>
+      </div>
+      <div class="ps-item">
+        <span class="ps-num">€400<sup>+</sup></span>
+        <span class="ps-label">per assessment by an ergonomist</span>
+      </div>
+    </div>
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-card-header">
+          <div class="prob-card-icon">
+            <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><polyline points="10 6 10 10 13 13"/></svg>
+          </div>
+          <h3>Time-consuming</h3>
+        </div>
+        <p>Hours of video review, manual scoring and hand calculations per task — making large-scale programmes impossible to sustain.</p>
+        <span class="prob-card-tag">
+          4+ hours per assessment
+        </span>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-header">
+          <div class="prob-card-icon">
+            <svg viewBox="0 0 20 20"><circle cx="10" cy="7" r="4"/><path d="M3 19c0-3.87 3.13-7 7-7s7 3.13 7 7"/></svg>
+          </div>
+          <h3>Subjective results</h3>
+        </div>
+        <p>Without objective data, two assessors can reach different conclusions from the same task — undermining programme credibility.</p>
+        <span class="prob-card-tag">
+          ±30% variance in scores
+        </span>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-header">
+          <div class="prob-card-icon">
+            <svg viewBox="0 0 20 20"><path d="M3 17l4-4 3 3 7-9"/></svg>
+          </div>
+          <h3>Hard to scale</h3>
+        </div>
+        <p>Specialist expertise required — limiting how frequently and broadly your organisation can assess musculoskeletal risk.</p>
+        <span class="prob-card-tag">
+          Experts only — high cost
+        </span>
+      </div>
+      <div class="prob-card">
+        <div class="prob-card-header">
+          <div class="prob-card-icon">
+            <svg viewBox="0 0 20 20"><path d="M14 2H6a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2z"/><path d="M7 8h6M7 12h4"/></svg>
+          </div>
+          <h3>Delayed reports</h3>
+        </div>
+        <p>Generating structured, compliant documentation from observational data is tedious and a consistent bottleneck.</p>
+        <span class="prob-card-tag">
+          Days to reach stakeholders
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MOTIONPRINT ERGO ── -->
+<section class="ergo-section" id="ergo">
+  <div class="container">
+    <div class="ergo-inner">
+      <div>
+        <span class="eyebrow">Motionprint Ergo</span>
+        <h2 class="section-title" style="text-align:left;margin-top:14px;">Your ergonomic<br>assessment <em>engine</em></h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-top:14px;max-width:440px;">Use your motion capture data and Motionprint Ergo to automatically calculate validated risk scores and to generate structured reports — ready to export to PDF or Excel with your own branding for your H&amp;S documentation.</p>
+        <ul class="ergo-features">
+          <li class="ergo-feat">
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><path d="M2 12l3.5-3.5L9 12l5-7"/></svg>
+            </div>
+            <div>
+              <div class="ergo-feat-title">Automated risk calculation</div>
+              <div class="ergo-feat-desc">NIOSH and KIM-LHC scores calculated directly from your motion capture data — minimal input required, no manual assessments.</div>
+            </div>
+          </li>
+          <li class="ergo-feat">
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg>
+            </div>
+            <div>
+              <div class="ergo-feat-title">Professional report export</div>
+              <div class="ergo-feat-desc">Export structured reports as PDF or Excel with your own branding — ready for H&amp;S documentation, client delivery and regulatory review.</div>
+            </div>
+          </li>
+          <li class="ergo-feat">
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+            </div>
+            <div>
+              <div class="ergo-feat-title">Expanding methodology library</div>
+              <div class="ergo-feat-desc">New assessment methods are continuously added to the platform, keeping your programme aligned with evolving ergonomic standards.</div>
+            </div>
+          </li>
+          <li class="ergo-feat">
+            <div class="ergo-feat-icon">
+              <svg viewBox="0 0 16 16"><path d="M4 8h8M8 4l4 4-4 4"/></svg>
+            </div>
+            <div>
+              <div class="ergo-feat-title">From tool to platform</div>
+              <div class="ergo-feat-desc">Motionprint is growing beyond a single tool — new data sources, workflows and integrations are on the roadmap, built around your organisation's needs.</div>
+            </div>
+          </li>
+        </ul>
+        <div class="ergo-buttons" style="gap:12px;flex-wrap:wrap;">
+          <a href="#contact" class="btn btn-primary">Request a demo</a>
+          <a href="#how" class="btn btn-secondary">How it works</a>
+        </div>
+      </div>
+      <!-- Second app mockup — multi-NIOSH -->
+      <div>
+        <div class="app-shell" style="background:#e4e6ea;">
+          <div class="app-window">
+            <div class="app-tabs-bar">
+              <div class="atab on">Score overview</div>
+              <div class="atab">In-depth analysis</div>
+              <div class="atab">Findings</div>
+              <div class="atab-spacer"></div>
+              <div class="atab-actions">
+                <div class="atab-btn">
+                  <svg viewBox="0 0 16 16"><path d="M11 2.5l2.5 2.5L5 13.5H2.5V11L11 2.5z"/></svg>
+                </div>
+                <div class="atab-btn">
+                  <svg viewBox="0 0 16 16"><path d="M8 2v8M5 5l3-3 3 3"/><path d="M2 11v1a2 2 0 002 2h8a2 2 0 002-2v-1"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="app-body">
+              <div class="acard">
+                <div class="acard-lbl">Session info</div>
+                <div class="arow"><span class="arow-k">Date</span><span class="arow-v">24 Feb 2026</span></div>
+                <div class="arow"><span class="arow-k">Duration</span><span class="arow-v">7s</span></div>
+                <div class="arow"><span class="arow-k">Method</span><span class="arow-v">Multi-NIOSH</span></div>
+                <div class="arow"><span class="arow-k">Tasks</span><span class="arow-v">3 detected</span></div>
+                <div class="arow"><span class="arow-k">CLI</span><span class="arow-v red">3.1 ⚠</span></div>
+              </div>
+              <div class="acard acard-risk">
+                <div class="acard-lbl">Risk per task</div>
+                <div class="rrow" style="margin-bottom:8px"><span class="rname">Task A – Assembly</span><span class="rdot" style="background:#ef4444"></span><span class="rlbl" style="color:#ef4444">STLI 2.8</span></div>
+                <div class="rrow" style="margin-bottom:8px"><span class="rname">Task B – Transport</span><span class="rdot" style="background:#f59e0b"></span><span class="rlbl" style="color:#f59e0b">STLI 1.4</span></div>
+                <div class="rrow" style="margin-bottom:8px"><span class="rname">Task C – Placement</span><span class="rdot" style="background:#22c55e"></span><span class="rlbl" style="color:#22c55e">STLI 0.7</span></div>
+                <div style="margin-top:10px;padding:9px;background:#fff8f7;border-radius:7px;border:1px solid rgba(234,82,59,.14)">
+                  <div style="font-size:10px;color:#6b7280;line-height:1.45">The CLI of 3.1 indicates the task is unacceptable for most workers.</div>
+                </div>
+              </div>
+              <!-- 3D avatar card — transparent PNG on custom sky + ground plane -->
+              <div class="acard" style="padding:0;overflow:hidden;position:relative;min-height:120px;background:linear-gradient(to bottom,#c2d0dd,#b4c3d2 46%,#b4c3d2 46%);">
+                <!-- Ground plane with perspective grid mesh -->
+                <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
+                <!-- Avatar -->
+                <video src="trueavatar.mp4" autoplay loop muted playsinline oncanplay="this.playbackRate=0.7" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;"></video>
+                <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
+              </div>
+              <!-- Graph card -->
+              <div class="acard" style="padding:10px 12px 8px;display:flex;flex-direction:column;">
+                <div class="acard-lbl" style="margin-bottom:6px;">Horizontal load distance</div>
+                <svg viewBox="0 0 240 80" preserveAspectRatio="none" style="flex:1;width:100%;border-radius:5px;overflow:hidden;display:block;">
+                  <rect y="0" width="240" height="27" fill="#fecaca" opacity=".55"/>
+                  <rect y="27" width="240" height="26" fill="#fde68a" opacity=".45"/>
+                  <rect y="53" width="240" height="27" fill="#bbf7d0" opacity=".55"/>
+                  <line x1="0" y1="27" x2="240" y2="27" stroke="#fff" stroke-width=".7" opacity=".7"/>
+                  <line x1="0" y1="53" x2="240" y2="53" stroke="#fff" stroke-width=".7" opacity=".7"/>
+                  <path id="liCurve" d="M0,73 C12,73 26,55 36,53 C52,50 72,48 98,47 C122,46 142,47 160,47 C172,45 184,38 200,28 C208,22 222,20 240,19" fill="none" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+                  <!-- Animated marker — driven by video.currentTime for perfect sync -->
+                  <line id="graphDot" x1="0" x2="0" y1="0" y2="80" stroke="#ea523b" stroke-width="1.5" opacity=".8"/>
+                </svg>
+                <div style="display:flex;gap:7px;margin-top:6px;">
+                  <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#fca5a5;display:inline-block"></span>High</span>
+                  <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#fde68a;display:inline-block"></span>Medium</span>
+                  <span style="display:flex;align-items:center;gap:3px;font-size:7.5px;color:#6b7280;"><span style="width:6px;height:6px;border-radius:2px;background:#86efac;display:inline-block"></span>Low</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var video = document.querySelector('#ergo video');
+  var path  = document.getElementById('liCurve');
+  var dot   = document.getElementById('graphDot');
+  if(!video||!path||!dot) return;
+  var len = path.getTotalLength();
+  function sync(){
+    if(video.duration){
+      var p  = video.currentTime / video.duration;
+      var t  = 0.02 + p * 0.96;
+      var pt = path.getPointAtLength(t * len);
+      dot.setAttribute('x1', pt.x);
+      dot.setAttribute('x2', pt.x);
+    }
+    requestAnimationFrame(sync);
+  }
+  sync();
+  /* Play when scrolled into view — fixes mobile autoplay */
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ e.isIntersecting ? video.play() : video.pause(); });
+    },{threshold:0.1});
+    obs.observe(video);
+  }
+})();
+</script>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-title">Three steps to a<br>complete risk report</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <span class="step-num">01</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><path d="M16 10l-5-5-5 5"/><line x1="11" y1="5" x2="11" y2="17"/><rect x="3" y="17" width="16" height="2" rx="1"/></svg>
+          </div>
+          <h3 class="step-title"><span class="hide-mobile">Upload your motion capture data</span><span class="show-mobile">Upload motion capture data</span></h3>
+        </div>
+        <p class="step-desc">Export your recording and upload it directly into Motionprint Ergo. No complex setup or conversion required.</p>
+        <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">02</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><rect x="3" y="3" width="16" height="16" rx="3"/><path d="M8 12l2.5 2.5L15 8.5"/></svg>
+          </div>
+          <h3 class="step-title">Automatic analysis</h3>
+        </div>
+        <p class="step-desc">Define one or more task events in your recording, then let Motionprint Ergo calculate NIOSH or KIM-LHC scores and identify risk factors — automatically.</p>
+        <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">03</span>
+        <div class="step-header">
+          <div class="step-icon">
+            <svg viewBox="0 0 22 22"><path d="M6 12l5 5 5-5"/><line x1="11" y1="17" x2="11" y2="5"/><rect x="3" y="3" width="16" height="2" rx="1"/></svg>
+          </div>
+          <h3 class="step-title">Export your report</h3>
+        </div>
+        <p class="step-desc">Export a professional, standardised report as PDF or Excel with your own branding — structured for H&amp;S documentation, client delivery or regulatory compliance review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOR WHO ── -->
+<section class="forwho" id="forwho">
+  <div class="container">
+    <div class="forwho-inner">
+      <!-- Left: marketing header -->
+      <div>
+        <span class="eyebrow">Who it's for</span>
+        <h2 class="section-title" style="text-align:left;margin-top:14px;">Made for <em>ergonomics professionals</em></h2>
+        <p style="font-size:15px;color:var(--muted);line-height:1.65;margin-top:14px;">Whether you're managing ergonomic risk assessments in-house or delivering assessments for multiple clients, Motionprint Ergo adapts to your workflow.</p>
+      </div>
+      <!-- Right: persona rows -->
+      <ul class="forwho-personas">
+        <li class="forwho-persona">
+          <div class="forwho-persona-role">H&amp;S Managers</div>
+          <div class="forwho-persona-desc">Scale your ergonomic programme without scaling your team. Standardise outputs, simplify audits and demonstrate measurable risk reduction to stakeholders.</div>
+        </li>
+        <li class="forwho-persona">
+          <div class="forwho-persona-role">Ergonomics Consultants</div>
+          <div class="forwho-persona-desc">Deliver faster, more objective assessments. Generate professional PDF and Excel reports without hours of manual calculation — and differentiate your offering with motion capture precision.</div>
+        </li>
+        <li class="forwho-persona">
+          <div class="forwho-persona-role">OHS Researchers</div>
+          <div class="forwho-persona-desc">Access structured, reproducible datasets from real workplace movements. Motionprint Ergo's consistent methodology makes it a reliable tool for field research and validation studies.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── METHODS ── -->
+<section class="methods" id="methods">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Supported methods</span>
+      <h2 class="section-title">Built on validated<br>ergonomic standards</h2>
+      <p class="section-sub">There are two validated methods available now, with more continuously being added to the platform.</p>
+    </div>
+    <div class="methods-grid">
+      <a href="articles/understanding-niosh-assessment.html" class="method-card">
+        <div class="method-status live"><span class="status-dot"></span> Available now</div>
+        <div class="method-name">NIOSH</div>
+        <div class="method-full">For evaluating manual lifting and lowering tasks</div>
+        <p class="method-desc">Calculates the Lifting Index (LI) for single-task lifting or the Composite Lifting Index (CLI) for multi-task scenarios — quantifying the physical demand of manual lifting operations.</p>
+        <span class="method-suggest">Learn more →</span>
+      </a>
+      <a href="articles/understanding-kim-lhc-assessment.html" class="method-card">
+        <div class="method-status live"><span class="status-dot"></span> Available now</div>
+        <div class="method-name">KIM-LHC</div>
+        <div class="method-full">For assessing lifting, holding and carrying tasks</div>
+        <p class="method-desc">German BAuA standard for evaluating the risk of physical overload from manual handling tasks — based on load weight, duration, posture and working conditions.</p>
+        <span class="method-suggest">Learn more →</span>
+      </a>
+      <div class="method-card coming">
+        <div class="method-name">More to come</div>
+        <div class="method-full">Continuously expanding</div>
+        <p class="method-desc">The methodology library is continuously growing. Missing a specific method? Let us know and we'll take it into account.</p>
+        <a href="#contact" class="method-suggest" data-topic="method">Suggest a method →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CUSTOM SOLUTIONS ── -->
+<section class="custom-section" id="custom">
+  <div class="container">
+    <div class="custom-inner">
+      <div>
+        <span class="eyebrow eyebrow-light">Custom Solutions</span>
+        <h2 class="custom-title">Need something<br><em>built for you?</em></h2>
+        <p class="custom-sub">Some ergonomic challenges require more than an off-the-shelf tool. Motionprint builds bespoke motion analysis solutions for enterprises that need tailored workflows, specific integrations or proprietary assessment methods.</p>
+        <ul class="custom-points">
+          <li class="cpoint">
+            <div class="cpoint-dot"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>
+            Custom ergonomic tools built on your own data, process and methodology
+          </li>
+          <li class="cpoint">
+            <div class="cpoint-dot"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>
+            Motion capture and sensor data integration — any hardware, any scale
+          </li>
+          <li class="cpoint">
+            <div class="cpoint-dot"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>
+            Integration with existing H&amp;S platforms
+          </li>
+          <li class="cpoint">
+            <div class="cpoint-dot"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>
+            White-label options for consultancies and system integrators
+          </li>
+        </ul>
+        <p class="custom-note"><em>Sometimes a requirement is better served by expanding Motionprint Ergo itself — if what you need has value beyond your use case, we'll discuss whether adding it to the core platform makes more sense than a standalone build.</em></p>
+        <a href="#contact" class="btn btn-primary">Discuss your project</a>
+      </div>
+      <div>
+        <div class="custom-card">
+          <div class="custom-card-lbl">Example projects</div>
+          <div class="cex">
+            <div class="cex-icon">
+              <svg viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h4"/></svg>
+            </div>
+            <div>
+              <div class="cex-title">Assembly line ergonomic platform</div>
+              <div class="cex-desc">Bespoke tool for manufacturing — real-time risk scoring at the assembly line using motion capture full-body suits and custom reporting workflow.</div>
+            </div>
+          </div>
+          <div class="cex">
+            <div class="cex-icon">
+              <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+            </div>
+            <div>
+              <div class="cex-title">Longitudinal workforce monitoring</div>
+              <div class="cex-desc">Track ergonomic risk trends across large worker populations over time, with automatic flagging, comparison and reporting across shifts and tasks.</div>
+            </div>
+          </div>
+          <div class="cex">
+            <div class="cex-icon">
+              <svg viewBox="0 0 16 16"><path d="M2 8h12M8 2l6 6-6 6"/></svg>
+            </div>
+            <div>
+              <div class="cex-title">Research &amp; validation tooling</div>
+              <div class="cex-desc">Custom data pipelines and analysis tools for universities and research institutes studying occupational biomechanics at scale.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROI CALCULATOR ── -->
+<section class="roi-section" id="roi">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Return on investment</span>
+      <h2 class="section-title">How much time does it save?</h2>
+      <p class="section-sub">A traditional ergonomic assessment — observation, manual calculation, report writing — takes hours. Motionprint automates the analysis. See how quickly the licence pays for itself.</p>
+    </div>
+    <div class="roi-layout">
+
+      <!-- Inputs -->
+      <div class="roi-inputs">
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Assessments per year</span>
+            <span class="roi-label-value" id="val-assessments">20</span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-assessments" min="1" max="200" step="1" value="20">
+          <span class="roi-hint">How many individual ergonomic assessments you run in a year across all clients or projects.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Time per assessment without Motionprint</span>
+            <span class="roi-label-value" id="val-manual"><span id="disp-manual">3</span><span class="roi-label-unit">h</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-manual" min="1" max="8" step="0.5" value="3">
+          <span class="roi-hint hide-mobile">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Your hourly rate</span>
+            <span class="roi-label-value" id="val-rate">€<span id="disp-rate">100</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-rate" min="50" max="300" step="10" value="100">
+          <span class="roi-hint">Your billable or internal hourly rate. Used to calculate the monetary value of time saved.</span>
+        </div>
+      </div>
+
+      <!-- Results card -->
+      <div class="roi-card">
+        <div class="roi-card-title">Your estimated return</div>
+
+        <!-- Row 1: time saved per assessment + total hours -->
+        <div class="roi-row-2">
+          <div class="roi-stat">
+            <span class="roi-stat-label">Saved per assessment</span>
+            <span class="roi-stat-value" id="res-saved-each">—</span>
+            <span class="roi-stat-sub">vs. <span id="res-manual-label">3h</span> manually</span>
+          </div>
+          <div class="roi-stat">
+            <span class="roi-stat-label">Total hours per year</span>
+            <span class="roi-stat-value" id="res-hours-year">—</span>
+            <span class="roi-stat-sub">across <span id="res-assessments-label">20</span> assessments</span>
+          </div>
+        </div>
+
+        <!-- Row 2: formula value − cost = net -->
+        <div class="roi-formula">
+          <div class="roi-formula-labels">
+            <span>Time value</span><span></span>
+            <span>Licence</span><span></span>
+            <span>Net saving</span>
+          </div>
+          <div class="roi-formula-values">
+            <span class="roi-formula-val" id="res-value">—</span>
+            <span class="roi-formula-op">−</span>
+            <span class="roi-formula-val is-muted">€2.500</span>
+            <span class="roi-formula-op">=</span>
+            <span class="roi-formula-val is-green" id="res-net">—</span>
+          </div>
+        </div>
+
+        <!-- ROI highlight -->
+        <div class="roi-highlight">
+          <span class="roi-highlight-label">Return on investment</span>
+          <span class="roi-highlight-value" id="res-roi">—</span>
+        </div>
+
+        <a href="#pricing" class="roi-cta">See pricing →</a>
+        <p class="roi-assumption">Based on ~30 min per assessment with Motionprint Ergo (including motion capture setup, review, and export). Actual time may vary.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const MOTIONPRINT_HOURS = 0.5;
+  const LICENCE_COST = 2500;
+
+  function fmt(n) {
+    return n.toLocaleString('de-DE'); // European number formatting
+  }
+
+  function calc() {
+    const assessments = parseInt(document.getElementById('sl-assessments').value);
+    const manual = parseFloat(document.getElementById('sl-manual').value);
+    const rate = parseInt(document.getElementById('sl-rate').value);
+
+    const savedEach = Math.max(0, manual - MOTIONPRINT_HOURS);
+    const hoursYear = savedEach * assessments;
+    const valueYear = hoursYear * rate;
+    const net = valueYear - LICENCE_COST;
+    const roi = LICENCE_COST > 0 ? ((net / LICENCE_COST) * 100) : 0;
+
+    // Update input display labels
+    document.getElementById('val-assessments').textContent = assessments;
+    document.getElementById('disp-manual').textContent = manual % 1 === 0 ? manual : manual.toFixed(1);
+    document.getElementById('disp-rate').textContent = rate;
+
+    // Update result labels
+    document.getElementById('res-manual-label').textContent = (manual % 1 === 0 ? manual : manual.toFixed(1)) + 'h';
+    document.getElementById('res-assessments-label').textContent = assessments;
+
+    // Update results
+    document.getElementById('res-saved-each').textContent = savedEach > 0
+      ? (savedEach % 1 === 0 ? savedEach : savedEach.toFixed(1)) + (window.innerWidth <= 768 ? 'h' : 'h per assessment')
+      : '—';
+    document.getElementById('res-hours-year').textContent = hoursYear > 0
+      ? (hoursYear % 1 === 0 ? fmt(hoursYear) : fmt(Math.round(hoursYear * 10) / 10)) + ' hours'
+      : '—';
+    document.getElementById('res-value').textContent = '€' + fmt(Math.round(valueYear));
+    document.getElementById('res-net').textContent = net >= 0 ? '€' + fmt(Math.round(net)) : '−€' + fmt(Math.round(Math.abs(net)));
+    document.getElementById('res-net').className = 'roi-formula-val ' + (net >= 0 ? 'is-green' : 'is-red');
+    document.getElementById('res-roi').textContent = roi >= 0 ? '+' + Math.round(roi) + '%' : Math.round(roi) + '%';
+    document.getElementById('res-roi').className = 'roi-highlight-value ' + (roi >= 0 ? 'is-green' : 'is-red');
+  }
+
+  ['sl-assessments', 'sl-manual', 'sl-rate'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', calc);
+  });
+
+  calc();
+})();
+</script>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-sub">Available per seat as an annual or monthly subscription. Every plan includes all current assessment methods and exports. New features added continuously<span class="hide-mobile"> — no per-report fees</span>.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- Monthly -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Monthly</div>
+        <div class="pricing-price"><sub>€</sub>250</div>
+        <div class="pricing-period">per month &mdash; 1 seat, 2 devices</div>
+        <div class="pricing-divider"></div>
+        <p class="pricing-desc">Full access on a month-to-month basis. Same features as the annual licence, billed monthly.</p>
+        <ul class="pricing-feats">
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Monthly licence – 1 seat">Get started</a>
+      </div>
+
+      <!-- Annual (featured) -->
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-badge">Best value</div>
+        <div class="pricing-tier">Annual licence</div>
+        <div class="pricing-price"><sub>€</sub>2,500</div>
+        <div class="pricing-period" style="margin-bottom:6px;">per year &mdash; 1 seat, 2 devices</div>
+        <div class="pricing-savings"><strong>Save €500 vs monthly</strong></div>
+        <div class="pricing-divider"></div>
+        <p class="pricing-desc">The most cost-effective way to run ergonomic assessments. Everything in the monthly plan at 17% off.</p>
+        <ul class="pricing-feats">
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Annual licence – 1 seat">Get started</a>
+      </div>
+
+      <!-- Team, Enterprise & Academic -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Team, Enterprise &amp; Academic</div>
+        <div class="pricing-price" style="margin-top:10px">On request</div>
+        <div class="pricing-period">Multiple seats &mdash; teams, organisations &amp; research</div>
+        <div class="pricing-divider"></div>
+        <p class="pricing-desc">Volume pricing for teams and organisations, and discounted licences for universities and research groups.</p>
+        <ul class="pricing-feats">
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Everything in the annual plan</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Volume pricing per seat</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Academic &amp; research discounts</li>
+          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Dedicated onboarding</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Team / Enterprise / Academic">Contact us</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:32px;">Multi-year licences available at a discount — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> for details.</p>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;">Not sure yet? <a href="#contact" onclick="openContactForm(event)" data-topic="Trial licence request" style="color:var(--red);text-decoration:none;font-weight:600;">Ask about a trial licence →</a></p>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow eyebrow-light">Get started</span>
+      <h2 class="cta-title">Ready to automate your<br> <em>ergonomic workflow?</em></h2>
+      <p class="cta-sub">Request a demo and see Motionprint Ergo in action — we can use your own data.</p>
+      <div class="cta-actions" id="ctaButtons">
+        <a href="#contact" class="btn btn-ghost" onclick="openContactForm(event)">Request a demo</a>
+      </div>
+      <div class="contact-card" id="contactCard">
+        <div class="form-header">
+          <div>
+            <h3 id="formTitle">Request a demo</h3>
+            <p class="form-sub">Fill in your details and we'll get back to you as soon as possible.</p>
+          </div>
+          <button type="button" class="form-close" onclick="closeContactForm()" aria-label="Close">
+            <svg viewBox="0 0 16 16" width="18" height="18"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
+          </button>
+        </div>
+        <form id="contactForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Topic</label>
+              <select name="topic" class="form-input" id="formTopic">
+                <option value="Demo request">Demo request</option>
+                <option value="Trial licence request">Trial licence request</option>
+                <option value="General inquiry">General inquiry</option>
+                <option value="Pricing">Pricing</option>
+                <option value="Method suggestion">Method suggestion</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Name <span class="req">*</span></label>
+              <input type="text" name="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email <span class="req">*</span></label>
+              <input type="email" name="email" class="form-input" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company <span class="req">*</span></label>
+              <input type="text" name="company" class="form-input" placeholder="Company name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <input type="text" name="role" class="form-input" placeholder="e.g. Ergonomist, H&S Manager">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" name="phone" class="form-input" placeholder="+31 6 1234 5678">
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Message</label>
+              <textarea name="message" class="form-input" placeholder="Tell us about your use case or any questions you have..." rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+              <span class="btn-text">Send request</span>
+              <span class="spinner"></span>
+            </button>
+            <span class="form-note">We'll never share your data with third parties.</span>
+          </div>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">
+          <img src="Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;margin-bottom:10px;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="#ergo">Motionprint Ergo</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#methods">Supported methods</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#custom">Custom Solutions</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="#contact">Request demo</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Close mobile nav when clicking outside
+  // Open contact form
+  function openContactForm(e) {
+    if (e) e.preventDefault();
+    var card = document.getElementById('contactCard');
+    var btns = document.getElementById('ctaButtons');
+    var title = document.getElementById('formTitle');
+    var topicSelect = document.getElementById('formTopic');
+    var msgField = document.querySelector('#contactForm [name="message"]');
+
+    // Determine context from the clicked element
+    var el = (e && e.currentTarget) ? e.currentTarget : null;
+    var btnText = el ? el.textContent.trim().toLowerCase() : '';
+    var dataPlan = el ? el.getAttribute('data-plan') : null;
+    var dataTopic = el ? el.getAttribute('data-topic') : null;
+
+    // Resolve topic category
+    var topic;
+    if (dataTopic === 'method') {
+      topic = 'method';
+    } else if (dataTopic === 'Trial licence request') {
+      topic = 'trial';
+    } else if (dataPlan) {
+      topic = 'pricing';
+    } else if (btnText.indexOf('demo') !== -1) {
+      topic = 'demo';
+    } else if (btnText.indexOf('contact') !== -1 || btnText.indexOf('discuss') !== -1) {
+      topic = 'contact';
+    } else if (btnText.indexOf('get started') !== -1) {
+      topic = 'pricing';
+    } else {
+      topic = 'demo';
+    }
+
+    // Set title, topic dropdown, and optional message pre-fill
+    if (topic === 'trial') {
+      title.textContent = 'Request a trial licence';
+      topicSelect.value = 'Trial licence request';
+      msgField.placeholder = 'Tell us about your use case — we\'ll set up a trial licence for you.';
+    } else if (topic === 'method') {
+      title.textContent = 'Suggest a method';
+      topicSelect.value = 'Method suggestion';
+      msgField.placeholder = 'Which assessment method would you like to see supported?';
+    } else if (topic === 'pricing') {
+      title.textContent = 'Get started';
+      topicSelect.value = 'Pricing';
+      if (dataPlan) {
+        msgField.value = 'Interested in: ' + dataPlan;
+        msgField.placeholder = 'Tell us about your use case or any questions you have...';
+      }
+    } else if (topic === 'contact') {
+      title.textContent = 'Contact us';
+      topicSelect.value = 'General inquiry';
+      msgField.placeholder = 'Tell us about your use case or any questions you have...';
+    } else {
+      title.textContent = 'Request a demo';
+      topicSelect.value = 'Demo request';
+      msgField.placeholder = 'Tell us about your use case or any questions you have...';
+    }
+
+    // Show form, hide CTA buttons
+    if (!card.classList.contains('open')) {
+      btns.style.display = 'none';
+      card.classList.add('open');
+    }
+
+    // Scroll after a tiny delay so the form has rendered at full height
+    setTimeout(function() {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 30);
+    setTimeout(function() { card.querySelector('input.form-input').focus(); }, 450);
+  }
+
+  // Close contact form — back to buttons
+  function closeContactForm() {
+    var card = document.getElementById('contactCard');
+    var btns = document.getElementById('ctaButtons');
+    card.classList.remove('open');
+    btns.style.display = '';
+    // Reset form state
+    document.getElementById('contactForm').reset();
+    document.querySelector('#contactForm [name="message"]').placeholder = 'Tell us about your use case or any questions you have...';
+    var status = document.getElementById('formStatus');
+    status.className = 'form-status';
+    status.textContent = '';
+    document.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+  }
+
+  // Intercept all #contact anchor links across the page
+  document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
+    link.addEventListener('click', openContactForm);
+  });
+
+  // Contact form handler
+  (function() {
+    const WORKER_URL = 'https://contact.motion-print.com/contact';
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      // Reset
+      status.className = 'form-status';
+      status.textContent = '';
+      form.querySelectorAll('.form-input.invalid').forEach(el => el.classList.remove('invalid'));
+
+      // Validate required fields
+      const name = form.querySelector('[name="name"]');
+      const email = form.querySelector('[name="email"]');
+      const company = form.querySelector('[name="company"]');
+      let valid = true;
+
+      [name, email, company].forEach(function(field) {
+        if (!field.value.trim()) {
+          field.classList.add('invalid');
+          valid = false;
+        }
+      });
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('invalid');
+        valid = false;
+      }
+      if (!valid) {
+        status.className = 'form-status error';
+        status.textContent = 'Please fill in all required fields.';
+        return;
+      }
+
+      // Submit
+      btn.classList.add('loading');
+      btn.disabled = true;
+      var topic = form.querySelector('[name="topic"]').value;
+            var supportTopics = ['Trial licence request', 'Method suggestion'];
+      var destination = supportTopics.indexOf(topic) !== -1 ? 'support' : 'info';
+      var data = {
+        destination: destination,
+        subject: topic,
+        topic: topic,
+        name: name.value.trim(),
+        email: email.value.trim(),
+        company: company.value.trim(),
+        role: form.querySelector('[name="role"]').value.trim(),
+        phone: form.querySelector('[name="phone"]').value.trim(),
+        message: form.querySelector('[name="message"]').value.trim()
+      };
+
+      try {
+        var res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = 'Thank you! We\'ll be in touch shortly.';
+          form.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
+                                                                                                                                                       
