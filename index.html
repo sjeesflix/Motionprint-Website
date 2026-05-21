@@ -451,7 +451,7 @@
 
     /* ── ROI CALCULATOR ── */
     .roi-section { padding: 96px 0; background: var(--white); }
-    .roi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; margin-top: 48px; }
+    .roi-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 48px; }
     .roi-inputs { display: flex; flex-direction: column; gap: 32px; }
     .roi-input-group { display: flex; flex-direction: column; gap: 10px; }
     .roi-label { display: flex; justify-content: space-between; align-items: baseline; }
@@ -463,7 +463,7 @@
     .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
     .roi-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(29,158,117,.35); }
     .roi-hint { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
-    .roi-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 26px; position: sticky; top: 88px; box-shadow: var(--shadow-sm); }
+    .roi-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 26px; box-shadow: var(--shadow-sm); }
     .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     /* Two-column stat row */
     .roi-row-2 { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
@@ -499,7 +499,7 @@
     .roi-assumption { font-size: 11px; color: var(--muted-2); text-align: center; margin-top: 8px; line-height: 1.5; }
 
     /* ── ROI GATE OVERLAY ── */
-    .roi-gate { position:absolute;inset:0;background:rgba(249,250,251,.94);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;z-index:10; }
+    .roi-gate { position:absolute;inset:0;background:var(--white);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;z-index:10; }
     .roi-gate-title { font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3; }
     .roi-gate-sub { font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:16px;max-width:240px; }
     .roi-gate-input { width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--white);color:var(--text);font-size:14px;font-family:var(--font-body);outline:none;box-sizing:border-box;transition:border-color .15s; }
@@ -1213,34 +1213,6 @@
     </div>
     <div class="roi-layout">
 
-      <!-- Inputs -->
-      <div class="roi-inputs">
-        <div class="roi-input-group">
-          <div class="roi-label">
-            <span class="roi-label-text">Assessments per year</span>
-            <span class="roi-label-value" id="val-assessments">20</span>
-          </div>
-          <input type="range" class="roi-slider" id="sl-assessments" min="1" max="200" step="1" value="20">
-          <span class="roi-hint">How many individual ergonomic assessments you run in a year across all clients or projects.</span>
-        </div>
-        <div class="roi-input-group">
-          <div class="roi-label">
-            <span class="roi-label-text">Time per assessment without Motionprint</span>
-            <span class="roi-label-value" id="val-manual"><span id="disp-manual">3</span><span class="roi-label-unit">h</span></span>
-          </div>
-          <input type="range" class="roi-slider" id="sl-manual" min="1" max="8" step="0.5" value="3">
-          <span class="roi-hint hide-mobile">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
-        </div>
-        <div class="roi-input-group">
-          <div class="roi-label">
-            <span class="roi-label-text">Your hourly rate</span>
-            <span class="roi-label-value" id="val-rate">€<span id="disp-rate">100</span></span>
-          </div>
-          <input type="range" class="roi-slider" id="sl-rate" min="50" max="300" step="10" value="100">
-          <span class="roi-hint">Your billable or internal hourly rate. Used to calculate the monetary value of time saved.</span>
-        </div>
-      </div>
-
       <!-- Results card -->
       <div class="roi-card" style="position:relative;overflow:hidden;">
         <div class="roi-card-title">Your estimated return</div>
@@ -1284,6 +1256,34 @@
             <button type="submit" id="roi-gate-submit" class="roi-gate-btn">Show my ROI →</button>
           </form>
           <p class="roi-gate-note">No spam — relevant product updates only.</p>
+        </div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="roi-inputs">
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Assessments per year</span>
+            <span class="roi-label-value" id="val-assessments">20</span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-assessments" min="1" max="200" step="1" value="20">
+          <span class="roi-hint">How many individual ergonomic assessments you run in a year across all clients or projects.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Time per assessment without Motionprint</span>
+            <span class="roi-label-value" id="val-manual"><span id="disp-manual">3</span><span class="roi-label-unit">h</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-manual" min="1" max="8" step="0.5" value="3">
+          <span class="roi-hint hide-mobile">Total time per assessment including observation, data collection, manual calculation, and report writing.</span>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-label">
+            <span class="roi-label-text">Your hourly rate</span>
+            <span class="roi-label-value" id="val-rate">€<span id="disp-rate">100</span></span>
+          </div>
+          <input type="range" class="roi-slider" id="sl-rate" min="50" max="300" step="10" value="100">
+          <span class="roi-hint">Your billable or internal hourly rate. Used to calculate the monetary value of time saved.</span>
         </div>
       </div>
 
@@ -1728,4 +1728,4 @@
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
