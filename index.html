@@ -463,53 +463,51 @@
     .roi-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
     .roi-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--red); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(29,158,117,.35); }
     .roi-hint { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
-    .roi-card { background: var(--dark); border-radius: var(--radius); padding: 24px 28px; position: sticky; top: 88px; }
-    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 14px; }
+    .roi-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 26px; position: sticky; top: 88px; box-shadow: var(--shadow-sm); }
+    .roi-card-title { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
     /* Two-column stat row */
-    .roi-row-2 { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .roi-stat { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-row-2 { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .roi-stat { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .roi-stat:last-of-type { border-bottom: none; }
     .roi-row-2 .roi-stat { border-bottom: none; }
-    .roi-row-2 .roi-stat:first-child { border-right: 1px solid rgba(255,255,255,.08); padding-right: 14px; }
+    .roi-row-2 .roi-stat:first-child { border-right: 1px solid var(--border); padding-right: 14px; }
     .roi-row-2 .roi-stat:last-child { padding-left: 14px; }
-    .roi-stat-label { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 1px; }
-    .roi-stat-value { font-size: 21px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
-    .roi-stat-value.is-green { color: #4ade80; }
-    .roi-stat-value.is-red { color: #f87171; }
-    .roi-stat-sub { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 1px; }
+    .roi-stat-label { font-size: 11px; color: var(--muted-2); margin-bottom: 1px; }
+    .roi-stat-value { font-size: 19px; font-weight: 700; color: var(--text); font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-stat-value.is-green { color: #16a34a; }
+    .roi-stat-value.is-red { color: #dc2626; }
+    .roi-stat-sub { font-size: 11px; color: var(--muted-2); margin-top: 1px; }
     /* Formula row: value − cost = net */
-    .roi-formula { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .roi-formula { padding: 10px 0; border-bottom: 1px solid var(--border); }
     .roi-formula-labels { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; margin-bottom: 3px; }
-    .roi-formula-labels span { font-size: 11px; color: rgba(255,255,255,.4); }
+    .roi-formula-labels span { font-size: 11px; color: var(--muted-2); }
     .roi-formula-values { display: grid; grid-template-columns: 1fr 18px 1fr 18px 1fr; align-items: center; }
-    .roi-formula-val { font-size: 16px; font-weight: 700; color: #fff; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
-    .roi-formula-val.is-green { color: #4ade80; }
-    .roi-formula-val.is-red { color: #f87171; }
-    .roi-formula-val.is-muted { color: rgba(255,255,255,.4); }
-    .roi-formula-op { font-size: 14px; color: rgba(255,255,255,.25); font-weight: 400; text-align: center; }
+    .roi-formula-val { font-size: 15px; font-weight: 700; color: var(--text); font-family: var(--font-display); letter-spacing: -.02em; line-height: 1.1; }
+    .roi-formula-val.is-green { color: #16a34a; }
+    .roi-formula-val.is-red { color: #dc2626; }
+    .roi-formula-val.is-muted { color: var(--muted-2); }
+    .roi-formula-op { font-size: 14px; color: var(--muted-2); font-weight: 400; text-align: center; }
     /* ROI highlight */
-    .roi-highlight { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; margin: 10px 0 0; background: rgba(74,222,128,.09); border-radius: 8px; border: 1px solid rgba(74,222,128,.18); }
-    .roi-highlight-label { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.55); }
-    .roi-highlight-value { font-size: 26px; font-weight: 700; color: #4ade80; font-family: var(--font-display); letter-spacing: -.02em; line-height: 1; }
-    .roi-highlight-value.is-green { color: #4ade80; }
-    .roi-highlight-value.is-red { color: #f87171; }
-    .roi-divider { height: 1px; background: rgba(255,255,255,.08); margin: 2px 0; }
+    .roi-highlight { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; margin: 10px 0 0; background: rgba(29,158,117,.07); border-radius: 8px; border: 1px solid rgba(29,158,117,.15); }
+    .roi-highlight-label { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+    .roi-highlight-value { font-size: 22px; font-weight: 700; color: var(--red); font-family: var(--font-display); letter-spacing: -.02em; line-height: 1; }
+    .roi-highlight-value.is-green { color: #16a34a; }
+    .roi-highlight-value.is-red { color: #dc2626; }
+    .roi-divider { height: 1px; background: var(--border); margin: 2px 0; }
     .roi-cta { display: block; text-align: center; margin-top: 14px; background: var(--red); color: #fff; font-size: 14px; font-weight: 600; border-radius: 8px; padding: 10px 20px; text-decoration: none; transition: background .15s; }
-    .roi-cta:hover { background: var(--red-light); }
-    .roi-assumption { font-size: 11px; color: rgba(255,255,255,.25); text-align: center; margin-top: 8px; line-height: 1.5; }
+    .roi-cta:hover { background: var(--red-dark); }
+    .roi-assumption { font-size: 11px; color: var(--muted-2); text-align: center; margin-top: 8px; line-height: 1.5; }
 
     /* ── ROI GATE OVERLAY ── */
-    .roi-gate { position:absolute;inset:0;background:var(--dark);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;z-index:10; }
-    .roi-gate-icon { width:44px;height:44px;border-radius:50%;background:rgba(29,158,117,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px; }
-    .roi-gate-icon svg { width:20px;height:20px;stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round; }
-    .roi-gate-title { font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3; }
-    .roi-gate-sub { font-size:13px;color:rgba(255,255,255,.45);line-height:1.5;margin-bottom:20px;max-width:240px; }
-    .roi-gate-input { width:100%;padding:10px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:14px;outline:none;box-sizing:border-box;transition:border-color .15s; }
-    .roi-gate-input::placeholder { color:rgba(255,255,255,.3); }
+    .roi-gate { position:absolute;inset:0;background:rgba(249,250,251,.94);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;z-index:10; }
+    .roi-gate-title { font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3; }
+    .roi-gate-sub { font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:16px;max-width:240px; }
+    .roi-gate-input { width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--white);color:var(--text);font-size:14px;font-family:var(--font-body);outline:none;box-sizing:border-box;transition:border-color .15s; }
+    .roi-gate-input::placeholder { color:var(--muted-2); }
     .roi-gate-input:focus { border-color:var(--red); }
-    .roi-gate-btn { width:100%;margin-top:10px;background:var(--red);color:#fff;font-size:14px;font-weight:600;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;transition:background .15s; }
-    .roi-gate-btn:hover { background:var(--red-light); }
-    .roi-gate-note { font-size:11px;color:rgba(255,255,255,.25);margin-top:10px;line-height:1.5; }
+    .roi-gate-btn { width:100%;margin-top:8px;background:var(--red);color:#fff;font-size:14px;font-weight:600;padding:9px 20px;border:none;border-radius:8px;cursor:pointer;transition:background .15s;font-family:var(--font-body); }
+    .roi-gate-btn:hover { background:var(--red-dark); }
+    .roi-gate-note { font-size:11px;color:var(--muted-2);margin-top:8px;line-height:1.5; }
 
     /* ── CTA BANNER ── */
     .cta-section { padding: 96px 0; background: var(--dark); position: relative; overflow: hidden; }
@@ -1279,16 +1277,13 @@
 
         <!-- Email gate overlay -->
         <div id="roi-gate" class="roi-gate">
-          <div class="roi-gate-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-          <div class="roi-gate-title">Unlock your ROI estimate</div>
-          <p class="roi-gate-sub">Enter your email to see your personalised return on investment.</p>
+          <div class="roi-gate-title">See your estimated return</div>
+          <p class="roi-gate-sub">Enter your work email and we'll show you the numbers.</p>
           <form id="roi-gate-form" novalidate>
             <input type="email" id="roi-gate-email" class="roi-gate-input" placeholder="you@company.com" autocomplete="email" required>
             <button type="submit" id="roi-gate-submit" class="roi-gate-btn">Show my ROI →</button>
           </form>
-          <p class="roi-gate-note">No spam. We'll only send you relevant product info.</p>
+          <p class="roi-gate-note">No spam — relevant product updates only.</p>
         </div>
       </div>
 
@@ -1733,4 +1728,4 @@
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
