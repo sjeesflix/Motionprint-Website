@@ -414,33 +414,36 @@
 
     /* ── PRICING ── */
     .pricing-section { padding: 96px 0; background: var(--bg); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; align-items: center; }
+    .pricing-single { display: flex; flex-direction: column; align-items: center; margin-top: 48px; }
+    .pricing-toggle {
+      display: inline-flex; background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 4px; gap: 4px; margin-bottom: 32px;
+    }
+    .ptoggle-btn {
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      color: var(--muted); background: none; border: none;
+      border-radius: 7px; padding: 7px 20px; cursor: pointer;
+      display: flex; align-items: center; gap: 7px;
+      transition: background .18s, color .18s;
+    }
+    .ptoggle-btn--active { background: var(--red); color: #fff; }
+    .ptoggle-save {
+      font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      background: rgba(255,255,255,.22); color: inherit;
+      border-radius: 4px; padding: 2px 6px;
+    }
+    .ptoggle-btn:not(.ptoggle-btn--active) .ptoggle-save {
+      background: rgba(29,158,117,.1); color: var(--red);
+    }
     .pricing-card {
-      background: var(--white); border: 1.5px solid var(--border);
-      border-radius: var(--radius); padding: 40px 36px; position: relative;
-      display: flex; flex-direction: column;
-      transition: box-shadow .25s ease;
+      background: var(--white); border: 2px solid var(--red);
+      border-radius: var(--radius); padding: 40px 44px; position: relative;
+      display: flex; flex-direction: column; width: 100%; max-width: 460px;
+      box-shadow: 0 20px 56px rgba(29,158,117,.12);
     }
-    .pricing-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,.1); }
-    .pricing-card--featured {
-      background: var(--white); border-color: var(--red);
-      border-width: 2px;
-      padding: 52px 40px;
-      box-shadow: 0 20px 56px rgba(29,158,117,.13);
-      transform: scale(1.03);
-      z-index: 1;
-    }
-    .pricing-card--featured:hover { box-shadow: 0 28px 72px rgba(29,158,117,.2); }
-    .pricing-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); background: rgba(29,158,117,.08); border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
-    .pricing-savings { font-size: 12px; color: var(--muted); margin-top: 6px; margin-bottom: 24px; }
-    .pricing-savings strong { color: #16a34a; font-weight: 600; }
-    .pricing-tier { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .pricing-price { font-family: var(--font-body); font-weight: 500; font-size: 28px; color: var(--muted); line-height: 1; margin-bottom: 4px; }
-    .pricing-price sub { font-size: 16px; vertical-align: middle; font-weight: 400; }
-    .pricing-period { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .pricing-billing { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
     .pricing-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
-    .pricing-desc { font-size: 14px; color: var(--muted); line-height: 1.55; margin-bottom: 24px; }
-    .pricing-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; flex: 1; }
+    .pricing-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
     .pfeat { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text); }
     .pfeat-check {
       width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
@@ -450,6 +453,8 @@
     .pfeat-check svg { width: 10px; height: 10px; stroke: var(--red); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
     .pricing-cta { width: 100%; justify-content: center; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
     .pricing-cta:hover { transform: scale(1.03); }
+    .pricing-team-note { margin-top: 20px; font-size: 13px; color: var(--muted); text-align: center; }
+    .pricing-team-note a { color: var(--red); text-decoration: none; font-weight: 600; }
 
     /* ── ROI CALCULATOR ── */
     .roi-section { padding: 96px 0; background: var(--white); }
@@ -663,7 +668,7 @@
     @media (max-width: 1024px) {
       .hero-inner, .ergo-inner, .forwho-inner, .custom-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-right { order: -1; }
-      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-card { padding: 36px 32px; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
       .ergo-inner > div { min-width: 0; }
       .app-shell { margin: 0 auto; }
@@ -676,7 +681,7 @@
       .hero-sub { font-size: 15px; }
       .problem, .ergo-section, .how, .forwho, .methods, .custom-section, .roi-section, .pricing-section, .cta-section { padding: 64px 0; }
       .section-header { margin-bottom: 36px; }
-      .how-steps, .methods-grid, .pricing-grid { margin-top: 36px; }
+      .how-steps, .methods-grid { margin-top: 36px; }
       .problem-stats { grid-template-columns: 1fr; }
       .ps-item { border-right: none; border-bottom: 1px solid var(--border); }
       .ps-item:last-child { border-bottom: none; }
@@ -689,9 +694,7 @@
       .custom-card { padding: 24px 20px; }
       .roi-layout { grid-template-columns: 1fr; }
       .roi-card { position: static; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .pricing-card { padding: 28px 24px; }
-      .pricing-card--featured { transform: none; padding: 36px 24px; }
+      .pricing-card { padding: 28px 24px; max-width: 100%; }
       .forwho-inner { gap: 32px; }
       .cta-actions .btn { width: 100%; justify-content: center; }
       .cta-title br { display: none; }
@@ -1406,60 +1409,33 @@
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Plans</span>
-      <h2 class="section-title">The right plan for<br><em>your workflow</em></h2>
-      <p class="section-sub">Available per seat as a monthly or annual subscription. Every plan includes all current assessment methods, PDF and Excel export, and continuous updates — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us for pricing</a>.</p>
+      <h2 class="section-title">Simple, flexible<br><em>pricing</em></h2>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-single">
 
-      <!-- Monthly -->
+      <!-- Toggle -->
+      <div class="pricing-toggle">
+        <button class="ptoggle-btn ptoggle-btn--active" id="ptoggle-monthly" onclick="setPricingPlan('monthly')">Monthly</button>
+        <button class="ptoggle-btn" id="ptoggle-annual" onclick="setPricingPlan('annual')">Annual <span class="ptoggle-save">Best value</span></button>
+      </div>
+
+      <!-- Card -->
       <div class="pricing-card">
-        <div class="pricing-tier">Monthly</div>
-        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">1 seat &mdash; billed monthly</div>
+        <div class="pricing-billing" id="pricing-billing">1 seat &mdash; billed monthly</div>
         <div class="pricing-divider"></div>
-        <p class="pricing-desc">Full access on a flexible month-to-month basis. No long-term commitment required.</p>
         <ul class="pricing-feats">
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Monthly licence – 1 seat">Request pricing</a>
+        <a href="#contact" class="btn btn-primary pricing-cta" id="pricing-cta-btn" data-plan="Monthly licence – 1 seat">Request pricing</a>
       </div>
 
-      <!-- Annual (featured) -->
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-badge">Best value</div>
-        <div class="pricing-tier">Annual licence</div>
-        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">1 seat &mdash; billed annually</div>
-        <div class="pricing-divider"></div>
-        <p class="pricing-desc">The most cost-effective way to run ergonomic assessments. Everything in the monthly plan at a significant discount.</p>
-        <ul class="pricing-feats">
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Annual licence – 1 seat">Request pricing</a>
-      </div>
-
-      <!-- Team, Enterprise & Academic -->
-      <div class="pricing-card">
-        <div class="pricing-tier">Team, Enterprise &amp; Academic</div>
-        <div class="pricing-period" style="margin-top:6px;margin-bottom:18px;">Multiple seats &mdash; teams, organisations &amp; research</div>
-        <div class="pricing-divider"></div>
-        <p class="pricing-desc">Volume pricing for teams and organisations, and discounted licences for universities and research groups.</p>
-        <ul class="pricing-feats">
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Everything in the annual plan</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Volume pricing per seat</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Academic &amp; research discounts</li>
-          <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Dedicated onboarding</li>
-        </ul>
-        <a href="#contact" class="btn btn-secondary pricing-cta" data-plan="Team / Enterprise / Academic">Contact us</a>
-      </div>
+      <!-- Team note -->
+      <p class="pricing-team-note">Need multiple seats? <a href="#contact" onclick="openContactForm(event)" data-topic="Team / Enterprise / Academic">Contact us</a> for team, enterprise &amp; academic pricing.</p>
 
     </div>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:32px;">Pricing is tailored to your use case — <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> to get a quote.</p>
-    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:10px;">Not sure yet? <a href="#contact" onclick="openContactForm(event)" data-topic="Trial licence request" style="color:var(--red);text-decoration:none;font-weight:600;">Ask about a trial licence →</a></p>
   </div>
 </section>
 
@@ -1672,6 +1648,18 @@
     document.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
   }
 
+  // Pricing toggle
+  function setPricingPlan(plan) {
+    var isAnnual = plan === 'annual';
+    document.getElementById('ptoggle-monthly').classList.toggle('ptoggle-btn--active', !isAnnual);
+    document.getElementById('ptoggle-annual').classList.toggle('ptoggle-btn--active', isAnnual);
+    document.getElementById('pricing-billing').innerHTML = isAnnual
+      ? '1 seat &mdash; billed annually'
+      : '1 seat &mdash; billed monthly';
+    var cta = document.getElementById('pricing-cta-btn');
+    cta.setAttribute('data-plan', isAnnual ? 'Annual licence – 1 seat' : 'Monthly licence – 1 seat');
+  }
+
   // Intercept all #contact anchor links across the page
   document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
     link.addEventListener('click', openContactForm);
@@ -1756,3 +1744,4 @@
 </script>
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
