@@ -414,34 +414,27 @@
 
     /* ── PRICING ── */
     .pricing-section { padding: 96px 0; background: var(--bg); }
-    .pricing-single { display: flex; flex-direction: column; align-items: center; margin-top: 48px; }
-    .pricing-toggle {
-      display: inline-flex; background: var(--white); border: 1.5px solid var(--border);
-      border-radius: 10px; padding: 4px; gap: 4px; margin-bottom: 32px;
+    .pricing-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 0;
     }
-    .ptoggle-btn {
-      font-family: var(--font-body); font-size: 13px; font-weight: 600;
-      color: var(--muted); background: none; border: none;
-      border-radius: 7px; padding: 7px 20px; cursor: pointer;
-      display: flex; align-items: center; gap: 7px;
-      transition: background .18s, color .18s;
-    }
-    .ptoggle-btn--active { background: var(--red); color: #fff; }
-    .ptoggle-save {
-      font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      background: rgba(255,255,255,.22); color: inherit;
-      border-radius: 4px; padding: 2px 6px;
-    }
-    .ptoggle-btn:not(.ptoggle-btn--active) .ptoggle-save {
+    .pricing-left { display: flex; flex-direction: column; }
+    .pricing-left .section-header { text-align: left; margin-bottom: 0; }
+    .pricing-left .section-header::before { display: none; }
+    .pricing-left .eyebrow { margin-bottom: 16px; }
+    .pricing-meta { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .pricing-meta-row { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+    .pricing-meta-row strong { color: var(--text); font-weight: 600; }
+    .pricing-meta-pill {
+      font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
       background: rgba(29,158,117,.1); color: var(--red);
+      border-radius: 4px; padding: 2px 8px; white-space: nowrap;
     }
     .pricing-card {
       background: var(--white); border: 2px solid var(--red);
-      border-radius: var(--radius); padding: 40px 44px; position: relative;
-      display: flex; flex-direction: column; width: 100%; max-width: 460px;
+      border-radius: var(--radius); padding: 40px 40px; position: relative;
+      display: flex; flex-direction: column;
       box-shadow: 0 20px 56px rgba(29,158,117,.12);
     }
-    .pricing-billing { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
     .pricing-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
     .pricing-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
     .pfeat { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text); }
@@ -453,7 +446,7 @@
     .pfeat-check svg { width: 10px; height: 10px; stroke: var(--red); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
     .pricing-cta { width: 100%; justify-content: center; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
     .pricing-cta:hover { transform: scale(1.03); }
-    .pricing-team-note { margin-top: 20px; font-size: 13px; color: var(--muted); text-align: center; }
+    .pricing-team-note { margin-top: 16px; font-size: 13px; color: var(--muted); }
     .pricing-team-note a { color: var(--red); text-decoration: none; font-weight: 600; }
 
     /* ── ROI CALCULATOR ── */
@@ -668,6 +661,7 @@
     @media (max-width: 1024px) {
       .hero-inner, .ergo-inner, .forwho-inner, .custom-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-right { order: -1; }
+      .pricing-inner { gap: 40px; }
       .pricing-card { padding: 36px 32px; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
       .ergo-inner > div { min-width: 0; }
@@ -694,7 +688,11 @@
       .custom-card { padding: 24px 20px; }
       .roi-layout { grid-template-columns: 1fr; }
       .roi-card { position: static; }
-      .pricing-card { padding: 28px 24px; max-width: 100%; }
+      .pricing-inner { grid-template-columns: 1fr; gap: 36px; }
+      .pricing-left .section-header { text-align: center; }
+      .pricing-left .eyebrow { justify-content: center; }
+      .pricing-meta { align-items: center; }
+      .pricing-card { padding: 28px 24px; }
       .forwho-inner { gap: 32px; }
       .cta-actions .btn { width: 100%; justify-content: center; }
       .cta-title br { display: none; }
@@ -1407,33 +1405,36 @@
 <!-- ── PRICING ── -->
 <section class="pricing-section" id="pricing">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Plans</span>
-      <h2 class="section-title">Simple, flexible<br><em>pricing</em></h2>
-    </div>
-    <div class="pricing-single">
+    <div class="pricing-inner">
 
-      <!-- Toggle -->
-      <div class="pricing-toggle">
-        <button class="ptoggle-btn ptoggle-btn--active" id="ptoggle-monthly" onclick="setPricingPlan('monthly')">Monthly</button>
-        <button class="ptoggle-btn" id="ptoggle-annual" onclick="setPricingPlan('annual')">Annual <span class="ptoggle-save">Best value</span></button>
+      <!-- Left: title + billing info -->
+      <div class="pricing-left">
+        <div class="section-header">
+          <span class="eyebrow">Plans</span>
+          <h2 class="section-title">Simple, flexible<br><em>pricing</em></h2>
+        </div>
+        <div class="pricing-meta">
+          <div class="pricing-meta-row"><strong>Monthly</strong> &mdash; full access, no commitment</div>
+          <div class="pricing-meta-row">
+            <strong>Annual</strong> &mdash; same features
+            <span class="pricing-meta-pill">save ~40%</span>
+          </div>
+          <div class="pricing-meta-row" style="margin-top:4px;">Pricing is tailored to your use case &mdash; <a href="#contact" style="color:var(--red);text-decoration:none;font-weight:600;">contact us</a> to get a quote.</div>
+        </div>
       </div>
 
-      <!-- Card -->
+      <!-- Right: card -->
       <div class="pricing-card">
-        <div class="pricing-billing" id="pricing-billing">1 seat &mdash; billed monthly</div>
-        <div class="pricing-divider"></div>
+        <div class="pricing-divider" style="margin-top:0; margin-bottom:20px;"></div>
         <ul class="pricing-feats">
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>NIOSH and KIM-LHC assessments</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>PDF and Excel export with own branding</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-primary pricing-cta" id="pricing-cta-btn" data-plan="Monthly licence – 1 seat">Request pricing</a>
+        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Licence enquiry">Request pricing</a>
+        <p class="pricing-team-note">Need multiple seats? <a href="#contact" onclick="openContactForm(event)" data-topic="Team / Enterprise / Academic">Contact us</a> for team, enterprise &amp; academic pricing.</p>
       </div>
-
-      <!-- Team note -->
-      <p class="pricing-team-note">Need multiple seats? <a href="#contact" onclick="openContactForm(event)" data-topic="Team / Enterprise / Academic">Contact us</a> for team, enterprise &amp; academic pricing.</p>
 
     </div>
   </div>
@@ -1648,18 +1649,6 @@
     document.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
   }
 
-  // Pricing toggle
-  function setPricingPlan(plan) {
-    var isAnnual = plan === 'annual';
-    document.getElementById('ptoggle-monthly').classList.toggle('ptoggle-btn--active', !isAnnual);
-    document.getElementById('ptoggle-annual').classList.toggle('ptoggle-btn--active', isAnnual);
-    document.getElementById('pricing-billing').innerHTML = isAnnual
-      ? '1 seat &mdash; billed annually'
-      : '1 seat &mdash; billed monthly';
-    var cta = document.getElementById('pricing-cta-btn');
-    cta.setAttribute('data-plan', isAnnual ? 'Annual licence – 1 seat' : 'Monthly licence – 1 seat');
-  }
-
   // Intercept all #contact anchor links across the page
   document.querySelectorAll('a[href="#contact"]').forEach(function(link) {
     link.addEventListener('click', openContactForm);
@@ -1744,4 +1733,4 @@
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
