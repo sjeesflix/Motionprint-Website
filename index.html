@@ -969,7 +969,7 @@
                 <!-- Ground plane with perspective grid mesh -->
                 <div style="position:absolute;top:42%;left:-100%;right:-100%;bottom:-120%;background:#7e95aa;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:36px 36px;transform:perspective(250px) rotateX(60deg);transform-origin:top center;"></div>
                 <!-- Avatar -->
-                <img src="avatarhomepage.gif" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;" />
+                <img id="ergoAvatar" style="width:100%;height:100%;object-fit:contain;object-position:center 55%;display:block;position:relative;z-index:1;" />
                 <div style="position:absolute;top:7px;right:7px;background:rgba(255,255,255,.75);color:#374151;font-size:7px;font-weight:700;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2;">3D</div>
               </div>
               <!-- Graph card -->
@@ -981,7 +981,7 @@
                   <rect y="53" width="240" height="27" fill="#bbf7d0" opacity=".55"/>
                   <line x1="0" y1="27" x2="240" y2="27" stroke="#fff" stroke-width=".7" opacity=".7"/>
                   <line x1="0" y1="53" x2="240" y2="53" stroke="#fff" stroke-width=".7" opacity=".7"/>
-                  <path id="liCurve" d="M0,73 C12,73 26,55 36,53 C52,50 72,48 98,47 C122,46 142,47 160,47 C172,45 184,38 200,28 C208,22 222,20 240,19" fill="none" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+                  <path id="liCurve" d="M0,40 C22,40 40,44 58,55 C76,66 96,70 116,70 C136,70 156,60 174,46 C194,32 218,28 240,30" fill="none" stroke="#1e293b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
                   <!-- Animated marker — driven by video.currentTime for perfect sync -->
                   <line id="graphDot" x1="0" x2="0" y1="0" y2="80" stroke="#1D9E75" stroke-width="1.5" opacity=".8"/>
                 </svg>
@@ -1000,17 +1000,20 @@
 </section>
 <script>
 (function(){
-  var path  = document.getElementById('liCurve');
-  var dot   = document.getElementById('graphDot');
-  if(!path||!dot) return;
-  var len   = path.getTotalLength();
+  var curvePath = document.getElementById('liCurve');
+  var dot       = document.getElementById('graphDot');
+  var img       = document.getElementById('ergoAvatar');
+  if(!curvePath||!dot||!img) return;
+  var len          = curvePath.getTotalLength();
   var GIF_DURATION = 2500; /* ms — matches avatarhomepage.gif loop duration */
-  var start = null;
+  var start        = null;
+  /* Set gif src here so timer and gif start at the exact same moment */
+  img.src = 'avatarhomepage.gif';
   function sync(ts){
     if(start === null) start = ts;
     var p  = ((ts - start) % GIF_DURATION) / GIF_DURATION;
     var t  = 0.02 + p * 0.96;
-    var pt = path.getPointAtLength(t * len);
+    var pt = curvePath.getPointAtLength(t * len);
     dot.setAttribute('x1', pt.x);
     dot.setAttribute('x2', pt.x);
     requestAnimationFrame(sync);
