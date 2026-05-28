@@ -363,6 +363,27 @@
     @keyframes cfSpin { to { transform: rotate(360deg); } }
     @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } .contact-card { padding: 28px 20px 24px; } }
 
+    /* ── KB SEARCH ── */
+    .kb-search-wrap { position: relative; margin-bottom: 28px; }
+    .kb-search-input {
+      width: 100%; padding: 11px 40px 11px 40px; font-family: var(--font-body);
+      font-size: 14px; color: var(--text); border: 1.5px solid var(--border);
+      border-radius: 10px; background: var(--white); outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .kb-search-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(29,158,117,.1); }
+    .kb-search-input::placeholder { color: var(--muted-2); }
+    .kb-search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    .kb-search-icon svg { width: 16px; height: 16px; stroke: var(--muted-2); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .kb-search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 2px; color: var(--muted-2); display: none; line-height: 1; }
+    .kb-search-clear:hover { color: var(--text); }
+    .kb-search-clear svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .kb-results { display: none; }
+    .kb-results.is-active { display: block; animation: sectionFadeIn .2s ease both; }
+    .kb-results-label { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .kb-results-label strong { color: var(--text); }
+    .kb-no-results { font-size: 14px; color: var(--muted); padding: 32px 0; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .support-grid { grid-template-columns: 1fr; }
@@ -376,7 +397,6 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; }
       .form-row { grid-template-columns: 1fr; }
-      #validation { display: none; }
       .page-hero { padding: 100px 0 40px; }
       .resources-section { padding: 48px 0; }
       #support { padding-top: 12px; }
@@ -403,7 +423,7 @@
     <div class="page-hero-inner">
       <span class="eyebrow" style="color:rgba(255,255,255,.45)">Resources</span>
       <h1>Everything you need to get the most out of <em>Motionprint Ergo</em></h1>
-      <p>Knowledge base articles, validation studies, articles, documentation and support — all in one place.</p>
+      <p>Knowledge base articles, validation studies, documentation and support — all in one place.</p>
     </div>
   </div>
 </section>
@@ -652,8 +672,22 @@
       <p class="section-sub">In-depth articles about ergonomic assessment methods, app functionality and best practices. Browse a category below.</p>
     </div>
 
+    <!-- KB search filter -->
+    <div class="kb-search-wrap">
+      <span class="kb-search-icon"><svg viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg></span>
+      <input class="kb-search-input" id="kbSearchInput" type="text" placeholder="Search articles…" autocomplete="off" spellcheck="false">
+      <button class="kb-search-clear" id="kbSearchClear" aria-label="Clear search" tabindex="-1"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12"/></svg></button>
+    </div>
+
+    <!-- Search results (shown when query is active) -->
+    <div class="kb-results" id="kbResults">
+      <p class="kb-results-label" id="kbResultsLabel"></p>
+      <div class="cards-grid" id="kbResultsGrid"></div>
+      <p class="kb-no-results" id="kbNoResults" style="display:none;">No articles match your search.</p>
+    </div>
+
     <!-- Category navigation — 7 topics; click a card to reveal its articles below -->
-    <div class="video-cat-nav">
+    <div class="video-cat-nav" id="kbCatNav">
 
       <!-- A · Product Overview -->
       <a href="#kb-overview" class="video-cat-card" data-target="kb-overview" data-group="kb" onclick="kbClick('kb-overview'); return false;">
@@ -673,7 +707,7 @@
           <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <div class="video-cat-body">
-          <div class="video-cat-title">Methodology</div>
+          <div class="video-cat-title">Assessment Methods</div>
           <div class="video-cat-count">2 articles</div>
         </div>
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
@@ -739,7 +773,7 @@
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
       </a>
 
-    </div>
+    </div><!-- /kbCatNav -->
   </div>
 </section>
 
@@ -766,7 +800,7 @@
         </div>
       </a>
       <a href="articles/motion-data-processing-explained.html" class="article-card" style="text-decoration:none;color:inherit;">
-        <div class="article-tag"><span class="video-tag tag-general">Methodology</span></div>
+        <div class="article-tag"><span class="video-tag tag-general">Assessment Methods</span></div>
         <div class="article-title">Motion Data Processing Explained</div>
         <p class="article-desc">How Motionprint Ergo converts raw inertial sensor data into joint angles, posture classifications and ergonomic assessment inputs.</p>
         <div class="article-footer">
@@ -786,7 +820,7 @@
       Articles &amp; Documentation
     </a>
     <div class="section-header">
-      <span class="eyebrow">Methodology</span>
+      <span class="eyebrow">Assessment Methods</span>
       <h2 class="section-title">The science behind the scores</h2>
       <p class="section-sub">Deep dives into the NIOSH and KIM-LHC methodologies — what they measure, how the scores are calculated, and how to interpret your results.</p>
     </div>
@@ -938,6 +972,7 @@
         <p class="article-desc">How to export a completed report to PDF for sharing, and to Excel for custom analysis and archiving.</p>
         <div class="article-footer">
           <span>4 min read</span>
+          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
         </div>
       </a>
       <a href="articles/3d-view-controls.html" class="article-card" style="text-decoration:none;color:inherit;">
@@ -946,6 +981,7 @@
         <p class="article-desc">Controls for the 3D skeleton viewer: playback, camera position, timeline navigation and annotation markers.</p>
         <div class="article-footer">
           <span>4 min read</span>
+          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
         </div>
       </a>
       <a href="articles/customization-branding.html" class="article-card" style="text-decoration:none;color:inherit;">
@@ -1359,7 +1395,89 @@
     });
   }
 
-  // setupCategoryGroup({ group: 'videos', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' }); // commented out — tutorials section hidden
+  // ── KB search filter ──
+  (function() {
+    var input   = document.getElementById('kbSearchInput');
+    var clearBtn= document.getElementById('kbSearchClear');
+    var catNav  = document.getElementById('kbCatNav');
+    var results = document.getElementById('kbResults');
+    var grid    = document.getElementById('kbResultsGrid');
+    var label   = document.getElementById('kbResultsLabel');
+    var noRes   = document.getElementById('kbNoResults');
+    if (!input) return;
+
+    // Build index from all article cards in all kb-subsections
+    var articles = [];
+    document.querySelectorAll('.kb-subsection .article-card').forEach(function(card) {
+      var titleEl = card.querySelector('.article-title');
+      var descEl  = card.querySelector('.article-desc');
+      var tagEl   = card.querySelector('.video-tag');
+      var timeEl  = card.querySelector('.article-footer span:first-child');
+      articles.push({
+        title:   titleEl  ? titleEl.textContent.trim()  : '',
+        desc:    descEl   ? descEl.textContent.trim()   : '',
+        tag:     tagEl    ? tagEl.textContent.trim()    : '',
+        time:    timeEl   ? timeEl.textContent.trim()   : '',
+        tagClass: tagEl   ? tagEl.className             : 'video-tag tag-general',
+        href:    card.getAttribute('href') || '#'
+      });
+    });
+
+    function renderResults(q) {
+      var lower = q.toLowerCase();
+      var matches = articles.filter(function(a) {
+        return a.title.toLowerCase().indexOf(lower) !== -1 ||
+               a.desc.toLowerCase().indexOf(lower)  !== -1 ||
+               a.tag.toLowerCase().indexOf(lower)   !== -1;
+      });
+      grid.innerHTML = '';
+      noRes.style.display = matches.length ? 'none' : 'block';
+      label.innerHTML = '<strong>' + matches.length + ' result' + (matches.length !== 1 ? 's' : '') + '</strong> for “' + q + '”';
+      matches.forEach(function(a) {
+        var el = document.createElement('a');
+        el.href = a.href;
+        el.className = 'article-card';
+        el.style.cssText = 'text-decoration:none;color:inherit;';
+        el.innerHTML =
+          '<div class="article-tag"><span class="' + a.tagClass + '">' + a.tag + '</span></div>' +
+          '<div class="article-title">' + a.title + '</div>' +
+          '<p class="article-desc">' + a.desc + '</p>' +
+          '<div class="article-footer"><span>' + a.time + '</span>' +
+          '<span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span></div>';
+        grid.appendChild(el);
+      });
+    }
+
+    function showSearch(q) {
+      catNav.style.display = 'none';
+      // hide any active subsection
+      document.querySelectorAll('.kb-subsection.is-active').forEach(function(s) { s.classList.remove('is-active'); });
+      document.querySelectorAll('a.video-cat-card[data-group="kb"]').forEach(function(c) { c.classList.remove('is-active'); });
+      results.classList.add('is-active');
+      clearBtn.style.display = 'block';
+      renderResults(q);
+    }
+
+    function hideSearch() {
+      catNav.style.display = '';
+      results.classList.remove('is-active');
+      clearBtn.style.display = 'none';
+      grid.innerHTML = '';
+    }
+
+    input.addEventListener('input', function() {
+      var q = this.value.trim();
+      if (q.length >= 1) { showSearch(q); } else { hideSearch(); }
+    });
+
+    clearBtn.addEventListener('click', function() {
+      input.value = '';
+      hideSearch();
+      input.focus();
+    });
+  })();
+
+  // setupCategoryGroup({ group: 'videos'''', parentId: 'tutorials', subsectionClass: 'video-subsection', backLinkClass: 'back-link-videos' }); // commented out — tutorials section hidden
   // KB tabs use inline onclick (window.kbClick / window.kbBack) — no addEventListener needed
 
   // ── KB inline click helpers — assigned to window so inline onclick can always find them ──
@@ -1454,9 +1572,6 @@
   // ── Support form ──
   (function() {
     var supForm = document.getElementById('supportForm');
-    if (!supForm) return;
-    var supBtn = document.getElementById('supSubmitBtn');
-    var supStatus
     if (!supForm) return;
     var supBtn = document.getElementById('supSubmitBtn');
     var supStatus = document.getElementById('supStatus');
