@@ -1294,6 +1294,28 @@
     var manual      = document.getElementById('sl-manual').value;
     var rate        = document.getElementById('sl-rate').value;
 
+    // Compute ROI results (mirrors calc() logic)
+    var MOTIONPRINT_HOURS = 0.5;
+    var LICENCE_COST      = 2500;
+    var savedEach  = Math.max(0, parseFloat(manual) - MOTIONPRINT_HOURS);
+    var hoursYear  = savedEach * parseInt(assessments);
+    var valueYear  = Math.round(hoursYear * parseInt(rate));
+    var roi        = Math.round(((valueYear - LICENCE_COST) / LICENCE_COST) * 100);
+    var savedFmt   = savedEach % 1 === 0 ? savedEach : savedEach.toFixed(1);
+    var hoursFmt   = hoursYear % 1 === 0 ? hoursYear : Math.round(hoursYear * 10) / 10;
+
+    var roiMessage =
+      'ROI calculator unlocked by: ' + email +
+      '\n\nSlider values:\n' +
+      '* Assessments per year: ' + assessments + '\n' +
+      '* Manual time per assessment: ' + manual + 'h\n' +
+      '* Hourly rate: €' + rate +
+      '\n\nResults:\n' +
+      '* Saved per assessment: ' + savedFmt + 'h\n' +
+      '* Total hours per year: ' + hoursFmt + ' hours\n' +
+      '* Total time value saved: €' + valueYear + '\n' +
+      '* Return on investment: ' + (roi >= 0 ? '+' : '') + roi + '%';
+
     try {
       await fetch('https://contact.motion-print.com/contact', {
         method: 'POST',
@@ -1302,12 +1324,12 @@
           destination: 'info',
           subject: 'ROI Calculator Lead',
           topic: 'ROI Calculator Lead',
-          name: 'ROI Calculator User',
+          name: 'ROI Calculator Lead',
           email: email,
           company: 'Via website',
           role: '',
           phone: '',
-          message: 'ROI calculator unlocked by: ' + email + '\n\nSlider values:\n- Assessments per year: ' + assessments + '\n- Manual time per assessment: ' + manual + 'h\n- Hourly rate: €' + rate
+          message: roiMessage
         })
       });
     } catch (err) { /* unlock anyway */ }
