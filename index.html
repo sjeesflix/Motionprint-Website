@@ -6,6 +6,35 @@
   <title>Motionprint — Ergonomic Risk Assessments, Automated</title>
   <meta name="description" content="Motionprint Ergo transforms motion capture data into validated ergonomic risk assessment reports — automatically. Supports NIOSH and KIM-LHC. Export to branded PDF or Excel." />
   <link rel="canonical" href="https://motion-print.com/" />
+  <meta name="keywords" content="ergonomic risk assessment software, NIOSH lifting equation, KIM-LHC assessment, motion capture ergonomics, automated ergonomics, musculoskeletal risk, ergonomics automation, Motionprint Ergo" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Motionprint Ergo",
+    "description": "Motionprint Ergo transforms motion capture data into validated ergonomic risk assessment reports automatically. Supports NIOSH Lifting Equation and KIM-LHC assessments with PDF and Excel export.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows",
+    "url": "https://motion-print.com/",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "seller": {
+        "@type": "Organization",
+        "name": "Motionprint",
+        "url": "https://motion-print.com/"
+      }
+    },
+    "featureList": [
+      "NIOSH Lifting Equation automation",
+      "KIM-LHC assessment automation",
+      "Xsens MVNX motion capture support",
+      "PDF export with custom branding",
+      "Excel export",
+      "3D motion playback"
+    ]
+  }
+  </script>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Motionprint" />
   <meta property="og:title" content="Motionprint — Ergonomic Risk Assessments, Automated" />
@@ -102,6 +131,11 @@
       position: relative; z-index: 2;
       text-align: center; max-width: 720px; padding: 0 28px 60px;
     }
+    .hero-title {
+      font-size: 56px; font-weight: 800; color: #fff; line-height: 1.08;
+      letter-spacing: -.025em; margin-bottom: 20px;
+    }
+    .hero-title em { color: var(--red); font-style: italic; font-weight: 800; }
     .hero-sub {
       font-size: 18px; color: rgba(255,255,255,.6); line-height: 1.65;
       max-width: 500px; margin: 0 auto 36px;
@@ -347,12 +381,17 @@
     .method-status.live { color: var(--red); }
     .method-status.soon { color: #f59e0b; }
     .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-    .method-name { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
-    .method-full { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    .method-card-accent { width: 32px; height: 3px; border-radius: 2px; margin-bottom: 18px; background: var(--red); }
+    .method-card-accent.niosh { background: #3b82f6; }
+    .method-name { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .method-full { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    .method-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .method-output { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; color: var(--muted-2); background: var(--bg-2); border-radius: 20px; padding: 3px 10px; margin-top: 4px; }
     .method-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
     .method-suggest { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 600; color: var(--red); text-decoration: none; }
     .method-suggest:hover { text-decoration: underline; }
     a.method-card { display: block; color: inherit; text-decoration: none; }
+    .forwho-persona-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 5px; }
 
     /* ── FOR WHO ── */
     .forwho { padding: 96px 0; background: var(--white); }
@@ -711,8 +750,11 @@
       body { overflow-x: hidden; }
       .hero { height: 56vw; min-height: 300px; max-height: 460px; margin-top: 64px; }
       .hero-content { padding: 0; }
+      .hero-title { font-size: 38px; }
       .hero-sub { display: none; }
       .hero-actions { display: none; }
+      .hero-title-mobile { font-size: 26px; font-weight: 800; color: var(--text); line-height: 1.15; letter-spacing: -.02em; margin-bottom: 10px; }
+      .hero-title-mobile em { color: var(--red); font-style: italic; }
       .hero-btns-mobile {
         display: flex; flex-direction: column; align-items: center;
         gap: 10px; padding: 16px 20px 20px;
@@ -785,6 +827,7 @@
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content fade-up">
+    <h1 class="hero-title">Ergonomic risk assessments,<br><em>automated.</em></h1>
     <p class="hero-sub">Motionprint Ergo transforms motion capture data into validated ergonomic reports — in minutes, not days.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary">Request a demo</a>
@@ -796,6 +839,7 @@
   </div>
 </section>
 <div class="hero-btns-mobile">
+  <h1 class="hero-title-mobile">Ergonomic risk assessments, <em>automated.</em></h1>
   <p class="hero-sub-mobile">Motionprint Ergo transforms motion capture data into validated ergonomic reports — in minutes, not days.</p>
   <div class="hero-btns-mobile-row">
     <a href="#contact" class="btn btn-primary">Request a demo</a>
@@ -814,6 +858,7 @@
     <div class="section-header">
       <span class="eyebrow">The challenge</span>
       <h2 class="section-title">The problem with <em>manual assessments</em></h2>
+      <p class="section-sub" style="max-width:520px;margin:0 auto;">Manual ergonomic assessments rely on trained experts, take hours per task, and produce results that vary between assessors. The data below shows the industry reality.</p>
     </div>
     <div class="problem-stats">
       <div class="ps-item">
@@ -829,6 +874,7 @@
         <span class="ps-label">per assessment by an ergonomist</span>
       </div>
     </div>
+    <p style="text-align:center;color:var(--muted);font-size:15px;margin-top:40px;line-height:1.6;">Motionprint Ergo eliminates all three — one automated workflow from raw motion data to signed-off report.</p>
 
   </div>
 </section>
@@ -1047,12 +1093,15 @@
       <ul class="forwho-personas">
         <li class="forwho-persona">
           <div class="forwho-persona-role">H&amp;S Managers</div>
+          <p class="forwho-persona-desc">Identify and document workplace risks before incidents occur — without relying on external consultants.</p>
         </li>
         <li class="forwho-persona">
           <div class="forwho-persona-role">Ergonomics Consultants</div>
+          <p class="forwho-persona-desc">Deliver faster, more consistent reports to more clients — and spend less time on manual data entry.</p>
         </li>
         <li class="forwho-persona">
           <div class="forwho-persona-role">OHS Researchers</div>
+          <p class="forwho-persona-desc">Automate data collection across large-scale studies and reduce inter-rater variability in your results.</p>
         </li>
       </ul>
     </div>
@@ -1068,16 +1117,22 @@
     </div>
     <div class="methods-grid">
       <a href="articles/understanding-niosh-assessment.html" class="method-card">
+        <div class="method-card-accent niosh"></div>
         <div class="method-status live"><span class="status-dot"></span> Available now</div>
         <div class="method-name">NIOSH</div>
-        <div class="method-full">For evaluating manual lifting and lowering tasks</div>
-        <span class="method-suggest">Learn more →</span>
+        <div class="method-full">Lifting Equation — manual lifting &amp; lowering</div>
+        <p class="method-desc">Calculates the Recommended Weight Limit and Lifting Index from 7 task variables — fully derived from motion capture, no manual measurements.</p>
+        <span class="method-output">Output: RWL · LI · Multi-task CLI</span>
+        <span class="method-suggest" style="display:block;margin-top:14px;">Learn more →</span>
       </a>
       <a href="articles/understanding-kim-lhc-assessment.html" class="method-card">
+        <div class="method-card-accent"></div>
         <div class="method-status live"><span class="status-dot"></span> Available now</div>
         <div class="method-name">KIM-LHC</div>
-        <div class="method-full">For assessing lifting, holding and carrying tasks</div>
-        <span class="method-suggest">Learn more →</span>
+        <div class="method-full">Key Indicator Method — lifting, holding &amp; carrying</div>
+        <p class="method-desc">Scores physical workload from posture, load, duration and frequency. Body posture is classified automatically across all lifting tasks.</p>
+        <span class="method-output">Output: Risk score · Action level · Per-task breakdown</span>
+        <span class="method-suggest" style="display:block;margin-top:14px;">Learn more →</span>
       </a>
       <div class="method-card coming">
         <div class="method-status soon"><span class="status-dot"></span> Coming soon</div>
