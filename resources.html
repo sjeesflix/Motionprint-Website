@@ -393,7 +393,10 @@
       .cards-grid { grid-template-columns: 1fr; }
       .cards-grid-2 { grid-template-columns: 1fr; }
       .video-cat-nav { grid-template-columns: 1fr 1fr; }
-      .ref-row { flex-wrap: wrap; gap: 10px; }
+      .ref-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .ref-tag { width: auto; text-align: left; }
+      .ref-body-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; width: 100%; }
+      .ref-link { align-self: flex-start; margin-top: 2px; }
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; }
       .form-row { grid-template-columns: 1fr; }
@@ -701,13 +704,13 @@
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
       </a>
 
-      <!-- B · Assessment Methods -->
+      <!-- B · Methods -->
       <a href="#kb-insights" class="video-cat-card" data-target="kb-insights" data-group="kb" onclick="kbClick('kb-insights'); return false;">
         <div class="video-cat-icon icon-active">
           <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <div class="video-cat-body">
-          <div class="video-cat-title">Assessment Methods</div>
+          <div class="video-cat-title">Methods</div>
           <div class="video-cat-count">2 articles</div>
         </div>
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
@@ -800,7 +803,7 @@
         </div>
       </a>
       <a href="articles/motion-data-processing-explained.html" class="article-card" style="text-decoration:none;color:inherit;">
-        <div class="article-tag"><span class="video-tag tag-general">Assessment Methods</span></div>
+        <div class="article-tag"><span class="video-tag tag-general">Methods</span></div>
         <div class="article-title">Motion Data Processing Explained</div>
         <p class="article-desc">How Motionprint Ergo converts raw inertial sensor data into joint angles, posture classifications and ergonomic assessment inputs.</p>
         <div class="article-footer">
@@ -820,7 +823,7 @@
       Articles &amp; Documentation
     </a>
     <div class="section-header">
-      <span class="eyebrow">Assessment Methods</span>
+      <span class="eyebrow">Methods</span>
       <h2 class="section-title">The science behind the scores</h2>
       <p class="section-sub">Deep dives into the NIOSH and KIM-LHC methodologies — what they measure, how the scores are calculated, and how to interpret your results.</p>
     </div>
@@ -1113,51 +1116,63 @@
     <div class="ref-list">
       <div class="ref-row">
         <span class="ref-tag">Assessment standard</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Applications Manual for the Revised NIOSH Lifting Equation</div>
           <div class="ref-meta">Waters, T.R., Putz-Anderson, V., Garg, A. — NIOSH/CDC, 1994 rev. 2021</div>
         </div>
         <a href="Documentation Motionprint/Revised_NIOSH_equation.pdf" class="ref-link" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
       <div class="ref-row">
         <span class="ref-tag">Assessment standard</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Key Indicator Method for Lifting, Holding and Carrying (KIM-LHC)</div>
           <div class="ref-meta">BAuA — Federal Institute for Occupational Safety and Health, Germany, 2019</div>
         </div>
         <a href="Documentation Motionprint/KIM-LHC-Lifting-Holding-Carrying.pdf" class="ref-link" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
       <div class="ref-row">
         <span class="ref-tag ref-tag-validation">Validation report</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Motionprint Ergo — NIOSH Lifting Equation Module: Validation of Body-Position Variable Extraction</div>
           <div class="ref-meta">Motionprint BV — May 2026</div>
         </div>
         <a href="Documentation Motionprint/MotionprintErgo_NIOSH_Validation_052026.pdf" class="ref-link ref-link-validation" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
       <div class="ref-row">
         <span class="ref-tag ref-tag-validation">Validation report</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Motionprint Ergo — KIM-LHC Module: Validation of Body-Position Variable Extraction</div>
           <div class="ref-meta">Motionprint BV — May 2026</div>
         </div>
         <a href="Documentation Motionprint/MotionprintErgo_KIMLHC_Validation_052026.pdf" class="ref-link ref-link-validation" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
       <div class="ref-row">
         <span class="ref-tag ref-tag-tech">Software whitepaper</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Xsens MVN: Consistent Tracking of Human Motion Using Inertial Sensing</div>
           <div class="ref-meta">Schepers, M., Giuberti, M., Bellusci, G. — Xsens Technologies B.V., 2018</div>
         </div>
         <a href="Documentation Motionprint/MVN_Whitepaper.pdf" class="ref-link ref-link-tech" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
       <div class="ref-row">
         <span class="ref-tag ref-tag-tech">Hardware whitepaper</span>
+        <div class="ref-body-row">
         <div class="ref-body">
           <div class="ref-title">Xsens MTw Awinda: Miniature Wireless Inertial-Magnetic Motion Tracker</div>
           <div class="ref-meta">Paulich, M., Schepers, M., Rudigkeit, N., Bellusci, G. — Xsens Technologies B.V., 2018</div>
         </div>
         <a href="Documentation Motionprint/MTwAwinda_WhitePaper.pdf" class="ref-link ref-link-tech" target="_blank" rel="noopener">PDF <svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></a>
+        </div>
       </div>
     </div>
   </div>
