@@ -952,31 +952,43 @@
 </section>
 <script>
 (function(){
-  var curvePath = document.getElementById('liCurve');
-  var dot       = document.getElementById('graphDot');
-  var img       = document.getElementById('ergoAvatar');
-  if(!curvePath||!dot||!img) return;
-  var len          = curvePath.getTotalLength();
-  var GIF_DURATION = 2500; /* ms — matches avatarhomepage.gif loop duration */
+  var dot  = document.getElementById('graphDot');
+  var img  = document.getElementById('ergoAvatar');
+  if(!dot||!img) return;
+  var GIF_DURATION = 2500; /* ms */
   var GIF_SRC      = 'avatarhomepage.gif';
 
-  /* Preload gif fully, then set img.src and start timer on the same paint frame */
+  function startSync(){
+    /* Calculate SVG rendered width so CSS translateX matches SVG user units */
+    var svgEl = dot.closest('svg');
+    var svgW  = svgEl ? svgEl.getBoundingClientRect().width : 240;
+
+    /* Inject CSS keyframe that sweeps dot across full SVG width */
+    var styleEl = document.getElementById('dotAnimStyle');
+    if(!styleEl){ styleEl = document.createElement('style'); styleEl.id = 'dotAnimStyle'; document.head.appendChild(styleEl); }
+    styleEl.textContent = '@keyframes dotSlide{from{transform:translateX(0px)}to{transform:translateX('+svgW+'px)}}';
+
+    /* Reset both on same frame so they start together */
+    img.src = '';
+    dot.style.animation = 'none';
+    requestAnimationFrame(function(){
+      img.src = GIF_SRC;
+      dot.style.animation = 'dotSlide '+GIF_DURATION+'ms linear infinite';
+    });
+  }
+
+  /* Preload gif, then start */
   var preload = new Image();
-  preload.onload = function(){
-    img.src = GIF_SRC;          /* gif starts playing on next paint */
-    var start = null;
-    function sync(ts){
-      if(start === null) start = ts;  /* captured on same frame gif renders */
-      var p  = ((ts - start) % GIF_DURATION) / GIF_DURATION;
-      var t  = 0.02 + p * 0.96;
-      var pt = curvePath.getPointAtLength(t * len);
-      dot.setAttribute('x1', pt.x);
-      dot.setAttribute('x2', pt.x);
-      requestAnimationFrame(sync);
-    }
-    requestAnimationFrame(sync);  /* fires on same paint as gif first frame */
-  };
+  preload.onload = function(){ startSync(); };
   preload.src = GIF_SRC;
+
+  /* Re-calc translateX on resize so it stays accurate */
+  window.addEventListener('resize', function(){
+    var svgEl = dot.closest('svg');
+    var svgW  = svgEl ? svgEl.getBoundingClientRect().width : 240;
+    var styleEl = document.getElementById('dotAnimStyle');
+    if(styleEl) styleEl.textContent = '@keyframes dotSlide{from{transform:translateX(0px)}to{transform:translateX('+svgW+'px)}}';
+  });
 })();
 </script>
 
