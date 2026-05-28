@@ -461,9 +461,13 @@
     .pricing-left .section-header::before { display: none; }
     .pricing-left .eyebrow { margin-bottom: 16px; }
     .pricing-meta { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
-    .pricing-amount { font-size: 44px; font-weight: 800; color: var(--text); letter-spacing: -.03em; line-height: 1; }
-    .pricing-period { font-size: 15px; color: var(--muted); font-weight: 500; margin-left: 4px; }
-    .pricing-price { margin-bottom: 20px; display: flex; align-items: baseline; gap: 2px; }
+    .pricing-price { margin: 24px 0 20px; }
+    .pricing-amount-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+    .pricing-amount { font-size: 52px; font-weight: 800; color: var(--text); letter-spacing: -.035em; line-height: 1; }
+    .pricing-period-col { display: flex; flex-direction: column; gap: 1px; padding-bottom: 4px; }
+    .pricing-period { font-size: 15px; color: var(--muted); font-weight: 600; line-height: 1.3; }
+    .pricing-per { font-size: 12px; color: var(--muted-2); font-weight: 400; }
+    .pricing-monthly-eq { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
     .pricing-meta-row { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
     .pricing-meta-row strong { color: var(--text); font-weight: 600; }
     .pricing-meta-pill {
@@ -1427,8 +1431,14 @@
           <h2 class="section-title">Simple, flexible<br><em>pricing</em></h2>
         </div>
         <div class="pricing-price">
-          <span class="pricing-amount">€2,500</span>
-          <span class="pricing-period">/year per seat</span>
+          <div class="pricing-amount-row">
+            <span class="pricing-amount">€2,500</span>
+            <div class="pricing-period-col">
+              <span class="pricing-period">/ year</span>
+              <span class="pricing-per">per seat</span>
+            </div>
+          </div>
+          <span class="pricing-monthly-eq">≈ €208 / month</span>
         </div>
         <div class="pricing-meta">
           <div class="pricing-meta-row"><strong>Annual licence</strong> &mdash; full access, all updates included</div>
@@ -1444,7 +1454,7 @@
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>Xsens MVNX support</li>
           <li class="pfeat"><div class="pfeat-check"><svg viewBox="0 0 10 10"><polyline points="2 5 4.5 7.5 8 2.5"/></svg></div>1 seat, 2 devices</li>
         </ul>
-        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Licence enquiry">Request pricing</a>
+        <a href="#contact" class="btn btn-primary pricing-cta" data-plan="Licence enquiry">Request a licence</a>
         <p class="pricing-team-note"><a href="#contact" onclick="openContactForm(event)" data-topic="Team / Enterprise / Academic">Contact us</a> for team, enterprise &amp; academic pricing.</p>
       </div>
 
