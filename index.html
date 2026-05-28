@@ -958,19 +958,25 @@
   if(!curvePath||!dot||!img) return;
   var len          = curvePath.getTotalLength();
   var GIF_DURATION = 2500; /* ms — matches avatarhomepage.gif loop duration */
-  var start        = null;
-  /* Set gif src here so timer and gif start at the exact same moment */
-  img.src = 'avatarhomepage.gif';
-  function sync(ts){
-    if(start === null) start = ts;
-    var p  = ((ts - start) % GIF_DURATION) / GIF_DURATION;
-    var t  = 0.02 + p * 0.96;
-    var pt = curvePath.getPointAtLength(t * len);
-    dot.setAttribute('x1', pt.x);
-    dot.setAttribute('x2', pt.x);
-    requestAnimationFrame(sync);
-  }
-  requestAnimationFrame(sync);
+  var GIF_SRC      = 'avatarhomepage.gif';
+
+  /* Preload gif fully, then set img.src and start timer on the same paint frame */
+  var preload = new Image();
+  preload.onload = function(){
+    img.src = GIF_SRC;          /* gif starts playing on next paint */
+    var start = null;
+    function sync(ts){
+      if(start === null) start = ts;  /* captured on same frame gif renders */
+      var p  = ((ts - start) % GIF_DURATION) / GIF_DURATION;
+      var t  = 0.02 + p * 0.96;
+      var pt = curvePath.getPointAtLength(t * len);
+      dot.setAttribute('x1', pt.x);
+      dot.setAttribute('x2', pt.x);
+      requestAnimationFrame(sync);
+    }
+    requestAnimationFrame(sync);  /* fires on same paint as gif first frame */
+  };
+  preload.src = GIF_SRC;
 })();
 </script>
 
