@@ -747,7 +747,19 @@
         </div>
         <div class="video-cat-body">
           <div class="video-cat-title">Platform Features</div>
-          <div class="video-cat-count">3 articles</div>
+          <div class="video-cat-count">4 articles</div>
+        </div>
+        <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
+      </a>
+
+      <!-- E2 · Workflow Guides -->
+      <a href="#kb-workflow" class="video-cat-card" data-target="kb-workflow" data-group="kb" onclick="kbClick('kb-workflow'); return false;">
+        <div class="video-cat-icon icon-active">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="video-cat-body">
+          <div class="video-cat-title">Workflow Guides</div>
+          <div class="video-cat-count">1 article</div>
         </div>
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
       </a>
@@ -991,6 +1003,41 @@
         <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
         <div class="article-title">Customization &amp; Branding</div>
         <p class="article-desc">Add your company logo, set custom report colors, configure layout options, and understand settings that affect how results are displayed.</p>
+        <div class="article-footer">
+          <span>5 min read</span>
+          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
+        </div>
+      </a>
+      <a href="articles/database-essentials.html" class="article-card" style="text-decoration:none;color:inherit;">
+        <div class="article-tag"><span class="video-tag tag-general">Platform Features</span></div>
+        <div class="article-title">Database Essentials: Save, Organize, and Reopen Your Analysis Projects</div>
+        <p class="article-desc">How to save projects to the database, browse and filter your library, archive vs. delete, and understand what happens to your settings when you reopen a project.</p>
+        <div class="article-footer">
+          <span>5 min read</span>
+          <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── KB SUBSECTION E2: WORKFLOW GUIDES ── -->
+<section class="resources-section kb-subsection" id="kb-workflow">
+  <div class="container">
+    <a href="#knowledge" class="video-back-link back-link-kb" onclick="kbBack(); return false;">
+      <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+      Articles &amp; Documentation
+    </a>
+    <div class="section-header">
+      <span class="eyebrow">Workflow Guides</span>
+      <h2 class="section-title">Step-by-step workflows</h2>
+      <p class="section-sub">End-to-end guides for common workflows — from managing your project library to reopening and re-exporting saved analyses.</p>
+    </div>
+    <div class="cards-grid cards-grid-2">
+      <a href="articles/reopen-saved-project.html" class="article-card" style="text-decoration:none;color:inherit;">
+        <div class="article-tag"><span class="video-tag tag-general">Workflow Guides</span></div>
+        <div class="article-title">How to Reopen a Saved Project and Continue Your Analysis</div>
+        <p class="article-desc">Step-by-step guide to reopening a project from the database, choosing between saved and current settings, editing findings, and re-exporting results.</p>
         <div class="article-footer">
           <span>5 min read</span>
           <span class="article-read">Read article <svg viewBox="0 0 12 12"><polyline points="4 2 10 6 4 10"/></svg></span>
@@ -1579,53 +1626,4 @@
     document.getElementById('supportFormIntro').style.display = 'none';
     document.getElementById('supportFormWrapper').style.display = 'block';
   });
-  document.getElementById('hideSupportForm').addEventListener('click', function() {
-    document.getElementById('supportFormWrapper').style.display = 'none';
-    document.getElementById('supportFormIntro').style.display = 'block';
-  });
-
-  // ── Support form ──
-  (function() {
-    var supForm = document.getElementById('supportForm');
-    if (!supForm) return;
-    var supBtn = document.getElementById('supSubmitBtn');
-    var supStatus = document.getElementById('supStatus');
-    supForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      supStatus.style.display = 'none'; supStatus.textContent = '';
-      var nameF = supForm.querySelector('[name="name"]');
-      var emailF = supForm.querySelector('[name="email"]');
-      var companyF = supForm.querySelector('[name="company"]');
-      var valid = true;
-      [nameF, emailF, companyF].forEach(function(f) {
-        f.style.borderColor = f.value.trim() ? '' : '#ef4444';
-        if (!f.value.trim()) valid = false;
-      });
-      var invalidEmail = emailF.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailF.value);
-      if (invalidEmail) { emailF.style.borderColor = '#ef4444'; valid = false; }
-      if (!valid) { supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca'; supStatus.textContent = invalidEmail ? 'Please enter a valid email address.' : 'Please fill in all required fields.'; return; }
-      supBtn.disabled = true; supBtn.textContent = 'Sending…';
-      var subject = (supForm.querySelector('[name="subject"]').value || '').trim();
-      var data = {
-        topic: 'Support request',
-        name: nameF.value.trim(),
-        email: emailF.value.trim(),
-        company: companyF.value.trim(),
-        message: (subject ? 'Subject: ' + subject + '\n\n' : '') + (supForm.querySelector('[name="message"]').value || '').trim()
-      };
-      try {
-        var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-        if (res.ok) {
-          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
-          supStatus.textContent = "Thanks! We'll get back to you shortly.";
-          supForm.reset();
-        } else { throw new Error(); }
-      } catch(err) {
-        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
-        supStatus.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
-      } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
-    });
-  })();
-</script>
-</body>
-</html>
+  documen
