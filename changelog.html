@@ -164,9 +164,9 @@
       padding: 4px 10px; border-radius: 20px;
     }
     .cl-badge-initial { background: rgba(29,158,117,.1); color: var(--red); }
+    .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; }
     /* For future use: */
     /* .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; } */
-    /* .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; } */
     /* .cl-badge-major  { background: rgba(139,92,246,.1); color: #7c3aed; } */
 
     /* ── CHANGE TYPE TAGS ── (for future versions) */
@@ -310,7 +310,8 @@
             Example:
             <li><a href="#v1-1-0" class="cl-version-link">v1.1.0</a></li>
           -->
-          <li><a href="#v1-0-0" class="cl-version-link current">v1.0.0</a></li>
+          <li><a href="#v1-0-1" class="cl-version-link current">v1.0.1</a></li>
+          <li><a href="#v1-0-0" class="cl-version-link">v1.0.0</a></li>
         </ul>
       </aside>
 
@@ -369,6 +370,66 @@
 
         ════════════════════════════════════════════════════════════
         -->
+
+        <!-- ── v1.0.1 — DATABASE & QUALITY UPDATE ── -->
+        <article class="cl-entry" id="v1-0-1">
+          <div class="cl-entry-header">
+            <div class="cl-entry-meta">
+              <span class="cl-version-num">v1.0.1</span>
+              <span class="cl-entry-date">June 2026</span>
+            </div>
+            <span class="cl-badge cl-badge-patch">Database &amp; quality update</span>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Database &amp; project management</h3>
+            <ul class="cl-list">
+              <li><strong>Project database introduced</strong> — Save, organise, reopen, and continue assessments directly inside Motionprint Ergo. Every saved project retains the full calculation data, custom moments, settings, and subject metadata.</li>
+              <li><strong>Project library workflows</strong> — Browse all saved projects in a list view showing title, method, risk level, status, and last activity. Filter by method, status, risk level, or tags to find what you need quickly.</li>
+              <li><strong>Reopen and continue flow</strong> — Open any saved project to review findings, edit critical moments, or update metadata. Re-export as a PDF or Excel report at any point before or after saving changes.</li>
+              <li><strong>Project metadata handling</strong> — More consistent status and tag behaviour across save and reopen actions. Project status tracks as Draft, In Progress, or Completed.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Settings &amp; privacy consistency</h3>
+            <ul class="cl-list">
+              <li><strong>Global privacy controls</strong> — Operator name, evaluator name, and subject identity display preferences are applied consistently across the interface, reports, and exports.</li>
+              <li><strong>Saved-project consistency</strong> — Reopened projects preserve the settings context used when they were originally saved, including branding configuration.</li>
+              <li><strong>Settings comparison flow</strong> — When saving a reopened project, if the current app settings differ from the settings stored with that project, a dialog lets you choose which settings to apply before the report is updated.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">NIOSH &amp; reporting quality</h3>
+            <ul class="cl-list">
+              <li><strong>NIOSH presentation refinements</strong> — Improved clarity in multiplier display and risk state rendering across report sections.</li>
+              <li><strong>Edge-case handling</strong> — Better handling of non-recommended lifting conditions in score presentation.</li>
+              <li><strong>Output robustness</strong> — Report JSON and export paths improved for safer handling of problematic numeric values.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Performance &amp; workflow polish</h3>
+            <ul class="cl-list">
+              <li><strong>Instant first-load behaviour</strong> — Project and tag data renders immediately from cache while refreshing in the background, so the project list is visible without delay.</li>
+              <li><strong>Reduced duplicate loading</strong> — Better request coalescing in repeated project-list and save-dialog workflows reduces redundant network calls.</li>
+              <li><strong>Smoother save dialog</strong> — Existing project values populate immediately when reopening and saving an updated project.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">SDK status</h3>
+            <ul class="cl-list cl-list-muted">
+              <li><strong>No user-facing SDK functionality in this release</strong> — SDK integration work is ongoing but not exposed in the end-user experience of v1.0.1.</li>
+            </ul>
+          </div>
+
+          <div class="cl-future-note">
+            <p>v1.0.1 focuses on reliable project management, consistent reporting behaviour, and a smoother day-to-day analysis workflow.</p>
+          </div>
+        </article>
+        <!-- ── END v1.0.1 ── -->
 
         <!-- ── v1.0.0 — INITIAL RELEASE ── -->
         <article class="cl-entry" id="v1-0-0">
