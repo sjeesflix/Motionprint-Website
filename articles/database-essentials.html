@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Essentials: Save, Organize, and Reopen Your Analysis Projects — Motionprint Ergo Help</title>
+  <title>Database Essentials — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Learn how to save, browse, filter, archive, and delete projects in the Motionprint Ergo database — and understand what happens to your settings when you reopen a project." />
+  <meta name="description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
   <link rel="canonical" href="https://motion-print.com/articles/database-essentials.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Database Essentials: Save, Organize, and Reopen Your Analysis Projects — Motionprint Ergo Help" />
-  <meta property="og:description" content="Learn how to save, browse, filter, archive, and delete projects in the Motionprint Ergo database — and understand what happens to your settings when you reopen a project." />
+  <meta property="og:title" content="Database Essentials — Motionprint Ergo Help" />
+  <meta property="og:description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
   <meta property="og:url" content="https://motion-print.com/articles/database-essentials.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Database Essentials: Save, Organize, and Reopen Your Analysis Projects — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Learn how to save, browse, filter, archive, and delete projects in the Motionprint Ergo database — and understand what happens to your settings when you reopen a project." />
+  <meta name="twitter:title" content="Database Essentials — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -230,7 +230,7 @@
         <span class="breadcrumb-sep">/</span>
         <span style="color:rgba(255,255,255,.6)">Database Essentials</span>
       </nav>
-      <h1>Database Essentials: Save, Organize, and Reopen Your Analysis Projects</h1>
+      <h1>Database Essentials</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -261,7 +261,7 @@
           <li id="toc-what"><a href="#what">1. What is the Database?</a></li>
           <li id="toc-saving"><a href="#saving">2. Saving a project</a></li>
           <li id="toc-browsing"><a href="#browsing">3. Browsing &amp; filtering</a></li>
-          <li id="toc-archive"><a href="#archive">4. Archive vs. delete</a></li>
+          <li id="toc-removing"><a href="#removing">4. Removing projects</a></li>
           <li id="toc-status"><a href="#status">5. Project status</a></li>
           <li id="toc-settings"><a href="#settings">6. Settings &amp; reopened projects</a></li>
         </ul>
@@ -276,7 +276,7 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">The <strong>Database</strong> is your project library — a permanent collection of every analysis you save in Motionprint Ergo. Instead of re-running the same assessment from scratch, you can reopen any saved project, modify it, or export it again with updated settings. This guide covers how to save projects, browse your library, filter by methodology or status, and understand the difference between archiving and deleting a project.</p>
+        <p class="article-lead">The <strong>Database</strong> is your project library — a permanent collection of every analysis you save in Motionprint Ergo. Instead of re-running the same assessment from scratch, you can reopen any saved project, modify it, or re-export it as a PDF or Excel report with updated settings. This guide covers how to save projects, browse your library, filter and find what you need, manage project status, and understand what happens when you save a reopened project.</p>
 
         <!-- ── WHAT IS THE DATABASE ── -->
         <h2 id="what"><span class="step-num">1</span> What is the Database?</h2>
@@ -290,117 +290,92 @@
 
         <h3>Where to save</h3>
 
-        <p>After generating results for a NIOSH or KIM-LHC assessment, you'll find a <strong>Save Project</strong> button on the results page, next to the Edit and Export buttons. One click stores the project in the database — no manual naming or file management required. Motionprint Ergo captures all relevant metadata automatically at the moment you save.</p>
+        <p>After running an assessment and generating results, you'll find a <strong>Save Project</strong> button on the results page, next to the Edit and Export buttons. Clicking it opens a save window where you can set a few things before confirming:</p>
+        <ul>
+          <li><strong>Project title</strong> — a default name is applied based on your naming template in Settings, but you can adjust it here</li>
+          <li><strong>Status</strong> — choose between Draft, In Progress, or Completed to reflect where the project stands</li>
+          <li><strong>Tags</strong> — add one or more tags to make the project easier to find later</li>
+        </ul>
 
         <h3>What gets saved</h3>
 
         <p>A saved project is a complete snapshot of your analysis. This includes:</p>
         <ul>
-          <li>Analysis methodology (NIOSH or KIM-LHC)</li>
-          <li>Complete calculation data and findings</li>
+          <li>Analysis methodology and complete calculation data and findings</li>
           <li>Custom critical moments, if you created any</li>
-          <li>Evaluator and operator names, if privacy settings allow</li>
-          <li>Project metadata: dates, workstation name, and subject information</li>
-          <li>The exact analysis settings used — preserved for later comparison</li>
+          <li>Project metadata and subject information — including workstation, dates, and (depending on your privacy settings) subject-related fields such as operator name, evaluator name, gender, body height, age, and weight</li>
+          <li>Company branding — if the "use company branding" setting is enabled at the time of saving, the active branding configuration is saved along with the project</li>
+          <li>The analysis settings used at the time of saving — preserved for later reference. Note that changing calculation settings does not affect a reopened project on its own; the new settings are only applied if you reprocess the methodology after the input page and then save again.</li>
         </ul>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">No manual management needed</div>
-            <p>The app handles all database storage for you. There are no files to name, no folders to organize. Just click <strong>Save Project</strong> and the database does the rest.</p>
-          </div>
-        </div>
 
         <!-- ── BROWSING & FILTERING ── -->
         <h2 id="browsing"><span class="step-num">3</span> Browsing and filtering your projects</h2>
 
         <h3>Accessing the Database</h3>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. You'll see all saved projects in a list view showing the project title, methodology, creation date, and current status. From here, you can open any project directly or use filters to narrow down what's displayed.</p>
+        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance. Click any project to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
 
         <h3>Using filters to find projects</h3>
 
         <p>As your library grows, filters help you get to the right project quickly. You can filter by:</p>
         <ul>
-          <li><strong>Methodology</strong> — show only NIOSH assessments, only KIM-LHC, or both</li>
-          <li><strong>Status</strong> — draft, final, or archived projects</li>
+          <li><strong>Method</strong> — narrow the list to a specific assessment method</li>
+          <li><strong>Status</strong> — draft, in progress, or completed projects</li>
           <li><strong>Risk level</strong> — filter by low, medium, or high risk based on calculated results</li>
-          <li><strong>Multiple values</strong> — combine filters, for example "KIM-LHC AND High-Risk"</li>
+          <li><strong>Tags</strong> — show only projects with a specific tag</li>
+          <li><strong>Multiple values</strong> — combine filters to narrow further, for example "Completed AND High-Risk"</li>
         </ul>
 
-        <p>Use filters to quickly find all KIM-LHC assessments completed last month, or all high-risk projects awaiting management review — without scrolling through your entire library.</p>
+        <p>Use filters to quickly find all completed high-risk assessments, or all projects tagged for a specific workstation or site visit — without scrolling through your entire library.</p>
 
-        <!-- ── ARCHIVE VS DELETE ── -->
-        <h2 id="archive"><span class="step-num">4</span> Archive vs. delete</h2>
+        <!-- ── REMOVING PROJECTS ── -->
+        <h2 id="removing"><span class="step-num">4</span> Removing projects</h2>
 
-        <p>The database gives you two ways to remove a project from your active list: archiving and deleting. They are not the same thing, and choosing the wrong one can have consequences.</p>
-
-        <h3>When to archive</h3>
-
-        <p>Archiving hides a project from your main library view without removing it from the database. Archived projects remain fully recoverable — you can reopen them at any time by filtering for archived status. Use archiving for completed seasonal projects, older methodology versions you no longer need day-to-day, or any project you want out of your active list but may need to reference later.</p>
-
-        <h3>When to delete</h3>
-
-        <p>Deleting permanently removes a project from the database. This action cannot be undone. Before deleting, ask yourself whether the project could be needed for an audit, compliance check, or future comparison. Delete only for test runs, accidental saves, or clear duplicates.</p>
+        <p>The only way to remove a project from the database is to delete it. Deletion is permanent — the project cannot be recovered once removed. Before deleting, consider whether the project may be needed for a future audit, compliance check, or methodology comparison. Delete only test runs, accidental saves, or clear duplicates you're certain you won't need.</p>
 
         <div class="callout callout-warn">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Deletion is permanent</div>
-            <p>If you're unsure whether you'll need a project again, archive it instead of deleting it. Archiving is always reversible; deletion is not.</p>
+            <p>There is no undo. If you're not certain you want to remove a project, leave it in the database — storage is not a reason to delete.</p>
           </div>
         </div>
 
-        <h3>Quick comparison</h3>
+        <h3>Exporting projects (coming soon)</h3>
 
-        <table class="info-table">
-          <thead><tr><th>Action</th><th>What happens</th><th>Reversible?</th><th>Use when</th></tr></thead>
-          <tbody>
-            <tr><td>Archive</td><td>Hidden from active list, stays in database</td><td>Yes</td><td>Project is complete or inactive</td></tr>
-            <tr><td>Delete</td><td>Permanently removed from database</td><td>No</td><td>Test runs, accidental saves, clear duplicates</td></tr>
-          </tbody>
-        </table>
+        <p>A project export feature is planned for a future release. It will allow you to save a project as a portable file that you can store outside the database, share with colleagues on other machines, or re-import later. For now, use the PDF and Excel export options to produce shareable reports from any saved project.</p>
 
         <!-- ── PROJECT STATUS ── -->
         <h2 id="status"><span class="step-num">5</span> Understanding project status</h2>
 
-        <p>Each project in the database carries a status that reflects where it is in your workflow. You can update the status when reopening a project or through the project settings.</p>
+        <p>Each project in the database carries a status that reflects where it is in your workflow. You set it in the save window when first saving, and can update it at any time through the project detail panel.</p>
         <ul>
-          <li><strong>Draft</strong> — saved but not finalized; findings may still be modified</li>
-          <li><strong>Final</strong> — marked as complete and ready for reporting or export</li>
-          <li><strong>Archived</strong> — moved out of the active list; recoverable at any time</li>
+          <li><strong>Draft</strong> — initial state; the assessment has been saved but is not yet finalized</li>
+          <li><strong>In Progress</strong> — actively being worked on; used to signal ongoing review or editing</li>
+          <li><strong>Completed</strong> — marked as final; ready for reporting or PDF/Excel export</li>
         </ul>
 
-        <p>Status is also one of the available filters in the database view, making it straightforward to separate ongoing work from completed assessments.</p>
+        <p>Status is one of the available filters in the database view, making it easy to separate active work from completed assessments at a glance.</p>
 
         <!-- ── SETTINGS & REOPENED PROJECTS ── -->
         <h2 id="settings"><span class="step-num">6</span> Settings and reopened projects</h2>
 
-        <p>This section is important if you ever change your analysis preferences between saving and reopening a project.</p>
+        <p>This section is important if you open a saved project and then save it again with different settings active.</p>
 
         <h3>When a settings dialog appears</h3>
 
-        <p>When you open a saved project, Motionprint Ergo checks whether your current analysis settings match the settings used when the project was originally created. If they differ — for example, you've changed a reference mass, NIOSH equation variant, or filtering threshold — the app will ask which settings to use before displaying the results.</p>
+        <p>Opening a project simply displays it as it was saved — no dialog appears on open. The settings dialog only appears when you click <strong>Save Project</strong> again on a reopened project, and only if certain settings have changed since the project was originally created. When that happens, the app asks which settings to record with the updated save.</p>
 
         <h3>Why this matters</h3>
 
-        <p>Analysis settings directly affect calculations and risk classifications. A small change in reference mass or asymmetry thresholds can shift a result from medium to high risk. The settings dialog ensures you're always in control of which methodology your findings reflect.</p>
+        <p>Certain settings directly affect how an analysis is calculated and how risk is classified. The dialog ensures you are always in explicit control of which configuration is recorded with the saved project — the original or your current one.</p>
 
         <ul>
-          <li>Choose <strong>Use Current Settings</strong> to recalculate findings with your latest preferences — useful when you want to apply updated company standards or verify previous results with new methodology.</li>
-          <li>Choose <strong>Use Saved Settings</strong> to preserve the original analysis exactly — useful when maintaining historical accuracy, comparing against previously reported data, or verifying for compliance.</li>
+          <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
+          <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
         </ul>
 
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Example</div>
-            <p>You originally ran a NIOSH assessment using a 25 kg reference mass. You later changed your default to 23 kg. When reopening the project, you'll be asked which mass to use — preserving the original methodology or applying the new standard.</p>
-          </div>
-        </div>
-
-        <p>When in doubt, document your choice in the project's <strong>Notes</strong> field so team members can understand why findings may differ between exports of the same project.</p>
+        <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice. For a full walkthrough of the reopen workflow, see <a href="reopen-saved-project.html">How to Reopen a Saved Project and Continue Your Analysis</a>.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -475,8 +450,8 @@
 </footer>
 
 <script>
-  var sections = ['what','saving','browsing','archive','status','settings'];
-  var tocIds   = ['toc-what','toc-saving','toc-browsing','toc-archive','toc-status','toc-settings'];
+  var sections = ['what','saving','browsing','removing','status','settings'];
+  var tocIds   = ['toc-what','toc-saving','toc-browsing','toc-removing','toc-status','toc-settings'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
@@ -495,10 +470,4 @@
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
     var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+    if (n
