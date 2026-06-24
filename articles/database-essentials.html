@@ -305,7 +305,7 @@
           <li>Custom critical moments, if you created any</li>
           <li>Project metadata and subject information — including workstation, dates, and (depending on your privacy settings) subject-related fields such as operator name, evaluator name, gender, body height, age, and weight</li>
           <li>Company branding — if the "use company branding" setting is enabled at the time of saving, the active branding configuration is saved along with the project</li>
-          <li>The analysis settings used at the time of saving — preserved for later reference</li>
+          <li>The analysis settings used at the time of saving — preserved for later reference. Note that changing calculation settings does not affect a reopened project on its own; the new settings are only applied if you reprocess the methodology after the input page and then save again.</li>
         </ul>
 
         <!-- ── BROWSING & FILTERING ── -->
@@ -372,10 +372,10 @@
 
         <ul>
           <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
-          <li>Choose <strong>Use Saved Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
+          <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
         </ul>
 
-        <p>When in doubt, document your choice in the project's <strong>Notes</strong> field so team members can understand why findings may differ between exports of the same project. For a full walkthrough of the reopen workflow, see <a href="reopen-saved-project.html">How to Reopen a Saved Project and Continue Your Analysis</a>.</p>
+        <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice. For a full walkthrough of the reopen workflow, see <a href="reopen-saved-project.html">How to Reopen a Saved Project and Continue Your Analysis</a>.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -470,10 +470,4 @@
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
     var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+    if (n
