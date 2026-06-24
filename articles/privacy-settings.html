@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Database Essentials — Motionprint Ergo Help</title>
+  <title>Privacy Settings Explained — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
-  <link rel="canonical" href="https://motion-print.com/articles/database-essentials.html" />
+  <meta name="description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
+  <link rel="canonical" href="https://motion-print.com/articles/privacy-settings.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Database Essentials — Motionprint Ergo Help" />
-  <meta property="og:description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
-  <meta property="og:url" content="https://motion-print.com/articles/database-essentials.html" />
+  <meta property="og:title" content="Privacy Settings Explained — Motionprint Ergo Help" />
+  <meta property="og:description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
+  <meta property="og:url" content="https://motion-print.com/articles/privacy-settings.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Database Essentials — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Learn how to save, browse, filter, and manage projects in the Motionprint Ergo database — and understand what happens to your settings when you save a reopened project." />
+  <meta name="twitter:title" content="Privacy Settings Explained — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -131,12 +131,22 @@
     .callout.callout-info .callout-label { color: #3b82f6; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Comparison table */
-    .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
-    .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
-    .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
-    .info-table tr:last-child td { border-bottom: none; }
-    .info-table td:first-child { font-weight: 600; width: 120px; }
+    /* Field summary table */
+    .field-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+    .field-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 14px; border-bottom: 2px solid var(--border); }
+    .field-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .field-table tr:last-child td { border-bottom: none; }
+    .field-table td:first-child { font-weight: 600; white-space: nowrap; }
+    .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+    .tag-display { background: rgba(59,130,246,.1); color: #2563eb; }
+    .tag-calc { background: rgba(245,158,11,.1); color: #b45309; }
+    .tag-future { background: rgba(107,114,128,.1); color: #4b5563; }
+
+    /* FAQ */
+    .faq-item { border-top: 1px solid var(--border); padding: 18px 0; }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -228,13 +238,13 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-features">Platform Features</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Database Essentials</span>
+        <span style="color:rgba(255,255,255,.6)">Privacy Settings Explained</span>
       </nav>
-      <h1>Database Essentials</h1>
+      <h1>Privacy Settings Explained</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          5 min read
+          4 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -258,12 +268,11 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-what"><a href="#what">1. What is the Database?</a></li>
-          <li id="toc-saving"><a href="#saving">2. Saving a project</a></li>
-          <li id="toc-browsing"><a href="#browsing">3. Browsing &amp; filtering</a></li>
-          <li id="toc-removing"><a href="#removing">4. Removing projects</a></li>
-          <li id="toc-status"><a href="#status">5. Project status</a></li>
-          <li id="toc-settings"><a href="#settings">6. Settings &amp; reopened projects</a></li>
+          <li id="toc-why"><a href="#why">1. Why these settings exist</a></li>
+          <li id="toc-display"><a href="#display">2. Visualization-only fields</a></li>
+          <li id="toc-gender"><a href="#gender">3. Gender and KIM-LHC</a></li>
+          <li id="toc-stored"><a href="#stored">4. Fields stored for future use</a></li>
+          <li id="toc-faq"><a href="#faq">5. FAQ</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -276,124 +285,166 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">The <strong>Database</strong> is your project library — a permanent collection of every analysis you save in Motionprint Ergo. Instead of re-running the same assessment from scratch, you can reopen any saved project, modify it, or re-export it as a PDF or Excel report with updated settings. This guide covers how to save projects, browse your library, filter and find what you need, manage project status, and understand what happens when you save a reopened project.</p>
+        <p class="article-lead">Motionprint Ergo collects several subject-related fields as part of an assessment — operator name, evaluator name, gender, body height, age, and weight. Privacy settings let you control which of these appear in visual outputs and exports. This article explains exactly what each toggle controls, which fields influence calculations, and which are stored purely for future use. For context on how subject data is saved and managed in the database, see <a href="database-essentials.html">Database Essentials</a>.</p>
 
-        <!-- ── WHAT IS THE DATABASE ── -->
-        <h2 id="what"><span class="step-num">1</span> What is the Database?</h2>
+        <!-- ── SECTION 1: WHY ── -->
+        <h2 id="why"><span class="step-num">1</span> Why these settings exist</h2>
 
-        <p>Before v1.0.1, every analysis in Motionprint Ergo was a one-time workflow: you ran a report, exported it, and moved on. The <strong>Database</strong> changes that. It stores every project you choose to save — including the full calculation data, custom moments, settings, and metadata — so you can return to any assessment at any point.</p>
+        <p>Assessments often involve identifiable subject information — the name of the operator being assessed, the evaluator conducting the session, and physical characteristics. Depending on your organisation's data policies, team structure, or client requirements, you may want to exclude some or all of this information from exports and reports.</p>
 
-        <p>This is especially valuable for teams running repeated assessments at the same workstations, for compliance workflows that require an audit trail, and for any situation where you need to compare results across time or methodology versions.</p>
+        <p>Privacy settings give you control over visibility without affecting the integrity of the ergonomic analysis. The key distinction throughout this article is between fields that are <strong>display-only</strong> (they appear in outputs but have no bearing on calculations) and fields that have a <strong>calculation role</strong> (where the setting can affect results).</p>
 
-        <!-- ── SAVING A PROJECT ── -->
-        <h2 id="saving"><span class="step-num">2</span> Saving a project</h2>
+        <table class="field-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Role</th>
+              <th>Affects calculations?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Operator name</td>
+              <td><span class="tag tag-display">Display only</span></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Evaluator name</td>
+              <td><span class="tag tag-display">Display only</span></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td><span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
+              <td>Yes — in KIM-LHC only</td>
+            </tr>
+            <tr>
+              <td>Body height</td>
+              <td><span class="tag tag-future">Stored for future use</span></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td><span class="tag tag-future">Stored for future use</span></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Weight</td>
+              <td><span class="tag tag-future">Stored for future use</span></td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h3>Where to save</h3>
+        <!-- ── SECTION 2: DISPLAY-ONLY ── -->
+        <h2 id="display"><span class="step-num">2</span> Visualization-only fields</h2>
 
-        <p>After running an assessment and generating results, you'll find a <strong>Save Project</strong> button on the results page, next to the Edit and Export buttons. Clicking it opens a save window where you can set a few things before confirming:</p>
-        <ul>
-          <li><strong>Project title</strong> — a default name is applied based on your naming template in Settings, but you can adjust it here</li>
-          <li><strong>Status</strong> — choose between Draft, In Progress, or Completed to reflect where the project stands</li>
-          <li><strong>Tags</strong> — add one or more tags to make the project easier to find later</li>
-        </ul>
+        <h3>Operator name</h3>
 
-        <h3>What gets saved</h3>
+        <p>The operator name identifies the person performing the physical task being assessed. When visible, it appears in report headers, the detail panel in the database, and exported files. Toggling it off removes it from all visual outputs and exports.</p>
 
-        <p>A saved project is a complete snapshot of your analysis. This includes:</p>
-        <ul>
-          <li>Analysis methodology and complete calculation data and findings</li>
-          <li>Custom critical moments, if you created any</li>
-          <li>Project metadata and subject information — including workstation, dates, and (depending on your privacy settings) subject-related fields such as operator name, evaluator name, gender, body height, age, and weight. For a full breakdown of what each privacy toggle controls, see <a href="privacy-settings.html">Privacy Settings Explained</a>.</li>
-          <li>Company branding — if the "use company branding" setting is enabled at the time of saving, the active branding configuration is saved along with the project</li>
-          <li>The analysis settings used at the time of saving — preserved for later reference. Note that changing calculation settings does not affect a reopened project on its own; the new settings are only applied if you reprocess the methodology after the input page and then save again.</li>
-        </ul>
+        <p><strong>Operator name does not influence any risk calculation.</strong> Hiding it has no effect on Lifting Index scores, KIM-LHC risk totals, or any other computed value. It is a label, not an analytical input.</p>
 
-        <!-- ── BROWSING & FILTERING ── -->
-        <h2 id="browsing"><span class="step-num">3</span> Browsing and filtering your projects</h2>
+        <h3>Evaluator name</h3>
 
-        <h3>Accessing the Database</h3>
+        <p>The evaluator name identifies the person conducting the assessment. It appears in the same places as operator name — report headers, the database detail panel, and exports. The same toggle controls apply.</p>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance. Each project has an action button on the right side with three options:</p>
-        <ul>
-          <li><strong>Open</strong> — loads the project and takes you to the results page</li>
-          <li><strong>Export project</strong> — saves the project as a portable file (coming in a future release)</li>
-          <li><strong>Delete</strong> — permanently removes the project from the database</li>
-        </ul>
-        <p>Click a project row to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
+        <p><strong>Evaluator name does not influence any risk calculation.</strong> It is a record-keeping field only. Hiding it changes what is printed in outputs; it does not change what is computed.</p>
 
-        <h3>Using filters to find projects</h3>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Note</div>
+            <p>If operator or evaluator name is toggled off in privacy settings, the field is also excluded when the project is saved to the database. The saved project will not contain those names.</p>
+          </div>
+        </div>
 
-        <p>As your library grows, filters help you get to the right project quickly. You can filter by:</p>
-        <ul>
-          <li><strong>Method</strong> — narrow the list to a specific assessment method</li>
-          <li><strong>Status</strong> — draft, in progress, or completed projects</li>
-          <li><strong>Risk level</strong> — filter by low, medium, or high risk based on calculated results</li>
-          <li><strong>Tags</strong> — show only projects with a specific tag</li>
-          <li><strong>Multiple values</strong> — combine filters to narrow further, for example "Completed AND High-Risk"</li>
-        </ul>
+        <!-- ── SECTION 3: GENDER ── -->
+        <h2 id="gender"><span class="step-num">3</span> Gender and KIM-LHC</h2>
 
-        <p>Use filters to quickly find all completed high-risk assessments, or all projects tagged for a specific workstation or site visit — without scrolling through your entire library.</p>
+        <p>Gender is handled differently from the other subject fields because it has a direct role in KIM-LHC calculations. Gender can influence the load weight thresholds used to score a KIM-LHC assessment, so it is treated as a calculation input rather than a display field in that context.</p>
 
-        <!-- ── REMOVING PROJECTS ── -->
-        <h2 id="removing"><span class="step-num">4</span> Removing projects</h2>
+        <h3>The KIM-LHC gender control</h3>
 
-        <p>The only way to remove a project from the database is to delete it. Deletion is permanent — the project cannot be recovered once removed. Before deleting, consider whether the project may be needed for a future audit, compliance check, or methodology comparison. Delete only test runs, accidental saves, or clear duplicates you're certain you won't need.</p>
+        <p>In KIM-LHC settings, there is a dedicated <strong>Gender Not Required</strong> option. When enabled, gender is excluded from the calculation logic entirely — the assessment proceeds without applying gender-specific thresholds. This is the appropriate setting when the gender of the subject is unknown, not applicable, or when you prefer a gender-neutral result.</p>
+
+        <p>This control is separate from the general privacy display settings precisely because its effect goes beyond visibility — it changes how the assessment is scored.</p>
 
         <div class="callout callout-warn">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Deletion is permanent</div>
-            <p>There is no undo. If you're not certain you want to remove a project, leave it in the database — storage is not a reason to delete.</p>
+            <div class="callout-label">KIM-LHC only</div>
+            <p>The gender-in-calculations distinction applies only to KIM-LHC. In NIOSH assessments, gender is not used in any calculation. For NIOSH, gender is a display field only, and toggling it off has no effect on results.</p>
           </div>
         </div>
 
-        <h3>Exporting projects (coming soon)</h3>
+        <!-- ── SECTION 4: STORED FOR FUTURE USE ── -->
+        <h2 id="stored"><span class="step-num">4</span> Fields stored for future use</h2>
 
-        <p>A project export feature is planned for a future release. It will allow you to save a project as a portable file that you can store outside the database, share with colleagues on other machines, or re-import later. For now, use the PDF and Excel export options to produce shareable reports from any saved project.</p>
+        <p>Body height, age, and weight are collected during subject setup but are not currently used in reports, exports, or any calculation. They are stored anonymously alongside the project.</p>
 
-        <!-- ── PROJECT STATUS ── -->
-        <h2 id="status"><span class="step-num">5</span> Understanding project status</h2>
+        <h3>Why they are collected now</h3>
 
-        <p>Each project in the database carries a status that reflects where it is in your workflow. You set it in the save window when first saving, and can update it at any time through the project detail panel.</p>
-        <ul>
-          <li><strong>Draft</strong> — initial state; the assessment has been saved but is not yet finalized</li>
-          <li><strong>In Progress</strong> — actively being worked on; used to signal ongoing review or editing</li>
-          <li><strong>Completed</strong> — marked as final; ready for reporting or PDF/Excel export</li>
-        </ul>
+        <p>These fields are included in preparation for a planned dashboarding capability. At a future stage, it is intended to support correlation insights between subject-dependent characteristics — such as age range or body height — and measured risk levels across a project library. This kind of aggregate, anonymised view could help organisations identify patterns across their assessment data over time.</p>
 
-        <p>Status is one of the available filters in the database view, making it easy to separate active work from completed assessments at a glance.</p>
+        <p>That dashboarding functionality is not yet released. For now, body height, age, and weight have no active end-user function in reporting or export.</p>
 
-        <!-- ── SETTINGS & REOPENED PROJECTS ── -->
-        <h2 id="settings"><span class="step-num">6</span> Settings and reopened projects</h2>
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Anonymous storage</div>
+            <p>Body height, age, and weight are stored anonymously. They do not appear in exported PDF or Excel reports, and they are not associated with operator or evaluator name in any output.</p>
+          </div>
+        </div>
 
-        <p>This section is important if you open a saved project and then save it again with different settings active.</p>
+        <h3>Toggling these fields off</h3>
 
-        <h3>When a settings dialog appears</h3>
+        <p>If you prefer not to collect body height, age, or weight at all, you can disable them in privacy settings. They will be excluded from the subject setup form and will not be stored with the project. This has no effect on current reporting or exports since these fields play no role in them today.</p>
 
-        <p>Opening a project simply displays it as it was saved — no dialog appears on open. The settings dialog only appears when you click <strong>Save Project</strong> again on a reopened project, and only if certain settings have changed since the project was originally created. When that happens, the app asks which settings to record with the updated save.</p>
+        <!-- ── SECTION 5: FAQ ── -->
+        <h2 id="faq"><span class="step-num">5</span> Frequently asked questions</h2>
 
-        <h3>Why this matters</h3>
+        <div class="faq-item">
+          <div class="faq-q">Does hiding operator or evaluator name change my risk scores?</div>
+          <div class="faq-a">No. Operator name and evaluator name are display fields only. Toggling them off removes them from visual outputs and exports, but has no effect on any calculated value — Lifting Index, KIM-LHC risk score, or otherwise.</div>
+        </div>
 
-        <p>Certain settings directly affect how an analysis is calculated and how risk is classified. The dialog ensures you are always in explicit control of which configuration is recorded with the saved project — the original or your current one.</p>
+        <div class="faq-item">
+          <div class="faq-q">Does body height, age, or weight appear in my PDF or Excel reports?</div>
+          <div class="faq-a">No. These fields are not included in current PDF or Excel exports. They are stored anonymously in the database for planned future use, but have no active role in reporting today.</div>
+        </div>
 
-        <ul>
-          <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
-          <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
-        </ul>
+        <div class="faq-item">
+          <div class="faq-q">What does "Gender Not Required" do in KIM-LHC?</div>
+          <div class="faq-a">It removes gender from the KIM-LHC calculation entirely. Because gender can influence load weight thresholds in KIM-LHC, this setting changes how the assessment is scored — not just what is displayed. Use it when the subject's gender is unknown or not applicable.</div>
+        </div>
 
-        <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice.</p>
+        <div class="faq-item">
+          <div class="faq-q">Does gender affect NIOSH calculations?</div>
+          <div class="faq-a">No. Gender is not used in NIOSH calculations. For NIOSH assessments it is a display field only, and any gender privacy setting has no effect on computed results.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">If I disable a privacy field, is the data deleted from existing saved projects?</div>
+          <div class="faq-a">No. Privacy settings apply going forward — they control what is collected and stored in new saves. Existing saved projects are not retroactively modified. To remove subject data from an existing project, you would need to delete the project from the database.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">When will the body height, age, and weight dashboarding be available?</div>
+          <div class="faq-a">There is no confirmed release date. These fields are collected now so that when dashboarding is introduced, existing project libraries already contain the data needed to generate insights. We will document this feature fully when it is released.</div>
+        </div>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
-            <p>The database keeps a complete history of your assessments — save your next analysis and explore the filters to get a feel for it. When you're ready to export, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
+            <p>Privacy settings give you precise control over what appears in outputs without compromising the analysis. For details on how subject data is saved and managed as part of a project, see <a href="database-essentials.html">Database Essentials</a>.</p>
           </div>
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
-              <a href="privacy-settings.html" class="related-card">
+              <a href="database-essentials.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">Privacy Settings Explained</span>
+                <span class="related-card-title">Database Essentials</span>
               </a>
               <a href="exporting-reports.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
@@ -456,8 +507,8 @@
 </footer>
 
 <script>
-  var sections = ['what','saving','browsing','removing','status','settings'];
-  var tocIds   = ['toc-what','toc-saving','toc-browsing','toc-removing','toc-status','toc-settings'];
+  var sections = ['why','display','gender','stored','faq'];
+  var tocIds   = ['toc-why','toc-display','toc-gender','toc-stored','toc-faq'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
@@ -466,4 +517,20 @@
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
     });
     tocIds.forEach(function(id, i) {
-    
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
