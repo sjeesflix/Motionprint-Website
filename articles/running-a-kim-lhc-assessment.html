@@ -498,7 +498,7 @@
 
         <p>If you are on the report page and want to adjust any input — tasks, task information, or working conditions — click the <strong>Edit</strong> button on the report page. This returns you to the input page with all your existing settings intact, so you can make changes and re-process without starting over.</p>
 
-        <p><strong>New in v1.0.1:</strong> Once you're happy with your results, click <strong>Save Project</strong> to store the assessment in the Database for future reference. You can permanently delete projects to keep your library organized. See <a href="database-essentials.html">Database Essentials</a> for details.</p>
+        <p><strong>New in v1.0.2:</strong> Once you're happy with your results, click <strong>Save Project</strong> to store the assessment in the Database for future reference. You can archive completed projects or delete duplicates to keep your library organized. See <a href="database-essentials.html">Projects Database</a> for details.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -586,3 +586,15 @@
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

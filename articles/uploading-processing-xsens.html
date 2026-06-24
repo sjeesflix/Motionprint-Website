@@ -522,7 +522,7 @@
 
         <p>These steps are covered in full in the <a href="getting-started-ergo.html">Getting Started with Motionprint Ergo</a> guide.</p>
 
-        <p><strong>New in v1.0.1:</strong> After generating your first analysis, you can save it to the Database for future reference and modification. Click <strong>Save Project</strong> on the results page to store the full assessment in your project library. See <a href="database-essentials.html">Database Essentials</a> for details.</p>
+        <p><strong>New in v1.0.2:</strong> After generating your first analysis, you can save it to the Database for future reference and modification. Click <strong>Save Project</strong> on the results page to store the full assessment in your project library. See <a href="database-essentials.html">Projects Database</a> for details.</p>
 
         <!-- ── ARTICLE END ── -->
         <div class="article-end">
@@ -605,4 +605,18 @@
     function onScroll() {
       let current = sections[0].toc;
       for (const s of sections) {
-        const el = document.getElementById
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
+      }
+      sections.forEach(s => {
+        document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
