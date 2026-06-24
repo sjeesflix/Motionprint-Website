@@ -264,9 +264,9 @@
         <ul class="toc-list">
           <li id="toc-step1"><a href="#step1">1. Locate your project</a></li>
           <li id="toc-step2"><a href="#step2">2. Open the project</a></li>
-          <li id="toc-step3"><a href="#step3">3. The settings dialog</a></li>
-          <li id="toc-step4"><a href="#step4">4. View and edit</a></li>
-          <li id="toc-step5"><a href="#step5">5. Re-export</a></li>
+          <li id="toc-step3"><a href="#step3">3. Edit your findings</a></li>
+          <li id="toc-step4"><a href="#step4">4. Save your changes</a></li>
+          <li id="toc-step5"><a href="#step5">5. Export as PDF or Excel</a></li>
           <li id="toc-scenarios"><a href="#scenarios">6. Real-world scenarios</a></li>
           <li id="toc-troubleshoot"><a href="#troubleshoot">7. Troubleshooting</a></li>
         </ul>
@@ -281,14 +281,14 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Saved projects give you the ability to revisit any previous analysis in Motionprint Ergo. Whether you need to edit findings, apply new settings, or export with updated company methodology, reopening a project takes just a few clicks. This guide walks you through the entire workflow — from finding your project in the database to making changes and exporting refreshed results. You'll need a project already saved in the database; if you haven't saved one yet, see <a href="database-essentials.html">Database Essentials</a> first.</p>
+        <p class="article-lead">Saved projects give you the ability to revisit any previous analysis in Motionprint Ergo. Whether you need to edit findings, apply new settings, or re-export as a PDF or Excel report with updated results, reopening a project takes just a few clicks. This guide walks you through the entire workflow — from finding your project in the database to making changes and saving them back. You'll need a project already saved in the database; if you haven't saved one yet, see <a href="database-essentials.html">Database Essentials</a> first.</p>
 
         <!-- ── STEP 1 ── -->
         <h2 id="step1"><span class="step-num">1</span> Locate your project in the Database</h2>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. You'll see a list of all saved projects with their title, methodology, creation date, and status displayed at a glance.</p>
+        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list shows each project's title, method, risk level, status, and last activity date at a glance. Click any project to see a detail panel with additional information such as creation date, duration, tags, workstation, evaluator, and operator.</p>
 
-        <p>If your library has grown, use the filters to narrow the view. You can filter by methodology (NIOSH or KIM-LHC), status (draft, final, or archived), or risk level. Combine multiple filters to zero in quickly — for example, "KIM-LHC AND Final" shows only completed KIM-LHC assessments.</p>
+        <p>If your library has grown, use the filters to narrow the view. You can filter by method, status (Draft, In Progress, or Completed), risk level, or tags. Combine multiple filters to zero in quickly — for example, "Completed AND High-Risk" shows only finalized high-risk assessments.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -306,48 +306,9 @@
         <p>Opening a project does not modify it. You can review the results, close the view, and the original project remains unchanged in the database. Changes are only written back when you explicitly click <strong>Save Project</strong>.</p>
 
         <!-- ── STEP 3 ── -->
-        <h2 id="step3"><span class="step-num">3</span> The settings dialog</h2>
+        <h2 id="step3"><span class="step-num">3</span> Edit your findings</h2>
 
-        <p>This is the most important step to understand. If you've changed any analysis settings since the project was originally created — reference mass, equation variant, risk thresholds, or similar — a dialog will appear before the results load, asking which settings to use.</p>
-
-        <h3>Use Current Settings</h3>
-
-        <p>This option applies your latest analysis preferences and recalculates the assessment using the new methodology. Findings may change as a result. Choose this when you want to:</p>
-        <ul>
-          <li>Apply updated company standards to an existing assessment</li>
-          <li>Test how different parameters affect a risk classification</li>
-          <li>Compare old data against a new methodology</li>
-        </ul>
-
-        <h3>Use Saved Settings</h3>
-
-        <p>This option preserves the exact settings from when the project was originally created — the findings stay as they were originally calculated. Choose this when you want to:</p>
-        <ul>
-          <li>Maintain consistency with previously reported or exported findings</li>
-          <li>Verify results for compliance or an audit trail</li>
-          <li>Keep the original methodology intact while only editing notes or metadata</li>
-        </ul>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">When in doubt</div>
-            <p>If you're unsure which to pick, choose <strong>Use Saved Settings</strong>. This preserves the original analysis and avoids unintended recalculation. You can always reopen the project again later with current settings if needed.</p>
-          </div>
-        </div>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Pro tip</div>
-            <p>Want to compare both versions? Open the project twice — once with saved settings, once with current settings — and export the results separately. Each export captures the date and settings applied, so you can reference both versions clearly.</p>
-          </div>
-        </div>
-
-        <!-- ── STEP 4 ── -->
-        <h2 id="step4"><span class="step-num">4</span> View and edit your findings</h2>
-
-        <p>Once the project is open, you're back on the results page with full access to everything that was saved.</p>
+        <p>Once the project is open you're back on the results page with full access to everything that was saved. You can review findings without making any changes, or start editing.</p>
 
         <h3>What you can do</h3>
         <ul>
@@ -357,74 +318,87 @@
           <li>Update project metadata: title, tags, notes, and workstation name</li>
         </ul>
 
-        <h3>Saving your changes</h3>
+        <p>If you only want to review or export the project without making changes, you can do so without saving — the original remains untouched in the database.</p>
 
-        <p>Click <strong>Save Project</strong> to write your changes back to the database. All edits are permanent once saved. If you want to discard changes instead, click <strong>Back</strong> or close the results view — the original project remains untouched.</p>
+        <!-- ── STEP 4 ── -->
+        <h2 id="step4"><span class="step-num">4</span> Save your changes</h2>
 
-        <div class="callout callout-warn">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>When you're ready to write your changes back to the database, click <strong>Save Project</strong>. If certain settings have changed since the project was originally created, a dialog will appear at this point asking which settings to record with the save.</p>
+
+        <h3>The settings dialog</h3>
+
+        <p>This dialog only appears when you save a reopened project — not when you first open it. It gives you an explicit choice about which configuration to record:</p>
+        <ul>
+          <li><strong>Use Current Settings</strong> — saves the project with your latest configuration. Useful when you want to apply updated standards or recalculate under a changed methodology.</li>
+          <li><strong>Use Saved Settings</strong> — preserves the original configuration exactly. Useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
+        </ul>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Document your settings choice</div>
-            <p>If you're working in a team, add a note in the <strong>Notes</strong> field explaining which settings were used and why. This helps teammates understand why findings may differ between different exports of the same project.</p>
+            <div class="callout-label">When in doubt</div>
+            <p>Choose <strong>Use Saved Settings</strong> to keep the original analysis intact. If you're working in a team, add a note in the <strong>Notes</strong> field explaining your choice so colleagues understand why findings may differ between exports of the same project.</p>
           </div>
         </div>
 
+        <p>If you want to discard your changes instead of saving, click <strong>Back</strong> or close the results view — the original project remains untouched in the database.</p>
+
         <!-- ── STEP 5 ── -->
-        <h2 id="step5"><span class="step-num">5</span> Re-export with updated results</h2>
+        <h2 id="step5"><span class="step-num">5</span> Export as PDF or Excel</h2>
 
-        <p>Once you've reviewed or edited the project, you can export the results as PDF or Excel using the <strong>Export</strong> button in the tab bar — exactly as you would from a fresh analysis. The export uses the current display: either the saved settings or the recalculated results, depending on your choice in Step 3.</p>
+        <p>At any point while viewing a reopened project — before or after saving changes — you can export the results as a PDF or Excel file using the <strong>Export</strong> button in the tab bar, exactly as you would from a fresh analysis. The export reflects what is currently displayed on screen.</p>
 
-        <p>Exported files include both the original project date and the export date, so your records clearly show when the assessment was conducted and when the file was generated. See <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
+        <p>Exported files include both the original project date and the export date, so your records clearly show when the assessment was conducted and when the report was generated. See <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
 
         <!-- ── REAL-WORLD SCENARIOS ── -->
         <h2 id="scenarios"><span class="step-num">6</span> Real-world scenarios</h2>
 
         <div class="scenario">
           <div class="scenario-label">Scenario 1 — Maintaining a historical record</div>
-          <p>Your team used a 25 kg reference mass throughout Q1 2026. In June, company policy changes to 23 kg. You reopen a Q1 project to produce a compliance report and choose <strong>Use Saved Settings</strong>. The export reflects the original 25 kg methodology — an accurate record of the assessment as it was conducted at the time.</p>
+          <p>You reopen a completed project from Q1 to produce a compliance report. Your active configuration has changed since then. You choose <strong>Use Saved Settings</strong> when saving — the export and saved record reflect the original methodology, exactly as the assessment was conducted at the time.</p>
         </div>
 
         <div class="scenario">
           <div class="scenario-label">Scenario 2 — Applying updated standards</div>
-          <p>You want to re-analyze older data under the new 23 kg standard to see how the risk classification changes. You reopen the same Q1 project and choose <strong>Use Current Settings</strong>. The findings recalculate with 23 kg — and you can export a second file labelled clearly as "re-analyzed under updated methodology."</p>
+          <p>Your company has updated its assessment standards and you want to see how older projects are affected. You reopen a Q1 project, review the results, and save with <strong>Use Current Settings</strong>. You can then export a PDF clearly labelled as re-analyzed under the updated methodology and compare it against the original.</p>
         </div>
 
         <div class="scenario">
           <div class="scenario-label">Scenario 3 — Editing notes without recalculating</div>
-          <p>You need to add a corrected workstation name and a supervisor's review note to a final report. You reopen the project, choose <strong>Use Saved Settings</strong>, update the metadata fields, and save. The findings are unchanged; only the project notes are updated.</p>
+          <p>You need to add a corrected workstation name and a supervisor's review note to a completed project. You reopen it, update the metadata fields, and save with <strong>Use Saved Settings</strong>. The findings remain unchanged; only the project notes are updated.</p>
         </div>
 
         <!-- ── TROUBLESHOOTING ── -->
         <h2 id="troubleshoot"><span class="step-num">7</span> Troubleshooting</h2>
 
         <div class="faq-item">
-          <div class="faq-q">A project won't open</div>
-          <div class="faq-a">Check the status column in the database — archived projects are hidden from the default view. Switch the status filter to "Archived" and check whether the project appears there. If it doesn't appear at all, it may have been deleted.</div>
+          <div class="faq-q">A project doesn't appear in the list</div>
+          <div class="faq-a">If you can't find a project, check whether an active filter is narrowing the results. Clear all filters to show the full library. If the project still doesn't appear, it may have been deleted — deletion is permanent and cannot be undone.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Findings changed after reopening</div>
-          <div class="faq-a">You likely selected <strong>Use Current Settings</strong> at the dialog. Reopen the project again and choose <strong>Use Saved Settings</strong> to restore the original findings.</div>
+          <div class="faq-q">I saved a reopened project and the findings changed unexpectedly</div>
+          <div class="faq-a">You likely chose <strong>Use Current Settings</strong> in the settings dialog when saving. Reopen the project again and save with <strong>Use Saved Settings</strong> to restore the original findings.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">I can't remember which settings I used originally</div>
-          <div class="faq-a">Choose <strong>Use Saved Settings</strong> — this restores the project to its exact original state, regardless of what your current defaults are. Check the project's Notes field for any documentation left by you or a team member.</div>
+          <div class="faq-a">Choose <strong>Use Saved Settings</strong> when saving — this preserves the project's original configuration regardless of what your current defaults are. Check the project's Notes field for any documentation left by you or a team member.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">The settings dialog didn't appear</div>
-          <div class="faq-a">If your current analysis settings exactly match the settings saved with the project, no dialog is needed — the app opens the project directly without prompting. This is normal behavior.</div>
+          <div class="faq-q">The settings dialog didn't appear when I saved</div>
+          <div class="faq-a">The dialog only appears if certain settings have changed since the project was originally created. If your current configuration matches what was saved, no dialog is shown — the project saves normally. This is expected behavior.</div>
         </div>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
-            <p>Reopening projects is one of the most powerful ways to get value from the database — it turns every assessment into a living record you can return to, refine, and re-export. Next, learn how to <a href="running-a-niosh-assessment.html">run a new NIOSH assessment</a> or <a href="exporting-reports.html">configure your export settings</a> for consistent report formatting.</p>
+            <p>Reopening projects is one of the most powerful ways to get value from the database — it turns every assessment into a living record you can return to, refine, and re-export as PDF or Excel. Next, learn how to <a href="exporting-reports.html">configure your export settings</a> for consistent report formatting.</p>
           </div>
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
               <a href="database-essentials.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">Database Essentials: Save, Organize, and Reopen Your Analysis Projects</span>
+                <span class="related-card-title">Database Essentials</span>
               </a>
               <a href="exporting-reports.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
