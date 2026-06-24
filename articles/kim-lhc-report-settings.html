@@ -490,7 +490,7 @@
 
         <h3>How settings affect reopened projects</h3>
 
-        <p>When you reopen a saved project from the Database, Motionprint Ergo may ask whether to use your <strong>current settings</strong> or the <strong>saved settings</strong> from when the project was originally created. Your choice determines whether the analysis recalculates with your latest configuration or preserves the original methodology. See <a href="reopen-saved-project.html">How to Reopen a Saved Project</a> for a full walkthrough.</p>
+        <p>When you reopen a saved project from the Database, Motionprint Ergo may ask whether to use your <strong>current settings</strong> or the <strong>saved settings</strong> from when the project was originally created. Your choice determines whether the analysis recalculates with your latest configuration or preserves the original methodology. See <a href="database-essentials.html">Database Essentials</a> for details.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -573,4 +573,20 @@
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
     });
     tocIds.forEach(function(id, i) {
-      var li = docu
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

@@ -313,7 +313,13 @@
 
         <h3>Accessing the Database</h3>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance. Click any project to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
+        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance. Each project has an action button on the right side with three options:</p>
+        <ul>
+          <li><strong>Open</strong> — loads the project and takes you to the results page</li>
+          <li><strong>Export project</strong> — saves the project as a portable file (coming in a future release)</li>
+          <li><strong>Delete</strong> — permanently removes the project from the database</li>
+        </ul>
+        <p>Click a project row to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
 
         <h3>Using filters to find projects</h3>
 
@@ -380,15 +386,11 @@
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
-            <p>The database keeps a complete history of your assessments — save your next analysis and explore the filters to get a feel for it. When you're ready to revisit a stored project, see <a href="reopen-saved-project.html">How to Reopen a Saved Project and Continue Your Analysis</a> for the full step-by-step workflow.</p>
+            <p>The database keeps a complete history of your assessments — save your next analysis and explore the filters to get a feel for it. When you're ready to export, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
           </div>
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
-              <a href="reopen-saved-project.html" class="related-card">
-                <span class="related-card-cat">Workflow Guides</span>
-                <span class="related-card-title">How to Reopen a Saved Project and Continue Your Analysis</span>
-              </a>
               <a href="exporting-reports.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
                 <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
@@ -470,8 +472,4 @@
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
     var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</scrip
+    if (nav && nav.c
