@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Settings Explained — Motionprint Ergo Help</title>
+  <title>Privacy Settings — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
   <meta name="description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
   <link rel="canonical" href="https://motion-print.com/articles/privacy-settings.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="Privacy Settings Explained — Motionprint Ergo Help" />
+  <meta property="og:title" content="Privacy Settings — Motionprint Ergo Help" />
   <meta property="og:description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
   <meta property="og:url" content="https://motion-print.com/articles/privacy-settings.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Privacy Settings Explained — Motionprint Ergo Help" />
+  <meta name="twitter:title" content="Privacy Settings — Motionprint Ergo Help" />
   <meta name="twitter:description" content="Understand what Motionprint Ergo's privacy settings control — which fields affect visual outputs only, which affect calculations, and which are stored for future use." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -238,9 +238,9 @@
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#kb-features">Platform Features</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">Privacy Settings Explained</span>
+        <span style="color:rgba(255,255,255,.6)">Privacy Settings</span>
       </nav>
-      <h1>Privacy Settings Explained</h1>
+      <h1>Privacy Settings</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -272,7 +272,6 @@
           <li id="toc-display"><a href="#display">2. Visualization-only fields</a></li>
           <li id="toc-gender"><a href="#gender">3. Gender and KIM-LHC</a></li>
           <li id="toc-stored"><a href="#stored">4. Fields stored for future use</a></li>
-          <li id="toc-faq"><a href="#faq">5. FAQ</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -285,7 +284,7 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo collects several subject-related fields as part of an assessment — operator name, evaluator name, gender, body height, age, and weight. Privacy settings let you control which of these appear in visual outputs and exports. This article explains exactly what each toggle controls, which fields influence calculations, and which are stored purely for future use. For context on how subject data is saved and managed in the database, see <a href="database-essentials.html">Database Essentials</a>.</p>
+        <p class="article-lead">Motionprint Ergo records several fields during an assessment — subject information such as operator name, gender, body height, age, and weight, as well as the evaluator name of the person conducting the session. Privacy settings let you control which of these appear in visual outputs and exports. This article explains exactly what each toggle controls, which fields influence calculations, and which are stored purely for future use. For context on how subject data is saved and managed in the database, see <a href="database-essentials.html">Projects Database</a>.</p>
 
         <!-- ── SECTION 1: WHY ── -->
         <h2 id="why"><span class="step-num">1</span> Why these settings exist</h2>
@@ -315,8 +314,8 @@
             </tr>
             <tr>
               <td>Gender</td>
-              <td><span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
-              <td>Yes — in KIM-LHC only</td>
+              <td><span class="tag tag-display">Display</span> <span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
+              <td>Yes — in KIM-LHC via dedicated control</td>
             </tr>
             <tr>
               <td>Body height</td>
@@ -343,13 +342,13 @@
 
         <p>The operator name identifies the person performing the physical task being assessed. When visible, it appears in report headers, the detail panel in the database, and exported files. Toggling it off removes it from all visual outputs and exports.</p>
 
-        <p><strong>Operator name does not influence any risk calculation.</strong> Hiding it has no effect on Lifting Index scores, KIM-LHC risk totals, or any other computed value. It is a label, not an analytical input.</p>
+        <p>Operator name does not influence any risk calculation. Hiding it has no effect on Lifting Index scores, KIM-LHC risk totals, or any other computed value. It is a label, not an analytical input.</p>
 
         <h3>Evaluator name</h3>
 
         <p>The evaluator name identifies the person conducting the assessment. It appears in the same places as operator name — report headers, the database detail panel, and exports. The same toggle controls apply.</p>
 
-        <p><strong>Evaluator name does not influence any risk calculation.</strong> It is a record-keeping field only. Hiding it changes what is printed in outputs; it does not change what is computed.</p>
+        <p>Evaluator name does not influence any risk calculation. It is a record-keeping field only and is not subject information — it identifies who conducted the session. Hiding it changes what is printed in outputs; it does not change what is computed.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -360,21 +359,25 @@
         </div>
 
         <!-- ── SECTION 3: GENDER ── -->
-        <h2 id="gender"><span class="step-num">3</span> Gender and KIM-LHC</h2>
+        <h2 id="gender"><span class="step-num">3</span> Gender</h2>
 
-        <p>Gender is handled differently from the other subject fields because it has a direct role in KIM-LHC calculations. Gender can influence the load weight thresholds used to score a KIM-LHC assessment, so it is treated as a calculation input rather than a display field in that context.</p>
+        <p>Gender has two separate controls in Motionprint Ergo, and it is important to understand the difference between them.</p>
 
-        <h3>The KIM-LHC gender control</h3>
+        <h3>Gender as a privacy setting</h3>
 
-        <p>In KIM-LHC settings, there is a dedicated <strong>Gender Not Required</strong> option. When enabled, gender is excluded from the calculation logic entirely — the assessment proceeds without applying gender-specific thresholds. This is the appropriate setting when the gender of the subject is unknown, not applicable, or when you prefer a gender-neutral result.</p>
+        <p>Like body height, age, and weight, gender can be toggled off in privacy settings. When disabled, gender is excluded from visual outputs and exports. This works the same way as the other subject fields — it controls what is shown, not how the assessment is calculated. For NIOSH assessments, this is the only gender-related control that exists, since gender plays no role in NIOSH calculations.</p>
 
-        <p>This control is separate from the general privacy display settings precisely because its effect goes beyond visibility — it changes how the assessment is scored.</p>
+        <h3>Gender Not Required — KIM-LHC specific</h3>
 
-        <div class="callout callout-warn">
-          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>In KIM-LHC settings, there is a separate <strong>Gender Not Required</strong> option. This goes beyond display — when enabled, gender is excluded from the KIM-LHC calculation entirely, and the assessment proceeds without applying gender-specific load weight thresholds. This is the appropriate setting when the subject's gender is unknown, not applicable, or when you prefer a gender-neutral result.</p>
+
+        <p>This control exists because gender can directly influence KIM-LHC scoring. Its effect is on the calculation, not just the output — which is why it is a distinct control from the general privacy toggle.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">KIM-LHC only</div>
-            <p>The gender-in-calculations distinction applies only to KIM-LHC. In NIOSH assessments, gender is not used in any calculation. For NIOSH, gender is a display field only, and toggling it off has no effect on results.</p>
+            <div class="callout-label">Two separate controls</div>
+            <p>The privacy toggle for gender controls visibility in outputs. The KIM-LHC <strong>Gender Not Required</strong> option controls whether gender is used in the calculation. These are independent — you can hide gender from exports while still using it in the KIM-LHC calculation, or exclude it from both.</p>
           </div>
         </div>
 
@@ -387,7 +390,7 @@
 
         <p>These fields are included in preparation for a planned dashboarding capability. At a future stage, it is intended to support correlation insights between subject-dependent characteristics — such as age range or body height — and measured risk levels across a project library. This kind of aggregate, anonymised view could help organisations identify patterns across their assessment data over time.</p>
 
-        <p>That dashboarding functionality is not yet released. For now, body height, age, and weight have no active end-user function in reporting or export.</p>
+        <p>That dashboarding functionality is not yet released. For now, body height, age, and weight have no active end-user function in reporting or export. The fields are already included in the data model precisely so that projects saved today will be ready to use when dashboarding becomes available — no retroactive data entry will be required.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -401,50 +404,17 @@
 
         <p>If you prefer not to collect body height, age, or weight at all, you can disable them in privacy settings. They will be excluded from the subject setup form and will not be stored with the project. This has no effect on current reporting or exports since these fields play no role in them today.</p>
 
-        <!-- ── SECTION 5: FAQ ── -->
-        <h2 id="faq"><span class="step-num">5</span> Frequently asked questions</h2>
-
-        <div class="faq-item">
-          <div class="faq-q">Does hiding operator or evaluator name change my risk scores?</div>
-          <div class="faq-a">No. Operator name and evaluator name are display fields only. Toggling them off removes them from visual outputs and exports, but has no effect on any calculated value — Lifting Index, KIM-LHC risk score, or otherwise.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">Does body height, age, or weight appear in my PDF or Excel reports?</div>
-          <div class="faq-a">No. These fields are not included in current PDF or Excel exports. They are stored anonymously in the database for planned future use, but have no active role in reporting today.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">What does "Gender Not Required" do in KIM-LHC?</div>
-          <div class="faq-a">It removes gender from the KIM-LHC calculation entirely. Because gender can influence load weight thresholds in KIM-LHC, this setting changes how the assessment is scored — not just what is displayed. Use it when the subject's gender is unknown or not applicable.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">Does gender affect NIOSH calculations?</div>
-          <div class="faq-a">No. Gender is not used in NIOSH calculations. For NIOSH assessments it is a display field only, and any gender privacy setting has no effect on computed results.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">If I disable a privacy field, is the data deleted from existing saved projects?</div>
-          <div class="faq-a">No. Privacy settings apply going forward — they control what is collected and stored in new saves. Existing saved projects are not retroactively modified. To remove subject data from an existing project, you would need to delete the project from the database.</div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">When will the body height, age, and weight dashboarding be available?</div>
-          <div class="faq-a">There is no confirmed release date. These fields are collected now so that when dashboarding is introduced, existing project libraries already contain the data needed to generate insights. We will document this feature fully when it is released.</div>
-        </div>
-
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
-            <p>Privacy settings give you precise control over what appears in outputs without compromising the analysis. For details on how subject data is saved and managed as part of a project, see <a href="database-essentials.html">Database Essentials</a>.</p>
+            <p>Privacy settings give you precise control over what appears in outputs without compromising the analysis. For details on how subject data is saved and managed as part of a project, see <a href="database-essentials.html">Projects Database</a>.</p>
           </div>
           <div>
             <div class="related-label">Related articles</div>
             <div class="related-grid">
               <a href="database-essentials.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
-                <span class="related-card-title">Database Essentials</span>
+                <span class="related-card-title">Projects Database</span>
               </a>
               <a href="exporting-reports.html" class="related-card">
                 <span class="related-card-cat">Platform Features</span>
@@ -507,8 +477,8 @@
 </footer>
 
 <script>
-  var sections = ['why','display','gender','stored','faq'];
-  var tocIds   = ['toc-why','toc-display','toc-gender','toc-stored','toc-faq'];
+  var sections = ['why','display','gender','stored'];
+  var tocIds   = ['toc-why','toc-display','toc-gender','toc-stored'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
