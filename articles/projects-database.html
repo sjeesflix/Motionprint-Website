@@ -113,6 +113,10 @@
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
 
+    /* Article figure */
+    .article-figure { margin: 24px 0 28px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    .article-figure img { width: 100%; height: auto; display: block; }
+
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
@@ -308,18 +312,32 @@
           <li>The analysis settings used at the time of saving — preserved for later reference. Note that changing calculation settings does not affect a reopened project on its own; the new settings are only applied if you reprocess the methodology after the input page and then save again.</li>
         </ul>
 
+        <figure class="article-figure">
+          <img src="../databasesave.gif" alt="Animation showing the Save Project dialog opening with project title, status picker, and tags input" />
+        </figure>
+
         <!-- ── BROWSING & FILTERING ── -->
         <h2 id="browsing"><span class="step-num">3</span> Browsing and filtering your projects</h2>
 
         <h3>Accessing the Database</h3>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance. Each project has an action button on the right side with three options:</p>
+        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance.</p>
+
+        <figure class="article-figure">
+          <img src="../databaseoverviewimage1.jpg" alt="The Projects Database list view showing several projects with method, risk badge, status, last activity, and the three-option action menu expanded" />
+        </figure>
+
+        <p>Each project has an action button on the right side with three options:</p>
         <ul>
           <li><strong>Open</strong> — loads the project and takes you to the results page</li>
-          <li><strong>Export project</strong> — saves the project as a portable file (coming in a future release)</li>
+          <li><strong>Export</strong> — saves the project as a portable file (coming in a future release)</li>
           <li><strong>Delete</strong> — permanently removes the project from the database</li>
         </ul>
         <p>Click a project row to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
+
+        <figure class="article-figure">
+          <img src="../databasemetadata.jpg" alt="A project row expanded in the database showing the detail panel with project ID, creation date, recording duration, tags, workstation, evaluator, and operator fields" />
+        </figure>
 
         <h3>Using filters to find projects</h3>
 
@@ -382,6 +400,10 @@
         </ul>
 
         <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice.</p>
+
+        <figure class="article-figure">
+          <img src="../databasesettings.jpg" alt="The settings dialog showing a list of changed settings with Use Current Settings and Keep Original Settings buttons" />
+        </figure>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
