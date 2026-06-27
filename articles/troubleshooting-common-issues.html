@@ -303,8 +303,9 @@
           <li id="toc-processing"><a href="#processing-errors">1. Processing Errors</a></li>
           <li id="toc-license"><a href="#license-issues">2. Licence Activation</a></li>
           <li id="toc-reports"><a href="#report-failures">3. Report Export Issues</a></li>
-          <li id="toc-display"><a href="#display-glitches">4. Display Glitches</a></li>
-          <li id="toc-contact"><a href="#contact-support">5. Contact Support</a></li>
+          <li id="toc-database"><a href="#database-issues">4. Projects Database</a></li>
+          <li id="toc-display"><a href="#display-glitches">5. Display Glitches</a></li>
+          <li id="toc-contact"><a href="#contact-support">6. Contact Support</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -616,7 +617,38 @@
         </div>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="display-glitches"><span class="step-num">4</span> Display Glitches</h2>
+        <h2 id="database-issues"><span class="step-num">4</span> Projects Database</h2>
+        <p>The Projects Database is stored locally on your machine and is independent of the Motionprint Ergo application files. This means your saved projects persist across software updates and reinstalls.</p>
+
+        <div class="issue-list">
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-info">Info</span>
+              <span class="issue-title">Will updating or reinstalling Motionprint Ergo delete my saved projects?</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>No. The Projects Database is stored in your local application data folder, separate from the application installation directory. Updating Motionprint Ergo to a newer version or uninstalling and reinstalling the software does not affect your saved projects — your project library remains intact.</p>
+              <p>If you are reinstalling on a different machine, your projects will not transfer automatically, as the database is local to each device.</p>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-warn">Warning</span>
+              <span class="issue-title">A project I deleted cannot be recovered</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>Deleting a project from the Projects Database is permanent. There is no recycle bin or undo — once deleted, the project cannot be recovered. Before deleting, consider whether the project may be needed for future audits or methodology comparisons.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="display-glitches"><span class="step-num">5</span> Display Glitches</h2>
         <p>Visual issues in the interface are usually caused by GPU rendering settings, display scaling, or a stale application state that clears on restart.</p>
 
         <div class="issue-list">
@@ -698,8 +730,8 @@
           </div>
         </div>
 
-        <!-- ── SECTION 5 ── -->
-        <h2 id="contact-support"><span class="step-num">5</span> Contact Support</h2>
+        <!-- ── SECTION 6 ── -->
+        <h2 id="contact-support"><span class="step-num">6</span> Contact Support</h2>
         <p>If none of the solutions above resolve your issue, the Motionprint support team is available to help. To get a faster resolution, include the following when you reach out:</p>
         <ul>
           <li>A brief description of what you were doing when the issue occurred</li>
@@ -812,8 +844,8 @@
 </footer>
 
 <script>
-  var sections = ['processing-errors','license-issues','report-failures','display-glitches','contact-support'];
-  var tocIds   = ['toc-processing','toc-license','toc-reports','toc-display','toc-contact'];
+  var sections = ['processing-errors','license-issues','report-failures','database-issues','display-glitches','contact-support'];
+  var tocIds   = ['toc-processing','toc-license','toc-reports','toc-database','toc-display','toc-contact'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
@@ -834,67 +866,4 @@
     var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
     var form = document.getElementById('supportForm');
     var btn = document.getElementById('supportSubmitBtn');
-    var status = document.getElementById('supportFormStatus');
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      status.className = 'form-status';
-      status.textContent = '';
-      form.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
-
-      var name = form.querySelector('[name="name"]');
-      var email = form.querySelector('[name="email"]');
-      var message = form.querySelector('[name="message"]');
-      var valid = true;
-
-      [name, email, message].forEach(function(field) {
-        if (!field.value.trim()) { field.classList.add('invalid'); valid = false; }
-      });
-      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-        email.classList.add('invalid'); valid = false;
-      }
-      if (!valid) {
-        status.className = 'form-status error';
-        status.textContent = 'Please fill in all required fields.';
-        return;
-      }
-
-      btn.classList.add('loading'); btn.disabled = true;
-      var data = {
-        topic: 'Support request',
-        name: name.value.trim(),
-        email: email.value.trim(),
-        version: form.querySelector('[name="version"]').value.trim(),
-        message: message.value.trim()
-      };
-
-      try {
-        var res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (res.ok) {
-          status.className = 'form-status success';
-          status.textContent = 'Message sent. We'll get back to you shortly.';
-          form.reset();
-        } else { throw new Error(); }
-      } catch(err) {
-        status.className = 'form-status error';
-        status.textContent = 'Something went wrong. Email us directly at support@motion-print.com.';
-      } finally {
-        btn.classList.remove('loading'); btn.disabled = false;
-      }
-    });
-  })();
-
-  document.addEventListener('click', function(e) {
-    var nav = document.getElementById('mnav');
-    var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+    var status = document.getElementB

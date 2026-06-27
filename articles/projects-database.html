@@ -316,7 +316,30 @@
 
         <figure class="article-figure">
           <img src="../databasesave.gif" alt="Animation showing the Save Project dialog opening with project title, status picker, and tags input" />
+          <figcaption>The Save Project dialog — set a title, status, and tags before confirming.</figcaption>
         </figure>
+
+        <h3>Project title naming template</h3>
+
+        <p>The project title field in the save dialog is pre-filled based on a configurable naming template set in <strong>Sidebar → Settings → Reports → Project Save</strong>. The template uses the same placeholder variables as the PDF and Excel export templates, replaced with actual assessment data at the moment of saving.</p>
+
+        <p><strong>Default template:</strong> <code>{workstation}_{current_date}_{report_type}</code></p>
+
+        <h4>Available variables</h4>
+
+        <table class="info-table">
+          <thead><tr><th>Variable</th><th>Replaced with</th><th>Example value</th></tr></thead>
+          <tbody>
+            <tr><td>{workstation}</td><td>Workstation or job title entered in metadata</td><td>Assembly Line A</td></tr>
+            <tr><td>{operator}</td><td>Operator name entered in metadata</td><td>Jan de Vries</td></tr>
+            <tr><td>{evaluator}</td><td>Evaluator name entered in metadata</td><td>S. Wolbert</td></tr>
+            <tr><td>{record_date}</td><td>Date of the motion capture recording</td><td>2026-06-03</td></tr>
+            <tr><td>{current_date}</td><td>Date the project is saved</td><td>2026-06-27</td></tr>
+            <tr><td>{report_type}</td><td>Assessment method identifier</td><td>NIOSH</td></tr>
+          </tbody>
+        </table>
+
+        <p>The template is editable — you can type any combination of plain text and variables. If a variable's corresponding field was left empty in the assessment, it is omitted from the title rather than appearing as a blank. You can always edit the pre-filled title manually in the save dialog before confirming.</p>
 
         <!-- ── BROWSING & FILTERING ── -->
         <h2 id="browsing"><span class="step-num">3</span> Browsing and filtering your projects</h2>
@@ -327,6 +350,7 @@
 
         <figure class="article-figure">
           <img src="../databaseoverviewimage1.jpg" alt="The Projects Database list view showing several projects with method, risk badge, status, last activity, and the three-option action menu expanded" />
+          <figcaption>The Projects Database list view — columns show title, method, risk badge, status, and last activity. The action button on the right gives Open, Export, and Delete options.</figcaption>
         </figure>
 
         <p>Each project has an action button on the right side with three options:</p>
@@ -339,6 +363,7 @@
 
         <figure class="article-figure">
           <img src="../databasemetadata.jpg" alt="A project row expanded in the Projects Database showing the detail panel with project ID, creation date, recording duration, tags, workstation, evaluator, and operator fields" />
+          <figcaption>Clicking a project row expands the detail panel with full metadata — including project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</figcaption>
         </figure>
 
         <h3>Using filters to find projects</h3>
@@ -405,6 +430,7 @@
 
         <figure class="article-figure article-figure-sm">
           <img src="../databasesettings.jpg" alt="The settings dialog showing a list of changed settings with Use Current Settings and Keep Original Settings buttons" />
+          <figcaption>The settings dialog — lists which settings have changed and lets you choose which version to save with the project.</figcaption>
         </figure>
 
         <!-- ── ARTICLE FOOTER ── -->
@@ -438,63 +464,4 @@
     <div class="footer-top">
       <div>
         <a href="../index.html" style="display:block;margin-bottom:10px;">
-          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
-        </a>
-        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Product</div>
-        <ul class="footer-links">
-          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
-          <li><a href="../index.html#how">How it works</a></li>
-          <li><a href="../index.html#methods">Supported methods</a></li>
-          <li><a href="../index.html#pricing">Pricing</a></li>
-          <li><a href="../download.html">Download</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="../index.html#custom">Custom Solutions</a></li>
-          <li><a href="../index.html#contact">Request demo</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Resources</div>
-        <ul class="footer-links">
-          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
-          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
-          <li><a href="../resources.html#support">Support</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
-      <div class="footer-legal">
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  var sections = ['what','saving','browsing','removing','status','settings'];
-  var tocIds   = ['toc-what','toc-saving','toc-browsing','toc-removing','toc-status','toc-settings'];
-  function onScroll() {
-    var scrollY = window.scrollY + 100;
-    var active = 0;
-    sections.forEach(function(id, i) {
-      var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
-    });
-    tocIds.forEach(function(id, i) {
-      var li = document.getElementById(id);
-      if (li) { li.classList.toggle('active', i === active); }
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  document.addEve
+          <img s
