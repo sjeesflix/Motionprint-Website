@@ -371,11 +371,14 @@
         <h3>Choosing where to save</h3>
         <p>When you export a report, Motionprint Ergo opens a file picker so you can choose exactly where to save it. The application remembers the last folder you used for each report type and export format, so you don't have to navigate there each time. You can save reports to any folder you have write access to on your machine.</p>
 
+        <h3>Projects Database</h3>
+        <p>The Projects Database — the persistent library of saved assessments accessible from the sidebar — is stored entirely on your local machine. The database file lives on your device alongside the application data and is never uploaded or synced to any external location. Because it is local, your saved projects are not affected by updating Motionprint Ergo to a newer version or by uninstalling and reinstalling the application — your project library remains intact across software updates.</p>
+
         <div class="callout callout-green">
           <svg class="callout-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           <div>
             <div class="callout-label">You stay in control</div>
-            <p>Reports are saved exactly where you choose. There is no automatic sync, background upload, or cloud storage of any kind — the file lands on your machine and stays there.</p>
+            <p>Reports are saved exactly where you choose, and your Projects Database stays on your machine. There is no automatic sync, background upload, or cloud storage of any kind.</p>
           </div>
         </div>
 
@@ -536,21 +539,4 @@
       var el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
     });
-    tocIds.forEach(function(id, i) {
-      var li = document.getElementById(id);
-      if (li) { li.classList.toggle('active', i === active); }
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  document.addEventListener('click', function(e) {
-    var nav = document.getElementById('mnav');
-    var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+    tocIds.forEach(func

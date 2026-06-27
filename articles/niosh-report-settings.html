@@ -514,6 +514,8 @@
 
         <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically. For a full overview of available variables, validation rules, fallback behaviour, and example templates, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
 
+        <p>A separate <strong>Project Save</strong> template controls the default title pre-filled when saving an assessment to the Projects Database. It uses the same variable syntax. See <a href="projects-database.html#saving">Projects Database — Project title naming template</a> for details.</p>
+
         <h3>Export settings</h3>
 
         <table class="info-table">
@@ -534,6 +536,10 @@
             <p>The company name, logo, and brand colours are configured in <strong>Sidebar → Settings → General</strong>, not here. Set them there once and they apply to all branded exports across all report types. See <a href="customization-branding.html">Customization &amp; Branding</a> for a full walkthrough.</p>
           </div>
         </div>
+
+        <h3>How settings affect reopened projects</h3>
+
+        <p>When you reopen a saved project from the Database, Motionprint Ergo may ask whether to use your <strong>current settings</strong> or the <strong>saved settings</strong> from when the project was originally created. Your choice determines whether the analysis recalculates with your latest configuration or preserves the original methodology. See <a href="projects-database.html">Projects Database</a> for details.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -623,13 +629,4 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  document.addEventListener('click', function(e) {
-    var nav = document.getElementById('mnav');
-    var btn = document.querySelector('.nav-hamburger');
-    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
-      nav.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
+  document.addEventListener(

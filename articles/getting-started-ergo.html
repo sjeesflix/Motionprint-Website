@@ -485,8 +485,8 @@
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-label">Sidebar</div>
-            <div class="info-card-value">Create &amp; Settings</div>
-            <div class="info-card-desc">The left-hand sidebar has two destinations: <strong>Create</strong> to start a new report, and <strong>Settings</strong> to configure the app.</div>
+            <div class="info-card-value">Create, Database &amp; Settings</div>
+            <div class="info-card-desc">The left-hand sidebar has three destinations: <strong>Create</strong> to start a new report, <strong>Database</strong> to browse your saved projects, and <strong>Settings</strong> to configure the app.</div>
           </div>
           <div class="info-card">
             <div class="info-card-label">Content area</div>
@@ -549,6 +549,13 @@
             <div class="phase-body">
               <div class="phase-title">Export the report</div>
               <p class="phase-desc">Export as a formatted PDF or structured Excel workbook.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-num">7</div>
+            <div class="phase-body">
+              <div class="phase-title">Save to the Projects Database</div>
+              <p class="phase-desc">Click Save Project to store the full assessment in your local project library for future reference, filtering, and re-export.</p>
             </div>
           </div>
         </div>
@@ -701,6 +708,10 @@
           </div>
         </div>
 
+        <!-- Phase 7 -->
+        <h3>Phase 7 — Save to the Projects Database</h3>
+        <p>After viewing results, click <strong>Save Project</strong> in the results tab bar. A save dialog opens where you can set a project title, status (Draft, In Progress, or Completed), and optional tags. Once saved, the project appears in your <strong>Database</strong> — accessible any time from the sidebar. You can reopen it later, re-export it with different settings, filter your library by method or risk level, and manage project status as work progresses. See <a href="projects-database.html">Projects Database</a> for the full overview.</p>
+
         <!-- ── SECTION 6 ── -->
         <h2 id="next"><span class="step-num">6</span> What's Next</h2>
 
@@ -708,6 +719,7 @@
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
+          <li><strong>Save your analysis to the Database</strong> — new in v1.0.2, after generating results you can click <strong>Save Project</strong> to store the full assessment in your project library for future reference and modification. See <a href="projects-database.html">Projects Database</a> for details.</li>
           <li><strong>Visit the <a href="../resources.html">Resources page</a></strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management</li>
           <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
         </ul>
@@ -769,42 +781,4 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Motionprint. All rights reserved.</span>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- TOC active state on scroll -->
-<script>
-  (function () {
-    const sections = [
-      { id: 'requirements', toc: 'toc-requirements' },
-      { id: 'install',      toc: 'toc-install' },
-      { id: 'activate',     toc: 'toc-activate' },
-      { id: 'navigate',     toc: 'toc-navigate' },
-      { id: 'report',       toc: 'toc-report' },
-      { id: 'next',         toc: 'toc-next' },
-    ];
-
-    function onScroll() {
-      let current = sections[0].toc;
-      for (const s of sections) {
-        const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
-      }
-      sections.forEach(s => {
-        document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
-</script>
-
-</body>
-</html>
+      <
