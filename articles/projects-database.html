@@ -113,16 +113,11 @@
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
 
-    /* Settings side-by-side layout */
-    .settings-layout { display: flex; align-items: flex-start; gap: 24px; margin: 16px 0; }
-    .settings-img { width: 220px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-    .settings-layout ul { margin-bottom: 12px; }
-    @media (max-width: 600px) { .settings-layout { flex-direction: column; } .settings-img { width: 100%; } }
-
     /* Article figure */
     .article-figure { margin: 20px 0; }
     .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
     .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
+    .article-figure-sm img { max-width: 465px; }
 
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
@@ -401,16 +396,16 @@
 
         <p>Certain settings directly affect how an analysis is calculated and how risk is classified. The dialog ensures you are always in explicit control of which configuration is recorded with the saved project — the original or your current one.</p>
 
-        <div class="settings-layout">
-          <img class="settings-img" src="../databasesettings.jpg" alt="The settings dialog showing a list of changed settings with Use Current Settings and Keep Original Settings buttons" />
-          <div>
-            <ul>
-              <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
-              <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
-            </ul>
-            <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice.</p>
-          </div>
-        </div>
+        <ul>
+          <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
+          <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
+        </ul>
+
+        <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice.</p>
+
+        <figure class="article-figure article-figure-sm">
+          <img src="../databasesettings.jpg" alt="The settings dialog showing a list of changed settings with Use Current Settings and Keep Original Settings buttons" />
+        </figure>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
@@ -490,4 +485,16 @@
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
-    sectio
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEve
