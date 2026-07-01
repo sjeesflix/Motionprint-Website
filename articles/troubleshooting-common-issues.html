@@ -280,7 +280,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated July 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -866,4 +866,67 @@
     var WORKER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev/contact';
     var form = document.getElementById('supportForm');
     var btn = document.getElementById('supportSubmitBtn');
-    var status = document.getElementB
+    var status = document.getElementById('supportFormStatus');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = '';
+      form.querySelectorAll('.form-input.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+
+      var name = form.querySelector('[name="name"]');
+      var email = form.querySelector('[name="email"]');
+      var message = form.querySelector('[name="message"]');
+      var valid = true;
+
+      [name, email, message].forEach(function(field) {
+        if (!field.value.trim()) { field.classList.add('invalid'); valid = false; }
+      });
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('invalid'); valid = false;
+      }
+      if (!valid) {
+        status.className = 'form-status error';
+        status.textContent = 'Please fill in all required fields.';
+        return;
+      }
+
+      btn.classList.add('loading'); btn.disabled = true;
+      var data = {
+        topic: 'Support request',
+        name: name.value.trim(),
+        email: email.value.trim(),
+        version: form.querySelector('[name="version"]').value.trim(),
+        message: message.value.trim()
+      };
+
+      try {
+        var res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = 'Message sent. We'll get back to you shortly.';
+          form.reset();
+        } else { throw new Error(); }
+      } catch(err) {
+        status.className = 'form-status error';
+        status.textContent = 'Something went wrong. Email us directly at support@motion-print.com.';
+      } finally {
+        btn.classList.remove('loading'); btn.disabled = false;
+      }
+    });
+  })();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
