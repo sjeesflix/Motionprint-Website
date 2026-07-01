@@ -344,6 +344,7 @@
           <li id="toc-processing"><a href="#processing">5. Processing</a></li>
           <li id="toc-results"><a href="#results">6. Viewing Results</a></li>
           <li id="toc-export"><a href="#export">7. Exporting Reports</a></li>
+          <li id="toc-save"><a href="#save">8. Saving to Projects Database</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -360,7 +361,7 @@
 
         <!-- ── SECTION 1 ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
-        <p>The workflow follows six phases. Each phase corresponds to a screen or step in the application:</p>
+        <p>The workflow follows seven phases. Each phase corresponds to a screen or step in the application:</p>
 
         <ol class="workflow-steps">
           <li class="workflow-step">
@@ -403,6 +404,13 @@
             <div class="workflow-step-body">
               <div class="workflow-step-title">Export</div>
               <p class="workflow-step-desc">Save a branded PDF report or a structured Excel export to a folder of your choice.</p>
+            </div>
+          </li>
+          <li class="workflow-step">
+            <div class="workflow-step-num">7</div>
+            <div class="workflow-step-body">
+              <div class="workflow-step-title">Save to Projects Database</div>
+              <p class="workflow-step-desc">Store the completed assessment in your local Projects Database for future reference, re-export, or comparison.</p>
             </div>
           </li>
         </ol>
@@ -494,7 +502,8 @@
         <h3>Saving and filenames</h3>
         <p>When you export, a file picker opens so you can choose exactly where to save the file. The app remembers the last-used folder for each report type and format. Export filenames follow a customisable template — for example, <code>{workstation}_{current_date}_{report_type}</code> — which you can configure in report settings. See <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for the full list of available variables and options.</p>
 
-        <h3>Saving to the Projects Database</h3>
+        <!-- ── SECTION 8 ── -->
+        <h2 id="save"><span class="step-num">8</span> Saving to Projects Database</h2>
         <p>In addition to exporting, you can save any completed assessment to the <strong>Projects Database</strong> — a persistent local library of all your saved analyses. Click <strong>Save Project</strong> on the results screen to store the full assessment, including calculation data, settings, and metadata. Saved projects can be reopened, re-exported with updated settings, filtered by method or status, and organised with tags. See <a href="projects-database.html">Projects Database</a> for details.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
@@ -568,13 +577,11 @@
 </footer>
 
 <script>
-  var sections = ['overview','assessment','upload','configure','processing','results','export'];
-  var tocIds   = ['toc-overview','toc-assessment','toc-upload','toc-configure','toc-processing','toc-results','toc-export'];
+  var sections = ['overview','assessment','upload','configure','processing','results','export','save'];
+  var tocIds   = ['toc-overview','toc-assessment','toc-upload','toc-configure','toc-processing','toc-results','toc-export','toc-save'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
     sections.forEach(function(id, i) {
       var el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
-    });
-    
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { a
