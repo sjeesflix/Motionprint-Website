@@ -747,7 +747,7 @@
         </div>
         <div class="video-cat-body">
           <div class="video-cat-title">Platform Features</div>
-          <div class="video-cat-count">4 articles</div>
+          <div class="video-cat-count">5 articles</div>
         </div>
         <svg class="video-cat-arrow" viewBox="0 0 16 16"><polyline points="6 3 11 8 6 13"/></svg>
       </a>
@@ -1672,4 +1672,16 @@
       try {
         var res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         if (res.ok) {
-          s
+          supStatus.style.display = 'block'; supStatus.style.background = '#f0fdf4'; supStatus.style.color = '#16a34a'; supStatus.style.border = '1px solid #bbf7d0';
+          supStatus.textContent = "Thanks! We'll get back to you shortly.";
+          supForm.reset();
+        } else { throw new Error(); }
+      } catch(err) {
+        supStatus.style.display = 'block'; supStatus.style.background = '#fef2f2'; supStatus.style.color = '#dc2626'; supStatus.style.border = '1px solid #fecaca';
+        supStatus.textContent = 'Something went wrong. Please email us at info@motion-print.com instead.';
+      } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
+    });
+  })();
+</script>
+</body>
+</html>
