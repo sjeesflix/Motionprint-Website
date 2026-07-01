@@ -121,7 +121,7 @@
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
     /* Step number circles */
-    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
 
     /* Steps list */
     .steps-list { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 20px; counter-reset: step-counter; }
@@ -781,4 +781,42 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <
+      <span class="footer-copy">© 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOC active state on scroll -->
+<script>
+  (function () {
+    const sections = [
+      { id: 'requirements', toc: 'toc-requirements' },
+      { id: 'install',      toc: 'toc-install' },
+      { id: 'activate',     toc: 'toc-activate' },
+      { id: 'navigate',     toc: 'toc-navigate' },
+      { id: 'report',       toc: 'toc-report' },
+      { id: 'next',         toc: 'toc-next' },
+    ];
+
+    function onScroll() {
+      let current = sections[0].toc;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
+      }
+      sections.forEach(s => {
+        document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

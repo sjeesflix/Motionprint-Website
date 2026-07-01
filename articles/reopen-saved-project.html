@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D View &amp; Interface Controls — Motionprint Ergo Help</title>
+  <title>How to Reopen a Saved Project and Continue Your Analysis — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Learn how to navigate the 3D viewport, switch camera views, control playback speed, and use the timeline scrubber in Motionprint Ergo." />
-  <link rel="canonical" href="https://motion-print.com/articles/3d-view-controls.html" />
+  <meta name="description" content="Step-by-step guide to reopening a saved project from the Motionprint Ergo database, choosing settings, editing findings, and re-exporting results." />
+  <link rel="canonical" href="https://motion-print.com/articles/reopen-saved-project.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
-  <meta property="og:title" content="3D View &amp; Interface Controls — Motionprint Ergo Help" />
-  <meta property="og:description" content="Learn how to navigate the 3D viewport, switch camera views, control playback speed, and use the timeline scrubber in Motionprint Ergo." />
-  <meta property="og:url" content="https://motion-print.com/articles/3d-view-controls.html" />
+  <meta property="og:title" content="How to Reopen a Saved Project and Continue Your Analysis — Motionprint Ergo Help" />
+  <meta property="og:description" content="Step-by-step guide to reopening a saved project from the Motionprint Ergo database, choosing settings, editing findings, and re-exporting results." />
+  <meta property="og:url" content="https://motion-print.com/articles/reopen-saved-project.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3D View &amp; Interface Controls — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Learn how to navigate the 3D viewport, switch camera views, control playback speed, and use the timeline scrubber in Motionprint Ergo." />
+  <meta name="twitter:title" content="How to Reopen a Saved Project and Continue Your Analysis — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="Step-by-step guide to reopening a saved project from the Motionprint Ergo database, choosing settings, editing findings, and re-exporting results." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -60,8 +60,6 @@
     .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
     .mobile-nav a:hover { color: #fff; }
 
-    /* ── ARTICLE HERO ── */
-    
     /* ── BACK LINK ── */
     .article-back-link {
       display: inline-flex; align-items: center; gap: 7px;
@@ -79,8 +77,6 @@
     .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
     .breadcrumb a:hover { color: rgba(255,255,255,.65); }
     .breadcrumb-sep { color: rgba(255,255,255,.2); }
-    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #0ea5e9; }
-    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #0ea5e9; border-radius: 2px; }
     .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
     .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
@@ -109,52 +105,42 @@
     .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
     .article-body h2:first-child { margin-top: 0; }
     .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
     .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
     .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
     .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
     .article-body strong { font-weight: 700; color: var(--text); }
     .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
     .article-body a:hover { border-bottom-color: var(--red); }
-    .article-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; }
-
-    /* Article figures / screenshots */
-    .article-figure { margin: 28px 0; }
-    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-    .article-figure.figure-full img { max-width: 100%; }
-    .figure-side { float: right; margin: 4px 0 24px 32px; width: 130px; }
-    .figure-side img { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-    .figure-side figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
-    @media (max-width: 600px) { .figure-side { float: none; width: 100%; margin: 24px 0; } }
-    .article-figure figcaption { font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; line-height: 1.5; }
 
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
-    /* Media placeholders */
-    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
-    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
-    .media-type.is-screenshot { color: #3b82f6; }
-    .media-type.is-gif { color: #8b5cf6; }
-    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
-    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Step number */
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
 
     /* Callouts */
     .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-warn { border-left-color: #f59e0b; background: rgba(245,158,11,.04); }
     .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
     .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-warn .callout-icon { stroke: #f59e0b; }
     .callout.callout-info .callout-icon { stroke: #3b82f6; }
     .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-warn .callout-label { color: #f59e0b; }
     .callout.callout-info .callout-label { color: #3b82f6; }
     .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
 
-    /* Shortcut table */
-    .shortcut-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
-    .shortcut-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
-    .shortcut-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
-    .shortcut-table tr:last-child td { border-bottom: none; }
-    .shortcut-table td:first-child { font-weight: 600; white-space: nowrap; }
-    .kbd { display: inline-block; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; padding: 2px 7px; color: var(--text); }
+    /* Scenario block */
+    .scenario { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 16px 0; }
+    .scenario-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 8px; }
+    .scenario p { font-size: 14px; margin-bottom: 8px; }
+    .scenario p:last-child { margin-bottom: 0; }
+
+    /* FAQ */
+    .faq-item { border-top: 1px solid var(--border); padding: 16px 0; }
+    .faq-q { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -193,8 +179,7 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
-      .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
-</style>
+  </style>
 </head>
 <body>
 
@@ -240,17 +225,16 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         Back to resources
       </a>
-            <nav class="breadcrumb" aria-label="Breadcrumb">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../resources.html">Resources</a>
         <span class="breadcrumb-sep">/</span>
         <a href="../resources.html#knowledge">Knowledge Base</a>
         <span class="breadcrumb-sep">/</span>
-        <a href="../resources.html#kb-features">Platform Features</a>
+        <a href="../resources.html#kb-workflow">Workflow Guides</a>
         <span class="breadcrumb-sep">/</span>
-        <span style="color:rgba(255,255,255,.6)">3D View &amp; Interface Controls</span>
+        <span style="color:rgba(255,255,255,.6)">Reopen a Saved Project</span>
       </nav>
-
-      <h1>3D View &amp; Interface Controls</h1>
+      <h1>How to Reopen a Saved Project and Continue Your Analysis</h1>
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -258,11 +242,11 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated April 2026
+          New in v1.0.1
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Platform Features
+          Workflow Guides
         </div>
       </div>
     </div>
@@ -278,12 +262,13 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-viewport"><a href="#viewport">1. The 3D Viewport</a></li>
-          <li id="toc-layouts"><a href="#layouts">2. Viewport Layouts</a></li>
-          <li id="toc-camera"><a href="#camera">3. Camera Views</a></li>
-          <li id="toc-navigation"><a href="#navigation">4. Mouse &amp; Keyboard</a></li>
-          <li id="toc-playback"><a href="#playback">5. Playback Controls</a></li>
-          <li id="toc-timeline"><a href="#timeline">6. Timeline &amp; Frame Counter</a></li>
+          <li id="toc-step1"><a href="#step1">1. Locate your project</a></li>
+          <li id="toc-step2"><a href="#step2">2. Open the project</a></li>
+          <li id="toc-step3"><a href="#step3">3. Edit your findings</a></li>
+          <li id="toc-step4"><a href="#step4">4. Save your changes</a></li>
+          <li id="toc-step5"><a href="#step5">5. Export as PDF or Excel</a></li>
+          <li id="toc-scenarios"><a href="#scenarios">6. Real-world scenarios</a></li>
+          <li id="toc-troubleshoot"><a href="#troubleshoot">7. Troubleshooting</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -296,153 +281,128 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo renders motion capture data as a 3D animated avatar. This article covers the viewport controls, camera options, and playback interface you'll use to navigate and review recordings.</p>
+        <p class="article-lead">Saved projects give you the ability to revisit any previous analysis in Motionprint Ergo. Whether you need to edit findings, apply new settings, or re-export as a PDF or Excel report with updated results, reopening a project takes just a few clicks. This guide walks you through the entire workflow — from finding your project in the database to making changes and saving them back. You'll need a project already saved in the database; if you haven't saved one yet, see <a href="projects-database.html">Database Essentials</a> first.</p>
 
-        <!-- ── SECTION 1 ── -->
-        <h2 id="viewport"><span class="step-num">1</span>The 3D Viewport</h2>
+        <!-- ── STEP 1 ── -->
+        <h2 id="step1"><span class="step-num">1</span> Locate your project in the Database</h2>
 
-        <p>The 3D viewport is the central element of every recording view in Motionprint Ergo. It renders a full animated avatar using a 3D scene that gives you spatial context while reviewing motion data.</p>
+        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list shows each project's title, method, risk level, status, and last activity date at a glance. Click any project to see a detail panel with additional information such as creation date, duration, tags, workstation, evaluator, and operator.</p>
 
-        <p>The scene contains several fixed elements to help you orient yourself:</p>
+        <p>If your library has grown, use the filters to narrow the view. You can filter by method, status (Draft, In Progress, or Completed), risk level, or tags. Combine multiple filters to zero in quickly — for example, "Completed AND High-Risk" shows only finalized high-risk assessments.</p>
 
-        <ul>
-          <li><strong>Checkerboard floor</strong> — a 25 × 25 m area with 0.5 m tile size, providing a sense of scale.</li>
-          <li><strong>Grid lines</strong> — fine lines at tile boundaries overlaid on the floor.</li>
-          <li><strong>Axis markers</strong> — darker emphasis strips running along the X and Z center lines for spatial orientation.</li>
-          <li><strong>Forward-direction marker</strong> — a small triangle on the floor pointing in the +Z direction, colored in your brand color, indicating which way the recorded subject was facing.</li>
-        </ul>
-
-        <p>The scene uses ambient lighting (intensity 0.7) and a directional key light for realistic shading of the avatar. Your brand color (as set in Settings) is used as the highlight color on the avatar, and also colors the forward-direction marker on the floor. The viewport fully respects your interface theme — sky color, tile colors, grid lines, and avatar materials all adapt to light and dark mode.</p>
-
-        <figure class="article-figure">
-          <img src="3Dviewportdefault.jpg" alt="3D viewport in default state showing avatar on checkerboard floor" />
-          <figcaption>The 3D viewport in default state.</figcaption>
-        </figure>
-
-        <!-- ── SECTION 2 ── -->
-        <h2 id="layouts"><span class="step-num">2</span>Viewport Layouts</h2>
-
-        <p>The layout selector in the <strong>top-left corner</strong> of the viewport lets you split the view into multiple panels, each with its own independent camera. This is useful for monitoring posture from several angles simultaneously.</p>
-
-        <p>Four layouts are available:</p>
-
-        <ul>
-          <li><strong>Single</strong> — one full-width viewport. The default.</li>
-          <li><strong>Two Horizontal</strong> — two viewports stacked top and bottom.</li>
-          <li><strong>Two Vertical</strong> — two viewports placed side by side.</li>
-          <li><strong>Quad</strong> — four viewports in a 2 × 2 grid.</li>
-        </ul>
-
-        <p>Each panel in a multi-viewport layout has its own independent camera view and camera state. The default layout — including which of the four layouts to use and what camera view each panel should show — can be configured in Report Settings, separately for each report type and per input and result page.</p>
-
-        <!-- ── SECTION 3 ── -->
-        <h2 id="camera"><span class="step-num">3</span>Camera Views</h2>
-
-        <p>Each viewport has a <strong>camera view selector</strong> button in its <strong>top-right corner</strong>, showing the name of the current view (e.g., "3D"). Clicking it opens a circular menu with six preset angles.</p>
-
-        <figure class="figure-side">
-          <img src="cameraview.gif" alt="Camera view selector button and circular menu" />
-          <figcaption>The view selector.</figcaption>
-        </figure>
-
-        <ul>
-          <li><strong>3D</strong> — perspective view from a three-quarter angle. The default. Supports free orbit.</li>
-          <li><strong>Front</strong> — orthographic view facing the front of the avatar.</li>
-          <li><strong>Back</strong> — orthographic view facing the back of the avatar.</li>
-          <li><strong>Left</strong> — orthographic view of the avatar's left side.</li>
-          <li><strong>Right</strong> — orthographic view of the avatar's right side.</li>
-          <li><strong>Top</strong> — orthographic bird's-eye view looking straight down.</li>
-        </ul>
-
-        <p>In all views, zooming focuses on the avatar's pelvis as the center point. The circular menu uses a pie-slice layout with arc segments surrounding a center "3D" button.</p>
-        <div style="clear:both"></div>
-
-        <!-- ── SECTION 4 ── -->
-        <h2 id="navigation"><span class="step-num">4</span>Mouse &amp; Keyboard</h2>
-
-        <p>You navigate the 3D viewport using mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
-
-        <table class="shortcut-table">
-          <thead>
-            <tr><th>Input</th><th>Action</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Left or right mouse button — drag</td>
-              <td>Rotate around the avatar (3D view only)</td>
-            </tr>
-            <tr>
-              <td>Scroll wheel</td>
-              <td>Zoom in and out, centered on the avatar's pelvis (range: 0.1 m – 20.0 m)</td>
-            </tr>
-            <tr>
-              <td><span class="kbd">R</span></td>
-              <td>Reset the active viewport camera to its default position</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p>The right-click context menu is suppressed inside the viewport so it does not interfere with orbit controls. When your cursor is over the viewport, page scrolling is disabled to prevent accidental scroll-away while zooming.</p>
-
-        <figure class="article-figure">
-          <img src="resetgif.gif" alt="Mouse controls — rotating and zooming the 3D viewport" />
-          <figcaption>Press R to reset the camera to its default position.</figcaption>
-        </figure>
-
-        <!-- ── SECTION 5 ── -->
-        <h2 id="playback"><span class="step-num">5</span>Playback Controls</h2>
-
-        <p>The playback controls are located in the bar <strong>below the viewport</strong>. They let you play, pause, and adjust the speed of the animation.</p>
-
-        <h3>Play / Pause</h3>
-
-        <p>The play/pause button is a square button in the center of the control bar. Click it to start or stop playback. The icon switches between a play triangle and a pause symbol to reflect the current state.</p>
-
-        <h3>Playback Speed</h3>
-
-        <p>The speed selector is to the <strong>left of the play/pause button</strong>, marked with a stopwatch icon. Click it to open a dropdown with four options:</p>
-
-        <ul>
-          <li><strong>0.5×</strong> — half speed, useful for detailed inspection of individual movements.</li>
-          <li><strong>1×</strong> — normal speed, matching the original recording frame rate. The default.</li>
-          <li><strong>2×</strong> — double speed.</li>
-          <li><strong>4×</strong> — quadruple speed, useful for quickly scanning long recordings.</li>
-        </ul>
-
-        <p>Playback is driven by the recording's native frame rate, multiplied by the selected speed factor.</p>
-
-
-        <!-- ── SECTION 6 ── -->
-        <h2 id="timeline"><span class="step-num">6</span>Timeline &amp; Frame Counter</h2>
-
-        <p>The timeline spans the center of the playback controls bar and shows your current position within the recording. The frame counter to its right gives you precise frame information.</p>
-
-        <h3>Playback Position Bar</h3>
-
-        <p>The timeline shows a neutral background track with a colored progress overlay in your brand color. A vertical line marks the current frame position, with a small rectangular label above it showing the frame number. Click anywhere on the track to move the playhead to that point.</p>
-
-
-        <!-- ── CLOSING NOTE ── -->
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Report-specific controls</div>
-            <p>In report-specific contexts, additional controls appear around the viewport — including trim markers, variable selectors, score graphs, and body risk indicators. See the report specific articles for details on those features.</p>
+            <div class="callout-label">Tip</div>
+            <p>Use the risk level filter if you're looking for a specific subset — for instance, all high-risk projects from a particular workstation batch.</p>
           </div>
+        </div>
+
+        <!-- ── STEP 2 ── -->
+        <h2 id="step2"><span class="step-num">2</span> Open the project</h2>
+
+        <p>Click any project in the list to open it. Motionprint Ergo retrieves all saved data and takes you directly to the results page, with findings, custom moments, and metadata restored exactly as they were when you last saved.</p>
+
+        <p>Opening a project does not modify it. You can review the results, close the view, and the original project remains unchanged in the database. Changes are only written back when you explicitly click <strong>Save Project</strong>.</p>
+
+        <!-- ── STEP 3 ── -->
+        <h2 id="step3"><span class="step-num">3</span> Edit your findings</h2>
+
+        <p>Once the project is open you're back on the results page with full access to everything that was saved. You can review findings without making any changes, or start editing.</p>
+
+        <h3>What you can do</h3>
+        <ul>
+          <li>Review all findings and critical moments as originally saved</li>
+          <li>Click <strong>Edit</strong> to modify analysis notes, add new findings, or adjust risk rankings</li>
+          <li>Add, hide, or review critical moments in the timeline</li>
+          <li>Update project metadata: title, tags, notes, and workstation name</li>
+        </ul>
+
+        <p>If you only want to review or export the project without making changes, you can do so without saving — the original remains untouched in the database.</p>
+
+        <!-- ── STEP 4 ── -->
+        <h2 id="step4"><span class="step-num">4</span> Save your changes</h2>
+
+        <p>When you're ready to write your changes back to the database, click <strong>Save Project</strong>. If certain settings have changed since the project was originally created, a dialog will appear at this point asking which settings to record with the save.</p>
+
+        <h3>The settings dialog</h3>
+
+        <p>This dialog only appears when you save a reopened project — not when you first open it. It gives you an explicit choice about which configuration to record:</p>
+        <ul>
+          <li><strong>Use Current Settings</strong> — saves the project with your latest configuration. Useful when you want to apply updated standards or recalculate under a changed methodology.</li>
+          <li><strong>Use Saved Settings</strong> — preserves the original configuration exactly. Useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
+        </ul>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">When in doubt</div>
+            <p>Choose <strong>Use Saved Settings</strong> to keep the original analysis intact. If you're working in a team, add a note in the <strong>Notes</strong> field explaining your choice so colleagues understand why findings may differ between exports of the same project.</p>
+          </div>
+        </div>
+
+        <p>If you want to discard your changes instead of saving, click <strong>Back</strong> or close the results view — the original project remains untouched in the database.</p>
+
+        <!-- ── STEP 5 ── -->
+        <h2 id="step5"><span class="step-num">5</span> Export as PDF or Excel</h2>
+
+        <p>At any point while viewing a reopened project — before or after saving changes — you can export the results as a PDF or Excel file using the <strong>Export</strong> button in the tab bar, exactly as you would from a fresh analysis. The export reflects what is currently displayed on screen.</p>
+
+        <p>Exported files include both the original project date and the export date, so your records clearly show when the assessment was conducted and when the report was generated. See <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
+
+        <!-- ── REAL-WORLD SCENARIOS ── -->
+        <h2 id="scenarios"><span class="step-num">6</span> Real-world scenarios</h2>
+
+        <div class="scenario">
+          <div class="scenario-label">Scenario 1 — Maintaining a historical record</div>
+          <p>You reopen a completed project from Q1 to produce a compliance report. Your active configuration has changed since then. You choose <strong>Use Saved Settings</strong> when saving — the export and saved record reflect the original methodology, exactly as the assessment was conducted at the time.</p>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-label">Scenario 2 — Applying updated standards</div>
+          <p>Your company has updated its assessment standards and you want to see how older projects are affected. You reopen a Q1 project, review the results, and save with <strong>Use Current Settings</strong>. You can then export a PDF clearly labelled as re-analyzed under the updated methodology and compare it against the original.</p>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-label">Scenario 3 — Editing notes without recalculating</div>
+          <p>You need to add a corrected workstation name and a supervisor's review note to a completed project. You reopen it, update the metadata fields, and save with <strong>Use Saved Settings</strong>. The findings remain unchanged; only the project notes are updated.</p>
+        </div>
+
+        <!-- ── TROUBLESHOOTING ── -->
+        <h2 id="troubleshoot"><span class="step-num">7</span> Troubleshooting</h2>
+
+        <div class="faq-item">
+          <div class="faq-q">A project doesn't appear in the list</div>
+          <div class="faq-a">If you can't find a project, check whether an active filter is narrowing the results. Clear all filters to show the full library. If the project still doesn't appear, it may have been deleted — deletion is permanent and cannot be undone.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">I saved a reopened project and the findings changed unexpectedly</div>
+          <div class="faq-a">You likely chose <strong>Use Current Settings</strong> in the settings dialog when saving. Reopen the project again and save with <strong>Use Saved Settings</strong> to restore the original findings.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">I can't remember which settings I used originally</div>
+          <div class="faq-a">Choose <strong>Use Saved Settings</strong> when saving — this preserves the project's original configuration regardless of what your current defaults are. Check the project's Notes field for any documentation left by you or a team member.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">The settings dialog didn't appear when I saved</div>
+          <div class="faq-a">The dialog only appears if certain settings have changed since the project was originally created. If your current configuration matches what was saved, no dialog is shown — the project saves normally. This is expected behavior.</div>
         </div>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
           <div>
+            <p>Reopening projects is one of the most powerful ways to get value from the database — it turns every assessment into a living record you can return to, refine, and re-export as PDF or Excel. Next, learn how to <a href="exporting-reports.html">configure your export settings</a> for consistent report formatting.</p>
+          </div>
+          <div>
             <div class="related-label">Related articles</div>
-                        <div class="related-grid">
-              <a href="niosh-report-settings.html" class="related-card">
-                <span class="related-card-cat">NIOSH</span>
-                <span class="related-card-title">NIOSH Report Settings</span>
+            <div class="related-grid">
+              <a href="projects-database.html" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">Database Essentials</span>
               </a>
-              <a href="kim-lhc-report-settings.html" class="related-card">
-                <span class="related-card-cat">KIM-LHC</span>
-                <span class="related-card-title">KIM-LHC Report Settings</span>
+              <a href="exporting-reports.html" class="related-card">
+                <span class="related-card-cat">Platform Features</span>
+                <span class="related-card-title">Exporting Reports (PDF &amp; Excel)</span>
               </a>
             </div>
           </div>
@@ -484,7 +444,6 @@
       <div>
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
-          <li><a href="../resources.html#tutorials">Tutorials</a></li>
           <li><a href="../resources.html#knowledge">Knowledge base</a></li>
           <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
           <li><a href="../resources.html#support">Support</a></li>
@@ -502,8 +461,8 @@
 </footer>
 
 <script>
-  var sections = ['viewport','layouts','camera','navigation','playback','timeline'];
-  var tocIds   = ['toc-viewport','toc-layouts','toc-camera','toc-navigation','toc-playback','toc-timeline'];
+  var sections = ['step1','step2','step3','step4','step5','scenarios','troubleshoot'];
+  var tocIds   = ['toc-step1','toc-step2','toc-step3','toc-step4','toc-step5','toc-scenarios','toc-troubleshoot'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
