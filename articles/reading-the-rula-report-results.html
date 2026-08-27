@@ -269,7 +269,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          6 min read
+          13 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -292,14 +292,12 @@
       <aside class="article-toc">
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
-          <li id="toc-structure"><a href="#structure">1. Report structure</a></li>
-          <li id="toc-score-overview"><a href="#score-overview">2. Score Overview</a></li>
-          <li id="toc-reading-modules"><a href="#reading-modules">3. Reading a posture module</a></li>
-          <li id="toc-tables"><a href="#tables">4. The scoring tables</a></li>
-          <li id="toc-analysis"><a href="#analysis">5. Analysis</a></li>
-          <li id="toc-critical"><a href="#critical-moments">6. Critical Moments</a></li>
-          <li id="toc-findings"><a href="#findings">7. Findings</a></li>
-          <li id="toc-export"><a href="#export">8. Export and saving</a></li>
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-score"><a href="#score-overview">2. Score Overview</a></li>
+          <li id="toc-analysis"><a href="#analysis">3. Analysis</a></li>
+          <li id="toc-findings"><a href="#findings">4. Findings</a></li>
+          <li id="toc-export"><a href="#export">5. Export</a></li>
+          <li id="toc-save"><a href="#save">6. Save to Projects Database</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -311,64 +309,92 @@
 
       <article class="article-body">
 
-        <p class="article-lead">A completed RULA report is more than a single number. The score tells you how urgently a posture needs attention; the rest of the report tells you <em>why</em>, and that is what you need in order to change anything. This article walks through each tab and explains how to trace a score back to the posture that produced it.</p>
+        <p class="article-lead">Once a RULA assessment is complete in Motionprint Ergo, the results are presented in a structured report with up to three tabs. This article walks through every element in the results view — what each section shows, how to read it, and how to use its interactive features — so you can get the most out of every assessment.</p>
 
-        <h2 id="structure"><span class="step-num">1</span> Report structure</h2>
-        <p>The RULA report has three tabs, matching the other assessment methods:</p>
+        <!-- ── OVERVIEW ── -->
+        <h2 id="overview"><span class="step-num">1</span> Report structure</h2>
 
-        <table class="info-table">
-          <thead>
-            <tr><th>Tab</th><th>What it gives you</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><span class="tab-badge">Score Overview</span></td><td>The completed assessment: every component score, the scoring tables, and the final result. The equivalent of a filled-in RULA worksheet.</td></tr>
-            <tr><td><span class="tab-badge">Analysis</span></td><td>How the score behaves over time, so you can find the moments and postures driving it.</td></tr>
-            <tr><td><span class="tab-badge">Findings</span></td><td>Your own written observations and recommendations.</td></tr>
-          </tbody>
-        </table>
+        <p>The report opens with a tab bar at the top. Depending on your RULA report settings, you will see two or three tabs:</p>
 
-        <p>If you created more than one posture task, each is reported separately and you switch between them within the report.</p>
+        <ul>
+          <li><strong>Score overview</strong> — the complete assessment result: every component score, the three scoring tables, and the final RULA score.</li>
+          <li><strong>Analysis</strong> — an interactive deep dive into how each measurement behaves frame by frame across the whole posture task.</li>
+          <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the RULA report settings.</li>
+        </ul>
 
-        <h2 id="score-overview"><span class="step-num">2</span> Score Overview</h2>
-        <p>The Score Overview reproduces the structure of the RULA method itself, top to bottom. It opens with the general information for the assessment, then works through the two posture groups before combining them.</p>
+        <p>Next to the tabs are two buttons: <strong>Edit</strong> (to return to the input page and update any information from the assessment — posture tasks, trim settings, task information, and more) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
 
-        <p>The layout follows the method's own two-group split:</p>
-
-        <table class="info-table">
-          <thead>
-            <tr><th>Group</th><th>Modules shown</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Group A</strong> — arm and wrist</td><td>Upper Arm Position, Lower Arm Position, Wrist Position, Wrist Twist, then the Wrist &amp; Arm total, muscle use and force/load, and Table A.</td></tr>
-            <tr><td><strong>Group B</strong> — neck, trunk, legs</td><td>Neck Position, Trunk Position, Legs, then the Neck/Trunk/Legs total, its own muscle use and force/load, and Table B.</td></tr>
-            <tr><td><strong>Combined</strong></td><td>Table C, the total score, and the score legend showing which action level applies.</td></tr>
-          </tbody>
-        </table>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Multiple posture tasks</div>
+            <p>If your assessment contains two or more posture tasks, a <strong>Posture Task Selector</strong> appears at the top of the Score Overview and Analysis tabs. Use it to switch between individual tasks. Each task is scored independently and keeps its own peak frame. If <strong>Generate averaged overview</strong> is enabled in the settings, an <strong>Average (all tasks)</strong> option is added to the selector.</p>
+          </div>
+        </div>
 
         <div class="media-placeholder">
           <span class="media-type">Screenshot</span>
-          <div class="media-placeholder-title">RULA Score Overview tab</div>
-          <p class="media-placeholder-desc">The full overview showing both posture groups, the three tables and the final score — the RULA equivalent of the NIOSH score overview screenshot.</p>
+          <div class="media-placeholder-title">Score Overview tab</div>
+          <p class="media-placeholder-desc">The complete single-task RULA result, equivalent to <code>nioshcompletescoreoverviewtab.jpg</code> — showing both posture groups, the tables and the final score.</p>
         </div>
 
-        <p>Note that muscle use and force/load appear <em>twice</em>, once per group. That is not a display duplication — the method genuinely adds those points to both totals, which is why a change to the load weight can move the final score by more than one point.</p>
+        <!-- ── SECTION 1 ── -->
+        <h2 id="score-overview"><span class="step-num">2</span> Score Overview</h2>
 
-        <h2 id="reading-modules"><span class="step-num">3</span> Reading a posture module</h2>
-        <p>Each posture module follows the same pattern, and learning to read one means you can read all of them. A module shows:</p>
+        <p>The Score Overview tab gives you everything a standard manual RULA worksheet would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
+
+        <h3>General info card</h3>
+        <p>The top card displays metadata about the assessment session. Its fields can be edited inline without returning to the input page.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
+            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if disabled in the privacy settings.</td></tr>
+            <tr><td>Operator</td><td>The worker being assessed. Hidden if disabled in the privacy settings.</td></tr>
+            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+          </tbody>
+        </table>
+
+        <p>Fields left empty show <em>No data entered</em> rather than disappearing, so the card keeps a consistent shape across reports.</p>
+
+        <h3>RULA score card</h3>
+        <p>The score card shows the primary result: the final RULA score for the selected posture task, the frame it occurred at, and the risk band it falls into. Alongside it, a legend maps all four bands so a reader unfamiliar with RULA can place the result immediately.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Score</th><th>Risk level</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><code>1 – 2</code></td><td><span class="risk-badge risk-low">Negligible risk</span></td><td>Acceptable</td></tr>
+            <tr><td><code>3 – 4</code></td><td><span class="risk-badge risk-medium">Low risk</span></td><td>Further investigation needed</td></tr>
+            <tr><td><code>5 – 6</code></td><td><span class="risk-badge risk-high">Medium risk</span></td><td>Changes needed soon</td></tr>
+            <tr><td><code>7</code></td><td><span class="risk-badge risk-vhigh">Very high risk</span></td><td>Changes needed now</td></tr>
+          </tbody>
+        </table>
+
+        <p>The card also shows the <strong>distribution</strong> across the task — what proportion of its frames fell into each band. A task peaking at 6 but spending most of its frames in the 1–2 band is a very different finding from one sitting at 5–6 throughout, and the distribution is what separates the two.</p>
+
+        <h3>Posture modules</h3>
+        <p>Below the score card, the assessment is laid out in the same two groups RULA itself uses. Each module scores one body part and follows an identical pattern, so learning to read one means you can read all of them.</p>
 
         <ul>
-          <li>A row of <strong>reference figures</strong>, one per scoring band, with the angle range and the points it scores.</li>
-          <li>The band matching this task's peak frame is <strong>highlighted</strong>; the rest are greyed out.</li>
+          <li><strong>Group A — arm and wrist:</strong> Upper Arm Position, Lower Arm Position, Wrist Position and Wrist Twist, followed by the Wrist &amp; Arm total.</li>
+          <li><strong>Group B — neck, trunk and legs:</strong> Neck Position, Trunk Position and Legs, followed by the Neck/Trunk/Legs total.</li>
+        </ul>
+
+        <p>Each module shows:</p>
+        <ul>
+          <li>A row of <strong>reference figures</strong>, one per scoring band, each labelled with its angle range and the points it scores.</li>
+          <li>The band matching this task's peak frame is <strong>highlighted</strong>; the others are greyed out.</li>
           <li>Any <strong>adjustments</strong> that applied — twisting, side bending, abduction, a raised shoulder, arm support — listed underneath with their points.</li>
           <li>The module's <strong>total score</strong> on the right.</li>
         </ul>
 
-        <p>This is the fastest way to see what drove a score. If the Trunk module highlights the 20–60° figure and shows a twist adjustment, you know immediately that the worker was bent forward and rotated at the peak frame — and that straightening the work presentation would address both.</p>
+        <p>This is the fastest way to see what drove a result. If the Trunk module highlights the 20–60° figure and shows a twist adjustment, the worker was bent forward and rotated at the peak frame — and re-presenting the work would address both at once.</p>
 
         <div class="media-placeholder">
           <span class="media-type">Screenshot</span>
           <div class="media-placeholder-title">A single posture module, close up</div>
-          <p class="media-placeholder-desc">One module — Trunk Position is a good example — showing the four reference figures with one highlighted, the adjustment rows beneath, and the score badge.</p>
+          <p class="media-placeholder-desc">One module — Trunk Position works well — showing the four reference figures with one highlighted, the adjustment rows beneath, and the score badge on the right.</p>
         </div>
 
         <div class="callout callout-info">
@@ -379,76 +405,201 @@
           </div>
         </div>
 
-        <h2 id="tables"><span class="step-num">4</span> The scoring tables</h2>
-        <p>Tables A, B and C are shown in full, with the row and column for this task highlighted so you can see exactly which cell was used. This matters more than it might sound: because Table C is a lookup rather than a sum, seeing the cell tells you how much headroom there is.</p>
+        <h3>Muscle use and force/load blocks</h3>
+        <p>Each group has its own <strong>Muscle Use Score</strong> and <strong>Force/Load Score</strong> block, because RULA adds both to each group total separately.</p>
 
-        <p>If your Table A total sits at the edge of a band, a one-point improvement will drop the final score. If it sits in the middle, the same improvement may change nothing — and the tables let you check before you spend money on an intervention.</p>
+        <p>The muscle use block shows the two conditions that can trigger the point, and which one fired:</p>
+        <ul>
+          <li><strong>Static posture</strong> — the posture is held for longer than the configured duration.</li>
+          <li><strong>Repetitive action</strong> — the action occurs four or more times per minute.</li>
+        </ul>
+
+        <p>Both are detected automatically; there is no manual toggle. The two groups are evaluated independently, so a task can attract the point for the arms and not for the trunk — realistic when a worker holds the trunk still while the arms repeat a cycle.</p>
+
+        <p>The force/load block shows which weight band applied:</p>
+        <table class="info-table">
+          <thead><tr><th>Condition</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td>Load is less than 2 kg (intermittent)</td><td><code>0</code></td></tr>
+            <tr><td>Load is 2–10 kg (intermittent)</td><td><code>+1</code></td></tr>
+            <tr><td>Load is 2–10 kg (static or repeated)</td><td><code>+2</code></td></tr>
+            <tr><td>Load is more than 10 kg, or repeated with shocks</td><td><code>+3</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Tables A, B and C</h3>
+        <p>All three scoring tables are shown in full, with the row and column used by this task highlighted so you can see exactly which cell produced the result.</p>
+
+        <ol>
+          <li><strong>Table A</strong> — combines the four Group A component scores into the arm and wrist posture score.</li>
+          <li><strong>Table B</strong> — combines neck, trunk and legs into the Group B posture score.</li>
+          <li><strong>Table C</strong> — takes both group totals, each with its muscle use and force points added, and returns the final RULA score.</li>
+        </ol>
+
+        <p>Seeing the cell matters more than it might sound. Because Table C is a lookup rather than a sum, the relationship between the group totals and the final score is not linear. If your Table A total sits at the edge of a band, a one-point improvement will drop the final score; if it sits in the middle, the same improvement may change nothing — and the highlighted cell lets you check that before committing to an intervention.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">The tables clamp at the top end</div>
-            <p>Table A totals of 8 or more, and Table B totals of 7 or more, are clamped to the last row and column. Beyond that point the method stops distinguishing — a task there already requires immediate investigation, so a worse posture cannot make the recommendation any more urgent.</p>
+            <p>Table A totals of 8 or more, and Table B totals of 7 or more, are clamped to the last row and column. Beyond that point the method stops distinguishing — a task there already requires immediate change, so a worse posture cannot make the recommendation more urgent.</p>
           </div>
         </div>
 
-        <h2 id="analysis"><span class="step-num">5</span> Analysis</h2>
-        <p>The Score Overview describes a single frame — the worst one. The Analysis tab shows the whole task, which is where you find out whether that peak was a brief transient or a posture the worker holds continuously. The distinction matters enormously for what you do about it.</p>
+        <h3>Average (all tasks)</h3>
+        <p>When <strong>Generate averaged overview</strong> is enabled in the settings, the Posture Task Selector gains an <strong>Average (all tasks)</strong> entry showing an averaged result across every posture task. Use it only when the tasks represent the same repeated posture — averaging genuinely different postures produces a figure that describes none of them.</p>
 
-        <h3>Score per frame</h3>
-        <p>A timeline of the RULA score across the task. A flat line near the peak means a sustained posture; a single spike means a transient. Both can produce the same peak score and call for entirely different responses.</p>
+        <!-- ── SECTION 2 ── -->
+        <h2 id="analysis"><span class="step-num">3</span> Analysis</h2>
 
-        <h3>Frame insights</h3>
-        <p>Select any frame to see the component values behind it. This answers "why was the score high <em>here</em>" for any moment, not just the peak.</p>
-
-        <h3>Body segments and variables</h3>
-        <p>The underlying joint angles extracted from the recording, so you can inspect the measurement itself rather than only the score derived from it.</p>
+        <p>The Analysis tab is where you go beyond the single-frame result and explore how risk evolves across the whole posture task. It is built around an interactive 3D viewer and a frame-by-frame graph.</p>
 
         <div class="media-placeholder">
           <span class="media-type">GIF</span>
-          <div class="media-placeholder-title">Analysis tab — score timeline with frame insights</div>
-          <p class="media-placeholder-desc">Scrubbing the score-per-frame graph while the frame insights and 3D model update — the RULA counterpart to the NIOSH in-depth analysis GIF.</p>
+          <div class="media-placeholder-title">Analysis tab</div>
+          <p class="media-placeholder-desc">The RULA counterpart to <code>indepthanalysistabniosh.gif</code> — 3D viewer, score-per-frame graph, frame insights and critical moments updating together as the timeline is scrubbed.</p>
         </div>
 
-        <h2 id="critical-moments"><span class="step-num">6</span> Critical Moments</h2>
-        <p>Critical moments are the frames worth showing someone else. Motionprint Ergo detects them automatically using two strategies:</p>
+        <h3>Variable selector</h3>
+        <p>RULA has more selectable measurements than the lifting reports, so the selector is split into <strong>two dropdowns</strong>: first a body segment, then a measurement within it. Changing either updates the graph, the frame insights panel and the distribution chart simultaneously.</p>
 
-        <ul>
-          <li><strong>Peak detection</strong> — the single highest-scoring frame.</li>
-          <li><strong>Sustained risk detection</strong> — the window with the highest average score over at least one second.</li>
-        </ul>
+        <table class="info-table">
+          <thead><tr><th>Body segment</th><th>Measurements</th></tr></thead>
+          <tbody>
+            <tr><td><strong>RULA score</strong></td><td>The final score per frame.</td></tr>
+            <tr><td><strong>Upper arm</strong></td><td>Flexion/extension, Abduction, Shoulder raised.</td></tr>
+            <tr><td><strong>Lower arm</strong></td><td>Flexion/extension, Across midline / out to side.</td></tr>
+            <tr><td><strong>Wrist</strong></td><td>Flexion/extension, Bend from midline, Twist.</td></tr>
+            <tr><td><strong>Neck</strong></td><td>Flexion/extension, Twisting, Side bending.</td></tr>
+            <tr><td><strong>Trunk</strong></td><td>Flexion/extension, Twisting, Side bending.</td></tr>
+            <tr><td><strong>Legs</strong></td><td>Balance.</td></tr>
+          </tbody>
+        </table>
 
-        <p>Those two rarely coincide, and the difference is informative. A peak without a sustained window is a transient; a sustained window scoring almost as high as the peak is a posture the worker lives in.</p>
-
-        <p>You can edit the auto-detected moments, adjust their frame ranges, add a description, or create your own. If you would rather work entirely manually, turn off <strong>Auto-generated critical moments</strong> in the settings.</p>
-
-        <h2 id="findings"><span class="step-num">7</span> Findings</h2>
-        <p>The Findings tab is where your professional judgement goes. It provides five sections by default:</p>
-
-        <ul>
-          <li><strong>Current Situation</strong></li>
-          <li><strong>Observations</strong></li>
-          <li><strong>Risk Assessment</strong></li>
-          <li><strong>Recommendations</strong></li>
-          <li><strong>Conclusion</strong></li>
-        </ul>
-
-        <p>The sections can be renamed, reordered or removed, and the tab itself can be disabled if you do not use it. Those defaults live in your <a href="rula-report-settings.html">RULA report settings</a>, so you set them once rather than per report.</p>
+        <p>Arm and wrist measurements also have a <strong>Left / Right</strong> selector, since RULA scores one limb at a time. Neck, trunk and leg measurements do not — they are whole-body and have no side.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">The score is a screening result, not a conclusion</div>
-            <p>RULA flags a posture as needing attention. It does not identify the cause, weigh the cost of fixing it, or account for anything outside its scope. The Findings tab exists because that reasoning is yours to supply — and a report that reaches a reader without it is much easier to misread.</p>
+            <div class="callout-label">Static posture and repetition are not plottable</div>
+            <p>Neither appears in the selector. Both are task-level facts computed once across the whole task rather than per-frame values, so there is nothing to plot on a timeline. They are shown on the Score Overview's Muscle Use blocks instead.</p>
           </div>
         </div>
 
-        <h2 id="export"><span class="step-num">8</span> Export and saving</h2>
-        <p>A finished report can be exported to <strong>PDF</strong> for sharing or <strong>Excel</strong> for further analysis, and saved to the <a href="projects-database.html">Projects Database</a> so it can be reopened later with its settings intact.</p>
+        <h3>3D viewport</h3>
+        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected posture task. You can orbit the camera freely with the mouse. In the top-left corner of the viewport you can set how many views are shown and choose the camera angle for each. For a full overview of viewport controls and navigation, see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a>.</p>
 
-        <p>Filename templates, company branding and whether only the averaged posture task is exported are all controlled in the settings.</p>
+        <h3>Score-per-frame graph</h3>
+        <p>Below the viewport, a full-width graph traces the selected measurement across every frame in the posture task. The graph background is divided into colour-coded zones, and those zones come from the same thresholds the backend uses to score — so what you see on the graph never drifts from what the report calculated.</p>
 
-        <p><strong>Next steps:</strong> to adjust the defaults behind all of this, see <a href="rula-report-settings.html">RULA Report Settings</a>. For the method itself, see <a href="understanding-rula-assessment.html">Understanding the RULA Assessment</a>.</p>
+        <p>Zones fall into three patterns depending on the measurement:</p>
+
+        <table class="zone-table">
+          <thead><tr><th>Pattern</th><th>Zones</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>RULA score</strong></td>
+              <td>
+                <span class="zone-dot zone-green"></span>Green 1–2 &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow 3–4 &nbsp;
+                <span class="zone-dot zone-orange"></span>Orange 5–6 &nbsp;
+                <span class="zone-dot zone-red"></span>Red 7
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Four-band postures</strong><br>Upper arm and trunk flexion</td>
+              <td>One zone per RULA scoring band, so the graph colour tells you directly which band the frame scored in.</td>
+            </tr>
+            <tr>
+              <td><strong>Three-band postures</strong><br>Wrist and neck flexion</td>
+              <td>
+                <span class="zone-dot zone-green"></span>Green within the score-1 range &nbsp;
+                <span class="zone-dot zone-yellow"></span>Yellow score 2 &nbsp;
+                <span class="zone-dot zone-red"></span>Red score 3
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Yes/no adjustments</strong><br>Abduction, twisting, side bending, deviation, shoulder raised</td>
+              <td>A single boundary — below it the adjustment does not apply, above it a point is added.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Two measurements behave differently and are worth knowing about. <strong>Flexion/extension</strong> graphs fold to magnitude, so an extension of 30° plots at the same height as 30° of flexion — except where extension carries its own rule, as it does for the neck. <strong>Across midline / out to side</strong> is plotted signed rather than folded, because crossing past the body's midline is a distinct finding rather than simply more of the same direction.</p>
+
+        <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync. To the left of the graph are the <strong>play/pause button</strong>, <strong>speed selector</strong>, and the <strong>body risk indicator toggle</strong>, which places colour-coded markers on the avatar reflecting the risk level for the selected measurement at the current frame.</p>
+
+        <h3>Right-side panel</h3>
+        <p>A fixed panel to the right of the viewport shows sections that update as you scrub through frames.</p>
+
+        <h4>Frame insights</h4>
+        <p>Shows the value of the selected measurement at the current frame with its unit, and a visual bar divided into the same zones as the graph, with a marker showing where the current value falls. This answers "why was the score high <em>here</em>" for any moment, not just the peak.</p>
+
+        <h4>Distribution</h4>
+        <p>Shows what proportion of the task's frames fall into each zone for the selected measurement. It is an aggregate across the whole task and does not change as you scrub — it tells you at a glance how much of the task was spent in each risk category.</p>
+
+        <h4>Critical moments</h4>
+        <p>Critical moments are the instants or periods worth showing someone else. They appear as markers on the graph and are listed in this panel. Motionprint Ergo detects two automatically:</p>
+        <ul>
+          <li><strong>Peak detection</strong> — the single highest-scoring frame in the task.</li>
+          <li><strong>Sustained risk detection</strong> — the window with the highest average score over at least one second.</li>
+        </ul>
+
+        <p>Those two rarely coincide, and the difference is informative: a peak with no matching sustained window is a transient, while a sustained window scoring almost as high as the peak is a posture the worker lives in.</p>
+
+        <p>You can edit the auto-detected moments, adjust their frame ranges, add a description, or create your own by dragging a range on the graph. Both auto-detected and custom moments can be edited and deleted. If you would rather work entirely by hand, turn off <strong>Auto-generated critical moments</strong> in the settings. Critical moments are included in the exported report.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Tip: find what is driving the score</div>
+            <p>Start on <strong>RULA score</strong> to find where the task peaks, then switch body segments to see which one moves with it. A frame scoring 6 might be driven by the trunk, the neck, or an arm held away from the body — stepping through the segments at that frame makes the cause obvious, and tells you which change would actually lower the score.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="findings"><span class="step-num">4</span> Findings</h2>
+
+        <p>The Findings tab is a free-form documentation area where you record your professional assessment of the results. It only appears if it is enabled in the RULA report settings.</p>
+
+        <h3>Default structure</h3>
+        <p>The tab displays a vertical stack of section blocks, each with a title and a multi-line text area. If you have not customised the sections, the five defaults are:</p>
+
+        <ol>
+          <li>Current Situation</li>
+          <li>Observations</li>
+          <li>Risk Assessment</li>
+          <li>Recommendations</li>
+          <li>Conclusion</li>
+        </ol>
+
+        <h3>Customisation</h3>
+        <p>The entire Findings structure is configurable from the <a href="rula-report-settings.html">RULA report settings</a> page:</p>
+        <ul>
+          <li>Enable or disable the Findings tab entirely.</li>
+          <li>Rename the tab (default: "Findings").</li>
+          <li>Add, rename, reorder, or delete individual sections.</li>
+          <li>Reset to the five defaults at any time.</li>
+        </ul>
+
+        <!-- ── EXPORT ── -->
+        <h2 id="export"><span class="step-num">5</span> Export</h2>
+
+        <p>The <strong>Export</strong> button in the tab bar generates a complete report file. The available formats and the filename template are configurable in the RULA report settings. The exported file includes:</p>
+        <ul>
+          <li>All Score overview data — general information, every component score with its adjustments, the three scoring tables, and the final result.</li>
+          <li>The Analysis data — frame-by-frame values, the score graph, distributions, and critical moments.</li>
+          <li>The Findings content with its full section structure (if the Findings tab is enabled and content has been entered).</li>
+        </ul>
+
+        <p>If <strong>Export only average posture task</strong> is enabled — which requires the averaged overview — the export contains just the averaged result rather than every individual task. For a full overview of export formats, options, and configuration, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
+
+        <!-- ── SAVE ── -->
+        <h2 id="save"><span class="step-num">6</span> Save to Projects Database</h2>
+
+        <p>In addition to exporting, you can save the completed assessment to the <strong>Projects Database</strong> — a persistent local library of all your saved analyses. Click <strong>Save Project</strong> in the results tab bar to open the save dialog. From there, set a project title, choose a status (Draft, In Progress, or Completed), and add optional tags for easier filtering later.</p>
+
+        <p>Saving a project preserves the full assessment — including all calculation data, critical moments, settings, and metadata — so you can return to it at any point. Saved projects can be reopened, re-exported with different settings, and managed from the Database in the sidebar. See <a href="projects-database.html">Projects Database</a> for the full overview.</p>
 
         <div class="article-end">
             <div class="related-label">Related articles</div>
@@ -517,8 +668,8 @@
 </footer>
 
 <script>
-  var sections = ['structure','score-overview','reading-modules','tables','analysis','critical-moments','findings','export'];
-  var tocIds   = ['toc-structure','toc-score-overview','toc-reading-modules','toc-tables','toc-analysis','toc-critical','toc-findings','toc-export'];
+  var sections = ['overview','score-overview','analysis','findings','export','save'];
+  var tocIds   = ['toc-overview','toc-score','toc-analysis','toc-findings','toc-export','toc-save'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
