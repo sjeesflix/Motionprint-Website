@@ -206,12 +206,7 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
 
-    /* Figures */
-    .article-figure { margin: 20px 0; }
-    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-    .article-figure.figure-full img { max-width: 100%; }
-    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
-    /* Media placeholders - swap for <figure class="article-figure"> once artwork exists */
+    /* Media placeholders - swap for an article-figure block once artwork exists */
     .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
@@ -302,10 +297,10 @@
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-select-report"><a href="#select-report">2. Select Report</a></li>
           <li id="toc-input-source"><a href="#input-source">3. Select Input Source</a></li>
-          <li id="toc-setup"><a href="#setup">4. Set Up Your Input Source</a></li>
-          <li id="toc-posture-tasks"><a href="#posture-tasks">5. Define Posture Tasks</a></li>
-          <li id="toc-task-info"><a href="#task-info">6. Provide Task Information</a></li>
-          <li id="toc-processing"><a href="#processing">7. Processing the Assessment</a></li>
+          <li id="toc-setup"><a href="#setup">4. Setup Input Source</a></li>
+          <li id="toc-trim"><a href="#trim-posture-tasks">5. Trim &amp; Posture Tasks</a></li>
+          <li id="toc-task-info"><a href="#task-info">6. Task Information</a></li>
+          <li id="toc-process"><a href="#processing">7. Processing</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -317,46 +312,30 @@
 
       <article class="article-body">
 
-        <p class="article-lead">This article walks through a complete RULA assessment in Motionprint Ergo, from selecting the report type to processing the result. RULA differs from the lifting methods in one important way: instead of defining lifting moments, you define <em>posture tasks</em> — windows of time in which the worker holds or repeats a particular working posture. If you have not read <a href="understanding-rula-assessment.html">Understanding the RULA Assessment</a> yet, it is worth doing so first, since the inputs here map directly onto the method's scoring.</p>
+        <p class="article-lead">This article walks through the complete process of running a RULA assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them.</p>
 
+        <!-- ── OVERVIEW ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
-        <p>A RULA assessment follows the same overall flow as every other report in Motionprint Ergo:</p>
 
-        <div class="workflow-steps">
-          <div class="workflow-step">
-            <div class="workflow-step-num">1</div>
-            <div>
-              <div class="workflow-step-title">Select the report type</div>
-              <p class="workflow-step-desc">Choose RULA from the report selection screen.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="workflow-step-num">2</div>
-            <div>
-              <div class="workflow-step-title">Choose and set up an input source</div>
-              <p class="workflow-step-desc">Load an Xsens recording and enter the general information for the assessment.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="workflow-step-num">3</div>
-            <div>
-              <div class="workflow-step-title">Trim the recording and define posture tasks</div>
-              <p class="workflow-step-desc">Mark the windows of the recording that represent the postures you want assessed.</p>
-            </div>
-          </div>
-          <div class="workflow-step">
-            <div class="workflow-step-num">4</div>
-            <div>
-              <div class="workflow-step-title">Provide task information and process</div>
-              <p class="workflow-step-desc">Enter the inputs RULA cannot observe, then run the assessment.</p>
-            </div>
-          </div>
-        </div>
+        <p>A RULA assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
 
-        <p>Most of the work is in step 3. Deciding which parts of a recording constitute a distinct posture task is the judgement call that shapes the whole assessment, and it is worth thinking about before you start clicking.</p>
+        <table class="info-table">
+          <thead><tr><th>Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
+          <tbody>
+            <tr><td><span class="step-num-plain">1</span></td><td>Select the report you want to create</td><td>Create page</td></tr>
+            <tr><td><span class="step-num-plain">2</span></td><td>Select your input source</td><td>Input Source page</td></tr>
+            <tr><td><span class="step-num-plain">3</span></td><td>Setup your input source</td><td>Input Source page (same screen)</td></tr>
+            <tr><td><span class="step-num-plain">4</span></td><td>Trim the file and specify posture tasks</td><td>Input page — 3D viewport on left, posture tasks on right</td></tr>
+            <tr><td><span class="step-num-plain">5</span></td><td>Provide task information</td><td>Input page (same screen, scrolls down from step 4)</td></tr>
+          </tbody>
+        </table>
 
+        <p>After completing all five steps, the <strong>Process</strong> button at the bottom of the input page becomes active. Clicking it submits the assessment and navigates you to the report.</p>
+
+        <!-- ── STEP 1 ── -->
         <h2 id="select-report"><span class="step-num">2</span> Select Report</h2>
-        <p>From the <strong>Create</strong> screen, choose <strong>RULA</strong>. The report type determines which inputs you are asked for and which calculations run — it cannot be changed later without starting a new assessment, so make sure RULA is the right method for the task.</p>
+
+        <p>The assessment begins on the <strong>Create page</strong>, where you choose which type of report to run. Select the <strong>RULA</strong> tile from the available options, then click <strong>Continue</strong> to proceed to the next step.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -366,97 +345,185 @@
           </div>
         </div>
 
+        <!-- ── STEP 2 ── -->
         <h2 id="input-source"><span class="step-num">3</span> Select Input Source</h2>
-        <p>Motionprint Ergo offers three input sources:</p>
 
-        <table class="info-table">
-          <thead>
-            <tr><th>Source</th><th>Description</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>MVNX File</strong></td><td>Upload an Xsens recording as a <code>.mvnx</code> file exported from MVN Analyze.</td></tr>
-            <tr><td><strong>Xsens Recording</strong></td><td>Use a recording made within Motionprint Ergo itself. These are stored in the app.</td></tr>
-            <tr><td><strong>Markerless Video Capture</strong></td><td>Coming soon.</td></tr>
-          </tbody>
-        </table>
+        <p>The next screen is the <strong>Input Source page</strong>. Select your input source from the available tiles. Currently only <strong>Xsens MVNX File</strong> is supported. As new capture methods become available they will become selectable here.</p>
 
-        <p>For most workflows you will use <strong>MVNX File</strong>. The file is validated on load — if the recording is unreadable or its length cannot be determined, you will be told before going any further.</p>
+        <!-- ── STEP 3 ── -->
+        <h2 id="setup"><span class="step-num">4</span> Setup Your Input Source</h2>
 
-        <div class="media-placeholder">
-          <span class="media-type">Screenshot</span>
-          <div class="media-placeholder-title">Input source selection screen</div>
-          <p class="media-placeholder-desc">The three source cards — MVNX File, Xsens Recording, and the greyed-out Markerless Video Capture — so readers can recognise the screen.</p>
-        </div>
+        <p>After selecting your input source, the upload control appears on the same Input Source screen. For Xsens MVNX, click the upload area to browse your system and select a .mvnx file.</p>
 
-        <h2 id="setup"><span class="step-num">4</span> Set Up Your Input Source</h2>
-        <p>Once the recording is loaded, you enter the general information that will appear on the report: the subject's details, the <strong>Operator</strong> and <strong>Evaluator</strong> names, and the assessment date. Which of these fields appear, and which are hidden from the finished report, is controlled by your privacy settings.</p>
-
-        <p>The 3D viewport initialises at this point. You can orbit, pan and zoom the model, and switch camera views — the default layout and camera angles come from your <a href="rula-report-settings.html">RULA report settings</a>.</p>
-
-        <h2 id="posture-tasks"><span class="step-num">5</span> Define Posture Tasks</h2>
-        <p>This is the heart of a RULA assessment. Use the trim handles on the playbar to narrow the recording to the period you want to assess, then create one or more <strong>posture tasks</strong> within it.</p>
-
-        <p>A posture task is a frame range representing a working posture you want scored. Each has a <strong>start frame</strong> and an <strong>end frame</strong>, and must be <strong>at least one second long</strong> — shorter windows are rejected, because muscle use cannot be judged from a fraction of a second.</p>
-
-        <div class="media-placeholder">
-          <span class="media-type">GIF</span>
-          <div class="media-placeholder-title">Creating a posture task on the timeline</div>
-          <p class="media-placeholder-desc">Dragging the trim markers, then marking a posture task frame range — the equivalent of the lifting-task GIF in the NIOSH article.</p>
-        </div>
-
-        <h3>How many tasks should you create?</h3>
-        <p>There is no single answer, but the principle is straightforward: <em>one task per distinct posture</em>. A worker who spends a shift alternating between reaching into a bin and assembling at a bench is adopting two different postures, and they should be two tasks. Splitting them keeps each score interpretable — a single window spanning both would report only the worse of the two and tell you nothing about the other.</p>
-
-        <p>Conversely, if the worker repeats the same posture many times, you do not need a task for every repetition. One representative window is enough, and the repetition itself is captured by the muscle use point rather than by the number of tasks.</p>
+        <p>Once a valid file is loaded, Motionprint Ergo takes you to the main input page (steps 4 and 5). If the file is invalid or corrupted, an error message appears and you can try again.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
-            <div class="callout-label">Tasks are scored independently</div>
-            <p>Each posture task gets its own RULA score. There is no equivalent of the NIOSH Composite Lifting Index that aggregates them, because RULA has no cumulative model — the method describes a posture, not a shift. If you want a single figure across several tasks representing the <em>same</em> repeated posture, enable <strong>Generate averaged overview</strong> in the settings.</p>
+            <div class="callout-label">Working with Xsens MVNX files</div>
+            <p>Before importing, export your session from Xsens MVN as a MVNX file. This format preserves all motion data and skeletal information needed for analysis. For a full walkthrough of the export and upload process, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
           </div>
         </div>
 
-        <h2 id="task-info"><span class="step-num">6</span> Provide Task Information</h2>
-        <p>For each posture task you supply the inputs that cannot be derived from motion data. There are four, and each maps onto a specific part of the RULA score:</p>
+        <!-- ── STEP 4 ── -->
+        <h2 id="trim-posture-tasks"><span class="step-num">5</span> Trim the File and Specify Posture Tasks</h2>
 
-        <table class="info-table">
-          <thead>
-            <tr><th>Field</th><th>What it affects</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Description</strong></td><td>Labels the task in the report. Not used in scoring.</td></tr>
-            <tr><td><strong>Load weight</strong></td><td>Sets the force/load points, from 0 to 3, added to both Table A and Table B.</td></tr>
-            <tr><td><strong>Arm supported / leaning</strong></td><td>Subtracts 1 from the upper arm score, floored at 1.</td></tr>
-            <tr><td><strong>Shock / rapid build-up of force</strong></td><td>Forces the maximum force/load points regardless of weight.</td></tr>
-          </tbody>
-        </table>
+        <p>This is the main input page — a new screen with a <strong>3D viewport on the left</strong> showing the loaded avatar and a <strong>posture tasks panel on the right</strong>. This step is where you define the observation window and mark each working posture you want assessed.</p>
 
-        <p>The shock flag deserves a moment's thought. It describes <em>how</em> the force is applied rather than how much of it there is — hammering, snapping a component into place, absorbing a power tool's torque reaction. Because it overrides the weight bands and applies to both score groups, enabling it can move the final RULA score by two points. Set it when the work genuinely involves impact, and leave it off otherwise.</p>
+        <h3>The 3D viewport and playback controls</h3>
 
-        <h3>Muscle use is automatic</h3>
-        <p>Unlike the load inputs, <strong>muscle use is computed for you</strong>. Motionprint Ergo checks each posture task for a mainly static posture or a repeated action, and it does so <em>separately</em> for the Wrist &amp; Arm group and for the Trunk, Neck and Legs group. A task can therefore attract the muscle use point in one group and not the other — which is realistic, since a worker can hold the trunk still while the arms repeat a cycle.</p>
+        <p>The viewport renders the motion capture recording as an animated 3D avatar. Below the viewport are playback controls:</p>
+
+        <ul>
+          <li><strong>Play/pause button</strong> — Start or stop the animation.</li>
+          <li><strong>Speed selector</strong> — Choose playback speed: 0.5× (slow motion), 1× (normal), 1.5×, or 2× (double speed).</li>
+        </ul>
+
+        <p>Below the playback controls is the <strong>timeline</strong> — a horizontal bar representing the full duration of the recording. You use the timeline to trim the recording and mark posture tasks. For a full overview of the viewport controls and navigation, see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a>.</p>
+
+        <h3>Trimming the observation window</h3>
+
+        <p>The observation window defines which portion of the recording is included in the assessment. Anything outside the trimmed range is ignored.</p>
+
+        <p>Two draggable vertical handles appear on the timeline:</p>
+
+        <ul>
+          <li><strong>Start handle (left)</strong> — Drag to set where the observation period begins.</li>
+          <li><strong>End handle (right)</strong> — Drag to set where it ends.</li>
+        </ul>
+
+        <p>The region outside the two handles is shown in a shaded colour, indicating that part of the recording is excluded from the assessment. As you adjust the handles, Motionprint Ergo automatically recalculates how often the posture occurs — the number of posture tasks divided by the trimmed duration in minutes. Unlike NIOSH, this rate does not have to fall within an acceptable range; it decides whether the work counts as <strong>repetitive</strong>, which adds a muscle use point to the score.</p>
+
+        <figure class="article-figure">
+          <img src="trimmarkersplayline.gif" alt="Dragging trim markers on the playbar to set the observation window" />
+          <figcaption>Drag the trim markers to define the start and end of the observation window — the shaded region outside the handles is excluded from the assessment.</figcaption>
+        </figure>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Why the one-second minimum matters</div>
-            <p>Muscle use is judged from how long a posture is held and how often an action repeats. A window shorter than a second gives no basis for either, which is why the app rejects it. If a posture genuinely only occurs for a fraction of a second, it is a transient rather than a working posture — and the peak-frame logic will catch it anyway within a longer task.</p>
+            <div class="callout-label">Repetition = Tasks ÷ Trimmed duration</div>
+            <p>The rate is calculated exactly as NIOSH calculates lift frequency, but it is used differently. At <strong>4 or more occurrences per minute</strong> the action counts as repetitive and a muscle use point is added. Example: 5 posture tasks in a 1-minute window gives 5/min — repetitive. The same 5 tasks across 2 minutes gives 2.5/min — not repetitive. The flag applies to the whole report, not to individual tasks.</p>
           </div>
         </div>
 
-        <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
-        <p>Before the <strong>Process</strong> button becomes available, the app checks that everything it needs is present: an MVNX file, at least one posture task, and the required fields for every task. If anything is missing, you get a list of exactly which items to complete rather than a generic error.</p>
+        <h3>Defining posture tasks</h3>
 
-        <p>Processing scores every frame of every posture task, for both sides of the body, then reduces each task to its peak frame. When it finishes you are taken to the results view.</p>
+        <p>A posture task is a distinct working posture within the observation window. Each task is defined by a start frame and an end frame. Tasks must have a minimum duration of <strong>1.0 second</strong>. To add one:</p>
+
+        <ol>
+          <li>Click and drag on the timeline to highlight a frame range. The selection is shown in the branding colour configured in your settings.</li>
+          <li>Click the <strong>+</strong> button to create a task from that range.</li>
+          <li>The task appears in the list on the right. Fill in the required fields:
+            <ul>
+              <li><strong>Start frame</strong> — Auto-populated from your selection; editable.</li>
+              <li><strong>End frame</strong> — Auto-populated from your selection; editable.</li>
+              <li><strong>Description</strong> — A label for the task in the report.</li>
+              <li><strong>Load weight</strong> — Weight handled during the posture, in kilograms.</li>
+              <li><strong>Arm support / leaning</strong> — Whether the arm is supported or the person is leaning on it.</li>
+              <li><strong>Shock / rapid build-up of force</strong> — Whether force is applied with impact.</li>
+            </ul>
+          </li>
+        </ol>
 
         <div class="media-placeholder">
-          <span class="media-type">Screenshot</span>
-          <div class="media-placeholder-title">Validation message listing missing fields</div>
-          <p class="media-placeholder-desc">The "Please fill in the following fields" dialog, showing how the app reports what is still incomplete.</p>
+          <span class="media-type">GIF</span>
+          <div class="media-placeholder-title">Defining a posture task on the timeline</div>
+          <p class="media-placeholder-desc">Selecting a frame range on the timeline to define a posture task — the RULA equivalent of <code>definingliftingtasks.gif</code>, showing the highlighted range becoming the task window and the task appearing in the panel on the right.</p>
         </div>
 
-        <p><strong>Next steps:</strong> to interpret what you are looking at, continue to <a href="reading-the-rula-report-results.html">Reading the RULA Report Results</a>. To change the defaults applied to every RULA assessment, see <a href="rula-report-settings.html">RULA Report Settings</a>.</p>
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>What it affects</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Load weight</td>
+              <td>Sets the force/load points, from 0 to 3. Under 2 kg scores 0; 2–10 kg scores 1 or 2 depending on whether the posture is static or repeated; above 10 kg scores 3.</td>
+            </tr>
+            <tr>
+              <td>Arm support / leaning</td>
+              <td>Subtracts 1 point from the upper arm score. The result is floored at 1, so support cannot reduce an already-minimal score any further.</td>
+            </tr>
+            <tr>
+              <td>Shock / rapid build-up of force</td>
+              <td>Forces the maximum 3 force/load points regardless of the weight entered. Set this when force is applied with impact — hammering, snapping a part into place, absorbing a tool's torque reaction.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>You can edit or delete tasks in the list at any time. If you adjust the trim handles to exclude a task's frame range, that task is removed or adjusted automatically.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Force applies to both score groups</div>
+            <p>RULA adds the force/load points to the arm and wrist total <em>and</em> to the neck, trunk and legs total. A single change to the load weight — or enabling the shock flag — can therefore move the final RULA score by more than one point.</p>
+          </div>
+        </div>
+
+        <h3>Multiple posture tasks</h3>
+
+        <p>If you define two or more posture tasks, each is scored independently and reported separately. There is no composite equivalent of the NIOSH CLI, because RULA describes a posture rather than a cumulative shift exposure.</p>
+
+        <p>If every task represents the <em>same</em> repeated posture, you can enable <strong>Generate averaged overview</strong> in your <a href="rula-report-settings.html">RULA report settings</a> to add an averaged result alongside the individual ones. Leave it off when the tasks describe genuinely different postures.</p>
+
+        <!-- ── STEP 5 ── -->
+        <h2 id="task-info"><span class="step-num">6</span> Provide Task Information</h2>
+
+        <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata about the assessment session. Some fields are always shown; others appear or are hidden based on your <a href="privacy-settings.html">privacy settings</a>.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Workplace</td>
+              <td>No</td>
+              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3"). This field is always visible and cannot be hidden in settings.</td>
+            </tr>
+            <tr>
+              <td>Evaluator</td>
+              <td>No</td>
+              <td>Name or ID of the assessor. Can be hidden via the privacy settings.</td>
+            </tr>
+            <tr>
+              <td>Operator</td>
+              <td>No</td>
+              <td>Name or ID of the worker being assessed. Can be hidden via the privacy settings.</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>No</td>
+              <td>Worker gender (Male / Female). Can be hidden via the privacy settings.</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>Yes</td>
+              <td>The evaluation date. Set automatically to today's date using separate year, month, and day selectors.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">No working time field</div>
+            <p>Unlike NIOSH, RULA does not ask for the total time spent at the workstation. NIOSH needs it to select the Frequency Multiplier duration category; RULA has no equivalent — its muscle use point comes from how long a posture is held within a task and how often tasks occur, both derived from the recording itself.</p>
+          </div>
+        </div>
+
+        <!-- ── PROCESSING ── -->
+        <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
+
+        <p>Once all required fields are filled and at least one posture task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment. If anything is still missing, the app lists exactly which items to complete rather than showing a generic error.</p>
+
+        <p>A loading overlay appears showing progress and current status as the RULA calculation runs. Every frame of every posture task is scored, for both sides of the body, and each task is then reduced to its peak frame. Once complete, Motionprint Ergo automatically navigates to the report view, where you can review the <strong>Score Overview</strong>, <strong>Analysis</strong>, and <strong>Findings</strong> tabs. For a full walkthrough of every section in the report, see <a href="reading-the-rula-report-results.html">Reading the RULA Report Results</a>.</p>
+
+        <p>If an error occurs during processing, an error message is displayed. You are returned to the input page where you can correct the issue and try again.</p>
+
+        <h3>Making changes after processing</h3>
+
+        <p>If you are on the report page and want to adjust any input — tasks, task information, or general info — click the <strong>Edit</strong> button on the report page. This returns you to the input page with all your existing settings intact, so you can make changes and re-process without starting over.</p>
+
+        <p>Once you're happy with your results, click <strong>Save Project</strong> to store the assessment in the Database for future reference. You can archive completed projects or delete duplicates to keep your library organized. See <a href="projects-database.html">Projects Database</a> for details.</p>
 
         <div class="article-end">
             <div class="related-label">Related articles</div>
@@ -525,8 +592,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','select-report','input-source','setup','posture-tasks','task-info','processing'];
-  var tocIds   = ['toc-overview','toc-select-report','toc-input-source','toc-setup','toc-posture-tasks','toc-task-info','toc-processing'];
+  var sections = ['overview','select-report','input-source','setup','trim-posture-tasks','task-info','processing'];
+  var tocIds   = ['toc-overview','toc-select-report','toc-input-source','toc-setup','toc-trim','toc-task-info','toc-process'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
