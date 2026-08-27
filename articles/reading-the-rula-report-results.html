@@ -294,7 +294,7 @@
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-score"><a href="#score-overview">2. Score Overview</a></li>
-          <li id="toc-analysis"><a href="#analysis">3. Analysis</a></li>
+          <li id="toc-analysis"><a href="#analysis">3. In-depth analysis</a></li>
           <li id="toc-findings"><a href="#findings">4. Findings</a></li>
           <li id="toc-export"><a href="#export">5. Export</a></li>
           <li id="toc-save"><a href="#save">6. Save to Projects Database</a></li>
@@ -318,7 +318,7 @@
 
         <ul>
           <li><strong>Score overview</strong> — the complete assessment result: every component score, the three scoring tables, and the final RULA score.</li>
-          <li><strong>Analysis</strong> — an interactive deep dive into how each measurement behaves frame by frame across the whole posture task.</li>
+          <li><strong>In-depth analysis</strong> — an interactive deep dive into how each measurement behaves frame by frame across the whole posture task.</li>
           <li><strong>Findings</strong> — a free-text documentation area for recording your observations and recommendations. This tab only appears if it is enabled in the RULA report settings.</li>
         </ul>
 
@@ -344,11 +344,14 @@
         <p>The Score Overview tab gives you everything a standard manual RULA worksheet would produce, presented in a clean, structured layout. It is the primary result page — the one you share with a client or include in a report.</p>
 
         <h3>General info card</h3>
-        <p>The top card displays metadata about the assessment session. Its fields can be edited inline without returning to the input page.</p>
+        <p>The top card displays metadata about the assessment session. The text fields can be edited inline without returning to the input page.</p>
 
         <table class="info-table">
           <thead><tr><th>Field</th><th>Description</th></tr></thead>
           <tbody>
+            <tr><td>Frame</td><td>The frame with the highest (worst) RULA score — every score on this page is calculated for this frame.</td></tr>
+            <tr><td>Date</td><td>The evaluation date.</td></tr>
+            <tr><td>Cycle duration</td><td>Duration of the cycle as defined in this recording, derived from the trimmed frame range.</td></tr>
             <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
             <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if disabled in the privacy settings.</td></tr>
             <tr><td>Operator</td><td>The worker being assessed. Hidden if disabled in the privacy settings.</td></tr>
@@ -356,18 +359,16 @@
           </tbody>
         </table>
 
-        <p>Fields left empty show <em>No data entered</em> rather than disappearing, so the card keeps a consistent shape across reports.</p>
-
         <h3>RULA score card</h3>
         <p>The score card shows the primary result: the final RULA score for the selected posture task, the frame it occurred at, and the risk band it falls into. Alongside it, a legend maps all four bands so a reader unfamiliar with RULA can place the result immediately.</p>
 
         <table class="info-table">
           <thead><tr><th>Score</th><th>Risk level</th><th>Action</th></tr></thead>
           <tbody>
-            <tr><td><code>1 – 2</code></td><td><span class="risk-badge risk-low">Negligible risk</span></td><td>Acceptable</td></tr>
-            <tr><td><code>3 – 4</code></td><td><span class="risk-badge risk-medium">Low risk</span></td><td>Further investigation needed</td></tr>
-            <tr><td><code>5 – 6</code></td><td><span class="risk-badge risk-high">Medium risk</span></td><td>Changes needed soon</td></tr>
-            <tr><td><code>7</code></td><td><span class="risk-badge risk-vhigh">Very high risk</span></td><td>Changes needed now</td></tr>
+            <tr><td><code>1 – 2</code></td><td><span class="risk-badge" style="background:rgba(52,211,153,.18);color:#0b8a5e;">Negligible risk</span></td><td>Acceptable</td></tr>
+            <tr><td><code>3 – 4</code></td><td><span class="risk-badge" style="background:rgba(251,191,36,.20);color:#a16207;">Low risk</span></td><td>Further investigation needed</td></tr>
+            <tr><td><code>5 – 6</code></td><td><span class="risk-badge" style="background:rgba(251,146,60,.20);color:#c2410c;">Medium risk</span></td><td>Changes needed soon</td></tr>
+            <tr><td><code>7</code></td><td><span class="risk-badge" style="background:rgba(248,113,113,.20);color:#b91c1c;">Very high risk</span></td><td>Changes needed now</td></tr>
           </tbody>
         </table>
 
@@ -500,22 +501,27 @@
             <tr>
               <td><strong>RULA score</strong></td>
               <td>
-                <span class="zone-dot zone-green"></span>Green 1–2 &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow 3–4 &nbsp;
-                <span class="zone-dot zone-orange"></span>Orange 5–6 &nbsp;
-                <span class="zone-dot zone-red"></span>Red 7
+                <span class="zone-dot" style="background:#34D399;"></span>1–2 &nbsp;
+                <span class="zone-dot" style="background:#FBBF24;"></span>3–4 &nbsp;
+                <span class="zone-dot" style="background:#FB923C;"></span>5–6 &nbsp;
+                <span class="zone-dot" style="background:#F87171;"></span>7
               </td>
             </tr>
             <tr>
               <td><strong>Four-band postures</strong><br>Upper arm and trunk flexion</td>
-              <td>One zone per RULA scoring band, so the graph colour tells you directly which band the frame scored in.</td>
+              <td>
+                <span class="zone-dot" style="background:#34D399;"></span>Score 1 &nbsp;
+                <span class="zone-dot" style="background:#FBBF24;"></span>Score 2 &nbsp;
+                <span class="zone-dot" style="background:#FB923C;"></span>Score 3 &nbsp;
+                <span class="zone-dot" style="background:#F87171;"></span>Score 4
+              </td>
             </tr>
             <tr>
               <td><strong>Three-band postures</strong><br>Wrist and neck flexion</td>
               <td>
-                <span class="zone-dot zone-green"></span>Green within the score-1 range &nbsp;
-                <span class="zone-dot zone-yellow"></span>Yellow score 2 &nbsp;
-                <span class="zone-dot zone-red"></span>Red score 3
+                <span class="zone-dot" style="background:#34D399;"></span>Score 1 &nbsp;
+                <span class="zone-dot" style="background:#FBBF24;"></span>Score 2 &nbsp;
+                <span class="zone-dot" style="background:#F87171;"></span>Score 3
               </td>
             </tr>
             <tr>
@@ -539,15 +545,15 @@
         <p>Shows what proportion of the task's frames fall into each zone for the selected measurement. It is an aggregate across the whole task and does not change as you scrub — it tells you at a glance how much of the task was spent in each risk category.</p>
 
         <h4>Critical moments</h4>
-        <p>Critical moments are the instants or periods worth showing someone else. They appear as markers on the graph and are listed in this panel. Motionprint Ergo detects two automatically:</p>
+        <p>Critical moments are significant instants or periods in the posture task that are worth highlighting. They appear as markers on the graph and are listed in this panel. There are three types:</p>
         <ul>
-          <li><strong>Peak detection</strong> — the single highest-scoring frame in the task.</li>
-          <li><strong>Sustained risk detection</strong> — the window with the highest average score over at least one second.</li>
+          <li><strong>Peak moment</strong> — auto-detected: the single frame with the highest RULA score in the task. Can be enabled or disabled in the RULA report settings.</li>
+          <li><strong>Sustained risk period</strong> — auto-detected: a consecutive frame range with the highest average score across the task. Sustained risk periods are always at least 1 second long. Can be enabled or disabled in the RULA report settings.</li>
+          <li><strong>Custom moments</strong> — user-created markers at a specific frame or frame range, with a user-provided description. Create one by dragging a range on the graph and clicking the <strong>Add (+)</strong> button.</li>
         </ul>
+        <p>Clicking a moment in the list jumps to that frame. Double-clicking opens an edit dialog to change the frame range or description. You can also drag the edges of a period moment on the graph to resize it. Both auto-detected moments (peak moment and sustained risk period) and custom moments can be edited and deleted by the user. Critical moments are included in the exported report.</p>
 
-        <p>Those two rarely coincide, and the difference is informative: a peak with no matching sustained window is a transient, while a sustained window scoring almost as high as the peak is a posture the worker lives in.</p>
-
-        <p>You can edit the auto-detected moments, adjust their frame ranges, add a description, or create your own by dragging a range on the graph. Both auto-detected and custom moments can be edited and deleted. If you would rather work entirely by hand, turn off <strong>Auto-generated critical moments</strong> in the settings. Critical moments are included in the exported report.</p>
+        <p>The two auto-detected types rarely coincide, and the difference is informative: a peak with no matching sustained period is a transient, while a sustained period scoring almost as high as the peak is a posture the worker holds throughout.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
