@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running a RULA Assessment — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="A step-by-step walkthrough of a RULA assessment: selecting the report, loading a recording, defining posture tasks, and processing the result." />
+  <link rel="canonical" href="https://motion-print.com/articles/running-a-rula-assessment.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Motionprint" />
+  <meta property="og:title" content="Running a RULA Assessment — Motionprint Ergo Help" />
+  <meta property="og:description" content="A step-by-step walkthrough of a RULA assessment: selecting the report, loading a recording, defining posture tasks, and processing the result." />
+  <meta property="og:url" content="https://motion-print.com/articles/running-a-rula-assessment.html" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Running a RULA Assessment — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="A step-by-step walkthrough of a RULA assessment: selecting the report, loading a recording, defining posture tasks, and processing the result." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #1D9E75; --red-light: #5DCAA5;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"] { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    
+    /* ── BACK LINK ── */
+    .article-back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
+      text-decoration: none; margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .article-back-link:hover { color: rgba(255,255,255,.72); }
+    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
+    .article-back-link:hover svg { transform: translateX(-3px); }
+    .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8b5cf6; }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #8b5cf6; border-radius: 2px; }
+    .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+
+    /* Lead */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Step number */
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+    .step-num-plain { font-size: 13px; font-weight: 700; color: var(--muted-2); }
+
+    /* Figures */
+    .article-figure { margin: 20px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-full img { max-width: 100%; }
+    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
+
+    /* Tab badge */
+    .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
+    .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Callouts */
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Info table */
+    .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+
+    /* Risk badge */
+    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
+    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
+    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-high   { background: rgba(29,158,117,.12);  color: #1D9E75; }
+    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+
+    /* Zone table */
+    .zone-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+    .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
+    .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .zone-table tr:last-child td { border-bottom: none; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-green  { background: #10b981; }
+    .zone-yellow { background: #f59e0b; }
+    .zone-red    { background: #ef4444; }
+    .zone-orange { background: #e3ad21; }
+
+    /* Article footer */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* Figures */
+    .article-figure { margin: 20px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-full img { max-width: 100%; }
+    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
+    /* Media placeholders - swap for <figure class="article-figure"> once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <a href="../resources.html" class="article-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to resources
+      </a>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#kb-reports">Using Reports</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">Running a RULA Assessment</span>
+      </nav>
+
+      <h1>Running a RULA Assessment</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          9 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated August 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          RULA
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-select-report"><a href="#select-report">2. Select Report</a></li>
+          <li id="toc-input-source"><a href="#input-source">3. Select Input Source</a></li>
+          <li id="toc-setup"><a href="#setup">4. Set Up Your Input Source</a></li>
+          <li id="toc-posture-tasks"><a href="#posture-tasks">5. Define Posture Tasks</a></li>
+          <li id="toc-task-info"><a href="#task-info">6. Provide Task Information</a></li>
+          <li id="toc-processing"><a href="#processing">7. Processing the Assessment</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <article class="article-body">
+
+        <p class="article-lead">This article walks through a complete RULA assessment in Motionprint Ergo, from selecting the report type to processing the result. RULA differs from the lifting methods in one important way: instead of defining lifting moments, you define <em>posture tasks</em> — windows of time in which the worker holds or repeats a particular working posture. If you have not read <a href="understanding-rula-assessment.html">Understanding the RULA Assessment</a> yet, it is worth doing so first, since the inputs here map directly onto the method's scoring.</p>
+
+        <h2 id="overview"><span class="step-num">1</span> Overview</h2>
+        <p>A RULA assessment follows the same overall flow as every other report in Motionprint Ergo:</p>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="workflow-step-num">1</div>
+            <div>
+              <div class="workflow-step-title">Select the report type</div>
+              <p class="workflow-step-desc">Choose RULA from the report selection screen.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">2</div>
+            <div>
+              <div class="workflow-step-title">Choose and set up an input source</div>
+              <p class="workflow-step-desc">Load an Xsens recording and enter the general information for the assessment.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">3</div>
+            <div>
+              <div class="workflow-step-title">Trim the recording and define posture tasks</div>
+              <p class="workflow-step-desc">Mark the windows of the recording that represent the postures you want assessed.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-step-num">4</div>
+            <div>
+              <div class="workflow-step-title">Provide task information and process</div>
+              <p class="workflow-step-desc">Enter the inputs RULA cannot observe, then run the assessment.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Most of the work is in step 3. Deciding which parts of a recording constitute a distinct posture task is the judgement call that shapes the whole assessment, and it is worth thinking about before you start clicking.</p>
+
+        <h2 id="select-report"><span class="step-num">2</span> Select Report</h2>
+        <p>From the <strong>Create</strong> screen, choose <strong>RULA</strong>. The report type determines which inputs you are asked for and which calculations run — it cannot be changed later without starting a new assessment, so make sure RULA is the right method for the task.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Choosing between methods</div>
+            <p>RULA assesses upper-body posture. If the task is fundamentally about lifting a load, <a href="understanding-niosh-assessment.html">NIOSH</a> or <a href="understanding-kim-lhc-assessment.html">KIM-LHC</a> will tell you more. Nothing stops you running both on the same recording — they answer different questions, and a task can easily be acceptable under one and problematic under the other.</p>
+          </div>
+        </div>
+
+        <h2 id="input-source"><span class="step-num">3</span> Select Input Source</h2>
+        <p>Motionprint Ergo offers three input sources:</p>
+
+        <table class="info-table">
+          <thead>
+            <tr><th>Source</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>MVNX File</strong></td><td>Upload an Xsens recording as a <code>.mvnx</code> file exported from MVN Analyze.</td></tr>
+            <tr><td><strong>Xsens Recording</strong></td><td>Use a recording made within Motionprint Ergo itself. These are stored in the app.</td></tr>
+            <tr><td><strong>Markerless Video Capture</strong></td><td>Coming soon.</td></tr>
+          </tbody>
+        </table>
+
+        <p>For most workflows you will use <strong>MVNX File</strong>. The file is validated on load — if the recording is unreadable or its length cannot be determined, you will be told before going any further.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type">Screenshot</span>
+          <div class="media-placeholder-title">Input source selection screen</div>
+          <p class="media-placeholder-desc">The three source cards — MVNX File, Xsens Recording, and the greyed-out Markerless Video Capture — so readers can recognise the screen.</p>
+        </div>
+
+        <h2 id="setup"><span class="step-num">4</span> Set Up Your Input Source</h2>
+        <p>Once the recording is loaded, you enter the general information that will appear on the report: the subject's details, the <strong>Operator</strong> and <strong>Evaluator</strong> names, and the assessment date. Which of these fields appear, and which are hidden from the finished report, is controlled by your privacy settings.</p>
+
+        <p>The 3D viewport initialises at this point. You can orbit, pan and zoom the model, and switch camera views — the default layout and camera angles come from your <a href="rula-report-settings.html">RULA report settings</a>.</p>
+
+        <h2 id="posture-tasks"><span class="step-num">5</span> Define Posture Tasks</h2>
+        <p>This is the heart of a RULA assessment. Use the trim handles on the playbar to narrow the recording to the period you want to assess, then create one or more <strong>posture tasks</strong> within it.</p>
+
+        <p>A posture task is a frame range representing a working posture you want scored. Each has a <strong>start frame</strong> and an <strong>end frame</strong>, and must be <strong>at least one second long</strong> — shorter windows are rejected, because muscle use cannot be judged from a fraction of a second.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type">GIF</span>
+          <div class="media-placeholder-title">Creating a posture task on the timeline</div>
+          <p class="media-placeholder-desc">Dragging the trim markers, then marking a posture task frame range — the equivalent of the lifting-task GIF in the NIOSH article.</p>
+        </div>
+
+        <h3>How many tasks should you create?</h3>
+        <p>There is no single answer, but the principle is straightforward: <em>one task per distinct posture</em>. A worker who spends a shift alternating between reaching into a bin and assembling at a bench is adopting two different postures, and they should be two tasks. Splitting them keeps each score interpretable — a single window spanning both would report only the worse of the two and tell you nothing about the other.</p>
+
+        <p>Conversely, if the worker repeats the same posture many times, you do not need a task for every repetition. One representative window is enough, and the repetition itself is captured by the muscle use point rather than by the number of tasks.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Tasks are scored independently</div>
+            <p>Each posture task gets its own RULA score. There is no equivalent of the NIOSH Composite Lifting Index that aggregates them, because RULA has no cumulative model — the method describes a posture, not a shift. If you want a single figure across several tasks representing the <em>same</em> repeated posture, enable <strong>Generate averaged overview</strong> in the settings.</p>
+          </div>
+        </div>
+
+        <h2 id="task-info"><span class="step-num">6</span> Provide Task Information</h2>
+        <p>For each posture task you supply the inputs that cannot be derived from motion data. There are four, and each maps onto a specific part of the RULA score:</p>
+
+        <table class="info-table">
+          <thead>
+            <tr><th>Field</th><th>What it affects</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Description</strong></td><td>Labels the task in the report. Not used in scoring.</td></tr>
+            <tr><td><strong>Load weight</strong></td><td>Sets the force/load points, from 0 to 3, added to both Table A and Table B.</td></tr>
+            <tr><td><strong>Arm supported / leaning</strong></td><td>Subtracts 1 from the upper arm score, floored at 1.</td></tr>
+            <tr><td><strong>Shock / rapid build-up of force</strong></td><td>Forces the maximum force/load points regardless of weight.</td></tr>
+          </tbody>
+        </table>
+
+        <p>The shock flag deserves a moment's thought. It describes <em>how</em> the force is applied rather than how much of it there is — hammering, snapping a component into place, absorbing a power tool's torque reaction. Because it overrides the weight bands and applies to both score groups, enabling it can move the final RULA score by two points. Set it when the work genuinely involves impact, and leave it off otherwise.</p>
+
+        <h3>Muscle use is automatic</h3>
+        <p>Unlike the load inputs, <strong>muscle use is computed for you</strong>. Motionprint Ergo checks each posture task for a mainly static posture or a repeated action, and it does so <em>separately</em> for the Wrist &amp; Arm group and for the Trunk, Neck and Legs group. A task can therefore attract the muscle use point in one group and not the other — which is realistic, since a worker can hold the trunk still while the arms repeat a cycle.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Why the one-second minimum matters</div>
+            <p>Muscle use is judged from how long a posture is held and how often an action repeats. A window shorter than a second gives no basis for either, which is why the app rejects it. If a posture genuinely only occurs for a fraction of a second, it is a transient rather than a working posture — and the peak-frame logic will catch it anyway within a longer task.</p>
+          </div>
+        </div>
+
+        <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
+        <p>Before the <strong>Process</strong> button becomes available, the app checks that everything it needs is present: an MVNX file, at least one posture task, and the required fields for every task. If anything is missing, you get a list of exactly which items to complete rather than a generic error.</p>
+
+        <p>Processing scores every frame of every posture task, for both sides of the body, then reduces each task to its peak frame. When it finishes you are taken to the results view.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type">Screenshot</span>
+          <div class="media-placeholder-title">Validation message listing missing fields</div>
+          <p class="media-placeholder-desc">The "Please fill in the following fields" dialog, showing how the app reports what is still incomplete.</p>
+        </div>
+
+        <p><strong>Next steps:</strong> to interpret what you are looking at, continue to <a href="reading-the-rula-report-results.html">Reading the RULA Report Results</a>. To change the defaults applied to every RULA assessment, see <a href="rula-report-settings.html">RULA Report Settings</a>.</p>
+
+        <div class="article-end">
+            <div class="related-label">Related articles</div>
+                                    <div class="related-grid">
+              <a href="understanding-rula-assessment.html" class="related-card">
+                <span class="related-card-cat">RULA</span>
+                <span class="related-card-title">Understanding the RULA Assessment</span>
+              </a>
+              <a href="reading-the-rula-report-results.html" class="related-card">
+                <span class="related-card-cat">RULA</span>
+                <span class="related-card-title">Reading the RULA Report Results</span>
+              </a>
+            </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" style="display:block;margin-bottom:10px;">
+          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#how">How it works</a></li>
+          <li><a href="../index.html#methods">Supported methods</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../index.html#contact">Request demo</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html#tutorials">Tutorials</a></li>
+          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="../resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var sections = ['overview','select-report','select-input-source','upload-recording','trim-lifting-tasks','task-information','processing'];
+  var tocIds   = ['toc-overview','toc-select-report','toc-select-source','toc-upload','toc-trim','toc-task-info','toc-process'];
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

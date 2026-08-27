@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RULA Report Settings — Motionprint Ergo Help</title>
+  <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
+  <meta name="description" content="Configure the defaults for all your RULA assessments: critical moment detection, averaged overview, viewport layout and export templates." />
+  <link rel="canonical" href="https://motion-print.com/articles/rula-report-settings.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Motionprint" />
+  <meta property="og:title" content="RULA Report Settings — Motionprint Ergo Help" />
+  <meta property="og:description" content="Configure the defaults for all your RULA assessments: critical moment detection, averaged overview, viewport layout and export templates." />
+  <meta property="og:url" content="https://motion-print.com/articles/rula-report-settings.html" />
+  <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RULA Report Settings — Motionprint Ergo Help" />
+  <meta name="twitter:description" content="Configure the defaults for all your RULA assessments: critical moment detection, averaged overview, viewport layout and export templates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #1D9E75; --red-light: #5DCAA5;
+      --dark: #0d0f12; --dark-2: #161a20;
+      --text: #111827; --muted: #6b7280; --muted-2: #9ca3af;
+      --border: #e5e7eb; --white: #ffffff; --bg: #f9fafb; --bg-2: #f3f4f6;
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(13,15,18,.10);
+      --shadow-sm: 0 4px 16px rgba(13,15,18,.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; cursor: default; }
+    a, button, [role="button"] { cursor: pointer; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,15,18,.94); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.07); height: 64px;
+      transform: translateZ(0); will-change: transform;
+    }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; flex: 1; justify-content: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.55); text-decoration: none; padding: 6px 12px; border-radius: 6px; transition: color .15s, background .15s; }
+    .nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,.9); background: rgba(255,255,255,.07); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-download { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 6px 14px; transition: background-color .15s; display: inline-flex; align-items: center; gap: 5px; }
+    .nav-download:hover { background: rgba(255,255,255,.14); }
+    .nav-demo { font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; background: var(--red); border-radius: 6px; padding: 7px 16px; transition: background-color .15s; }
+    .nav-demo:hover { background: var(--red-light); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.7); fill: none; stroke-width: 2; stroke-linecap: round; }
+    .mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--dark); z-index: 99; padding: 20px 28px; flex-direction: column; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 17px; font-weight: 500; color: rgba(255,255,255,.65); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+    .mobile-nav a:hover { color: #fff; }
+
+    /* ── ARTICLE HERO ── */
+    
+    /* ── BACK LINK ── */
+    .article-back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,.38);
+      text-decoration: none; margin-bottom: 28px;
+      transition: color .2s;
+    }
+    .article-back-link:hover { color: rgba(255,255,255,.72); }
+    .article-back-link svg { transition: transform .2s; flex-shrink: 0; }
+    .article-back-link:hover svg { transform: translateX(-3px); }
+    .article-hero { background: var(--dark); padding: 104px 0 52px; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(29,158,117,.08) 0%, transparent 55%); pointer-events: none; }
+    .article-hero-inner { position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.32); margin-bottom: 22px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.32); text-decoration: none; transition: color .15s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,.65); }
+    .breadcrumb-sep { color: rgba(255,255,255,.2); }
+    .article-eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #8b5cf6; }
+    .article-eyebrow::before { content: ''; width: 18px; height: 2px; background: #8b5cf6; border-radius: 2px; }
+    .article-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.08; letter-spacing: -.03em; color: #fff; margin-bottom: 20px; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .article-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.35); }
+    .article-meta-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── ARTICLE LAYOUT ── */
+    .article-outer { padding: 56px 0 88px; }
+    .article-layout { display: grid; grid-template-columns: 200px 1fr; gap: 60px; align-items: start; }
+
+    /* TOC sidebar */
+    .article-toc { position: sticky; top: 88px; }
+    .toc-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 12px; }
+    .toc-list { list-style: none; }
+    .toc-list li { border-left: 2px solid var(--border); }
+    .toc-list a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; padding: 6px 12px; transition: color .15s, border-color .15s, background .15s; }
+    .toc-list a:hover { color: var(--text); background: var(--bg); }
+    .toc-list li.active { border-left-color: var(--red); }
+    .toc-list li.active a { color: var(--red); background: rgba(29,158,117,.05); }
+    .toc-divider { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .toc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .toc-back:hover { color: var(--red); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Article body */
+    .article-body { min-width: 0; }
+    .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 2.5vw, 28px); line-height: 1.15; letter-spacing: -.025em; color: var(--text); margin-top: 60px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); scroll-margin-top: 88px; display: flex; align-items: center; }
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 32px; margin-bottom: 10px; scroll-margin-top: 88px; }
+    .article-body h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
+    .article-body p { font-size: 15px; color: var(--text); line-height: 1.72; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { margin-bottom: 16px; padding-left: 22px; }
+    .article-body li { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 6px; }
+    .article-body strong { font-weight: 700; color: var(--text); }
+    .article-body a { color: var(--red); text-decoration: none; border-bottom: 1px solid rgba(29,158,117,.3); transition: border-color .15s; }
+    .article-body a:hover { border-bottom-color: var(--red); }
+
+    /* Lead */
+    .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+    /* Step number */
+    .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; flex-shrink: 0; }
+
+    /* Tab badge */
+    .tab-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 4px 12px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg); color: var(--text); vertical-align: middle; margin-bottom: 4px; }
+    .tab-badge svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Callouts */
+    .callout { display: flex; gap: 14px; align-items: flex-start; border-left: 3px solid var(--red); background: rgba(29,158,117,.04); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 20px 0; }
+    .callout.callout-info { border-left-color: #3b82f6; background: rgba(59,130,246,.04); }
+    .callout-icon { width: 18px; height: 18px; stroke: var(--red); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+    .callout.callout-info .callout-icon { stroke: #3b82f6; }
+    .callout-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+    .callout.callout-info .callout-label { color: #3b82f6; }
+    .callout p { font-size: 14px; color: var(--text); margin-bottom: 0; line-height: 1.6; }
+
+    /* Info table */
+    .info-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; font-size: 14px; }
+    .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
+    .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    .info-table tr:last-child td { border-bottom: none; }
+    .info-table td:first-child { font-weight: 600; white-space: nowrap; width: 150px; }
+
+    /* Risk badge */
+    .risk-badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 2px 8px; }
+    .risk-low    { background: rgba(16,185,129,.12); color: #059669; }
+    .risk-medium { background: rgba(245,158,11,.12); color: #d97706; }
+    .risk-high   { background: rgba(29,158,117,.12);  color: #1D9E75; }
+    .risk-vhigh  { background: rgba(127,29,29,.12);  color: #991b1b; }
+
+    /* Zone table */
+    .zone-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+    .zone-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 6px 10px; border-bottom: 2px solid var(--border); }
+    .zone-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .zone-table tr:last-child td { border-bottom: none; }
+    .zone-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .zone-green  { background: #10b981; }
+    .zone-yellow { background: #f59e0b; }
+    .zone-red    { background: #ef4444; }
+    .zone-orange { background: #e3ad21; }
+
+    /* Article footer */
+    .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
+    .related-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 14px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-card { border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; border-bottom: none; display: flex; flex-direction: column; gap: 4px; transition: border-color .15s, box-shadow .15s; }
+    .related-card:hover { border-color: rgba(29,158,117,.4); box-shadow: var(--shadow-sm); }
+    .related-card-cat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+    .related-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,.06); padding: 56px 0 32px; }
+    .footer-top { display: grid; grid-template-columns: 240px 1fr 1fr 1fr; gap: 48px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,.28); line-height: 1.65; margin-top: 6px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,.82); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .15s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .article-toc { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-download { display: none; }
+      .nav-hamburger { display: block; }
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-top { display: none; }
+      .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* Figures */
+    .article-figure { margin: 20px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure.figure-full img { max-width: 100%; }
+    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted-2); margin-top: 8px; }
+    /* Media placeholders - swap for <figure class="article-figure"> once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html">
+      <img src="../Motionprint-full.png" alt="Motionprint" style="height:26px;display:block;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+      <li><a href="../index.html#custom">Custom Solutions</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../resources.html" class="active">Resources</a></li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../download.html" class="nav-download">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+      <a href="../index.html#contact" class="nav-demo">Request demo</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mnav">
+  <a href="../index.html#ergo">Motionprint Ergo</a>
+  <a href="../index.html#custom">Custom Solutions</a>
+  <a href="../index.html#pricing">Pricing</a>
+  <a href="../resources.html">Resources</a>
+  <a href="../about.html">About</a>
+</div>
+
+<!-- ── ARTICLE HERO ── -->
+<div class="article-hero">
+  <div class="container">
+    <div class="article-hero-inner">
+      <a href="../resources.html" class="article-back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to resources
+      </a>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../resources.html">Resources</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#knowledge">Knowledge Base</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../resources.html#kb-reports">Using Reports</a>
+        <span class="breadcrumb-sep">/</span>
+        <span style="color:rgba(255,255,255,.6)">RULA Report Settings</span>
+      </nav>
+
+      <h1>RULA Report Settings</h1>
+      <div class="article-meta">
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min read
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Last updated August 2026
+        </div>
+        <div class="article-meta-item">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          RULA
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="article-outer">
+  <div class="container">
+    <div class="article-layout">
+
+      <aside class="article-toc">
+        <div class="toc-label">In this article</div>
+        <ul class="toc-list">
+          <li id="toc-overview"><a href="#overview">1. Overview</a></li>
+          <li id="toc-analysis"><a href="#analysis-scoring">2. Analysis &amp; Scoring</a></li>
+          <li id="toc-findings"><a href="#findings">3. Findings defaults</a></li>
+          <li id="toc-viewport"><a href="#viewport">4. Viewport</a></li>
+          <li id="toc-export"><a href="#export">5. Export</a></li>
+        </ul>
+        <div class="toc-divider">
+          <a href="../resources.html#knowledge" class="toc-back">
+            <svg viewBox="0 0 16 16"><polyline points="10 3 5 8 10 13"/></svg>
+            Back to Knowledge Base
+          </a>
+        </div>
+      </aside>
+
+      <article class="article-body">
+
+        <p class="article-lead">The RULA settings page controls the defaults applied to every new RULA assessment — what gets detected automatically, how the 3D viewport opens, and how finished reports are named and exported. Setting these once saves repeating the same choices on every report. This article covers each option and, where it matters, when you should change it.</p>
+
+        <h2 id="overview"><span class="step-num">1</span> Overview</h2>
+        <p>RULA settings are grouped into three sections:</p>
+
+        <table class="info-table">
+          <thead>
+            <tr><th>Section</th><th>Covers</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Analysis &amp; Scoring</strong></td><td>Critical moment detection, the averaged overview, and the Findings tab defaults.</td></tr>
+            <tr><td><strong>Viewport</strong></td><td>The default 3D layout and camera views for the input and analysis screens.</td></tr>
+            <tr><td><strong>Export</strong></td><td>Filename templates, company branding, and what gets included in exports.</td></tr>
+          </tbody>
+        </table>
+
+        <p>Note there is no <em>Input &amp; Data</em> section here, unlike the NIOSH settings. RULA has no configurable reference mass or analysis mode — its scoring bands come from the published method and are not user-adjustable.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type">Screenshot</span>
+          <div class="media-placeholder-title">RULA settings page</div>
+          <p class="media-placeholder-desc">The full settings page showing the three section cards, matching the NIOSH and KIM-LHC settings screenshots.</p>
+        </div>
+
+        <h2 id="analysis-scoring"><span class="step-num">2</span> Analysis &amp; Scoring</h2>
+
+        <h3>Auto-generated critical moments</h3>
+        <p><em>Enabled by default.</em> Automatically detects and highlights critical moments in the critical moments overview, using two strategies: <strong>peak detection</strong>, which finds the single highest-scoring frame, and <strong>sustained risk detection</strong>, which finds the highest average score over a window of at least one second.</p>
+
+        <p>Leave this on unless you have a specific reason not to. The two detections answer different questions — one finds the worst instant, the other finds the worst sustained posture — and having both surfaces the distinction between a transient and a posture the worker holds. Turn it off only if you prefer to mark every moment by hand.</p>
+
+        <h3>Generate averaged overview</h3>
+        <p><em>Disabled by default.</em> Adds an averaged result across posture tasks to the score overview and the export files.</p>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Only average what is genuinely comparable</div>
+            <p>Use this <strong>only when all posture tasks represent the same repeated posture</strong>. Averaging across genuinely different postures produces a number that describes none of them — a task scoring 3 and a task scoring 7 do not average to a meaningful 5, and the 7 is the one that needs attention. When tasks differ, leave this off and read them separately.</p>
+          </div>
+        </div>
+
+        <p>It is off by default for that reason. The safe case for enabling it is a recording of one repetitive operation split into several cycles, where the average is a fair summary of a consistent posture.</p>
+
+        <h2 id="findings"><span class="step-num">3</span> Findings defaults</h2>
+        <p>Also within Analysis &amp; Scoring, these control the Findings tab on every new report. You can:</p>
+
+        <ul>
+          <li><strong>Enable or disable</strong> the Findings tab entirely.</li>
+          <li><strong>Rename the page</strong> from its default title of "Findings".</li>
+          <li><strong>Edit the sections</strong> — rename, reorder, add or remove them.</li>
+        </ul>
+
+        <p>The five default sections are <strong>Current Situation</strong>, <strong>Observations</strong>, <strong>Risk Assessment</strong>, <strong>Recommendations</strong> and <strong>Conclusion</strong>. If your organisation reports to a fixed template, setting the sections here once means every assessment starts in the right shape.</p>
+
+        <h2 id="viewport"><span class="step-num">4</span> Viewport</h2>
+        <p>Controls how the 3D viewer opens, set independently for two screens:</p>
+
+        <table class="info-table">
+          <thead>
+            <tr><th>Screen</th><th>What it controls</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Input viewport</strong></td><td>The layout and camera views when setting up the assessment and defining posture tasks.</td></tr>
+            <tr><td><strong>Analysis viewport</strong></td><td>The layout and camera views in the report's Analysis tab.</td></tr>
+          </tbody>
+        </table>
+
+        <p>Each has a layout — a single view or a split of several — and a set of camera angles, defaulting to a single perspective view.</p>
+
+        <p>These are worth setting for RULA specifically. Because the method scores posture rather than load, judging a result often means looking at the body from a consistent angle. A side view shows trunk and neck flexion directly; a front view shows abduction and side bending. Choosing a split layout with both means you are not orbiting the model on every assessment to see what the score is describing.</p>
+
+        <h2 id="export"><span class="step-num">5</span> Export</h2>
+
+        <h3>Filename templates</h3>
+        <p>Three templates control naming: the <strong>PDF filename</strong>, the <strong>Excel filename</strong>, and the <strong>project title</strong> used when saving to the Projects Database. Templates use placeholders filled in from the assessment, so exports are named consistently without manual typing — useful when a project generates dozens of reports that must stay sortable.</p>
+
+        <h3>Company branding</h3>
+        <p>Applies your organisation's logo and colours to exported reports. The branding itself is configured in the shared <a href="customization-branding.html">customization settings</a>; this toggle decides whether RULA reports use it.</p>
+
+        <h3>Export only average posture task</h3>
+        <p><em>Disabled by default.</em> Exports only the averaged result rather than every individual posture task.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">This one depends on another setting</div>
+            <p><strong>Generate averaged overview must be enabled first</strong> — without an average to export, the option has nothing to act on and stays unavailable. Enable the averaged overview, confirm the average is a fair summary of your tasks, and only then consider restricting the export to it.</p>
+          </div>
+        </div>
+
+        <p>The combination is worth using deliberately. It produces a short report describing one representative posture, which is right for a repetitive single-operation assessment and misleading for anything else. If in doubt, export everything — a reader can skip a task they do not need, but cannot recover one that was never included.</p>
+
+        <p><strong>Next steps:</strong> with your defaults set, see <a href="running-a-rula-assessment.html">Running a RULA Assessment</a> to work through an assessment, or <a href="reading-the-rula-report-results.html">Reading the RULA Report Results</a> to interpret one.</p>
+
+        <div class="article-end">
+            <div class="related-label">Related articles</div>
+                                    <div class="related-grid">
+              <a href="running-a-rula-assessment.html" class="related-card">
+                <span class="related-card-cat">RULA</span>
+                <span class="related-card-title">Running a RULA Assessment</span>
+              </a>
+              <a href="reading-the-rula-report-results.html" class="related-card">
+                <span class="related-card-cat">RULA</span>
+                <span class="related-card-title">Reading the RULA Report Results</span>
+              </a>
+            </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" style="display:block;margin-bottom:10px;">
+          <img src="../Motionprint-full.png" alt="Motionprint" style="height:22px;display:block;">
+        </a>
+        <p class="footer-tagline">From movement to improvement. Ergonomic risk assessment, automated.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#ergo">Motionprint Ergo</a></li>
+          <li><a href="../index.html#how">How it works</a></li>
+          <li><a href="../index.html#methods">Supported methods</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../download.html">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#custom">Custom Solutions</a></li>
+          <li><a href="../index.html#contact">Request demo</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="../resources.html#tutorials">Tutorials</a></li>
+          <li><a href="../resources.html#knowledge">Knowledge base</a></li>
+          <li><a href="../resources.html#validation">Research &amp; documentation</a></li>
+          <li><a href="../resources.html#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Motionprint. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var sections = ['overview','input-data','analysis-scoring','viewport','export'];
+  var tocIds   = ['toc-overview','toc-input','toc-analysis','toc-viewport','toc-export'];
+  function onScroll() {
+    var scrollY = window.scrollY + 100;
+    var active = 0;
+    sections.forEach(function(id, i) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) { active = i; }
+    });
+    tocIds.forEach(function(id, i) {
+      var li = document.getElementById(id);
+      if (li) { li.classList.toggle('active', i === active); }
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('mnav');
+    var btn = document.querySelector('.nav-hamburger');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
