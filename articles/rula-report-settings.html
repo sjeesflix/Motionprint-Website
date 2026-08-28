@@ -269,7 +269,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          4 min read
+          7 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -294,9 +294,8 @@
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-analysis"><a href="#analysis-scoring">2. Analysis &amp; Scoring</a></li>
-          <li id="toc-findings"><a href="#findings">3. Findings defaults</a></li>
-          <li id="toc-viewport"><a href="#viewport">4. Viewport</a></li>
-          <li id="toc-export"><a href="#export">5. Export</a></li>
+          <li id="toc-viewport"><a href="#viewport">3. Viewport</a></li>
+          <li id="toc-export"><a href="#export">4. Export</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -308,100 +307,181 @@
 
       <article class="article-body">
 
-        <p class="article-lead">The RULA settings page controls the defaults applied to every new RULA assessment — what gets detected automatically, how the 3D viewport opens, and how finished reports are named and exported. Setting these once saves repeating the same choices on every report. This article covers each option and, where it matters, when you should change it.</p>
+        <p class="article-lead">The RULA Report Settings page is your central configuration hub for all RULA assessments in Motionprint Ergo. Settings you choose here become persistent defaults applied to every new assessment — whether you need to control automatic detection, customize your report layout, or control export filenames. Changes take effect the next time you open or run an assessment.</p>
 
+        <!-- ── OVERVIEW ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
-        <p>RULA settings are grouped into three sections:</p>
 
-        <table class="info-table">
-          <thead>
-            <tr><th>Section</th><th>Covers</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Analysis &amp; Scoring</strong></td><td>Critical moment detection, the averaged overview, and the Findings tab defaults.</td></tr>
-            <tr><td><strong>Viewport</strong></td><td>The default 3D layout and camera views for the input and analysis screens.</td></tr>
-            <tr><td><strong>Export</strong></td><td>Filename templates, company branding, and what gets included in exports.</td></tr>
-          </tbody>
-        </table>
+        <p>The settings page is accessed via <strong>Sidebar → Settings → Reports tab</strong>. At the top of the first card a report-type dropdown lets you select which report methodology to configure — select <strong>RULA</strong> here. Switching with unsaved changes triggers a confirmation dialog. All configuration options are displayed as a stacked set of modular cards.</p>
 
-        <p>Note there is no <em>Input &amp; Data</em> section here, unlike the NIOSH settings. RULA has no configurable reference mass or analysis mode — its scoring bands come from the published method and are not user-adjustable.</p>
+        <p>At the bottom of the card stack, an action bar provides a single <strong>Save and apply</strong> button. Clicking it saves your changes to preferences; the page stays open and the button becomes disabled until you make further changes. There is no dedicated Discard button — if you navigate away with unsaved changes, a confirmation dialog appears asking whether you want to leave; choosing "Yes" discards the changes implicitly.</p>
+
+        <p>The settings are organized into three functional modules, each addressing a specific aspect of how RULA assessments are performed, displayed, and exported. Each module contains toggles, dropdown selectors, text inputs, or custom lists depending on the type of setting.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Settings are global defaults</div>
+            <p>All settings apply to every RULA assessment created after you save them. They are stored locally on your system and persist across sessions. If you need different settings for a specific assessment, you can adjust them within that assessment before running the analysis — the global defaults do not lock you in.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">No Input &amp; Data module</div>
+            <p>Unlike the lifting reports, RULA has no reference mass or analysis mode to configure — its scoring bands come from the published method and are not user-adjustable. Fields such as gender, age and weight are controlled globally in <strong>Sidebar → Settings → Privacy</strong> rather than per report type. See <a href="privacy-settings.html">Privacy Settings</a>.</p>
+          </div>
+        </div>
 
         <div class="media-placeholder">
           <span class="media-type">Screenshot</span>
           <div class="media-placeholder-title">RULA settings page</div>
-          <p class="media-placeholder-desc">The full settings page showing the three section cards, matching the NIOSH and KIM-LHC settings screenshots.</p>
+          <p class="media-placeholder-desc">The three stacked module cards — Analysis &amp; Scoring, Viewport and Export — with the report-type dropdown at the top and the Save and apply bar at the bottom.</p>
         </div>
 
+        <!-- ── MODULE 1 ── -->
         <h2 id="analysis-scoring"><span class="step-num">2</span> Analysis &amp; Scoring</h2>
 
-        <h3>Auto-generated critical moments</h3>
-        <p><em>Enabled by default.</em> Automatically detects and highlights critical moments in the critical moments overview, using two strategies: <strong>peak detection</strong>, which finds the single highest-scoring frame, and <strong>sustained risk detection</strong>, which finds the highest average score over a window of at least one second.</p>
+        <p>The Analysis &amp; Scoring module determines what is detected automatically, whether an averaged result is produced, and which optional tabs are available.</p>
 
-        <p>Leave this on unless you have a specific reason not to. The two detections answer different questions — one finds the worst instant, the other finds the worst sustained posture — and having both surfaces the distinction between a transient and a posture the worker holds. Turn it off only if you prefer to mark every moment by hand.</p>
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Auto-generated critical moments</td>
+              <td>On</td>
+              <td>Toggle automatic detection of the peak moment and sustained risk periods in the In-depth analysis tab. Uses peak detection (the highest-scoring frame) and sustained risk detection (the highest average score over at least 1 second). Disable if you prefer to mark critical moments manually.</td>
+            </tr>
+            <tr>
+              <td>Generate averaged overview</td>
+              <td>Off</td>
+              <td>Toggle to add an averaged result across posture tasks to the score overview and export files. Use only when all posture tasks represent the same repeated posture.</td>
+            </tr>
+            <tr>
+              <td>Findings enabled</td>
+              <td>On</td>
+              <td>Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
+            </tr>
+            <tr>
+              <td>Findings title</td>
+              <td>"Findings"</td>
+              <td>Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files.</td>
+            </tr>
+            <tr>
+              <td>Findings sections</td>
+              <td>5 defaults</td>
+              <td>Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h3>Generate averaged overview</h3>
-        <p><em>Disabled by default.</em> Adds an averaged result across posture tasks to the score overview and the export files.</p>
+        <h3>Averaged overview explained</h3>
+
+        <p><strong>Off</strong> is the recommended default for most assessments. Each posture task is scored independently and reported on its own, which is what you want whenever the tasks describe different working postures — a task scoring 3 and a task scoring 7 are two separate findings, and the 7 is the one that needs attention.</p>
+
+        <p><strong>On</strong> adds an <strong>Average (all tasks)</strong> entry to the posture task selector, showing a single averaged result alongside the individual ones. Choose this when your recording captures one repetitive operation split into several cycles, where the average is a fair summary of a consistent posture.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <div>
             <div class="callout-label">Only average what is genuinely comparable</div>
-            <p>Use this <strong>only when all posture tasks represent the same repeated posture</strong>. Averaging across genuinely different postures produces a number that describes none of them — a task scoring 3 and a task scoring 7 do not average to a meaningful 5, and the 7 is the one that needs attention. When tasks differ, leave this off and read them separately.</p>
+            <p>Averaging across genuinely different postures produces a number that describes none of them. Before enabling this, check that every posture task in the assessment represents the same repeated posture — otherwise leave it off and read the tasks separately.</p>
           </div>
         </div>
 
-        <p>It is off by default for that reason. The safe case for enabling it is a recording of one repetitive operation split into several cycles, where the average is a fair summary of a consistent posture.</p>
+        <h3>Findings tab configuration</h3>
 
-        <h2 id="findings"><span class="step-num">3</span> Findings defaults</h2>
-        <p>Also within Analysis &amp; Scoring, these control the Findings tab on every new report. You can:</p>
+        <p>The Findings tab in the report (if enabled) is a free-form documentation area. You can customize it from this module:</p>
 
         <ul>
-          <li><strong>Enable or disable</strong> the Findings tab entirely.</li>
-          <li><strong>Rename the page</strong> from its default title of "Findings".</li>
-          <li><strong>Edit the sections</strong> — rename, reorder, add or remove them.</li>
+          <li><strong>Enable/Disable</strong> — toggle whether the Findings tab appears in the report at all.</li>
+          <li><strong>Tab title</strong> — text input to rename the tab. Default is "Findings".</li>
+          <li><strong>Sections list</strong> — add, rename, reorder (drag-and-drop), or delete individual section blocks within the Findings tab. Each section has a title and a multi-line text area for notes.</li>
+          <li><strong>Reset to defaults</strong> — button to restore the standard section structure: Current Situation, Observations, Risk Assessment, Recommendations, and Conclusion.</li>
         </ul>
 
-        <p>The five default sections are <strong>Current Situation</strong>, <strong>Observations</strong>, <strong>Risk Assessment</strong>, <strong>Recommendations</strong> and <strong>Conclusion</strong>. If your organisation reports to a fixed template, setting the sections here once means every assessment starts in the right shape.</p>
+        <!-- ── MODULE 2 ── -->
+        <h2 id="viewport"><span class="step-num">3</span> Viewport</h2>
 
-        <h2 id="viewport"><span class="step-num">4</span> Viewport</h2>
-        <p>Controls how the 3D viewer opens, set independently for two screens:</p>
+        <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the In-depth analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply to both pages:</p>
 
         <table class="info-table">
-          <thead>
-            <tr><th>Screen</th><th>What it controls</th></tr>
-          </thead>
+          <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td><strong>Input viewport</strong></td><td>The layout and camera views when setting up the assessment and defining posture tasks.</td></tr>
-            <tr><td><strong>Analysis viewport</strong></td><td>The layout and camera views in the report's Analysis tab.</td></tr>
+            <tr>
+              <td>Layout</td>
+              <td>Single view, Two horizontal, Two vertical, Four views</td>
+              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal shows two viewports side by side. Two vertical stacks them. Four views shows a 2×2 grid.</td>
+            </tr>
+            <tr>
+              <td>Camera view</td>
+              <td>Perspective, Front, Back, Left, Right, Top</td>
+              <td>Sets the default camera angle. Perspective is a realistic angled view. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
+            </tr>
           </tbody>
         </table>
-
-        <p>Each has a layout — a single view or a split of several — and a set of camera angles, defaulting to a single perspective view.</p>
-
-        <p>These are worth setting for RULA specifically. Because the method scores posture rather than load, judging a result often means looking at the body from a consistent angle. A side view shows trunk and neck flexion directly; a front view shows abduction and side bending. Choosing a split layout with both means you are not orbiting the model on every assessment to see what the score is describing.</p>
-
-        <h2 id="export"><span class="step-num">5</span> Export</h2>
-
-        <h3>Filename templates</h3>
-        <p>Three templates control naming: the <strong>PDF filename</strong>, the <strong>Excel filename</strong>, and the <strong>project title</strong> used when saving to the Projects Database. Templates use placeholders filled in from the assessment, so exports are named consistently without manual typing — useful when a project generates dozens of reports that must stay sortable.</p>
-
-        <h3>Company branding</h3>
-        <p>Applies your organisation's logo and colours to exported reports. The branding itself is configured in the shared <a href="customization-branding.html">customization settings</a>; this toggle decides whether RULA reports use it.</p>
-
-        <h3>Export only average posture task</h3>
-        <p><em>Disabled by default.</em> Exports only the averaged result rather than every individual posture task.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">This one depends on another setting</div>
-            <p><strong>Generate averaged overview must be enabled first</strong> — without an average to export, the option has nothing to act on and stays unavailable. Enable the averaged overview, confirm the average is a fair summary of your tasks, and only then consider restricting the export to it.</p>
+            <div class="callout-label">Worth setting for RULA in particular</div>
+            <p>Because RULA scores posture rather than load, judging a result usually means looking at the body from a consistent angle. A side view shows trunk and neck flexion directly; a front view shows abduction and side bending. Choosing a two-view layout with both saves orbiting the model on every assessment. These are defaults only — you can still change the layout or orbit freely inside a report.</p>
           </div>
         </div>
 
-        <p>The combination is worth using deliberately. It produces a short report describing one representative posture, which is right for a repetitive single-operation assessment and misleading for anything else. If in doubt, export everything — a reader can skip a task they do not need, but cannot recover one that was never included.</p>
+        <!-- ── MODULE 3 ── -->
+        <h2 id="export"><span class="step-num">4</span> Export</h2>
 
-        <p><strong>Next steps:</strong> with your defaults set, see <a href="running-a-rula-assessment.html">Running a RULA Assessment</a> to work through an assessment, or <a href="reading-the-rula-report-results.html">Reading the RULA Report Results</a> to interpret one.</p>
+        <p>The Export module controls the naming conventions for PDF and Excel files when you export a completed RULA assessment report, and what those files contain.</p>
+
+        <h3>Filename templates</h3>
+
+        <p>PDF and Excel exports each have their own filename template, both defaulting to:</p>
+
+        <p style="font-family: monospace; background: var(--bg); padding: 12px; border-radius: 6px; margin: 12px 0;">{workstation}_{current_date}_{report_type}</p>
+
+        <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically. For a full overview of available variables, validation rules, fallback behaviour, and example templates, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
+
+        <p>A separate <strong>Project Save</strong> template controls the default title pre-filled when saving an assessment to the Projects Database. It uses the same variable syntax. See <a href="projects-database.html#saving">Projects Database — Project title naming template</a> for details.</p>
+
+        <h3>Export settings</h3>
+
+        <table class="info-table">
+          <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Use company branding</td>
+              <td>Off</td>
+              <td>Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
+            </tr>
+            <tr>
+              <td>Export only average posture task</td>
+              <td>Off</td>
+              <td>Toggle to export only the averaged result rather than every individual posture task. Requires <strong>Generate averaged overview</strong> to be enabled first — without an average to export, the option has nothing to act on and stays unavailable.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Company branding is configured in General Settings</div>
+            <p>The company name, logo, and brand colours are configured in <strong>Sidebar → Settings → General</strong>, not here. Set them there once and they apply to all branded exports across all report types. See <a href="customization-branding.html">Customization &amp; Branding</a> for a full walkthrough.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Exporting only the average hides the individual tasks</div>
+            <p>The combination produces a short report describing one representative posture, which is right for a repetitive single-operation assessment and misleading for anything else. If in doubt, export everything — a reader can skip a task they do not need, but cannot recover one that was never included.</p>
+          </div>
+        </div>
+
+        <h3>How settings affect reopened projects</h3>
+
+        <p>When you reopen a saved project from the Database, Motionprint Ergo may ask whether to use your <strong>current settings</strong> or the <strong>saved settings</strong> from when the project was originally created. Your choice determines whether the analysis recalculates with your latest configuration or preserves the original methodology. See <a href="projects-database.html">Projects Database</a> for details.</p>
 
         <div class="article-end">
             <div class="related-label">Related articles</div>
@@ -470,8 +550,8 @@
 </footer>
 
 <script>
-  var sections = ['overview','analysis-scoring','findings','viewport','export'];
-  var tocIds   = ['toc-overview','toc-analysis','toc-findings','toc-viewport','toc-export'];
+  var sections = ['overview','analysis-scoring','viewport','export'];
+  var tocIds   = ['toc-overview','toc-analysis','toc-viewport','toc-export'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
