@@ -313,7 +313,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          7 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -368,7 +368,7 @@
             <div class="workflow-step-num">1</div>
             <div class="workflow-step-body">
               <div class="workflow-step-title">Select an assessment method</div>
-              <p class="workflow-step-desc">Choose the ergonomic standard to apply — for example, the NIOSH Lifting Equation or KIM-LHC.</p>
+              <p class="workflow-step-desc">Choose the ergonomic standard to apply — for example, the NIOSH Lifting Equation, KIM-LHC, or RULA.</p>
             </div>
           </li>
           <li class="workflow-step">
@@ -382,7 +382,7 @@
             <div class="workflow-step-num">3</div>
             <div class="workflow-step-body">
               <div class="workflow-step-title">Configure the assessment</div>
-              <p class="workflow-step-desc">Trim the recording, define lifting tasks, and enter task parameters and metadata.</p>
+              <p class="workflow-step-desc">Trim the recording, define the tasks to analyse, and enter task parameters and metadata.</p>
             </div>
           </li>
           <li class="workflow-step">
@@ -426,7 +426,11 @@
         <!-- ── SECTION 2 ── -->
         <h2 id="assessment"><span class="step-num">2</span> Selecting an Assessment</h2>
         <p>The first screen in the workflow is the report selection page, where you choose which ergonomic assessment method to apply to your recording.</p>
-        <p>Currently available methods include the <strong>NIOSH Lifting Equation</strong> — which produces a Lifting Index (LI) and Composite Lifting Index (CLI) for multi-task scenarios — and <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying), which maps risk to a four-level colour-coded band. Additional methods are planned and will appear on this screen as they become available. See <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a> and <a href="understanding-kim-lhc-assessment.html">Understanding the KIM-LHC Assessment</a> for a full breakdown of how each method works.</p>
+        <p>Three methods are currently available. The <strong>NIOSH Lifting Equation</strong> produces a Lifting Index (LI) and a Composite Lifting Index (CLI) for multi-task scenarios. <strong>KIM-LHC</strong> (Key Indicator Method for Lifting, Holding, and Carrying) maps risk to a four-level colour-coded band. <strong>RULA</strong> (Rapid Upper Limb Assessment) scores upper-body posture, muscle use and force on a scale of 1 to 7, again across four action levels.</p>
+
+        <p>The choice depends on what you are assessing rather than on which method is newer: NIOSH and KIM-LHC evaluate manual handling, where the load and how often it is moved drive the risk, while RULA evaluates working posture itself and applies to non-lifting work such as assembly, machine operation or screen-based tasks. Additional methods are planned and will appear on this screen as they become available.</p>
+
+        <p>See <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a>, <a href="understanding-kim-lhc-assessment.html">Understanding the KIM-LHC Assessment</a> and <a href="understanding-rula-assessment.html">Understanding the RULA Assessment</a> for a full breakdown of how each method works.</p>
 
         <!-- ── SECTION 3 ── -->
         <h2 id="upload"><span class="step-num">3</span> Uploading Motion Data</h2>
@@ -439,18 +443,19 @@
 
         <!-- ── SECTION 4 ── -->
         <h2 id="configure"><span class="step-num">4</span> Configuring the Assessment</h2>
-        <p>The input configuration screen is where you prepare the recording for analysis. There are three things to set up here: trimming the recording, defining lifting tasks, and entering task parameters.</p>
+        <p>The input configuration screen is where you prepare the recording for analysis. There are three things to set up here: trimming the recording, defining the tasks to analyse, and entering task parameters.</p>
 
         <h3>Trimming the recording</h3>
         <p>Use the playbar to set the start and end of the task window you want to analyse. This focuses the assessment on the relevant movement and excludes idle time at the beginning or end of the recording.</p>
 
-        <h3>Defining lifting tasks</h3>
-        <p>A lifting task is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete lift or handling action. You can define one or more lifting tasks. The system analyses each moment separately and, if applicable, produces composite scores and/or averages across all of them when multiple lifting tasks are defined. This step is what gives the peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each user-defined lifting task.</p>
+        <h3>Defining tasks</h3>
+        <p>A task is a specific interval within the trimmed recording — defined by a start frame and an end frame — that represents one discrete action you want scored. The selected method determines what that action is and what the app calls it: NIOSH and KIM-LHC use <strong>lifting tasks</strong>, each covering one lift or handling action, while RULA uses <strong>posture tasks</strong>, each covering one working posture or repeated motion cycle.</p>
 
+        <p>You can define one or more tasks. The system analyses each separately and, where the method supports it, produces composite scores or averages across all of them. This step is also what gives peak detection its context: the pipeline identifies the highest-risk frame <em>within</em> each task you define.</p>
 
         <figure class="article-figure">
-          <img src="definingliftingtasks.gif" alt="Defining lifting tasks on the playbar" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
-          <figcaption>Defining lifting tasks — marking the start and end frame of each lifting movement on the playbar</figcaption>
+          <img src="definingliftingtasks.gif" alt="Defining tasks by marking start and end frames on the playbar" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
+          <figcaption>Defining tasks — marking the start and end frame of each task on the playbar (shown here for a lifting assessment)</figcaption>
         </figure>
 
         <h3>Task parameters and metadata</h3>
@@ -460,13 +465,13 @@
         <!-- ── SECTION 5 ── -->
         <h2 id="processing"><span class="step-num">5</span> Processing</h2>
         <p>Once you confirm your configuration and press Process, the backend begins analysing the recording. A progress overlay appears with real-time status messages and a percentage bar, updated as each stage of the pipeline completes.</p>
-        <p>The processing pipeline extracts biomechanical variables frame by frame — segment positions, orientations, joint angles, posture deviation metrics — and then computes the risk scores for each lifting task using the selected assessment method. All of this runs locally on your machine; no data is transmitted externally during processing.</p>
+        <p>The processing pipeline extracts biomechanical variables frame by frame — segment positions, orientations, joint angles, posture deviation metrics — and then computes the risk scores for each task using the selected assessment method. All of this runs locally on your machine; no data is transmitted externally during processing.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Processing time</div>
-            <p>Processing time depends on recording length and the number of lifting tasks defined. Most assessments complete within a few seconds. The progress bar gives you a live indication of how far through the analysis the backend is.</p>
+            <p>Processing time depends on recording length and the number of tasks defined. Most assessments complete within a few seconds. The progress bar gives you a live indication of how far through the analysis the backend is.</p>
           </div>
         </div>
 
@@ -475,11 +480,11 @@
         <p>After processing completes, results are displayed across three tabs. Each tab surfaces a different layer of the assessment output.</p>
 
         <h3>Tab 1 — Score Overview</h3>
-        <p>The Score Overview tab presents the results in the same structure as the manual version of the selected assessment method — the way an assessor would traditionally fill it in on paper or in a spreadsheet. Each variable, multiplier, and sub-score is laid out as it appears in the official method, so the output is immediately familiar and auditable. The headline risk score is mapped to a colour-coded risk band with clearly defined thresholds and recommended actions. When multiple lifting tasks are defined, composite or aggregated scores are shown alongside the per-task breakdown.</p>
+        <p>The Score Overview tab presents the results in the same structure as the manual version of the selected assessment method — the way an assessor would traditionally fill it in on paper or in a spreadsheet. Each variable, multiplier, and sub-score is laid out as it appears in the official method, so the output is immediately familiar and auditable. The headline risk score is mapped to a colour-coded risk band with clearly defined thresholds and recommended actions. When multiple tasks are defined, composite or aggregated scores are shown alongside the per-task breakdown, where the method supports it.</p>
 
         <h3>Tab 2 — In-Depth Analysis</h3>
         <p>The In-Depth Analysis tab is built around a <strong>3D avatar viewer</strong>. The avatar plays back the worker's exact posture frame-by-frame, animated from the motion capture data. A risk score graph is displayed alongside the avatar and stays in sync — so as the avatar moves through the recording, the graph highlights where in the task the risk was highest.</p>
-        <p>Playback controls let you play, pause, adjust speed, and jump to any frame manually. You can also switch the viewport between the different lifting tasks you defined, inspecting each one independently. This makes it straightforward to explain a specific finding — such as an asymmetric peak load — to a worker or a client in concrete visual terms.</p>
+        <p>Playback controls let you play, pause, adjust speed, and jump to any frame manually. You can also switch the viewport between the different tasks you defined, inspecting each one independently. This makes it straightforward to explain a specific finding — such as an asymmetric peak load or an awkward reach — to a worker or a client in concrete visual terms.</p>
 
         <figure class="article-figure">
           <img src="indepthanalysistabniosh.gif" alt="In-Depth Analysis tab — 3D avatar playback with risk score graph" />
