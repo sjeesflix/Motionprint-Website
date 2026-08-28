@@ -258,7 +258,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          8 min read
+          9 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -539,7 +539,16 @@
 
         <h3>How settings affect reopened projects</h3>
 
-        <p>When you reopen a saved project from the Database, Motionprint Ergo may ask whether to use your <strong>current settings</strong> or the <strong>saved settings</strong> from when the project was originally created. Your choice determines whether the analysis recalculates with your latest configuration or preserves the original methodology. See <a href="projects-database.html">Projects Database</a> for details.</p>
+        <p>Reopening a saved project does not apply your current settings to it. The project opens exactly as it was saved, and is shown and exported that way.</p>
+
+        <p>If your global settings have changed since the project was saved, a banner appears at the top of the report to say so. Expanding <strong>Show details</strong> lists what changed, split into two groups:</p>
+
+        <ul>
+          <li><strong>Can be applied to this project</strong> — presentation and display changes, such as the Findings configuration and its sections, company branding, and which privacy fields are shown. These only affect how the finished report is presented, so the project can take them on without recalculating anything. To apply them, press <strong>Save</strong> and choose <strong>Apply changes</strong> — then <strong>Save</strong> to update this project, or <strong>Save as New</strong> to leave the original as saved and store a second copy.</li>
+          <li><strong>Fixed for this report</strong> — changes that affect how scores are calculated. A finished assessment is a record of how it was computed, so it keeps the settings it was created with and its scores stay comparable over time. These are listed for information only; to use the new settings, create a new report.</li>
+        </ul>
+
+        <p>Your company name, logo and brand colour are the exception to all of this: they always follow your current settings rather than the saved ones, so rebranding does not require re-saving old projects. See <a href="projects-database.html">Projects Database</a> for the full overview.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
