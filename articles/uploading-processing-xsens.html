@@ -608,6 +608,9 @@
         const el = document.getElementById(s.id);
         if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
       }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1].toc;
+      }
       sections.forEach(s => {
         document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
       });

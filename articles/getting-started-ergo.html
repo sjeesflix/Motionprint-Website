@@ -180,7 +180,7 @@
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
     /* Method cards */
-    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 20px 0; }
     .method-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
     .method-card-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); background: rgba(29,158,117,.08); border-radius: 4px; padding: 3px 8px; margin-bottom: 10px; }
     .method-card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
@@ -526,8 +526,8 @@
           <div class="phase-item">
             <div class="phase-num">3</div>
             <div class="phase-body">
-              <div class="phase-title">Configure input — trim, lifting tasks, and parameters</div>
-              <p class="phase-desc">Trim the recording, define lifting tasks, enter task parameters, and add metadata.</p>
+              <div class="phase-title">Configure input — trim, tasks, and parameters</div>
+              <p class="phase-desc">Trim the recording, define the tasks to analyse, enter task parameters, and add metadata.</p>
             </div>
           </div>
           <div class="phase-item">
@@ -575,6 +575,10 @@
             <div class="method-card-title">NIOSH Lifting Equation</div>
             <p class="method-card-desc">Revised NIOSH Lifting Equation. Use this method when assessing lifting tasks, especially those involving repetition or multi-task scenarios.</p>
           </div>
+          <div class="method-card">
+            <div class="method-card-title">RULA</div>
+            <p class="method-card-desc">Rapid Upper Limb Assessment. Use this method when assessing working posture rather than load handling — assembly, machine operation, or screen-based work.</p>
+          </div>
         </div>
 
         <p>Click the tile for the method you want to use to proceed.</p>
@@ -606,29 +610,29 @@
         </ul>
 
         <!-- Phase 3 -->
-        <h3>Phase 3 — Configure Input: Trim, Moments, and Task Parameters</h3>
+        <h3>Phase 3 — Configure Input: Trim, Tasks, and Task Parameters</h3>
         <p>The input configuration page has four sub-sections. Work through each one before clicking Process.</p>
 
         <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3a — Trim the Recording</h3>
-        <p>A playbar at the top of the input page lets you preview the motion data. Two trim markers define the active start and end of the analysis window. Drag the markers so the trimmed range begins exactly at the start of the first cycle and ends exactly at the end of the last cycle — this can be a single lifting task or multiple ones if you plan to define more than one. Trimming happens here in the UI — there are no separate preprocessing scripts.</p>
+        <p>A playbar at the top of the input page lets you preview the motion data. Two trim markers define the active start and end of the analysis window. Drag the markers so the trimmed range begins exactly at the start of the first cycle and ends exactly at the end of the last cycle — this can be a single task or several if you plan to define more than one. Trimming happens here in the UI — there are no separate preprocessing scripts.</p>
 
         <figure style="margin:24px 0;">
-          <img src="trimmarkersplayline.gif" alt="Playbar with draggable trim markers on the input configuration page" style="width:100%;border-radius:10px;border:1px solid var(--border);display:block;" />
+          <img src="trimmarkersplayline.gif" alt="Playbar with draggable trim markers on the input configuration page" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />
           <figcaption style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;">Trim markers on the playbar — align to the start and end of the cycle</figcaption>
         </figure>
 
-        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3b — Define Lifting Tasks</h3>
-        <p>Within the trimmed range, mark one or more <strong>lifting tasks</strong> — time windows corresponding to individual lifts or load-handling cycles. Each task is defined by a start frame and an end frame, set via the playbar. The backend finds the peak risk frame within each user-defined task.</p>
-        <p>For multi-task assessments, you can define multiple lifting tasks. The app calculates the combined result across all defined tasks.</p>
+        <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3b — Define Tasks</h3>
+        <p>Within the trimmed range, mark one or more tasks — time windows set by a start and end frame on the playbar. What a task represents depends on the method you chose: NIOSH and KIM-LHC use <strong>lifting tasks</strong>, each covering one lift or load-handling cycle, while RULA uses <strong>posture tasks</strong>, each covering one working posture or repeated motion cycle. The backend finds the peak risk frame within each task you define.</p>
+        <p>You can define more than one. Where the method supports it, the app also calculates a combined result across all defined tasks.</p>
 
         <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3c — Enter Task Parameters</h3>
         <p>The task parameters section collects the values required by your chosen assessment method. Fields that you pre-configured in Settings will be filled in automatically. Common parameters include:</p>
         <ul>
-          <li>Load weight (per moment, or shared across all moments)</li>
+          <li>Load weight (per task, or shared across all tasks)</li>
           <li>Daily working hours and task frequency</li>
           <li>Method-specific factors</li>
         </ul>
-        <p>NIOSH-specific parameters include reference mass, one-hand lifting toggle, two-person lift toggle, and extended duration mode. KIM-LHC-specific parameters include spatial conditions, adverse conditions, work organisation, force transfer quality, and clothing impairment.</p>
+        <p>NIOSH-specific parameters include reference mass, one-hand lifting toggle, two-person lift toggle, and extended duration mode. KIM-LHC-specific parameters include spatial conditions, adverse conditions, work organisation, force transfer quality, and clothing impairment. RULA-specific parameters include the load weight handled in each posture task and a shock flag for forces applied with impact.</p>
 
         <h3 style="font-size:14px; font-weight:700; color:var(--muted); margin-top:20px;">3d — Add Metadata</h3>
         <p>Enter the operator name, evaluator name, workplace or job title, and assessment date. These values appear on the report cover page and header. Fields can be hidden in Settings if they are not relevant to your workflow.</p>
@@ -667,7 +671,7 @@
               <div class="tab-card-name">In-Depth Analysis</div>
             </div>
             <div class="tab-card-body">
-              <p>Contains the <strong>3D avatar viewer</strong> — an interactive, animated visualisation of the motion capture data across the assessment period. Frame-by-frame scores are displayed alongside the viewer, and playback speed can be adjusted. Selecting a moment in the score panel updates the viewer to that moment's frame range.</p>
+              <p>Contains the <strong>3D avatar viewer</strong> — an interactive, animated visualisation of the motion capture data across the assessment period. Frame-by-frame scores are displayed alongside the viewer, and playback speed can be adjusted. Selecting a task in the score panel updates the viewer to that task's frame range.</p>
             </div>
           </div>
           <div class="tab-card">
@@ -689,12 +693,12 @@
           <div class="export-card">
             <div class="export-card-icon">📄</div>
             <div class="export-card-title">PDF (.pdf)</div>
-            <p class="export-card-desc">A formatted assessment report including the score overview, critical moment snapshots, per-moment breakdown, and (if enabled) findings and company branding. Use this for sharing with stakeholders or archiving.</p>
+            <p class="export-card-desc">A formatted assessment report including the score overview, critical moment snapshots, per-task breakdown, and (if enabled) findings and company branding. Use this for sharing with stakeholders or archiving.</p>
           </div>
           <div class="export-card">
             <div class="export-card-icon">📊</div>
             <div class="export-card-title">Excel (.xlsx)</div>
-            <p class="export-card-desc">A structured workbook with data sheets for scores, per-frame data, moment definitions, and key parameters. Use this for further data analysis or integration with your own systems.</p>
+            <p class="export-card-desc">A structured workbook with data sheets for scores, per-frame data, task definitions, and key parameters. Use this for further data analysis or integration with your own systems.</p>
           </div>
         </div>
 
@@ -719,9 +723,7 @@
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
-          <li><strong>Save your analysis to the Database</strong> — new in v1.0.2, after generating results you can click <strong>Save Project</strong> to store the full assessment in your project library for future reference and modification. See <a href="projects-database.html">Projects Database</a> for details.</li>
-          <li><strong>Visit the <a href="../resources.html">Resources page</a></strong> for deep-dive articles on assessment methods, the 3D viewer, report customisation, and licence management</li>
-          <li><strong>Contact support or book a demo</strong> via the Resources page if you have questions about the app or your licence.</li>
+          <li><strong>Save your analysis to the Database</strong> — after generating results you can click <strong>Save Project</strong> to store the full assessment in your project library for future reference and modification. See <a href="projects-database.html">Projects Database</a> for details.</li>
         </ul>
 
         <!-- ── ARTICLE END ── -->
@@ -807,6 +809,9 @@
       for (const s of sections) {
         const el = document.getElementById(s.id);
         if (el && el.getBoundingClientRect().top <= 100) current = s.toc;
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1].toc;
       }
       sections.forEach(s => {
         document.getElementById(s.toc)?.classList.toggle('active', s.toc === current);
