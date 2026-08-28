@@ -144,15 +144,19 @@
     .threshold-table tr:last-child td { border-bottom: none; }
     .threshold-table code { font-family: var(--font-body); font-size: 13px; font-weight: 600; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; color: var(--text); }
 
-    .matrix-wrap { margin: 22px 0 8px; overflow-x: auto; }
-    .score-matrix { border-collapse: collapse; margin: 0 auto; font-size: 13px; }
-    .score-matrix th { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--muted-2); background: var(--bg); border: 1px solid var(--border); padding: 6px 9px; text-align: center; line-height: 1.3; }
+    .matrix-wrap { display: flex; align-items: center; justify-content: center; gap: 28px; margin: 22px 0 0; flex-wrap: wrap; }
+    .matrix-shell { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--white); flex-shrink: 0; }
+    .score-matrix { border-collapse: collapse; font-size: 13px; }
+    .score-matrix th, .score-matrix td { border: 0; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .score-matrix tr > *:last-child { border-right: 0; }
+    .score-matrix tbody tr:last-child > * { border-bottom: 0; }
+    .score-matrix th { font-family: var(--font-body); font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--muted-2); background: var(--bg); padding: 6px 9px; text-align: center; line-height: 1.3; }
     .score-matrix th.matrix-axis { text-transform: uppercase; letter-spacing: .08em; }
-    .score-matrix td { border: 1px solid var(--border); text-align: center; padding: 7px 0; min-width: 38px; font-weight: 600; color: #1f2937; font-variant-numeric: tabular-nums; }
-    .matrix-key { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; font-size: 12px; color: var(--muted); margin: 10px 0 20px; }
-    .matrix-key span { display: flex; align-items: center; gap: 6px; }
+    .score-matrix td { text-align: center; padding: 7px 0; min-width: 38px; font-weight: 600; color: #1f2937; font-variant-numeric: tabular-nums; }
+    .matrix-key { display: flex; flex-direction: column; gap: 9px; font-size: 12px; color: var(--muted); }
+    .matrix-key span { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
     .matrix-key i { width: 11px; height: 11px; border-radius: 3px; display: block; flex-shrink: 0; }
-    .matrix-caption { font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 20px; }
+    .matrix-caption { font-size: 11.5px; font-style: italic; color: var(--muted-2); text-align: center; margin: 12px 0 22px; line-height: 1.5; }
 
     /* Color dot */
     .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
@@ -235,6 +239,8 @@
       .nav-download { display: none; }
       .nav-hamburger { display: block; }
       .related-grid { grid-template-columns: 1fr; }
+      .matrix-wrap { gap: 18px; }
+      .matrix-key { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px 16px; }
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -568,28 +574,30 @@
         </div>
 
         <div class="matrix-wrap">
-          <table class="score-matrix">
-            <thead>
-              <tr><th></th><th colspan="7" class="matrix-axis">Table B total &mdash; neck, trunk and legs</th></tr>
-              <tr><th class="matrix-axis">Table A<br>total</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7+</th></tr>
-            </thead>
-            <tbody>
-              <tr><th>1</th><td style="background:#34D3992e;">1</td><td style="background:#34D3992e;">2</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td></tr>
-              <tr><th>2</th><td style="background:#34D3992e;">2</td><td style="background:#34D3992e;">2</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td></tr>
-              <tr><th>3</th><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td></tr>
-              <tr><th>4</th><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td></tr>
-              <tr><th>5</th><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
-              <tr><th>6</th><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
-              <tr><th>7</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
-              <tr><th>8+</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="matrix-key">
-          <span><i style="background:#34D399;"></i>1&ndash;2 negligible risk</span>
-          <span><i style="background:#FBBF24;"></i>3&ndash;4 low risk</span>
-          <span><i style="background:#FB923C;"></i>5&ndash;6 medium risk</span>
-          <span><i style="background:#F87171;"></i>7 very high risk</span>
+          <div class="matrix-shell">
+            <table class="score-matrix">
+              <thead>
+                <tr><th></th><th colspan="7" class="matrix-axis">Table B total &mdash; neck, trunk and legs</th></tr>
+                <tr><th class="matrix-axis">Table A<br>total</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7+</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>1</th><td style="background:#34D3992e;">1</td><td style="background:#34D3992e;">2</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td></tr>
+                <tr><th>2</th><td style="background:#34D3992e;">2</td><td style="background:#34D3992e;">2</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td></tr>
+                <tr><th>3</th><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td></tr>
+                <tr><th>4</th><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">3</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td></tr>
+                <tr><th>5</th><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
+                <tr><th>6</th><td style="background:#FBBF242e;">4</td><td style="background:#FBBF242e;">4</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
+                <tr><th>7</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
+                <tr><th>8+</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="matrix-key">
+            <span><i style="background:#34D399;"></i>1&ndash;2 negligible risk</span>
+            <span><i style="background:#FBBF24;"></i>3&ndash;4 low risk</span>
+            <span><i style="background:#FB923C;"></i>5&ndash;6 medium risk</span>
+            <span><i style="background:#F87171;"></i>7 very high risk</span>
+          </div>
         </div>
         <p class="matrix-caption">Table C, shaded with the same risk-band colours the app uses on the score overview.</p>
 
