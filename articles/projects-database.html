@@ -240,7 +240,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          5 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -299,7 +299,7 @@
         <p>After running an assessment and generating results, you'll find a <strong>Save Project</strong> button on the results page, next to the Edit and Export buttons. Clicking it opens a save window where you can set a few things before confirming:</p>
         <ul>
           <li><strong>Project title</strong> — a default name is applied based on your naming template in Settings, but you can adjust it here</li>
-          <li><strong>Status</strong> — choose between Draft, In Progress, or Completed to reflect where the project stands</li>
+          <li><strong>Status</strong> — choose between Draft, In progress, or Completed to reflect where the project stands</li>
           <li><strong>Tags</strong> — add one or more tags to make the project easier to find later</li>
         </ul>
 
@@ -402,7 +402,7 @@
         <p>Each project in the Projects Database carries a status that reflects where it is in your workflow. You set it in the save window when first saving, and can update it at any time through the project detail panel.</p>
         <ul>
           <li><strong>Draft</strong> — initial state; the assessment has been saved but is not yet finalized</li>
-          <li><strong>In Progress</strong> — actively being worked on; used to signal ongoing review or editing</li>
+          <li><strong>In progress</strong> — actively being worked on; used to signal ongoing review or editing</li>
           <li><strong>Completed</strong> — marked as final; ready for reporting or PDF/Excel export</li>
         </ul>
 
@@ -411,29 +411,47 @@
         <!-- ── SETTINGS & REOPENED PROJECTS ── -->
         <h2 id="settings"><span class="step-num">6</span> Settings and reopened projects</h2>
 
-        <p>This section is important if you open a saved project and then save it again with different settings active.</p>
+        <p>A saved project renders from its own snapshot of your settings. Changing a Report Setting afterwards never alters a finished report — it is still shown and exported exactly as it was saved. Two things surface that difference when it exists: a banner when you open the project, and a dialog if you save it again.</p>
 
-        <h3>When a settings dialog appears</h3>
+        <h3>The banner when you open a project</h3>
 
-        <p>Opening a project simply displays it as it was saved — no dialog appears on open. The settings dialog only appears when you click <strong>Save Project</strong> again on a reopened project, and only if certain settings have changed since the project was originally created. When that happens, the app asks which settings to record with the updated save.</p>
+        <p>Opening a project displays it as it was saved; no dialog interrupts you. If your current settings differ from the ones the project was saved with, an informational banner appears above the report telling you so. It performs no action of its own and can be dismissed with the close control in its corner.</p>
 
-        <h3>Why this matters</h3>
-
-        <p>Certain settings directly affect how an analysis is calculated and how risk is classified. The dialog ensures you are always in explicit control of which configuration is recorded with the saved project — the original or your current one.</p>
+        <p>Clicking <strong>Show details</strong> expands the banner into up to two groups, listing the exact settings that differ:</p>
 
         <ul>
-          <li>Choose <strong>Keep Original Settings</strong> to preserve the original configuration exactly — useful when maintaining historical accuracy, supporting an audit trail, or keeping findings consistent with previously exported reports.</li>
-          <li>Choose <strong>Use Current Settings</strong> to record the analysis with your latest configuration — useful when you want to apply updated standards or recalculate under a new methodology.</li>
+          <li><strong>Can be applied to this project</strong> — presentation settings, which change how the report looks rather than what it calculates. To adopt them, press Save and choose <strong>Apply changes</strong>.</li>
+          <li><strong>Fixed for this report</strong> — analysis settings, which change how scores are calculated. The report keeps the settings it was created with so its scores stay comparable over time. To assess under the new settings, create a new report.</li>
         </ul>
 
-        <p>The dialog lists the specific settings that have changed between the original and current configuration, so you can make an informed choice.</p>
+        <h3>The dialog when you save again</h3>
 
-        <figure class="article-figure article-figure-sm">
-          <img src="../databasesettings.jpg" alt="The settings dialog showing a list of changed settings with Use Current Settings and Keep Original Settings buttons" />
-          <figcaption>The settings dialog — lists which settings have changed and lets you choose which version to save with the project.</figcaption>
-        </figure>
+        <p>Pressing <strong>Save Project</strong> on a reopened project opens a <em>Settings have changed</em> dialog, but only when something actually differs. It shows the same two groups the banner does, and only the presentation group is a choice: <strong>Keep original</strong> or <strong>Use current</strong>. The analysis group is listed for information only — there is nothing to decide there, because those settings cannot be applied retrospectively.</p>
 
-        <!-- ── ARTICLE FOOTER ── -->
+        <p>Nothing is pre-selected. You confirm with <strong>Keep as saved</strong> or <strong>Apply changes</strong>, or back out with <strong>Cancel</strong>.</p>
+
+        <h3>Which settings fall into which group</h3>
+
+        <table class="info-table">
+          <thead><tr><th>Group</th><th>Settings</th><th>Can be applied to a saved project?</th></tr></thead>
+          <tbody>
+            <tr><td>Presentation</td><td>Company name, company logo, primary colour, findings title, findings sections added, renamed or removed, and privacy field visibility</td><td>Yes</td></tr>
+            <tr><td>Analysis</td><td>NIOSH analysis mode (peak or origin/destination) and KIM-LHC load rating thresholds</td><td>No — create a new report</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">RULA has no analysis settings</div>
+            <p>A RULA score is driven entirely by the motion capture data, the posture tasks you marked, and the method's own published thresholds. Everything RULA exposes in its report settings — automatic critical moments, the averaged overview, export-only-average — changes what is displayed, not what is calculated. So on a RULA project any changed setting can be applied.</p>
+          </div>
+        </div>
+
+        <h3>Save or Save as New</h3>
+
+        <p>When a project has been opened from the database, the save window offers both. <strong>Save</strong> updates the existing project in place. <strong>Save as New</strong> leaves the original untouched and stores a second copy — useful when you want to adopt new branding or findings sections but keep the version you already shared.</p>
+
         <div class="article-end">
           <div>
             <p>The database keeps a complete history of your assessments — save your next analysis and explore the filters to get a feel for it. When you're ready to export, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a> for full details on export formats and filename templates.</p>
