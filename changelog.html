@@ -166,7 +166,7 @@
     .cl-badge-initial { background: rgba(29,158,117,.1); color: var(--red); }
     .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; }
     /* For future use: */
-    /* .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; } */
+    .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; }
     /* .cl-badge-major  { background: rgba(139,92,246,.1); color: #7c3aed; } */
 
     /* ── CHANGE TYPE TAGS ── (for future versions) */
@@ -310,7 +310,8 @@
             Example:
             <li><a href="#v1-1-0" class="cl-version-link">v1.1.0</a></li>
           -->
-          <li><a href="#v1-0-1" class="cl-version-link current">v1.0.1</a></li>
+          <li><a href="#v1-0-2" class="cl-version-link current">v1.0.2</a></li>
+          <li><a href="#v1-0-1" class="cl-version-link">v1.0.1</a></li>
           <li><a href="#v1-0-0" class="cl-version-link">v1.0.0</a></li>
         </ul>
       </aside>
@@ -372,6 +373,70 @@
         -->
 
         <!-- ── v1.0.1 — DATABASE & QUALITY UPDATE ── -->
+        <!-- ── v1.0.2 — RULA ── -->
+        <article class="cl-entry" id="v1-0-2">
+          <div class="cl-entry-header">
+            <div class="cl-entry-meta">
+              <span class="cl-version-num">v1.0.2</span>
+              <span class="cl-entry-date">September 2026</span>
+            </div>
+            <span class="cl-badge cl-badge-minor">New assessment method</span>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">RULA assessment method</h3>
+            <ul class="cl-list">
+              <li><strong>RULA added as a third method</strong> — Rapid Upper Limb Assessment joins NIOSH and KIM-LHC on the method selection screen. Where those two evaluate manual handling, RULA scores working posture itself, so it applies to assembly, machine operation, and screen-based work.</li>
+              <li><strong>Scored from the motion capture data</strong> — Upper arm, lower arm, wrist, wrist twist, neck, trunk and legs are derived per frame from the recording and combined through the method's Table A, Table B and Table C lookups into a score from 1 to 7.</li>
+              <li><strong>Posture tasks</strong> — RULA uses posture tasks rather than lifting tasks. Each marks one working posture or repeated motion cycle, and the highest-risk frame is found within each one.</li>
+              <li><strong>Automatic muscle use detection</strong> — Static posture and repetition are detected from the recording and the trimmed duration, producing separate muscle use scores for the arm/wrist and neck/trunk/leg groups.</li>
+              <li><strong>Leg stability from foot contact and centre of mass</strong> — The legs score is derived by measuring how evenly the body's weight sits over the feet that are actually on the ground.</li>
+              <li><strong>Full report output</strong> — Score overview, in-depth analysis with the 3D viewer and per-frame graph, findings, and PDF and Excel export, matching the structure of the existing methods.</li>
+              <li><strong>RULA report settings</strong> — A dedicated settings page for critical moment detection, the averaged overview, viewport layout, and export templates.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Task naming</h3>
+            <ul class="cl-list">
+              <li><strong>Describe each task</strong> — Tasks can be given a description when you define them, and your own name is used wherever that task appears: the results-page selector, the PDF contents and page headings, and the Excel worksheet tabs. "Lifting from pallet" reads better than "Lifting task 3".</li>
+              <li><strong>Method-appropriate wording</strong> — The interface says posture task for RULA and lifting task for NIOSH and KIM-LHC, consistently across screens and exports.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Settings awareness on saved projects</h3>
+            <ul class="cl-list">
+              <li><strong>Settings changed banner</strong> — Opening a saved project whose settings no longer match your current ones now shows an informational banner, instead of leaving the mismatch to surface later at save time. The report is still shown and exported exactly as it was saved.</li>
+              <li><strong>Presentation and analysis separated</strong> — The save dialog now groups changed settings into those that can be applied to an existing report and those that are fixed for it. Analysis settings stay with the report so its scores remain comparable over time.</li>
+              <li><strong>Save as New</strong> — When saving a reopened project you can store a second copy instead of overwriting, keeping the version you already shared intact.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Reporting &amp; export consistency</h3>
+            <ul class="cl-list">
+              <li><strong>Shared report styling</strong> — PDF and Excel output now draw on common styling and workbook modules across all three methods, so tables, headings and colour bands stay consistent between reports.</li>
+              <li><strong>Thresholds served from the backend</strong> — Risk thresholds used for colouring and zone classification are read from the backend configuration rather than duplicated in the interface, removing drift between what is calculated and what is displayed.</li>
+              <li><strong>NIOSH and KIM-LHC refinements</strong> — Continued presentation and export improvements to both existing methods alongside the RULA work.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Licensing &amp; workflow polish</h3>
+            <ul class="cl-list">
+              <li><strong>Licence settings rework</strong> — A clearer licence settings page with improved activation and device status presentation.</li>
+              <li><strong>Project loading feedback</strong> — An explicit loading state when opening a project from the database, so large assessments no longer appear to hang.</li>
+              <li><strong>Interface polish</strong> — Hover tooltips for inline help, plus refinements to shared inputs including the number stepper, date selector, and gender selector.</li>
+            </ul>
+          </div>
+
+          <div class="cl-future-note">
+            <p>v1.0.2 adds RULA as a full third assessment method and brings the surrounding save, settings, and export behaviour into line across all three.</p>
+          </div>
+        </article>
+        <!-- ── END v1.0.2 ── -->
+
         <article class="cl-entry" id="v1-0-1">
           <div class="cl-entry-header">
             <div class="cl-entry-meta">
@@ -544,6 +609,32 @@
 </footer>
 
 <script>
+  // Highlight the version currently in view. The `current` class used to be
+  // hardcoded on one link, so it never moved when you clicked another version.
+  (function () {
+    var links = Array.prototype.slice.call(
+      document.querySelectorAll('.cl-version-link'));
+    var entries = links.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    });
+    function onScroll() {
+      var current = 0;
+      for (var i = 0; i < entries.length; i++) {
+        var el = entries[i];
+        if (el && el.getBoundingClientRect().top + window.scrollY <= window.scrollY + 120) {
+          current = i;
+        }
+      }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = entries.length - 1;
+      }
+      links.forEach(function (a, i) { a.classList.toggle('current', i === current); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('hashchange', onScroll);
+    onScroll();
+  })();
+
   document.addEventListener('click', function(e) {
     var nav = document.getElementById('mnav');
     var btn = document.querySelector('.nav-hamburger');
