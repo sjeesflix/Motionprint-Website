@@ -250,7 +250,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          4 min read
+          5 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -276,7 +276,7 @@
         <ul class="toc-list">
           <li id="toc-why"><a href="#why">1. Why these settings exist</a></li>
           <li id="toc-display"><a href="#display">2. Visualization-only fields</a></li>
-          <li id="toc-gender"><a href="#gender">3. Gender and KIM-LHC</a></li>
+          <li id="toc-gender"><a href="#gender">3. Gender</a></li>
           <li id="toc-stored"><a href="#stored">4. Fields stored for future use</a></li>
         </ul>
         <div class="toc-divider">
@@ -315,18 +315,18 @@
           <tbody>
             <tr>
               <td>Operator name</td>
-              <td><span class="tag tag-display">Display only</span></td>
+              <td><span class="tag tag-display">Shown in reports</span></td>
               <td>No</td>
             </tr>
             <tr>
               <td>Evaluator name</td>
-              <td><span class="tag tag-display">Display only</span></td>
+              <td><span class="tag tag-display">Shown in reports</span></td>
               <td>No</td>
             </tr>
             <tr>
               <td>Gender</td>
-              <td><span class="tag tag-display">Display</span> <span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
-              <td>Yes — in KIM-LHC via dedicated control</td>
+              <td><span class="tag tag-future">Stored for future use</span> <span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
+              <td>Only in KIM-LHC, via a separate control</td>
             </tr>
             <tr>
               <td>Body height</td>
@@ -353,11 +353,11 @@
 
         <p>The operator name identifies the person performing the physical task being assessed. When visible, it appears in report headers, the detail panel in the database, and exported files. Toggling it off removes it from all visual outputs and exports.</p>
 
-        <p>Operator name does not influence any risk calculation. Hiding it has no effect on Lifting Index scores, KIM-LHC risk totals, or any other computed value. It is a label, not an analytical input.</p>
+        <p>The toggle is labelled <strong>Show operator name</strong>. Operator name does not influence any risk calculation — hiding it has no effect on NIOSH Lifting Index scores, KIM-LHC risk totals, RULA scores, or any other computed value. It is a label, not an analytical input.</p>
 
         <h3>Evaluator name</h3>
 
-        <p>The evaluator name identifies the person conducting the assessment. It appears in the same places as operator name — report headers, the database detail panel, and exports. The same toggle controls apply.</p>
+        <p>The toggle is labelled <strong>Show evaluator name</strong>. The evaluator name identifies the person conducting the assessment. It appears in the same places as operator name — report headers, the database detail panel, and exports. The same toggle controls apply.</p>
 
         <p>Evaluator name does not influence any risk calculation. It is a record-keeping field only and is not subject information — it identifies who conducted the session. Hiding it changes what is printed in outputs; it does not change what is computed.</p>
 
@@ -376,7 +376,9 @@
 
         <h3>Gender as a privacy setting</h3>
 
-        <p>Like body height, age, and weight, gender can be toggled off in privacy settings. When disabled, gender is excluded from visual outputs and exports. This works the same way as the other subject fields — it controls what is shown, not how the assessment is calculated. For NIOSH assessments, this is the only gender-related control that exists, since gender plays no role in NIOSH calculations.</p>
+        <p>The toggle is labelled <strong>Use gender</strong>, and it controls whether the gender field appears on the input page at all. Gender is never printed in reports or exports — when the toggle is on, the value is stored anonymously alongside the project for planned population-level insights, exactly like body height, age and weight.</p>
+
+        <p>This toggle behaves identically across NIOSH, KIM-LHC and RULA. For NIOSH and RULA it is the only gender-related control there is, because gender plays no part in either method's calculations.</p>
 
         <h3>Gender Not Required — KIM-LHC specific</h3>
 
@@ -393,32 +395,34 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Two separate controls</div>
-            <p>The privacy toggle for gender controls visibility in outputs. The KIM-LHC <strong>Gender Not Required</strong> option controls whether gender is used in the calculation. These are independent — you can hide gender from exports while still using it in the KIM-LHC calculation, or exclude it from both.</p>
+            <p>The privacy toggle decides whether gender is collected and stored at all. The KIM-LHC <strong>Gender Not Required</strong> option decides whether a collected value is used in the calculation. These are independent — you can hide gender from exports while still using it in the KIM-LHC calculation, or exclude it from both.</p>
           </div>
         </div>
 
         <!-- ── SECTION 4: STORED FOR FUTURE USE ── -->
         <h2 id="stored"><span class="step-num">4</span> Fields stored for future use</h2>
 
-        <p>Body height, age, and weight are collected during subject setup but are not currently used in reports, exports, or any calculation. They are stored anonymously alongside the project.</p>
+        <p>Gender, body height, age, and weight are not printed in reports or exports and are not used in any calculation — with the single exception of gender in KIM-LHC, covered above. They are stored anonymously alongside the project.</p>
+
+        <p>How each one is captured differs. <strong>Use body height</strong> derives the value automatically from the motion capture data, so there is no field to fill in. <strong>Use age</strong> and <strong>Use weight</strong> each add an optional field to the input page, in years and kilograms respectively. <strong>Use gender</strong> adds the gender selector. All four toggles work the same way across NIOSH, KIM-LHC and RULA.</p>
 
         <h3>Why they are collected now</h3>
 
         <p>These fields are included in preparation for a planned dashboarding capability. At a future stage, it is intended to support correlation insights between subject-dependent characteristics — such as age range or body height — and measured risk levels across a project library. This kind of aggregate, anonymised view could help organisations identify patterns across their assessment data over time.</p>
 
-        <p>That dashboarding functionality is not yet released. For now, body height, age, and weight have no active end-user function in reporting or export. The fields are already included in the data model precisely so that projects saved today will be ready to use when dashboarding becomes available — no retroactive data entry will be required.</p>
+        <p>That dashboarding functionality is not yet released. For now, gender, body height, age, and weight have no active end-user function in reporting or export. The fields are already included in the data model precisely so that projects saved today will be ready to use when dashboarding becomes available — no retroactive data entry will be required.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Anonymous storage</div>
-            <p>Body height, age, and weight are stored anonymously. They do not appear in exported PDF or Excel reports, and they are not associated with operator or evaluator name in any output.</p>
+            <p>Gender, body height, age, and weight are stored anonymously. They do not appear in exported PDF or Excel reports, and they are not associated with operator or evaluator name in any output.</p>
           </div>
         </div>
 
         <h3>Toggling these fields off</h3>
 
-        <p>If you prefer not to collect body height, age, or weight at all, you can disable them in privacy settings. They will be excluded from the subject setup form and will not be stored with the project. This has no effect on current reporting or exports since these fields play no role in them today.</p>
+        <p>If you prefer not to collect these at all, you can disable them in privacy settings. The corresponding fields disappear from the input page — or, for body height, stop being derived — and nothing is stored with the project. This has no effect on current reporting or exports since these fields play no role in them today.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
