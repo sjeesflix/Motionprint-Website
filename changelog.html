@@ -390,7 +390,7 @@
               <li><strong>Scored from the motion capture data</strong> — Upper arm, lower arm, wrist, wrist twist, neck, trunk and legs are derived per frame from the recording and combined through the method's Table A, Table B and Table C lookups into a score from 1 to 7.</li>
               <li><strong>Posture tasks</strong> — RULA uses posture tasks rather than lifting tasks. Each marks one working posture or repeated motion cycle, and the highest-risk frame is found within each one.</li>
               <li><strong>Automatic muscle use detection</strong> — Static posture and repetition are detected from the recording and the trimmed duration, producing separate muscle use scores for the arm/wrist and neck/trunk/leg groups.</li>
-              <li><strong>Leg stability from foot contact and centre of mass</strong> — The legs score is derived by measuring how evenly the body's weight sits over the feet that are actually on the ground.</li>
+              <li><strong>Leg stability scored from the recording</strong> — The legs score is calculated automatically from the motion data. The system detects which feet are grounded and measures how evenly body weight is distributed over them, so no manual leg-position input is needed.</li>
               <li><strong>Full report output</strong> — Score overview, in-depth analysis with the 3D viewer and per-frame graph, findings, and PDF and Excel export, matching the structure of the existing methods.</li>
               <li><strong>RULA report settings</strong> — A dedicated settings page for critical moment detection, the averaged overview, viewport layout, and export templates.</li>
             </ul>
@@ -417,7 +417,7 @@
             <h3 class="cl-section-title">Reporting &amp; export consistency</h3>
             <ul class="cl-list">
               <li><strong>Shared report styling</strong> — PDF and Excel output now draw on common styling and workbook modules across all three methods, so tables, headings and colour bands stay consistent between reports.</li>
-              <li><strong>Thresholds served from the backend</strong> — Risk thresholds used for colouring and zone classification are read from the backend configuration rather than duplicated in the interface, removing drift between what is calculated and what is displayed.</li>
+
               <li><strong>NIOSH and KIM-LHC refinements</strong> — Continued presentation and export improvements to both existing methods alongside the RULA work.</li>
             </ul>
           </div>
