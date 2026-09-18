@@ -1758,6 +1758,13 @@
           status.className = 'form-status success';
           status.textContent = 'Thank you! We\'ll be in touch shortly.';
           form.reset();
+          // GA4 conversion event
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+              event_category: 'Contact form',
+              event_label: topic
+            });
+          }
         } else {
           throw new Error('Server error');
         }

@@ -732,5 +732,21 @@
   })();
 </script>
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('btn-windows');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        if (typeof gtag === 'function') {
+          gtag('event', 'file_download', {
+            event_category: 'Download',
+            event_label: 'MotionprintErgo-v1.0.2-Setup.exe'
+          });
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
