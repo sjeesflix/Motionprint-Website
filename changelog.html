@@ -416,32 +416,24 @@
             <ul class="cl-list">
               <li><strong>Guided hardware setup</strong> &mdash; scan for sensors, assign them to body segments, and resolve duplicate-tracker conflicts from a dedicated setup screen before recording starts.</li>
               <li><strong>Automatic tracker allocation</strong> &mdash; sensors are matched to segments automatically, with a manual override available for any sensor that needs reassigning.</li>
-              <li><strong>N-pose &amp; walk calibration</strong> &mdash; a guided calibration flow walks the subject through the standard N-pose and a short walk before recording, the same calibration Xsens MVN itself relies on.</li>
+              <li><strong>N-pose or T-pose &amp; walk calibration</strong> &mdash; a guided calibration flow walks the subject through the standard N-pose or T-pose and a short walk before recording, the same calibration Xsens MVN itself relies on.</li>
             </ul>
           </div>
 
           <div class="cl-section">
-            <h3 class="cl-section-title">Reviewing recordings</h3>
+            <h3 class="cl-section-title">Reviewing recordings &amp; reporting</h3>
             <ul class="cl-list">
               <li><strong>New recording viewer</strong> &mdash; play back a recording in the 3D viewer with switchable camera views (3D, front, side, top), and trim it to the relevant section before running an assessment.</li>
-              <li><strong>Feeds straight into every method</strong> &mdash; a live recording scores in RULA, NIOSH, and KIM-LHC exactly like a recording imported from an .mvnx file; the two are interchangeable everywhere in the app.</li>
+              <li><strong>Select a recording as your input</strong> &mdash; creating a RULA, NIOSH, or KIM-LHC report now offers "select a recording" alongside uploading an .mvnx file, so an in-app recording and an Xsens MVN export work interchangeably everywhere in the app.</li>
               <li><strong>Recordings database</strong> &mdash; browse, filter, and manage every saved recording from its own database page alongside the existing projects database, and jump straight from a recording to the project it belongs to.</li>
+              <li><strong>NIOSH task pre-check</strong> &mdash; each lifting task's geometry is now checked upfront, disabling Process &mdash; with the reason &mdash; for a task the NIOSH equation can't calculate, instead of the report later showing N/A.</li>
             </ul>
           </div>
 
           <div class="cl-section">
-            <h3 class="cl-section-title">Reliability</h3>
+            <h3 class="cl-section-title">Settings</h3>
             <ul class="cl-list">
-              <li><strong>Stronger recording validation</strong> &mdash; recordings are now checked for complete motion data, including centre-of-mass, before a RULA report is generated, so an incomplete capture is flagged with a clear message instead of silently producing an inaccurate score.</li>
-            </ul>
-          </div>
-
-          <div class="cl-section">
-            <h3 class="cl-section-title">Interface polish</h3>
-            <ul class="cl-list">
-              <li><strong>Dark mode consistency</strong> &mdash; the avatar shown during hardware setup and calibration now matches the 3D viewer's dark-mode colouring, and the recording viewer's view selector (3D / Front / Side / Top) has corrected border, hover, and active colours in dark mode.</li>
-              <li><strong>Recording viewer zoom fix</strong> &mdash; zooming in the 3D viewer on the recording review page no longer scrolls the page behind it.</li>
-              <li><strong>Clearer filter actions</strong> &mdash; the Apply button in the projects and recordings filter panels now shows plainly when it's actionable.</li>
+              <li><strong>Database naming templates</strong> &mdash; default naming templates for both the Projects and Recordings databases can now be set in Settings &rarr; General &rarr; Database, alongside the existing PDF/Excel filename templates.</li>
             </ul>
           </div>
 
