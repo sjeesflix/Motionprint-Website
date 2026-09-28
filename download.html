@@ -312,12 +312,13 @@
     "operatingSystem": "Windows 10, Windows 11",
     "url": "https://motion-print.com/",
     "downloadUrl": "https://motion-print.com/download.html",
-    "softwareVersion": "1.0.2",
-    "releaseNotes": "https://motion-print.com/changelog.html#v1-0-2",
+    "softwareVersion": "1.0.3",
+    "releaseNotes": "https://motion-print.com/changelog.html#v1-0-3",
     "featureList": [
       "RULA (Rapid Upper Limb Assessment) automation",
       "NIOSH Lifting Equation automation",
       "KIM-LHC assessment automation",
+      "Live in-app recording via Xsens Awinda hardware (MVN SDK)",
       "Xsens MVNX motion capture support",
       "PDF export with custom branding",
       "Excel export",
@@ -383,7 +384,7 @@
 
       <div class="dl-platforms">
         <!-- Windows -->
-        <a href="downloads/MotionprintErgo-v1.0.2-Setup.exe" download class="dl-platform-btn" id="btn-windows">
+        <a href="https://github.com/sjeesflix/Motionprint-Website/releases/download/v1.0.3/MotionprintErgo-v1.0.3-Setup.exe" class="dl-platform-btn" id="btn-windows">
           <svg class="dl-platform-icon" viewBox="0 0 32 32" fill="none">
             <rect x="2" y="4" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
             <rect x="17" y="4" width="13" height="13" rx="1.5" fill="rgba(255,255,255,.7)"/>
@@ -410,7 +411,7 @@
         </div>
       </div>
 
-      <div class="dl-version">Version 1.0.2 &nbsp;·&nbsp; <a href="changelog.html#v1-0-2">Release notes</a></div>
+      <div class="dl-version">Version 1.0.3 &nbsp;·&nbsp; <a href="changelog.html#v1-0-3">Release notes</a></div>
 
       <div class="dl-key-note">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -439,7 +440,7 @@
           </div>
           <h3 class="step-title">Download the installer</h3>
         </div>
-        <p class="step-desc">Click the Windows button above to download the latest installer (.exe). The file is around 50 MB.</p>
+        <p class="step-desc">Click the Windows button above to download the latest installer (.exe). The file is around 134 MB.</p>
         <div class="step-connector"><svg viewBox="0 0 14 14"><line x1="2" y1="7" x2="12" y2="7"/><polyline points="9 4 12 7 9 10"/></svg></div>
       </div>
       <div class="how-step">
@@ -540,6 +541,13 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>v1.0.2</td>
+              <td>September 2026</td>
+              <td>Windows 10 / 11 &middot; 64-bit</td>
+              <td><a href="downloads/MotionprintErgo-v1.0.2-Setup.exe" download>Download (.exe)</a></td>
+              <td><a href="changelog.html#v1-0-2">Release notes</a></td>
+            </tr>
             <tr>
               <td>v1.0.1</td>
               <td>June 2026</td>
@@ -749,7 +757,7 @@
         if (typeof gtag === 'function') {
           gtag('event', 'file_download', {
             event_category: 'Download',
-            event_label: 'MotionprintErgo-v1.0.2-Setup.exe'
+            event_label: 'MotionprintErgo-v1.0.3-Setup.exe'
           });
         }
       });

@@ -185,7 +185,7 @@
     .cl-badge-patch  { background: rgba(245,158,11,.1); color: #d97706; }
     /* For future use: */
     .cl-badge-minor  { background: rgba(59,130,246,.1); color: #3b82f6; }
-    /* .cl-badge-major  { background: rgba(139,92,246,.1); color: #7c3aed; } */
+    .cl-badge-major  { background: rgba(139,92,246,.1); color: #7c3aed; }
 
     /* ── CHANGE TYPE TAGS ── (for future versions) */
     /* Usage: add a .cl-tag to each list item to indicate New / Improved / Fixed */
@@ -328,7 +328,8 @@
             Example:
             <li><a href="#v1-1-0" class="cl-version-link">v1.1.0</a></li>
           -->
-          <li><a href="#v1-0-2" class="cl-version-link current">v1.0.2</a></li>
+          <li><a href="#v1-0-3" class="cl-version-link current">v1.0.3</a></li>
+          <li><a href="#v1-0-2" class="cl-version-link">v1.0.2</a></li>
           <li><a href="#v1-0-1" class="cl-version-link">v1.0.1</a></li>
           <li><a href="#v1-0-0" class="cl-version-link">v1.0.0</a></li>
         </ul>
@@ -392,6 +393,64 @@
 
         <!-- ── v1.0.1 — DATABASE & QUALITY UPDATE ── -->
         <!-- ── v1.0.2 — RULA ── -->
+        <article class="cl-entry" id="v1-0-3">
+          <div class="cl-entry-header">
+            <div class="cl-entry-meta">
+              <span class="cl-version-num">v1.0.3</span>
+              <span class="cl-entry-date">October 2026</span>
+            </div>
+            <span class="cl-badge cl-badge-major">Live recording &amp; hardware integration</span>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Live recording with Xsens Awinda hardware</h3>
+            <ul class="cl-list">
+              <li><strong>Record directly inside Motionprint Ergo</strong> &mdash; connect an Xsens Awinda dock and capture motion data live, with no separate export/import step through Xsens MVN Analyze required. A recording is ready to score the moment it's captured.</li>
+              <li><strong>MVN SDK integration</strong> &mdash; Motionprint Ergo now talks to the Awinda hardware directly, handling sensor discovery, pairing, and streaming itself.</li>
+              <li><strong>Sessions</strong> &mdash; each session carries the subject's details and can hold multiple recordings, so several tasks for the same person no longer need to be re-entered separately.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Hardware setup &amp; calibration</h3>
+            <ul class="cl-list">
+              <li><strong>Guided hardware setup</strong> &mdash; scan for sensors, assign them to body segments, and resolve duplicate-tracker conflicts from a dedicated setup screen before recording starts.</li>
+              <li><strong>Automatic tracker allocation</strong> &mdash; sensors are matched to segments automatically, with a manual override available for any sensor that needs reassigning.</li>
+              <li><strong>N-pose &amp; walk calibration</strong> &mdash; a guided calibration flow walks the subject through the standard N-pose and a short walk before recording, the same calibration Xsens MVN itself relies on.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Reviewing recordings</h3>
+            <ul class="cl-list">
+              <li><strong>New recording viewer</strong> &mdash; play back a recording in the 3D viewer with switchable camera views (3D, front, side, top), and trim it to the relevant section before running an assessment.</li>
+              <li><strong>Feeds straight into every method</strong> &mdash; a live recording scores in RULA, NIOSH, and KIM-LHC exactly like a recording imported from an .mvnx file; the two are interchangeable everywhere in the app.</li>
+              <li><strong>Recordings database</strong> &mdash; browse, filter, and manage every saved recording from its own database page alongside the existing projects database, and jump straight from a recording to the project it belongs to.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Reliability</h3>
+            <ul class="cl-list">
+              <li><strong>Stronger recording validation</strong> &mdash; recordings are now checked for complete motion data, including centre-of-mass, before a RULA report is generated, so an incomplete capture is flagged with a clear message instead of silently producing an inaccurate score.</li>
+            </ul>
+          </div>
+
+          <div class="cl-section">
+            <h3 class="cl-section-title">Interface polish</h3>
+            <ul class="cl-list">
+              <li><strong>Dark mode consistency</strong> &mdash; the avatar shown during hardware setup and calibration now matches the 3D viewer's dark-mode colouring, and the recording viewer's view selector (3D / Front / Side / Top) has corrected border, hover, and active colours in dark mode.</li>
+              <li><strong>Recording viewer zoom fix</strong> &mdash; zooming in the 3D viewer on the recording review page no longer scrolls the page behind it.</li>
+              <li><strong>Clearer filter actions</strong> &mdash; the Apply button in the projects and recordings filter panels now shows plainly when it's actionable.</li>
+            </ul>
+          </div>
+
+          <div class="cl-future-note">
+            <p>v1.0.3 moves Motionprint Ergo from importing recordings to capturing them &mdash; connect Xsens Awinda hardware and record, review, and score a task without leaving the app.</p>
+          </div>
+        </article>
+        <!-- ── END v1.0.3 ── -->
+
         <article class="cl-entry" id="v1-0-2">
           <div class="cl-entry-header">
             <div class="cl-entry-meta">
