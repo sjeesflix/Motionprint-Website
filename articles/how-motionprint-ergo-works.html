@@ -357,7 +357,7 @@
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-assessment"><a href="#assessment">2. Selecting an Assessment</a></li>
-          <li id="toc-upload"><a href="#upload">3. Uploading Motion Data</a></li>
+          <li id="toc-upload"><a href="#upload">3. Providing Motion Data</a></li>
           <li id="toc-configure"><a href="#configure">4. Configuring the Assessment</a></li>
           <li id="toc-processing"><a href="#processing">5. Processing</a></li>
           <li id="toc-results"><a href="#results">6. Viewing Results</a></li>
@@ -392,8 +392,8 @@
           <li class="workflow-step">
             <div class="workflow-step-num">2</div>
             <div class="workflow-step-body">
-              <div class="workflow-step-title">Upload your motion capture recording</div>
-              <p class="workflow-step-desc">Import a motion capture file. The app validates it automatically before proceeding.</p>
+              <div class="workflow-step-title">Provide your motion capture data</div>
+              <p class="workflow-step-desc">Upload a .mvnx file exported from Xsens MVN Analyze, or select a recording you made live in Motionprint Ergo. Either way, the app validates it automatically before proceeding.</p>
             </div>
           </li>
           <li class="workflow-step">
@@ -451,13 +451,25 @@
         <p>See <a href="understanding-niosh-assessment.html">Understanding the NIOSH Assessment</a>, <a href="understanding-kim-lhc-assessment.html">Understanding the KIM-LHC Assessment</a> and <a href="understanding-rula-assessment.html">Understanding the RULA Assessment</a> for a full breakdown of how each method works.</p>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="upload"><span class="step-num">3</span> Uploading Motion Data</h2>
-        <p>After selecting an assessment method, you choose your motion capture source and upload a recording file.</p>
+        <h2 id="upload"><span class="step-num">3</span> Providing Motion Data</h2>
+        <p>After selecting an assessment method, you choose where your motion capture data comes from. Since v1.0.3, the input screen offers two options side by side: upload a .mvnx file, or select a recording you made live in Motionprint Ergo. The calculation itself doesn't care which one you pick — both work identically as input from this point on.</p>
 
-        <h3>Supported input</h3>
-        <p>Motionprint Ergo currently supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze Pro. The recording contains segment positions, orientations, joint angles and foot contacts. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit). For step-by-step setup instructions and supported hardware configurations, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Haven't recorded anything yet?</div>
+            <p>Recording itself happens separately, before you ever reach this screen — either in Xsens MVN Analyze (for the upload path) or in Motionprint Ergo's own Record workflow. See <a href="recording-with-mvn-sdk.html">Recording Motion Data Directly in Motionprint Ergo</a> to get started with live recording, or <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a> for the MVN Analyze export workflow.</p>
+          </div>
+        </div>
+
+        <h3>Uploading a .mvnx file</h3>
+        <p>Motionprint Ergo supports <strong>Xsens MVNX recordings</strong> — an XML-based format that holds the complete full-body motion time-series exported from Xsens MVN Analyze Pro. The recording contains segment positions, orientations, joint angles and foot contacts. Motion data can be captured using Xsens MVN Awinda (wireless IMU sensors) or MVN Link (body suit). For step-by-step setup instructions and supported hardware configurations, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
+
+        <h3>Selecting a recording made in the app</h3>
+        <p>Instead of uploading a file, you can select a recording that was made live within Motionprint Ergo — captured directly from Xsens Awinda hardware through the app's own Record workflow, with no separate export step. These recordings are stored in your <a href="recordings-database.html">Recordings Database</a>, and can be trimmed and reviewed in the recording viewer before you use them here. See <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a> for how this compares to an uploaded .mvnx file.</p>
+
         <h3>File validation</h3>
-        <p>Once a file is selected, the app validates it before allowing you to proceed. The validation checks that the file is valid, contains the required subject elements and frame rate attributes and has at least one normal motion frame with the required position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect.</p>
+        <p>When you upload a .mvnx file, the app validates it before allowing you to proceed. The validation checks that the file is valid, contains the required subject elements and frame rate attributes, and has at least one normal motion frame with the required position and orientation data. If any check fails, a clear error message tells you exactly what is missing or incorrect. A recording selected from the Recordings Database was already captured and verified by Motionprint Ergo itself, so no separate validation step is needed before you continue.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="configure"><span class="step-num">4</span> Configuring the Assessment</h2>
@@ -538,9 +550,9 @@
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">Getting Started with Motionprint Ergo</span>
               </a>
-              <a href="motion-data-processing-explained.html" class="related-card">
-                <span class="related-card-cat">Platform</span>
-                <span class="related-card-title">Motion Data Processing Explained</span>
+              <a href="mpcap-vs-mvnx-explained.html" class="related-card">
+                <span class="related-card-cat">Recording &amp; Hardware</span>
+                <span class="related-card-title">.mpcap vs .mvnx Explained</span>
               </a>
             </div>
           </div>
