@@ -426,10 +426,12 @@
 
     /* ── METHODS ── */
     .methods { padding: 96px 0; background: var(--bg); }
-    .methods-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+    .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
     .method-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,.05); transition: border-color .2s, box-shadow .2s; }
     .method-card:hover:not(.coming) { border-color: #c4cad4; box-shadow: var(--shadow-sm); }
     .method-card.coming { background: #f2f3f5; border-style: dashed; border-color: #d1d5db; box-shadow: none; opacity: 0.72; }
+    .methods-more { text-align: center; margin-top: 40px; }
+    .methods-more-text { font-size: 15px; color: var(--muted); margin-bottom: 16px; }
     .method-status {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px;
@@ -841,41 +843,6 @@
     }
   </style>
   <link rel="stylesheet" href="nav.css">
-  <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Motionprint Ergo",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Windows",
-      "description": "Motionprint Ergo automatically turns motion capture recordings into validated ergonomic risk assessment reports. Supports RULA, NIOSH lifting equation and KIM-LHC assessment methods, with live recording via Xsens Awinda hardware or MVNX import. Export branded PDF or Excel reports for H&S documentation.",
-      "featureList": ["RULA assessment automation", "NIOSH assessment automation", "KIM-LHC assessment automation", "Live in-app recording via Xsens Awinda hardware (MVN SDK)", "PDF export with custom branding", "Excel export", "Xsens MVNX support", "3D motion playback"],
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "priceCurrency": "EUR"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Motionprint",
-        "url": "https://motion-print.com"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Motionprint",
-      "url": "https://motion-print.com",
-      "logo": "https://motion-print.com/Motionprint-full.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "info@motion-print.com",
-        "contactType": "sales"
-      }
-    }
-  ]
-  </script>
 </head>
 <body>
 
@@ -1192,15 +1159,13 @@
         <div class="method-name">RULA</div>
         <div class="method-full">Rapid Upper Limb Assessment — upper-body posture</div>
         <p class="method-desc">Scores upper-body posture and muscle load automatically from motion data — Group A and Group B scores, muscle use and force points included.</p>
-        <span class="method-output">Output: Grand score 1–7 · Group A/B breakdown</span>
+        <span class="method-output">Output: RULA score 1–7 · Group A/B breakdown</span>
         <span class="method-suggest" style="display:block;margin-top:14px;">Learn more →</span>
       </a>
-      <div class="method-card coming">
-        <div class="method-status soon"><span class="status-dot"></span> Coming soon</div>
-        <div class="method-name">New methodologies</div>
-        <div class="method-full">Continuously expanding</div>
-        <a href="#contact" class="method-suggest" data-topic="method">Suggest a method →</a>
-      </div>
+    </div>
+    <div class="methods-more">
+      <p class="methods-more-text">New methodologies are continuously being added.</p>
+      <a href="#contact" class="btn btn-secondary" data-topic="method">Suggest a method →</a>
     </div>
   </div>
 </section>
