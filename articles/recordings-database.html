@@ -285,9 +285,8 @@
           <li id="toc-what"><a href="#what">1. What is the Recordings Database?</a></li>
           <li id="toc-browsing"><a href="#browsing">2. Browsing and filtering recordings</a></li>
           <li id="toc-details"><a href="#details">3. Recording details</a></li>
-          <li id="toc-jump"><a href="#jump">4. Jumping to the related project</a></li>
-          <li id="toc-input"><a href="#input">5. Using a recording as report input</a></li>
-          <li id="toc-removing"><a href="#removing">6. Removing recordings</a></li>
+          <li id="toc-input"><a href="#input">4. Using a recording as report input</a></li>
+          <li id="toc-removing"><a href="#removing">5. Removing recordings</a></li>
         </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -322,13 +321,9 @@
 
         <h2 id="details"><span class="step-num">3</span> Recording details</h2>
 
-        <p>Click a recording to see its detail panel &mdash; session and subject information, recording duration, and the trim range if one has been applied. From here you can also open the recording in the <a href="reviewing-and-trimming-recordings.html">recording viewer</a> to play it back or adjust the trim.</p>
+        <p>Click a recording to see its detail panel &mdash; status (New, Used or Archived), session and subject information, recording duration, and the trim range if one has been applied. From here you can also open the recording in the <a href="reviewing-and-trimming-recordings.html">recording viewer</a> to play it back or adjust the trim.</p>
 
-        <h2 id="jump"><span class="step-num">4</span> Jumping to the related project</h2>
-
-        <p>Once a recording has been used to create a report and that report has been saved, the recording's detail panel links straight to the resulting project in the Projects Database &mdash; so you can move from a raw recording to its finished assessment, or back the other way, without hunting through both databases separately.</p>
-
-        <h2 id="input"><span class="step-num">5</span> Using a recording as report input</h2>
+        <h2 id="input"><span class="step-num">4</span> Using a recording as report input</h2>
 
         <p>To assess a saved recording, start a new RULA, NIOSH or KIM-LHC report and choose <strong>select a recording</strong> on the input page instead of uploading an .mvnx file. Pick the recording from the Recordings Database, and the report runs exactly as it would from an uploaded file.</p>
 
@@ -340,7 +335,7 @@
           </div>
         </div>
 
-        <h2 id="removing"><span class="step-num">6</span> Removing recordings</h2>
+        <h2 id="removing"><span class="step-num">5</span> Removing recordings</h2>
 
         <p>Recordings can be deleted from the Recordings Database the same way projects can be deleted from the Projects Database &mdash; deletion is permanent. Deleting a recording doesn't remove any report already created from it; the report keeps the data it was generated with.</p>
 
@@ -425,8 +420,8 @@
 </footer>
 
 <script>
-  var sections = ['what','browsing','details','jump','input','removing'];
-  var tocIds   = ['toc-what','toc-browsing','toc-details','toc-jump','toc-input','toc-removing'];
+  var sections = ['what','browsing','details','input','removing'];
+  var tocIds   = ['toc-what','toc-browsing','toc-details','toc-input','toc-removing'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
