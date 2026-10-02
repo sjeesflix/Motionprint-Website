@@ -140,6 +140,15 @@
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
 
+    /* Media placeholders */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+
     /* Step number */
     .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; padding-top: 2px; }
 
@@ -160,7 +169,7 @@
     .info-table th { text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); padding: 8px 12px; border-bottom: 2px solid var(--border); }
     .info-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
     .info-table tr:last-child td { border-bottom: none; }
-    .info-table td:first-child { font-weight: 600; width: 120px; }
+    .info-table td:first-child { font-weight: 600; width: 42%; }
 
     /* Article footer */
     .article-end { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 32px; }
@@ -258,7 +267,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          6 min read
+          8 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -307,17 +316,48 @@
 
         <p>Live recording requires an Xsens Awinda dock and the sensor set you're using, connected to the machine running Motionprint Ergo. Make sure the dock is connected and powered before you start hardware setup, and that the sensors you plan to use are charged and within range.</p>
 
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Correct sensor placement</div>
+            <p>Where each sensor sits on the body matters for accurate tracking. Xsens's own video walks through preparing and placing MVN Awinda hardware correctly: <a href="https://www.xsens.com/tutorials?video=preparing-hardware-mvn-awinda" target="_blank" rel="noopener noreferrer">Preparing Hardware (MVN Awinda)</a>.</p>
+          </div>
+        </div>
+
         <h2 id="scan"><span class="step-num">2</span> Scanning for sensors</h2>
 
         <p>The hardware setup screen scans for sensors connected to the dock and lists each one it finds. From here you can confirm which sensors are detected before moving on to assigning them to body segments.</p>
         <ul>
           <li>If a sensor doesn't appear in the scan, check that it's powered on and within range of the dock</li>
           <li>A low battery can cause a sensor to drop out mid-scan or mid-recording &mdash; charge sensors fully before a session</li>
+          <li>If a sensor connects late, or after you've fixed a connection issue, click <strong>Refresh</strong> to rescan without leaving the screen</li>
         </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Hardware setup screen</div>
+          <div class="media-placeholder-desc">The scan results list with the Refresh and radio channel buttons visible.</div>
+        </div>
+
+        <h3>Setting a radio channel (optional)</h3>
+
+        <p>Awinda sensors talk to the dock over a 2.4 GHz radio link, which can run into interference from nearby Wi-Fi or another Awinda dock in the same room. If you notice repeated dropouts, open the radio channel setting next to Refresh and pick a different one. 15 channels are available (11 through 25); channels 11, 15, 20 and 25 are marked as recommended, since they sit in the gaps between Wi-Fi channels and avoid that interference. This setting needs at least one sensor connected and an active Xsens SDK licence to open.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Radio channel picker</div>
+          <div class="media-placeholder-desc">The radio channel dialog, with the four recommended channels marked.</div>
+        </div>
 
         <h2 id="assign"><span class="step-num">3</span> Assigning sensors to body segments</h2>
 
-        <p>Once sensors are detected, each one needs to be assigned to the body segment it's physically attached to (for example, pelvis, upper arm, or foot). This assignment is what lets Motionprint Ergo map raw sensor orientation onto the correct part of the skeleton during calibration and recording.</p>
+        <p>Once sensors are detected, Motionprint Ergo automatically assigns each one to the body segment it's physically attached to (for example, pelvis, upper arm, or foot), based on how the sensor reports itself to the dock. This assignment is what lets Motionprint Ergo map raw sensor orientation onto the correct part of the skeleton during calibration and recording. You don't need to do anything here yourself &mdash; see the next section if you ever need to change an assignment by hand.</p>
 
         <figure class="article-figure">
           <img src="../hardwaresetupassignment.png" alt="The hardware setup screen showing sensors listed and assigned to body segments" />
@@ -326,9 +366,24 @@
 
         <h2 id="auto"><span class="step-num">4</span> Automatic allocation vs. manual override</h2>
 
-        <p>Motionprint Ergo automatically matches detected sensors to body segments for you, based on how the sensors report themselves to the dock. In most setups this is all you need &mdash; check the automatic assignment, confirm it looks correct, and move on.</p>
+        <p>Sensor-to-segment assignment happens automatically, as described above, based on how each sensor reports itself to the dock. Manual override exists for the cases where that's not enough to rely on &mdash; for example if a sensor ends up on the wrong segment after swapping sensors between straps, or if a sensor breaks mid-session and needs to be swapped out. It's not something you'd normally use, but it's there when an assignment needs correcting by hand.</p>
 
-        <p>If a sensor is assigned to the wrong segment &mdash; for example after swapping sensors between straps, or if the automatic match gets something wrong &mdash; you can manually reassign it from the same screen before continuing.</p>
+        <h3>How manual allocation works</h3>
+
+        <p>Each assigned sensor in the list has a <strong>Remove from segment</strong> control. Removing a sensor doesn't disconnect it &mdash; it moves the tracker into an <strong>Unassigned</strong> group at the bottom of the list, still connected but not mapped to any body part. From there, click <strong>Allocate</strong> on the unassigned tracker to open the <strong>Choose segment</strong> dialog, which lists only the body segments that don't currently have a sensor. Pick one, and the tracker is assigned to it.</p>
+
+        <p>If a sensor is connected to the dock but hasn't shown up in the list yet, <strong>Find new trackers</strong> looks for it without running a full rescan.</p>
+
+        <p>This is also how you'd recover from a broken sensor: remove the faulty one from its segment, connect its replacement and click <strong>Refresh</strong> (or <strong>Find new trackers</strong>) to detect it, then <strong>Allocate</strong> the new tracker to the now-empty segment.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-gif">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            GIF
+          </span>
+          <div class="media-placeholder-title">Manual allocation</div>
+          <div class="media-placeholder-desc">Removing a sensor from its segment, then allocating an unassigned tracker to an empty segment via Choose segment.</div>
+        </div>
 
         <div class="callout callout-warn">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -349,6 +404,7 @@
           <tbody>
             <tr><td>Sensor not found in scan</td><td>Sensor powered off, out of range of the dock, or battery depleted</td></tr>
             <tr><td>Sensor drops out during recording</td><td>Low battery, or the sensor moved out of the dock's range</td></tr>
+            <tr><td>Frequent dropouts in a Wi-Fi-heavy environment</td><td>Awinda radio channel overlapping with nearby Wi-Fi or another dock &mdash; set a different radio channel, preferably 11, 15, 20 or 25</td></tr>
             <tr><td>Duplicate-tracker conflict</td><td>Two sensors assigned to the same body segment</td></tr>
             <tr><td>Skeleton looks wrong after calibration</td><td>A sensor assigned to the wrong body segment</td></tr>
           </tbody>
