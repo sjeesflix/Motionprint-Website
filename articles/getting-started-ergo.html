@@ -503,8 +503,8 @@
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-label">Sidebar</div>
-            <div class="info-card-value">Create, Database &amp; Settings</div>
-            <div class="info-card-desc">The left-hand sidebar has three destinations: <strong>Create</strong> to start a new report, <strong>Database</strong> to browse your saved projects, and <strong>Settings</strong> to configure the app.</div>
+            <div class="info-card-value">New Project, Record, Database &amp; Settings</div>
+            <div class="info-card-desc">The left-hand sidebar has four destinations: <strong>New Project</strong> to start a new report, <strong>Record</strong> to capture motion data live via Xsens Awinda hardware, <strong>Database</strong> to browse your saved projects and recordings, and <strong>Settings</strong> to configure the app. Record is greyed out until the Xsens SDK licence is activated through Xsens License Manager, which is installed alongside Motionprint Ergo.</div>
           </div>
           <div class="info-card">
             <div class="info-card-label">Content area</div>
@@ -523,7 +523,7 @@
         <!-- ── SECTION 5 ── -->
         <h2 id="report"><span class="step-num">5</span> Create Your First Report</h2>
 
-        <p>Creating a report follows six phases, from selecting a method through to exporting the final document. Click <strong>Create</strong> in the sidebar to begin.</p>
+        <p>Creating a report follows seven phases, from selecting a method through to saving the finished project. Click <strong>New Project</strong> in the sidebar to begin.</p>
 
         <!-- Phase overview -->
         <div class="phase-list">
@@ -537,8 +537,8 @@
           <div class="phase-item">
             <div class="phase-num">2</div>
             <div class="phase-body">
-              <div class="phase-title">Select input source and load your file</div>
-              <p class="phase-desc">Select your input source and load your motion capture file. The app validates it automatically.</p>
+              <div class="phase-title">Select input source and provide your motion data</div>
+              <p class="phase-desc">Upload a .mvnx file, or select a recording you made live via Record. An uploaded file is validated automatically.</p>
             </div>
           </div>
           <div class="phase-item">
@@ -603,24 +603,26 @@
 
 
         <!-- Phase 2 -->
-        <h3>Phase 2 — Select Input Source and Load Your File</h3>
-        <p>After selecting a method, you land on the input source page. Select your motion capture format and load your recording file.</p>
+        <h3>Phase 2 — Select Input Source and Provide Your Motion Data</h3>
+        <p>After selecting a method, you land on the input source page. It offers two input options side by side: upload a .mvnx file exported from Xsens MVN Analyze, or select a recording you made live via <strong>Record</strong>.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p>On the input source page, click your input source to select it.</p></div>
-          <div class="steps-list-item"><p>Click the browse button to open a file dialog and select your file. The file is read directly from disk — it is not uploaded to any server.</p></div>
-          <div class="steps-list-item"><p>The app validates the file automatically. If validation passes, you are taken to the input configuration page. If validation fails, an error is displayed and you can select a different file.</p></div>
+          <div class="steps-list-item"><p>On the input source page, choose <strong>Upload a .mvnx file</strong> or <strong>Select a recording</strong>.</p></div>
+          <div class="steps-list-item"><p>If uploading, click the browse button to open a file dialog and select your file — it is read directly from disk and never uploaded to any server. If selecting a recording, pick one from your <a href="recordings-database.html">Recordings Database</a>.</p></div>
+          <div class="steps-list-item"><p>An uploaded file is validated automatically: if it passes, you are taken to the input configuration page; if it fails, an error is displayed and you can select a different file. A recording selected from the database skips this step, since it was already captured and verified by Motionprint Ergo itself.</p></div>
         </div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">Preparing your MVNX file</div>
+            <div class="callout-label">Preparing your .mvnx file</div>
             <p>The recording should capture the portion where the load handling task occurs — it can be trimmed in the next step if it contains idle time before or after. When exporting from MVN Analyze, select <strong>MVNX version 4</strong> and ensure all data points are checked.</p>
           </div>
         </div>
 
-        <p>The app checks the following during validation. If any check fails, an error is shown and you cannot proceed until the file is corrected:</p>
+        <p>If you'd rather capture data without that separate export step, see <a href="recording-with-mvn-sdk.html">Recording Motion Data Directly in Motionprint Ergo</a> to get started with live recording.</p>
+
+        <p>The app checks the following when you upload a .mvnx file. If any check fails, an error is shown and you cannot proceed until the file is corrected:</p>
         <ul>
           <li>It contains a <code>&lt;subject&gt;</code> element.</li>
           <li>It has a <code>frameRate</code> attribute.</li>
@@ -740,6 +742,7 @@
         <p>You've completed your first assessment and exported a report. Here are a few ways to continue:</p>
         <ul>
           <li><strong>Repeat the workflow</strong> for additional recordings, using either the same method or a different one. Each assessment is independent.</li>
+          <li><strong>Try live recording</strong> — capture motion data directly via Xsens Awinda hardware instead of exporting from MVN Analyze first. See <a href="recording-with-mvn-sdk.html">Recording Motion Data Directly in Motionprint Ergo</a>.</li>
           <li><strong>Explore method-specific settings</strong> to customise default values for your workflow and reduce the time spent on data entry for each report.</li>
           <li><strong>Save your analysis to the Database</strong> — after generating results you can click <strong>Save Project</strong> to store the full assessment in your project library for future reference and modification. See <a href="projects-database.html">Projects Database</a> for details.</li>
         </ul>
