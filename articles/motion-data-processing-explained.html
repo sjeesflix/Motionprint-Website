@@ -23,17 +23,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Motion Data Processing Explained — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="How Motionprint Ergo processes motion capture data — from file validation and biomechanical variable extraction to assessment-specific risk scoring." />
+  <meta name="description" content="How Motionprint Ergo processes motion capture data — from input validation and biomechanical variable extraction to assessment-specific risk scoring." />
   <link rel="canonical" href="https://motion-print.com/articles/motion-data-processing-explained.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
   <meta property="og:title" content="Motion Data Processing Explained — Motionprint Ergo Help" />
-  <meta property="og:description" content="How Motionprint Ergo processes motion capture data — from file validation and biomechanical variable extraction to assessment-specific risk scoring." />
+  <meta property="og:description" content="How Motionprint Ergo processes motion capture data — from input validation and biomechanical variable extraction to assessment-specific risk scoring." />
   <meta property="og:url" content="https://motion-print.com/articles/motion-data-processing-explained.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Motion Data Processing Explained — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="How Motionprint Ergo processes motion capture data — from file validation and biomechanical variable extraction to assessment-specific risk scoring." />
+  <meta name="twitter:description" content="How Motionprint Ergo processes motion capture data — from input validation and biomechanical variable extraction to assessment-specific risk scoring." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -283,7 +283,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated September 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -305,7 +305,7 @@
         <ul class="toc-list">
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-data-input"><a href="#data-input">2. Motion Data Input</a></li>
-          <li id="toc-validation"><a href="#validation">3. Upload &amp; Validation</a></li>
+          <li id="toc-validation"><a href="#validation">3. Validation</a></li>
           <li id="toc-biomechanical"><a href="#biomechanical">4. Deriving Biomechanical Variables</a></li>
           <li id="toc-scoring"><a href="#scoring">5. Assessment-Specific Scoring</a></li>
         </ul>
@@ -325,7 +325,7 @@
         <!-- ── SECTION 1 ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>The processing pipeline takes a motion capture recording as input and produces a per-frame time-series of biomechanical variables and risk scores as output. The pipeline runs entirely locally on your machine — no motion data is transmitted externally at any point.</p>
-        <p>The pipeline has four stages: the recording is uploaded and validated; biomechanical variables are derived from the position and orientation data; the selected assessment method applies its scoring logic to those variables; and the results are rendered as interactive graphs, a 3D avatar playback, and an exportable report.</p>
+        <p>The pipeline has four stages: the recording — an uploaded .mvnx file, or one selected from <a href="recording-with-mvn-sdk.html">live recording</a> — is validated, or already verified if it was captured in-app; biomechanical variables are derived from the position and orientation data; the selected assessment method applies its scoring logic to those variables; and the results are rendered as interactive graphs, a 3D avatar playback, and an exportable report.</p>
 
         <!-- ── SECTION 2 ── -->
         <h2 id="data-input"><span class="step-num">2</span> Motion Data Input</h2>
@@ -334,9 +334,9 @@
         <p>A motion capture recording models the body as a set of rigid segments — torso, limbs, hands, feet — each tracked independently in three-dimensional space. At every frame, the system records the position of each segment (its location in world coordinates) and its orientation (the rotation of the segment relative to a reference frame). From adjacent segment orientations, joint angles — the relative rotation between two connected segments — can be derived for every joint in the body.</p>
         <p>This produces a dense per-frame dataset: for a recording at 60 Hz, there are 60 snapshots of the full body pose per second. The entire recording becomes a time-series of positions, orientations, and angles that the processing pipeline works through frame by frame.</p>
 
-        <h3>Currently supported: Xsens MVNX</h3>
-        <p>Motionprint Ergo currently supports <strong>Xsens MVNX</strong> — an XML format exported from Xsens MVN Analyze Pro. Each sensor unit in the Xsens MVN system contains an accelerometer and gyroscope. The MVN Engine fuses the raw signals from all body-worn sensors into a clean, drift-corrected full-body pose at every frame. The MVNX file contains the output of this fusion process, not the raw sensor signals themselves. For step-by-step instructions on importing your recordings, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
-        <p>The data channels read from each MVNX file are:</p>
+        <h3>Where the data comes from</h3>
+        <p>Every recording that reaches the processing pipeline is produced by the same underlying technology: the Xsens MVN Engine. Each sensor unit in the Xsens MVN system contains an accelerometer and gyroscope, and the Engine fuses the raw signals from all body-worn sensors into a clean, drift-corrected full-body pose at every frame. There are two ways to get that output into Motionprint Ergo: upload an <strong>.mvnx</strong> file exported from Xsens MVN Analyze Pro, or select a recording captured directly through <a href="recording-with-mvn-sdk.html">live recording</a> via the MVN SDK. Either way, what reaches the pipeline is the Engine's fused output, not raw sensor signals — see <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a> for how the two input formats differ outside of processing. For step-by-step instructions on importing an .mvnx file, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>.</p>
+        <p>The data channels read from the recording are:</p>
         <ul>
           <li><strong>Segment positions</strong> — world-space (x, y, z) coordinates for each of the 23 body segments at every frame</li>
           <li><strong>Segment orientations</strong> — quaternion (q<sub>w</sub>, q<sub>x</sub>, q<sub>y</sub>, q<sub>z</sub>) representing each segment's rotation in 3D space</li>
@@ -384,30 +384,31 @@
         </div>
 
         <!-- ── SECTION 3 ── -->
-        <h2 id="validation"><span class="step-num">3</span> Upload &amp; Validation</h2>
-        <p>When a file is uploaded, Motionprint Ergo validates its structure before allowing the assessment to proceed. The validation checks that:</p>
+        <h2 id="validation"><span class="step-num">3</span> Validation</h2>
+        <p>An uploaded <strong>.mvnx</strong> file is validated before Motionprint Ergo allows the assessment to proceed. The validation checks that:</p>
         <ul>
           <li>The file is valid and can be fully parsed</li>
           <li>A <code>&lt;subject&gt;</code> element is present with a <code>frameRate</code> attribute</li>
           <li>At least one normal motion frame exists with both position and orientation data</li>
         </ul>
         <p>If any check fails, a specific error message is shown explaining what is missing or incorrect. Metadata extracted during validation — frame rate, segment count, total frame count — is used to configure the processing pipeline for that recording.</p>
+        <p>A recording selected from the <a href="recordings-database.html">Recordings Database</a> skips this step — it was already captured and verified by Motionprint Ergo itself when it was recorded, so the same metadata is already known before processing begins.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="biomechanical"><span class="step-num">4</span> Deriving Biomechanical Variables</h2>
         <p>The core of the processing pipeline converts the segment positions and orientations from the motion data into the distances, heights, and angles that assessment methods need. This happens in three steps.</p>
 
         <h3>Anatomical landmark positions</h3>
-        <p>Segment positions in the MVNX file represent the origin of each body segment. In addition to segment origins, MVNX provides positional data for specific bony landmarks — precise anatomical reference points such as the palm centre, medial malleolus, or shoulder tip — stored separately in the file. The pipeline reads these landmark positions directly where they are available.</p>
-        <p>Where a landmark position is not stored explicitly in the file, the pipeline derives it by taking the segment origin and adding a fixed body-frame offset vector, then rotating that offset using the segment's quaternion orientation to bring it into world coordinates via quaternion-to-rotation-matrix conversion.</p>
+        <p>Segment positions in the recording represent the origin of each body segment. In addition to segment origins, the Xsens MVN Engine provides positional data for specific bony landmarks — precise anatomical reference points such as the palm centre, medial malleolus, or shoulder tip — regardless of whether the recording reached the pipeline as an uploaded .mvnx file or a live-recorded .mpcap. The pipeline reads these landmark positions directly where they are available.</p>
+        <p>Where a landmark position is not stored explicitly in the recording, the pipeline derives it by taking the segment origin and adding a fixed body-frame offset vector, then rotating that offset using the segment's quaternion orientation to bring it into world coordinates via quaternion-to-rotation-matrix conversion.</p>
 
         <h3>Distances, heights, and angles</h3>
         <p>With anatomical landmarks positioned in world space, the pipeline extracts the variables each assessment method requires:</p>
         <ul>
           <li><strong>Horizontal distances</strong> are computed from XY-plane projections of landmark positions (e.g., the distance between ankle mid-point and hand mid-point in the horizontal plane)</li>
-          <li><strong>Vertical heights</strong> are read from the Z-coordinate of the relevant landmark relative to the calibrated floor plane (Z is the vertical axis in MVNX convention)</li>
+          <li><strong>Vertical heights</strong> are read from the Z-coordinate of the relevant landmark relative to the calibrated floor plane (Z is the vertical axis in the Xsens coordinate convention)</li>
           <li><strong>Body segment orientations</strong> are derived from each segment's quaternion by converting to a rotation matrix. These represent the absolute orientation of a segment in world space and are used to compute angles relative to gravity, the vertical axis, or other reference directions as required by the assessment method</li>
-          <li><strong>Joint angles</strong> are read directly from the pre-computed values stored in the input file — they are not re-derived by the pipeline</li>
+          <li><strong>Joint angles</strong> are read directly from the pre-computed values stored in the source recording — they are not re-derived by the pipeline</li>
         </ul>
 
         <h3>Frame-by-frame time-series</h3>
@@ -426,9 +427,9 @@
                 <span class="related-card-cat">Getting Started</span>
                 <span class="related-card-title">How Motionprint Ergo Works</span>
               </a>
-              <a href="getting-started-ergo.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Getting Started with Motionprint Ergo</span>
+              <a href="mpcap-vs-mvnx-explained.html" class="related-card">
+                <span class="related-card-cat">Recording &amp; Hardware</span>
+                <span class="related-card-title">.mpcap vs .mvnx Explained</span>
               </a>
             </div>
           </div>
