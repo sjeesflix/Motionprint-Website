@@ -139,6 +139,13 @@
 
     /* Lead */
     .article-lead { font-size: 16px; line-height: 1.75; color: var(--muted); margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
 
     /* Step number */
     .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-family: var(--font-body); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; padding-top: 2px; }
@@ -258,7 +265,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          5 min read
+          7 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -283,9 +290,9 @@
         <div class="toc-label">In this article</div>
         <ul class="toc-list">
           <li id="toc-open"><a href="#open">1. Opening the recording viewer</a></li>
-          <li id="toc-cameras"><a href="#cameras">2. Camera views</a></li>
-          <li id="toc-playback"><a href="#playback">3. Playback controls</a></li>
-          <li id="toc-trim"><a href="#trim">4. Trimming a recording</a></li>
+          <li id="toc-viewer"><a href="#viewer">2. Reviewing the recording</a></li>
+          <li id="toc-trim"><a href="#trim">3. Trimming a recording</a></li>
+          <li id="toc-tasks"><a href="#tasks">4. Editing task markers</a></li>
           <li id="toc-use"><a href="#use">5. Using a trimmed recording in a report</a></li>
           <li id="toc-save"><a href="#save">6. Saving your changes</a></li>
         </ul>
@@ -300,36 +307,53 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Every recording captured live in Motionprint Ergo can be reviewed in its own recording viewer before you use it in a report. This guide covers the viewer's camera views and playback controls, and how to trim a recording down to the part of the capture you actually want to assess.</p>
+        <p class="article-lead">Every recording captured live in Motionprint Ergo can be reviewed in its own recording viewer before you use it in a report. This guide covers opening the viewer, trimming a recording down to the part of the capture you actually want to assess, and editing its task markers.</p>
 
 
         <h2 id="open"><span class="step-num">1</span> Opening the recording viewer</h2>
 
-        <p>Open a recording from the <a href="recordings-database.html">Recordings Database</a> to view it in the recording viewer. This is the same 3D playback experience used elsewhere in Motionprint Ergo, applied to a raw recording rather than a finished report.</p>
+        <p>Open the <a href="recordings-database.html">Recordings Database</a>, find the recording you want to review, and click the <strong>kebab menu</strong> (the ⋮ icon) on its row, then choose <strong>Edit</strong>. There's no other way into the recording viewer &mdash; clicking the row itself just expands its details panel. This opens the same 3D playback experience used elsewhere in Motionprint Ergo, applied to a raw recording rather than a finished report.</p>
 
-        <h2 id="cameras"><span class="step-num">2</span> Camera views</h2>
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Recordings Database kebab menu</div>
+          <div class="media-placeholder-desc">The kebab menu on a recording row, with Edit highlighted — this is what opens the recording viewer.</div>
+        </div>
 
-        <p>The viewer offers four switchable camera views, so you can check a recording from whichever angle makes an issue easiest to spot:</p>
-        <ul>
-          <li><strong>3D</strong> &mdash; a freely orbiting view of the full skeleton</li>
-          <li><strong>Front</strong> &mdash; a fixed view facing the subject</li>
-          <li><strong>Side</strong> &mdash; a fixed profile view</li>
-          <li><strong>Top</strong> &mdash; a fixed overhead view</li>
-        </ul>
-        <p>Switching views doesn't affect playback &mdash; you can change the camera at any point while the recording is playing or paused.</p>
+        <h2 id="viewer"><span class="step-num">2</span> Reviewing the recording</h2>
 
-        <h2 id="playback"><span class="step-num">3</span> Playback controls</h2>
+        <p>The recording viewer uses the same 3D viewport, camera view selector, and playback controls as the rest of Motionprint Ergo &mdash; see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a> for the full rundown of mouse and keyboard navigation, the camera presets, and the play/pause, speed and timeline controls.</p>
+        <p>Use these controls to locate the exact moments where the task begins and ends, or to review a specific posture more closely before deciding what to trim.</p>
 
-        <p>Standard playback controls let you play, pause, and scrub through the recording along its timeline. Use these to locate the exact moments where the task begins and ends, or to review a specific posture more closely before deciding whether to trim it out.</p>
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Recording viewer</div>
+          <div class="media-placeholder-desc">The recording viewer open on a raw recording, with the camera view selector visible in the top-right corner of the viewport.</div>
+        </div>
 
-        <h2 id="trim"><span class="step-num">4</span> Trimming a recording</h2>
+        <h2 id="trim"><span class="step-num">3</span> Trimming a recording</h2>
 
         <p>A live recording often includes a few seconds before and after the actual task &mdash; walking into position, pausing at the start, or stepping away at the end. Trimming lets you narrow the recording down to just the section you want to assess, without needing to re-record.</p>
         <ul>
           <li>Locate the start and end points of the task on the timeline</li>
-          <li>Set the trim handles to mark the section you want to keep</li>
-          <li>Preview the trimmed range before confirming</li>
+          <li>Drag the trim handles to mark the section you want to keep</li>
+          <li>Play through the trimmed range to confirm it before saving</li>
         </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-gif">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            GIF
+          </span>
+          <div class="media-placeholder-title">Dragging the trim handles</div>
+          <div class="media-placeholder-desc">Setting the start and end trim handles on the recording's timeline.</div>
+        </div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -342,14 +366,43 @@
         <h3>What to trim out</h3>
         <p>As a general rule, trim out anything that isn't representative of the task itself: walking to and from the workstation, waiting for an instruction, or adjusting equipment before starting. Keeping the recording focused on the task improves the accuracy of critical-moment detection in RULA reports and keeps NIOSH and KIM-LHC inputs limited to the relevant lift or handling activity.</p>
 
+        <h2 id="tasks"><span class="step-num">4</span> Editing task markers</h2>
+
+        <p>If the recording was captured with <a href="recording-with-mvn-sdk.html">task markers</a> during live recording, you can review and adjust them here &mdash; and this is also where you add markers after the fact if the live session didn't include the ones you need.</p>
+        <ul>
+          <li>Click the add-marker button on the timeline, or select a range first, to open the task dialog, then set its label and start/end frames</li>
+          <li>Click an existing task to edit its label or range, or to delete it</li>
+          <li>A task's range must stay within the current trim range, and can't overlap another task</li>
+        </ul>
+        <p>Each task becomes a lifting moment or posture task when you use this recording as input for a NIOSH, KIM-LHC or RULA report, so it's worth getting its range right here, the same way you would for the trim itself.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-gif">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            GIF
+          </span>
+          <div class="media-placeholder-title">Adding a task marker</div>
+          <div class="media-placeholder-desc">Selecting a range on the timeline and opening the task dialog to add a marker.</div>
+        </div>
+
         <h2 id="use"><span class="step-num">5</span> Using a trimmed recording in a report</h2>
 
-        <p>Once you're happy with the trim, the recording is ready to use. When creating a RULA, NIOSH or KIM-LHC report, choose <strong>select a recording</strong> as your input instead of uploading an .mvnx file, and pick this recording from the Recordings Database. The report will use the trimmed range.</p>
+        <p>Once you're happy with the trim, the recording is ready to use. When creating a RULA, NIOSH or KIM-LHC report, choose <strong>select a recording</strong> as your input instead of uploading an .mvnx file, and pick this recording from the Recordings Database. The report will use the trimmed range, along with any task markers you've set.</p>
 
         <h2 id="save"><span class="step-num">6</span> Saving your changes</h2>
 
-        <p>Confirm the trim to save it against the recording. The recording keeps its place in the Recordings Database, and any report you've already created from it is unaffected &mdash; a report keeps the data it was created with, the same way a saved project keeps its own settings snapshot.</p>
+        <p>Click <strong>Save</strong> to store your trim and task changes against the recording. This opens the same Save Recording dialog used when you stop a live recording &mdash; title, workplace, evaluator, operator, date and status (New, Used or Archived) &mdash; pre-filled with the recording's current values.</p>
+        <p>If you'd rather keep the original recording untouched, choose <strong>Save as New</strong> instead: it clones your trim and task edits into a new entry in the Recordings Database and leaves the recording you opened exactly as it was.</p>
+        <p>Either way, the recording keeps its place in the Recordings Database, and any report you've already created from it is unaffected &mdash; a report keeps the data it was created with, the same way a saved project keeps its own settings snapshot.</p>
 
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Save Recording dialog</div>
+          <div class="media-placeholder-desc">The Save Recording dialog, pre-filled with the recording's details, with Save and Save as New options.</div>
+        </div>
 
         <div class="article-end">
           <div>
@@ -423,8 +476,8 @@
 </footer>
 
 <script>
-  var sections = ['open','cameras','playback','trim','use','save'];
-  var tocIds   = ['toc-open','toc-cameras','toc-playback','toc-trim','toc-use','toc-save'];
+  var sections = ['open','viewer','trim','tasks','use','save'];
+  var tocIds   = ['toc-open','toc-viewer','toc-trim','toc-tasks','toc-use','toc-save'];
   function onScroll() {
     var scrollY = window.scrollY + 100;
     var active = 0;
