@@ -327,7 +327,7 @@
       <!-- Article content -->
       <div class="article-body">
 
-        <p class="article-lead">Motionprint Ergo supports motion capture data via Xsens MVNX files. This article walks you through exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
+        <p class="article-lead">Motionprint Ergo accepts motion capture data as an uploaded Xsens MVNX file, or as a recording made directly in the app via <a href="recording-with-mvn-sdk.html">live recording</a>. This article covers the upload path: exporting a valid MVNX file from MVN Analyze Pro, selecting it in the app, and understanding what happens during validation — so you reach the input configuration page ready to process.</p>
 
         <!-- ── SECTION 1 ── -->
         <h2 id="before"><span class="step-num">1</span> Before You Start</h2>
@@ -435,8 +435,8 @@
         <p>Once you have a valid MVNX file, the flow inside Motionprint Ergo is straightforward.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p>In Motionprint Ergo, click <strong>Create</strong> in the sidebar and select your assessment method.</p></div>
-          <div class="steps-list-item"><p>The <strong>Input Source</strong> page appears. Click the <strong>Xsens MVNX</strong> tile to select it as the input source.</p></div>
+          <div class="steps-list-item"><p>In Motionprint Ergo, click <strong>New Project</strong> in the sidebar and select your assessment method.</p></div>
+          <div class="steps-list-item"><p>The <strong>Select your input source</strong> page appears with two tiles. Click the one labeled <strong>Upload a Xsens recording as a .mvnx file</strong>. (The other tile, <strong>Use a Xsens recording made within this app</strong>, is for a recording you made with <a href="recording-with-mvn-sdk.html">live recording</a> instead — skip ahead to that article if that's your path.)</p></div>
           <div class="steps-list-item"><p>A file browser opens. Navigate to the folder where you saved the <code>.mvnx</code> file, select it, and confirm.</p></div>
           <div class="steps-list-item"><p>A brief <em>Validating and loading file…</em> indicator appears while the app performs a structural check. This typically completes in under a second even for large files.</p></div>
           <div class="steps-list-item"><p>If validation passes, the app navigates automatically to the <strong>Input Configuration</strong> page. If it fails, an error message is shown — see the next section for what each message means.</p></div>
@@ -547,9 +547,9 @@
           <div>
             <div class="related-label">Related articles</div>
                                     <div class="related-grid">
-              <a href="getting-started-ergo.html" class="related-card">
-                <span class="related-card-cat">Getting Started</span>
-                <span class="related-card-title">Getting Started with Motionprint Ergo</span>
+              <a href="recording-with-mvn-sdk.html" class="related-card">
+                <span class="related-card-cat">Recording &amp; Hardware</span>
+                <span class="related-card-title">Recording Motion Data Directly in Motionprint Ergo</span>
               </a>
               <a href="motion-data-processing-explained.html" class="related-card">
                 <span class="related-card-cat">Platform</span>
