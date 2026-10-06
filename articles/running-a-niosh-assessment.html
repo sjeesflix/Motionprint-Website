@@ -223,6 +223,14 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
   </style>
   <script type="application/ld+json">
   {
@@ -296,11 +304,11 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          9 min read
+          10 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated July 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -339,7 +347,7 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">This article walks through the complete process of running a NIOSH assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them.</p>
+        <p class="article-lead">This article walks through the complete process of running a NIOSH assessment in Motionprint Ergo — from selecting the report type to clicking Process. Every screen, field, and control is covered in the order you encounter them, for both ways of providing motion data: uploading an .mvnx file, or selecting a recording made in Motionprint Ergo.</p>
 
         <!-- ── OVERVIEW ── -->
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
@@ -359,6 +367,14 @@
 
         <p>After completing all five steps, the <strong>Process</strong> button at the bottom of the input page becomes active. Clicking it submits the assessment and navigates you to the report.</p>
 
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Coming straight from a live recording?</div>
+            <p>If you stop a live recording and choose <strong>Save and create report</strong> with NIOSH selected, steps 1 to 3 are skipped: you land directly on the input page with the recording's trim range, tasks and metadata already filled in. See <a href="recording-with-mvn-sdk.html">Record Xsens Data Live</a>.</p>
+          </div>
+        </div>
+
         <!-- ── STEP 1 ── -->
         <h2 id="select-report"><span class="step-num">2</span> Select Report</h2>
 
@@ -372,17 +388,53 @@
           </div>
         </div>
 
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Create page</div>
+          <div class="media-placeholder-desc">The Create page with the report tiles (NIOSH, KIM-LHC, RULA), NIOSH selected and the Continue button visible.</div>
+        </div>
+
         <!-- ── STEP 2 ── -->
         <h2 id="select-input-source"><span class="step-num">3</span> Select Input Source</h2>
 
-        <p>The next screen is the <strong>Input Source page</strong>. Select your input source from the available tiles. Currently only <strong>Xsens MVNX File</strong> is supported. As new capture methods become available they will become selectable here.</p>
+        <p>The next screen is the <strong>Input Source page</strong>, where you choose where the motion data for this assessment comes from. Two tiles are available:</p>
+
+        <table class="info-table">
+          <thead><tr><th>Tile</th><th>Use it when</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Upload a Xsens recording as a .mvnx file</td>
+              <td>You recorded the task in Xsens MVN Analyze and exported it as an .mvnx file.</td>
+            </tr>
+            <tr>
+              <td>Use a Xsens recording made within this app</td>
+              <td>You recorded the task with <a href="recording-with-mvn-sdk.html">live recording</a> in Motionprint Ergo, so it is stored in your <a href="recordings-database.html">Recordings Database</a>.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Whichever you choose, the NIOSH calculation runs exactly the same way. See <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a> for how the two formats compare.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Input Source page</div>
+          <div class="media-placeholder-desc">The Select your input source page with its two tiles: upload a .mvnx file, or use a recording made within the app.</div>
+        </div>
 
         <!-- ── STEP 3 ── -->
         <h2 id="upload-recording"><span class="step-num">4</span> Setup Your Input Source</h2>
 
-        <p>After selecting your input source, the upload control appears on the same Input Source screen. For Xsens MVNX, click the upload area to browse your system and select a .mvnx file.</p>
+        <p>What happens next depends on the tile you chose.</p>
 
-        <p>Once a valid file is loaded, Motionprint Ergo takes you to the main input page (steps 4 and 5). If the file is invalid or corrupted, an error message appears and you can try again.</p>
+        <h3>Uploading a .mvnx file</h3>
+
+        <p>A file browser opens. Navigate to your .mvnx file and select it. Motionprint Ergo runs a quick structural check, and once the file passes it takes you to the main input page (steps 4 and 5). If the file is invalid or corrupted, an error message tells you what is wrong and you can select another file.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -392,14 +444,45 @@
           </div>
         </div>
 
+        <h3>Selecting a recording</h3>
+
+        <p>A list of your saved recordings appears, laid out like the <a href="recordings-database.html">Recordings Database</a> and with the same filters to help you find the right one. Archived recordings are included in the list; use the filter to hide them if you prefer. Select the recording you want to assess to continue to the main input page. No validation step is needed, because the recording was captured and checked by Motionprint Ergo itself.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Recording selection list</div>
+          <div class="media-placeholder-desc">The list of saved recordings shown after choosing Use a Xsens recording made within this app, with the filter options visible.</div>
+        </div>
+
+        <p>Everything you prepared in the recording carries over to the input page:</p>
+
+        <ul>
+          <li><strong>Trim range</strong> — becomes the observation window for the assessment.</li>
+          <li><strong>Tasks</strong> — every task defined in the recording appears as a lifting task, with its start frame, end frame and description.</li>
+          <li><strong>Metadata</strong> — workplace, evaluator, operator, age, gender, weight, tags and date are pre-filled. The date defaults to the date of the recording.</li>
+        </ul>
+
+        <p>What a recording can't hold is the NIOSH-specific information per task, such as the load weight and coupling rating. You fill that in per task on the input page.</p>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Changes stay in this project</div>
+            <p>Anything you change on the input page — the trim, tasks or metadata — applies only to this project. The recording itself stays exactly as it was saved in the Recordings Database, so you can use it again for another report. To change the recording itself, edit it in the recording viewer; see <a href="reviewing-and-trimming-recordings.html">Reviewing &amp; Trimming Recordings</a>.</p>
+          </div>
+        </div>
+
         <!-- ── STEP 4 ── -->
         <h2 id="trim-lifting-tasks"><span class="step-num">5</span> Trim the File and Specify Lifting Tasks</h2>
 
-        <p>This is the main input page — a new screen with a <strong>3D viewport on the left</strong> showing the loaded avatar and a <strong>lifting tasks panel on the right</strong>. This step is where you define the observation window and mark each individual lifting action.</p>
+        <p>This is the main input page — a new screen with a <strong>3D viewport on the left</strong> showing the loaded avatar and a <strong>lifting tasks panel on the right</strong>. If you selected a recording, the observation window and lifting tasks are already set from that recording; review them here and complete the NIOSH-specific fields for each task. Otherwise, this step is where you define the observation window and mark each individual lifting action.</p>
 
         <h3>The 3D viewport and playback controls</h3>
 
-        <p>The viewport renders the motion capture recording as an animated 3D avatar. Below the viewport are playback controls:</p>
+        <p>The viewport renders the motion capture recording as an animated 3D avatar, with the same camera views (3D, front, side and top) and playback controls used elsewhere in Motionprint Ergo:</p>
 
         <ul>
           <li><strong>Play/pause button</strong> — Start or stop the animation.</li>
@@ -431,6 +514,14 @@
           <div>
             <div class="callout-label">Frequency = Tasks ÷ Trimmed duration</div>
             <p>Example: 5 lifting tasks in a 2-minute observation window gives a frequency of 2.5 lifts/min — within the acceptable range. If the frequency is too low, extend the window or add more tasks. If too high, narrow the window or remove tasks.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Using a recording? Check the frequency</div>
+            <p>The trim range of a recording was set in the recording viewer, possibly before you knew which method you would use it for. Because the lift frequency is calculated from the trimmed duration and the number of tasks, check that it still falls within 0.2–15 lifts/min. If it doesn't, adjust the handles here — the change only applies to this project.</p>
           </div>
         </div>
 
@@ -475,7 +566,56 @@
           </tbody>
         </table>
 
+        <p><strong>Tasks from a recording</strong> are already in the list when you arrive, with their start frame, end frame and description filled in. Open each one and complete the load weight and coupling rating — these are specific to NIOSH and are not stored in the recording.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Input page with tasks from a recording</div>
+          <div class="media-placeholder-desc">The input page after selecting a recording: trim handles already set, and the recording's tasks listed on the right, waiting for the NIOSH-specific details.</div>
+        </div>
+
         <p>You can edit or delete tasks in the list at any time. If you adjust the trim handles to exclude a task's frame range, that task is removed or adjusted automatically.</p>
+
+        <h3>Additional modifiers</h3>
+
+        <p>If any additional modifiers are enabled in your <a href="niosh-report-settings.html">NIOSH report settings</a>, they appear in the lifting task editing window, so you set them per individual task alongside the load weight and coupling rating. This applies to tasks that came from a recording as well. The exception is the <strong>Extended duration (eM)</strong> modifier, which is applied automatically based on the working time you enter in the task information form — no manual selection is needed.</p>
+
+        <table class="info-table">
+          <thead><tr><th>Modifier</th><th>Factor</th><th>How it is set</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Two-person lift (Pf)</td>
+              <td>0.85</td>
+              <td>Set per lifting task in the task editing window. The load is lifted by two workers simultaneously, sharing the weight.</td>
+            </tr>
+            <tr>
+              <td>Additional physical tasks (Tf)</td>
+              <td>0.80</td>
+              <td>Set per lifting task in the task editing window. The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
+            </tr>
+            <tr>
+              <td>One-hand lifting (Of)</td>
+              <td>0.60</td>
+              <td>Set per lifting task in the task editing window. A lift is performed with only one hand instead of two.</td>
+            </tr>
+            <tr>
+              <td>Extended duration (eM)</td>
+              <td>Varies</td>
+              <td>Applied automatically based on the working time entered in the task information form. Applies when the work shift exceeds 8 hours: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Modifiers are opt-in</div>
+            <p>Modifier fields only appear in the lifting task editing window if they are enabled in your NIOSH report settings. If no modifiers are enabled, the task window shows only the standard fields.</p>
+          </div>
+        </div>
 
         <h3>Multiple lifting tasks and CLI mode</h3>
 
@@ -487,6 +627,8 @@
         <h2 id="task-information"><span class="step-num">6</span> Provide Task Information</h2>
 
         <p>Still on the same input page, scrolling below the timeline and task list brings you to the task information form. This collects metadata about the assessment session. Some fields are always shown; others appear or are hidden based on your <a href="niosh-report-settings.html">NIOSH report settings</a>.</p>
+
+        <p>If you selected a recording, the metadata fields are pre-filled from that recording — workplace, evaluator, operator, age, gender, weight, tags and date. Review them and fill in anything that is still empty; as with the trim and tasks, changes here apply only to this project.</p>
 
         <table class="info-table">
           <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
@@ -524,7 +666,7 @@
             <tr>
               <td>Date</td>
               <td>Yes</td>
-              <td>The evaluation date. Set automatically to today's date using separate year, month, and day selectors.</td>
+              <td>The evaluation date. Defaults to today\'s date, or to the date of the recording when you selected a recording as input. Can be changed.</td>
             </tr>
             <tr>
               <td>Working time</td>
@@ -546,48 +688,21 @@
 
         <p>The correct FM table is selected automatically once you enter the working time.</p>
 
-        <h3>Additional modifiers</h3>
-
-        <p>If any additional modifiers are enabled in your NIOSH report settings, they will appear in the lifting task editing window so they can be set per individual task. The exception is the <strong>Extended duration (eM)</strong> modifier, which is applied automatically based on the working time you entered — no manual selection is needed.</p>
-
-        <table class="info-table">
-          <thead><tr><th>Modifier</th><th>Factor</th><th>How it is set</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>Two-person lift (Pf)</td>
-              <td>0.85</td>
-              <td>Set per lifting task in the task editing window. The load is lifted by two workers simultaneously, sharing the weight.</td>
-            </tr>
-            <tr>
-              <td>Additional physical tasks (Tf)</td>
-              <td>0.80</td>
-              <td>Set per lifting task in the task editing window. The worker performs other strenuous tasks (carrying, pushing, pulling) in addition to lifting.</td>
-            </tr>
-            <tr>
-              <td>One-hand lifting (Of)</td>
-              <td>0.60</td>
-              <td>Set per lifting task in the task editing window. A lift is performed with only one hand instead of two.</td>
-            </tr>
-            <tr>
-              <td>Extended duration (eM)</td>
-              <td>Varies</td>
-              <td>Applied automatically based on the working time entered above. Applies when the work shift exceeds 8 hours: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="callout callout-info">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Modifiers are opt-in</div>
-            <p>The additional modifiers sub-section only appears if at least one modifier is enabled in your NIOSH report settings. If no modifiers are enabled, this section is hidden entirely and you proceed directly to processing.</p>
-          </div>
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Task information form</div>
+          <div class="media-placeholder-desc">The task information form below the timeline, including the working time hours and minutes pickers.</div>
         </div>
 
         <!-- ── PROCESSING ── -->
         <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
 
         <p>Once all required fields are filled and at least one lifting task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment.</p>
+
+        <p>Before processing, Motionprint Ergo also checks the geometry of each lifting task. If the NIOSH equation can't be calculated for a task, the Process button stays disabled and the reason is shown, so you can correct that task before processing instead of finding N/A values in the report.</p>
 
         <p>A loading overlay appears showing progress and current status as the NIOSH calculation runs. Once complete, Motionprint Ergo automatically navigates to the report view, where you can review the <strong>Score Overview</strong>, <strong>Analysis</strong>, and <strong>Findings</strong> tabs. For a full walkthrough of every section in the report, see <a href="reading-the-niosh-report-results.html">Reading the NIOSH Report Results</a>.</p>
 
@@ -597,7 +712,7 @@
 
         <p>If you are on the report page and want to adjust any input — tasks, task information, or modifiers — click the <strong>Edit</strong> button on the report page. This returns you to the input page with all your existing settings intact, so you can make changes and re-process without starting over.</p>
 
-        <p>Once you're happy with your results, click <strong>Save Project</strong> to store the assessment in the Database for future reference. You can archive completed projects or delete duplicates to keep your library organized. See <a href="projects-database.html">Projects Database</a> for details.</p>
+        <p>Once you're happy with your results, click <strong>Save Project</strong> to store the assessment in the Projects Database for future reference. If you used a recording as input, it stays in the Recordings Database unchanged, ready to be used for another report. You can archive completed projects or delete duplicates to keep your library organized. See <a href="projects-database.html">Projects Database</a> for details.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">
