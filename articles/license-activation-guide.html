@@ -311,7 +311,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -334,6 +334,7 @@
           <li id="toc-activation"><a href="#activation">1. License Activation</a></li>
           <li id="toc-seats"><a href="#seat-management">2. Seat Management</a></li>
           <li id="toc-transfer"><a href="#license-transfer">3. License Transfer</a></li>
+          <li id="toc-sdk"><a href="#xsens-sdk-license">4. Xsens SDK License</a></li>
           </ul>
         <div class="toc-divider">
           <a href="../resources.html#knowledge" class="toc-back">
@@ -397,7 +398,7 @@
         <p>Each license includes a set number of seats based on your plan. Each seat allows activation on up to 2 devices (for example, a workstation and a laptop). An Individual plan includes 1 seat (2 devices total).</p>
 
         <h3>Your license in the app</h3>
-        <p>Go to <strong>Settings → License</strong> to see your license status, masked key, subscription tier, expiry date, and days remaining.</p>
+        <p>Go to <strong>Settings → License</strong> to see your license status, masked license key, tier, subscription expiry date and days remaining. From here you can <strong>Copy Key</strong>, <strong>Refresh</strong> the license with the License Server, or <strong>Deactivate</strong> the license on this machine.</p>
 
         <figure class="article-figure">
           <img src="licensesettingg.jpg" alt="Settings → License page showing license status, subscription tier and expiry" />
@@ -432,9 +433,31 @@
             <div class="workflow-step-num">2</div>
             <div>
               <div class="workflow-step-title">Activate on the new machine</div>
-              <p class="workflow-step-desc">Install Motionprint Ergo on the new machine, launch it, and enter the same license key. The activation completes online or offline as described in Section 1.</p>
+              <p class="workflow-step-desc">Install Motionprint Ergo on the new machine, launch it, and enter the same license key. Activation requires an internet connection, as described in Section 1.</p>
             </div>
           </div>
+        </div>
+
+        <h2 id="xsens-sdk-license"><span class="step-num">4</span> Xsens SDK License for Live Recording</h2>
+
+        <p><a href="recording-with-mvn-sdk.html">Live recording</a> connects to Xsens hardware through the Xsens MVN SDK, and the MVN SDK needs its own active license on the machine. This license is separate from your Motionprint Ergo license key and is managed in <strong>Xsens License Manager</strong>, which the Motionprint Ergo installer sets up together with the MVN SDK runtime. Uploading .mvnx files and running reports don't need it.</p>
+
+        <p>Its status is shown in a separate <strong>Xsens SDK License</strong> card on <strong>Settings → License</strong>:</p>
+        <ul>
+          <li><strong>License State</strong> — Active, Not active, or Unknown until the status has been checked</li>
+          <li><strong>SDK Version</strong> — the installed MVN SDK runtime</li>
+          <li><strong>Backend Link</strong> — whether the app's local processing service is reachable to check the license</li>
+        </ul>
+
+        <p>Click <strong>Open License Manager</strong> to activate the MVN SDK license in Xsens License Manager, then click <strong>Refresh status</strong>. As long as the SDK license isn't active, the Record workflow shows an <strong>Xsens SDK license required</strong> notice with a shortcut to this page.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Xsens SDK License card</div>
+          <div class="media-placeholder-desc">The Xsens SDK License card on Settings → License, showing License State, SDK Version and Backend Link with the Refresh status and Open License Manager buttons.</div>
         </div>
 
         <div class="article-end">

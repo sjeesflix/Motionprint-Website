@@ -234,6 +234,14 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
       .tier-grid { grid-template-columns: 1fr; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -298,7 +306,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated March 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -355,6 +363,10 @@
           </div>
           <div class="feature-item">
             <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>Live recording with Xsens Awinda hardware, plus the Projects and Recordings databases — live recording also requires an active Xsens MVN SDK license on the machine (see <a href="license-activation-guide.html#xsens-sdk-license">License &amp; Activation Guide</a>)</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
             <p>Company branding — customize the interface and reports with your logo, company name, and brand color</p>
           </div>
           <div class="feature-item">
@@ -375,7 +387,7 @@
         <p>Each seat entitles one user to activate Motionprint Ergo on up to <strong>2 devices</strong> simultaneously — for example, a desktop workstation and a laptop. Activations are tracked by machine fingerprint; switching devices requires deactivating one before activating another.</p>
 
         <h3>Offline usage</h3>
-        <p>Once activated, Motionprint Ergo can run without an internet connection for up to <strong>30 days</strong>. During this time the app auto-refreshes its license token silently when it detects connectivity. If the token expires without a refresh, a 7-day grace period begins — the app continues to work but shows a warning asking you to connect to the internet. After 37 days offline without a refresh, the app is locked until connectivity is restored and the token is refreshed. Note: this is separate from subscription expiry (see Renewal &amp; Expiry below).</p>
+        <p>Once activated, Motionprint Ergo can run without an internet connection for up to <strong>30 days</strong>. During this time the app auto-refreshes its license token silently when it detects connectivity. If it hasn't been able to refresh, a reminder to connect to the internet appears during the last 7 days of that period. If the token expires without a refresh, a 7-day grace period begins — the app continues to work but shows a warning asking you to connect to the internet. After 37 days offline without a refresh, the app is locked until connectivity is restored and the token is refreshed. Note: this is separate from subscription expiry (see Renewal &amp; Expiry below).</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
