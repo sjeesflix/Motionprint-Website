@@ -234,6 +234,14 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -298,7 +306,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated July 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -321,7 +329,7 @@
           <li id="toc-processing"><a href="#processing-errors">1. Processing Errors</a></li>
           <li id="toc-license"><a href="#license-issues">2. Licence Activation</a></li>
           <li id="toc-reports"><a href="#report-failures">3. Report Export Issues</a></li>
-          <li id="toc-database"><a href="#database-issues">4. Projects Database</a></li>
+          <li id="toc-database"><a href="#database-issues">4. Projects &amp; Recordings</a></li>
           <li id="toc-display"><a href="#display-glitches">5. Display Glitches</a></li>
           <li id="toc-contact"><a href="#contact-support">6. Contact Support</a></li>
         </ul>
@@ -340,24 +348,24 @@
 
         <!-- ── SECTION 1 ── -->
         <h2 id="processing-errors"><span class="step-num">1</span> Processing Errors</h2>
-        <p>Processing errors occur during MVNX file import or assessment calculation. They are almost always caused by a file that does not meet the expected format or completeness requirements.</p>
+        <p>Processing errors occur during MVNX file import or assessment calculation. They are almost always caused by a file that does not meet the expected format or completeness requirements. For a full list of file validation messages, see <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a>; problems with sensors, calibration or live recording are covered in <a href="hardware-setup-troubleshooting.html">Hardware Setup &amp; Sensor Troubleshooting</a>.</p>
 
         <div class="issue-list">
 
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">Missing body segments</span>
+              <span class="issue-title">Missing T-pose frame or anatomical landmarks</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The MVNX file does not contain all 23 body segments required by the Motionprint Ergo body model.</p>
-              <p><strong>Cause:</strong> The recording was made with an incomplete sensor set — one or more Xsens sensors were not connected, not calibrated, or not recognised by MVN Analyze before the session started.</p>
+              <p>The app reports <em>"MVNX file has no T-pose frame"</em> or <em>"MVNX file is missing required anatomical landmark(s)"</em>.</p>
+              <p><strong>Cause:</strong> The file was exported without all data points, with an older MVNX version, or from a session that was not fully calibrated in MVN Analyze.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Re-record the session with a full Xsens sensor set, all connected and calibrated</li>
-                <li>Verify in MVN Analyze that all segments show green before starting the recording</li>
-                <li>Re-export the MVNX file from MVN Analyze using the default export settings</li>
+                <li>Re-export from MVN Analyze as MVNX version 4 with all data points checked</li>
+                <li>Make sure the session was recorded with a full sensor setup and a completed calibration</li>
+                <li>Re-record the session if the original capture was not calibrated</li>
               </ul>
             </div>
           </div>
@@ -373,7 +381,7 @@
               <p><strong>Cause:</strong> The file was damaged or incompletely written during export, or is not a genuine MVNX export (e.g. a BVH, C3D, or other format with a renamed extension).</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Re-export from MVN Analyze using the default MVNX export settings</li>
+                <li>Re-export from MVN Analyze as MVNX version 4 with all data points checked</li>
                 <li>If the file was transferred via email or cloud storage, re-download the original — do not open and re-save the file as this can corrupt the XML</li>
               </ul>
             </div>
@@ -391,7 +399,7 @@
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>Open the recording in MVN Analyze and verify it contains motion data before exporting</li>
-                <li>Re-export using the default MVNX export settings — do not deselect any data streams</li>
+                <li>Re-export as MVNX version 4 with all data points checked — do not deselect any data streams</li>
                 <li>Re-record the session if the original capture did not complete correctly</li>
               </ul>
             </div>
@@ -409,7 +417,7 @@
               <ul>
                 <li>Allow at least 2–3 minutes for recordings over 5 minutes in length before assuming it has hung</li>
                 <li>If the app is genuinely frozen (no CPU activity in Task Manager), close and reopen it, then retry with the same file</li>
-                <li>Trim your recording in MVN Analyze to cover only the relevant lifting period before exporting — this reduces file size and processing time significantly</li>
+                <li>Keep recordings focused on the task: trim in MVN Analyze before exporting, or trim a live recording in the <a href="reviewing-and-trimming-recordings.html">recording viewer</a> — this reduces file size and processing time significantly</li>
               </ul>
             </div>
           </div>
@@ -425,11 +433,11 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Could not connect to the licence server"</span>
+              <span class="issue-title">"Connection error" or "Server timed out"</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The application could not reach the Motionprint Licence Server during online activation.</p>
+              <p>Activation shows <em>"Connection error"</em> or <em>"Server timed out. Please try again."</em> — the application could not reach the Motionprint Licence Server.</p>
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>Confirm the machine has an active internet connection</li>
@@ -443,15 +451,15 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"All seats are in use"</span>
+              <span class="issue-title">"Maximum devices reached"</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Your licence key has reached its maximum number of simultaneous device activations.</p>
+              <p>Your licence key has reached its maximum number of device activations — each seat covers 2 devices.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Deactivate the licence on a device you no longer need by going to <strong>Settings → Licence → Deactivate</strong> on that machine</li>
-                <li>If the old machine is no longer accessible, contact <a href="mailto:support@motion-print.com">Motionprint support</a> to manually release a seat</li>
+                <li>Deactivate the licence on a device you no longer need by going to <strong>Settings → License → Deactivate</strong> on that machine</li>
+                <li>If the old machine is no longer accessible, contact <a href="mailto:support@motion-print.com">Motionprint support</a> to manually release a device slot</li>
                 <li>To add more seats to your plan, see <a href="whats-included-in-your-license.html">What's Included in Your License</a></li>
               </ul>
             </div>
@@ -460,17 +468,16 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Invalid licence key"</span>
+              <span class="issue-title">"License key not found"</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The licence key entered does not match any active licence in the server.</p>
+              <p>The licence key entered does not match any licence on the server.</p>
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>Check the key was copied in full — it should follow the format <code>MP-XXXX-XXXX-XXXX-XXXX</code></li>
                 <li>Avoid extra spaces before or after the key when pasting</li>
                 <li>Confirm you are using the key from your purchase confirmation email — trial keys and purchased keys are different</li>
-                <li>If your subscription has expired, the key will also return this error until renewed</li>
               </ul>
             </div>
           </div>
@@ -478,15 +485,15 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"License expired"</span>
+              <span class="issue-title">"This license expired on [date]"</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Your subscription has passed its expiry date. The app enters read-only mode for 7 days, then locks entirely.</p>
+              <p>Your subscription has passed its expiry date. The app switches to view-only mode for 7 days — you can open and export existing reports but not process new ones — and then locks entirely.</p>
               <p><strong>Fix:</strong></p>
               <ul>
                 <li>Contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> to renew your subscription</li>
-                <li>Once renewed, re-enter your license key on the activation screen to restore full access</li>
+                <li>Once renewed, click <strong>Refresh</strong> in <strong>Settings → License</strong> while connected to the internet. If the app has already locked, re-enter your licence key on the activation screen</li>
               </ul>
             </div>
           </div>
@@ -498,10 +505,10 @@
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>The license key has been administratively disabled. This is not a standard activation error and requires manual intervention.</p>
+              <p>Activation shows <em>"This license has been disabled."</em> The licence key has been administratively disabled; this requires manual intervention.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> with your license key for assistance</li>
+                <li>Contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> with your licence key for assistance</li>
               </ul>
             </div>
           </div>
@@ -509,15 +516,34 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-warn">Warning</span>
-              <span class="issue-title">App enters read-only mode unexpectedly</span>
+              <span class="issue-title">App switches to view-only mode</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Read-only mode activates either when the subscription has expired or when the offline grace period (30 days + 7-day grace) has elapsed without a server check-in.</p>
+              <p>A banner reads <em>"Subscription expired — view-only mode"</em>. View-only mode only follows an expired subscription. Being offline for too long is different: the app first shows a reminder to connect to the internet, and only locks after 37 days without a licence refresh.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Connect to the internet — if your licence is still valid, the app will re-validate automatically and exit read-only mode</li>
-                <li>If your subscription has expired, renew it and re-enter the licence key, or contact support to receive an updated key</li>
+                <li>Check the expiry date in <strong>Settings → License</strong></li>
+                <li>If your subscription has expired, renew it and click <strong>Refresh</strong> in <strong>Settings → License</strong></li>
+                <li>If you see a reminder to connect instead, go online — the licence refreshes automatically, or click <strong>Refresh</strong> in <strong>Settings → License</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-warn">Warning</span>
+              <span class="issue-title">"Xsens SDK license required" when opening Record</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>Live recording uses the Xsens MVN SDK, which needs its own active license on the machine. This is separate from your Motionprint Ergo licence key.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Go to <strong>Settings → License</strong> and check the <strong>Xsens SDK License</strong> card</li>
+                <li>Click <strong>Open License Manager</strong>, activate the MVN SDK license in Xsens License Manager, then click <strong>Refresh status</strong></li>
+                <li>If Xsens License Manager is not found, reinstall Motionprint Ergo so the MVN SDK runtime is installed</li>
+                <li>No MVN SDK license yet? It can be purchased through Motionprint — contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>. See the <a href="license-activation-guide.html#xsens-sdk-license">License &amp; Activation Guide</a></li>
               </ul>
             </div>
           </div>
@@ -533,17 +559,17 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-error">Error</span>
-              <span class="issue-title">"Report could not be generated"</span>
+              <span class="issue-title">"Failed to export PDF" or "Failed to export Excel"</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>This generic error occurs when the report engine encounters an unexpected state during rendering.</p>
+              <p>The export shows <em>"Failed to export PDF"</em>, <em>"Failed to export Excel"</em> or <em>"Export failed"</em>.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Ensure the assessment completed successfully — if any scores show as N/A, resolve those first before generating the report</li>
                 <li>Check the output folder has write permissions; avoid saving to network drives or system-protected directories</li>
                 <li>Try saving to a local folder such as your Desktop or Documents instead</li>
-                <li>Restart Motionprint Ergo and regenerate — a one-off rendering failure is sometimes resolved by a fresh application session</li>
+                <li>Make sure a file with the same name isn't open in another application</li>
+                <li>Restart Motionprint Ergo and export again — a one-off rendering failure is sometimes resolved by a fresh application session</li>
               </ul>
             </div>
           </div>
@@ -558,7 +584,7 @@
               <p>A blank or partially rendered PDF usually means the file was opened before it had finished writing to disk.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Wait for the "Report saved" confirmation before opening the file</li>
+                <li>Wait for the <em>"… report exported successfully"</em> confirmation before opening the file</li>
                 <li>If the PDF is still blank after waiting, delete the incomplete file and regenerate</li>
                 <li>If sections are missing, check that your PDF viewer is up to date — some older readers do not render all embedded elements correctly</li>
                 <li>Try opening the file in a different PDF viewer (e.g. Adobe Acrobat, browser PDF viewer) to rule out a viewer issue</li>
@@ -569,16 +595,16 @@
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-warn">Warning</span>
-              <span class="issue-title">Excel report is missing data columns</span>
+              <span class="issue-title">Excel report has empty fields</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Certain columns in the Excel report are only populated when the corresponding assessment inputs were provided.</p>
+              <p>Some fields in the Excel report stay empty when the corresponding information was not entered — or is hidden by your privacy settings.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>Verify that all assessment parameters (load weight, coupling quality, frequency) were entered before running the assessment</li>
-                <li>For multi-task assessments, confirm all sub-tasks were configured — sub-task columns appear blank if the task was not set up</li>
-                <li>Re-run the assessment with the complete input set, then regenerate the Excel report</li>
+                <li>Check whether optional fields such as workplace, evaluator and operator were filled in on the input page or the Score Overview</li>
+                <li>Check <strong>Settings → General → Privacy</strong> — operator and evaluator names are left out of exports when they are hidden there</li>
+                <li>Method-specific task inputs (such as load weight and coupling) are required before processing, so they are always present in the export</li>
               </ul>
             </div>
           </div>
@@ -635,31 +661,31 @@
         </div>
 
         <!-- ── SECTION 4 ── -->
-        <h2 id="database-issues"><span class="step-num">4</span> Projects Database</h2>
-        <p>The Projects Database is stored locally on your machine and is independent of the Motionprint Ergo application files. This means your saved projects persist across software updates and reinstalls.</p>
+        <h2 id="database-issues"><span class="step-num">4</span> Projects &amp; Recordings</h2>
+        <p>The Projects and Recordings Databases are stored locally on your machine and are independent of the Motionprint Ergo application files. This means your saved projects and recordings persist across software updates and reinstalls.</p>
 
         <div class="issue-list">
 
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-info">Info</span>
-              <span class="issue-title">Will updating or reinstalling Motionprint Ergo delete my saved projects?</span>
+              <span class="issue-title">Will updating or reinstalling Motionprint Ergo delete my projects or recordings?</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>No. The Projects Database is stored in your local application data folder, separate from the application installation directory. Updating Motionprint Ergo to a newer version or uninstalling and reinstalling the software does not affect your saved projects — your project library remains intact.</p>
-              <p>If you are reinstalling on a different machine, your projects will not transfer automatically, as the database is local to each device.</p>
+              <p>No. Your projects, recordings and recording sessions are stored in your local application data folder (<code>%APPDATA%\MotionPrint</code>), separate from the application installation directory. Updating Motionprint Ergo to a newer version or uninstalling and reinstalling the software does not affect them — your Projects and Recordings Databases remain intact.</p>
+              <p>If you are reinstalling on a different machine, your projects and recordings will not transfer automatically, as the databases are local to each device.</p>
             </div>
           </div>
 
           <div class="issue-card">
             <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
               <span class="issue-badge badge-warn">Warning</span>
-              <span class="issue-title">A project I deleted cannot be recovered</span>
+              <span class="issue-title">A deleted project or recording cannot be recovered</span>
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Deleting a project from the Projects Database is permanent. There is no recycle bin or undo — once deleted, the project cannot be recovered. Before deleting, consider whether the project may be needed for future audits or methodology comparisons.</p>
+              <p>Deleting a project from the Projects Database, or a recording from the Recordings Database, is permanent. There is no recycle bin or undo — once deleted, the project cannot be recovered. Before deleting, consider whether the project may be needed for future audits or methodology comparisons.</p>
             </div>
           </div>
 
@@ -729,11 +755,11 @@
               <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
             <div class="issue-body">
-              <p>Theme settings may not apply until the application is fully restarted.</p>
+              <p>The theme is set in <strong>Settings → General</strong>, in the <strong>Interface</strong> section, and is applied when you click <strong>Save and apply</strong>.</p>
               <p><strong>Fix:</strong></p>
               <ul>
-                <li>After changing the theme in <strong>Settings → Appearance</strong>, close and reopen Motionprint Ergo</li>
-                <li>If the issue persists, reset the appearance settings to default, restart, then reapply your preferred theme</li>
+                <li>Make sure you clicked <strong>Save and apply</strong> after choosing the theme</li>
+                <li>If parts of the interface still show the old theme, close and reopen Motionprint Ergo</li>
               </ul>
             </div>
           </div>
@@ -754,8 +780,8 @@
         <ul>
           <li>A brief description of what you were doing when the issue occurred</li>
           <li>The exact error message (a screenshot is helpful)</li>
-          <li>Your operating system version and Motionprint Ergo version (found in <strong>Settings</strong>)</li>
-          <li>The MVNX file or report that triggered the issue, if applicable</li>
+          <li>Your operating system version and Motionprint Ergo version (shown in <strong>Settings → License</strong>)</li>
+          <li>The MVNX file, recording or report that triggered the issue, if applicable</li>
         </ul>
 
         <div class="support-form-wrap">
