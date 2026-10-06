@@ -338,16 +338,14 @@
 
         <p>A <strong>session</strong> is the container for one subject's recordings. It carries the subject's details &mdash; the same metadata fields used elsewhere in Motionprint Ergo, subject to your privacy settings &mdash; and can hold more than one recording. This means that if you're recording several tasks for the same person, you enter their details once at the start of the session rather than re-entering them for every task.</p>
 
+        <p>The only required fields are the subject's <strong>height</strong> and <strong>foot length</strong>, which the calibration needs. Operator, gender, age and weight are optional, and each of them can be turned off in <a href="privacy-settings.html">privacy settings</a> if you don't collect it. Additional body dimensions can be added for a more precise calibration.</p>
+
         <p>To start, open <strong>Record</strong> from the main navigation and create a new session, or continue an existing one from earlier the same day. Once hardware setup and calibration are complete, the session is ready to record.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">New/continue session screen</div>
-          <div class="media-placeholder-desc">The screen shown when opening Record &mdash; creating a new session or continuing an existing one, with the subject details form.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="recordingwithmvnsdk-newcontinuessessionscreen.png" alt="The Enter operator information step with operator, gender, age and weight fields and the required height and foot length fields" />
+          <figcaption>Entering the subject's details at the start of a session. Height and foot length are required; operator, gender, age and weight are optional and can be turned off in privacy settings.</figcaption>
+        </figure>
 
         <h2 id="recording"><span class="step-num">4</span> Recording a task</h2>
 
@@ -359,14 +357,10 @@
         </ul>
         <p>You can record multiple takes of the same task, or multiple different tasks, within a single session &mdash; each becomes its own recording.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Recording viewport</div>
-          <div class="media-placeholder-desc">The live 3D viewport while recording, with the marker controls and the origin/axis reset buttons visible.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="recordingwithmvnsdk-recordingviewport.png" alt="The live recording viewport with the recording tasks panel, the record and marker buttons, and the session metadata" />
+          <figcaption>The live view while recording &mdash; the tracked avatar, the Recording tasks panel on the right, and the record, marker and reset controls below the viewport.</figcaption>
+        </figure>
 
         <h3>Marking tasks within a recording</h3>
 
@@ -399,27 +393,23 @@
 
         <h2 id="after"><span class="step-num">5</span> What happens after you stop</h2>
 
-        <p>Stopping a recording opens a <strong>Save Recording</strong> dialog, where you name it, add tags, and set its status (New, Used or Archived). From there you choose how to proceed:</p>
+        <p>Stopping a recording opens the <strong>Save Recording</strong> window. Here you give the recording its title, check or complete its metadata &mdash; workplace, evaluator, operator, date, gender, age and weight &mdash; and set its status (New, Used or Archived) and tags. Then you choose how to proceed:</p>
         <ul>
           <li><strong>Save</strong> &mdash; the recording is added to the <a href="recordings-database.html">Recordings Database</a> and you stay in the session, ready to record the next task.</li>
-          <li><strong>Save and create report</strong> &mdash; pick a RULA, NIOSH or KIM-LHC report type in the same dialog; the recording is saved and you're taken straight into creating that report, pre-filled with its metadata, trim range and any markers.</li>
+          <li><strong>New Project</strong> &mdash; the recording is saved, you pick a RULA, NIOSH or KIM-LHC report, and you're taken straight to that report's input page, pre-filled with the recording's metadata, trim range and tasks.</li>
+          <li><strong>Cancel</strong> &mdash; discards the capture instead of saving it, so it's safe to back out of a take you don't want to keep.</li>
         </ul>
-        <p>Cancelling the dialog discards the capture instead of saving it, so it's safe to back out of a take you don't want to keep.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Save Recording dialog</div>
-          <div class="media-placeholder-desc">The save dialog shown after stopping, including the report-type picker used by Save and create report.</div>
-        </div>
+        <figure class="article-figure">
+          <img style="max-width:388px" src="recordingwithmvnsdk-saverecordingdialog.png" alt="The Save Recording window with title, metadata, status and tags, and the Save, New Project and Cancel buttons" />
+          <figcaption>The Save Recording window &mdash; complete the metadata, set status and tags, then choose Save, New Project or Cancel.</figcaption>
+        </figure>
 
         <p>Once saved, the recording lives in the <a href="recordings-database.html">Recordings Database</a>, where you can:</p>
         <ul>
           <li>Open it in the <a href="reviewing-and-trimming-recordings.html">recording viewer</a> to review playback and trim it to the relevant section</li>
-          <li>Select it as the input when creating a report, if you didn't use Save and create report above</li>
-          <li>See its status move from New to Used once a report has been created from it</li>
+          <li>Select it as the input when creating a report, if you didn't choose New Project above</li>
+          <li>Set its status to Used or Archived once you're done with it &mdash; the status is yours to manage and doesn't change on its own</li>
         </ul>
 
         <p>Whenever you're ready to move on, click <strong>New Project</strong> in the sidebar to leave the session and start a fresh report elsewhere &mdash; the session and everything recorded in it stay exactly as saved, so you can come back to it later the same day.</p>

@@ -333,36 +333,24 @@
           <li>If a sensor connects late, or after you've fixed a connection issue, click <strong>Refresh</strong> to rescan without leaving the screen</li>
         </ul>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Hardware setup screen</div>
-          <div class="media-placeholder-desc">The scan results list with the Refresh and radio channel buttons visible.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="hardwaresetuptroubleshooting-hardwaresetupscreen.png" alt="The hardware setup page listing all 17 sensors with segment, serial, signal quality and battery level, and the refresh, radio channel and disconnect buttons top right" />
+          <figcaption>The hardware setup page &mdash; each connected sensor with its body segment, signal quality and battery level. Top right: Refresh, radio channel and Disconnect.</figcaption>
+        </figure>
 
         <h3>Setting a radio channel (optional)</h3>
 
         <p>Awinda sensors talk to the dock over a 2.4 GHz radio link, which can run into interference from nearby Wi-Fi or another Awinda dock in the same room. If you notice repeated dropouts, open the radio channel setting next to Refresh and pick a different one. 15 channels are available (11 through 25); channels 11, 15, 20 and 25 are marked as recommended, since they sit in the gaps between Wi-Fi channels and avoid that interference. This setting needs at least one sensor connected and an active Xsens SDK licence to open.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Radio channel picker</div>
-          <div class="media-placeholder-desc">The radio channel dialog, with the four recommended channels marked.</div>
-        </div>
+        <figure class="article-figure">
+          <img style="max-width:551px" src="hardwaresetuptroubleshooting-radiochannelpicker.png" alt="The Select radio channel dialog with channels 11 to 25, the recommended channels marked with a star and channel 15 selected" />
+          <figcaption>The radio channel dialog &mdash; the recommended channels 11, 15, 20 and 25 are marked with a star; here channel 15 is selected.</figcaption>
+        </figure>
 
         <h2 id="assign"><span class="step-num">3</span> Assigning sensors to body segments</h2>
 
         <p>Once sensors are detected, Motionprint Ergo automatically assigns each one to the body segment it's physically attached to (for example, pelvis, upper arm, or foot), based on how the sensor reports itself to the dock. This assignment is what lets Motionprint Ergo map raw sensor orientation onto the correct part of the skeleton during calibration and recording. You don't need to do anything here yourself &mdash; see the next section if you ever need to change an assignment by hand.</p>
 
-        <figure class="article-figure">
-          <img src="../hardwaresetupassignment.png" alt="The hardware setup screen showing sensors listed and assigned to body segments" />
-          <figcaption>The hardware setup screen &mdash; sensors detected by the dock are listed and matched to body segments.</figcaption>
-        </figure>
 
         <h2 id="auto"><span class="step-num">4</span> Automatic allocation vs. manual override</h2>
 

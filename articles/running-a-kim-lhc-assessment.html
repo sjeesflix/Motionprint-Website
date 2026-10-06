@@ -335,7 +335,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Coming straight from a live recording?</div>
-            <p>If you stop a live recording and choose <strong>Save and create report</strong> with KIM-LHC selected, steps 1 to 3 are skipped: you land directly on the input page with the recording's trim range, tasks and metadata already filled in. See <a href="recording-with-mvn-sdk.html">Record Xsens Data Live</a>.</p>
+            <p>If you stop a live recording and choose <strong>New Project</strong> in the Save Recording window, then pick KIM-LHC, steps 1 to 3 are skipped: you land directly on the input page with the recording's trim range, tasks and metadata already filled in. See <a href="recording-with-mvn-sdk.html">Record Xsens Data Live</a>.</p>
           </div>
         </div>
 
@@ -382,14 +382,6 @@
 
         <p>Whichever you choose, the KIM-LHC calculation runs exactly the same way. See <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a> for how the two formats compare.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Input Source page</div>
-          <div class="media-placeholder-desc">The Select your input source page with its two tiles: upload a .mvnx file, or use a recording made within the app.</div>
-        </div>
 
         <!-- ── STEP 3 ── -->
         <h2 id="upload-recording"><span class="step-num">4</span> Setup Your Input Source</h2>
@@ -412,14 +404,10 @@
 
         <p>A list of your saved recordings appears, laid out like the <a href="recordings-database.html">Recordings Database</a> and with the same filters to help you find the right one. Archived recordings are included in the list; use the filter to hide them if you prefer. Select the recording you want to assess to continue to the main input page. No validation step is needed, because the recording was captured and checked by Motionprint Ergo itself.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Recording selection list</div>
-          <div class="media-placeholder-desc">The list of saved recordings shown after choosing Use a Xsens recording made within this app, with the filter options visible.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="recordingwithmvnsdk-inputsourcepage.png" alt="The Input Source page with the recording tile selected and the list of saved recordings below it" />
+          <figcaption>Choosing <strong>Use a Xsens recording made within this app</strong> shows your saved recordings below the tiles, with search and filters.</figcaption>
+        </figure>
 
         <p>Everything you prepared in the recording carries over to the input page:</p>
 
