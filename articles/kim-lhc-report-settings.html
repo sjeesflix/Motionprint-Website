@@ -190,6 +190,14 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -254,7 +262,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated July 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -313,7 +321,9 @@
         <!-- ── MODULE 1 ── -->
         <h2 id="input-data"><span class="step-num">2</span> Input &amp; Data</h2>
 
-        <p>The Input &amp; Data module controls which fields appear on the input page and in the final report, allowing you to streamline data collection and hide unnecessary fields.</p>
+        <p>The Input &amp; Data module controls how gender is used in the KIM-LHC calculation. Gender has its own setting here, separate from the privacy settings, because in KIM-LHC it changes the score and not just what is displayed.</p>
+
+        <p>Whether the operator name and evaluator name appear, and whether the gender field is shown at all, is controlled globally for all report types in <strong>Sidebar → Settings → Privacy</strong>. See <a href="privacy-settings.html">Privacy Settings</a> for how the two gender controls work together.</p>
 
         <table class="info-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
@@ -321,17 +331,7 @@
             <tr>
               <td>Gender not required</td>
               <td>Off</td>
-              <td>Toggle to hide the gender field from the input page and all reports. When enabled, calculations use female (conservative) reference values for the load rating throughout the assessment.</td>
-            </tr>
-            <tr>
-              <td>Hide operator name</td>
-              <td>Off</td>
-              <td>Toggle to conceal the worker's name from the input page, report, and exports. Helpful for privacy-focused assessments or anonymous workflows.</td>
-            </tr>
-            <tr>
-              <td>Hide evaluator name</td>
-              <td>Off</td>
-              <td>Toggle to conceal the assessor's name from the input page, report, and exports.</td>
+              <td>Toggle to leave gender out of the KIM-LHC calculation. The gender field is hidden on the input page, and the calculation uses the female (conservative) reference values for the load rating throughout the assessment.</td>
             </tr>
           </tbody>
         </table>
@@ -340,7 +340,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Gender affects load rating calculations</div>
-            <p>Gender in KIM-LHC directly affects scoring: men and women have different reference values in the load rating table. When gender is hidden, the app applies female values as the conservative default. See the <a href="understanding-kim-lhc-assessment.html#load-rating">Understanding the KIM-LHC Assessment</a> article for the default load rating tables.</p>
+            <p>Gender in KIM-LHC directly affects scoring: men and women have different reference values in the load rating table. When <strong>Gender not required</strong> is enabled, the app applies female values as the conservative default. See the <a href="understanding-kim-lhc-assessment.html#load-rating">Understanding the KIM-LHC Assessment</a> article for the default load rating tables.</p>
           </div>
         </div>
 
@@ -348,6 +348,15 @@
         <h2 id="analysis-scoring"><span class="step-num">3</span> Analysis &amp; Scoring</h2>
 
         <p>The Analysis &amp; Scoring module is the most KIM-LHC-specific section. It controls the load rating table, multi-task scoring behavior, and report structure options.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Analysis &amp; Scoring module</div>
+          <div class="media-placeholder-desc">The KIM-LHC Analysis &amp; Scoring card in Settings → Reports, with its toggles and the Findings sections list.</div>
+        </div>
 
         <table class="info-table">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
@@ -387,9 +396,9 @@
 
         <h3>Load weight scoring table editor</h3>
 
-        <p>The load weight scoring table lets you override the BAuA default load rating values used in the assessment. The editor shows two rows — <strong>Men</strong> and <strong>Women</strong> — across ten weight bin columns. Each cell is an editable integer between 0 and 100, representing the load rating score for that gender and weight category.</p>
+        <p>The load weight scoring table lets you override the BAuA default load rating values used in the assessment. The editor shows two rows — <strong>Men</strong> and <strong>Women</strong> — across nine weight bin columns, or ten when the optional 0–3 kg category is enabled. Each cell is an editable integer between 0 and 100, representing the load rating score for that gender and weight category.</p>
 
-        <p>The weight bins are: 3–5, 5–10, 10–15, 15–20, 20–25, 25–30, 30–35, 35–40, and &gt;40 kg. A <strong>Reset to defaults</strong> button restores all values to the BAuA standard reference tables.</p>
+        <p>The weight bins are: 3–5, 5–10, 10–15, 15–20, 20–25, 25–30, 30–35, 35–40, and &gt;40 kg. The <strong>Enable 0–3 kg weight range</strong> checkbox in the table editor adds a tenth, 0–3 kg column; once enabled, the 0–3 kg category also becomes selectable for lifting tasks on the input page. A <strong>Reset to defaults</strong> button restores all values to the BAuA standard reference tables.</p>
 
         <p>Default values (BAuA reference):</p>
 
@@ -443,18 +452,27 @@
 
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the Analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply independently to each page:</p>
 
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Viewport module</div>
+          <div class="media-placeholder-desc">The Viewport defaults card with the Input Page / Analysis Page tabs, the layout buttons and a camera view selector per viewport.</div>
+        </div>
+
         <table class="info-table">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
               <td>Layout</td>
               <td>Single view, Two horizontal, Two vertical, Four views</td>
-              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal shows two viewports side by side. Two vertical stacks them. Four views shows a 2×2 grid.</td>
+              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal stacks two viewports top and bottom. Two vertical places them side by side. Four views shows a 2×2 grid.</td>
             </tr>
             <tr>
               <td>Camera view</td>
-              <td>Perspective, Front, Back, Left, Right, Top</td>
-              <td>Sets the default camera angle. Perspective is a realistic angled view. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
+              <td>3D, Front, Back, Left, Right, Top</td>
+              <td>Sets the default camera angle. 3D is a perspective view from a three-quarter angle. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
             </tr>
           </tbody>
         </table>
@@ -463,7 +481,7 @@
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
             <div class="callout-label">Defaults can be overridden</div>
-            <p>The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always change the layout and camera view interactively, or orbit freely with your mouse. The global settings do not lock the interface.</p>
+            <p>The module has two tabs, <strong>Input Page</strong> and <strong>Analysis Page</strong>, so each page gets its own defaults. The settings here establish defaults when you first open an assessment or the Analysis tab. Once inside a report, you can always change the layout and camera view interactively, or orbit freely with your mouse. The global settings do not lock the interface.</p>
           </div>
         </div>
 
@@ -471,6 +489,15 @@
         <h2 id="export"><span class="step-num">5</span> Export</h2>
 
         <p>The Export module controls the naming conventions for PDF and Excel files when you export a completed KIM-LHC assessment report, plus one KIM-LHC-specific export behavior option.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Export module</div>
+          <div class="media-placeholder-desc">The Export card with the PDF and Excel filename template tabs and the company branding toggle.</div>
+        </div>
 
         <h3>Filename templates</h3>
 
@@ -480,7 +507,7 @@
 
         <p>The two templates are independent — you can customize them separately. The file extension (.pdf, .xlsx) is appended automatically. For a full overview of available variables, validation rules, fallback behaviour, and example templates, see <a href="exporting-reports.html">Exporting Reports (PDF &amp; Excel)</a>.</p>
 
-        <p>A separate <strong>Project Save</strong> template controls the default title pre-filled when saving an assessment to the Projects Database. It uses the same variable syntax. See <a href="projects-database.html#saving">Projects Database — Project title naming template</a> for details.</p>
+        <p>The default title for saving a project is no longer set per report type. One <strong>Project title</strong> template, shared by NIOSH, KIM-LHC and RULA, now lives in <strong>Sidebar → Settings → General → Database</strong>, next to the <strong>Recording title</strong> template. It uses the same variable syntax as the filename templates. See <a href="projects-database.html#saving">Projects Database</a> for details.</p>
 
         <h3>Export settings</h3>
 
