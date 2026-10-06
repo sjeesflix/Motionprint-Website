@@ -199,6 +199,14 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -262,7 +270,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated September 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -305,9 +313,11 @@
         <!-- ── WHAT IS THE DATABASE ── -->
         <h2 id="what"><span class="step-num">1</span> What is the Projects Database?</h2>
 
-        <p>Before v1.0.1, every analysis in Motionprint Ergo was a one-time workflow: you ran a report, exported it, and moved on. The <strong>Projects Database</strong> changes that. It stores every project you choose to save — including the full calculation data, custom moments, settings, and metadata — so you can return to any assessment at any point.</p>
+        <p>The <strong>Projects Database</strong> stores every project you choose to save — including the full calculation data, custom moments, settings, and metadata — so you can return to any assessment at any point.</p>
 
-        <p>This is especially valuable for teams running repeated assessments at the same workstations, for compliance workflows that require an audit trail, and for any situation where you need to compare results across time or methodology versions.</p>
+        <p>Open it via <strong>Database</strong> in the main navigation, on the <strong>Projects</strong> tab. Next to it, the <strong>Recordings</strong> tab holds the <a href="recordings-database.html">Recordings Database</a>: projects are finished, saved reports, recordings are the raw motion captures made with live recording.</p>
+
+        <p>The Projects Database is especially valuable for teams running repeated assessments at the same workstations, for compliance workflows that require an audit trail, and for any situation where you need to compare results across time or methodology versions.</p>
 
         <!-- ── SAVING A PROJECT ── -->
         <h2 id="saving"><span class="step-num">2</span> Saving a project</h2>
@@ -318,7 +328,7 @@
         <ul>
           <li><strong>Project title</strong> — a default name is applied based on your naming template in Settings, but you can adjust it here</li>
           <li><strong>Status</strong> — choose between Draft, In progress, or Completed to reflect where the project stands</li>
-          <li><strong>Tags</strong> — add one or more tags to make the project easier to find later</li>
+          <li><strong>Tags</strong> — add one or more tags to make the project easier to find later. When the report was created from a recording, the recording's tags are already filled in.</li>
         </ul>
 
         <h3>What gets saved</h3>
@@ -327,7 +337,7 @@
         <ul>
           <li>Analysis methodology and complete calculation data and findings</li>
           <li>Custom critical moments, if you created any</li>
-          <li>Project metadata and subject information — including workstation, dates, and (depending on your privacy settings) subject-related fields such as operator name, evaluator name, gender, body height, age, and weight. For a full breakdown of what each privacy toggle controls, see <a href="privacy-settings.html">Privacy Settings Explained</a>.</li>
+          <li>Project metadata and subject information — including workplace, dates, and (depending on your privacy settings) subject-related fields such as operator name, evaluator name, gender, body height, age, and weight. For a full breakdown of what each privacy toggle controls, see <a href="privacy-settings.html">Privacy Settings Explained</a>.</li>
           <li>Company branding — if the "use company branding" setting is enabled at the time of saving, the active branding configuration is saved along with the project</li>
           <li>The analysis settings used at the time of saving — preserved for later reference. Note that changing calculation settings does not affect a reopened project on its own; the new settings are only applied if you reprocess the methodology after the input page and then save again.</li>
         </ul>
@@ -339,28 +349,29 @@
 
         <h3>Project title naming template</h3>
 
-        <p>The project title field in the save dialog is pre-filled based on a configurable naming template set in <strong>Sidebar → Settings → Reports → Project Save</strong>. The template uses the same placeholder variables as the PDF and Excel export templates, replaced with actual assessment data at the moment of saving.</p>
+        <p>The project title field in the save dialog is pre-filled based on a configurable naming template set in <strong>Sidebar → Settings → General → Database</strong>, on the <strong>Project title</strong> tab. One template is used for all report types. It uses the same placeholder variables as the PDF and Excel export templates, replaced with actual assessment data at the moment of saving.</p>
 
-        <p><strong>Default template:</strong> <code>{workstation}_{current_date}_{report_type}</code></p>
+        <p><strong>Default template:</strong> <code>{workplace}_{current_date}_{report_type}</code></p>
 
         <h4>Available variables</h4>
 
         <table class="info-table">
           <thead><tr><th>Variable</th><th>Replaced with</th><th>Example value</th></tr></thead>
           <tbody>
-            <tr><td>{workstation}</td><td>Workstation or job title entered in metadata</td><td>Assembly Line A</td></tr>
+            <tr><td>{workplace}</td><td>Workplace entered in metadata</td><td>Assembly Line A</td></tr>
             <tr><td>{operator}</td><td>Operator name entered in metadata</td><td>Maria Silva</td></tr>
             <tr><td>{evaluator}</td><td>Evaluator name entered in metadata</td><td>A. Chen</td></tr>
             <tr><td>{record_date}</td><td>Date of the motion capture recording</td><td>2026-06-03</td></tr>
             <tr><td>{current_date}</td><td>Date the project is saved</td><td>2026-06-27</td></tr>
+            <tr><td>{current_time}</td><td>Time the project is saved (HH-MM)</td><td>14-32</td></tr>
             <tr><td>{report_type}</td><td>Assessment method identifier</td><td>NIOSH</td></tr>
           </tbody>
         </table>
 
 
         <figure class="article-figure">
-          <img src="../ProjectsDatabaseProjectTitleSetting.png" alt="The Project Save naming template setting in Motionprint Ergo settings" />
-          <figcaption>The Project Save naming template setting — found in Sidebar &rarr; Settings &rarr; Reports &rarr; Project Save.</figcaption>
+          <img src="../ProjectsDatabaseProjectTitleSetting.png" alt="The Project title naming template in Motionprint Ergo settings" />
+          <figcaption>The Project title naming template — found in Sidebar &rarr; Settings &rarr; General &rarr; Database.</figcaption>
         </figure>
         <p>The template is editable — you can type any combination of plain text and variables. If a variable's corresponding field was left empty in the assessment, it is omitted from the title rather than appearing as a blank. You can always edit the pre-filled title manually in the save dialog before confirming.</p>
 
@@ -369,25 +380,34 @@
 
         <h3>Accessing the Projects Database</h3>
 
-        <p>Click <strong>Database</strong> in the main navigation to open your project library. The list view shows each project's title, method, risk level, status, and last activity date at a glance.</p>
+        <p>Click <strong>Database</strong> in the main navigation and open the <strong>Projects</strong> tab to see your project library. A search field at the top finds projects by title, operator, evaluator, workplace or tags. The list view shows each project's title, method, risk level, status, and last activity date at a glance.</p>
 
         <figure class="article-figure">
           <img src="../databaseoverviewimage1.jpg" alt="The Projects Database list view showing several projects with method, risk badge, status, last activity, and the three-option action menu expanded" />
-          <figcaption>The Projects Database list view — columns show title, method, risk badge, status, and last activity. The action button on the right gives Open, Export, and Delete options.</figcaption>
+          <figcaption>The Projects Database list view — columns show title, method, risk badge, status, and last activity. The action menu on the right gives Open, Export, Duplicate and Delete options.</figcaption>
         </figure>
 
-        <p>Each project has an action button on the right side with three options:</p>
+        <p>Each project has an action menu (the ⋮ icon) on the right side with four options:</p>
         <ul>
           <li><strong>Open</strong> — loads the project and takes you to the results page</li>
           <li><strong>Export</strong> — saves the project as a portable file (coming in a future release)</li>
+          <li><strong>Duplicate</strong> — creates an independent copy of the project, with "(copy)" added to its title</li>
           <li><strong>Delete</strong> — permanently removes the project from the Projects Database</li>
         </ul>
-        <p>Click a project row to expand a detail panel with additional information — including the project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</p>
+        <p>Click a project row to expand a detail panel with additional information — including the project ID, creation date, recording duration, workplace, evaluator, operator, tags and status. Tags and status can be changed directly in this panel.</p>
 
         <figure class="article-figure">
           <img src="../databasemetadata.jpg" alt="A project row expanded in the Projects Database showing the detail panel with project ID, creation date, recording duration, tags, workstation, evaluator, and operator fields" />
           <figcaption>Clicking a project row expands the detail panel with full metadata — including project ID, creation date, recording duration, tags, workstation, evaluator, and operator.</figcaption>
         </figure>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">When the motion data has moved</div>
+            <p>Opening a project reads the original motion data file again for the 3D viewer and the PDF screenshots; the scores themselves are stored in the database. If that file has been moved or renamed since the project was saved, Motionprint Ergo names the file and the folder it was last in, and lets you locate it so the project is reconnected.</p>
+          </div>
+        </div>
 
         <h3>Using filters to find projects</h3>
 
@@ -405,7 +425,7 @@
         <!-- ── REMOVING PROJECTS ── -->
         <h2 id="removing"><span class="step-num">4</span> Removing projects</h2>
 
-        <p>The only way to remove a project from the Projects Database is to delete it. Deletion is permanent — the project cannot be recovered once removed. Before deleting, consider whether the project may be needed for a future audit, compliance check, or methodology comparison. Delete only test runs, accidental saves, or clear duplicates you're certain you won't need.</p>
+        <p>The only way to remove a project from the Projects Database is to delete it, either from its action menu or several at once with <strong>Select multiple</strong> and <strong>Delete selected</strong>. Deletion is permanent — the project cannot be recovered once removed. Before deleting, consider whether the project may be needed for a future audit, compliance check, or methodology comparison. Delete only test runs, accidental saves, or clear duplicates you're certain you won't need.</p>
 
         <div class="callout callout-warn">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
