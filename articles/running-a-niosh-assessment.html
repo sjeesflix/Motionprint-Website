@@ -527,7 +527,7 @@
 
         <h3>Defining lifting tasks</h3>
 
-        <p>A lifting task is a distinct lifting action within the observation window. Each task is defined by a start frame and an end frame. Tasks must have a minimum duration of <strong>1.0 second</strong>. To add one:</p>
+        <p>A lifting task is a distinct lifting action within the observation window. Each task is defined by a start frame and an end frame. Tasks must have a minimum duration of <strong>1.0 second</strong>. Overlapping frame ranges between tasks are not permitted. To add one:</p>
 
         <ol>
           <li>Click and drag on the timeline to highlight a frame range. The selection is shown in the branding colour configured in your settings.</li>
@@ -700,7 +700,7 @@
         <!-- ── PROCESSING ── -->
         <h2 id="processing"><span class="step-num">7</span> Processing the Assessment</h2>
 
-        <p>Once all required fields are filled and at least one lifting task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment.</p>
+        <p>Once all required fields are filled and at least one lifting task is defined, the <strong>Process</strong> button at the bottom of the input page becomes active. Click it to submit the assessment. If anything is still missing, the app lists exactly which items to complete rather than showing a generic error.</p>
 
         <p>Before processing, Motionprint Ergo also checks the geometry of each lifting task. If the NIOSH equation can't be calculated for a task, the Process button stays disabled and the reason is shown, so you can correct that task before processing instead of finding N/A values in the report.</p>
 
