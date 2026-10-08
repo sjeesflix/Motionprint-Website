@@ -398,23 +398,32 @@
         <p>Each license includes a set number of seats based on your plan. Each seat allows activation on up to 2 devices (for example, a workstation and a laptop). An Individual plan includes 1 seat (2 devices total).</p>
 
         <h3>Your license in the app</h3>
-        <p>Go to <strong>Settings → License</strong> to see your license status, masked license key, tier, subscription expiry date and days remaining. From here you can <strong>Copy Key</strong>, <strong>Refresh</strong> the license with the License Server, or <strong>Deactivate</strong> the license on this machine.</p>
+        <p>Go to <strong>Settings → License</strong> to see your license status, masked license key, tier, subscription expiry date and days remaining. From here you can <strong>Copy Key</strong>, <strong>Refresh</strong> the license with the License Server, or <strong>Deactivate</strong> the license on this machine &mdash; see <a href="#deactivate">Deactivating your license on this machine</a> below.</p>
 
         <figure class="article-figure">
           <img src="licensesettingg.jpg" alt="Settings → License page showing license status, subscription tier and expiry" />
           <figcaption>The Settings → License page — showing your license status, subscription tier, masked key, and days remaining.</figcaption>
         </figure>
 
-        <h3>Freeing a device slot</h3>
-        <p>To free a device slot — for example, to use your license on a different machine — deactivate it on the current device first, then activate on the new one.</p>
+        <h3 id="deactivate">Deactivating your license on this machine</h3>
+        <p>Deactivation is done in the <strong>License</strong> section of the settings. It removes the license from the current machine and frees its device slot, so you can activate the same key on another device &mdash; for example when you replace a laptop or want to move a seat to a colleague's workstation.</p>
 
         <div class="steps-list">
-          <div class="steps-list-item"><p>On the machine you want to free, go to <strong>Settings → License</strong> and click <strong>Deactivate</strong>.</p></div>
-          <div class="steps-list-item"><p>Confirm the dialog. The device slot is released immediately.</p></div>
-          <div class="steps-list-item"><p>Activate the license on the new machine using the same key.</p></div>
+          <div class="steps-list-item"><p>Open <strong>Settings</strong> from the sidebar and select the <strong>License</strong> tab (next to General and Reports).</p></div>
+          <div class="steps-list-item"><p>In the License card, which shows your masked license key, tier, subscription expiry and days remaining, click <strong>Deactivate</strong>.</p></div>
+          <div class="steps-list-item"><p>A <strong>Deactivate License</strong> dialog asks you to confirm: <em>"This will remove the license from this machine and free the device slot. You can re-activate later with the same key."</em> Click <strong>Deactivate</strong>.</p></div>
+          <div class="steps-list-item"><p>Once the License Server has released the slot, the app confirms <em>"License deactivated successfully"</em>. Motionprint Ergo is no longer activated on this machine; the next time you want to use it here, enter your license key again on the activation screen.</p></div>
         </div>
 
-        <p>If you need to free a slot on a machine you no longer have access to, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>.</p>
+        <div class="callout">
+          <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <div class="callout-label">Deactivate while you are online</div>
+            <p>Deactivation removes the license from this machine in all cases, but the device slot is only released when the License Server can be reached. If you deactivate without an internet connection, the app shows <em>"Local token removed (server unreachable — slot may remain used)"</em> and the slot stays occupied. Reconnect before deactivating, or contact <a href="mailto:support@motion-print.com">support@motion-print.com</a> to release the slot.</p>
+          </div>
+        </div>
+
+        <p>Your projects, recordings and settings stay on the machine when you deactivate &mdash; deactivation only affects the license. If you need to free a slot on a machine you no longer have access to, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a>.</p>
 
         <!-- ── SECTION 3 ── -->
         <h2 id="license-transfer"><span class="step-num">3</span> License Transfer</h2>
@@ -426,7 +435,7 @@
             <div class="workflow-step-num">1</div>
             <div>
               <div class="workflow-step-title">Deactivate on the old machine</div>
-              <p class="workflow-step-desc">In Motionprint Ergo on the old machine, go to <strong>Settings → License → Deactivate</strong>. This releases the device slot, making it available for use on another machine.</p>
+              <p class="workflow-step-desc">In Motionprint Ergo on the old machine, go to <strong>Settings → License</strong> and click <strong>Deactivate</strong>, while connected to the internet. This releases the device slot, making it available for use on another machine. See <a href="#deactivate">Deactivating your license on this machine</a>.</p>
             </div>
           </div>
           <div class="workflow-step">
