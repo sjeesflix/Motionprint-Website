@@ -527,7 +527,7 @@
           <span class="formula-text">LI = Load Weight / RWL</span>
         </div>
 
-        <p>The LI is the primary risk indicator reported by Motionprint Ergo. The four risk levels are:</p>
+        <p>The LI is the primary risk indicator reported by Motionprint Ergo, which colour-codes it in three risk levels:</p>
 
         <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
@@ -539,24 +539,19 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="LI range"><code>LI ≤ 1.0</code></td>
+              <td data-label="LI range"><code style="white-space:nowrap">LI ≤ 1.0</code></td>
               <td data-label="Risk level"><span class="risk-badge risk-low">Low</span></td>
-              <td data-label="Interpretation">Acceptable for most workers. Task conditions are within the recommended limits.</td>
+              <td data-label="Interpretation">Acceptable for most healthy workers. Task conditions are within the recommended limits.</td>
             </tr>
             <tr>
-              <td data-label="LI range"><code>1.0 &lt; LI ≤ 2.0</code></td>
+              <td data-label="LI range"><code style="white-space:nowrap">1.0 &lt; LI ≤ 3.0</code></td>
               <td data-label="Risk level"><span class="risk-badge risk-medium">Moderate</span></td>
-              <td data-label="Interpretation">Elevated risk for some workers. Consider task redesign or worker rotation.</td>
+              <td data-label="Interpretation">Increased risk. Some workers may experience discomfort or injury; consider task redesign or worker rotation.</td>
             </tr>
             <tr>
-              <td data-label="LI range"><code>2.0 &lt; LI ≤ 3.0</code></td>
-              <td data-label="Risk level"><span class="risk-badge risk-medium">High</span></td>
-              <td data-label="Interpretation">Significant risk for most workers. Job redesign is recommended.</td>
-            </tr>
-            <tr>
-              <td data-label="LI range"><code>LI &gt; 3.0</code></td>
-              <td data-label="Risk level"><span class="risk-badge risk-high">Very High</span></td>
-              <td data-label="Interpretation">Unacceptable risk. Immediate intervention required before work continues.</td>
+              <td data-label="LI range"><code style="white-space:nowrap">LI &gt; 3.0</code></td>
+              <td data-label="Risk level"><span class="risk-badge risk-high">High</span></td>
+              <td data-label="Interpretation">High risk. Many workers are likely to experience fatigue and injury; the task should be redesigned.</td>
             </tr>
           </tbody>
         </table></div>
@@ -605,7 +600,7 @@
           </div>
         </div>
 
-        <p>The CLI uses the same four risk levels — Low, Moderate, High, and Very High — as the single-task LI.</p>
+        <p>The CLI uses the same three risk levels — Low, Moderate and High — as the single-task LI. In exported PDF and Excel reports, the same levels are labelled <em>Acceptable</em>, <em>Increased Risk</em> and <em>High Risk</em>.</p>
 
         <!-- ── SECTION 6 ── -->
         <h2 id="reference-mass"><span class="step-num">6</span> Reference Mass (LC)</h2>

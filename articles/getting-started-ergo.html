@@ -496,30 +496,36 @@
         <p>Each licence seat allows activation on up to <strong>2 devices</strong> — for example, a workstation and a laptop. The device pool is shared across the licence; there is no per-user device assignment. The number of seats available depends on your licence tier. See the <a href="whats-included-in-your-license.html">What's Included in Your Licence</a> article for full details.</p>
 
         <h3>Working offline after activation</h3>
-        <p>Once activated, Motionprint Ergo stores a signed token locally so you can continue working without a constant internet connection. Here is how the offline grace period works:</p>
+        <p>Once activated, Motionprint Ergo stores a signed licence token on your computer, so you can keep working without a constant internet connection. The token is valid for 30 days from its last refresh:</p>
 
         <table class="offline-table">
           <thead>
             <tr>
-              <th>Scenario</th>
+              <th>Situation</th>
               <th>What happens</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Normal use (internet available)</td>
-              <td>The app refreshes the local token automatically on startup when the token is older than approximately 20 days.</td>
+              <td>Regular internet access</td>
+              <td>When you start the app and the token is more than about 10 days old, it is refreshed automatically in the background. With regular internet access the 30-day window keeps renewing and you never see a reminder. You can also refresh manually in <strong>Settings → License</strong>.</td>
             </tr>
             <tr>
-              <td>Internet unavailable</td>
-              <td>The app continues to work for up to 7 additional days past token expiry, displaying a reminder to reconnect.</td>
+              <td>Offline, up to 30 days</td>
+              <td>The app works normally. During the last 7 days of the 30-day window, a reminder to connect to the internet is shown.</td>
+            </tr>
+            <tr>
+              <td>Offline, day 31 to 37</td>
+              <td>A 7-day grace period: the app keeps working, but warns that the token has expired and shows how many days are left before it locks.</td>
             </tr>
             <tr>
               <td>Offline for more than 37 days</td>
-              <td>The app requires an internet connection to re-validate before it can be used again.</td>
+              <td>The app locks and shows the activation screen. Connect to the internet and activate again with your licence key to continue.</td>
             </tr>
           </tbody>
         </table>
+
+        <p>This offline window is separate from your subscription period. When the subscription itself expires, the app switches to view-only mode for 7 days and then locks until the licence is renewed &mdash; see <a href="whats-included-in-your-license.html#renewal">What's Included in Your License</a>.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="navigate"><span class="step-num">4</span> Navigating the App</h2>
