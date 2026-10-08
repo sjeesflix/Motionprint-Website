@@ -262,6 +262,39 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -418,7 +451,7 @@
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>RULA produces a single <strong>RULA score</strong> from 1 to 7 for each assessed posture task. The score determines the risk level across four categories:</p>
 
-        <table class="threshold-table" style="table-layout:fixed;">
+        <div class="table-scroll"><table class="threshold-table stackable" style="table-layout:fixed;">
           <colgroup>
             <col style="width:110px;">
             <col style="width:210px;">
@@ -428,12 +461,12 @@
             <tr><th>RULA score</th><th>Risk level</th><th>Interpretation</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>1 – 2</code></td><td><span class="risk-badge" style="background:rgba(52,211,153,.18);color:#0b8a5e;">Negligible risk</span></td><td>Acceptable — the posture is acceptable if it is not maintained or repeated for long periods.</td></tr>
-            <tr><td><code>3 – 4</code></td><td><span class="risk-badge" style="background:rgba(251,191,36,.20);color:#a16207;">Low risk</span></td><td>Further investigation needed, and changes may be required.</td></tr>
-            <tr><td><code>5 – 6</code></td><td><span class="risk-badge" style="background:rgba(251,146,60,.20);color:#c2410c;">Medium risk</span></td><td>Changes are needed soon.</td></tr>
-            <tr><td><code>7</code></td><td><span class="risk-badge" style="background:rgba(248,113,113,.20);color:#b91c1c;">Very high risk</span></td><td>Changes are needed now.</td></tr>
+            <tr><td data-label="RULA score"><code>1 – 2</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(52,211,153,.18);color:#0b8a5e;">Negligible risk</span></td><td data-label="Interpretation">Acceptable — the posture is acceptable if it is not maintained or repeated for long periods.</td></tr>
+            <tr><td data-label="RULA score"><code>3 – 4</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(251,191,36,.20);color:#a16207;">Low risk</span></td><td data-label="Interpretation">Further investigation needed, and changes may be required.</td></tr>
+            <tr><td data-label="RULA score"><code>5 – 6</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(251,146,60,.20);color:#c2410c;">Medium risk</span></td><td data-label="Interpretation">Changes are needed soon.</td></tr>
+            <tr><td data-label="RULA score"><code>7</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(248,113,113,.20);color:#b91c1c;">Very high risk</span></td><td data-label="Interpretation">Changes are needed now.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>RULA is deliberately a <em>screening</em> method. A high score identifies a task that warrants a closer look; it does not by itself quantify injury probability, and it is not a substitute for a full biomechanical analysis. Its strength is speed and coverage — it can flag problem tasks across a whole workplace quickly.</p>
 
@@ -507,33 +540,33 @@
         <h2 id="group-a"><span class="step-num">3</span> Group A — Arm and Wrist</h2>
         <p>Group A scores the working limb. Each component starts from a base score set by a joint angle, then gains or loses adjustment points for secondary conditions. All four are combined in Table A.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr><th>Component</th><th>Scoring</th><th>Source</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Upper arm</strong> (shoulder flexion/extension)</td>
-              <td>1 to 4 — within 20° of neutral scores 1; 20–45° scores 2; 45–90° scores 3; beyond 90° scores 4. Extension beyond 20° is treated the same as the equivalent flexion. Adds <strong>+1</strong> if the arm is abducted beyond 45°, <strong>+1</strong> if the shoulder is raised beyond 10°, and subtracts <strong>−1</strong> if the arm is supported or the person is leaning on it — floored at 1.</td>
-              <td>Derived automatically from motion capture; arm support entered per task</td>
+              <td data-label="Component"><strong>Upper arm</strong> (shoulder flexion/extension)</td>
+              <td data-label="Scoring">1 to 4 — within 20° of neutral scores 1; 20–45° scores 2; 45–90° scores 3; beyond 90° scores 4. Extension beyond 20° is treated the same as the equivalent flexion. Adds <strong>+1</strong> if the arm is abducted beyond 45°, <strong>+1</strong> if the shoulder is raised beyond 10°, and subtracts <strong>−1</strong> if the arm is supported or the person is leaning on it — floored at 1.</td>
+              <td data-label="Source">Derived automatically from motion capture; arm support entered per task</td>
             </tr>
             <tr>
-              <td><strong>Lower arm</strong> (elbow flexion)</td>
-              <td>1 or 2 — the comfortable 60–100° range scores 1; anything outside it, whether straighter or more closed, scores 2. Adds <strong>+1</strong> if the hand works across the body's midline or out beyond its silhouette.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Lower arm</strong> (elbow flexion)</td>
+              <td data-label="Scoring">1 or 2 — the comfortable 60–100° range scores 1; anything outside it, whether straighter or more closed, scores 2. Adds <strong>+1</strong> if the hand works across the body's midline or out beyond its silhouette.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Wrist</strong> (flexion/extension)</td>
-              <td>1 to 3 — within 5° of neutral scores 1; 5–15° scores 2; beyond 15° scores 3. Scored by magnitude, so bending up and bending down are treated alike. Adds <strong>+1</strong> if the wrist is deviated beyond 10° toward the thumb or little finger.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Wrist</strong> (flexion/extension)</td>
+              <td data-label="Scoring">1 to 3 — within 5° of neutral scores 1; 5–15° scores 2; beyond 15° scores 3. Scored by magnitude, so bending up and bending down are treated alike. Adds <strong>+1</strong> if the wrist is deviated beyond 10° toward the thumb or little finger.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Wrist twist</strong> (forearm rotation)</td>
-              <td>1 or 2 — rotation near the middle of its range scores 1; rotation at or near either end scores 2. The range is not symmetric, so the boundaries differ: beyond 45° palm-down, or beyond 30° palm-up.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Wrist twist</strong> (forearm rotation)</td>
+              <td data-label="Scoring">1 or 2 — rotation near the middle of its range scores 1; rotation at or near either end scores 2. The range is not symmetric, so the boundaries differ: beyond 45° palm-down, or beyond 30° palm-up.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -547,28 +580,28 @@
         <h2 id="group-b"><span class="step-num">4</span> Group B — Neck, Trunk and Legs</h2>
         <p>Group B scores the posture supporting the working limb. The same base-plus-adjustment pattern applies, and the three components are combined in Table B.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr><th>Component</th><th>Scoring</th><th>Source</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Neck</strong> (flexion/extension)</td>
-              <td>1 to 4 — 0–10° of flexion scores 1; 10–20° scores 2; beyond 20° scores 3. Any meaningful <em>extension</em> — the head tipped back beyond 5° — scores <strong>4</strong> outright, the worst available score, because it loads the cervical spine far more than forward flexion. Adds <strong>+1</strong> for twisting beyond 20° and <strong>+1</strong> for side bending beyond 10°.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Neck</strong> (flexion/extension)</td>
+              <td data-label="Scoring">1 to 4 — 0–10° of flexion scores 1; 10–20° scores 2; beyond 20° scores 3. Any meaningful <em>extension</em> — the head tipped back beyond 5° — scores <strong>4</strong> outright, the worst available score, because it loads the cervical spine far more than forward flexion. Adds <strong>+1</strong> for twisting beyond 20° and <strong>+1</strong> for side bending beyond 10°.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Trunk</strong> (flexion/extension)</td>
-              <td>1 to 4 — within 5° of upright scores 1; 5–20° scores 2; 20–60° scores 3; beyond 60° scores 4. Scored by magnitude, so leaning back falls in the same band as the equivalent forward bend. Adds <strong>+1</strong> for twisting beyond 10° and <strong>+1</strong> for side bending beyond 10°.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Trunk</strong> (flexion/extension)</td>
+              <td data-label="Scoring">1 to 4 — within 5° of upright scores 1; 5–20° scores 2; 20–60° scores 3; beyond 60° scores 4. Scored by magnitude, so leaning back falls in the same band as the equivalent forward bend. Adds <strong>+1</strong> for twisting beyond 10° and <strong>+1</strong> for side bending beyond 10°.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Legs</strong> (support and balance)</td>
-              <td>1 or 2 — scores 1 when the legs and feet are supported and the weight is evenly balanced, and 2 when they are not. Derived from the body's centre of mass relative to the base of support; any frame where both feet are not on the ground is forced to 2, since standing on one foot is not evenly balanced whatever the centre of mass is doing.</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Component"><strong>Legs</strong> (support and balance)</td>
+              <td data-label="Scoring">1 or 2 — scores 1 when the legs and feet are supported and the weight is evenly balanced, and 2 when they are not. Derived from the body's centre of mass relative to the base of support; any frame where both feet are not on the ground is forced to 2, since standing on one foot is not evenly balanced whatever the centre of mass is doing.</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -585,7 +618,7 @@
         <h3>Muscle use</h3>
         <p>Muscle use adds <strong>+1</strong> when either of two conditions is met — and both are determined automatically from the recording rather than entered by the assessor.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead>
             <tr><th>Condition</th><th>How it is obtained</th></tr>
           </thead>
@@ -599,14 +632,14 @@
               <td>The number of posture tasks is divided by the trimmed duration of the recording in minutes. At four or more occurrences per minute the action counts as repeated. This is a report-level figure, so it applies to every task in the assessment.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>There are <strong>two separate muscle use scores</strong>, not one: the condition is evaluated independently for the arm and wrist group and for the trunk, neck and legs group, and each result is added to its own group total. A worker can hold the trunk still while the arms repeat a cycle, and the two scores capture exactly that — one group can attract the point while the other does not.</p>
 
         <h3>Force / load</h3>
         <p>The force component reflects the weight handled and how the force is applied. The weight is entered per posture task, as is a flag for force applied with shock or a rapid build-up.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead>
             <tr><th>Condition</th><th>Points</th></tr>
           </thead>
@@ -617,7 +650,7 @@
             <tr><td>More than 10 kg, or a static / repeated load</td><td><code>+3</code></td></tr>
             <tr><td>Any load applied with shock or a rapid build-up of force</td><td><code>+3</code></td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The shock condition overrides the weight bands entirely. A 3 kg load applied with a sudden impact scores 3, not 1 — and because the points apply to both groups, setting that single flag can move the final RULA score by two points.</p>
 
@@ -640,7 +673,7 @@
 
         <div class="matrix-wrap">
           <div class="matrix-shell">
-            <table class="score-matrix">
+            <div class="table-scroll"><table class="score-matrix">
               <thead>
                 <tr><th></th><th colspan="7" class="matrix-axis">Table B total &mdash; neck, trunk and legs</th></tr>
                 <tr><th class="matrix-axis">Table A<br>total</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7+</th></tr>
@@ -655,7 +688,7 @@
                 <tr><th>7</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
                 <tr><th>8+</th><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">5</td><td style="background:#FB923C2e;">6</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td><td style="background:#F871712e;">7</td></tr>
               </tbody>
-            </table>
+            </table></div>
           </div>
           <div class="matrix-key">
             <span><i style="background:#34D399;"></i>1&ndash;2 negligible risk</span>

@@ -230,6 +230,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -380,31 +413,31 @@
         <h3>General info card</h3>
         <p>The top card displays metadata about the assessment session. The text fields can be edited inline on the Score Overview, without returning to the input page.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>Frame</td><td>The frame with the highest (worst) RULA score — every score on this page is calculated for this frame.</td></tr>
-            <tr><td>Date</td><td>The evaluation date.</td></tr>
-            <tr><td>Cycle duration</td><td>Duration of the cycle as defined in this recording, derived from the trimmed frame range.</td></tr>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if disabled in the privacy settings.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if disabled in the privacy settings.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+            <tr><td data-label="Field">Frame</td><td data-label="Description">The frame with the highest (worst) RULA score — every score on this page is calculated for this frame.</td></tr>
+            <tr><td data-label="Field">Date</td><td data-label="Description">The evaluation date.</td></tr>
+            <tr><td data-label="Field">Cycle duration</td><td data-label="Description">Duration of the cycle as defined in this recording, derived from the trimmed frame range.</td></tr>
+            <tr><td data-label="Field">Workplace</td><td data-label="Description">Name or description of the assessed workstation.</td></tr>
+            <tr><td data-label="Field">Evaluator</td><td data-label="Description">The person performing the assessment. Hidden if disabled in the privacy settings.</td></tr>
+            <tr><td data-label="Field">Operator</td><td data-label="Description">The worker being assessed. Hidden if disabled in the privacy settings.</td></tr>
+            <tr><td data-label="Field">Comments</td><td data-label="Description">A free-text field for any additional context about the assessment.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>RULA score card</h3>
         <p>The score card shows the primary result: the final RULA score for the selected posture task, the frame it occurred at, and the risk band it falls into. Alongside it, a legend maps all four bands so a reader unfamiliar with RULA can place the result immediately.</p>
 
-        <table class="info-table">
+        <div class="table-scroll"><table class="info-table">
           <thead><tr><th>Score</th><th>Risk level</th><th>Action</th></tr></thead>
           <tbody>
-            <tr><td><code>1 – 2</code></td><td><span class="risk-badge" style="background:rgba(52,211,153,.18);color:#0b8a5e;">Negligible risk</span></td><td>Acceptable</td></tr>
-            <tr><td><code>3 – 4</code></td><td><span class="risk-badge" style="background:rgba(251,191,36,.20);color:#a16207;">Low risk</span></td><td>Further investigation needed</td></tr>
-            <tr><td><code>5 – 6</code></td><td><span class="risk-badge" style="background:rgba(251,146,60,.20);color:#c2410c;">Medium risk</span></td><td>Changes needed soon</td></tr>
-            <tr><td><code>7</code></td><td><span class="risk-badge" style="background:rgba(248,113,113,.20);color:#b91c1c;">Very high risk</span></td><td>Changes needed now</td></tr>
+            <tr><td data-label="Score"><code>1 – 2</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(52,211,153,.18);color:#0b8a5e;">Negligible risk</span></td><td data-label="Action">Acceptable</td></tr>
+            <tr><td data-label="Score"><code>3 – 4</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(251,191,36,.20);color:#a16207;">Low risk</span></td><td data-label="Action">Further investigation needed</td></tr>
+            <tr><td data-label="Score"><code>5 – 6</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(251,146,60,.20);color:#c2410c;">Medium risk</span></td><td data-label="Action">Changes needed soon</td></tr>
+            <tr><td data-label="Score"><code>7</code></td><td data-label="Risk level"><span class="risk-badge" style="background:rgba(248,113,113,.20);color:#b91c1c;">Very high risk</span></td><td data-label="Action">Changes needed now</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The card also shows the <strong>distribution</strong> across the task — what proportion of its frames fell into each band. A task peaking at 6 but spending most of its frames in the 1–2 band is a very different finding from one sitting at 5–6 throughout, and the distribution is what separates the two.</p>
 
@@ -450,15 +483,15 @@
         <p>Both are detected automatically; there is no manual toggle. The two groups are evaluated independently, so a task can attract the point for the arms and not for the trunk — realistic when a worker holds the trunk still while the arms repeat a cycle.</p>
 
         <p>The force/load block shows which weight band applied:</p>
-        <table class="info-table">
+        <div class="table-scroll"><table class="info-table">
           <thead><tr><th>Condition</th><th>Points</th></tr></thead>
           <tbody>
-            <tr><td>Load is less than 2 kg (intermittent)</td><td><code>0</code></td></tr>
-            <tr><td>Load is 2–10 kg (intermittent)</td><td><code>+1</code></td></tr>
-            <tr><td>Load is 2–10 kg (static or repeated)</td><td><code>+2</code></td></tr>
-            <tr><td>Load is more than 10 kg, or repeated with shocks</td><td><code>+3</code></td></tr>
+            <tr><td data-label="Condition">Load is less than 2 kg (intermittent)</td><td data-label="Points"><code>0</code></td></tr>
+            <tr><td data-label="Condition">Load is 2–10 kg (intermittent)</td><td data-label="Points"><code>+1</code></td></tr>
+            <tr><td data-label="Condition">Load is 2–10 kg (static or repeated)</td><td data-label="Points"><code>+2</code></td></tr>
+            <tr><td data-label="Condition">Load is more than 10 kg, or repeated with shocks</td><td data-label="Points"><code>+3</code></td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Tables A, B and C</h3>
         <p>All three scoring tables are shown in full, with the row and column used by this task highlighted so you can see exactly which cell produced the result.</p>
@@ -494,18 +527,18 @@
         <h3>Variable selector</h3>
         <p>RULA has more selectable measurements than the lifting reports, so the selector is split into <strong>two dropdowns</strong>: first a body segment, then a measurement within it. Changing either updates the graph, the frame insights panel and the distribution chart simultaneously.</p>
 
-        <table class="info-table">
+        <div class="table-scroll"><table class="info-table">
           <thead><tr><th>Body segment</th><th>Measurements</th></tr></thead>
           <tbody>
-            <tr><td><strong>RULA score</strong></td><td>The final score per frame.</td></tr>
-            <tr><td><strong>Upper arm</strong></td><td>Flexion/extension, Abduction, Shoulder raised.</td></tr>
-            <tr><td><strong>Lower arm</strong></td><td>Flexion/extension, Across midline / out to side.</td></tr>
-            <tr><td><strong>Wrist</strong></td><td>Flexion/extension, Bend from midline, Twist.</td></tr>
-            <tr><td><strong>Neck</strong></td><td>Flexion/extension, Twisting, Side bending.</td></tr>
-            <tr><td><strong>Trunk</strong></td><td>Flexion/extension, Twisting, Side bending.</td></tr>
-            <tr><td><strong>Legs</strong></td><td>Balance.</td></tr>
+            <tr><td data-label="Body segment"><strong>RULA score</strong></td><td data-label="Measurements">The final score per frame.</td></tr>
+            <tr><td data-label="Body segment"><strong>Upper arm</strong></td><td data-label="Measurements">Flexion/extension, Abduction, Shoulder raised.</td></tr>
+            <tr><td data-label="Body segment"><strong>Lower arm</strong></td><td data-label="Measurements">Flexion/extension, Across midline / out to side.</td></tr>
+            <tr><td data-label="Body segment"><strong>Wrist</strong></td><td data-label="Measurements">Flexion/extension, Bend from midline, Twist.</td></tr>
+            <tr><td data-label="Body segment"><strong>Neck</strong></td><td data-label="Measurements">Flexion/extension, Twisting, Side bending.</td></tr>
+            <tr><td data-label="Body segment"><strong>Trunk</strong></td><td data-label="Measurements">Flexion/extension, Twisting, Side bending.</td></tr>
+            <tr><td data-label="Body segment"><strong>Legs</strong></td><td data-label="Measurements">Balance.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Arm and wrist measurements also have a <strong>Left / Right</strong> selector, since RULA scores one limb at a time. Neck, trunk and leg measurements do not — they are whole-body and have no side.</p>
 
@@ -525,7 +558,7 @@
 
         <p>Zones fall into three patterns depending on the measurement:</p>
 
-        <table class="zone-table">
+        <div class="table-scroll"><table class="zone-table">
           <thead><tr><th>Pattern</th><th>Zones</th></tr></thead>
           <tbody>
             <tr>
@@ -559,7 +592,7 @@
               <td>A single boundary — below it the adjustment does not apply, above it a point is added.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Two measurements behave differently and are worth knowing about. <strong>Flexion/extension</strong> graphs fold to magnitude, so an extension of 30° plots at the same height as 30° of flexion — except where extension carries its own rule, as it does for the neck. <strong>Across midline / out to side</strong> is plotted signed rather than folded, because crossing past the body's midline is a distinct finding rather than simply more of the same direction.</p>
 

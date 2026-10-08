@@ -270,6 +270,28 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>

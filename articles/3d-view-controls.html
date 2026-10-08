@@ -212,7 +212,29 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
       .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(29,158,117,.1); color: var(--red); font-size: 13px; font-weight: 700; line-height: 1; margin-right: 10px; vertical-align: middle; flex-shrink: 0; padding-top: 2px; }
-</style>
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -380,7 +402,7 @@
 
         <p>You navigate the 3D viewport using mouse controls. All interactions work per-viewport when multiple panels are open — the active viewport is whichever one your cursor is currently over.</p>
 
-        <table class="shortcut-table">
+        <div class="table-scroll"><table class="shortcut-table">
           <thead>
             <tr><th>Input</th><th>Action</th></tr>
           </thead>
@@ -402,7 +424,7 @@
               <td>Reset the active viewport camera to its default position</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The right-click context menu is suppressed inside the viewport so it does not interfere with orbit controls. When your cursor is over the viewport, page scrolling is disabled to prevent accidental scroll-away while zooming.</p>
 

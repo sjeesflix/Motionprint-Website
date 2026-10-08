@@ -245,6 +245,39 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -400,7 +433,7 @@
         <h2 id="overview"><span class="step-num">1</span> Overview</h2>
         <p>KIM-LHC produces a single <strong>Total Score</strong> for each lifting task. The Total Score determines the risk level across four categories:</p>
 
-        <table class="threshold-table" style="table-layout:fixed;">
+        <div class="table-scroll"><table class="threshold-table stackable" style="table-layout:fixed;">
           <colgroup>
             <col style="width:110px;">
             <col style="width:210px;">
@@ -415,27 +448,27 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>&lt; 20</code></td>
-              <td><span class="risk-badge risk-low">Low risk</span></td>
-              <td>Physical load is low. Health consequences from physical overload are unlikely.</td>
+              <td data-label="Total Score"><code>&lt; 20</code></td>
+              <td data-label="Risk Level"><span class="risk-badge risk-low">Low risk</span></td>
+              <td data-label="Interpretation">Physical load is low. Health consequences from physical overload are unlikely.</td>
             </tr>
             <tr>
-              <td><code>20 – 50</code></td>
-              <td><span class="risk-badge risk-low">Slightly increased risk</span></td>
-              <td>Physical overload is possible for less resilient persons. Workplace redesign for this group may be helpful.</td>
+              <td data-label="Total Score"><code>20 – 50</code></td>
+              <td data-label="Risk Level"><span class="risk-badge risk-low">Slightly increased risk</span></td>
+              <td data-label="Interpretation">Physical overload is possible for less resilient persons. Workplace redesign for this group may be helpful.</td>
             </tr>
             <tr>
-              <td><code>50 – 100</code></td>
-              <td><span class="risk-badge risk-medium">Substantially increased risk</span></td>
-              <td>Physical overload is also possible for normally resilient persons. Workplace redesign is recommended.</td>
+              <td data-label="Total Score"><code>50 – 100</code></td>
+              <td data-label="Risk Level"><span class="risk-badge risk-medium">Substantially increased risk</span></td>
+              <td data-label="Interpretation">Physical overload is also possible for normally resilient persons. Workplace redesign is recommended.</td>
             </tr>
             <tr>
-              <td><code>≥ 100</code></td>
-              <td><span class="risk-badge risk-high">High risk</span></td>
-              <td>Physical overload is likely. Workplace redesign is necessary.</td>
+              <td data-label="Total Score"><code>≥ 100</code></td>
+              <td data-label="Risk Level"><span class="risk-badge risk-high">High risk</span></td>
+              <td data-label="Interpretation">Physical overload is likely. Workplace redesign is necessary.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -514,7 +547,7 @@
         <div class="gender-tables">
           <div>
             <div class="gender-table-label">Men</div>
-            <table class="threshold-table">
+            <div class="table-scroll"><table class="threshold-table">
               <thead>
                 <tr>
                   <th style="width:28px;"></th>
@@ -534,11 +567,11 @@
                 <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>75</td></tr>
                 <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
               </tbody>
-            </table>
+            </table></div>
           </div>
           <div>
             <div class="gender-table-label">Women</div>
-            <table class="threshold-table">
+            <div class="table-scroll"><table class="threshold-table">
               <thead>
                 <tr>
                   <th style="width:28px;"></th>
@@ -558,7 +591,7 @@
                 <tr><td class="color-cell"><span class="color-dot red"></span></td><td>35 – 40 kg</td><td>100</td></tr>
                 <tr><td class="color-cell"><span class="color-dot red"></span></td><td>&gt; 40 kg</td><td>100</td></tr>
               </tbody>
-            </table>
+            </table></div>
           </div>
         </div>
 
@@ -574,7 +607,7 @@
         <h2 id="load-handling"><span class="step-num">4</span> Load Handling</h2>
         <p>Load Handling assesses how symmetrically the load is held. Motionprint Ergo determines this automatically by measuring the lateral and vertical asymmetry between the left and right hand positions relative to the pelvis. A spatial threshold of 100 mm is applied, combined with a duration threshold of 50% of the lifting task to distinguish temporary from predominant one-handed or asymmetric handling.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th style="width:28px;"></th>
@@ -584,29 +617,29 @@
           </thead>
           <tbody>
             <tr>
-              <td class="color-cell"><span class="color-dot green"></span></td>
-              <td><code>0</code></td>
-              <td>Load is handled with both hands and symmetrically</td>
+              <td data-label="" class="color-cell"><span class="color-dot green"></span></td>
+              <td data-label="Points"><code>0</code></td>
+              <td data-label="Condition">Load is handled with both hands and symmetrically</td>
             </tr>
             <tr>
-              <td class="color-cell"><span class="color-dot yellow"></span></td>
-              <td><code>2</code></td>
-              <td>Load is handled temporarily with one hand and/or asymmetrically, uneven load distribution</td>
+              <td data-label="" class="color-cell"><span class="color-dot yellow"></span></td>
+              <td data-label="Points"><code>2</code></td>
+              <td data-label="Condition">Load is handled temporarily with one hand and/or asymmetrically, uneven load distribution</td>
             </tr>
             <tr>
-              <td class="color-cell"><span class="color-dot red"></span></td>
-              <td><code>4</code></td>
-              <td>Load is handled predominantly with one hand or with an unstable load centre</td>
+              <td data-label="" class="color-cell"><span class="color-dot red"></span></td>
+              <td data-label="Points"><code>4</code></td>
+              <td data-label="Condition">Load is handled predominantly with one hand or with an unstable load centre</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- ── SECTION 5 ── -->
         <h2 id="body-posture-score"><span class="step-num">5</span> Body Posture Score</h2>
         <p>The body posture score is determined from the combination of the worker's <strong>start posture</strong> (at the beginning of the lifting task) and <strong>finish posture</strong> (at the end). Motionprint Ergo classifies these automatically from the motion capture data using biomechanical features derived from joint angles in the recording.</p>
         <p>Ten posture classes are defined, ranging from fully upright to highly strained. The score is determined by the combination of the two postures observed at the beginning and end of the lifting task. The order is interchangeable — the same score applies regardless of which posture occurs at start or finish. The greater the gap between posture classes, the higher the score:</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead>
             <tr>
               <th style="width:28px;"></th>
@@ -627,7 +660,7 @@
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>18</code></td><td>Bended back</td><td>Squat low</td></tr>
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>20</code></td><td>Squat low</td><td>On knees</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- ── SECTION 6 ── -->
         <h2 id="additional-points"><span class="step-num">6</span> Additional Points (Body Posture)</h2>
@@ -642,53 +675,53 @@
 
         <h3>Trunk twisting / side-bending</h3>
         <p>Detects whether the trunk is significantly rotated or laterally bent during the task. The threshold is 20° for both lateral bending and trunk twisting.</p>
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames exceeding threshold</th></tr></thead>
           <tbody>
             <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>3</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Load distance to body</h3>
         <p>Detects whether the hands are positioned more than 170 mm from the body — increasing lever arm forces on the spine.</p>
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames exceeding threshold</th></tr></thead>
           <tbody>
             <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>3</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Hands between elbow and shoulder height</h3>
         <p>Detects whether the hands are working in the elevated zone between elbow and shoulder height during the task.</p>
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames in elevated zone</th></tr></thead>
           <tbody>
             <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>0.5</code></td><td>5 – 25% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>1.0</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Hands above shoulder</h3>
         <p>Detects highly elevated hand positions — above shoulder height — which significantly increase shoulder and spinal loading.</p>
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table">
           <thead><tr><th style="width:28px;"></th><th style="width:60px;">Points</th><th>Frames above shoulder</th></tr></thead>
           <tbody>
             <tr><td class="color-cell"><span class="color-dot green"></span></td><td><code>0</code></td><td>&lt; 5% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot yellow"></span></td><td><code>1</code></td><td>5 – 25% of frames</td></tr>
             <tr><td class="color-cell"><span class="color-dot red"></span></td><td><code>2</code></td><td>&gt; 25% of frames</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- ── SECTION 7 ── -->
         <h2 id="unfavorable-conditions"><span class="step-num">7</span> Unfavorable Working Conditions</h2>
         <p>Six environmental and task condition factors contribute additional points to the assessment. These reflect conditions that increase musculoskeletal strain beyond what load, posture, and frequency alone capture. Four of the six factors are entered manually on the input page; hand/arm movement and difficulties holding/carrying are derived automatically from motion capture data.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th>Factor</th>
@@ -698,44 +731,44 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Hand/arm movement</strong> (wrist deviations)</td>
-              <td>0, 1, or 2 — based on wrist flexion &gt;75°, extension &gt;60°, ulnar deviation &gt;30°, radial deviation &gt;15°, pronation &gt;60°, supination &gt;60°, using the same 5% / 25% frame thresholds</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Factor"><strong>Hand/arm movement</strong> (wrist deviations)</td>
+              <td data-label="Scoring">0, 1, or 2 — based on wrist flexion &gt;75°, extension &gt;60°, ulnar deviation &gt;30°, radial deviation &gt;15°, pronation &gt;60°, supination &gt;60°, using the same 5% / 25% frame thresholds</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Force transfer / force application</strong></td>
-              <td>0, 1, or 2 — Easy (0): stable grip points, non-slip surfaces, balanced weight; Restricted (1): handles or surfaces that reduce contact quality, requires higher holding forces or work gloves; Hindered (2): slippery, soft, or sharp edges, missing or poor grips, uneven weight distribution</td>
-              <td>Manual entry</td>
+              <td data-label="Factor"><strong>Force transfer / force application</strong></td>
+              <td data-label="Scoring">0, 1, or 2 — Easy (0): stable grip points, non-slip surfaces, balanced weight; Restricted (1): handles or surfaces that reduce contact quality, requires higher holding forces or work gloves; Hindered (2): slippery, soft, or sharp edges, missing or poor grips, uneven weight distribution</td>
+              <td data-label="Source">Manual entry</td>
             </tr>
             <tr>
-              <td><strong>Adverse ambient conditions</strong></td>
-              <td>0 or 1 — No (0): comfortable temperature and humidity, dry stable footing with good visibility; Yes (1): poor visibility, strong drafts, standing water, ice, mud, or slippery surfaces</td>
-              <td>Manual entry</td>
+              <td data-label="Factor"><strong>Adverse ambient conditions</strong></td>
+              <td data-label="Scoring">0 or 1 — No (0): comfortable temperature and humidity, dry stable footing with good visibility; Yes (1): poor visibility, strong drafts, standing water, ice, mud, or slippery surfaces</td>
+              <td data-label="Source">Manual entry</td>
             </tr>
             <tr>
-              <td><strong>Spatial conditions</strong></td>
-              <td>0, 1, or 2 — Good (0): working area ≥ 1.5 m² with free room to move, clean flat floor; Restricted (1): working area &lt; 1.5 m², floor incline up to 5°, load must be positioned precisely; Unfavorable (2): very confined space with insufficient headroom, floor very dirty, uneven, rough, with steps or potholes</td>
-              <td>Manual entry</td>
+              <td data-label="Factor"><strong>Spatial conditions</strong></td>
+              <td data-label="Scoring">0, 1, or 2 — Good (0): working area ≥ 1.5 m² with free room to move, clean flat floor; Restricted (1): working area &lt; 1.5 m², floor incline up to 5°, load must be positioned precisely; Unfavorable (2): very confined space with insufficient headroom, floor very dirty, uneven, rough, with steps or potholes</td>
+              <td data-label="Source">Manual entry</td>
             </tr>
             <tr>
-              <td><strong>Difficulties holding / carrying</strong></td>
-              <td>0, 2, or 5 — derived from the task's frame range (hold duration) and cumulative horizontal pelvis displacement (carrying distance): load held &gt; 10 s or carried &gt; 5 m scores 5; held 5 – 10 s or carried 2 – 5 m scores 2; otherwise 0</td>
-              <td>Derived automatically from motion capture</td>
+              <td data-label="Factor"><strong>Difficulties holding / carrying</strong></td>
+              <td data-label="Scoring">0, 2, or 5 — derived from the task's frame range (hold duration) and cumulative horizontal pelvis displacement (carrying distance): load held &gt; 10 s or carried &gt; 5 m scores 5; held 5 – 10 s or carried 2 – 5 m scores 2; otherwise 0</td>
+              <td data-label="Source">Derived automatically from motion capture</td>
             </tr>
             <tr>
-              <td><strong>Impairing clothing</strong></td>
-              <td>0 or 1 — No (0): normal work clothing that does not restrict movement; Yes (1): heavy protective equipment, hazmat suits, or bulky clothing restricting movement</td>
-              <td>Manual entry</td>
+              <td data-label="Factor"><strong>Impairing clothing</strong></td>
+              <td data-label="Scoring">0 or 1 — No (0): normal work clothing that does not restrict movement; Yes (1): heavy protective equipment, hazmat suits, or bulky clothing restricting movement</td>
+              <td data-label="Source">Manual entry</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The Unfavorable Conditions Score is the sum of all six factors: <span class="color-dot green" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≤ 4 &nbsp;·&nbsp; <span class="color-dot yellow" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> 5 – 9 &nbsp;·&nbsp; <span class="color-dot red" style="display:inline-block;vertical-align:middle;margin-right:3px;"></span> ≥ 10.</p>
 
         <!-- ── SECTION 8 ── -->
         <h2 id="work-organization"><span class="step-num">8</span> Work Organization</h2>
         <p>The Work Organization score reflects the quality of task scheduling and rest provisions. It is entered manually on the input page.</p>
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th style="width:28px;"></th>
@@ -745,22 +778,22 @@
           </thead>
           <tbody>
             <tr>
-              <td class="color-cell"><span class="color-dot green"></span></td>
-              <td><code>0</code></td>
-              <td><strong>Good</strong> — physical tasks vary often throughout the day (including different types of workload), with no prolonged periods of high exertion in any single task.</td>
+              <td data-label="" class="color-cell"><span class="color-dot green"></span></td>
+              <td data-label="Points"><code>0</code></td>
+              <td data-label="Level"><strong>Good</strong> — physical tasks vary often throughout the day (including different types of workload), with no prolonged periods of high exertion in any single task.</td>
             </tr>
             <tr>
-              <td class="color-cell"><span class="color-dot yellow"></span></td>
-              <td><code>2</code></td>
-              <td><strong>Restricted</strong> — tasks change only occasionally, with some stretches of repeated high exertion in one type of work.</td>
+              <td data-label="" class="color-cell"><span class="color-dot yellow"></span></td>
+              <td data-label="Points"><code>2</code></td>
+              <td data-label="Level"><strong>Restricted</strong> — tasks change only occasionally, with some stretches of repeated high exertion in one type of work.</td>
             </tr>
             <tr>
-              <td class="color-cell"><span class="color-dot red"></span></td>
-              <td><code>4</code></td>
-              <td><strong>Unfavorable</strong> — very little variation, with frequent, repeated peaks of high exertion in the same task during the working day.</td>
+              <td data-label="" class="color-cell"><span class="color-dot red"></span></td>
+              <td data-label="Points"><code>4</code></td>
+              <td data-label="Level"><strong>Unfavorable</strong> — very little variation, with frequent, repeated peaks of high exertion in the same task during the working day.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- ── SECTION 9 ── -->
         <h2 id="time-rating"><span class="step-num">9</span> Time Rating</h2>

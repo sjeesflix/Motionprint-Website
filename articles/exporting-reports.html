@@ -231,6 +231,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -383,46 +416,46 @@
 
         <h3>Available variables</h3>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Variable</th><th>Replaced with</th><th>Example value</th></tr></thead>
           <tbody>
             <tr>
-              <td>{operator}</td>
-              <td>Name of the worker being assessed</td>
-              <td>John Smith</td>
+              <td data-label="Variable">{operator}</td>
+              <td data-label="Replaced with">Name of the worker being assessed</td>
+              <td data-label="Example value">John Smith</td>
             </tr>
             <tr>
-              <td>{evaluator}</td>
-              <td>Name of the assessor</td>
-              <td>Jane Doe</td>
+              <td data-label="Variable">{evaluator}</td>
+              <td data-label="Replaced with">Name of the assessor</td>
+              <td data-label="Example value">Jane Doe</td>
             </tr>
             <tr>
-              <td>{workplace}</td>
-              <td>Name or description of the workplace</td>
-              <td>Assembly Station 3</td>
+              <td data-label="Variable">{workplace}</td>
+              <td data-label="Replaced with">Name or description of the workplace</td>
+              <td data-label="Example value">Assembly Station 3</td>
             </tr>
             <tr>
-              <td>{record_date}</td>
-              <td>Date the motion data was recorded (YYYY-MM-DD)</td>
-              <td>2026-03-15</td>
+              <td data-label="Variable">{record_date}</td>
+              <td data-label="Replaced with">Date the motion data was recorded (YYYY-MM-DD)</td>
+              <td data-label="Example value">2026-03-15</td>
             </tr>
             <tr>
-              <td>{current_date}</td>
-              <td>Today's date at the moment of export (YYYY-MM-DD)</td>
-              <td>2026-03-29</td>
+              <td data-label="Variable">{current_date}</td>
+              <td data-label="Replaced with">Today's date at the moment of export (YYYY-MM-DD)</td>
+              <td data-label="Example value">2026-03-29</td>
             </tr>
             <tr>
-              <td>{current_time}</td>
-              <td>Current time at the moment of export (HH-MM)</td>
-              <td>14-32</td>
+              <td data-label="Variable">{current_time}</td>
+              <td data-label="Replaced with">Current time at the moment of export (HH-MM)</td>
+              <td data-label="Example value">14-32</td>
             </tr>
             <tr>
-              <td>{report_type}</td>
-              <td>Report type identifier</td>
-              <td>NIOSH</td>
+              <td data-label="Variable">{report_type}</td>
+              <td data-label="Replaced with">Report type identifier</td>
+              <td data-label="Example value">NIOSH</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Example templates</h3>
 

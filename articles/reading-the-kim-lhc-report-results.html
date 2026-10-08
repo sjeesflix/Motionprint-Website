@@ -211,6 +211,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -372,59 +405,59 @@
 
         <p>The top-left card displays metadata about the assessment session. The text fields can be edited inline on the Score Overview, without returning to the input page.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if <strong>Show evaluator name</strong> is turned off in the <a href="privacy-settings.html">privacy settings</a>.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if <strong>Show operator name</strong> is turned off in the privacy settings.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+            <tr><td data-label="Field">Workplace</td><td data-label="Description">Name or description of the assessed workstation.</td></tr>
+            <tr><td data-label="Field">Evaluator</td><td data-label="Description">The person performing the assessment. Hidden if <strong>Show evaluator name</strong> is turned off in the <a href="privacy-settings.html">privacy settings</a>.</td></tr>
+            <tr><td data-label="Field">Operator</td><td data-label="Description">The worker being assessed. Hidden if <strong>Show operator name</strong> is turned off in the privacy settings.</td></tr>
+            <tr><td data-label="Field">Comments</td><td data-label="Description">A free-text field for any additional context about the assessment.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Total Score Summary card</h3>
 
         <p>The top-right card shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
 
-        <table class="info-table" style="font-size:13px;">
+        <div class="table-scroll"><table class="info-table" style="font-size:13px;">
           <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Yellow</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
           <tbody>
             <tr>
-              <td>Effective load weight</td>
-              <td>&lt; 15 kg</td>
-              <td>15 – 30 kg</td>
-              <td>&gt; 30 kg</td>
+              <td data-label="Component">Effective load weight</td>
+              <td data-label="Green">&lt; 15 kg</td>
+              <td data-label="Yellow">15 – 30 kg</td>
+              <td data-label="Red">&gt; 30 kg</td>
             </tr>
             <tr>
-              <td>Load handling conditions</td>
-              <td>0</td>
-              <td>2</td>
-              <td>4</td>
+              <td data-label="Component">Load handling conditions</td>
+              <td data-label="Green">0</td>
+              <td data-label="Yellow">2</td>
+              <td data-label="Red">4</td>
             </tr>
             <tr>
-              <td>Total body posture</td>
-              <td>≤ 8</td>
-              <td>9–18</td>
-              <td>≥ 19</td>
+              <td data-label="Component">Total body posture</td>
+              <td data-label="Green">≤ 8</td>
+              <td data-label="Yellow">9–18</td>
+              <td data-label="Red">≥ 19</td>
             </tr>
             <tr>
-              <td>Unfavorable working conditions</td>
-              <td>≤ 4</td>
-              <td>5–9</td>
-              <td>≥ 10</td>
+              <td data-label="Component">Unfavorable working conditions</td>
+              <td data-label="Green">≤ 4</td>
+              <td data-label="Yellow">5–9</td>
+              <td data-label="Red">≥ 10</td>
             </tr>
             <tr>
-              <td>Work organization</td>
-              <td>0</td>
-              <td>2</td>
-              <td>4</td>
+              <td data-label="Component">Work organization</td>
+              <td data-label="Green">0</td>
+              <td data-label="Yellow">2</td>
+              <td data-label="Red">4</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Below the component rows, the card shows the calculation: <strong>Time Rating × Rating Points = Total Score</strong>, with a color-coded result badge:</p>
 
-        <table class="zone-table">
+        <div class="table-scroll"><table class="zone-table">
           <thead><tr><th>Total Score</th><th>Risk level</th></tr></thead>
           <tbody>
             <tr><td><span class="zone-dot zone-green"></span>&lt; 20</td><td>Low risk</td></tr>
@@ -432,7 +465,7 @@
             <tr><td><span class="zone-dot zone-yellow"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
             <tr><td><span class="zone-dot zone-red"></span>≥ 100</td><td>High risk</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Each component row has a navigate arrow — clicking it scrolls the page to the corresponding detail block below.</p>
 
@@ -473,17 +506,17 @@
 
         <p>A full-width block showing all six sub-factors, each with a score value and color-coded dot. Two of these are derived automatically from the motion data; four are set manually on the input page:</p>
 
-        <table class="info-table">
+        <div class="table-scroll"><table class="info-table">
           <thead><tr><th>Sub-factor</th><th>Source</th><th>Score values</th></tr></thead>
           <tbody>
-            <tr><td>Hand/arm motion</td><td>Auto (wrist angles)</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Force transfer</td><td>Manual</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Adverse ambient conditions</td><td>Manual</td><td>0 / 1</td></tr>
-            <tr><td>Spatial conditions</td><td>Manual</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Difficulties holding/carrying</td><td>Auto (hold duration &amp; pelvis displacement)</td><td>0 / 2 / 5</td></tr>
-            <tr><td>Clothing/equipment</td><td>Manual</td><td>0 / 1</td></tr>
+            <tr><td data-label="Sub-factor">Hand/arm motion</td><td data-label="Source">Auto (wrist angles)</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Force transfer</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Adverse ambient conditions</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1</td></tr>
+            <tr><td data-label="Sub-factor">Spatial conditions</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Difficulties holding/carrying</td><td data-label="Source">Auto (hold duration &amp; pelvis displacement)</td><td data-label="Score values">0 / 2 / 5</td></tr>
+            <tr><td data-label="Sub-factor">Clothing/equipment</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The total of all six sub-factors is shown at the bottom of the block with its own color-coded dot.</p>
 

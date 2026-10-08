@@ -224,6 +224,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -377,18 +410,18 @@
         <h3>General information card</h3>
         <p>The top-left card displays metadata about the assessment session. The text fields can be edited inline on the Score Overview, without returning to the input page.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>Working time</td><td>Total time spent at the workstation (e.g. "2 h 15 min").</td></tr>
-            <tr><td>Date</td><td>The evaluation date.</td></tr>
-            <tr><td>Cycle duration</td><td>Duration of one repetitive lifting cycle, used to derive lift frequency.</td></tr>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if <strong>Show evaluator name</strong> is turned off in the <a href="privacy-settings.html">privacy settings</a>.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if <strong>Show operator name</strong> is turned off in the privacy settings.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+            <tr><td data-label="Field">Working time</td><td data-label="Description">Total time spent at the workstation (e.g. "2 h 15 min").</td></tr>
+            <tr><td data-label="Field">Date</td><td data-label="Description">The evaluation date.</td></tr>
+            <tr><td data-label="Field">Cycle duration</td><td data-label="Description">Duration of one repetitive lifting cycle, used to derive lift frequency.</td></tr>
+            <tr><td data-label="Field">Workplace</td><td data-label="Description">Name or description of the assessed workstation.</td></tr>
+            <tr><td data-label="Field">Evaluator</td><td data-label="Description">The person performing the assessment. Hidden if <strong>Show evaluator name</strong> is turned off in the <a href="privacy-settings.html">privacy settings</a>.</td></tr>
+            <tr><td data-label="Field">Operator</td><td data-label="Description">The worker being assessed. Hidden if <strong>Show operator name</strong> is turned off in the privacy settings.</td></tr>
+            <tr><td data-label="Field">Comments</td><td data-label="Description">A free-text field for any additional context about the assessment.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Risk assessment card</h3>
         <p>The top-right card shows the primary risk result. Its content adapts depending on whether the report is single-task or multi-task.</p>
@@ -476,7 +509,7 @@
         <h3>Score-per-frame graph</h3>
         <p>Below the viewport, a full-width graph traces the selected variable's value across every frame in the lifting task. The graph background is divided into colour-coded risk zones that depend on which variable is selected:</p>
 
-        <table class="zone-table">
+        <div class="table-scroll"><table class="zone-table">
           <thead><tr><th>Variable</th><th>Risk zones</th></tr></thead>
           <tbody>
             <tr>
@@ -514,7 +547,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync.</p>
 

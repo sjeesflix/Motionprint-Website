@@ -231,6 +231,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -352,16 +385,16 @@
 
         <p>A RULA assessment in Motionprint Ergo spans three separate screens and five numbered steps. The table below shows the complete flow:</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Step</th><th>Label in the app</th><th>Screen</th></tr></thead>
           <tbody>
-            <tr><td><span class="step-num-plain">1</span></td><td>Select the report you want to create</td><td>Create page</td></tr>
-            <tr><td><span class="step-num-plain">2</span></td><td>Select your input source</td><td>Input Source page</td></tr>
-            <tr><td><span class="step-num-plain">3</span></td><td>Setup your input source</td><td>Input Source page (same screen)</td></tr>
-            <tr><td><span class="step-num-plain">4</span></td><td>Trim the file and specify posture tasks</td><td>Input page — 3D viewport on left, posture tasks on right</td></tr>
-            <tr><td><span class="step-num-plain">5</span></td><td>Provide task information</td><td>Input page (same screen, scrolls down from step 4)</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">1</span></td><td data-label="Label in the app">Select the report you want to create</td><td data-label="Screen">Create page</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">2</span></td><td data-label="Label in the app">Select your input source</td><td data-label="Screen">Input Source page</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">3</span></td><td data-label="Label in the app">Setup your input source</td><td data-label="Screen">Input Source page (same screen)</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">4</span></td><td data-label="Label in the app">Trim the file and specify posture tasks</td><td data-label="Screen">Input page — 3D viewport on left, posture tasks on right</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">5</span></td><td data-label="Label in the app">Provide task information</td><td data-label="Screen">Input page (same screen, scrolls down from step 4)</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>After completing all five steps, the <strong>Process</strong> button at the bottom of the input page becomes active. Clicking it submits the assessment and navigates you to the report.</p>
 
@@ -396,19 +429,19 @@
 
         <p>The next screen is the <strong>Input Source page</strong>, where you choose where the motion data for this assessment comes from. Two tiles are available:</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Tile</th><th>Use it when</th></tr></thead>
           <tbody>
             <tr>
-              <td>Upload a Xsens recording as a .mvnx file</td>
-              <td>You recorded the task in Xsens MVN Analyze and exported it as an .mvnx file.</td>
+              <td data-label="Tile">Upload a Xsens recording as a .mvnx file</td>
+              <td data-label="Use it when">You recorded the task in Xsens MVN Analyze and exported it as an .mvnx file.</td>
             </tr>
             <tr>
-              <td>Use a Xsens recording made within this app</td>
-              <td>You recorded the task with <a href="recording-with-mvn-sdk.html">live recording</a> in Motionprint Ergo, so it is stored in your <a href="recordings-database.html">Recordings Database</a>.</td>
+              <td data-label="Tile">Use a Xsens recording made within this app</td>
+              <td data-label="Use it when">You recorded the task with <a href="recording-with-mvn-sdk.html">live recording</a> in Motionprint Ergo, so it is stored in your <a href="recordings-database.html">Recordings Database</a>.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Whichever you choose, the RULA calculation runs exactly the same way. See <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a> for how the two formats compare.</p>
 
@@ -531,19 +564,19 @@
           <figcaption>Selecting a frame range on the timeline to create a posture task — the highlighted range becomes the task window and the task appears in the panel on the right.</figcaption>
         </figure>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>What it affects</th></tr></thead>
           <tbody>
             <tr>
-              <td>Arm support / leaning</td>
-              <td>Subtracts 1 point from the upper arm score. The result is floored at 1, so support cannot reduce an already-minimal score any further.</td>
+              <td data-label="Field">Arm support / leaning</td>
+              <td data-label="What it affects">Subtracts 1 point from the upper arm score. The result is floored at 1, so support cannot reduce an already-minimal score any further.</td>
             </tr>
             <tr>
-              <td>Shock / rapid build-up of force</td>
-              <td>Forces the maximum 3 force/load points regardless of the weight entered. Set this when force is applied with impact — hammering, snapping a part into place, absorbing a tool's torque reaction.</td>
+              <td data-label="Field">Shock / rapid build-up of force</td>
+              <td data-label="What it affects">Forces the maximum 3 force/load points regardless of the weight entered. Set this when force is applied with impact — hammering, snapping a part into place, absorbing a tool's torque reaction.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p><strong>Tasks from a recording</strong> are already in the list when you arrive, with their start frame, end frame and description filled in. Open each one and complete the load weight, arm support / leaning and shock / rapid build-up of force — these are specific to RULA and are not stored in the recording.</p>
 
@@ -571,46 +604,46 @@
 
         <p>If you selected a recording, the metadata fields are pre-filled from that recording — workplace, evaluator, operator, age, gender, weight, tags and date. Review them and fill in anything that is still empty; as with the trim and tasks, changes here apply only to this project.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>Required?</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Workplace</td>
-              <td>No</td>
-              <td>Name or description of the workstation being assessed (e.g. "Assembly Line Station 3"). This field is always visible and cannot be hidden in settings.</td>
+              <td data-label="Field">Workplace</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Name or description of the workstation being assessed (e.g. "Assembly Line Station 3"). This field is always visible and cannot be hidden in settings.</td>
             </tr>
             <tr>
-              <td>Evaluator</td>
-              <td>No</td>
-              <td>Name or ID of the assessor. Can be hidden via the privacy settings.</td>
+              <td data-label="Field">Evaluator</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Name or ID of the assessor. Can be hidden via the privacy settings.</td>
             </tr>
             <tr>
-              <td>Operator</td>
-              <td>No</td>
-              <td>Name or ID of the worker being assessed. Can be hidden via the privacy settings.</td>
+              <td data-label="Field">Operator</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Name or ID of the worker being assessed. Can be hidden via the privacy settings.</td>
             </tr>
             <tr>
-              <td>Gender</td>
-              <td>No</td>
-              <td>Worker gender (Male / Female). Can be hidden via the privacy settings.</td>
+              <td data-label="Field">Gender</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Worker gender (Male / Female). Can be hidden via the privacy settings.</td>
             </tr>
             <tr>
-              <td>Age</td>
-              <td>No</td>
-              <td>Age of the worker being assessed. Can be hidden via the privacy settings.</td>
+              <td data-label="Field">Age</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Age of the worker being assessed. Can be hidden via the privacy settings.</td>
             </tr>
             <tr>
-              <td>Weight</td>
-              <td>No</td>
-              <td>Body weight of the worker being assessed. Can be hidden via the privacy settings.</td>
+              <td data-label="Field">Weight</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Description">Body weight of the worker being assessed. Can be hidden via the privacy settings.</td>
             </tr>
             <tr>
-              <td>Date</td>
-              <td>Yes</td>
-              <td>The evaluation date. Defaults to today\'s date, or to the date of the recording when you selected a recording as input. Can be changed.</td>
+              <td data-label="Field">Date</td>
+              <td data-label="Required?">Yes</td>
+              <td data-label="Description">The evaluation date. Defaults to today's date, or to the date of the recording when you selected a recording as input. Can be changed.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
 
         <!-- ── PROCESSING ── -->

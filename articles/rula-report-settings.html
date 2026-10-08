@@ -231,6 +231,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -362,36 +395,36 @@
         <p>The Analysis &amp; Scoring module determines what is detected automatically, whether an averaged result is produced, and which optional tabs are available.</p>
 
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Auto-generated critical moments</td>
-              <td>On</td>
-              <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
+              <td data-label="Setting">Auto-generated critical moments</td>
+              <td data-label="Default">On</td>
+              <td data-label="Description">Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
             </tr>
             <tr>
-              <td>Generate averaged overview</td>
-              <td>Off</td>
-              <td>Toggle to add an averaged result across posture tasks to the score overview and export files. Use only when all posture tasks represent the same repeated posture.</td>
+              <td data-label="Setting">Generate averaged overview</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to add an averaged result across posture tasks to the score overview and export files. Use only when all posture tasks represent the same repeated posture.</td>
             </tr>
             <tr>
-              <td>Findings enabled</td>
-              <td>On</td>
-              <td>Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
+              <td data-label="Setting">Findings enabled</td>
+              <td data-label="Default">On</td>
+              <td data-label="Description">Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
             </tr>
             <tr>
-              <td>Findings title</td>
-              <td>"Findings"</td>
-              <td>Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files. The 50-character limit is enforced by the input field.</td>
+              <td data-label="Setting">Findings title</td>
+              <td data-label="Default">"Findings"</td>
+              <td data-label="Description">Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files. The 50-character limit is enforced by the input field.</td>
             </tr>
             <tr>
-              <td>Findings sections</td>
-              <td>5 defaults</td>
-              <td>Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
+              <td data-label="Setting">Findings sections</td>
+              <td data-label="Default">5 defaults</td>
+              <td data-label="Description">Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Averaged overview explained</h3>
 
@@ -424,21 +457,21 @@
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the In-depth analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply to both pages:</p>
 
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Layout</td>
-              <td>Single view, Two horizontal, Two vertical, Four views</td>
-              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal stacks two viewports top and bottom. Two vertical places them side by side. Four views shows a 2×2 grid.</td>
+              <td data-label="Setting">Layout</td>
+              <td data-label="Options">Single view, Two horizontal, Two vertical, Four views</td>
+              <td data-label="Description">Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal stacks two viewports top and bottom. Two vertical places them side by side. Four views shows a 2×2 grid.</td>
             </tr>
             <tr>
-              <td>Camera view</td>
-              <td>3D, Front, Back, Left, Right, Top</td>
-              <td>Sets the default camera angle. 3D is a perspective view from a three-quarter angle. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
+              <td data-label="Setting">Camera view</td>
+              <td data-label="Options">3D, Front, Back, Left, Right, Top</td>
+              <td data-label="Description">Sets the default camera angle. 3D is a perspective view from a three-quarter angle. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -466,21 +499,21 @@
 
         <h3>Export settings</h3>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Use company branding</td>
-              <td>Off</td>
-              <td>Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
+              <td data-label="Setting">Use company branding</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
             </tr>
             <tr>
-              <td>Export only average posture task</td>
-              <td>Off</td>
-              <td>Toggle to export only the averaged result rather than every individual posture task. Requires <strong>Generate averaged overview</strong> to be enabled first — without an average to export, the option has nothing to act on and stays unavailable.</td>
+              <td data-label="Setting">Export only average posture task</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to export only the averaged result rather than every individual posture task. Requires <strong>Generate averaged overview</strong> to be enabled first — without an average to export, the option has nothing to act on and stays unavailable.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>

@@ -224,6 +224,39 @@
     .media-type.is-gif { color: #8b5cf6; }
     .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
     .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -351,50 +384,50 @@
 
         <p>Whether the operator name, evaluator name and gender appear is not set here: these are controlled globally for all report types in <strong>Sidebar → Settings → General → Privacy</strong>. See <a href="privacy-settings.html">Privacy Settings</a>.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Reference mass / Load Constant</td>
-              <td>23 kg</td>
-              <td>Selector. Choose the reference standard that governs the Load Constant (LC) used in RWL calculations. Impacts the Recommended Weight Limit directly and all derived results.</td>
+              <td data-label="Setting">Reference mass / Load Constant</td>
+              <td data-label="Default">23 kg</td>
+              <td data-label="Description">Selector. Choose the reference standard that governs the Load Constant (LC) used in RWL calculations. Impacts the Recommended Weight Limit directly and all derived results.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Load Constant values and standards</h3>
 
         <p>The Reference mass selector determines which Load Constant is used throughout the assessment. The available options and their corresponding LC values are:</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Standard</th><th>Load Constant</th><th>Population coverage</th><th>Notes</th></tr></thead>
           <tbody>
             <tr>
-              <td>EN 1005-2 &amp; ISO 11228-1:2003</td>
-              <td>25 kg</td>
-              <td>95% men / 70% women</td>
-              <td>European standard for manual handling risk assessment. Higher Load Constant than the NIOSH default.</td>
+              <td data-label="Standard">EN 1005-2 &amp; ISO 11228-1:2003</td>
+              <td data-label="Load Constant">25 kg</td>
+              <td data-label="Population coverage">95% men / 70% women</td>
+              <td data-label="Notes">European standard for manual handling risk assessment. Higher Load Constant than the NIOSH default.</td>
             </tr>
             <tr>
-              <td>NIOSH RNLE &amp; ISO 11228-1:2021</td>
-              <td>23 kg <em>(default)</em></td>
-              <td>99% men / 75% women</td>
-              <td>The U.S. Revised NIOSH Lifting Equation and current ISO 11228-1 standard. The default selection, widely used internationally.</td>
+              <td data-label="Standard">NIOSH RNLE &amp; ISO 11228-1:2021</td>
+              <td data-label="Load Constant">23 kg <em>(default)</em></td>
+              <td data-label="Population coverage">99% men / 75% women</td>
+              <td data-label="Notes">The U.S. Revised NIOSH Lifting Equation and current ISO 11228-1 standard. The default selection, widely used internationally.</td>
             </tr>
             <tr>
-              <td>ISO 11228-1:2021 Table B.1</td>
-              <td>15 kg</td>
-              <td>99% men / 90% women</td>
-              <td>Conservative variant for mixed or female-majority workforces and high-risk scenarios per ISO 11228-1 Annex B.</td>
+              <td data-label="Standard">ISO 11228-1:2021 Table B.1</td>
+              <td data-label="Load Constant">15 kg</td>
+              <td data-label="Population coverage">99% men / 90% women</td>
+              <td data-label="Notes">Conservative variant for mixed or female-majority workforces and high-risk scenarios per ISO 11228-1 Annex B.</td>
             </tr>
             <tr>
-              <td>ISO 11228-1:2021 Table B.1</td>
-              <td>10 kg</td>
-              <td>99% population</td>
-              <td>Most restrictive standard, suitable for vulnerable workers or particularly demanding tasks per ISO 11228-1 Annex B.</td>
+              <td data-label="Standard">ISO 11228-1:2021 Table B.1</td>
+              <td data-label="Load Constant">10 kg</td>
+              <td data-label="Population coverage">99% population</td>
+              <td data-label="Notes">Most restrictive standard, suitable for vulnerable workers or particularly demanding tasks per ISO 11228-1 Annex B.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -410,56 +443,56 @@
         <p>The Analysis &amp; Scoring module determines how assessments are calculated and which result modifiers and optional tabs are available.</p>
 
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Analysis mode</td>
-              <td>Peak moment</td>
-              <td>Selector. Choose between Peak moment (analyses all frames; auto-detects highest LI) or Origin/Destination (reports only start and end frame positions).</td>
+              <td data-label="Setting">Analysis mode</td>
+              <td data-label="Default">Peak moment</td>
+              <td data-label="Description">Selector. Choose between Peak moment (analyses all frames; auto-detects highest LI) or Origin/Destination (reports only start and end frame positions).</td>
             </tr>
             <tr>
-              <td>Two-person lift</td>
-              <td>Off</td>
-              <td>Toggle to enable the Pf = 0.85 modifier per ISO 11228-1:2021 Annex E, reflecting reduced load per lifter when two workers share the task. Set per individual lifting task.</td>
+              <td data-label="Setting">Two-person lift</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to enable the Pf = 0.85 modifier per ISO 11228-1:2021 Annex E, reflecting reduced load per lifter when two workers share the task. Set per individual lifting task.</td>
             </tr>
             <tr>
-              <td>Additional physical tasks</td>
-              <td>Off</td>
-              <td>Toggle to enable the Tf = 0.80 modifier per ISO 11228-1:2021 Annex E for workstations where lifting is one of multiple concurrent physical tasks. Set per individual lifting task.</td>
+              <td data-label="Setting">Additional physical tasks</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to enable the Tf = 0.80 modifier per ISO 11228-1:2021 Annex E for workstations where lifting is one of multiple concurrent physical tasks. Set per individual lifting task.</td>
             </tr>
             <tr>
-              <td>One-hand lifting</td>
-              <td>Off</td>
-              <td>Toggle to enable the Of = 0.60 modifier per ISO 11228-1:2021 Annex E when the lift is performed with only one hand. Set per individual lifting task.</td>
+              <td data-label="Setting">One-hand lifting</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to enable the Of = 0.60 modifier per ISO 11228-1:2021 Annex E when the lift is performed with only one hand. Set per individual lifting task.</td>
             </tr>
             <tr>
-              <td>Extended duration</td>
-              <td>Off</td>
-              <td>Toggle to enable the eM modifier per ISO 11228-1:2021 Table 3 for shifts lasting longer than 8 hours. Applied automatically based on the working time entered on the input page; it depends on working duration only, not on lifting frequency. Values: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
+              <td data-label="Setting">Extended duration</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to enable the eM modifier per ISO 11228-1:2021 Table 3 for shifts lasting longer than 8 hours. Applied automatically based on the working time entered on the input page; it depends on working duration only, not on lifting frequency. Values: &gt;8–9 h → 0.97, &gt;9–10 h → 0.93, &gt;10–11 h → 0.89, &gt;11–12 h → 0.85.</td>
             </tr>
             <tr>
-              <td>Auto-generated critical moments</td>
-              <td>On</td>
-              <td>Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
+              <td data-label="Setting">Auto-generated critical moments</td>
+              <td data-label="Default">On</td>
+              <td data-label="Description">Toggle automatic detection of peak moment and sustained risk periods in the Analysis tab. Disable if you prefer to mark critical moments manually.</td>
             </tr>
             <tr>
-              <td>Findings enabled</td>
-              <td>On</td>
-              <td>Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
+              <td data-label="Setting">Findings enabled</td>
+              <td data-label="Default">On</td>
+              <td data-label="Description">Toggle whether the Findings tab appears in the report. When disabled, the tab is hidden entirely.</td>
             </tr>
             <tr>
-              <td>Findings title</td>
-              <td>"Findings"</td>
-              <td>Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files. The 50-character limit is enforced by the input field.</td>
+              <td data-label="Setting">Findings title</td>
+              <td data-label="Default">"Findings"</td>
+              <td data-label="Description">Text input to rename the Findings tab. The custom title appears in the report tab bar and in exported files. The 50-character limit is enforced by the input field.</td>
             </tr>
             <tr>
-              <td>Findings sections</td>
-              <td>5 defaults</td>
-              <td>Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
+              <td data-label="Setting">Findings sections</td>
+              <td data-label="Default">5 defaults</td>
+              <td data-label="Description">Drag-and-drop list of section blocks within the Findings tab. Add, rename, reorder, or delete sections. A Reset to defaults button restores the standard five sections.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Analysis mode explained</h3>
 
@@ -492,21 +525,21 @@
         <p>The Viewport module sets the default 3D viewer layout and camera angle for both the input page and the In-depth analysis tab on the results page, ensuring consistent visualization across your assessments. The same two settings apply to both pages:</p>
 
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Options</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Layout</td>
-              <td>Single view, Two horizontal, Two vertical, Four views</td>
-              <td>Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal stacks two viewports top and bottom. Two vertical places them side by side. Four views shows a 2×2 grid.</td>
+              <td data-label="Setting">Layout</td>
+              <td data-label="Options">Single view, Two horizontal, Two vertical, Four views</td>
+              <td data-label="Description">Controls how many viewports are shown. Single view shows one full-width viewport. Two horizontal stacks two viewports top and bottom. Two vertical places them side by side. Four views shows a 2×2 grid.</td>
             </tr>
             <tr>
-              <td>Camera view</td>
-              <td>3D, Front, Back, Left, Right, Top</td>
-              <td>Sets the default camera angle. 3D is a perspective view from a three-quarter angle. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
+              <td data-label="Setting">Camera view</td>
+              <td data-label="Options">3D, Front, Back, Left, Right, Top</td>
+              <td data-label="Description">Sets the default camera angle. 3D is a perspective view from a three-quarter angle. The others are orthogonal views useful for checking posture alignment from a specific direction. When a multi-viewport layout is selected, each viewport has its own camera view setting.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -534,16 +567,16 @@
 
         <h3>Export settings</h3>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Setting</th><th>Default</th><th>Description</th></tr></thead>
           <tbody>
             <tr>
-              <td>Use company branding</td>
-              <td>Off</td>
-              <td>Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
+              <td data-label="Setting">Use company branding</td>
+              <td data-label="Default">Off</td>
+              <td data-label="Description">Toggle to include your company logo and brand colour in exported PDF and Excel reports — on the cover page, section headers, and footer. When disabled, exports display "Motionprint" as the default footer company name.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>

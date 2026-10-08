@@ -236,6 +236,39 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -496,7 +529,7 @@
 
         <p>The LI is the primary risk indicator reported by Motionprint Ergo. The four risk levels are:</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th>LI range</th>
@@ -506,27 +539,27 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>LI ≤ 1.0</code></td>
-              <td><span class="risk-badge risk-low">Low</span></td>
-              <td>Acceptable for most workers. Task conditions are within the recommended limits.</td>
+              <td data-label="LI range"><code>LI ≤ 1.0</code></td>
+              <td data-label="Risk level"><span class="risk-badge risk-low">Low</span></td>
+              <td data-label="Interpretation">Acceptable for most workers. Task conditions are within the recommended limits.</td>
             </tr>
             <tr>
-              <td><code>1.0 &lt; LI ≤ 2.0</code></td>
-              <td><span class="risk-badge risk-medium">Moderate</span></td>
-              <td>Elevated risk for some workers. Consider task redesign or worker rotation.</td>
+              <td data-label="LI range"><code>1.0 &lt; LI ≤ 2.0</code></td>
+              <td data-label="Risk level"><span class="risk-badge risk-medium">Moderate</span></td>
+              <td data-label="Interpretation">Elevated risk for some workers. Consider task redesign or worker rotation.</td>
             </tr>
             <tr>
-              <td><code>2.0 &lt; LI ≤ 3.0</code></td>
-              <td><span class="risk-badge risk-medium">High</span></td>
-              <td>Significant risk for most workers. Job redesign is recommended.</td>
+              <td data-label="LI range"><code>2.0 &lt; LI ≤ 3.0</code></td>
+              <td data-label="Risk level"><span class="risk-badge risk-medium">High</span></td>
+              <td data-label="Interpretation">Significant risk for most workers. Job redesign is recommended.</td>
             </tr>
             <tr>
-              <td><code>LI &gt; 3.0</code></td>
-              <td><span class="risk-badge risk-high">Very High</span></td>
-              <td>Unacceptable risk. Immediate intervention required before work continues.</td>
+              <td data-label="LI range"><code>LI &gt; 3.0</code></td>
+              <td data-label="Risk level"><span class="risk-badge risk-high">Very High</span></td>
+              <td data-label="Interpretation">Unacceptable risk. Immediate intervention required before work continues.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -578,7 +611,7 @@
         <h2 id="reference-mass"><span class="step-num">6</span> Reference Mass (LC)</h2>
         <p>The Load Constant (LC) is the reference mass from which the RWL calculation starts. Its default value of 23 kg follows the NIOSH Revised Lifting Equation. In Motionprint Ergo, the LC is configurable in the NIOSH report settings, allowing you to align with the applicable standard for your context. Four values are available, each derived from ISO 11228-1:</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th>Reference Mass</th>
@@ -588,27 +621,27 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>25 kg</strong></td>
-              <td>EN 1005-2 &amp; ISO 11228-1:2003</td>
-              <td>95% of men, 70% of women</td>
+              <td data-label="Reference Mass"><strong>25 kg</strong></td>
+              <td data-label="Standard">EN 1005-2 &amp; ISO 11228-1:2003</td>
+              <td data-label="Population Coverage">95% of men, 70% of women</td>
             </tr>
             <tr>
-              <td><strong>23 kg</strong> <span class="risk-badge risk-low">Default</span></td>
-              <td>NIOSH RNLE &amp; ISO 11228-1:2021</td>
-              <td>99% of men, 75% of women</td>
+              <td data-label="Reference Mass"><strong>23 kg</strong> <span class="risk-badge risk-low">Default</span></td>
+              <td data-label="Standard">NIOSH RNLE &amp; ISO 11228-1:2021</td>
+              <td data-label="Population Coverage">99% of men, 75% of women</td>
             </tr>
             <tr>
-              <td><strong>15 kg</strong></td>
-              <td>ISO 11228-1:2021 Table B.1</td>
-              <td>99% of men, 90% of women</td>
+              <td data-label="Reference Mass"><strong>15 kg</strong></td>
+              <td data-label="Standard">ISO 11228-1:2021 Table B.1</td>
+              <td data-label="Population Coverage">99% of men, 90% of women</td>
             </tr>
             <tr>
-              <td><strong>10 kg</strong></td>
-              <td>ISO 11228-1:2021 Table B.1</td>
-              <td>~99% of the general population</td>
+              <td data-label="Reference Mass"><strong>10 kg</strong></td>
+              <td data-label="Standard">ISO 11228-1:2021 Table B.1</td>
+              <td data-label="Population Coverage">~99% of the general population</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>A lower reference mass produces a more conservative RWL, which is appropriate when the assessment needs to protect a broader portion of the workforce. Select the reference mass in the NIOSH settings page based on the applicable standard or the population you need to protect.</p>
 
@@ -645,7 +678,7 @@
         <h2 id="additional-modifiers"><span class="step-num">8</span> Additional Modifiers</h2>
         <p>For tasks with non-standard conditions, Motionprint Ergo applies additional multipliers on top of the core NIOSH equation. Each of these modifiers can be enabled or disabled individually in the NIOSH report settings page.</p>
 
-        <table class="threshold-table">
+        <div class="table-scroll"><table class="threshold-table stackable">
           <thead>
             <tr>
               <th>Modifier</th>
@@ -655,23 +688,23 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Pf</strong> — Two-person lift</td>
-              <td><span class="factor-badge">0.85</span></td>
-              <td>Load is carried by two workers simultaneously</td>
+              <td data-label="Modifier"><strong>Pf</strong> — Two-person lift</td>
+              <td data-label="Factor"><span class="factor-badge">0.85</span></td>
+              <td data-label="When applied">Load is carried by two workers simultaneously</td>
             </tr>
             <tr>
-              <td><strong>Tf</strong> — Additional tasks</td>
-              <td><span class="factor-badge">0.80</span></td>
-              <td>Worker performs other physically demanding tasks beyond lifting</td>
+              <td data-label="Modifier"><strong>Tf</strong> — Additional tasks</td>
+              <td data-label="Factor"><span class="factor-badge">0.80</span></td>
+              <td data-label="When applied">Worker performs other physically demanding tasks beyond lifting</td>
             </tr>
             <tr>
-              <td><strong>Of</strong> — One-hand lift</td>
-              <td><span class="factor-badge">0.60</span></td>
-              <td>Load is lifted with a single hand</td>
+              <td data-label="Modifier"><strong>Of</strong> — One-hand lift</td>
+              <td data-label="Factor"><span class="factor-badge">0.60</span></td>
+              <td data-label="When applied">Load is lifted with a single hand</td>
             </tr>
             <tr>
-              <td><strong>eM</strong> — Extended duration</td>
-              <td>
+              <td data-label="Modifier"><strong>eM</strong> — Extended duration</td>
+              <td data-label="Factor">
                 <div class="factor-list">
                   <span class="factor-badge">0.97 &gt;8–9 h</span>
                   <span class="factor-badge">0.93 &gt;9–10 h</span>
@@ -679,10 +712,10 @@
                   <span class="factor-badge">0.85 &gt;11–12 h</span>
                 </div>
               </td>
-              <td>Work shift exceeds 8 hours; factor scales with shift length per ISO 11228-1. Depends on working duration only, not on lifting frequency.</td>
+              <td data-label="When applied">Work shift exceeds 8 hours; factor scales with shift length per ISO 11228-1. Depends on working duration only, not on lifting frequency.</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <figure style="margin:24px 0;">
           <img src="nioshscoreoverviewtab.jpg" alt="Score overview tab in Motionprint Ergo showing RWL, Lifting Index, risk level and position variables" style="display:block;max-width:620px;width:100%;margin:0 auto;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" />

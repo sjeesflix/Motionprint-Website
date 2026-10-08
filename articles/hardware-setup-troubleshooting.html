@@ -208,6 +208,39 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { max-width: 100%; height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -383,16 +416,16 @@
 
         <h2 id="issues"><span class="step-num">6</span> Common connection issues</h2>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Symptom</th><th>Likely cause</th></tr></thead>
           <tbody>
-            <tr><td>Sensor not found in scan</td><td>Sensor powered off, out of range of the dock, or battery depleted</td></tr>
-            <tr><td>Sensor drops out during recording</td><td>Low battery, or the sensor moved out of the dock's range</td></tr>
-            <tr><td>Frequent dropouts in a Wi-Fi-heavy environment</td><td>Awinda radio channel overlapping with nearby Wi-Fi or another dock &mdash; set a different radio channel, preferably 11, 15, 20 or 25</td></tr>
-            <tr><td>Duplicate-tracker conflict</td><td>Two sensors assigned to the same body segment</td></tr>
-            <tr><td>Skeleton looks wrong after calibration</td><td>A sensor assigned to the wrong body segment</td></tr>
+            <tr><td data-label="Symptom">Sensor not found in scan</td><td data-label="Likely cause">Sensor powered off, out of range of the dock, or battery depleted</td></tr>
+            <tr><td data-label="Symptom">Sensor drops out during recording</td><td data-label="Likely cause">Low battery, or the sensor moved out of the dock's range</td></tr>
+            <tr><td data-label="Symptom">Frequent dropouts in a Wi-Fi-heavy environment</td><td data-label="Likely cause">Awinda radio channel overlapping with nearby Wi-Fi or another dock &mdash; set a different radio channel, preferably 11, 15, 20 or 25</td></tr>
+            <tr><td data-label="Symptom">Duplicate-tracker conflict</td><td data-label="Likely cause">Two sensors assigned to the same body segment</td></tr>
+            <tr><td data-label="Symptom">Skeleton looks wrong after calibration</td><td data-label="Likely cause">A sensor assigned to the wrong body segment</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>If sensors keep dropping out, try moving the dock closer to where the subject will be performing the task, and confirm no other Awinda dock nearby is competing for the same sensors.</p>
 
