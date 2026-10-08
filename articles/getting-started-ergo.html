@@ -406,9 +406,21 @@
               <td>Internet connection</td>
               <td>Required for licence activation and ongoing validation</td>
             </tr>
+            <tr>
+              <td>Network access</td>
+              <td>Outbound HTTPS (TCP port 443) to <code>license.motion-print.com</code>, at least once every 30 days</td>
+            </tr>
 
           </tbody>
         </table>
+
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">Using Motionprint Ergo on a company network</div>
+            <p>The licence check is the app's only connection to the internet, and a company firewall or proxy can block it. Ask your IT department to allow outbound HTTPS (port 443) to <code>license.motion-print.com</code>. If your network uses a proxy, the app follows the proxy set in Windows; a proxy that requires you to sign in, or that is configured only through an automatic configuration script, can block the connection. If your network inspects HTTPS traffic (SSL inspection), <code>license.motion-print.com</code> must be excluded from it, because the app checks the licence server's certificate and refuses a substituted one.</p>
+          </div>
+        </div>
 
         <p>You will also need an active Motionprint licence key before you can use the app. If you don't have one yet, visit the <a href="../index.html#pricing">pricing page</a> or request a free trial.</p>
 

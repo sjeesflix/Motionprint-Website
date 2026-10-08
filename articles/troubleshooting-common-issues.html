@@ -442,8 +442,25 @@
               <ul>
                 <li>Confirm the machine has an active internet connection</li>
                 <li>Check whether a firewall or proxy is blocking outbound HTTPS connections — the licence server communicates on port 443</li>
-                <li>If your organisation uses a proxy, configure it in your system network settings so the application can route through it</li>
+                <li>If your organisation uses a proxy, set it in the Windows proxy settings so the application can route through it. A proxy that requires you to sign in, or one that is configured only through an automatic configuration script, can block the connection — ask IT to allow direct access to the licence server</li>
                 <li>Ensure the domain <code>license.motion-print.com</code> is not blocked by a firewall, proxy, or VPN</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">"Cannot connect to license server: SSL certificate error"</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>The app reached a server, but not with the licence server's own certificate. This almost always means your network inspects HTTPS traffic (SSL inspection) and replaces the certificate.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Ask your IT department to exclude <code>license.motion-print.com</code> from SSL inspection</li>
+                <li>Alternatively, activate or refresh the licence once on a network without SSL inspection — after that the app works offline for up to 30 days</li>
+                <li>If the error persists, contact <a href="mailto:support@motion-print.com">support@motion-print.com</a></li>
               </ul>
             </div>
           </div>
