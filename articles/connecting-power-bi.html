@@ -23,17 +23,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Power BI Reporting — Motionprint Ergo Help</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, methodology, workplace and status across every saved project in one dashboard." />
+  <meta name="description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, status, tag and demographic breakdowns across every saved project." />
   <link rel="canonical" href="https://motion-print.com/articles/connecting-power-bi.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
   <meta property="og:title" content="Power BI Reporting — Motionprint Ergo Help" />
-  <meta property="og:description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, methodology, workplace and status across every saved project in one dashboard." />
+  <meta property="og:description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, status, tag and demographic breakdowns across every saved project." />
   <meta property="og:url" content="https://motion-print.com/articles/connecting-power-bi.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Power BI Reporting — Motionprint Ergo Help" />
-  <meta name="twitter:description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, methodology, workplace and status across every saved project in one dashboard." />
+  <meta name="twitter:description" content="Open and connect the Motionprint Ergo Power BI report template to see risk level, status, tag and demographic breakdowns across every saved project." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -361,12 +361,12 @@
       <!-- Article content -->
       <article class="article-body">
 
-        <p class="article-lead">Motionprint Ergo ships with a ready-made Power BI report that connects to your saved project data and gives you a single, aggregated view across every assessment &mdash; risk level by methodology, workplace, operator, status, and trends over time. This article covers opening the report, connecting it to your data, and what each part of the dashboard shows.</p>
+        <p class="article-lead">Motionprint Ergo ships with a ready-made Power BI report that connects to your saved project data and gives you a single, aggregated view across every assessment &mdash; risk level by methodology and status, tag and demographic breakdowns, and trends over time. This article covers opening the report, connecting it to your data, and what each sheet shows.</p>
 
         <!-- ── WHAT IS POWER BI REPORTING ── -->
         <h2 id="what"><span class="step-num">1</span>What Is Power BI Reporting?</h2>
 
-        <p>Every assessment you save to the Projects Database lives in Motionprint Ergo's local database on this computer. The Power BI report reads that data directly and turns it into one dashboard: how many assessments fall into each risk category, broken down by methodology (RULA, NIOSH, KIM-LHC), which workplaces and operators appear most often, assessment status (Draft, In Progress, Completed), and how your numbers trend from month to month.</p>
+        <p>Every assessment you save to the Projects Database lives in Motionprint Ergo's local database on this computer. The Power BI report reads that data directly and turns it into a three-sheet report: an overview of assessment volume, status and risk level over time; a breakdown by tag with full assessment details; and a demographics view plotting subject age, height and weight against risk score for each methodology (RULA, NIOSH, KIM-LHC).</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -428,13 +428,15 @@
         <!-- ── UNDERSTANDING THE DASHBOARD ── -->
         <h2 id="dashboard"><span class="step-num">4</span>Understanding the Dashboard</h2>
 
-        <p>The report opens on an overview page with four main parts:</p>
+        <p>The report opens with three sheets, shown as tabs along the bottom of the Power BI window: <strong>Overview</strong>, <strong>By Tag</strong>, and <strong>Demographics</strong>.</p>
 
+        <h3>Overview</h3>
+        <p>The first sheet gives you the big picture across every loaded assessment:</p>
         <ul>
-          <li><strong>Summary cards</strong> &mdash; total assessments loaded, and the percentage falling into each risk level (Low, Medium, High).</li>
-          <li><strong>Risk category breakdown</strong> &mdash; split out per methodology, so you can see at a glance whether RULA, NIOSH, or KIM-LHC assessments are driving your risk numbers.</li>
-          <li><strong>Monthly trend</strong> &mdash; assessment volume and risk level over time.</li>
-          <li><strong>Assessment table</strong> &mdash; every loaded assessment with its workplace, operator, status, and risk level, filterable and sortable.</li>
+          <li><strong>Total Assessments</strong> and <strong>% High Risk</strong> &mdash; headline summary cards.</li>
+          <li><strong>Assessments by Status</strong> &mdash; how many are Draft, In Progress, or Completed.</li>
+          <li><strong>Assessments by Risk Category</strong> &mdash; the Low/Medium/High split, per methodology.</li>
+          <li><strong>Risk Level Over Time</strong> &mdash; a monthly trend of risk levels.</li>
         </ul>
 
         <div class="media-placeholder">
@@ -442,11 +444,40 @@
             <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
             Screenshot
           </span>
-          <div class="media-placeholder-title">Power BI dashboard overview</div>
-          <div class="media-placeholder-desc">The main report page, showing the summary cards, risk category breakdown by methodology, and the monthly trend chart.</div>
+          <div class="media-placeholder-title">Overview sheet</div>
+          <div class="media-placeholder-desc">The Overview sheet, showing the Total Assessments and % High Risk cards, assessments by status, assessments by risk category, and the monthly risk level trend.</div>
         </div>
 
-        <p>Every chart and the assessment table respond to the filters along the side of the report &mdash; filter by workplace, methodology, status, or date range to narrow the view down to what you're interested in.</p>
+        <h3>By Tag</h3>
+        <p>The second sheet breaks the same data down by the tags you've added to your projects:</p>
+        <ul>
+          <li><strong>Assessments by Tag</strong> &mdash; how many assessments carry each tag.</li>
+          <li><strong>Tag Distribution</strong> &mdash; the relative share of each tag.</li>
+          <li><strong>Assessment Details</strong> &mdash; a filterable, sortable table listing every loaded assessment.</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">By Tag sheet</div>
+          <div class="media-placeholder-desc">The By Tag sheet, showing assessments by tag, tag distribution, and the assessment details table.</div>
+        </div>
+
+        <h3>Demographics</h3>
+        <p>The third sheet plots subject demographics against risk, split out per methodology: nine scatter plots in total &mdash; age, height, and weight, each against risk score, for RULA, NIOSH, and KIM-LHC individually.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
+            Screenshot
+          </span>
+          <div class="media-placeholder-title">Demographics sheet</div>
+          <div class="media-placeholder-desc">The Demographics sheet, showing the nine age/height/weight-versus-risk-score scatter plots across RULA, NIOSH, and KIM-LHC.</div>
+        </div>
+
+        <p>Every chart and table across all three sheets respond to the filters along the side of the report &mdash; filter by workplace, methodology, status, or date range to narrow the view down to what you're interested in.</p>
 
         <!-- ── REFRESHING & TROUBLESHOOTING ── -->
         <h2 id="trouble"><span class="step-num">5</span>Refreshing &amp; Troubleshooting</h2>
