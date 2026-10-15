@@ -203,6 +203,51 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    .article-figure { margin: 24px 0; }
+    .article-figure img { display: block; max-width: 620px; width: 100%; margin: 0 auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+    .article-figure figcaption { text-align: center; font-size: 12px; color: var(--muted); margin-top: 8px; }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .article-body img { max-width: 100%; }
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -280,7 +325,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated July 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -333,6 +378,8 @@
 
         <p>Next to the tabs are two buttons: <strong>Edit</strong> (to return to the input page and update any information from the assessment — lifting tasks, trim settings, task information, and working conditions) and <strong>Export</strong> (to generate a PDF or Excel file of the full report).</p>
 
+        <p>If the report was created from a recording, anything you change after pressing Edit applies only to this report; the recording in the Recordings Database stays as it was saved.</p>
+
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
@@ -360,61 +407,61 @@
 
         <h3>General information card</h3>
 
-        <p>The top-left card displays metadata about the assessment session. All fields can be edited inline by clicking the Edit button at the top of the report.</p>
+        <p>The top-left card displays metadata about the assessment session. The text fields can be edited inline on the Score Overview, without returning to the input page.</p>
 
-        <table class="info-table">
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Field</th><th>Description</th></tr></thead>
           <tbody>
-            <tr><td>Workplace</td><td>Name or description of the assessed workstation.</td></tr>
-            <tr><td>Evaluator</td><td>The person performing the assessment. Hidden if the privacy setting "Hide evaluator name" is enabled.</td></tr>
-            <tr><td>Operator</td><td>The worker being assessed. Hidden if "Hide operator name" is enabled.</td></tr>
-            <tr><td>Comments</td><td>A free-text field for any additional context about the assessment.</td></tr>
+            <tr><td data-label="Field">Workplace</td><td data-label="Description">Name or description of the assessed workstation.</td></tr>
+            <tr><td data-label="Field">Evaluator</td><td data-label="Description">The person performing the assessment. Hidden if <strong>Show evaluator name</strong> is turned off in the <a href="privacy-settings.html">privacy settings</a>.</td></tr>
+            <tr><td data-label="Field">Operator</td><td data-label="Description">The worker being assessed. Hidden if <strong>Show operator name</strong> is turned off in the privacy settings.</td></tr>
+            <tr><td data-label="Field">Comments</td><td data-label="Description">A free-text field for any additional context about the assessment.</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h3>Total Score Summary card</h3>
 
         <p>The top-right card shows a summary of all five scoring components plus the final Total Score calculation. Each component row displays its value alongside a color-coded risk dot:</p>
 
-        <table class="info-table" style="font-size:13px;">
+        <div class="table-scroll"><table class="info-table" style="font-size:13px;">
           <thead><tr><th>Component</th><th><span class="color-dot dot-green"></span> Green</th><th><span class="color-dot dot-yellow"></span> Yellow</th><th><span class="color-dot dot-red"></span> Red</th></tr></thead>
           <tbody>
             <tr>
-              <td>Effective load weight</td>
-              <td>&lt; 15 kg</td>
-              <td>15 – 30 kg</td>
-              <td>&gt; 30 kg</td>
+              <td data-label="Component">Effective load weight</td>
+              <td data-label="Green">&lt; 15 kg</td>
+              <td data-label="Yellow">15 – 30 kg</td>
+              <td data-label="Red">&gt; 30 kg</td>
             </tr>
             <tr>
-              <td>Load handling conditions</td>
-              <td>0</td>
-              <td>2</td>
-              <td>4</td>
+              <td data-label="Component">Load handling conditions</td>
+              <td data-label="Green">0</td>
+              <td data-label="Yellow">2</td>
+              <td data-label="Red">4</td>
             </tr>
             <tr>
-              <td>Total body posture</td>
-              <td>≤ 8</td>
-              <td>9–18</td>
-              <td>≥ 19</td>
+              <td data-label="Component">Total body posture</td>
+              <td data-label="Green">≤ 8</td>
+              <td data-label="Yellow">9–18</td>
+              <td data-label="Red">≥ 19</td>
             </tr>
             <tr>
-              <td>Unfavorable working conditions</td>
-              <td>≤ 4</td>
-              <td>5–9</td>
-              <td>≥ 10</td>
+              <td data-label="Component">Unfavorable working conditions</td>
+              <td data-label="Green">≤ 4</td>
+              <td data-label="Yellow">5–9</td>
+              <td data-label="Red">≥ 10</td>
             </tr>
             <tr>
-              <td>Work organization</td>
-              <td>0</td>
-              <td>2</td>
-              <td>4</td>
+              <td data-label="Component">Work organization</td>
+              <td data-label="Green">0</td>
+              <td data-label="Yellow">2</td>
+              <td data-label="Red">4</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Below the component rows, the card shows the calculation: <strong>Time Rating × Rating Points = Total Score</strong>, with a color-coded result badge:</p>
 
-        <table class="zone-table">
+        <div class="table-scroll"><table class="zone-table">
           <thead><tr><th>Total Score</th><th>Risk level</th></tr></thead>
           <tbody>
             <tr><td><span class="zone-dot zone-green"></span>&lt; 20</td><td>Low risk</td></tr>
@@ -422,7 +469,7 @@
             <tr><td><span class="zone-dot zone-yellow"></span>50–&lt; 100</td><td>Substantially increased risk</td></tr>
             <tr><td><span class="zone-dot zone-red"></span>≥ 100</td><td>High risk</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>Each component row has a navigate arrow — clicking it scrolls the page to the corresponding detail block below.</p>
 
@@ -463,17 +510,17 @@
 
         <p>A full-width block showing all six sub-factors, each with a score value and color-coded dot. Two of these are derived automatically from the motion data; four are set manually on the input page:</p>
 
-        <table class="info-table">
+        <div class="table-scroll"><table class="info-table">
           <thead><tr><th>Sub-factor</th><th>Source</th><th>Score values</th></tr></thead>
           <tbody>
-            <tr><td>Hand/arm motion</td><td>Auto (wrist angles)</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Force transfer</td><td>Manual</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Adverse ambient conditions</td><td>Manual</td><td>0 / 1</td></tr>
-            <tr><td>Spatial conditions</td><td>Manual</td><td>0 / 1 / 2</td></tr>
-            <tr><td>Difficulties holding/carrying</td><td>Auto (hold duration &amp; pelvis displacement)</td><td>0 / 2 / 5</td></tr>
-            <tr><td>Clothing/equipment</td><td>Manual</td><td>0 / 1</td></tr>
+            <tr><td data-label="Sub-factor">Hand/arm motion</td><td data-label="Source">Auto (wrist angles)</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Force transfer</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Adverse ambient conditions</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1</td></tr>
+            <tr><td data-label="Sub-factor">Spatial conditions</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1 / 2</td></tr>
+            <tr><td data-label="Sub-factor">Difficulties holding/carrying</td><td data-label="Source">Auto (hold duration &amp; pelvis displacement)</td><td data-label="Score values">0 / 2 / 5</td></tr>
+            <tr><td data-label="Sub-factor">Clothing/equipment</td><td data-label="Source">Manual</td><td data-label="Score values">0 / 1</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <p>The total of all six sub-factors is shown at the bottom of the block with its own color-coded dot.</p>
 
@@ -506,7 +553,7 @@
 
         <h3>3D viewport</h3>
 
-        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. In the top-left corner of the viewport you can set how many views are shown (1, 2 horizontal, 2 vertical, or 4), and per view choose from Perspective, Front, Right side, Left side, Back, and Top. For a full overview of viewport controls and navigation, see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a>.</p>
+        <p>The interactive 3D viewer renders the motion capture data on an avatar model, constrained to the frame range of the selected lifting task. You can orbit the camera freely with the mouse. The layout selector in the top-left corner sets how many views are shown — Single, Two Horizontal (stacked top and bottom), Two Vertical (side by side) or Quad — and the camera view selector in the top-right corner of each view sets what that view shows: 3D, Front, Back, Left, Right or Top. For a full overview of viewport controls and navigation, see <a href="3d-view-controls.html">3D View &amp; Interface Controls</a>.</p>
 
         <h3>Score-per-frame graph</h3>
 
@@ -514,7 +561,7 @@
 
         <p>A vertical line marks the current frame position. Click or drag anywhere on the graph to scrub to that frame — the 3D viewport updates in sync.</p>
 
-        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 1.5×, 2×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, color-coded spheres appear on the 3D avatar at relevant joint locations. The sphere colors reflect the risk level for the currently selected variable at the current frame — green for low risk, yellow for medium risk, red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
+        <p>To the left of the graph you will find the <strong>play/pause button</strong>, <strong>speed selector</strong> (0.5×, 1×, 2×, 4×), and the <strong>body risk indicator toggle</strong>. When body risk indicators are enabled, color-coded spheres appear on the 3D avatar at relevant joint locations. The sphere colors reflect the risk level for the currently selected variable at the current frame — green for low risk, yellow for medium risk, red for high risk — using the same zone thresholds as the score graph. The indicators update in real time as you scrub through frames.</p>
 
         <h3>Right-side panel</h3>
 
@@ -565,6 +612,7 @@
           <li>Conclusion</li>
         </ol>
 
+
         <h3>Customisation</h3>
 
         <p>The entire Findings structure is configurable from the KIM-LHC report settings page:</p>
@@ -594,7 +642,12 @@
 
         <p>In addition to exporting, you can save the completed assessment to the <strong>Projects Database</strong> — a persistent local library of all your saved analyses. Click <strong>Save Project</strong> in the results tab bar to open the save dialog. From there, set a project title, choose a status (Draft, In Progress, or Completed), and add optional tags for easier filtering later.</p>
 
-        <p>Saving a project preserves the full assessment — including all calculation data, critical moments, settings, and metadata — so you can return to it at any point. Saved projects can be reopened, re-exported with different settings, and managed from the Database in the sidebar. See <a href="projects-database.html">Projects Database</a> for the full overview.</p>
+        <figure class="article-figure">
+          <img style="max-width:380px" src="readingkimlhc-savetoprojectsdatabase.png" alt="The Save Project dialog for a KIM-LHC report with status, project title and tags" />
+          <figcaption>The Save Project dialog &mdash; set the status, check the pre-filled project title and add tags. On a project opened from the database, <strong>Save as New</strong> stores a separate copy.</figcaption>
+        </figure>
+
+        <p>Saving a project preserves the full assessment — including all calculation data, critical moments, settings, and metadata — so you can return to it at any point. Saved projects can be reopened, re-exported with different settings, and managed from <strong>Database → Projects</strong>. See <a href="projects-database.html">Projects Database</a> for the full overview.</p>
 
         <!-- ── ARTICLE FOOTER ── -->
         <div class="article-end">

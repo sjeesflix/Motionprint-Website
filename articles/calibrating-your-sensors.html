@@ -206,6 +206,29 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .article-body img { max-width: 100%; }
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -327,14 +350,10 @@
           <li>Avoid leaning, shifting weight, or talking during the hold</li>
         </ul>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Holding pose screen</div>
-          <div class="media-placeholder-desc">The static calibration step, showing the countdown ring while the subject holds the N-pose or T-pose.</div>
-        </div>
+        <figure class="article-figure">
+          <img style="max-width:508px" src="calibratingyoursensors-holdingposescreen.png" alt="The Stand in N-Pose calibration step with posture instructions and the Holding pose countdown" />
+          <figcaption>The static calibration step in N-pose &mdash; the subject holds still with feet at shoulder width and arms straight down while the countdown runs.</figcaption>
+        </figure>
 
         <h2 id="walk"><span class="step-num">3</span> Walk calibration</h2>
 
@@ -346,14 +365,10 @@
           <li>Make sure there's enough clear space nearby to walk continuously without bumping into anything</li>
         </ul>
 
-        <div class="media-placeholder">
-          <span class="media-type is-gif">
-            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            GIF
-          </span>
-          <div class="media-placeholder-title">Keep walking countdown</div>
-          <div class="media-placeholder-desc">The dynamic calibration step, showing the “Keep walking” countdown ring while the subject walks continuously.</div>
-        </div>
+        <figure class="article-figure">
+          <img style="max-width:582px" src="calibratingyoursensors-keepwalking.gif" alt="The Walk naturally calibration step with the Keep walking countdown while the subject walks" />
+          <figcaption>The walk step &mdash; the subject keeps walking at a natural pace while the <em>Keep walking</em> countdown runs.</figcaption>
+        </figure>
 
         <h2 id="flow"><span class="step-num">4</span> Running the calibration flow</h2>
 
@@ -379,14 +394,6 @@
         </ul>
         <p>A "poor" or "failed" result is worth re-running before you record &mdash; see <a href="#trouble">Troubleshooting a failed calibration</a> below.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot">
-            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10.5" r="1.5"/><path d="M21 15l-5-5L5 19"/></svg>
-            Screenshot
-          </span>
-          <div class="media-placeholder-title">Calibration quality result</div>
-          <div class="media-placeholder-desc">The quality rating shown right after calibration finishes, with tips if it's anything other than “good.”</div>
-        </div>
 
         <h2 id="recal"><span class="step-num">6</span> Recalibrating mid-session</h2>
 

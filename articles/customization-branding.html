@@ -260,6 +260,29 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .article-body img { max-width: 100%; }
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -324,7 +347,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated April 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -421,7 +444,7 @@
           <li><strong>3D avatar</strong> — used as the highlight color on the avatar</li>
         </ul>
 
-        <p>The default brand color is Motionprint Orange (<code>#EA523B</code>). Click the reset button to restore it at any time.</p>
+        <p>The default brand color is teal (<code>#1D9E75</code>). Click the reset button to restore it at any time.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -432,7 +455,7 @@
         </div>
 
         <figure class="article-figure">
-          <img src="branddcolorpicker.gif" alt="Brand color picker updating the application UI in real time" />
+          <img src="customizationbranding-brandcolorpicker.gif" alt="Brand color picker updating the application UI in real time" />
           <figcaption>The brand color picker updating the application UI in real time.</figcaption>
         </figure>
 
@@ -452,7 +475,7 @@
         <!-- ── INTERFACE THEME ── -->
         <h2 id="theme"><span class="step-num">2</span>Interface Theme</h2>
 
-        <p>The interface theme setting is found under <strong>Settings → General</strong>, in the <strong>Interface</strong> section directly below the Branding section.</p>
+        <p>The interface theme setting is found under <strong>Settings → General</strong>, in the <strong>Interface</strong> section, below the Branding, Database and Privacy sections.</p>
 
         <p>Choose between two application themes:</p>
 

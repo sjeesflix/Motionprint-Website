@@ -273,6 +273,29 @@
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
       .info-grid { grid-template-columns: 1fr; }
     }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .article-body img { max-width: 100%; }
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -406,19 +429,23 @@
               <td>Internet connection</td>
               <td>Required for licence activation and ongoing validation</td>
             </tr>
+            <tr>
+              <td>Network access</td>
+              <td>Outbound HTTPS (TCP port 443) to <code>license.motion-print.com</code>, at least once every 30 days</td>
+            </tr>
 
           </tbody>
         </table>
 
-        <p>You will also need an active Motionprint licence key before you can use the app. If you don't have one yet, visit the <a href="../index.html#pricing">pricing page</a> or request a free trial.</p>
-
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div>
-            <div class="callout-label">No admin rights needed</div>
-            <p>Motionprint Ergo installs as a per-user application. You do not need administrator rights on your machine to install or run it.</p>
+            <div class="callout-label">Using Motionprint Ergo on a company network</div>
+            <p>The licence check is the app's only connection to the internet, and a company firewall or proxy can block it. Ask your IT department to allow outbound HTTPS (port 443) to <code>license.motion-print.com</code>. If your network uses a proxy, the app follows the proxy set in Windows; a proxy that requires you to sign in, or that is configured only through an automatic configuration script, can block the connection. If your network inspects HTTPS traffic (SSL inspection), <code>license.motion-print.com</code> must be excluded from it, because the app checks the licence server's certificate and refuses a substituted one.</p>
           </div>
         </div>
+
+        <p>You will also need an active Motionprint licence key before you can use the app. If you don't have one yet, visit the <a href="../index.html#pricing">pricing page</a> or request a free trial.</p>
 
         <!-- ── SECTION 2 ── -->
         <h2 id="install"><span class="step-num">2</span> Download and Install</h2>
@@ -470,30 +497,36 @@
         <p>Each licence seat allows activation on up to <strong>2 devices</strong> — for example, a workstation and a laptop. The device pool is shared across the licence; there is no per-user device assignment. The number of seats available depends on your licence tier. See the <a href="whats-included-in-your-license.html">What's Included in Your Licence</a> article for full details.</p>
 
         <h3>Working offline after activation</h3>
-        <p>Once activated, Motionprint Ergo stores a signed token locally so you can continue working without a constant internet connection. Here is how the offline grace period works:</p>
+        <p>Once activated, Motionprint Ergo stores a signed licence token on your computer, so you can keep working without a constant internet connection. The token is valid for 30 days from its last refresh:</p>
 
         <table class="offline-table">
           <thead>
             <tr>
-              <th>Scenario</th>
+              <th>Situation</th>
               <th>What happens</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Normal use (internet available)</td>
-              <td>The app refreshes the local token automatically on startup when the token is older than approximately 20 days.</td>
+              <td>Regular internet access</td>
+              <td>When you start the app and the token is more than about 10 days old, it is refreshed automatically in the background. With regular internet access the 30-day window keeps renewing and you never see a reminder. You can also refresh manually in <strong>Settings → License</strong>.</td>
             </tr>
             <tr>
-              <td>Internet unavailable</td>
-              <td>The app continues to work for up to 7 additional days past token expiry, displaying a reminder to reconnect.</td>
+              <td>Offline, up to 30 days</td>
+              <td>The app works normally. During the last 7 days of the 30-day window, a reminder to connect to the internet is shown.</td>
+            </tr>
+            <tr>
+              <td>Offline, day 31 to 37</td>
+              <td>A 7-day grace period: the app keeps working, but warns that the token has expired and shows how many days are left before it locks.</td>
             </tr>
             <tr>
               <td>Offline for more than 37 days</td>
-              <td>The app requires an internet connection to re-validate before it can be used again.</td>
+              <td>The app locks and shows the activation screen. Connect to the internet and activate again with your licence key to continue.</td>
             </tr>
           </tbody>
         </table>
+
+        <p>This offline window is separate from your subscription period. When the subscription itself expires, the app switches to view-only mode for 7 days and then locks until the licence is renewed &mdash; see <a href="whats-included-in-your-license.html#renewal">What's Included in Your License</a>.</p>
 
         <!-- ── SECTION 4 ── -->
         <h2 id="navigate"><span class="step-num">4</span> Navigating the App</h2>
@@ -504,7 +537,7 @@
           <div class="info-card">
             <div class="info-card-label">Sidebar</div>
             <div class="info-card-value">New Project, Record, Database &amp; Settings</div>
-            <div class="info-card-desc">The left-hand sidebar has four destinations: <strong>New Project</strong> to start a new report, <strong>Record</strong> to capture motion data live via Xsens Awinda hardware, <strong>Database</strong> to browse your saved projects and recordings, and <strong>Settings</strong> to configure the app. Record is greyed out until the Xsens SDK licence is activated through Xsens License Manager, which is installed alongside Motionprint Ergo.</div>
+            <div class="info-card-desc"><strong>New Project</strong> starts a new report, <strong>Record</strong> captures motion data live with Xsens hardware, <strong>Database</strong> holds your saved projects and recordings, and <strong>Settings</strong> configures the app.</div>
           </div>
           <div class="info-card">
             <div class="info-card-label">Content area</div>
@@ -517,7 +550,7 @@
         <p>Configuring a few defaults upfront saves time on every subsequent report. These settings are optional, but worth doing before you begin.</p>
         <ul>
           <li><strong>Settings → General</strong> — Enter your company name, upload a logo, and choose an accent colour. Your company name, logo, and accent colour appear in exported reports when branding is enabled. The interface theme (light or dark) affects the appearance of the app only and has no impact on exports.</li>
-          <li><strong>Settings → [Method name]</strong> — Each assessment method has its own settings page where you can pre-configure defaults such as gender, reference mass, and whether to auto-detect critical moments. Configuring these saves time when running repeated assessments of the same type.</li>
+          <li><strong>Settings → Reports</strong> — Pick an assessment method in the dropdown to set its defaults, such as the reference mass for NIOSH, the load rating table for KIM-LHC, and whether critical moments are detected automatically. Configuring these saves time when running repeated assessments of the same type.</li>
         </ul>
 
         <!-- ── SECTION 5 ── -->
@@ -600,7 +633,6 @@
         </div>
 
         <p>Click the tile for the method you want to use to proceed.</p>
-
 
         <!-- Phase 2 -->
         <h3>Phase 2 — Select Input Source and Provide Your Motion Data</h3>

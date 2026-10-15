@@ -209,6 +209,48 @@
       .footer-top { display: none; }
       .footer-bottom { padding-top: 0; border-top: none; flex-direction: column; gap: 12px; text-align: center; }
     }
+    /* Media placeholders - swap for an article-figure block once artwork exists */
+    .media-placeholder { border: 2px dashed #d1d9e0; border-radius: 12px; background: #f8fafc; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+    .media-type { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .media-type svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .media-type.is-screenshot { color: #3b82f6; }
+    .media-type.is-gif { color: #8b5cf6; }
+    .media-placeholder-title { font-size: 13px; font-weight: 700; color: #374151; }
+    .media-placeholder-desc { font-size: 13px; color: #6b7280; line-height: 1.5; }
+    /* Stacked tables on phones */
+    @media (max-width: 640px) {
+      .table-scroll.is-stacked { overflow: visible; }
+      .article-body table.stackable, .article-body table.stackable tbody, .article-body table.stackable tr { display: block; width: 100%; min-width: 0; }
+      .article-body table.stackable thead { display: none; }
+      .article-body table.stackable tr { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; background: var(--white, #fff); }
+      .article-body table.stackable td, .article-body table.stackable tbody th { display: block; width: auto; border: 0; padding: 4px 0; font-size: 14px; text-align: left; background: none; white-space: normal; }
+      .article-body table.stackable td::before, .article-body table.stackable tbody th::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2, #9ca3af); margin-bottom: 2px; }
+      .article-body table.stackable tr > :first-child { font-weight: 700; font-size: 15px; padding-top: 0; }
+      .article-body table.stackable tr > :first-child::before { display: none; }
+    }
+    /* Mobile layout (shared) */
+    nav.breadcrumb { position: static; height: auto; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; will-change: auto; z-index: auto; }
+    .article-body img { height: auto; }
+    .article-layout > *, .article-body { min-width: 0; }
+    .article-body { overflow-wrap: break-word; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    .table-scroll > table { margin-top: 0; margin-bottom: 0; }
+    @media (max-width: 640px) {
+      .article-body img { max-width: 100%; }
+      .breadcrumb { flex-wrap: wrap; row-gap: 4px; }
+      .article-body .table-scroll th, .article-body .table-scroll td { padding: 8px 10px; font-size: 13px; }
+      .article-body .table-scroll table { min-width: 100%; }
+      .article-body code { overflow-wrap: anywhere; }
+      .article-body pre { overflow-x: auto; }
+      .matrix-shell { max-width: 100%; flex-shrink: 1; }
+      .formula-block { flex-direction: column; align-items: stretch; }
+      .formula-block .formula-label { width: auto; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; }
+      .formula-block .formula-text { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; gap: 12px; }
+      .nav-demo { padding-left: 12px; padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -272,7 +314,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated September 2026
+          Last updated October 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -315,14 +357,16 @@
 
         <p>Assessments often involve identifiable subject information — the name of the operator being assessed, the evaluator conducting the session, and physical characteristics of the operator. Depending on your organisation's data policies, team structure, or client requirements, you may want to exclude some or all of this information from exports and reports.</p>
 
+        <p>The privacy toggles are found in <strong>Sidebar → Settings → General</strong>, in the <strong>Privacy</strong> section. They apply to every report type, and to live recording as well: the subject details you enter for a recording session, and the metadata shown in the Recordings Database and the recording viewer, follow the same toggles.</p>
+
         <figure class="article-figure">
           <img src="../privacysettings.jpg" alt="The Privacy Settings panel in Motionprint Ergo showing toggles for operator name, evaluator name, gender, body height, age, and weight" />
-          <figcaption>The Privacy Settings panel — toggles for each subject and evaluator field, accessible via Sidebar → Settings.</figcaption>
+          <figcaption>The Privacy Settings panel — toggles for each subject and evaluator field, found in Sidebar → Settings → General → Privacy.</figcaption>
         </figure>
 
         <p>Privacy settings give you control over visibility without affecting the integrity of the ergonomic analysis. The key distinction throughout this article is between fields that are <strong>display-only</strong> (they appear in outputs but have no bearing on calculations) and fields that have a <strong>calculation role</strong> (where the setting can affect results).</p>
 
-        <table class="field-table">
+        <div class="table-scroll"><table class="field-table">
           <thead>
             <tr>
               <th>Field</th>
@@ -332,37 +376,37 @@
           </thead>
           <tbody>
             <tr>
-              <td>Operator name</td>
-              <td><span class="tag tag-display">Shown in reports</span></td>
-              <td>No</td>
+              <td data-label="Field">Operator name</td>
+              <td data-label="Role"><span class="tag tag-display">Shown in reports</span></td>
+              <td data-label="Affects calculations?">No</td>
             </tr>
             <tr>
-              <td>Evaluator name</td>
-              <td><span class="tag tag-display">Shown in reports</span></td>
-              <td>No</td>
+              <td data-label="Field">Evaluator name</td>
+              <td data-label="Role"><span class="tag tag-display">Shown in reports</span></td>
+              <td data-label="Affects calculations?">No</td>
             </tr>
             <tr>
-              <td>Gender</td>
-              <td><span class="tag tag-future">Stored for future use</span> <span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
-              <td>Only in KIM-LHC, via a separate control</td>
+              <td data-label="Field">Gender</td>
+              <td data-label="Role"><span class="tag tag-future">Stored for future use</span> <span class="tag tag-calc">Calculation (KIM-LHC)</span></td>
+              <td data-label="Affects calculations?">Only in KIM-LHC, via a separate control</td>
             </tr>
             <tr>
-              <td>Body height</td>
-              <td><span class="tag tag-future">Stored for future use</span></td>
-              <td>No</td>
+              <td data-label="Field">Body height</td>
+              <td data-label="Role"><span class="tag tag-future">Stored for future use</span></td>
+              <td data-label="Affects calculations?">No</td>
             </tr>
             <tr>
-              <td>Age</td>
-              <td><span class="tag tag-future">Stored for future use</span></td>
-              <td>No</td>
+              <td data-label="Field">Age</td>
+              <td data-label="Role"><span class="tag tag-future">Stored for future use</span></td>
+              <td data-label="Affects calculations?">No</td>
             </tr>
             <tr>
-              <td>Weight</td>
-              <td><span class="tag tag-future">Stored for future use</span></td>
-              <td>No</td>
+              <td data-label="Field">Weight</td>
+              <td data-label="Role"><span class="tag tag-future">Stored for future use</span></td>
+              <td data-label="Affects calculations?">No</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <!-- ── SECTION 2: DISPLAY-ONLY ── -->
         <h2 id="display"><span class="step-num">2</span> Visualization-only fields</h2>
