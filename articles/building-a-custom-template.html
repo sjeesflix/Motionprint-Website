@@ -23,17 +23,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building a Custom Template — Step-by-Step Guide | Motionprint Ergo</title>
   <link rel="icon" type="image/png" href="../Motionprint-minimized.png" />
-  <meta name="description" content="Build your own ergonomic assessment in Motionprint Ergo: choose the variables, design the input page and the result pages, and publish it as a report next to RULA, NIOSH and KIM-LHC." />
+  <meta name="description" content="Build a fully customised ergonomic report in Motionprint Ergo: choose the data, the questions and the measurements that matter to you, and publish it as a report of your own." />
   <link rel="canonical" href="https://motion-print.com/articles/building-a-custom-template.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Motionprint" />
   <meta property="og:title" content="Building a Custom Template — Step-by-Step Guide | Motionprint Ergo" />
-  <meta property="og:description" content="Build your own ergonomic assessment in Motionprint Ergo: choose the variables, design the input page and the result pages, and publish it as a report next to RULA, NIOSH and KIM-LHC." />
+  <meta property="og:description" content="Build a fully customised ergonomic report in Motionprint Ergo: choose the data, the questions and the measurements that matter to you, and publish it as a report of your own." />
   <meta property="og:url" content="https://motion-print.com/articles/building-a-custom-template.html" />
   <meta property="og:image" content="https://motion-print.com/Motionprint-social.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Building a Custom Template — Step-by-Step Guide | Motionprint Ergo" />
-  <meta name="twitter:description" content="Build your own ergonomic assessment in Motionprint Ergo: choose the variables, design the input page and the result pages, and publish it as a report next to RULA, NIOSH and KIM-LHC." />
+  <meta name="twitter:description" content="Build a fully customised ergonomic report in Motionprint Ergo: choose the data, the questions and the measurements that matter to you, and publish it as a report of your own." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,700&display=swap" rel="stylesheet" />
@@ -271,7 +271,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Building a Custom Template",
-    "description": "Build your own ergonomic assessment in Motionprint Ergo: choose the variables, design the input page and the result pages, and publish it as a report next to RULA, NIOSH and KIM-LHC.",
+    "description": "Build a fully customised ergonomic report in Motionprint Ergo: choose the data, the questions and the measurements that matter to you, and publish it as a report of your own.",
     "url": "https://motion-print.com/articles/building-a-custom-template.html",
     "author": {"@type": "Organization", "name": "Motionprint", "url": "https://motion-print.com"},
     "publisher": {"@type": "Organization", "name": "Motionprint", "url": "https://motion-print.com", "logo": {"@type": "ImageObject", "url": "https://motion-print.com/Motionprint-minimized.png"}},
@@ -338,7 +338,7 @@
       <div class="article-meta">
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          12 min read
+          13 min read
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -379,23 +379,24 @@
 
       <article class="article-body">
 
-        <p class="article-lead">RULA, NIOSH and KIM-LHC answer fixed questions. A template answers yours: a company standard for reach distance, a check on arm elevation at one station, or how far and how fast people walk on a line. This article covers the template builder step by step, from choosing the input source to publishing.</p>
+        <p class="article-lead">Every situation asks for its own analysis. With a template you customise the report completely: you pick the measurements that matter to you, set the limits you work with, and go as deep as the situation needs. This article covers the template builder step by step, from choosing the input source to publishing.</p>
 
         <!-- ── WHAT A TEMPLATE IS ── -->
         <h2 id="what-is"><span class="step-num">1</span> What a Template Is</h2>
 
-        <p>A template is a report you design yourself. It decides three things:</p>
+        <p>A template is a report you design yourself. You decide four things:</p>
 
         <div class="table-scroll is-stacked"><table class="info-table stackable">
-          <thead><tr><th>Part</th><th>What you decide</th><th>Where it shows</th></tr></thead>
+          <thead><tr><th>Part</th><th>What you decide</th></tr></thead>
           <tbody>
-            <tr><td data-label="Part">Input page</td><td data-label="What you decide">The questions the evaluator answers, and the fields asked per task</td><td data-label="Where it shows">Input page of the report</td></tr>
-            <tr><td data-label="Part">Measurements</td><td data-label="What you decide">Which variables of the recording are measured, and their zones</td><td data-label="Where it shows">Result pages, PDF and Excel</td></tr>
-            <tr><td data-label="Part">Result pages</td><td data-label="What you decide">Which blocks show the results, and how they are arranged</td><td data-label="Where it shows">Report, PDF and Excel</td></tr>
+            <tr><td data-label="Part">Input sources</td><td data-label="What you decide">Which data the report uses, such as an Xsens motion capture recording</td></tr>
+            <tr><td data-label="Part">Input page</td><td data-label="What you decide">What the evaluator fills in before processing: the questions, and the fields asked for every task</td></tr>
+            <tr><td data-label="Part">Result pages</td><td data-label="What you decide">What the report shows and how: which measurements, with which zones, in which blocks and in which order</td></tr>
+            <tr><td data-label="Part">Name &amp; tile</td><td data-label="What you decide">How the template appears on the New Project page: name, category, description and image</td></tr>
           </tbody>
         </table></div>
 
-        <p>Once published, the template appears as a tile on the <strong>New Project</strong> page, in the category you chose, next to RULA, NIOSH and KIM-LHC. Reports made with it are saved, exported and filtered like any other report.</p>
+        <p>Once published, the template appears as a tile on the <strong>New Project</strong> page, in the category you chose, next to the built-in assessment methods. Reports made with it are saved, exported and filtered like any other report.</p>
 
         <div class="callout">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -408,7 +409,7 @@
         <!-- ── OPENING THE BUILDER ── -->
         <h2 id="opening"><span class="step-num">2</span> Opening the Builder</h2>
 
-        <p>Go to <strong>Templates</strong> in the sidebar. The page shows every template as a tile with its status: <strong>Draft</strong>, or <strong>Published · V<em>n</em></strong> with its version number.</p>
+        <p>Go to <strong>Templates</strong> in the sidebar. The page shows every template as a tile with its status: <strong>Draft</strong>, or <strong>Published · V<em>n</em></strong> with its version number. The category chips above the tiles filter the list.</p>
 
         <ul>
           <li>Click <strong>New template</strong> to start from scratch.</li>
@@ -421,24 +422,26 @@
         <div class="media-placeholder">
           <span class="media-type is-screenshot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Screenshot</span>
           <div class="media-placeholder-title">Templates page</div>
-          <div class="media-placeholder-desc">The Templates page with a few template tiles, their status (Draft / Published · V2) and the New template tile.</div>
+          <div class="media-placeholder-desc">The Templates page with the category chips, a few template tiles with their status (Draft / Published · V2) and the New template tile.</div>
         </div>
 
         <!-- ── SOURCES ── -->
         <h2 id="sources"><span class="step-num">3</span> Sources</h2>
 
-        <p>Choose the input source the template is for. Today that is <strong>Xsens</strong>; reference video is coming soon.</p>
+        <p>Choose the input sources the template uses. Today that is <strong>Xsens</strong> motion capture; reference video is coming soon, and more input sources will be added over time.</p>
 
-        <p>Below the tiles, <strong>Available variables</strong> lists everything the source can measure, in five groups. The chips filter the list by how well a variable is measured: <strong>Reliable</strong> or <strong>Indicative</strong> (an estimate). You do not pick variables here; you pick them later, where you need them.</p>
+        <p>Below the tiles, <strong>Available variables</strong> lists what the selected sources can measure. The chips filter the list by how well a variable is measured: <strong>Reliable</strong> or <strong>Indicative</strong> (an estimate). You do not pick variables here; you pick them later, on the result pages, where you need them.</p>
+
+        <p>With <strong>Xsens</strong> selected, the variables come in five groups:</p>
 
         <div class="table-scroll is-stacked"><table class="info-table stackable">
-          <thead><tr><th>Group</th><th>Variables</th></tr></thead>
+          <thead><tr><th>Group</th><th>Variables available with Xsens</th></tr></thead>
           <tbody>
-            <tr><td data-label="Group">Movement</td><td data-label="Variables">Speed, acceleration, angular velocity and angular acceleration of a body part; foot on the floor; walking path</td></tr>
-            <tr><td data-label="Group">Position</td><td data-label="Variables">Position of a body point, for example the hand relative to the shoulder or the floor</td></tr>
-            <tr><td data-label="Group">Arm angles</td><td data-label="Variables">Upper arm flexion/extension and abduction, shoulder elevation, elbow flexion, forearm rotation, wrist flexion/extension and deviation</td></tr>
-            <tr><td data-label="Group">Leg angles</td><td data-label="Variables">Hip flexion/extension, knee flexion, ankle flexion</td></tr>
-            <tr><td data-label="Group">Neck &amp; trunk angles</td><td data-label="Variables">Pelvis tilt, head inclination, neck flexion, rotation and lateral bending, trunk inclination, back bending, trunk twist, pelvis rotation</td></tr>
+            <tr><td data-label="Group">Movement</td><td data-label="Variables available with Xsens">Speed, acceleration, angular velocity and angular acceleration of a body part; foot on the floor; walking path</td></tr>
+            <tr><td data-label="Group">Position</td><td data-label="Variables available with Xsens">Position of a body point, for example the hand relative to the shoulder or the floor</td></tr>
+            <tr><td data-label="Group">Arm angles</td><td data-label="Variables available with Xsens">Upper arm flexion/extension and abduction, shoulder elevation, elbow flexion, forearm rotation, wrist flexion/extension and deviation</td></tr>
+            <tr><td data-label="Group">Leg angles</td><td data-label="Variables available with Xsens">Hip flexion/extension, knee flexion, ankle flexion</td></tr>
+            <tr><td data-label="Group">Neck &amp; trunk angles</td><td data-label="Variables available with Xsens">Pelvis tilt, head inclination, neck flexion, rotation and lateral bending, trunk inclination, back bending, trunk twist, pelvis rotation</td></tr>
           </tbody>
         </table></div>
 
@@ -453,9 +456,28 @@
         <!-- ── INPUT PAGE ── -->
         <h2 id="input-page"><span class="step-num">4</span> Input Page</h2>
 
-        <p>The input page is what the evaluator fills in before processing. It always starts with the general information (workplace, evaluator, operator, date, age, gender) and the recording. You add your own fields below it.</p>
+        <p>The input page is what the evaluator fills in before processing. It always holds the general information (workplace, evaluator, operator, date, age, gender) and the recording. You add your own questions in rows around it.</p>
 
-        <p>Open <strong>Basic blocks</strong> in the bar at the top and drag a block into a row. A row holds one, two or three blocks side by side.</p>
+        <h3>Laying out the page</h3>
+
+        <p>A page is built from rows, and every row is split into containers that hold one block each.</p>
+
+        <ul>
+          <li><strong>Add a row</strong> — click the <strong>+</strong> tile below the last row and choose its layout: one full-width container, two halves, three thirds, a third and two thirds, or two thirds and a third.</li>
+          <li><strong>Insert a row</strong> — click the gap between two rows to add a row at that place.</li>
+          <li><strong>Move a row</strong> — hover a row and use the up and down arrows beside it. The general information moves the same way.</li>
+          <li><strong>Delete a row</strong> — hover a row and click its delete icon; you are asked to confirm.</li>
+        </ul>
+
+        <div class="media-placeholder">
+          <span class="media-type is-gif"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 9 15 12 10 15 10 9"/></svg> GIF</span>
+          <div class="media-placeholder-title">Laying out the input page</div>
+          <div class="media-placeholder-desc">Add a row of two halves with +, insert a full-width row above it by clicking the gap, and move it down with the arrows.</div>
+        </div>
+
+        <h3>Adding and moving blocks</h3>
+
+        <p>Open <strong>Basic blocks</strong> in the bar at the top and drag a block into an empty container, marked <em>Drop a block here</em>. To move a block, drag it to an empty container in the same or another row.</p>
 
         <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Block</th><th>Use it for</th></tr></thead>
@@ -468,18 +490,28 @@
             <tr><td data-label="Block">Number field</td><td data-label="Use it for">A typed number, with unit and range</td></tr>
             <tr><td data-label="Block">Text field</td><td data-label="Use it for">Free text</td></tr>
             <tr><td data-label="Block">Time</td><td data-label="Use it for">A duration</td></tr>
-            <tr><td data-label="Block">Multiple lines</td><td data-label="Use it for">Several fields on lines below each other in one block</td></tr>
+            <tr><td data-label="Block">Multiple lines</td><td data-label="Use it for">Several fields on lines below each other in one block, also next to each other</td></tr>
             <tr><td data-label="Block">3D view</td><td data-label="Use it for">The recording, with the task window (see below)</td></tr>
           </tbody>
         </table></div>
 
-        <div class="media-placeholder">
-          <span class="media-type is-gif"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 9 15 12 10 15 10 9"/></svg> GIF</span>
-          <div class="media-placeholder-title">Building the input page</div>
-          <div class="media-placeholder-desc">Drag a Button choice and a Yes/No block into a new row, then open the block settings and add two options.</div>
+        <div class="callout callout-info">
+          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <div class="callout-label">When a block does not fit</div>
+            <p>Some blocks need room. A block with two fields next to each other needs at least half a row, and the 3D view with its tasks needs the full width. While you drag, a container that is too narrow turns red and says <em>Too narrow for this block</em>; dropping it there tells you what the block needs.</p>
+          </div>
         </div>
 
-        <p>Click a block to open its <strong>Block settings</strong>: title, info text, options, whether it is <strong>Required</strong>, and an optional image.</p>
+        <h3>Block settings</h3>
+
+        <p>Click a block to select it. Its <strong>Block settings</strong> open in the panel beside the page: title, info text, options with their score, whether it is <strong>Required</strong>, an optional image, and <strong>Delete block</strong>. The panel can be hidden and shown again with its button. Changes show on the page straight away, and you can try the block out there.</p>
+
+        <div class="media-placeholder">
+          <span class="media-type is-screenshot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Screenshot</span>
+          <div class="media-placeholder-title">Block settings</div>
+          <div class="media-placeholder-desc">A Button choice block selected on the input page, with its Block settings panel open beside it.</div>
+        </div>
 
         <h3>Task fields</h3>
 
@@ -498,33 +530,55 @@
         <!-- ── RESULT PAGES ── -->
         <h2 id="result-pages"><span class="step-num">5</span> Result Pages</h2>
 
-        <p>The result pages are the tabs of the report. Each page is built from blocks in rows, like the input page. The last tab is <strong>Findings</strong>, with free-text sections such as <em>Current Situation</em> and <em>Recommended Actions</em>; you can rename them and add sections.</p>
+        <p>The result pages are the tabs of the report that show the data. A new template has two, as the other reports do: <strong>Score overview</strong> and <strong>In-depth analysis</strong>. Rename them with the pencil beside the tab. The Score overview is always in the report; the In-depth analysis can be switched on or off.</p>
 
-        <p>Open <strong>Basic blocks</strong> to add a result block:</p>
+        <p>You build a result page the same way as the input page: rows, containers and blocks. With tasks, a task selector heads every result page, so the reader can switch between tasks.</p>
+
+        <h3>Result blocks</h3>
 
         <div class="table-scroll is-stacked"><table class="info-table stackable">
           <thead><tr><th>Block</th><th>Shows</th></tr></thead>
           <tbody>
             <tr><td data-label="Block">General info</td><td data-label="Shows">Workplace, evaluator, operator, date and the number of tasks; optionally the station time</td></tr>
-            <tr><td data-label="Block">Score card</td><td data-label="Shows">One result in large type, or the time in each zone as bars or a pie</td></tr>
+            <tr><td data-label="Block">Score card</td><td data-label="Shows">A meter: a half circle in the colours of the zones, with a needle at the value. It can also show the time or the percentage of time in one zone</td></tr>
             <tr><td data-label="Block">Graph over time</td><td data-label="Shows">The measurement over the recording, with its zones as coloured bands and the tasks marked</td></tr>
-            <tr><td data-label="Block">Time per zone</td><td data-label="Shows">How much of the time is spent in each zone</td></tr>
+            <tr><td data-label="Block">Time per zone</td><td data-label="Shows">How much of the time is spent in each zone, as bars or a pie</td></tr>
             <tr><td data-label="Block">Walking path</td><td data-label="Shows">The route walked, seen from above, with its distance</td></tr>
-            <tr><td data-label="Block">Input answer</td><td data-label="Shows">The answer given to a field on the input page</td></tr>
+            <tr><td data-label="Block">Input answer</td><td data-label="Shows">The answer given to a field on the input page, coloured by its zone</td></tr>
             <tr><td data-label="Block">Text</td><td data-label="Shows">A text of your own, such as an explanation of the results</td></tr>
-            <tr><td data-label="Block">3D view</td><td data-label="Shows">The recording, synchronised with the graphs on the page</td></tr>
+            <tr><td data-label="Block">3D view</td><td data-label="Shows">The recording, with the blocks on the page following it as it plays</td></tr>
           </tbody>
         </table></div>
 
-        <p>For a measurement block, choose the variable under <strong>Measured as</strong>, then add its <strong>Zones</strong>: a name, a range and a colour. For variables that exist on both sides, <strong>Side</strong> sets whether the block shows the right, the left, or <strong>Both, with a switch</strong>. A Graph over time, Time per zone and Score card can be turned into each other without losing their settings.</p>
+        <p>General info, Graph over time and Time per zone need at least half a row.</p>
 
-        <p>Blocks show sample data while you build, so you see the result before any recording is processed.</p>
+        <h3>Choosing what a block measures</h3>
+
+        <p>Select a Score card, Graph over time or Time per zone and choose its variable in the settings. Depending on the variable you then choose how it is measured, for example the direction of a position or whether a speed is horizontal only, and the <strong>Side</strong>: right, left, or <strong>Both, with a switch</strong> for an R / L switch in the report.</p>
+
+        <p>Then add its <strong>Zones</strong>: a name and a range. Leave From or To empty for a zone without an end. The zones take their colours in order, from green to red.</p>
 
         <div class="media-placeholder">
           <span class="media-type is-gif"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 9 15 12 10 15 10 9"/></svg> GIF</span>
           <div class="media-placeholder-title">Adding a measurement</div>
-          <div class="media-placeholder-desc">Drag a Graph over time onto a result page, choose Upper arm flexion/extension, add the zones Good, Medium and Bad, and switch Side to Both.</div>
+          <div class="media-placeholder-desc">Drag a Graph over time onto a result page, choose Upper arm flexion/extension, add the zones Good, Medium and Bad, and set Side to Both, with a switch.</div>
         </div>
+
+        <h3>How a block shows it</h3>
+
+        <p>Under <strong>Show as</strong> you turn a block into a Graph over time, a Time per zone or a Score card, keeping the variable and its zones. Each has its own options:</p>
+
+        <div class="table-scroll is-stacked"><table class="info-table stackable">
+          <thead><tr><th>Block</th><th>Options</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Block">Score card</td><td data-label="Options"><strong>Value</strong>: <em>Its value</em> on the meter, <em>% of time in a zone</em> or <em>Time in a zone</em>, for a zone you pick. With its value: a legend of the zones, with their names and values</td></tr>
+            <tr><td data-label="Block">Graph over time</td><td data-label="Options">A legend of the zones, with their names and values</td></tr>
+            <tr><td data-label="Block">Time per zone</td><td data-label="Options"><strong>Show zones as</strong> bars or a pie, with the names and values of the zones</td></tr>
+            <tr><td data-label="Block">Input answer</td><td data-label="Options">The field it shows, and zones that colour the answer by its value or its points</td></tr>
+          </tbody>
+        </table></div>
+
+        <p>Blocks show sample data while you build, so you see the result before any recording is processed.</p>
 
         <div class="callout callout-info">
           <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -533,6 +587,10 @@
             <p>A block reads best when it shows one variable with zones that mean something, such as <em>Good</em>, <em>Medium</em> and <em>Bad</em>. Put the zone limits and their source in the info text of the block, so the reader of the report knows where they come from.</p>
           </div>
         </div>
+
+        <h3>Findings</h3>
+
+        <p>The last tab is <strong>Findings</strong>, where the evaluator writes conclusions for each project. Here you only name its sections, such as <em>Current Situation</em> and <em>Recommended Actions</em>, up to six. Switch it off if the report needs no findings.</p>
 
         <!-- ── SAVE &AMP; PUBLISH ── -->
         <h2 id="save"><span class="step-num">6</span> Save &amp; Publish</h2>
