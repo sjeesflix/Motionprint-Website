@@ -364,7 +364,7 @@
           <li id="toc-overview"><a href="#overview">1. Overview</a></li>
           <li id="toc-select"><a href="#select">2. Select the Template</a></li>
           <li id="toc-recording"><a href="#recording">3. Choose the Recording</a></li>
-          <li id="toc-tasks"><a href="#tasks">4. Trim &amp; Tasks</a></li>
+          <li id="toc-tasks"><a href="#tasks">4. Tasks &amp; Trimming</a></li>
           <li id="toc-questions"><a href="#questions">5. Answer the Questions</a></li>
           <li id="toc-processing"><a href="#processing">6. Processing</a></li>
           <li id="toc-results"><a href="#results">7. Reading the Results</a></li>
@@ -390,7 +390,7 @@
           <tbody>
             <tr><td data-label="Step"><span class="step-num-plain">1</span></td><td data-label="What you do">Select the template tile</td><td data-label="Screen">New Project</td></tr>
             <tr><td data-label="Step"><span class="step-num-plain">2</span></td><td data-label="What you do">Choose the input source and the recording</td><td data-label="Screen">Input Source page</td></tr>
-            <tr><td data-label="Step"><span class="step-num-plain">3</span></td><td data-label="What you do">Trim the recording and mark the tasks</td><td data-label="Screen">Input page</td></tr>
+            <tr><td data-label="Step"><span class="step-num-plain">3</span></td><td data-label="What you do">Mark the tasks and trim the recording</td><td data-label="Screen">Input page</td></tr>
             <tr><td data-label="Step"><span class="step-num-plain">4</span></td><td data-label="What you do">Fill in the general information and the template's questions</td><td data-label="Screen">Input page (scrolls down)</td></tr>
             <tr><td data-label="Step"><span class="step-num-plain">5</span></td><td data-label="What you do">Process, then read, save and export</td><td data-label="Screen">Report</td></tr>
           </tbody>
@@ -401,31 +401,49 @@
 
         <p>On the <strong>New Project</strong> page, templates appear as tiles next to the built-in assessment methods, grouped by category. The chips at the top filter by category. Hover the info icon of a tile to read its description. Select the tile and click <strong>Continue</strong>.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-screenshot"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Screenshot</span>
-          <div class="media-placeholder-title">New Project page with a template</div>
-          <div class="media-placeholder-desc">The New Project page showing a template tile next to the built-in methods, with its info text open.</div>
-        </div>
+        <figure class="article-figure">
+          <img src="runningtemplate-newproject.png" alt="The New Project page with the built-in methods and a template tile, with its category chips" />
+          <figcaption>The <strong>New Project</strong> page: templates appear as tiles next to the built-in methods, with the category chips above them.</figcaption>
+        </figure>
 
         <!-- ── CHOOSE THE RECORDING ── -->
         <h2 id="recording"><span class="step-num">3</span> Choose the Recording</h2>
 
-        <p>Choose <strong>Upload a .mvnx file</strong> or <strong>Recording from this app</strong>, exactly as for the other reports. A recording made in the app brings its trim range, tasks and details with it. See <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a> and <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a>.</p>
+        <p>The next screen shows the input sources the template was built for, one tile for each. Choose where the recording for this report comes from.</p>
 
-        <!-- ── TRIM &AMP; TASKS ── -->
-        <h2 id="tasks"><span class="step-num">4</span> Trim &amp; Tasks</h2>
+        <p>Today a template uses <strong>Xsens</strong> motion capture, so you choose between two tiles:</p>
 
-        <p>The input page shows the 3D view with the timeline, and the tasks on the right. Drag the handles on the timeline to set the part of the recording that counts. Select a range and click <strong>+</strong> to add a task.</p>
+        <ul>
+          <li><strong>Upload a Xsens recording as a .mvnx file</strong> — a recording you exported from Xsens MVN Analyze.</li>
+          <li><strong>Use a Xsens recording made within this app</strong> — a recording you made with live recording, stored in your Recordings Database.</li>
+        </ul>
 
-        <p>Click a task to open its window. Next to start frame, end frame and description, it shows the task fields of the template, such as the weight of the load. Fill these in for every task.</p>
+        <p>More input sources will appear here as they become available for templates. A recording made in the app brings its trim range, tasks and details with it. See <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a> and <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a>.</p>
 
-        <div class="media-placeholder">
-          <span class="media-type is-gif"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 9 15 12 10 15 10 9"/></svg> GIF</span>
-          <div class="media-placeholder-title">Marking a task</div>
-          <div class="media-placeholder-desc">Select a range on the timeline, click +, open the task and fill in its task fields (for example Weight and Coupling).</div>
-        </div>
+        <!-- ── TASKS &amp; TRIMMING ── -->
+        <h2 id="tasks"><span class="step-num">4</span> Tasks &amp; Trimming</h2>
 
-        <p>Whether tasks are needed depends on the template. Without tasks, the report covers the whole trimmed recording. With tasks, every result page is shown per task.</p>
+        <p>The input page shows the 3D view with the timeline below it, and the <strong>Tasks</strong> panel on the right. A task is a distinct part of the recording that you want to look at separately, such as one movement or one cycle.</p>
+
+        <h3>Adding a task</h3>
+
+        <ol>
+          <li>Click and drag on the timeline to highlight a frame range. The selection is shown in the branding colour configured in your settings.</li>
+          <li>Click the <strong>+</strong> button in the Tasks panel to create a task from that range.</li>
+          <li>The task appears in the list. Its <strong>start frame</strong> and <strong>end frame</strong> are filled in from your selection and can be edited, and you can give it a <strong>description</strong>, which is its name in the report.</li>
+          <li>Next to these, the window of a task shows the task fields of the template, such as the weight of the load. Fill these in for every task.</li>
+        </ol>
+
+        <figure class="article-figure">
+          <img src="runningtemplate-settask.gif" alt="Selecting a range on the timeline and adding it as a task with the plus button" />
+          <figcaption>Select a range on the timeline and click <strong>+</strong> to add it as a task.</figcaption>
+        </figure>
+
+        <p>You can edit or delete tasks in the list at any time. Whether tasks are needed depends on the template. Without tasks, the report covers the whole recording. With tasks, every result page is shown per task.</p>
+
+        <h3>Trimming the recording</h3>
+
+        <p>The two handles at the start and the end of the timeline set the observation window. Anything outside the trimmed range is ignored, and a report without tasks covers the trimmed range only. A recording made in the app brings the trim range it was saved with.</p>
 
         <!-- ── ANSWER THE QUESTIONS ── -->
         <h2 id="questions"><span class="step-num">5</span> Answer the Questions</h2>
