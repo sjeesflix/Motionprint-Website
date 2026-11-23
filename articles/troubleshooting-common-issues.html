@@ -329,7 +329,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated October 2026
+          Last updated November 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -406,6 +406,24 @@
               <ul>
                 <li>Re-export from MVN Analyze as MVNX version 4 with all data points checked</li>
                 <li>If the file was transferred via email or cloud storage, re-download the original — do not open and re-save the file as this can corrupt the XML</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card">
+            <div class="issue-header" onclick="this.parentElement.classList.toggle('open')">
+              <span class="issue-badge badge-error">Error</span>
+              <span class="issue-title">A template says data is missing</span>
+              <svg class="issue-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="issue-body">
+              <p>After choosing a file or recording for a custom template, the app reports <em>"MVNX frames are missing … Needed for: …"</em>.</p>
+              <p><strong>Cause:</strong> The file or recording does not contain a measurement the template uses. The message names the measurement. Recordings made in an older version of the app do not store speed and acceleration.</p>
+              <p><strong>Fix:</strong></p>
+              <ul>
+                <li>Re-export the file from MVN Analyze as MVNX version 4 with all data points checked</li>
+                <li>Choose a more recent recording, or record the task again</li>
+                <li>Open the template in the Templates tab and remove the measurement if you do not need it</li>
               </ul>
             </div>
           </div>

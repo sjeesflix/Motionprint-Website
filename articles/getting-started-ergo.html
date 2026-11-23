@@ -360,7 +360,7 @@
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Last updated September 2026
+          Last updated November 2026
         </div>
         <div class="article-meta-item">
           <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
@@ -536,8 +536,8 @@
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card-label">Sidebar</div>
-            <div class="info-card-value">New Project, Record, Database &amp; Settings</div>
-            <div class="info-card-desc"><strong>New Project</strong> starts a new report, <strong>Record</strong> captures motion data live with Xsens hardware, <strong>Database</strong> holds your saved projects and recordings, and <strong>Settings</strong> configures the app.</div>
+            <div class="info-card-value">New Project, Record, Database, Templates &amp; Settings</div>
+            <div class="info-card-desc"><strong>New Project</strong> starts a new report, <strong>Record</strong> captures motion data live with Xsens hardware, <strong>Database</strong> holds your saved projects and recordings, <strong>Templates</strong> is where you build your own report templates, and <strong>Settings</strong> configures the app.</div>
           </div>
           <div class="info-card">
             <div class="info-card-label">Content area</div>
@@ -550,7 +550,7 @@
         <p>Configuring a few defaults upfront saves time on every subsequent report. These settings are optional, but worth doing before you begin.</p>
         <ul>
           <li><strong>Settings → General</strong> — Enter your company name, upload a logo, and choose an accent colour. Your company name, logo, and accent colour appear in exported reports when branding is enabled. The interface theme (light or dark) affects the appearance of the app only and has no impact on exports.</li>
-          <li><strong>Settings → Reports</strong> — Pick an assessment method in the dropdown to set its defaults, such as the reference mass for NIOSH, the load rating table for KIM-LHC, and whether critical moments are detected automatically. Configuring these saves time when running repeated assessments of the same type.</li>
+          <li><strong>Settings → Reports</strong> — Pick a report type in the dropdown to set its defaults, such as the reference mass for NIOSH, the load rating table for KIM-LHC, and whether critical moments are detected automatically. The <strong>Custom</strong> entry holds the export file names and company branding for all reports made with a custom template. Configuring these saves time when running repeated assessments of the same type.</li>
         </ul>
 
         <!-- ── SECTION 5 ── -->
@@ -564,7 +564,7 @@
             <div class="phase-num">1</div>
             <div class="phase-body">
               <div class="phase-title">Select an assessment method</div>
-              <p class="phase-desc">Choose your assessment method from the method tiles on the Create page.</p>
+              <p class="phase-desc">Choose your assessment method from the tiles on the New Project page.</p>
             </div>
           </div>
           <div class="phase-item">
@@ -615,7 +615,7 @@
 
         <!-- Phase 1 -->
         <h3>Phase 1 — Select an Assessment Method</h3>
-        <p>The Create page displays available assessment methods as selectable tiles. Currently available methods include:</p>
+        <p>The New Project page (&ldquo;What do you want to analyse?&rdquo;) shows the available assessment methods as selectable tiles, with a search bar and category chips above them. Currently available methods include:</p>
 
         <div class="method-grid">
           <div class="method-card">
@@ -629,6 +629,10 @@
           <div class="method-card">
             <div class="method-card-title">RULA</div>
             <p class="method-card-desc">Rapid Upper Limb Assessment. Use this method when assessing working posture rather than load handling — assembly, machine operation, or screen-based work.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-card-title">Custom templates</div>
+            <p class="method-card-desc">Reports you build yourself in the Templates tab. A published template appears as a tile next to the built-in methods. See <a href="building-a-custom-template.html">Building a Custom Template</a>.</p>
           </div>
         </div>
 
