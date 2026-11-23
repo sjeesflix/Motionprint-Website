@@ -420,6 +420,8 @@
 
         <p>More input sources will appear here as they become available for templates. A recording made in the app brings its trim range, tasks and details with it. See <a href="uploading-processing-xsens.html">Uploading &amp; Processing Xsens Data</a> and <a href="mpcap-vs-mvnx-explained.html">.mpcap vs .mvnx Explained</a>.</p>
 
+        <p>A <strong>.mvnx</strong> file is checked as soon as you select it: it must hold the position, orientation and joint angle data of the recording. If it does not, the app tells you what is missing and you can choose another file. A recording made in the app needs no check, because Motionprint Ergo captured it itself.</p>
+
         <!-- ── TASKS &amp; TRIMMING ── -->
         <h2 id="tasks"><span class="step-num">4</span> Tasks &amp; Trimming</h2>
 
@@ -462,17 +464,7 @@
         <!-- ── PROCESSING ── -->
         <h2 id="processing"><span class="step-num">6</span> Processing</h2>
 
-        <p>Click <strong>Process</strong>. Motionprint Ergo first checks that the recording holds everything the template measures, then calculates every variable for every frame and every task.</p>
-
-        <div class="callout">
-          <svg class="callout-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <div class="callout-label">Missing required data</div>
-            <p>If the recording lacks data a variable needs, processing stops with <em>Missing required data</em>, naming the variables. A report on that recording would be empty or wrong. Export the recording from Xsens MVN with complete motion data (segment data, joint angles, centre of mass and foot contacts), or record it again.</p>
-          </div>
-        </div>
-
-        <p>Some values are worked out rather than read directly. A recording made in the app stores the speed of the pelvis only; the speed and acceleration of another body part are then derived from its position.</p>
+        <p>Click <strong>Process</strong>. Motionprint Ergo calculates every variable of the template for every frame and every task, and opens the report when it is done. If an error occurs, you are returned to the input page, where you can correct the issue and try again.</p>
 
         <!-- ── READING THE RESULTS ── -->
         <h2 id="results"><span class="step-num">7</span> Reading the Results</h2>
