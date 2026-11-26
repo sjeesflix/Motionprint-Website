@@ -162,15 +162,38 @@
     .video-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.35; }
     .video-meta { font-size: 12px; color: var(--muted-2); }
 
-    /* Embedded YouTube player inside a video card */
-    .video-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .video-feature { max-width: 820px; }
-    .video-feature .video-card:hover { transform: none; }
-    .video-feature .video-title { font-size: 17px; }
-    .video-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 8px 0 14px; }
-    .video-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; font-weight: 600; }
-    .video-links a { color: var(--red); text-decoration: none; }
-    .video-links a:hover { text-decoration: underline; }
+    /* Tutorial video tiles (same grid as the knowledge-base category cards) */
+    .video-tile { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; }
+    .video-tile .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .video-tile .play-btn { position: absolute; left: 14px; bottom: 14px; width: 42px; height: 42px; z-index: 1; }
+    .video-tile .play-btn svg { width: 16px; height: 16px; }
+    .video-tile .video-duration { z-index: 1; }
+    .video-tile .video-info { padding: 16px 18px 20px; }
+    .video-tile .video-title { font-size: 15px; margin-bottom: 6px; }
+    .video-tile-desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+    /* Video player pop-up */
+    body.video-modal-open { overflow: hidden; }
+    .video-modal {
+      position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center;
+      padding: 56px 16px 24px; background: rgba(10,14,20,.82);
+    }
+    .video-modal.is-open { display: flex; animation: sectionFadeIn .2s ease both; }
+    .video-modal-box { width: 100%; max-width: 960px; position: relative; }
+    .video-modal-frame { position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .video-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-modal-close {
+      position: absolute; top: -44px; right: 0; width: 36px; height: 36px; border-radius: 50%;
+      border: 0; background: rgba(255,255,255,.14); color: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background .15s;
+    }
+    .video-modal-close:hover { background: rgba(255,255,255,.28); }
+    .video-modal-close svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; }
+    .video-modal-caption { display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: space-between; align-items: baseline; margin-top: 14px; color: #fff; }
+    .video-modal-title { font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .video-modal-link { font-size: 13px; font-weight: 600; color: #fff; opacity: .85; text-decoration: none; }
+    .video-modal-link:hover { opacity: 1; text-decoration: underline; }
+    @media (max-width: 520px) { .video-modal { padding: 52px 10px 16px; } .video-modal-title { font-size: 14px; } }
 
     /* Article / knowledge card */
     .article-card {
@@ -631,38 +654,52 @@
 </section>
 </template>
 
-<!-- ── TUTORIAL THURSDAY VIDEOS ── -->
-<!-- Add each new Tutorial Thursday video as another .video-card inside .cards-grid (remove .video-feature once there are 2+ videos). -->
+<!-- ── TUTORIAL VIDEOS ── -->
+<!-- To add a video: copy one .video-tile into the grid below and change data-video-id, data-title, data-article, the thumbnail, tag, title, description and duration. -->
 <section class="resources-section" id="tutorial-videos">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Tutorial videos</span>
-      <h2 class="section-title">Tutorial Thursday</h2>
-      <p class="section-sub">A new Motionprint Ergo tutorial every Thursday. Watch here or on YouTube.</p>
+      <h2 class="section-title">Learn Motionprint Ergo</h2>
+      <p class="section-sub">Short video guides. Click a video to watch it right here.</p>
     </div>
-    <div class="video-feature">
-      <div class="cards-grid" style="grid-template-columns:1fr;">
 
-        <div class="video-card">
-          <div class="video-thumb">
-            <iframe src="https://www.youtube-nocookie.com/embed/UgPUeMAYd2c" title="How to Build Your Own Report Template in Motionprint Ergo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="video-info">
-            <span class="video-tag tag-templates">Templates</span>
-            <div class="video-title">How to Build Your Own Report Template in Motionprint Ergo</div>
-            <div class="video-meta">~6 min &middot; Tutorial Thursday #1</div>
-            <p class="video-desc">Go from an empty template to a finished report: choose your input sources, build the input page, design the result pages with 3D view, graphs and score cards, then save the template and run it on a recording.</p>
-            <div class="video-links">
-              <a href="articles/building-a-custom-template.html">Read the article: Building a custom template &rarr;</a>
-              <a href="https://youtu.be/UgPUeMAYd2c" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
-            </div>
-          </div>
+    <div class="video-cat-nav">
+
+      <!-- Templates: building your own report template -->
+      <a class="video-card video-tile" href="https://youtu.be/UgPUeMAYd2c" target="_blank" rel="noopener"
+         data-video-id="UgPUeMAYd2c"
+         data-title="How to Build Your Own Report Template in Motionprint Ergo"
+         data-article="articles/building-a-custom-template.html">
+        <div class="video-thumb">
+          <img src="tutorial-templates-thumb.jpg" alt="" loading="lazy" width="960" height="540">
+          <span class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+          <span class="video-duration">5:46</span>
         </div>
+        <div class="video-info">
+          <span class="video-tag tag-templates">Templates</span>
+          <div class="video-title">How to build your own report template</div>
+          <p class="video-tile-desc">From an empty template to a finished report: input sources, input page, result pages, save and run.</p>
+        </div>
+      </a>
 
-      </div>
     </div>
   </div>
 </section>
+
+<!-- Video player pop-up (filled by the script at the bottom of the page) -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <div class="video-modal-box">
+    <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Close video">
+      <svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12"/></svg>
+    </button>
+    <div class="video-modal-frame" id="videoModalFrame"></div>
+    <div class="video-modal-caption">
+      <span class="video-modal-title" id="videoModalTitle"></span>
+      <a class="video-modal-link" id="videoModalLink" href="#">Read the article &rarr;</a>
+    </div>
+  </div>
+</div>
 
 <!--
   ════════════════════════════════════════════════════════════════
@@ -1909,6 +1946,54 @@
       } finally { supBtn.disabled = false; supBtn.textContent = 'Send message'; }
     });
   })();
+</script>
+<script>
+// ── Tutorial videos: open in a pop-up on the page ──
+(function () {
+  var modal = document.getElementById('videoModal');
+  if (!modal) return;
+  var frame = document.getElementById('videoModalFrame');
+  var title = document.getElementById('videoModalTitle');
+  var link  = document.getElementById('videoModalLink');
+  var closeBtn = document.getElementById('videoModalClose');
+  var lastTile = null;
+
+  function openVideo(tile) {
+    var id = tile.getAttribute('data-video-id');
+    if (!id) return;
+    lastTile = tile;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
+    iframe.title = tile.getAttribute('data-title') || 'Video';
+    iframe.allow = 'autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    frame.innerHTML = '';
+    frame.appendChild(iframe);
+    title.textContent = tile.getAttribute('data-title') || '';
+    var article = tile.getAttribute('data-article');
+    if (article) { link.href = article; link.style.display = ''; } else { link.style.display = 'none'; }
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    document.body.classList.add('video-modal-open');
+    closeBtn.focus();
+  }
+
+  function closeVideo() {
+    modal.classList.remove('is-open');
+    modal.hidden = true;
+    document.body.classList.remove('video-modal-open');
+    frame.innerHTML = '';          // stops playback
+    if (lastTile) { lastTile.focus(); lastTile = null; }
+  }
+
+  document.querySelectorAll('.video-tile[data-video-id]').forEach(function (tile) {
+    tile.addEventListener('click', function (e) { e.preventDefault(); openVideo(tile); });
+  });
+  closeBtn.addEventListener('click', closeVideo);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeVideo(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('is-open')) closeVideo(); });
+})();
 </script>
 </body>
 </html>
